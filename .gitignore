@@ -1,3 +1,19 @@
 /Backend/node_modules
 /Backend/dist
 /Backend/.env
+/Frontend/mediac/node_modules
+/Frontend/mediac/.pnp
+/Frontend/mediac/.pnp.js
+# testing
+/Frontend/mediac/coverage
+
+# production
+/Frontend/mediac/build
+
+# misc
+/Frontend/mediac/.DS_Store
+/Frontend/mediac/.env
+
+/Frontend/mediac/npm-debug.log*
+/Frontend/mediac/yarn-debug.log*
+/Frontend/mediac/yarn-error.log*

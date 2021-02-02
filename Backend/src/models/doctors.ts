@@ -29,4 +29,4 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
 }));
 
-module.exports = doctors;
+export default doctors;

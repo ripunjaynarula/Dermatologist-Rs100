@@ -18,6 +18,11 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         trim: true,
         minlength: 8
     },
+    phone: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     verified: {
         type: Boolean,
         default: false

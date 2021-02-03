@@ -2,7 +2,8 @@ import express from 'express'
 import patients from '../models/patients'
 import mongoose from 'mongoose'
 // import jwt from 'jsonwebtoken';
-import hashPassword from '../actions/hash'
+import hashPassword from '../actions/hash';
+import sendVerificationMails from '../actions/verificationMail';
 
 const router = express.Router()
 
@@ -38,6 +39,8 @@ router.post('/', async (req, res) => {
         console.error(e);
         return res.send({error: 'technical_error'});
     }
+
+    sendVerificationMails(req.body.email, 'sample_token')
 
     res.send({status: 'success'});
 

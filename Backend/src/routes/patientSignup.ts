@@ -1,7 +1,6 @@
 import express from 'express'
 import patients from '../models/patients'
-import mongoose from 'mongoose'
-// import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import hashPassword from '../actions/hash';
 import sendVerificationMails from '../actions/verificationMail';
 
@@ -40,9 +39,13 @@ router.post('/', async (req, res) => {
         return res.send({error: 'technical_error'});
     }
 
-    sendVerificationMails(req.body.email, 'sample_token')
+    let jwtSecret: any = process.env.JWT_SECRET
 
-    res.send({status: 'success'});
+    let verificationToken: string = jwt.sign({_id : patient._id}, jwtSecret)
+
+    await sendVerificationMails(req.body.email, verificationToken)
+
+    res.send({status: 'verification_mail_sent'});
 
 });
 

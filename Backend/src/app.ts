@@ -4,7 +4,8 @@ require('./models/dbinit');
 import express from 'express';
 import bodyParser from 'body-parser'
 import patientSignup from './routes/patientSignup'
-import adminRouter from './routes/admin'
+import adminRouter from './routes/admin';
+import verifyRouter from './routes/verify';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/patientSignup', patientSignup);
+app.use('/verify', verifyRouter);
 app.get('/', (req, res) => {
     return res.send('Hello world!');
 });

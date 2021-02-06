@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
+    "firebase-admin": "^9.4.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "nodemailer": "^6.4.17",

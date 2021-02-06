@@ -1,6 +1,7 @@
 /Backend/node_modules
 /Backend/dist
 /Backend/.env
+/Backend/src/config
 /Frontend/mediac/node_modules
 /Frontend/mediac/.pnp
 /Frontend/mediac/.pnp.js

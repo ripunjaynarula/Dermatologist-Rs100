@@ -2,10 +2,17 @@ import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import app from '../firebase'
 
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
+
+  app.auth().currentUser.getIdToken(true)
+  .then((idToken) =>{
+    console.log(idToken);
+  })
+
   const history = useHistory()
 
   async function handleLogout() {

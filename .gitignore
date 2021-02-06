@@ -14,7 +14,7 @@
 # misc
 /Frontend/mediac/.DS_Store
 /Frontend/mediac/.env
-
+/Frontend/mediac/.eslintcache
 /Frontend/mediac/npm-debug.log*
 /Frontend/mediac/yarn-debug.log*
 /Frontend/mediac/yarn-error.log*

@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { auth } from '../firebase'
+import firebase from 'firebase'
 
 export default function Login() {
   const emailRef = useRef()
@@ -17,11 +19,13 @@ export default function Login() {
     try {
       setError("")
       setLoading(true)
+      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
       await login(emailRef.current.value, passwordRef.current.value)
       setLoading(false)
       history.push("/")
-    } catch {
+    } catch(e) {
       setError("Failed to log in")
+      console.log(e)
       setLoading(false)
     }
   }

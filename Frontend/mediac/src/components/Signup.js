@@ -5,12 +5,15 @@ import { Link, useHistory } from "react-router-dom"
 
 export default function Signup() {
   const emailRef = useRef()
+  const nameRef = useRef()
   const passwordRef = useRef()
+  const dobRef = useRef()
   const passwordConfirmRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const [startDate, setStartDate] = useState(new Date());
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -39,6 +42,14 @@ export default function Signup() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+            <Form.Group id="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" ref={nameRef} required />
+            </Form.Group>
+            <Form.Group id="dob">
+              <Form.Label>Date of Birth</Form.Label>
+              <Form.Control type="date" ref={dobRef} required />
+            </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

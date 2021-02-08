@@ -32,6 +32,7 @@ const NavBar = () => {
     
     <ReactBootStrap.Nav.Link className="navlink" href="/login">Login</ReactBootStrap.Nav.Link>
     
+    
     <ReactBootStrap.Nav.Link className="navlink"  href="/Signup">
         Signup
       </ReactBootStrap.Nav.Link>

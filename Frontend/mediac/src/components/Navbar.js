@@ -27,11 +27,12 @@ const NavBar = () => {
         <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item>
     </ReactBootStrap.NavDropdown>*/}
     </ReactBootStrap.Nav>
+    
     <ReactBootStrap.Nav>
     
-    <ReactBootStrap.Nav.Link href="/login">Login</ReactBootStrap.Nav.Link>
+    <ReactBootStrap.Nav.Link className="navlink" href="/login">Login</ReactBootStrap.Nav.Link>
     
-    <ReactBootStrap.Nav.Link eventKey={2} href="/Signup">
+    <ReactBootStrap.Nav.Link className="navlink"  href="/Signup">
         Signup
       </ReactBootStrap.Nav.Link>
     

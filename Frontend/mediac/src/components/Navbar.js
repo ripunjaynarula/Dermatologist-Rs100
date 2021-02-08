@@ -20,10 +20,9 @@ const NavBar = () => {
     <ReactBootStrap.Nav.Link className="navlink" href="/blog">Blog</ReactBootStrap.Nav.Link>
     
     <ReactBootStrap.Nav.Link  className="navlink" href="/FAQ">FAQs</ReactBootStrap.Nav.Link>
-    
+  
     <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
-    
-     {/*<ReactBootStrap.NavDropdown title="YEET" id="collasible-nav-dropdown">
+{/*<ReactBootStrap.NavDropdown title="YEET" id="collasible-nav-dropdown">
         <ReactBootStrap.NavDropdown.Item href="#action/3.1">Action</ReactBootStrap.NavDropdown.Item>
         <ReactBootStrap.NavDropdown.Item href="#action/3.2">Another action</ReactBootStrap.NavDropdown.Item>
         <ReactBootStrap.NavDropdown.Item href="#action/3.3">Something</ReactBootStrap.NavDropdown.Item>
@@ -34,7 +33,6 @@ const NavBar = () => {
     <ReactBootStrap.Nav>
     
     <ReactBootStrap.Nav.Link href="/login">Login</ReactBootStrap.Nav.Link>
-    
     
     <ReactBootStrap.Nav.Link eventKey={2} href="/Signup">
         Signup

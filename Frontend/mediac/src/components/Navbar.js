@@ -1,10 +1,7 @@
 import React from 'react';
 import * as ReactBootStrap from "react-bootstrap";
 import "./Navbar.css";
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return(

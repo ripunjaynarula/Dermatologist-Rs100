@@ -25,7 +25,7 @@ verify.get('/', (req, res) => {
             }
         }
 
-        res.send({status:'verified'})
+        res.redirect('http://localhost:3000/login')
     });
 
 });

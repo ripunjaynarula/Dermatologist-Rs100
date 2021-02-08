@@ -12,11 +12,9 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         unique: true,
         trim: true
     },
-    password: {
-        type: String,
+    dob: {
+        type: Date,
         required: true,
-        trim: true,
-        minlength: 8
     },
     phone: {
         type: Number,

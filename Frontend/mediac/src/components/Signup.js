@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -12,10 +12,16 @@ export default function Signup() {
   const dobRef = useRef()
   const phoneRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
+  const { signup, currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+  useEffect( () => {
+    if (currentUser) {
+      history.push('/');
+    }
+  }, [currentUser, history])
 
   async function handleSubmit(e) {
     e.preventDefault()

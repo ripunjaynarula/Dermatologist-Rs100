@@ -1,23 +1,9 @@
-import React, { useEffect }from 'react';
+import React from 'react';
 import * as ReactBootStrap from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext"
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-
-  const { currentUser } = useAuth()
-
-  useEffect( () => {
-    if (currentUser) {
-      // don't show login signup button
-      return
-    }
-
-    // show login singup button
-  }, [currentUser])
-
-
     return(
         <div className="Navbar">
     <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc">
@@ -45,7 +31,6 @@ const NavBar = () => {
     <ReactBootStrap.Nav>
     
     <ReactBootStrap.Nav.Link className="navlink" href="/login">Login</ReactBootStrap.Nav.Link>
-    
     
     <ReactBootStrap.Nav.Link className="navlink"  href="/Signup">
         Signup

@@ -3,10 +3,17 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
+<<<<<<< HEAD
 // import ReactDOM from "react-dom";
 // import bgimg from './img/image1.png';
 
 // import ScriptTag from 'react-script-tag';
+=======
+import ReactDOM from "react-dom";
+import bgimg from './img/image1.png';
+import  "./Accordion.css";
+import ScriptTag from 'react-script-tag';
+>>>>>>> bb8a3d6e790ccc5f3da69fa6d32ac6453c239c9a
 
 
 
@@ -52,7 +59,8 @@ export default function Dashboard() {
       </div>
 
       <div>
-      <h2 className="text-center mb-4">FAQs</h2>
+      <h2 className="text-center mb-4" id="faqhead" >Frequently Asked Questions</h2>
+      <hr></hr>
       <div className="App">
       <Accordion
         title="What is your return policy?"

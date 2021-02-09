@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as ReactBootStrap from "react-bootstrap";
+import { useHistory, Link } from "react-router-dom"
 import "./Navbar.css";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
@@ -8,7 +9,22 @@ const NavBar = () => {
 
   const arr = [{link: '/login', text: 'Login'}, {link: '/Signup', text: 'Signup'}];
   const [flag, setFlag] = useState(false);
-  const { currentUser } = useAuth()
+  const { currentUser, logout } = useAuth()
+  const [error, setError] = useState("")
+  const history = useHistory()
+
+
+
+  async function handleLogout() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
 
 
   useEffect( () => {
@@ -35,7 +51,8 @@ const NavBar = () => {
             </ReactBootStrap.Nav>
             
               <ReactBootStrap.Nav>
-              {flag?'':arr.map((elem) => (
+              {flag?<div> <ReactBootStrap.Button variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Button>
+              <Link to="/update-profile">Update Profile</Link></div>:arr.map((elem) => (
                 <ReactBootStrap.Nav.Link className="navLink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
               ))}
             </ReactBootStrap.Nav>

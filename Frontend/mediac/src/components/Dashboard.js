@@ -3,17 +3,10 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
-<<<<<<< HEAD
-// import ReactDOM from "react-dom";
-// import bgimg from './img/image1.png';
-
-// import ScriptTag from 'react-script-tag';
-=======
 import ReactDOM from "react-dom";
 import bgimg from './img/image1.png';
 import  "./Accordion.css";
 import ScriptTag from 'react-script-tag';
->>>>>>> bb8a3d6e790ccc5f3da69fa6d32ac6453c239c9a
 
 
 

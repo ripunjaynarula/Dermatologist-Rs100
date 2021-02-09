@@ -19,14 +19,11 @@ function App() {
       
         
         <Router>
-          <div className="Navb"><Navbar /></div>
-          <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}>
-          
-        
-        <div className="w-100" style={{ maxWidth: "400px" }}>
           <AuthProvider>
+          <div className="Navb"><Navbar /></div>
+          <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+          <div className="w-100" style={{ maxWidth: "400px" }}>
+          
             <Switch >
               <PrivateRoute exact path="/" component={Dashboard} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
@@ -35,9 +32,9 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
             </Switch>
-          </AuthProvider>
           </div>
           </Container>
+          </AuthProvider>
         </Router>
       
     

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -28,6 +28,27 @@ export default function Dashboard() {
       setError("Failed to log out")
     }
   }
+
+  useEffect( () => {
+    async function fetchVerification() {
+      if (currentUser) {
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: currentUser.email })
+          };
+        let res = await fetch('http://localhost:5000/checkVerification', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+        if (!res['status']) {
+          history.push('/verification-sent')
+        }
+      }
+    }
+    fetchVerification();
+  }, [currentUser, history])
+
+
 
   return (
     

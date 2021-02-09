@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
 import ReactDOM from "react-dom";
 import bgimg from './img/image1.png';
-
+import  "./Accordion.css";
 import ScriptTag from 'react-script-tag';
 
 
@@ -52,7 +52,8 @@ export default function Dashboard() {
       </div>
 
       <div>
-      <h2 className="text-center mb-4">FAQs</h2>
+      <h2 className="text-center mb-4" id="faqhead" >Frequently Asked Questions</h2>
+      <hr></hr>
       <div className="App">
       <Accordion
         title="What is your return policy?"

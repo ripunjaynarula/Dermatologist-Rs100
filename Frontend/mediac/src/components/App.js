@@ -25,7 +25,7 @@ function App() {
           <div className="w-100" style={{ maxWidth: "400px" }}>
           
             <Switch >
-              <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute exact path="/home" component={Home} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <Route path="/signup" component={Signup} />

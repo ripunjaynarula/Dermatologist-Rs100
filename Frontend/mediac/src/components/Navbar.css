@@ -7,3 +7,9 @@
     .navlink{
         margin-left: 25px;
     }
+    @media(min-width:600px){
+   #updprf{
+
+    margin-bottom: -40px;
+    padding-left: 80px;
+   }}

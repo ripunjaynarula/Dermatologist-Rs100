@@ -50,9 +50,11 @@ const NavBar = () => {
 
             </ReactBootStrap.Nav>
             
-              <ReactBootStrap.Nav>
-              {flag?<div> <ReactBootStrap.Button variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Button>
-              <Link to="/update-profile">Update Profile</Link></div>:arr.map((elem) => (
+              <ReactBootStrap.Nav className="form-inline">
+              {flag?<div> 
+              <ReactBootStrap.Nav.Link className=" navlink" id="updprf" href="/update-profile">Update Profile</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link className="navlink" variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Nav.Link>
+              </div>:arr.map((elem) => (
                 <ReactBootStrap.Nav.Link className="navLink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
               ))}
             </ReactBootStrap.Nav>

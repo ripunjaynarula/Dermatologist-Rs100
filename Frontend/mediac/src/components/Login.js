@@ -28,7 +28,7 @@ export default function Login() {
       await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
       await login(emailRef.current.value, passwordRef.current.value)
       setLoading(false)
-      history.push("/")
+      history.push("/dashboard")
     } catch(e) {
       setError("Failed to log in")
       console.log(e)

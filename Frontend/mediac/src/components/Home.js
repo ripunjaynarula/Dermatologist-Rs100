@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Accordion from './Accordion'
 
 // import bgimg from './img/image1.png';
 import  "./styles.css";
 
 export default function Home() {
-
-
-
-
 
     return (
         <>

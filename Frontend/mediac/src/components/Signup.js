@@ -33,6 +33,8 @@ export default function Signup() {
     try {
       setError("")
       setLoading(true)
+      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      await signup(emailRef.current.value, passwordRef.current.value)
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,14 +47,16 @@ export default function Signup() {
         setError('Technical Error');
         return;
       }
-      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      await signup(emailRef.current.value, passwordRef.current.value)
       setLoading(false)
       history.push("/verification-sent")
     } catch (e) {
-      setError("Failed to create an account")
+      if (e['code']==='auth/email-already-exists') {
+        setError('Email already in use.')
+        setLoading(false)
+        return
+      }
+      setError("Failed to create an account. Internal error. ");
       setLoading(false)
-      console.log(e)
     }
   }
 

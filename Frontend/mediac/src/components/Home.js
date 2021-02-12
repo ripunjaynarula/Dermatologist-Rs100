@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, {useEffect} from "react";
 import Accordion from './Accordion'
 import { useAuth } from '../contexts/AuthContext'
@@ -18,17 +17,14 @@ export default function Home() {
   }, [currentUser, history])
 
     return (
-        <>
+    <>
         <div id="container" >
-        <img id="gloves" src={bgimg} alt="bg" />
-        <p>ascsncdjnvdnfvkdsmvksd</p>
-        <p>csc d ndfivvd kj d djnfv</p>
-        <p href="#" className="bookbtn">Book your Appointment</p>
-    </div>
-   
-
-        
-        </>
+          <img id="gloves" src={bgimg} alt="bg" />
+          <p>ascsncdjnvdnfvkdsmvksd</p>
+          <p>csc d ndfivvd kj d djnfv</p>
+          <p href="#" className="bookbtn">Book your Appointment</p>
+        </div>
+    </>
   )
 }
   

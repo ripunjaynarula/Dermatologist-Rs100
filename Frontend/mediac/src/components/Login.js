@@ -30,8 +30,12 @@ export default function Login() {
       setLoading(false)
       history.push("/dashboard")
     } catch(e) {
-      setError("Failed to log in")
-      console.log(e)
+      if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
+        setError("Incorrect email or password")
+      }
+      else {
+        setError("Internal error.");
+      }
       setLoading(false)
     }
   }

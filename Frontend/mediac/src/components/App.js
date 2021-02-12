@@ -2,6 +2,7 @@ import React from "react"
 import Signup from "./Signup"
 import Navbar from "./Navbar"
 import Home from './Home'
+import Faq from './Faq'
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
@@ -25,9 +26,11 @@ function App() {
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <Route exact path="/" component={Home} />
+              <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+              <Route exact path="/home#faqhead" component={Home} />
             </Switch>
           </div>
           </Container>

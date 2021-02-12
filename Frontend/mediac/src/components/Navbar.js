@@ -45,7 +45,7 @@ const NavBar = () => {
     
               <ReactBootStrap.Nav.Link className="navlink" href="/about">About</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink" href="/blog">Blog</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/FAQ">FAQs</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link  className="navlink" href="/faq">FAQs</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
 
             </ReactBootStrap.Nav>
@@ -55,7 +55,7 @@ const NavBar = () => {
               <ReactBootStrap.Nav.Link className=" navlink" id="updprf" href="/update-profile">Update Profile</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink" variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Nav.Link>
               </div>:arr.map((elem) => (
-                <ReactBootStrap.Nav.Link className="navLink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
+                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
               ))}
             </ReactBootStrap.Nav>
            </ReactBootStrap.Navbar.Collapse>

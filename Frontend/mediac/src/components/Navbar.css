@@ -6,10 +6,15 @@
     }
     .navlink{
         margin-left: 25px;
+        border-radius: 4px;
+
+    }
+    .navlink:active{
+        background-color: white;
     }
     @media(min-width:600px){
    #updprf{
 
-    margin-bottom: -40px;
+    margin-bottom: -38px;
     padding-left: 80px;
    }}

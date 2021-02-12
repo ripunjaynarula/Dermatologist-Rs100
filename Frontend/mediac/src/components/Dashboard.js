@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import {  useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
 // import ReactDOM from "react-dom";
 // import bgimg from './img/image1.png';

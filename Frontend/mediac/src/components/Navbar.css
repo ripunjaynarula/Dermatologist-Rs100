@@ -12,9 +12,15 @@
     .navlink:active{
         background-color: white;
     }
+    @media(min-width:200px){
+        #updprf{
+     
+         margin-bottom: -39.9px;
+         padding-left: 80px;
+        }}
     @media(min-width:600px){
    #updprf{
 
-    margin-bottom: -38px;
+    margin-bottom: -39.9px;
     padding-left: 80px;
    }}

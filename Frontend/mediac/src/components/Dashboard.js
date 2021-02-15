@@ -6,6 +6,7 @@ import Accordion from "./Accordion";
 // import ReactDOM from "react-dom";
 // import bgimg from './img/image1.png';
 import  "./styles.css";
+import ConsultancyCard from "./ConsultancyCard"
 // import ScriptTag from 'react-script-tag';
 
 
@@ -51,9 +52,12 @@ export default function Dashboard() {
 
 
   return (
-    
     <>
-      <h3>This is dashboard</h3>     
+    <div id="consultancycard">
+      <ConsultancyCard  name="ok" doctorname="saif" startdate="69-69-6969" lastconsult="09-12-2019" age="20" height="180 cm" weight="69 kg"/>     
+    
+    </div>
     </>
+
   )
 }

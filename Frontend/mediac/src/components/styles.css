@@ -35,5 +35,95 @@
 
     width:389.9%;
     margin-left: -150%;
+	overflow-x:hidden;
 
 }
+
+.card {
+	/* Add shadows to create the "card" effect */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 100%;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+	padding: 2px 16px;
+	border-radius: 18px;
+	width: 100%;
+
+  }
+
+  #consultancycard{
+
+	  margin-top:-70%;
+	  
+	  margin-right:auto;
+	 
+	  text-align:left;	
+	  position: flex;
+	  display:block;	
+	  padding-bottom:10px;
+
+  }
+  #cardcontainer{
+	  width: 100%;
+	  position: relative;
+	  font-family: "Work Sans";
+	  padding-top:15px;
+
+  }
+  @media(min-width:600px){
+
+	#consultancycard{
+
+		width:900px;
+		margin-left:-60%;
+
+	}
+
+  }
+
+
+  .endbtn {
+	box-shadow:inset 0px 1px 0px 0px #d0451b;
+	background-color:#d0451b;
+	border-radius:15px;
+	border:1px solid #d0451b ;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Work Sans;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+}
+.endbtn:hover {
+	background-color:#942911;
+    border:1px solid #942911;
+    box-shadow:inset 0px 1px 0px 0px #942911;
+
+}
+.endbtn:active {
+	position:relative;
+	top:1px;
+}
+
+
+@media(min-width:100px){
+	
+	#cardbtn{
+
+   text-align:center;
+}}
+@media(min-width:500px){
+.endbtn{
+
+margin-left: 4px;
+
+}}

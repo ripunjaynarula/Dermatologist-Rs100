@@ -127,3 +127,14 @@
 margin-left: 4px;
 
 }}
+@media(min-width:500px)
+{
+#cardsecondary{
+ float: right;
+}}
+
+@media(min-width:500px)
+{
+#cardprimary{
+ float: left;
+}}

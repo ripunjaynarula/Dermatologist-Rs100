@@ -3,6 +3,7 @@ import Accordion from './Accordion'
 import { useAuth } from '../contexts/AuthContext'
 import { useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
+import ellipse from './img/ellipse.png';
 import  "./styles.css";
 
 export default function Home() {
@@ -20,9 +21,11 @@ export default function Home() {
     <>
         <div id="container" >
           <img id="gloves" src={bgimg} alt="bg" />
+          <div id="hometxt">
           <p>ascsncdjnvdnfvkdsmvksd</p>
           <p>csc d ndfivvd kj d djnfv</p>
-          <p href="#" id="bookbtn">Book your Appointment</p>
+          </div>
+          <p href="#" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</p>
         </div>
     </>
   )

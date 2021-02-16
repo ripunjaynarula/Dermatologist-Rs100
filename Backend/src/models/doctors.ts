@@ -27,6 +27,48 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    gender: {
+        type: String,
+        enum: ['male', 'female'],
+        required: true,
+    },
+    dob: {
+        type: Date,
+        required: true,
+    },
+    graduationYear: {
+        type: Number,
+        length: 4,
+        required: true,
+    },
+    degree: {
+        type: Image,
+    },
+    education: {
+        type: String
+    },
+    pastExperience: {
+        type: String,
+    },
+    awards: {
+        type: String
+    },
+    specialisation: {
+        type: String
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    state: {
+        type: String,
+        required: true,
+    },
+    languages: {
+        type: Array,
+        required: true,
+        default: ['English']
+    }
 }));
 
 export default doctors;

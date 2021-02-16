@@ -21,6 +21,10 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         required: true,
         unique: true,
     },
+    gender: {
+        type: String,
+        enum: ['male', 'female']
+    },
     verified: {
         type: Boolean,
         default: false

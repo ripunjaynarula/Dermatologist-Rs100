@@ -36,6 +36,7 @@
     width:389.9%;
     margin-left: -150%;
 	overflow-x:hidden;
+	margin-top:-57%;
 
 }
 
@@ -138,3 +139,29 @@ margin-left: 4px;
 #cardprimary{
  float: left;
 }}
+
+
+
+#bookbtn {
+	box-shadow:inset 0px 1px 0px 0px rgba(4, 168, 181, 1);
+	background-color:rgba(4, 168, 181, 1);
+	border-radius:25px;
+	border:1px solid rgba(4, 168, 181, 1);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Work Sans;
+	font-size:23px;
+	padding:6px 24px;
+	text-decoration:none;
+}
+#bookbtn:hover {
+	background-color:rgb(2, 105, 112);
+    border:1px solid rgb(2, 105, 112);
+    box-shadow:inset 0px 1px 0px 0px rgb(2, 105, 112);
+
+}
+#bookbtn:active {
+	position:relative;
+	top:1px;
+}

@@ -22,7 +22,7 @@ export default function Home() {
           <img id="gloves" src={bgimg} alt="bg" />
           <p>ascsncdjnvdnfvkdsmvksd</p>
           <p>csc d ndfivvd kj d djnfv</p>
-          <p href="#" className="bookbtn">Book your Appointment</p>
+          <p href="#" id="bookbtn">Book your Appointment</p>
         </div>
     </>
   )

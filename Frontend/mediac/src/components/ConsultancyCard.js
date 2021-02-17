@@ -31,7 +31,6 @@ export default function ConsultancyCard(props) {
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
-        console.log(res)
         if (res['status']) {
           setTitle(res['title']);
           setAge(res['age']);

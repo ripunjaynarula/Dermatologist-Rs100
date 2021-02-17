@@ -20,7 +20,7 @@ return (
     <hr />
       <div style={{position: "relative"}}>
         <div id="cardprimary">
-          <p><b>Doctor's Name:</b> Dr.{props.doctorname}</p>
+          <p><b>Doctor's Name:</b> Dr. {props.doctorname}</p>
           <p style={{ align: 'right', display:'relative'}}><b>Start Date:</b> {props.startdate}</p>
           <p>
             <b>Last appointment Date: </b>{props.lastconsult}

@@ -36,7 +36,7 @@
     width:389.9%;
     margin-left: -150%;
 	overflow-x:hidden;
-	margin-top:-57%;
+	margin-top:-110%;
 
 }
 
@@ -146,7 +146,7 @@ margin-left: 4px;
 	box-shadow:inset 0px 1px 0px 0px white;
 	background-color:white;
 	border-radius:50px;
-	border:1px solid black;
+	border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:black;
@@ -159,6 +159,7 @@ margin-left: 4px;
 	background-color:rgb(2, 105, 112);
     border:1px solid rgb(2, 105, 112);
     box-shadow:inset 0px 1px 0px 0px rgb(2, 105, 112);
+	color:white;
 
 }
 #bookbtn:active {
@@ -171,7 +172,38 @@ margin-left: 4px;
 }
 
 #hometxt{
+font-size:larger;
 
-font-family:Work Sans;
+margin-top:-120%;
+}
 
+#smalltxt{
+
+	color: black;
+	font-family:Work Sans;
+}
+
+#bigtxt{
+
+	color:rgba(4, 168, 181, 1);
+	font-family:Lora;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 50px;
+	line-height: 64px;
+
+
+}
+
+@media(min-width:500px)
+{
+
+
+	#bookbtn{
+		margin-left:-112%
+	}
+	#hometxt{
+		margin-left:-109%
+
+	}
 }

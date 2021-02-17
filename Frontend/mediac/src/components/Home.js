@@ -22,8 +22,9 @@ export default function Home() {
         <div id="container" >
           <img id="gloves" src={bgimg} alt="bg" />
           <div id="hometxt">
-          <p>ascsncdjnvdnfvkdsmvksd</p>
-          <p>csc d ndfivvd kj d djnfv</p>
+          <p id="smalltxt">Lorem ipsum dolor sit amet</p>
+          <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
+          <p id="smalltxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
           </div>
           <p href="#" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</p>
         </div>

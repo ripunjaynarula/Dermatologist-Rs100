@@ -33,7 +33,7 @@ export default function Signup() {
     try {
       setError("")
       setLoading(true)
-      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       await signup(emailRef.current.value, passwordRef.current.value)
       const requestOptions = {
         method: 'POST',

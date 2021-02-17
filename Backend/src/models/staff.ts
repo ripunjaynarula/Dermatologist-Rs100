@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import consultations from './consultation';
 
 const staff = mongoose.model('staff', new mongoose.Schema({
     email: {
@@ -13,7 +12,8 @@ const staff = mongoose.model('staff', new mongoose.Schema({
         length: 10,
         required: true,
     },
-    type: {
+    employeeType: {
+        type: String,
         enum: ['admin', 'customer_care'],
         required: true,
     },

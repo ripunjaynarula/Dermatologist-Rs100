@@ -42,7 +42,7 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         required: true,
     },
     degree: {
-        type: Image,
+        type: String,
     },
     education: {
         type: String

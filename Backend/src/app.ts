@@ -7,6 +7,7 @@ import patientSignup from './routes/patientSignup'
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
 import checkVerificationRouter from './routes/checkVerification';
+import getActiveConsultationRouter from './routes/getActiveConsultation';
 import cors from 'cors'
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/patientSignup', patientSignup);
 app.use('/verify', verifyRouter);
 app.use('/checkVerification', checkVerificationRouter);
+app.use('/getActiveConsultation', getActiveConsultationRouter);
 app.get('/', (req, res) => {
     return res.send('Hello world!');
 });

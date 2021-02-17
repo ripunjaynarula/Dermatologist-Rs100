@@ -26,6 +26,15 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     active: {
         type: Boolean,
         default: false,
+    },
+    age: {
+        type: Number,
+    },
+    height: {
+        type: Number
+    },
+    weight: {
+        type: Number
     }
 }));
 

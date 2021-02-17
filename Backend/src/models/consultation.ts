@@ -27,4 +27,6 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         type: Boolean,
         default: false,
     }
-}))
+}));
+
+export default consultations;

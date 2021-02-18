@@ -33,7 +33,8 @@ export default function UpdateProfile() {
       .then(() => {
         history.push("/dashboard")
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e)
         setError("Failed to update account")
       })
       .finally(() => {

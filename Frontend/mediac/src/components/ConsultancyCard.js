@@ -7,7 +7,7 @@ import { useAuth } from "../contexts/AuthContext"
 
 
 
-export default function ConsultancyCard(props) {
+export default function ConsultancyCard() {
 
   const [title, setTitle] = useState('');
   const [age, setAge] = useState('');

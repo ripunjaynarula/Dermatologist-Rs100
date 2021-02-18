@@ -17,6 +17,9 @@ export default function NewConsultation(){
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const handleSubmit = () => {
+    console.log('form submitted');
+  }
     return (
         <>
           <Card>

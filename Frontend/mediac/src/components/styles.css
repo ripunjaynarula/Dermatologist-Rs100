@@ -121,6 +121,12 @@
 	#cardbtn{
 
    text-align:center;
+}
+
+#newconbtn{
+
+	margin-left: 15%;
+
 }}
 @media(min-width:500px){
 .endbtn{
@@ -195,7 +201,7 @@ margin-top:-120%;
 
 }
 
-@media(min-width:500px)
+@media(min-width:450px)
 {
 
 
@@ -206,4 +212,36 @@ margin-top:-120%;
 		margin-left:-109%
 
 	}
+	#newconbtn{
+
+		/*margin-left: 10%;*/
+		text-align:center;
+	}
+}
+
+#newconbtn {
+	box-shadow:inset 0px 1px 0px 0px white;
+	background-color:white;
+	border-radius:50px;
+	border:1px solid black;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Work Sans;
+	font-size:18px;
+	padding:5px ;
+	padding-left:10px;
+	padding-right:5px;
+	text-decoration:none;
+}
+#newconbtn:hover {
+	background-color:rgb(2, 105, 112);
+    border:1px solid rgb(2, 105, 112);
+    box-shadow:inset 0px 1px 0px 0px rgb(2, 105, 112);
+	color:white;
+
+}
+#newconbtn:active {
+	position:relative;
+	top:1px;
 }

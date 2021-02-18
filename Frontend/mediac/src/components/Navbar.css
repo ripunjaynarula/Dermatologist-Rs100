@@ -12,13 +12,31 @@
     .navlink:active{
         background-color: white;
     }
-    @media(min-width:200px){
+    @media(max-width:450px){
         #updprf{
      
          margin-bottom: -39.9px;
-         padding-left: 80px;
-        }}
-    @media(min-width:600px){
+         /*padding-left: 80px;*/
+         
+         padding-left:80px;
+         
+         
+
+        }
+        
+    }
+    @media(min-width:500px){
+
+        #logout{
+            margin-left: -0%;
+        }
+        #brand{
+            margin-left: 10%;
+        }
+        .form-inline.navbar-nav {
+            margin-right: 22%;
+        }
+
    #updprf{
 
     margin-bottom: -39.9px;

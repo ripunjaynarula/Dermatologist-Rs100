@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
 import ellipse from './img/ellipse.png';
 import  "./styles.css";
+import Signup from './Signup.js'
 
 export default function Home() {
 
@@ -26,7 +27,7 @@ export default function Home() {
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
           <p id="smalltxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
           </div>
-          <p href="#" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</p>
+          <a href="/Signup" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
         </div>
     </>
   )

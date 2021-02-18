@@ -73,7 +73,14 @@ export default function ConsultancyCard() {
             <p href="#" className="endbtn">End Consultation</p>
           </div>
       </div>
-    </div>:<div className="Card"><div className="container" id="cardcontainer"><h2><b>Title: No active consultation</b></h2></div></div>
+    </div>:<div className="card">
+      <div className="container" id="cardcontainer">
+        <h2><b>No Active Consultations</b></h2>
+        
+          </div>
+              
+      
+    </div>
   }
   </>
 

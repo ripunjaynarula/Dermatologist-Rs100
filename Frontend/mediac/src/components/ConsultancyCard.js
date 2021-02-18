@@ -55,7 +55,7 @@ export default function ConsultancyCard() {
           <div style={{position: "relative"}}>
             <div id="cardprimary">
               <p><b>Doctor's Email:</b> {docMail}</p>
-              <p style={{ align: 'right', display:'relative'}}><b>Start Date:</b> {startDate}</p>
+              <p style={{ align: 'right', display:'relative'}}><b>Start Date:</b> {startDate.toString().slice(0,10)}</p>
               <p>
                 <b>Active Status: </b> Active
               </p>

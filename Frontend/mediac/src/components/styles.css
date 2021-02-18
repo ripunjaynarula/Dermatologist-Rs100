@@ -245,3 +245,26 @@ margin-top:-120%;
 	position:relative;
 	top:1px;
 }
+
+@media(min-width:200px)
+{
+
+	#newconbtn {
+		padding-left:15px;
+
+
+	}
+
+}
+@media(min-width:500px)
+{
+
+	#newconbtn {
+		padding-left:10px;
+
+
+	}
+
+
+
+}

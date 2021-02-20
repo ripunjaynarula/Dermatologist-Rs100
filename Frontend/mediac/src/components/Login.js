@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
 import firebase from 'firebase'
+import {CardMain} from "../css/Card";
+import {Texts} from "../css/Texts";
 
 export default function Login() {
   const emailRef = useRef()
@@ -26,7 +28,8 @@ export default function Login() {
       setError("")
       setLoading(true)
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      await login(emailRef.current.value, passwordRef.current.value)
+      var user =  await login(emailRef.current.value, passwordRef.current.value)
+      console.log(user)
       setLoading(false)
       history.push("/dashboard")
     } catch(e) {
@@ -41,25 +44,27 @@ export default function Login() {
   }
 
   return (
+
+
     <>
-      <Card style={{ boxShadow : "0px 0px 13px 1px #e2d9d9", borderStyle: "none"}} >
+      <Card style={CardMain}  >
 <Card.Title>
 
 </Card.Title>
         <Card.Body>
 
-          <h2 className="text-center mb-4" style = {{fontWeight : "bold"}}>Log In</h2>
+          <h2 className="text-center mb-4" style = {Texts.Heading}>Log In</h2>
 
 <hr></hr>       
      {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email" style={{paddingTop: 14}}>
-              <Form.Label style = {{color : "#737373"}}>Email</Form.Label>
+              <Form.Label style = {Texts.FormLabel}>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
 
             <Form.Group id="password"  style={{paddingBottom: 22}}>
-              <Form.Label  style = {{color : "#737373"}}>Password</Form.Label>
+              <Form.Label  style = {Texts.FormLabel}>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
 

@@ -9,6 +9,7 @@ import { useAuth } from "../contexts/AuthContext"
 
 export default function ConsultancyCard() {
 
+  const [name, setname] = useState('');
   const [title, setTitle] = useState('');
   const [age, setAge] = useState('');
   const [height, setHeight] = useState('');
@@ -50,7 +51,7 @@ export default function ConsultancyCard() {
   <>
     { active?<div className="card">
       <div className="container" id="cardcontainer">
-        <h2><b>Title: {title}</b></h2>
+        <h2><b>Title: {name}; {title}</b></h2>
         <hr />
           <div style={{position: "relative"}}>
             <div id="cardprimary">
@@ -75,7 +76,7 @@ export default function ConsultancyCard() {
       </div>
     </div>:<div className="card">
       <div className="container" id="cardcontainer">
-        <h2><b>No Active Consultations</b></h2>
+        <h5><b>No Active Consultations</b></h5>
         
           </div>
               

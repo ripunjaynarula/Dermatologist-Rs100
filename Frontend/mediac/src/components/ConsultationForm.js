@@ -24,9 +24,7 @@ export default function NewConsultation(){
               <h2 className="text-center mb-4">Consultation Details</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
-                <Form.Group id="youorelse">
-                <Form.Label>Is this for you or someone else</Form.Label>
-                </Form.Group>
+                
                 <Form.Group id="docType">
                   <Form.Label>Type of Doctor</Form.Label>
                   <Form.Control type="text" ref={docType} required />

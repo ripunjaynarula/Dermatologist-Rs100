@@ -253,24 +253,24 @@
 
 
 .submitbtn {
-	display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-	color: #fff;
-    background-color: rgba(4, 168, 181, 1);
-    border-color: rgba(4, 168, 181, 1);
-	box-sizing: border-box;
-	width:100%;
+	display: inline-block !important;
+    font-weight: 400 !important;
+    color: #212529 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: .25rem !important;
+	color: #fff !important;
+    background-color: rgba(4, 168, 181, 1) !important;
+    border-color: rgba(4, 168, 181, 1) !important;
+	box-sizing: border-box !important;
+	width:100% !important;
 }
 .submitbtn:hover {
 	background-color:rgb(2, 105, 112);

@@ -51,8 +51,8 @@ export default function Login() {
 <Card.Title>
 
 </Card.Title>
-        <Card.Body>
-
+        <Card.Body >
+<div >
           <h2 className="text-center mb-4" style = {Texts.Heading}>Log In</h2>
 
 <hr></hr>       
@@ -68,7 +68,7 @@ export default function Login() {
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
 
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="submitbtn" type="submit">
               Log In
             </Button>
           </Form>
@@ -76,11 +76,13 @@ export default function Login() {
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
+      
     </>
   )
 }

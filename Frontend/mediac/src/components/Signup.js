@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Card, Alert, Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
@@ -62,6 +62,7 @@ export default function Signup() {
     <>
       <Card  style={CardMain} >
         <Card.Body>
+         < div id="cardbox">
           <h2 className="text-center mb-4"  style={Texts.Heading} >Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -83,12 +84,14 @@ export default function Signup() {
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
             
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="submitbtn" type="submit">
               Sign Up
             </Button>
           </Form>
+          </div>
         </Card.Body>
       </Card>
+  
       <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>

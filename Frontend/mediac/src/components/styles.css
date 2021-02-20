@@ -203,6 +203,10 @@
     }
 }
 
+.card{
+	font-family:work sans;
+}
+
 #newconbtn {
     box-shadow: inset 0px 1px 0px 0px white;
     background-color: white;
@@ -233,7 +237,7 @@
 
 @media(min-width:200px) {
     #newconbtn {
-        padding-left: 15px;
+        padding-left: 10px;
     }
 }
 
@@ -241,4 +245,37 @@
     #newconbtn {
         padding-left: 10px;
     }
+}
+
+.btn{
+	background-color:rgba(4, 168, 181, 1);
+}
+
+
+.submitbtn {
+	display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+	color: #fff;
+    background-color: rgba(4, 168, 181, 1);
+    border-color: rgba(4, 168, 181, 1);
+	box-sizing: border-box;
+	width:100%;
+}
+.submitbtn:hover {
+	background-color:rgb(2, 105, 112);
+}
+.submitbtn:active {
+	position:relative;
+	top:1px;
 }

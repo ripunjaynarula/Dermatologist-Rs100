@@ -13,6 +13,8 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
+import Choice from './Choice'
+import OtherPersonForm from './OtherPersonForm'
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
+              <PrivateRoute path='/Choice' component={Choice} />
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

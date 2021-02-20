@@ -5,8 +5,18 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     const patient: any = await patients.findOne({email: req.body.email})
-    const verificationStatus = patient.verified;
-    return res.send({status: verificationStatus});
+    if (patient) {
+        patient['uid']=req.body.uid
+        const verificationStatus = patient.verified;
+        try {
+            patient.save();
+            return res.send({status: verificationStatus});
+        }
+        catch (e){
+            return res.send({status: false});
+        }
+    }
+    res.send({status: false});
 });
 
 export default router;

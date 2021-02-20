@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as ReactBootStrap from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom"
-import "./Navbar.css";
+import "../css/Navbar.css";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
 
@@ -36,7 +36,7 @@ const NavBar = () => {
   }, [currentUser, setFlag])
 
   return(
-        <div className="Navbar">
+        <div className="Navbar" style={{  }}>
             <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc">
             <ReactBootStrap.Navbar.Brand id="brand" href="/">MEDIAC</ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />

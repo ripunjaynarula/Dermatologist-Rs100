@@ -8,6 +8,7 @@ import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
 import checkVerificationRouter from './routes/checkVerification';
 import getActiveConsultationRouter from './routes/getActiveConsultation';
+import addBlog from './routes/blogs/addBlog'
 import cors from 'cors'
 
 const app = express();
@@ -23,6 +24,16 @@ app.use('/patientSignup', patientSignup);
 app.use('/verify', verifyRouter);
 app.use('/checkVerification', checkVerificationRouter);
 app.use('/getActiveConsultation', getActiveConsultationRouter);
+
+
+
+
+app.use('/add-post', getActiveConsultationRouter);
+
+
+
+
+
 app.get('/', (req, res) => {
     return res.send('Hello world!');
 });

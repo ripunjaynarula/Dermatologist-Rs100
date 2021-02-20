@@ -19,8 +19,7 @@ const patients = mongoose.model('patients', new mongoose.Schema({
     },
     dob: {
         type: Date,
-        required: true,
-    },
+     },
     phone: {
         type: Number,
         required: true,

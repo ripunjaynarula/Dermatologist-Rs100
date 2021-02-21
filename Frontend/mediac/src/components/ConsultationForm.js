@@ -21,6 +21,7 @@ export default function NewConsultation(){
         <>
           <Card>
             <Card.Body>
+              <div id="cardbox">
               <h2 className="text-center mb-4">Consult Us</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
@@ -39,10 +40,11 @@ export default function NewConsultation(){
                 </Form.Group>
                 
                
-                <Button disabled={loading} className="w-100" type="submit">
+                <p disabled={loading} className="submitbtn" type="submit">
                     Submit
-                </Button>
+                </p>
               </Form>
+              </div>
             </Card.Body>
           </Card>
           </>

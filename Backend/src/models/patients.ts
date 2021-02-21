@@ -6,6 +6,11 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         required: true,
         trim: true
     },
+    uid: {
+        type: String,
+        trim: true,
+        unique: true
+    },
     email: {
         type: String,
         required: true,

@@ -28,7 +28,8 @@ export default function Login() {
       setError("")
       setLoading(true)
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        await login(emailRef.current.value, passwordRef.current.value)
+      var user =  await login(emailRef.current.value, passwordRef.current.value)
+console.log(await user.user.getIdToken())
        setLoading(false)
       history.push("/dashboard")
      } catch(e) {

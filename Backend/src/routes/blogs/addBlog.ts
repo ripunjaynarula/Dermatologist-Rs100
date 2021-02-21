@@ -14,7 +14,6 @@ console.log(req.body)
         title: req.body.title,
         doctorId: req.body.uid,
         metaDescription: req.body.metaDescription,
-         
         postData: req.body.postData,
         isPublished : req.body.isPublish,
         keywords : req.body.keywords

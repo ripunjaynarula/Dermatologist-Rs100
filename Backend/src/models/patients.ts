@@ -9,7 +9,8 @@ const patients = mongoose.model('patients', new mongoose.Schema({
     uid: {
         type: String,
         trim: true,
-        unique: true
+        unique: true,
+        default: '',
     },
     email: {
         type: String,

@@ -17,12 +17,19 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+ 
   useEffect( () => {
-    if (currentUser) {
+
+    onlyOnce();
+
+  }, [])
+
+function onlyOnce(){
+ 
+     if (currentUser) {
       history.push('/');
     }
-  }, [currentUser, history])
-
+}
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -31,24 +38,39 @@ export default function Signup() {
     try {
       setError("")
       setLoading(true)
-      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      await signup(emailRef.current.value, passwordRef.current.value)
-      const requestOptions = {
+       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    var user =   await signup(emailRef.current.value, passwordRef.current.value)
+
+var tok = await user.user.getIdToken();
+  console.log(tok);
+var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: phoneRef.current.value, token : tok };
+
+
+       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: emailRef.current.value, name: nameRef.current.value,   phone: phoneRef.current.value })
-        };
+        body: JSON.stringify(d)
+        }; 
+
+      console.log("ABC")
       let res = await fetch('http://localhost:5000/patientSignup', requestOptions)
+ 
+
       res = await res.text()
       res = JSON.parse(res)
+
+      console.log(res);
+      setLoading(false)
+
       if (res['status'] !== 'verification_mail_sent') {
         setError('Technical Error');
         return;
       }
-      setLoading(false)
       history.push("/verification-sent")
     } catch (e) {
-      if (e['code']==='auth/email-already-exists') {
+
+console.log(e)
+      if (e['code']==='auth/email-already-in-use') {
         setError('Email already in use.')
         setLoading(false)
         return

@@ -28,9 +28,8 @@ export default function Login() {
       setError("")
       setLoading(true)
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      var user =  await login(emailRef.current.value, passwordRef.current.value)
- console.log(user.getIdToken())
-      setLoading(false)
+        await login(emailRef.current.value, passwordRef.current.value)
+       setLoading(false)
       history.push("/dashboard")
      } catch(e) {
       if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {

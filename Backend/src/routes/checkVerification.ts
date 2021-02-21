@@ -6,7 +6,9 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const patient: any = await patients.findOne({email: req.body.email})
     if (patient) {
-        patient['uid']=req.body.uid
+        if (patient['uid'] === ''){
+            patient['uid']=req.body.uid;
+        }
         const verificationStatus = patient.verified;
         try {
             patient.save();

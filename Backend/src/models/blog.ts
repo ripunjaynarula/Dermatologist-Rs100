@@ -41,14 +41,12 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
         required: true,
         default:0
     },
-    degree: {
-        type: String,
-    },
+  
  
     keywords: {
-        type: Array,
+        type: String,
         required: true,
-        default: ['']
+ 
     }
 }));
 

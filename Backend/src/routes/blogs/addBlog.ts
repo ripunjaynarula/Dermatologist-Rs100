@@ -7,11 +7,28 @@ router.post('/', async (req, res) => {
 
 
 console.log(req.body)
-    const consultation: any = await blog.findOne({$and: [ {patientEmail: req.body.email}, {active: true} ]});
-    if (consultation){
-        return res.send({status: true, startDate: consultation.startDate, title: consultation.title, age: consultation.age, weight: consultation.weight, height: consultation.height, docMail: consultation.doctorEmail});
+ 
+
+
+    const blogPost = new blog({
+        title: req.body.title,
+        doctorId: req.body.uid,
+        metaDescription: req.body.metaDescription,
+         
+        postData: req.body.postData,
+        isPublished : req.body.isPublish,
+        keywords : req.body.keywords
+
+    });
+   try {
+       var p = await blogPost.save();
+       return res.send({status: 'saved', isError : false})
+
+    } catch(e) {
+        console.error(e);
+        return res.send({status: 'technical_error', isError : true});
     }
-    return res.send({status: false})
+ 
 });
 
 export default router;

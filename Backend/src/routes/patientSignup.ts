@@ -2,18 +2,18 @@ import express from 'express'
 import patients from '../models/patients'
 import jwt from 'jsonwebtoken';
 import sendVerificationMails from '../actions/verificationMail';
- 
+import checkAuth from '../middlewares/auth';
 const router = express.Router()
 
 router.get('/', (req, res) => {
     res.send('signup route')
 })
 
-router.post('/', async (req, res) => {
+router.post('/',checkAuth, async (req, res) => {
 
     let patient;
 
-    console.log(req.body.dds);
+    console.log(req.body);
     const newPatient = new patients({
         name: req.body.name,
         email: req.body.email,

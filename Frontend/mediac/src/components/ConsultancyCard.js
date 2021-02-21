@@ -27,7 +27,7 @@ export default function ConsultancyCard() {
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: currentUser.email })
+          body: JSON.stringify({ uid: currentUser['uid'] })
           };
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
         res = await res.text();

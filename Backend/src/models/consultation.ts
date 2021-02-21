@@ -35,6 +35,11 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
     weight: {
         type: Number
+    },
+    uid: {
+        type: String,
+        required: true,
+        trim: true,
     }
 }));
 

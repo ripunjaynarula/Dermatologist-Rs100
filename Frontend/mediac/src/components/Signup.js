@@ -41,9 +41,9 @@ function onlyOnce(){
        await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     var user =   await signup(emailRef.current.value, passwordRef.current.value)
 
-var tok = await user.user.getIdToken();
+var tok = await user.user['uid'];
   console.log(tok);
-var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: phoneRef.current.value, token : tok };
+var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: phoneRef.current.value, uid : tok };
 
 
        const requestOptions = {

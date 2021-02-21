@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        dob: req.body.dob,
+        uid: req.body.uid,
         verified: false
     });
 

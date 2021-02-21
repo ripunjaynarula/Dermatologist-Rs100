@@ -10,6 +10,7 @@ import checkVerificationRouter from './routes/checkVerification';
 import getActiveConsultationRouter from './routes/getActiveConsultation';
 import addBlog from './routes/blogs/addBlog'
 import cors from 'cors'
+import checkAuth from './middlewares/auth'
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use('/patientSignup', patientSignup);
 app.use('/verify', verifyRouter);
 app.use('/checkVerification', checkVerificationRouter);
-app.use('/getActiveConsultation', getActiveConsultationRouter);
+app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 
 
 

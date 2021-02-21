@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 // import {  useHistory } from "react-router-dom"
 // import Accordion from "./Accordion";
 // import  "./styles.css";
+import app from '../firebase'
 
 
 
@@ -24,11 +25,13 @@ export default function ConsultancyCard() {
   useEffect( () => {
     async function fetchData() {
       if (currentUser) {
+
+        const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ uid: currentUser['uid'] })
-          };
+          body: JSON.stringify({ uid: currentUser['uid'], tok: token })
+        };
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
@@ -51,7 +54,7 @@ export default function ConsultancyCard() {
   <>
     { active?<div className="card">
       <div className="container" id="cardcontainer">
-        <h2><b>Title: {name}; {title}</b></h2>
+        <h2><b>Title: {title}</b></h2>
         <hr />
           <div style={{position: "relative"}}>
             <div id="cardprimary">

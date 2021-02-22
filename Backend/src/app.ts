@@ -12,6 +12,7 @@ import addBlog from './routes/blogs/addBlog'
 import cors from 'cors'
 import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
+import newProfileRouter from './routes/addNewProfile';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/verify', verifyRouter);
 app.use('/checkVerification', checkVerificationRouter);
 app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
+app.use('/addNewProfile', checkAuth, newProfileRouter);
 
 
 

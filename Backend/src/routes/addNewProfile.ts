@@ -24,4 +24,6 @@ router.post('/', async (req, res) => {
     }
 
     return res.send({status: 'patient_not_found'});
-})
+});
+
+export default router;

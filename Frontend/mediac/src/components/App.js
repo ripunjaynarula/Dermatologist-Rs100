@@ -29,6 +29,7 @@ function App() {
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
               <PrivateRoute path='/Choice' component={Choice} />
+              <PrivateRoute path='/OtherPersonForm' component={OtherPersonForm} />
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

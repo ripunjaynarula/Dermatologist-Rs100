@@ -273,7 +273,7 @@
 	width:100% !important;
 }
 .submitbtn:hover {
-	background-color:rgb(2, 105, 112);
+	background-color:rgb(2, 105, 112) !important;
 }
 .submitbtn:active {
 	position:relative;

@@ -11,8 +11,8 @@ import {Texts} from "../css/Texts";
 export default function OtherPersonForm() {
 
     const emailRef = useRef()
-  const nameRef = useRef()
-  const passwordRef = useRef()
+  const onameRef = useRef()
+  const relRef = useRef()
   const phoneRef = useRef()
   const { signup, currentUser } = useAuth()
   const [error, setError] = useState("")
@@ -27,30 +27,22 @@ export default function OtherPersonForm() {
           <Card  style={CardMain} >
             <Card.Body>
              < div id="cardbox">
-              <h2 className="text-center mb-4"  style={Texts.Heading} >Sign Up</h2>
+              <h2 className="text-center mb-4"  style={Texts.Heading} >Person's Information</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
-                <Form.Group  id="name">
+                <Form.Group  id="oname">
                   <Form.Label style={Texts.FormLabel}>Name</Form.Label>
-                  <Form.Control type="text" ref={nameRef} required />
+                  <Form.Control type="text" ref={onameRef} required />
                 </Form.Group>
-                <Form.Group id="phone">
-                  <Form.Label style={Texts.FormLabel}>Phone Number</Form.Label>
-                  <Form.Control type="text" ref={phoneRef} required />
+                <Form.Group id="user-relation">
+                  <Form.Label style={Texts.FormLabel}>Relation</Form.Label>
+                  <Form.Control type="text" ref={relRef} required />
                 </Form.Group>
             
-                <Form.Group id="email">
-                  <Form.Label style={Texts.FormLabel}>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required />
-                </Form.Group>
-                <Form.Group id="password">
-                  <Form.Label style={Texts.FormLabel}>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} required />
-                </Form.Group>
-                
-                <p disabled={loading} className="submitbtn" type="submit">
-                    Submit
-                </p>
+                <a href="/OtherPersonDetails">
+                <p disabled={loading} className="submitbtn"  type="submit">
+                    Next
+                </p></a>
               </Form>
               </div>
             </Card.Body>

@@ -53,7 +53,6 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
         body: JSON.stringify(d)
         }; 
 
-      console.log("ABC")
       let res = await fetch('http://localhost:5000/patientSignup', requestOptions)
  
 

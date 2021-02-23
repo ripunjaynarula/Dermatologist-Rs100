@@ -10,7 +10,6 @@ router.post('/', async (req, res) => {
         const info = {
             name: req.body.name,
             dob: req.body.dob,
-            weight: req.body.wieght,
             id: (l+1),
             gender: req.body.gender,
             city: req.body.city

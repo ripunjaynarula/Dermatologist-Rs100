@@ -29,15 +29,11 @@ export default function ConsultancyCard() {
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', token: token },
-          body: JSON.stringify({ uid: currentUser['uid'] })
+          headers: { 'Content-Type': 'application/json', 'token': token },
         };
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
-        console.log(res);
         res = await res.text();
-console.log("SSS",res);
         res = JSON.parse(res)
-console.log(res);
         if (res['status']) {
           setTitle(res['title']);
           setAge(res['age']);

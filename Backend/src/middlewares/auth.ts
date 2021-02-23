@@ -1,6 +1,7 @@
 import admin from 'firebase-admin'
+const serviceAccount = require('../config/fbServiceAccountKey.json')
 
-const serviceAccount = require('../config/fbServieAccountKey.json');
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
@@ -8,14 +9,10 @@ admin.initializeApp({
 const checkAuth = async (req: any, res: any, next: any) => {
 
 
-  
-  if (req.headers.token) {
+    if (req.headers.token) {
     admin.auth().verifyIdToken(req.headers.token)
     .then((data)=>{
-
-console.log(data)
-
-      req.body.uid = data.user_id
+    req.body.uid = data.user_id
       next();
     }).catch((e) => {
       console.log(e)

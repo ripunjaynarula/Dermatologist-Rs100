@@ -13,6 +13,7 @@ import cors from 'cors'
 import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
+import getProfiles from './routes/getProfiles';
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/checkVerification', checkVerificationRouter);
 app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
+app.use('/getProfiles',checkAuth, getProfiles);
 
 
 

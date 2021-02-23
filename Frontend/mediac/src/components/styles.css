@@ -121,6 +121,9 @@
     #newconbtn {
         margin-left: 15%;
     }
+    #onewconbtn {
+        margin-left: 15%;
+    }
 }
 
 @media(min-width:500px) {
@@ -217,7 +220,7 @@
     color: black;
     font-family: Work Sans;
     font-size: 18px;
-    padding: 5px;
+    padding: 4px;
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
@@ -305,4 +308,48 @@ display: block;
 
     width: 100% !important; 
     text-align:left !important; 
+}
+
+
+
+
+
+#onewconbtn {
+    box-shadow: inset 0px 1px 0px 0px white;
+    background-color: white;
+    border-radius: 50px;
+    border: 1px solid black;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-family: Work Sans;
+    font-size: 18px;
+    padding: 3px;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-decoration: none;
+}
+
+#onewconbtn:hover {
+    background-color: rgb(223, 108, 0);
+    border: 1px solid rgb(223, 108, 0);
+    box-shadow: inset 0px 1px 0px 0px rgb(223, 108, 0);
+    color: white;
+}
+
+#onewconbtn:active {
+    position: relative;
+    top: 1px;
+}
+
+@media(min-width:200px) {
+    #onewconbtn {
+        padding-left: 10px;
+    }
+}
+
+@media(min-width:500px) {
+    #onewconbtn {
+        padding-left: 10px;
+    }
 }

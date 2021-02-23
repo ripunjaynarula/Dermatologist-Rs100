@@ -16,7 +16,7 @@ export default function OtherPersonForm() {
   const ogenRef = useRef()
   const odobRef = useRef()
   const ocityRef = useRef()
-  const odetailsRef = useRef()
+  const relRef = useRef()
   const { signup, currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -53,9 +53,13 @@ export default function OtherPersonForm() {
                   <Form.Label style={Texts.FormLabel}>Name</Form.Label>
                   <Form.Control type="text" ref={onameRef} required />
                 </Form.Group>
+                <Form.Group id="user-relation">
+                  <Form.Label style={Texts.FormLabel}>Relation</Form.Label>
+                  <Form.Control type="text" ref={relRef} required />
+                </Form.Group>
                 <Form.Group id="odob">
-                  <Form.Label style={Texts.FormLabel}>Date of Birth</Form.Label>
-                  <Form.Control type="text" ref={odobRef} required />
+                <Form.Label>Date of Birth</Form.Label>
+              <Form.Control type="date" ref={odobRef} required />
                 </Form.Group>
                 <Form.Group id="ogen">
                   <Form.Label style={Texts.FormLabel}>Gender</Form.Label>

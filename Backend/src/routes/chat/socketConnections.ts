@@ -16,10 +16,15 @@ app.get("/", (req: any, res: any) => {
 
 
 io.on("connection", function(socket: any) {
-  console.log("a user connected");
+ console.log("a user connected");
+  // whenever we receive a 'message' we log it out
+  socket.on("message", function(message: any) {
+    console.log(message);
+  });
+
 });
 
 
-const server = http.listen(3000, function() {
-  console.log("listening on *:3000");
+const server = http.listen(4000, function() {
+  console.log("listening on *:4000");
 });

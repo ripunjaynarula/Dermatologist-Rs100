@@ -8,8 +8,7 @@ admin.initializeApp({
 const checkAuth = async (req: any, res: any, next: any) => {
 
 
-console.log(req.headers.token);
- 
+  
   if (req.headers.token) {
     admin.auth().verifyIdToken(req.headers.token)
     .then((data)=>{

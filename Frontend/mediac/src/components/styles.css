@@ -226,26 +226,26 @@
     text-decoration: none;
 }
 
-#newconbtn:hover {
+.newconbtn:hover {
     background-color: rgb(2, 105, 112);
     border: 1px solid rgb(2, 105, 112);
     box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
     color: white;
 }
 
-#newconbtn:active {
+.newconbtn:active {
     position: relative;
     top: 1px;
 }
 
 @media(min-width:200px) {
-    #newconbtn {
+    .newconbtn {
         padding-left: 10px;
     }
 }
 
 @media(min-width:500px) {
-    #newconbtn {
+    .newconbtn {
         padding-left: 10px;
     }
 }

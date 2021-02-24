@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         patient.profiles.push(info);
         try {
             patient.save()
-            return res.send({status: 'saved_successfuly'});
+            return res.send({status: 'saved_successfuly', id: info['id']});
         } catch (e) {
             return res.send({status: 'technical_error'});
         }

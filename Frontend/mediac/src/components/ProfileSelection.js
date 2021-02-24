@@ -1,17 +1,13 @@
-import React, { useRef, useState, useEffect } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import React, { useState, useEffect } from "react"
+import { Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { useHistory } from "react-router-dom"
 import app from "../firebase"
 
-export default function ProfileSelection() {
+export default function ProfileSelection(props) {
 
  
-    const userchoice = useRef()
     const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
     const { currentUser } = useAuth()
-    const history = useHistory()
 
     const [profiles, setProfiles] = useState([])
 
@@ -30,7 +26,7 @@ export default function ProfileSelection() {
           }
         }
         getProfiles();
-      }, [currentUser])
+      }, [currentUser, setProfiles])
 
 
     return (
@@ -43,7 +39,7 @@ export default function ProfileSelection() {
               <p style={{ fontWeight: 'bold', position: 'relative', marginLeft:'50%', fontSize:'large'}}>OR</p>
               {/* <p id="newconbtn">Someone Else</p> */}
               {profiles.map(profile =>(
-                  <p className="newconbtn" key={profile['id']}>{profile['name']} {profile['id']}</p>
+                  <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'])}}>{profile['id']}: {profile['name']}</p>
               ))}
             </Card.Body>
           </Card>

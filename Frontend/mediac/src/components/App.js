@@ -14,7 +14,6 @@ import UpdateProfile from "./UpdateProfile"
 import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
-import OtherPersonForm from './OtherPersonForm'
 import OtherPersonDetails from './OtherPersonDetails'
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
               <PrivateRoute path='/Choice' component={Choice} />
-              <PrivateRoute path='/OtherPersonForm' component={OtherPersonForm} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />

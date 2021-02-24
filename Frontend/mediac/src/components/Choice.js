@@ -3,26 +3,29 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import ProfileSelection from './ProfileSelection'
+import OtherPersonDetails from './OtherPersonDetails';
 
 export default function Choice(){
 
-    
+  const [currentProfile, seCurrentProfile] = useState(0); 
  
-  const userchoice = useRef()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const { currentUser } = useAuth()
   const history = useHistory()
 
-
-
-  const handleSubmit = () => {
-    console.log('form submitted');
+  const handleProfileSelection = (id) => {
+    seCurrentProfile(id);
   }
-    return (
+
+  const resetSelection = () => {
+    seCurrentProfile(0);
+  }
+
+  return (
         <>
-          <ProfileSelection />          
+          <ProfileSelection handleSubmit={handleProfileSelection} />    
+          {currentProfile == 0?<OtherPersonDetails setProfile={handleProfileSelection} />:<><p>Current id set to {currentProfile}</p><br/><button className="newconbtn" onClick={resetSelection}>Reset Selection</button></>}
         </>
   )
-
 }

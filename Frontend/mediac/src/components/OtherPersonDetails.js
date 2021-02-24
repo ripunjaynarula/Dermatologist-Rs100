@@ -1,15 +1,14 @@
 import React, { useRef, useState } from "react"
 import { Form, Alert, Button, Dropdown } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
-import {CardMain} from "../css/Card";
+import { useHistory } from "react-router-dom"
 import {Texts} from "../css/Texts";
 import  "./styles.css";
 import app from '../firebase'
 
 
 
-export default function OtherPersonForm() {
+export default function OtherPersonForm(props) {
 
   const emailRef = useRef()
   const onameRef = useRef()
@@ -36,7 +35,7 @@ export default function OtherPersonForm() {
         res = await res.text()
         res = JSON.parse(res)
         if (res['status'] === 'saved_successfuly') {
-          history.push('/dashboard')
+          props.setProfile(res['id'])
         } else {
           // display error!
         }

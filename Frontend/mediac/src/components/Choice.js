@@ -4,10 +4,11 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import ProfileSelection from './ProfileSelection'
 import OtherPersonDetails from './OtherPersonDetails';
+import NewConsultation from './ConsultationForm';
 
 export default function Choice(){
 
-  const [currentProfile, seCurrentProfile] = useState(0); 
+  const [currentProfile, setCurrentProfile] = useState(0); 
  
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -15,17 +16,19 @@ export default function Choice(){
   const history = useHistory()
 
   const handleProfileSelection = (id) => {
-    seCurrentProfile(id);
+    setCurrentProfile(id);
   }
 
   const resetSelection = () => {
-    seCurrentProfile(0);
+    setCurrentProfile(0);
   }
 
   return (
         <>
           <ProfileSelection handleSubmit={handleProfileSelection} />    
           {currentProfile == 0?<OtherPersonDetails setProfile={handleProfileSelection} />:<><p>Current id set to {currentProfile}</p><br/><button className="newconbtn" onClick={resetSelection}>Reset Selection</button></>}
+          <br />
+          <NewConsultation id={currentProfile}/>
         </>
   )
 }

@@ -28,7 +28,7 @@ export default function OtherPersonForm(props) {
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
-          body: JSON.stringify({name: onameRef.current.value, dob: odobRef.current.value, gender: ogenRef.current.value, city: ocityRef.current.value})
+          body: JSON.stringify({name: onameRef.current.value, dob: odobRef.current.value, gender: ogenRef.current.value})
         };
 
         let res = await fetch('http://localhost:5000/addNewProfile', requestOptions);

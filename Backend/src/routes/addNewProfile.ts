@@ -12,7 +12,6 @@ router.post('/', async (req, res) => {
             dob: req.body.dob,
             id: (l+1),
             gender: req.body.gender,
-            city: req.body.city
         };
         patient.profiles.push(info);
         try {

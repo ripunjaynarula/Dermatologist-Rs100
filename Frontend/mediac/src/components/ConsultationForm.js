@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
 import firebase from 'firebase'
 
-export default function NewConsultation(){
+export default function NewConsultation(props){
 
     
   const docType = useRef()
@@ -14,8 +14,16 @@ export default function NewConsultation(){
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+
   const handleSubmit = () => {
-    console.log('form submitted');
+    if (props.id === 0) {
+      setError("Please select a profile.");
+    }
+    else {
+      setError("");
+      // send request to backend!
+    }
   }
     return (
         <>
@@ -40,7 +48,7 @@ export default function NewConsultation(){
                 </Form.Group>
                 
                
-                <p disabled={loading} className="submitbtn" type="submit">
+                <p disabled={loading} className="submitbtn" onClick={handleSubmit}>
                     Submit
                 </p>
               </Form>

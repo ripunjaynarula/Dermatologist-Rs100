@@ -1,13 +1,12 @@
 import React, { useRef, useState, useEffect } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card, Alert, Dropdown } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import { auth } from '../firebase'
-import firebase from 'firebase'
+import {Texts} from "../css/Texts";
 
 export default function NewConsultation(props){
 
-    
+  const prev = useRef()
   const docType = useRef()
   const info = useRef()
   const city = useRef()
@@ -27,34 +26,41 @@ export default function NewConsultation(props){
   }
     return (
         <>
-          <Card>
-            <Card.Body>
-              <div id="cardbox">
+          
+              <div id="formbody">
               <h2 className="text-center mb-4">Consult Us</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 
                 <Form.Group id="docType">
-                  <Form.Label>Type of Doctor</Form.Label>
+                  <Form.Label style={Texts.FormLabel}>Type of Doctor</Form.Label>
                   <Form.Control type="text" ref={docType} required />
                 </Form.Group>
                 <Form.Group id="city">
-                <Form.Label>City</Form.Label>
+                <Form.Label style={Texts.FormLabel}>City</Form.Label>
                   <Form.Control type="text" ref={city} required />
                 </Form.Group>
+
+                <Form.Group id="name">
+                  <Form.Label style={Texts.FormLabel}>Any previously diagosed conditions?</Form.Label>
+                      <select name="prev" ref={prev} id="dropdown-basic">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        
+                </select>
+                </Form.Group>
                 <Form.Group id="info">
-                  <Form.Label>Additional Information (symptoms, allergies, current medication)</Form.Label>
+                  <Form.Label style={Texts.FormLabel}>Additional Information (symptoms, allergies, current medication)</Form.Label>
                   <Form.Control type="text" ref={info} required />
                 </Form.Group>
                 
                
                 <p disabled={loading} className="submitbtn" onClick={handleSubmit}>
-                    Submit
+                    Proceed to Payment
                 </p>
               </Form>
               </div>
-            </Card.Body>
-          </Card>
+            
           </>
   )
 

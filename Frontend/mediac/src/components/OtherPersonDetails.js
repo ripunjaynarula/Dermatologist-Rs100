@@ -45,7 +45,8 @@ export default function OtherPersonForm(props) {
     return (
         <>
           <div id="formbody">
-          <h2 className  style={Texts.Heading} >Person's Information</h2>
+          <br/>
+          <h2 style={Texts.Heading} >Person's Information</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group  id="oname">
@@ -57,7 +58,7 @@ export default function OtherPersonForm(props) {
                   <Form.Control type="text" ref={relRef} required />
                 </Form.Group>
                 <Form.Group id="odob">
-                <Form.Label>Date of Birth</Form.Label>
+                <Form.Label style={Texts.FormLabel}>Date of Birth</Form.Label>
               <Form.Control type="date" ref={odobRef} required />
                 </Form.Group>
                 <Form.Group id="ogen">

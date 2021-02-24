@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import app from "../firebase"
+import personfill from './img/personfill.svg';
+
 
 export default function ProfileSelection(props) {
 
@@ -31,15 +33,17 @@ export default function ProfileSelection(props) {
 
     return (
         <div>
-            <Card>
+          <br/>  <br/>
+            <Card id="formbody">
             <Card.Body>
               <h2 className="text-center mb-4">Is this for you or someone else? </h2>
               {error && <Alert variant="danger">{error}</Alert>}
-              <p style={{marginLeft:'47%'}} id="newconbtn">Me</p><br/><br/>
-              <p style={{ fontWeight: 'bold', position: 'relative', marginLeft:'50%', fontSize:'large'}}>OR</p>
+              <p style={{marginLeft:'45.7%'}} className="newconbtn">Me</p><br/><br/>
+              <p style={{ fontWeight: 'bold', position: 'relative', marginLeft:'47%', fontSize:'large'}}>OR</p>
               {/* <p id="newconbtn">Someone Else</p> */}
-              {profiles.map(profile =>(
-                  <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'])}}>{profile['id']}: {profile['name']}</p>
+
+              {profiles.map(profile =>(<>
+                   <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'])}}>{profile['id']}: {profile['name']}<img id="personfill" src={personfill}></img></p></>
               ))}
             </Card.Body>
           </Card>

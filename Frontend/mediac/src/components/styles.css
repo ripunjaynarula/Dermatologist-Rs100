@@ -118,10 +118,10 @@
     #cardbtn {
         text-align: center;
     }
-    #newconbtn {
-        margin-left: 15%;
+    .newconbtn {
+        margin-left: 12%;
     }
-    #onewconbtn {
+    .onewconbtn {
         margin-left: 15%;
     }
 }
@@ -171,7 +171,7 @@
 }
 
 #ellipsebtn {
-    margin-left: -5%;
+    margin-left: -2%;
 }
 
 #hometxt {
@@ -200,7 +200,7 @@
     #hometxt {
         margin-left: -109%
     }
-    #newconbtn {
+    .newcontbn {
         /*margin-left: 10%;*/
         text-align: center;
     }
@@ -210,7 +210,7 @@
 	font-family:work sans;
 }
 
-#newconbtn {
+.newconbtn {
     box-shadow: inset 0px 1px 0px 0px white;
     background-color: white;
     border-radius: 50px;
@@ -231,9 +231,12 @@
     border: 1px solid rgb(2, 105, 112);
     box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
     color: white;
+    text-decoration: none;
+
+    
 }
 
-.newconbtn:active {
+.newcontbn:active {
     position: relative;
     top: 1px;
 }
@@ -290,7 +293,7 @@ width:100%;
 margin-left:auto;
 background-color:white !important;
 border:1px solid #ced4da !important;
-display: block;
+display: flex;
     width: 100%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
@@ -302,12 +305,12 @@ display: block;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    align-items:left;
 }
 
 #formbody{
-
-    width: 100% !important; 
     text-align:left !important; 
+    align-items:left !important;
 }
 
 
@@ -346,6 +349,11 @@ display: block;
     #onewconbtn {
         padding-left: 10px;
     }
+    #resetbtn{
+
+        text-align: center !important;
+        margin-left:29.8% !important;
+    }
 }
 
 @media(min-width:500px) {
@@ -353,3 +361,19 @@ display: block;
         padding-left: 10px;
     }
 }
+
+
+@media(min-width:450px) {
+
+#formbody{
+
+    width:200%;
+    margin-left: -47%;
+
+}
+
+#resetbtn{
+
+    text-align: center !important;
+    margin-left:32.8% !important;
+}}

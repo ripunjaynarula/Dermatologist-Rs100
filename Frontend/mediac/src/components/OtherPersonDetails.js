@@ -35,7 +35,7 @@ export default function OtherPersonForm(props) {
         res = await res.text()
         res = JSON.parse(res)
         if (res['status'] === 'saved_successfuly') {
-          props.setProfile(res['id'])
+          props.setProfile(res['id'], res['name'])
         } else {
           // display error!
         }

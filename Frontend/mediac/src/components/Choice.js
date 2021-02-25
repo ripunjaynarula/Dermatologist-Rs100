@@ -9,14 +9,16 @@ import NewConsultation from './ConsultationForm';
 export default function Choice(){
 
   const [currentProfile, setCurrentProfile] = useState(0); 
+  const [currentProfileName, setCurrentProfileName] = useState('');
  
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const { currentUser } = useAuth()
   const history = useHistory()
 
-  const handleProfileSelection = (id) => {
+  const handleProfileSelection = (id, name) => {
     setCurrentProfile(id);
+    setCurrentProfileName(name)
   }
 
   const resetSelection = () => {
@@ -26,7 +28,7 @@ export default function Choice(){
   return (
         <>
           <ProfileSelection handleSubmit={handleProfileSelection} />    
-          {currentProfile == 0?<OtherPersonDetails setProfile={handleProfileSelection} />:<><p>Current id set to {currentProfile}</p><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
+          {currentProfile == 0?<OtherPersonDetails setProfile={handleProfileSelection} />:<><p>Current id set to {currentProfileName}</p><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
           <br />
           <NewConsultation id={currentProfile}/>
         </>

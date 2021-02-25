@@ -43,7 +43,7 @@ export default function ProfileSelection(props) {
               {/* <p id="newconbtn">Someone Else</p> */}
 
               {profiles.map(profile =>(<>
-                   <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'])}}>{profile['id']}: {profile['name']}<img id="personfill" src={personfill}></img></p></>
+                   <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}>{profile['id']}: {profile['name']}<img id="personfill" src={personfill}></img></p></>
               ))}
             </Card.Body>
           </Card>

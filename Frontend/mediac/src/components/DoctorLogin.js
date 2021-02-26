@@ -15,32 +15,10 @@ export default function DoctorLogin() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  useEffect( () => {
-    if (currentUser) {
-      history.push('/');
-    }
-  }, [currentUser, history])
-
   async function handleSubmit(e) {
     e.preventDefault()
-
-    try {
-      setError("")
-      setLoading(true)
-      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      var user =  await login(demailRef.current.value, dpasswordRef.current.value)
-console.log(await user.user.getIdToken())
-       setLoading(false)
-      history.push("/dashboard")
-     } catch(e) {
-      if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
-        setError("Incorrect email or password")
-      }
-      else {
-        setError("Internal error.");
-      }
-      setLoading(false)
-    }
+    setLoading(true);
+    console.log('Submitted!');
   }
 
   return (
@@ -48,14 +26,10 @@ console.log(await user.user.getIdToken())
 
     <>
       <Card style={CardMain}  >
-<Card.Title>
-
-</Card.Title>
         <Card.Body>
 
           <h2 className="text-center mb-4" style = {Texts.Heading}>Log In</h2>
-
-<hr></hr>       
+          <hr></hr>       
      {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email" style={{paddingTop: 14}}>
@@ -79,7 +53,6 @@ console.log(await user.user.getIdToken())
           </div>
         </Card.Body>
       </Card>
-      
     </>
   )
 }

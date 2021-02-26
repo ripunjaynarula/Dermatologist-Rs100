@@ -15,6 +15,8 @@ import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
 import OtherPersonDetails from './OtherPersonDetails'
+import DoctorLogin from './DoctorLogin'
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
+              <Route path="/DoctorLogin" component={DoctorLogin} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
             </Switch>

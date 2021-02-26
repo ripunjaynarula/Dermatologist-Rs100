@@ -18,7 +18,16 @@ export default function DoctorLogin() {
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true);
-    console.log('Submitted!');
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({email: demailRef.current.value, pass: dpasswordRef.current.value})
+    };
+    let res = await fetch('http://localhost:5000/doctorLogin', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res)
+    console.log(res)
+    setLoading(false);
   }
 
   return (

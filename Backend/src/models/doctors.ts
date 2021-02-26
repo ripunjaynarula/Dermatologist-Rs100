@@ -18,6 +18,11 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         trim: true,
         minlength: 8
     },
+    uid: {
+        type: String,
+        default: '',
+        unique: true
+    },
     phone: {
         type: Number,
         required: true,
@@ -68,7 +73,7 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         type: Array,
         required: true,
         default: ['English']
-    }
+    },
 }));
 
 export default doctors;

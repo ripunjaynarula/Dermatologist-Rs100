@@ -2,7 +2,6 @@ import express from 'express'
 import doctors from '../models/doctors'
 import { uid } from 'rand-token'
 import hashPassword from '../actions/hash'
-import patients from '../models/patients'
 const router = express.Router()
 
 router.post('/', async (req, res) => {

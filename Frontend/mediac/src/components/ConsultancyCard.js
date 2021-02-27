@@ -18,8 +18,7 @@ export default function ConsultancyCard() {
   const [docMail, setDocMail] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [active, setActive] = useState(false);
-
-
+ 
 
   const { currentUser, logout } = useAuth()
   useEffect( () => {
@@ -33,15 +32,24 @@ export default function ConsultancyCard() {
         };
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
         res = await res.text();
-//        res = JSON.parse(res)
+        res = JSON.parse(res)
+        console.log(res)
+
         if (res['status']) {
-          setTitle(res['title']);
-          setAge(res['age']);
-          setHeight(res['height']);
-          setWeight(res['weight']);
-          setDocMail(res['docMail']);
-          setStartDate(res['startDate'])
+          //setTitle(res['title']);
+          //setAge(res['age']);
+          //setHeight(res['height']);
+          //setWeight(res['weight']);
+          //setDocMail(res['docMail']);
+          //setStartDate(res['startDate'])
           setActive(true);
+           if(res.consultation.length>1)
+          {
+            setTitle("You have " + res.consultation.length.toString()  + " active consultations")
+          }else if(res.consultation.length === 1){
+            setTitle("You have " + res.consultation.length.toString()  + " active consultation")
+
+          }
         }
       }
     }
@@ -51,38 +59,16 @@ export default function ConsultancyCard() {
 
   return (
   <>
-    { active?<div className="card">
-      <div className="container" id="cardcontainer">
-        <h2><b>Title: {title}</b></h2>
-        <hr />
-          <div style={{position: "relative"}}>
-            <div id="cardprimary">
-              <p><b>Doctor's Email:</b> {docMail}</p>
-              <p style={{ align: 'right', display:'relative'}}><b>Start Date:</b> {startDate.toString().slice(0,10)}</p>
-              <p>
-                <b>Active Status: </b> Active
-              </p>
-            </div>
-            <div id= "cardsecondary" >
-              <p><b>Age:</b> {age} years</p>
-              <p><b>Height: </b>{height} cm</p>
-              <p><b>Weight:</b> {weight} Kg</p>
-            </div>
-        </div>
-      </div>
-      <div >
-          <div id="cardbtn" style={{padding: "2px 16px"}}>
-            <p href="#" className="bookbtn">Continue Consultation</p>
-            <p href="#" className="endbtn">End Consultation</p>
-          </div>
-      </div>
-    </div>:<div className="card">
-      <div className="container" id="cardcontainer">
-        <h5><b>No Active Consultations</b></h5>
-        
-          </div>
-              
+    { active?<div className="row" id="cardcontainer" style = {{display: "flex"}}>
+        <p href="#" className="endbtn">End Consultation</p>
+        <p>{title}</p>
+        <p href="#" className="bookbtn">View</p>
+
+      </div>:
+
+<div >
       
+     
     </div>
   }
   </>

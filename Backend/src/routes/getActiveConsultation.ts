@@ -8,6 +8,7 @@ router.post('/', async (req, res) => {
     if (consultation.length != 0){
         return res.send({status: true, consultation});
     }
+    //sending dummy data for testing
     return res.send({status: true, consultation : [{email : "sasas"}, {email : "ooo"}]})
 });
 

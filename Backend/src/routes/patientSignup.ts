@@ -2,6 +2,8 @@ import express from 'express'
 import patients from '../models/patients'
 import jwt from 'jsonwebtoken';
 import sendVerificationMails from '../actions/verificationMail';
+import fbUpdate from '../actions/updateDetailsFIrebaseAuth';
+
 import checkAuth from '../middlewares/auth';
 const router = express.Router()
 
@@ -13,7 +15,6 @@ router.post('/',checkAuth, async (req, res) => {
 
     let patient;
 
-    console.log(req.body);
     const newPatient = new patients({
         name: req.body.name,
         email: req.body.email,
@@ -23,9 +24,16 @@ router.post('/',checkAuth, async (req, res) => {
     });
 
     try {
-       patient = await newPatient.save();
 
-       let jwtSecret: any = process.env.JWT_SECRET;
+       patient = await newPatient.save();
+        if(req.body.phone)
+                  fbUpdate.changeNamePhoneAccessFirebaseAuth(req, req.body.name, req.body.phone, "patient");
+        else{
+        
+                    fbUpdate.changeNameAccessFirebaseAuth(req, req.body.name, "patient");
+
+        }       
+        let jwtSecret: any = process.env.JWT_SECRET;
        let verificationToken: string = jwt.sign({_id : patient._id}, jwtSecret);
 
         sendVerificationMails(req.body.email, verificationToken);

@@ -3,17 +3,18 @@ import patients from '../models/patients';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     const patient: any = await patients.findOne({email: req.body.email})
     if (patient) {
         const verificationStatus = patient.verified;
-        try {
-            patient.save();
+            if(verificationStatus){
+
+                return next;
+            }else{
             return res.send({status: verificationStatus});
+
         }
-        catch (e){
-            return res.send({status: false});
-        }
+      
     }
     res.send({status: false});
 });

@@ -1,5 +1,6 @@
 import express from 'express'
 import blog from '../../models/blog'
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -13,9 +14,9 @@ console.log(req.body)
 
    
    try {
+const MyModel = mongoose.model('ModelName');
 
-        //todo  : Delete blog post with specific id and user id
-
+         
 
         return res.send({status: 'deleted', isError : false})
 

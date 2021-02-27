@@ -20,7 +20,7 @@ console.log(req.body)
 
     });
    try {
-       var p = await blogPost.save();
+       var p = await blogPost.deleteOne({});
        return res.send({status: 'saved', isError : false})
 
     } catch(e) {

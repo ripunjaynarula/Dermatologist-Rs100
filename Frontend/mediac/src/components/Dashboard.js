@@ -41,7 +41,7 @@ export default function Dashboard() {
           };
         let res = await fetch('http://localhost:5000/checkVerification', requestOptions);
         res = await res.text();
-        res = JSON.parse(res)
+//        res = JSON.parse(res)
         if (!res['status']) {
           history.push('/verification-sent')
         }

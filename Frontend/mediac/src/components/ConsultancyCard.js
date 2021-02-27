@@ -33,7 +33,7 @@ export default function ConsultancyCard() {
         };
         let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
         res = await res.text();
-        res = JSON.parse(res)
+//        res = JSON.parse(res)
         if (res['status']) {
           setTitle(res['title']);
           setAge(res['age']);

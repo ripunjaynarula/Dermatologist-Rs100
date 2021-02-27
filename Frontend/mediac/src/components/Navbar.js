@@ -12,7 +12,7 @@ const NavBar = () => {
   const { currentUser, logout } = useAuth()
   const [error, setError] = useState("")
   const history = useHistory()
-
+  const [name, setName] = useState("");
 
 
   async function handleLogout() {
@@ -29,11 +29,14 @@ const NavBar = () => {
 
   useEffect( () => {
     if (currentUser) {
+ 
       setFlag(true);
       return
     }
     setFlag(false);
   }, [currentUser, setFlag])
+
+
 
   return(
         <div className="Navbar" style={{  }}>
@@ -53,8 +56,19 @@ const NavBar = () => {
             
               <ReactBootStrap.Nav className="form-inline">
               {flag?<div> 
-              <ReactBootStrap.Nav.Link className=" navlink" id="updprf" href="/update-profile">Update Profile</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link className="navlink" id="logout" variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Dropdown>
+                <ReactBootStrap.Dropdown.Toggle variant="success" id="dropdown-basic">
+                  {currentUser.displayName}
+                </ReactBootStrap.Dropdown.Toggle>
+
+                <ReactBootStrap.Dropdown.Menu>
+                  <ReactBootStrap.Dropdown.Item   href="/update-profile">Update Profile</ReactBootStrap.Dropdown.Item>
+                  <ReactBootStrap.Dropdown.Item href="#/action-2">Another action</ReactBootStrap.Dropdown.Item>
+  <ReactBootStrap.Dropdown.Divider />
+
+                  <ReactBootStrap.Dropdown.Item href="#/logout">Log Out</ReactBootStrap.Dropdown.Item>
+                </ReactBootStrap.Dropdown.Menu>
+              </ReactBootStrap.Dropdown>
               </div>:arr.map((elem) => (
                 <ReactBootStrap.Nav.Link className="navlink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
               ))}

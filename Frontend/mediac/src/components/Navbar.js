@@ -56,12 +56,13 @@ const NavBar = () => {
             
               <ReactBootStrap.Nav className="form-inline">
               {flag?<div> 
-              <ReactBootStrap.Dropdown>
-                <ReactBootStrap.Dropdown.Toggle variant="success" id="dropdown-basic">
+              <ReactBootStrap.Dropdown  >
+                <ReactBootStrap.Dropdown.Toggle variant="success" style = {{backgroundColor: "white", color : "#737373", border : "none", borderInlineColor : "white"}}   >
                   {currentUser.displayName}
-                </ReactBootStrap.Dropdown.Toggle>
+                </ReactBootStrap.Dropdown.Toggle >
 
-                <ReactBootStrap.Dropdown.Menu>
+                <ReactBootStrap.Dropdown.Menu style = {{ border : "none",      boxShadow: "0px 0px 13px 1px #e2d9d9",
+}}>
                   <ReactBootStrap.Dropdown.Item   href="/update-profile">Update Profile</ReactBootStrap.Dropdown.Item>
                   <ReactBootStrap.Dropdown.Item href="#/action-2">Another action</ReactBootStrap.Dropdown.Item>
   <ReactBootStrap.Dropdown.Divider />

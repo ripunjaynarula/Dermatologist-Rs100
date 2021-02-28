@@ -43,7 +43,7 @@ export default function ConsultancyCard() {
           //setDocMail(res['docMail']);
           //setStartDate(res['startDate'])
           setActive(true);
-           if(res.consultation.length>1)
+          if(res.consultation.length>1)
           {
             setTitle("You have " + res.consultation.length.toString()  + " active consultations")
           }else if(res.consultation.length === 1){

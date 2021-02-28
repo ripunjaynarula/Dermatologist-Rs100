@@ -58,7 +58,7 @@ export default function ProfileSelection(props) {
               
               <div id="pf-card" >
               <div id="pf-card" className="scrollmenu">
-              <Card id="profile" >Me<img id="personfill" ></img></Card>
+              <Card id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}>Me<img id="personfill" ></img></Card>
               {profiles.map(profile =>(<>
                 <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}>
                    <p> {profile['name']}<img id="personfill" ></img></p></Card><br/></>

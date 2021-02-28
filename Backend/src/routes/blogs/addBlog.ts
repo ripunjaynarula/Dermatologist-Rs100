@@ -7,8 +7,7 @@ router.post('/', async (req, res) => {
 
 
   
-
-
+ 
     var blogPost = new blog({
         title: req.body.title,
         doctorId: req.body.uid,

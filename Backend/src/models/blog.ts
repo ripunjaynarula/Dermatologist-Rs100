@@ -13,7 +13,6 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     },
     metaDescription: {
         type: String,
-        required: true,
         trim: true,
      },
     postData: {
@@ -45,7 +44,6 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
  
     keywords: {
         type: String,
-        required: true,
  
     }
 }));

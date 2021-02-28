@@ -3,12 +3,12 @@ import {
    CardBody,
   Col,
   Card,
-  CardSubtitle,
   Container,
 } from "reactstrap"
 import { convertToHTML } from 'draft-convert';
 
  import "../../css/buttons.css";
+import app from '../../firebase'
 
 import React, { useRef, useState, useEffect } from "react"
 import {   Form, Button,   Row, Alert } from "react-bootstrap"
@@ -32,10 +32,12 @@ import useWindowDimensions from "../../functions/windowDimensions"
 }
 const FormEditors = () => {
 
+  const [picture, setPicture] = useState(null);
+  const [content, setContent] = useState("");
 
-  const emailRef = useRef()
+  const title = useRef()
   const passwordRef = useRef()
-  const { login, currentUser } = useAuth()
+  const {  currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -43,27 +45,78 @@ const FormEditors = () => {
  const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
   );
- 
-  async function handleSubmit(e) {
-    e.preventDefault()
+
+
+   const onChangePicture = e => {
+    if (e.target.files && e.target.files[0])
+       setPicture(URL.createObjectURL(e.target.files[0]) );
+   else {
+      setPicture(null)  
+  }
+};
+  async function handleSubmit(i) {
+    if(!content)
+    {
+              alert("Content is missing")
+            return
+    }
+     if(content.toString().length < 1)
+    {
+                  alert("Content should be more than 100 letters")
+return
+    } 
+    if(title.current.value.trim().length===0){
+       alert("Title is missing")
+return    
+}
+
 
     try {
-      setError("")
-      setLoading(true)
-      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      var user =  await login(emailRef.current.value, passwordRef.current.value)
-console.log(await user.user.getIdToken())
-       setLoading(false)
-      history.push("/dashboard")
-     } catch(e) {
-      if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
-        setError("Incorrect email or password")
+
+ 
+      if(currentUser)
+      {
+          setError("")
+          setLoading(true)
+
+          const token = await app.auth().currentUser.getIdToken(true)
+          console.log(content)
+          console.log(title.current.value)
+          var d={ postData: content, title : title.current.value, 
+
+          isPublished : i ===0 ? false : true };
+
+
+
+          const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'token': token },
+          body:JSON.stringify(d)
+        };
+
+
+          let res = await fetch('http://localhost:5000/add-blog', requestOptions);
+          res = await res.text();
+          res = JSON.parse(res)
+          console.log(res)
+
       }
-      else {
-        setError("Internal error.");
-      }
+
+     
+
+
+      
+
+      setLoading(false)
+      } catch(e) {
+        console.log(e)
+      setError("Internal error.");
+
       setLoading(false)
     }
+
+
+
   }
 
 
@@ -72,17 +125,24 @@ console.log(await user.user.getIdToken())
     convertContentToHTML();
   }
   const convertContentToHTML = () => {
-    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
-    console.log(currentContentAsHTML);
+
+    try{
+   let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+     setContent(currentContentAsHTML);
+    }catch(e){
+    
+
+}
+
+
   }
-console.log(width)
   return (
 
  
-      <Container style={{ minHeight: "100vh", borderRadius : "0", minWidth: width , backgroundColor : "#ededf2"}}>
+      <Container style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-15 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
       <div >
-        <Container fluid={true} style = {{padding : width> 1400 ?   "90px 180px":  width <1000  ? "40px 10px" : "80px 80px" }}>
+        <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>
           <Row>
             <Col>
               <h2><strong>Write Blog</strong></h2>
@@ -94,7 +154,7 @@ console.log(width)
                   <Form method="post">
  <Form.Group id="email" style={{paddingTop: 14}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Title</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control type="email" ref={title} required />
             </Form.Group>
 
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Content</Form.Label>
@@ -109,16 +169,23 @@ console.log(width)
                      />
                   </Form>
 <br></br>
-              <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Content</Form.Label>
+   
+{picture &&              <img width="200" height="200" src={picture} alt="No" />   }
+{picture && <br></br>}
+{picture && <br></br>}
+            <input type="file" name="myImage" onChange={onChangePicture}/>
+
 
                 </CardBody>
               </Card>
             </Col>
           </Row>
+
+
           <Row style= {{paddingTop :"22px", paddingLeft : "18px", flexDirection: 'row', justifyContent: 'flex-end', paddingRight : "16px",  }}>
            
 
-<Button disabled={loading}  type="submit"  className = "secondaryButton">
+<Button disabled={loading}  type="submit"  className = "secondaryButton" onClick= {() => handleSubmit(0)} >
               Save as draft
             </Button>
 

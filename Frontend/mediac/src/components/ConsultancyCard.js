@@ -51,7 +51,6 @@ export default function ConsultancyCard() {
 
           }
         } else {
-          setActive(true);
           setTitle("You have no active consultations.");
         }
       }
@@ -67,12 +66,7 @@ export default function ConsultancyCard() {
         <p>{title}</p>
         <p href="#" className="bookbtn">View</p>
 
-      </div>:
-
-<div >
-      
-     
-    </div>
+      </div>:<div ><p>{title}</p></div>
   }
   </>
 

@@ -1,0 +1,58 @@
+.primaryButton {
+    display: inline-block !important;
+    font-weight: 400 !important;
+    color: #212529 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: .25rem !important;
+    color: #fff !important;
+    background-color: rgba(4, 168, 181, 1) !important;
+    box-shadow: 0 0px 5px 0px #e2d9d9, 0 0px 0px 0px #e2d9d9, 0px 0 0px 0px #e2d9d9, 0px 0 10px 1px #e2d9d9;
+    border: none !important;
+    min-width: 200px !important;
+}
+
+.primaryButton:hover {
+    background-color: rgb(2, 105, 112) !important;
+}
+
+.primaryButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.secondaryButton {
+    display: inline-block !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    border: 1px solid transparent !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: .25rem !important;
+    color: rgb(41, 41, 41) !important;
+    background-color: rgb(255, 255, 255) !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    min-width: 200px !important;
+    box-shadow: 0 0px 5px 0px #e2d9d9, 0 0px 0px 0px #e2d9d9, 0px 0 0px 0px #e2d9d9, 0px 0 10px 1px #e2d9d9;
+}
+
+.secondaryButton:hover {
+    background-color: rgb(235, 235, 235) !important;
+}
+
+.secondaryButton:active {
+    position: relative;
+    top: 1px;
+}

@@ -15,8 +15,8 @@ import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
 import OtherPersonDetails from './OtherPersonDetails'
-import DoctorLogin from './DoctorLogin'
-import FormEditors from "../components/blog/addBlog"
+import DoctorLogin from './DoctorLogin'/*
+import FormEditors from "../components/blog/addBlog"*/
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
               <PrivateRoute path='/Choice' component={Choice} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
-              <PrivateRoute path='/add-blog' component={FormEditors} />
+              {/*<PrivateRoute path='/add-blog' component={FormEditors} />*/}
 
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />

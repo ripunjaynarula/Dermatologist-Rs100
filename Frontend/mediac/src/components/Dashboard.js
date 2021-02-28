@@ -57,7 +57,7 @@ export default function Dashboard() {
     <div id="consultancycard">
       <ConsultancyCard  name="Shivansh Sharma" doctorname="Sehgal" startdate="10-01-2021" lastconsult="15-02-2021" age="20" height="180 cm" weight="69 kg"/>     
     </div>
-    <a href="/Choice" className="newconbtn"><img id="ellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>
+    <a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}
     </>
 

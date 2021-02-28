@@ -171,9 +171,11 @@
 }
 
 #ellipsebtn {
+    margin-left: -5%;
+}
+#eellipsebtn {
     margin-left: -2%;
 }
-
 #hometxt {
     font-size: larger;
     margin-top: -120%;
@@ -208,6 +210,7 @@
 
 .card{
 	font-family:work sans;
+    
 }
 
 .newconbtn {
@@ -377,3 +380,43 @@ display: flex;
     text-align: center !important;
     margin-left:32.8% !important;
 }}
+
+
+#profile{
+
+    transition: 0.3s;
+    width: auto;
+    border-style: none;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 1px solid rgb(2, 105, 112);
+    
+    padding-right: 12%;
+    padding-left:1%;
+    margin-right: 1%;
+    text-align: center;
+    overflow: hidden;
+}
+    
+
+
+#profile:hover {
+    box-shadow: 0 0px 13px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(2, 105, 112);
+    border: 1px solid rgb(2, 105, 112);
+    color: white;
+
+}
+#pf-card{
+    display:inline-flex;
+    width: 100%;
+    text-align: center;
+    
+}        
+div.scrollmenu {
+    
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  

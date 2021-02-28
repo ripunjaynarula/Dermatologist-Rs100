@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
         return res.send({status: true, consultation});
     }
     //sending dummy data for testing
-    return res.send({status: true, consultation : [{email : "sasas"}, {email : "ooo"}]})
+    return res.send({status: false});
 });
 
 export default router;

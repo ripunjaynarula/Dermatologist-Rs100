@@ -38,13 +38,16 @@ export default function ProfileSelection(props) {
             <Card.Body>
               <h2 className="text-center mb-4">Is this for you or someone else? </h2>
               {error && <Alert variant="danger">{error}</Alert>}
-              <p style={{marginLeft:'45.7%'}} className="newconbtn">Me</p><br/><br/>
-              <p style={{ fontWeight: 'bold', position: 'relative', marginLeft:'47%', fontSize:'large'}}>OR</p>
-              {/* <p id="newconbtn">Someone Else</p> */}
-
+              
+              
+              <div id="pf-card" className="scrollmenu">
+              <Card id="profile" >Me<img id="personfill" ></img></Card>
+              
               {profiles.map(profile =>(<>
-                   <p className="newconbtn" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}>{profile['id']}: {profile['name']}<img id="personfill" src={personfill}></img></p></>
+                <Card id="profile" key={profile['id']}>
+                   <p key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}> {profile['name']}<img id="personfill" ></img></p></Card><br/></>
               ))}
+              </div>
             </Card.Body>
           </Card>
         </div>

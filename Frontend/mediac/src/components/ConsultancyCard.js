@@ -50,6 +50,9 @@ export default function ConsultancyCard() {
             setTitle("You have " + res.consultation.length.toString()  + " active consultation")
 
           }
+        } else {
+          setActive(true);
+          setTitle("You have no active consultations.");
         }
       }
     }

@@ -44,7 +44,7 @@ export default function OtherPersonForm(props) {
 
     return (
         <>
-          <div id="formbody">
+          <div id="oform">
           <br/>
           <h2 style={Texts.Heading} >Person's Information</h2>
               {error && <Alert variant="danger">{error}</Alert>}

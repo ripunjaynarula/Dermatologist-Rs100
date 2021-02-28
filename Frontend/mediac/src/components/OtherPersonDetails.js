@@ -23,6 +23,7 @@ export default function OtherPersonForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('submitted.')
     if (currentUser) {
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {

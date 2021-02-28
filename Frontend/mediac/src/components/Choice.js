@@ -28,7 +28,7 @@ export default function Choice(){
   return (
         <>
           <ProfileSelection handleSubmit={handleProfileSelection} />    
-          {currentProfile == 0?<OtherPersonDetails setProfile={handleProfileSelection} />:<><p>Current id set to {currentProfileName}</p><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
+          {currentProfile == 0?<></>:<><p>Current id set to {currentProfileName}</p><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
           <br />
           <NewConsultation id={currentProfile}/>
         </>

@@ -4,10 +4,10 @@ import patients from '../models/patients';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const patient: any = await patients.findOne({uid: req.body.uid});
+    var patient: any = await patients.findOne({uid: req.body.uid});
     if (patient){
         let l = patient.profiles.length
-        const info = {
+        var info = {
             name: req.body.name,
             dob: req.body.dob,
             id: (l+1),

@@ -4,11 +4,12 @@ import consultations from '../models/consultation'
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const consultation: any = await consultations.findOne({$and: [ {uid: req.body.uid}, {active: true} ]});
-    if (consultation){
-        return res.send({status: true, startDate: consultation.startDate, title: consultation.title, age: consultation.age, weight: consultation.weight, height: consultation.height, docMail: consultation.doctorEmail});
+    const consultation: any = await consultations.find({$and: [ {uid: req.body.uid}, {active: true} ]});
+    if (consultation.length != 0){
+        return res.send({status: true, consultation});
     }
-    return res.send({status: false})
+    //sending dummy data for testing
+    return res.send({status: true, consultation : [{email : "sasas"}, {email : "ooo"}]})
 });
 
 export default router;

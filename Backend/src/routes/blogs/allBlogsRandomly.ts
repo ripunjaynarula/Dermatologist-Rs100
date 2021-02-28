@@ -6,27 +6,20 @@ const router = express.Router();
 router.post('/', async (req, res) => {
 
     //to add pagination
-    var start = req.body.start
+ 
     var limit = req.body.limit
+    //show data randomly
  
    try {
 
 
 
         var blogs;
-        if(await authStatus.checkAuthStatus(req))
-        { 
-            blogs  = await blog.find({$and: [ {doctorId: req.body.uid}, {isPublished: true} ]});
+  
+
+         blogs =  await blog.find({isPublished: true},  );
         
-        }else{
-
-            blogs =  await blog.find({doctorId: req.body.uid} );
-        
-            }
-
-
-
-
+  
         return res.send({status: 'valid', isError : false, blogs})
 
     } catch(e) {

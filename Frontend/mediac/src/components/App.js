@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import Signup from "./Signup"
 import Navbar from "./Navbar"
 import Home from './Home'
@@ -18,11 +18,15 @@ import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
 import FormEditors from "../components/blog/addBlog"
 
+export const DataContext = React.createContext();
+
 
 function App() {
+  const [consultationData, setConsultationData] = useState('')
   return (
         <Router>
           <AuthProvider>
+            <DataContext.Provider value={[consultationData, setConsultationData]}>
           <div className="Navb"><Navbar /></div>
           <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
           <div className="w-100" style={{ maxWidth: "400px" }}>
@@ -45,6 +49,7 @@ function App() {
             </Switch>
           </div>
           </Container>
+          </DataContext.Provider>
           </AuthProvider>
         </Router>
       

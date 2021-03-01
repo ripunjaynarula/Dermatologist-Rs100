@@ -1,4 +1,4 @@
-import React, {useRef,useEffect, useState} from "react";
+import React, {useRef,useEffect, useState, useContext} from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap"
 import { Link,useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
@@ -11,21 +11,25 @@ import Modal from 'react-bootstrap/Modal'
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
 import LoginPopup from "./LoginPopup"
+import { DataContext } from './App';
 export default function Home() {
 
   const history = useHistory();
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [flag, setFlag] = useState(false);
   const [show, setShow] = useState(false);
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login, currentUser } = useAuth()
+  const { login, currentUser } = useAuth();
+  const dataRef = useRef();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const handleShow = () => setShow(true);
+  const [consultationData, setConsultationData] = useContext(DataContext);
 
 
   useEffect( () => {
+    dataRef.current.value = '';
     if (currentUser) {
       setFlag(true);
       history.push('/dashboard');
@@ -43,8 +47,8 @@ export default function Home() {
       setLoading(true)
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       var user =  await login(emailRef.current.value, passwordRef.current.value)
-console.log(await user.user.getIdToken())
-       setLoading(false)
+      console.log(await user.user.getIdToken())
+      setLoading(false)
       history.push("/dashboard")
      } catch(e) {
       if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
@@ -56,6 +60,11 @@ console.log(await user.user.getIdToken())
       setLoading(false)
     }
   }
+
+  const handleChange = () => {
+    setConsultationData(dataRef.current.value)
+  }
+
     return (
     <>
         <div id="container" >
@@ -68,12 +77,10 @@ console.log(await user.user.getIdToken())
           <Form onSubmit={handleSubmit}>
 
           <Form.Group id="ocity">
-                  <input type="text" id="dbques" placeholder="Your query goes here..."/>
-                </Form.Group>
-
+                  <input type="text" id="dbques" placeholder="Your query goes here..." ref={dataRef} onChange={handleChange}/>
+          </Form.Group>
           </Form>
           <a onClick={handleShow} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
-        
         <Modal show={show} onHide={handleClose} id="nlogin">
        
        <LoginPopup/>

@@ -1,4 +1,4 @@
-import React, {useRef,useEffect, useState} from "react";
+import React, {useRef,useEffect, useState, useContext} from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap"
 import { Link,useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
@@ -10,25 +10,35 @@ import { useAuth } from "../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
+import {DataContext} from './App';
 
 
  
 export default function LoginPopup() {
     const history = useHistory();
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [flag, setFlag] = useState(false);
-    const [show, setShow] = useState(false);
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login, currentUser } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
+    const [consultationData, setConsultationData] = useContext(DataContext);
     
     
     async function handleSubmit(e) {
         e.preventDefault()
-    
+        console.log('Submitting');
+        try {
+
+          setError("")
+          setLoading(true)
+          await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          var user =  await login(emailRef.current.value, passwordRef.current.value);
+          console.log(consultationData);
+          history.push('/Choice');
+
+        } catch (e) {
+          console.log(e)
+        }
       
       }
 

@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import ProfileSelection from './ProfileSelection'
 import OtherPersonDetails from './OtherPersonDetails';
 import NewConsultation from './ConsultationForm';
+import { DataContext } from './App'
 
 export default function Choice(){
 
@@ -15,11 +16,16 @@ export default function Choice(){
   const [loading, setLoading] = useState(false)
   const { currentUser } = useAuth()
   const history = useHistory()
+  const [consultationData, setConsultationData] = useContext(DataContext);
 
   const handleProfileSelection = (id, name) => {
     setCurrentProfile(id);
     setCurrentProfileName(name)
   }
+
+  useEffect( () => {
+    console.log(consultationData)
+  }, [consultationData]);
 
   const resetSelection = () => {
     setCurrentProfile(0);

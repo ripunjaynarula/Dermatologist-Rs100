@@ -40,7 +40,10 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
         required: true,
         default:0
     },
-  
+    image: {
+        type : String
+
+    },
  
     keywords: {
         type: String,

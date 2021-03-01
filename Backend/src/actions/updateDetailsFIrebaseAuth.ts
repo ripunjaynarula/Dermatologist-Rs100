@@ -128,5 +128,24 @@ const changeNameAccessFirebaseAuth = async(req: any, name : string,  role: strin
 }
 
 
+const changeProfilePicture = async(req: any, imageUrl : string) => {
 
-export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth};
+    admin
+  .auth()
+  .updateUser(req.body.uid, {
+    
+    photoURL: imageUrl,
+   })
+  .then((userRecord) => {
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log('Successfully updated user', userRecord.toJSON());
+  })
+  .catch((error) => {
+    console.log('Error updating user:', error);
+  });
+
+
+   
+}
+
+export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture};

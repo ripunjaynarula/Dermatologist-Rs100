@@ -65,18 +65,6 @@ const chatThread = mongoose.model('threads', new mongoose.Schema({
         default: Date.now
     },
 
-    details1: {
-        id : String,
-        name : String,
-        profile : String
-    },
-
-    details2 : {
-        id : String,
-        name : String,
-        profile : String
-    },
-
     lastMessage : {
            type: String,
         required: true,

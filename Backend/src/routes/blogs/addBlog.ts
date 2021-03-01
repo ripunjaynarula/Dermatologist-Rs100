@@ -14,7 +14,8 @@ router.post('/', async (req, res) => {
         metaDescription: req.body.metaDescription,
         postData: req.body.postData,
         isPublished : req.body.isPublish,
-        keywords : req.body.keywords
+        keywords : req.body.keywords,
+        image : req.body.image
 
     });
    try {

@@ -27,6 +27,7 @@ export default function OtherPersonForm(props) {
     e.preventDefault();
     console.log('submitted.')
     if (currentUser) {
+        setLoading(true);
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
@@ -42,6 +43,7 @@ export default function OtherPersonForm(props) {
         } else {
           // display error!
         }
+        setLoading(false);
     }
   }
 

@@ -359,7 +359,11 @@ display: flex;
         margin-left:29.8% !important;
     }
     #profile{
-        padding-right: 40%;
+        padding-right:8%;
+    }
+    #nlogin{
+        width: 43%;
+        box-shadow:none!important;
     }
 }
 
@@ -370,8 +374,8 @@ display: flex;
     #profile{
         padding-right: 2%;
     }
+    
 }
-
 
 @media(min-width:450px) {
 
@@ -401,7 +405,7 @@ display: flex;
     border-style: none;
     padding-left: 10px;
     padding-top: 10px;
-    border: 1px solid black;
+    border: 0px solid black;
     box-shadow: none!important;
     
     margin-right: 1%;
@@ -414,12 +418,12 @@ display: flex;
 #profile:hover {
     box-shadow: 0 0px 13px 0 rgba(0, 0, 0, 0.2);
     background-color: rgb(2, 105, 112);
-    border: 1px solid rgb(2, 105, 112);
+    border: 0px solid rgb(2, 105, 112);
     color: white;
 
 }
 #pf-card{
-    display:flex;
+    display:inline-flex;
     width: 100%;
     text-align: center;
     
@@ -440,12 +444,13 @@ div.scrollmenu {
 }
 
 .addpfbtn {
-	box-shadow: inset 0px 1px 0px 0px white;
-    background-color: white;
+	box-shadow: inset 0px 1px 0px 0px rgba(4, 168, 181, 1);
+    background-color: rgba(4, 168, 181, 1);
     border-radius: 50px;
-    border: 1px solid black;
+    border: 1px solid rgba(4, 168, 181, 1);
     display:flex;
-    color: black;
+    font-weight: 500;
+    color: white;
     font-family: Work Sans;
     font-size: 18px;
     padding-top: 12px;
@@ -454,6 +459,7 @@ div.scrollmenu {
     text-decoration: none;
     margin-left:10px;
     height:53px!important;
+    margin-top: 2%;
 }
 .addpfbtn:hover {
     background-color: rgb(2, 105, 112);
@@ -491,4 +497,12 @@ div.scrollmenu {
 
         }
     
+    }
+    #loginpopup{
+        box-shadow: none!important;
+    }
+    #usersvg{
+        width:30%;
+        margin-left: 35%;
+        margin-top: 8%;
     }

@@ -78,10 +78,11 @@ console.log(await user.user.getIdToken())
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </Card.Body>
-      </Card>
+      
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
+      </div><br/>
+      </Card>
     </>
   )
 }

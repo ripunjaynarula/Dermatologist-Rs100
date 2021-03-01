@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react"
 import { Card, Alert, Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import app from "../firebase"
-import personfill from './img/personfill.svg';
+import usersvg from './img/user.svg';
 import Modal from 'react-bootstrap/Modal'
-import OtherPersonDetails from './OtherPersonDetails';
+import OtherPersonDetails from "./OtherPersonDetails"
 
 export default function ProfileSelection(props) {
 
@@ -52,15 +52,16 @@ export default function ProfileSelection(props) {
         <div>
           <br/>  <br/>
             <Card id="formbody">
+            
             <Card.Body>
               <h2 className="text-center mb-4">Is this for you or someone else? </h2>
               {error && <Alert variant="danger">{error}</Alert>}
               
               <div id="pf-card" >
               <div id="pf-card" className="scrollmenu">
-              <Card id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}>Me<img id="personfill" ></img></Card>
+              <Card id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/>Me</Card>
               {profiles.map(profile =>(<>
-                <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}>
+                <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/>
                    <p> {profile['name']}<img id="personfill" ></img></p></Card><br/></>
               ))}
               </div>

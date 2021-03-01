@@ -74,7 +74,7 @@ export default function Dashboard() {
                 </Form.Group>
 
           </Form>
-          <a onClick={handleSubmit} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
+          <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
         </div>
     {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}

@@ -7,15 +7,15 @@ router.post('/', async (req, res) => {
 
 
   
-
-
+ 
     var blogPost = new blog({
         title: req.body.title,
         doctorId: req.body.uid,
         metaDescription: req.body.metaDescription,
         postData: req.body.postData,
         isPublished : req.body.isPublish,
-        keywords : req.body.keywords
+        keywords : req.body.keywords,
+        image : req.body.image
 
     });
    try {

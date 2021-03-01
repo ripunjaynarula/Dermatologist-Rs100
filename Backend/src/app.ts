@@ -9,14 +9,14 @@ import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
 import checkVerificationRouter from './routes/checkVerification';
 import getActiveConsultationRouter from './routes/getActiveConsultation';
-import addBlog from './routes/blogs/addBlog'
 import cors from 'cors'
 import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
 import doctorLogin from './routes/doctorLogin';
-
+import addBlog from '../src/routes/blogs/addBlog'
+import blogs from './models/blog';
 const app = express();
 
 const port = process.env.PORT
@@ -45,7 +45,7 @@ app.use('/doctorLogin', doctorLogin);
 
 
 
-app.use('/add-post', getActiveConsultationRouter);
+app.use('/add-blog', checkAuth, addBlog);
 
 
 

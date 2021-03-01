@@ -6,6 +6,11 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         required: true,
         trim: true
     },
+    username : {
+        type : String,
+        required : false,
+        unique : true
+    },
     email: {
         type: String,
         required: true,
@@ -25,8 +30,6 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true,
-        unique: true,
     },
     verified: {
         type: Boolean,
@@ -34,17 +37,14 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['male', 'female'],
-        required: true,
+        enum: ['male', 'female', 'others'],
     },
     dob: {
         type: Date,
-        required: true,
     },
     graduationYear: {
         type: Number,
         length: 4,
-        required: true,
     },
     degree: {
         type: String,
@@ -63,17 +63,17 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     city: {
         type: String,
-        required: true,
     },
     state: {
         type: String,
-        required: true,
     },
     languages: {
         type: Array,
-        required: true,
         default: ['English']
     },
+    profileImage: {
+        type : String
+    }
 }));
 
 export default doctors;

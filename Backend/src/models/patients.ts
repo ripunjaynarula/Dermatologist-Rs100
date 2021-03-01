@@ -37,6 +37,9 @@ const patients = mongoose.model('patients', new mongoose.Schema({
     profiles: {
         type: Array,
     },
+    profileImage:{
+    type : String
+    }
 }));
 
 export default patients;

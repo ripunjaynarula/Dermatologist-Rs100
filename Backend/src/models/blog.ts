@@ -13,7 +13,6 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     },
     metaDescription: {
         type: String,
-        required: true,
         trim: true,
      },
     postData: {
@@ -41,11 +40,13 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
         required: true,
         default:0
     },
-  
+    image: {
+        type : String
+
+    },
  
     keywords: {
         type: String,
-        required: true,
  
     }
 }));

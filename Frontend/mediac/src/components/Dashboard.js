@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Card, Button, Alert } from "react-bootstrap"
+import React, { useState, useRef, useEffect } from "react";
+import { Card, Form, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
@@ -10,6 +10,7 @@ import ConsultancyCard from "./ConsultancyCard"
 // import ScriptTag from 'react-script-tag';
 import ellipse from './img/ellipse.png';
 import bgimg from './img/image1.png';
+import {Texts} from "../css/Texts";
 
 
 
@@ -18,7 +19,7 @@ export default function Dashboard() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
-
+  const dbinfo = useRef()
   const history = useHistory()
 
   async function handleLogout() {
@@ -51,7 +52,8 @@ export default function Dashboard() {
     fetchVerification();
   }, [currentUser, history])
 
-
+  async function handleSubmit(e) {
+    e.preventDefault()}
 
   return (
     <>
@@ -63,9 +65,16 @@ export default function Dashboard() {
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
-          <p id="smalltxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <p id="smalltxt">Ask us a question </p>
           </div>
-          <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
+          <Form onSubmit={handleSubmit}>
+
+          <Form.Group id="ocity">
+                  <input type="text" id="dbques" placeholder="Your query goes here..."/>
+                </Form.Group>
+
+          </Form>
+          <a onClick={handleSubmit} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
         </div>
     {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}

@@ -39,7 +39,7 @@
     width: 389.9%;
     margin-left: -150%;
     overflow-x: hidden;
-    margin-top: -110%;
+    margin-top: -107%;
 }
 
 .card {
@@ -468,4 +468,27 @@ div.scrollmenu {
 	top:1px;
 }
 
-        
+#dbques{
+
+  
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    font-family: Work Sans;}
+
+    @media(min-width:450px) {
+    
+        #dbques{
+            margin-left: -110%;
+            width: 150%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+
+        }
+    
+    }

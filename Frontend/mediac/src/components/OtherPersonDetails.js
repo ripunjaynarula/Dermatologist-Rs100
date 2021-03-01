@@ -15,6 +15,8 @@ export default function OtherPersonForm(props) {
   const ogenRef = useRef()
   const odobRef = useRef()
   const ocityRef = useRef()
+  const oweightRef = useRef()
+  const oheightRef = useRef()
   const relRef = useRef()
   const { signup, currentUser } = useAuth()
   const [error, setError] = useState("")
@@ -23,7 +25,9 @@ export default function OtherPersonForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('submitted.')
     if (currentUser) {
+        setLoading(true);
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
@@ -39,14 +43,15 @@ export default function OtherPersonForm(props) {
         } else {
           // display error!
         }
+        setLoading(false);
     }
   }
 
     return (
         <>
-          <div id="formbody">
+          <div id="oform">
           <br/>
-          <h2 style={Texts.Heading} >Person's Information</h2>
+          <h2 style={Texts.Heading} >Personal Information</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group  id="oname">
@@ -69,6 +74,15 @@ export default function OtherPersonForm(props) {
                         <option value="female">Female</option>
                         
                 </select>
+                </Form.Group>
+                
+                <Form.Group id="ocity">
+                  <Form.Label style={Texts.FormLabel}>Weight (in kg)</Form.Label>
+                  <Form.Control type="number" ref={oweightRef} required />
+                </Form.Group>
+                <Form.Group id="ocity">
+                  <Form.Label style={Texts.FormLabel}>Height (in cm)</Form.Label>
+                  <Form.Control type="number" ref={oheightRef} required />
                 </Form.Group>
                 <Form.Group id="ocity">
                   <Form.Label style={Texts.FormLabel}>City</Form.Label>

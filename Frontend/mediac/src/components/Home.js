@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import Accordion from './Accordion'
+import { Card, Form, Button, Alert } from "react-bootstrap"
 import { useAuth } from '../contexts/AuthContext'
 import { useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
@@ -17,7 +17,8 @@ export default function Home() {
       history.push('/dashboard')
     }
   }, [currentUser, history])
-
+  async function handleSubmit(e) {
+    e.preventDefault()}
     return (
     <>
         <div id="container" >
@@ -25,9 +26,16 @@ export default function Home() {
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
-          <p id="smalltxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <p id="smalltxt">Ask us a question </p>
           </div>
-          <a href="/Signup" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
+          <Form onSubmit={handleSubmit}>
+
+          <Form.Group id="ocity">
+                  <input type="text" id="dbques" placeholder="Your query goes here..."/>
+                </Form.Group>
+
+          </Form>
+          <a onClick={handleSubmit} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
         </div>
     </>
   )

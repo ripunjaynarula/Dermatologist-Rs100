@@ -72,8 +72,8 @@ export default function ProfileSelection(props) {
                   <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
                   <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
                   {profiles.map(profile =>(<>
-                    <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/>
-                      <p> {profile['name']}<img id="personfill" ></img></p></Card><br/></>
+                    <a id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/><br/>
+                       {profile['name']}</a></>
                   ))}
                   </div>
                  

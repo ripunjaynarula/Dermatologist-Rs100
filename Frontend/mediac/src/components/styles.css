@@ -359,8 +359,8 @@ display: flex;
         margin-left:29.8% !important;
     }
     #profile{
-        padding-right:8px;
-        margin-right:0%;
+        padding-right:0px;
+        margin-right:2%;
         border: 1px solid black;
     }
     #nlogin{

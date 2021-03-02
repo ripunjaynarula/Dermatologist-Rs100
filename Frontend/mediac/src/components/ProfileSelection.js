@@ -58,14 +58,18 @@ export default function ProfileSelection(props) {
               {error && <Alert variant="danger">{error}</Alert>}
               
               <div id="pf-card" >
-              <div id="pf-card" className="scrollmenu">
-              <Card id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/>Me</Card>
-              {profiles.map(profile =>(<>
-                <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/>
-                   <p> {profile['name']}<img id="personfill" ></img></p></Card><br/></>
-              ))}
-              </div>
-              <a href="#" class="addpfbtn" onClick={handleShow}>+</a>
+                <div id="sectionpf">
+                  <div id="pf-card" className="scrollmenu">
+                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
+                  {profiles.map(profile =>(<>
+                    <Card id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/>
+                      <p> {profile['name']}<img id="personfill" ></img></p></Card><br/></>
+                  ))}
+                  </div>
+                 
+                  <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
+                  </div>
+
               <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>
        <div>
         <OtherPersonDetails setProfile={props.handleSubmit}/>

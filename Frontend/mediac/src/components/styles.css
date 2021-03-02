@@ -359,7 +359,9 @@ display: flex;
         margin-left:29.8% !important;
     }
     #profile{
-        padding-right:8%;
+        padding-right:8px;
+        margin-right:0%;
+        border: 1px solid black;
     }
     #nlogin{
         width: 43%;
@@ -367,12 +369,14 @@ display: flex;
     }
 }
 
-@media(min-width:500px) {
+@media(min-width:450px) {
     #onewconbtn {
         padding-left: 10px;
     }
     #profile{
-        padding-right: 2%;
+        padding-right:0%;
+        border: 0px solid black;
+        
     }
     
 }
@@ -385,8 +389,6 @@ display: flex;
     margin-left: -47%;
 
 }
-
-
 
 #resetbtn{
 
@@ -401,16 +403,13 @@ display: flex;
 #profile{
     
     transition: 0.3s;
-    width: auto;
-    border-style: none;
-    padding-left: 10px;
+    width: 150px;
+    padding-left: 0px;
     padding-top: 10px;
-    border: 0px solid black;
     box-shadow: none!important;
-    
-    margin-right: 1%;
     text-align: center;
-    overflow: hidden;
+    overflow: auto;
+    border-radius: 7px;;
 }
     
 
@@ -422,17 +421,28 @@ display: flex;
     color: white;
 
 }
-#pf-card{
-    display:inline-flex;
-    width: 100%;
+/* #pf-card{
+    display:flex;
+    width: 1000px;
     text-align: center;
+    overflow: hidden;
     
-}        
-div.scrollmenu {
+
+}      */
+    div.scrollmenu {
     
     overflow: auto;
     white-space: nowrap;
-  }
+  } 
+
+
+    div.scrollmenu a {
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
   .dropdown-item:hover{
 
     background-color:rgb(2, 105, 112) !important;
@@ -503,6 +513,10 @@ div.scrollmenu {
     }
     #usersvg{
         width:30%;
-        margin-left: 35%;
-        margin-top: 8%;
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+
+    #sectionpf{
+        display: flex;
     }

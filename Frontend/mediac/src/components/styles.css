@@ -421,6 +421,21 @@ display: flex;
     color: white;
 
 }
+
+
+.inactive{
+    text-decoration: none;
+    color: black;
+}
+
+.active {
+    box-shadow: 0 0px 13px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(2, 105, 112);
+    border: 0px solid rgb(2, 105, 112);
+    color: white;
+    color:black;
+
+}
 /* #pf-card{
     display:flex;
     width: 1000px;

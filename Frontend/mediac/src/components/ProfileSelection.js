@@ -11,7 +11,6 @@ export default function ProfileSelection(props) {
  
     const [error, setError] = useState("")
     const { currentUser } = useAuth()
-
     const [profiles, setProfiles] = useState([])
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,12 +23,25 @@ export default function ProfileSelection(props) {
   const [docMail, setDocMail] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [active, setActive] = useState(false);
+  const [togg, setTogg] = useState({showMenu:false});
   /*const emailRef = useRef()
   const onameRef = useRef()
   const ogenRef = useRef()
   const odobRef = useRef()
   const ocityRef = useRef()
   const relRef = useRef()*/
+  const MenuVis = togg.showMenu ? 'active' : 'inactive';
+
+ const toggleMenu = () => {
+    setTogg({
+      showMenu: !togg.showMenu
+    })
+  }
+
+  
+
+
+  
     useEffect( () => {
         async function getProfiles() {
           if (currentUser) {
@@ -51,28 +63,19 @@ export default function ProfileSelection(props) {
     return (
         <div>
           <br/>  <br/>
+           <h2 className="text-center mb-4">Is this for you or someone else? </h2>
             <Card id="formbody">
             
             <Card.Body>
-              <h2 className="text-center mb-4">Is this for you or someone else? </h2>
+             
               {error && <Alert variant="danger">{error}</Alert>}
               
               <div id="pf-card" >
                 <div id="sectionpf">
                   <div id="pf-card" className="scrollmenu">
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  <a id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
+                  <a className={MenuVis} id="profile" onClick={() => {props.handleSubmit(-1, 'You')}}><img id="usersvg" src={usersvg}/><br/>Me</a>
                   {profiles.map(profile =>(<>
-                    <a id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}}><img id="usersvg" src={usersvg}/><br/>
+                    <a className={MenuVis} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'])}} onClick={toggleMenu}><img id="usersvg" src={usersvg}/><br/>
                        {profile['name']}</a></>
                   ))}
                   </div>
@@ -96,6 +99,7 @@ export default function ProfileSelection(props) {
             </Card.Body>
           </Card>
         </div>
+        
     )
 }
 

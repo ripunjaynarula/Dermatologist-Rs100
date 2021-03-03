@@ -5,6 +5,7 @@ import app from "../firebase"
 import usersvg from './img/user.svg';
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 export default function ProfileSelection(props) {
 
@@ -18,7 +19,6 @@ export default function ProfileSelection(props) {
   const [name, setname] = useState('');
   const [title, setTitle] = useState('');
   const [age, setAge] = useState('');
-  const [id, setId] = useState(0);
   const [weight, setWeight] = useState('');
   const [docMail, setDocMail] = useState('');
   const [startDate, setStartDate] = useState(new Date());
@@ -61,9 +61,9 @@ export default function ProfileSelection(props) {
               <div id="pf-card" >
                 <div id="sectionpf">
                   <div id="pf-card" className="scrollmenu">
-                  <a className={id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, 'You'); setId(-1);}}><img id="usersvg" src={usersvg}/><br/>Me</a>
+                  <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, 'You');}}><img id="usersvg" src={usersvg}/><br/>Me</a>
                   {profiles.map(profile =>(<>
-                    <a className={id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name']);setId(profile['id']);}}><img id="usersvg" src={usersvg}/><br/>
+                    <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name']);}}><img id="usersvg" src={usersvg}/><br/>
                        {profile['name']}</a></>
                   ))}
                   </div>

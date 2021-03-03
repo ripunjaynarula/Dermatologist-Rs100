@@ -82,6 +82,8 @@ console.log(e)
 
   return (
     <>
+    
+    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
       <Card  style={CardMain} >
         <Card.Body>
          < div id="cardbox">
@@ -117,6 +119,7 @@ console.log(e)
       <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>
+      </Container>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 import ProfileSelection from './ProfileSelection'
 import OtherPersonDetails from './OtherPersonDetails';
 import NewConsultation from './ConsultationForm';
+
 import { DataContext } from './App'
 
 export default function Choice(){
@@ -16,16 +17,12 @@ export default function Choice(){
   const [loading, setLoading] = useState(false)
   const { currentUser } = useAuth()
   const history = useHistory()
-  const [consultationData, setConsultationData] = useContext(DataContext);
+  const [consultationData, setConsultationData] = useContext(DataContext); // for users who add it before logging in
 
   const handleProfileSelection = (id, name) => {
     setCurrentProfile(id);
     setCurrentProfileName(name)
   }
-
-  useEffect( () => {
-    console.log(consultationData)
-  }, [consultationData]);
 
   const resetSelection = () => {
     setCurrentProfile(0);

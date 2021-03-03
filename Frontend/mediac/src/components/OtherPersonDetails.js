@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Alert, Button, Dropdown } from "react-bootstrap"
+import { Form, Alert, Button, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import {Texts} from "../css/Texts";
@@ -51,6 +51,7 @@ export default function OtherPersonForm(props) {
 
     return (
         <>
+        <Container className=" align-items-center justify-content-center" style={{ minWidth: "100%" }}>
           <div id="oform">
           <br/>
           <h2 style={Texts.Heading} >Personal Information</h2>
@@ -99,6 +100,7 @@ export default function OtherPersonForm(props) {
                   <Form.Control type="text" ref={odetailsRef} required /> </Form.Group>*/}
               </Form>
               </div>
+              </Container>
         </>
       )
 

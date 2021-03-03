@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import ProfileSelection from './ProfileSelection'
@@ -30,10 +30,13 @@ export default function Choice(){
 
   return (
         <>
+        
+         <Container className=" align-items-center justify-content-center" style={{ maxWidth: "60vh" }}>
           <ProfileSelection handleSubmit={handleProfileSelection} id={currentProfile}/>    
           {currentProfile == 0?<></>:<><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
           <br />
           <NewConsultation id={currentProfile}/>
+          </Container>
         </>
   )
 }

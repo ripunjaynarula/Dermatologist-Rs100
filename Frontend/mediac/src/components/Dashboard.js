@@ -57,8 +57,10 @@ export default function Dashboard() {
 
   return (
     <>
-    <div id="container" >
-          <img id="gloves" src={bgimg} alt="bg" />
+    
+    <div id="bg" className="wrapper" >
+    <div id="container" style={{ maxWidth: "400px" }}>
+          {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
@@ -68,12 +70,12 @@ export default function Dashboard() {
           <Form.Group id="ocity">
                   <input type="text" id="dbques" placeholder="Your query goes here..."/>
                 </Form.Group>
-
           </Form>
           <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
         </div>
     {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}
+    </div>
     </>
 
   )

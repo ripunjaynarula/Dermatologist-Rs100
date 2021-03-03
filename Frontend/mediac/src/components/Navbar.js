@@ -47,7 +47,7 @@ const NavBar = () => {
             <ReactBootStrap.Nav className="mr-auto"> 
     
               <ReactBootStrap.Nav.Link className="navlink" href="/about">About</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link className="navlink" href="/blog">Blog</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">Blog</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link  className="navlink" href="/faq">FAQs</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link>

@@ -5,7 +5,6 @@ import usersvg from './img/user.svg';
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
-import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 export default function ProfileSelection(props) {
 
@@ -102,9 +101,10 @@ export default function ProfileSelection(props) {
     )
   }else {
     return (
+      
       <div>
         <br/>  <br/>
-         <h2 className="text-center mb-4">Is this for you or someone else? </h2>
+         <h3 className="mb-4">Is this for you or someone else? </h3>
           <Card id="formbody">
           
           <Card.Body>

@@ -17,6 +17,7 @@ import Choice from './Choice'
 import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
 import FormEditors from "../components/blog/addBlog"
+import bgimg from './img/image1.png';
 
 export const DataContext = React.createContext();
 
@@ -30,7 +31,7 @@ function App() {
           <div className="Navb"><Navbar /></div>
           
           <Container className="d-flex align-items-center justify-content-center" >
-          <div className="w-100" style={{ maxWidth: "400px" }}>
+          
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
@@ -38,7 +39,7 @@ function App() {
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
               <PrivateRoute path='/Choice' component={Choice} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
-              <PrivateRoute path='/add-blog' component={FormEditors} />
+              <Route path='/add-blog' component={FormEditors} />
 
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
@@ -48,7 +49,6 @@ function App() {
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
             </Switch>
-          </div>
           </Container>
           </DataContext.Provider>
           </AuthProvider>

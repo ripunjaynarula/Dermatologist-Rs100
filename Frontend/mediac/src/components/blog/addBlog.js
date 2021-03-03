@@ -139,7 +139,7 @@ return
   return (
 
  
-      <Container style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-15 , backgroundColor : "#ededf2"}}>
+      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-15 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
       <div >
         <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>
@@ -202,7 +202,7 @@ return
         </Container>
       </div>
     </React.Fragment>
-</Container>
+</div>
    )
 }
 

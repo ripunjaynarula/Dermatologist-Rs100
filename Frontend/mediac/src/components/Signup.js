@@ -82,9 +82,8 @@ console.log(e)
 
   return (
     <>
-    
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-      <Card  style={CardMain} >
+    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "90vh" }}>
+      <Card  style={{CardMain},{ minHeight: "100vh" },{ maxWidth: "100vh" }} >
         <Card.Body>
          < div id="cardbox">
           <h2 className="text-center mb-4"  style={Texts.Heading} >Sign Up</h2>
@@ -114,11 +113,12 @@ console.log(e)
           </Form>
           </div>
         </Card.Body>
-      </Card>
-  
-      <div className="w-100 text-center mt-2">
+        <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>
+      <br/>
+      </Card>
+  
       </Container>
     </>
   )

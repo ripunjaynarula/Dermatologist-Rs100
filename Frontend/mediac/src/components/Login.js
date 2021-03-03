@@ -47,8 +47,10 @@ console.log(await user.user.getIdToken())
 
 
     <>
+    
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-      <Card style={CardMain}  >
+      
+      <Card style={{CardMain},{ maxWidth: "400px" }}  >
 <Card.Title>
 
 </Card.Title>
@@ -84,6 +86,7 @@ console.log(await user.user.getIdToken())
         Need an account? <Link to="/signup">Sign Up</Link>
       </div><br/>
       </Card>
+      
       </Container>
     </>
   )

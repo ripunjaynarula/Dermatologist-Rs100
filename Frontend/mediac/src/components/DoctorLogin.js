@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
@@ -34,10 +34,11 @@ export default function DoctorLogin() {
 
 
     <>
-      <Card style={CardMain}  >
+    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+      <Card style={{CardMain},{ maxWidth: "400px" } } >
         <Card.Body>
 
-          <h2 className="text-center mb-4" style = {Texts.Heading}>Log In</h2>
+          <h2 className="text-center mb-4" style = {Texts.Heading}>Doctor Login</h2>
           <hr></hr>       
      {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -62,6 +63,7 @@ export default function DoctorLogin() {
           </div>
         </Card.Body>
       </Card>
+      </Container>
     </>
   )
 }

@@ -41,7 +41,7 @@ element.style {
 #gloves {
     width: 389.9%;
     height:100vh;
-    margin-left: -150%;
+    margin-left: -0%;
     overflow: hidden;
     margin-top: 0%;
 }
@@ -68,6 +68,8 @@ element.style {
     padding: 2px 16px;
     border-radius: 18px;
     width: 100%;
+    /* margin-left:0% !important;
+    padding-left:0% !important; */
 }
 
 #consultancycard {
@@ -92,6 +94,7 @@ element.style {
         width: 900px;
         margin-left: -65%;
     }
+    
 }
 
 .endbtn {
@@ -125,13 +128,12 @@ element.style {
     }
     #hometxt {
         font-size: larger;
-        margin-top: -170%;
     }
     .newconbtn {
-        margin-left: 12%;
+        margin-left: 1%;
     }
     .onewconbtn {
-        margin-left: 15%;
+        margin-left: 1%;
     }
 }
 
@@ -154,7 +156,7 @@ element.style {
     
 #hometxt {
     font-size: larger;
-    margin-top: -140%;
+    
 }
 
 }
@@ -207,10 +209,10 @@ element.style {
 
 @media(min-width:1300px) {
     #bookbtn {
-        margin-left: -112%
+        margin-left: 0%
     }
     #hometxt {
-        margin-left: -109%
+        margin-left: -0%
     }
     .newcontbn {
         /*margin-left: 10%;*/
@@ -379,7 +381,7 @@ display: flex;
     }
 }
 
-@media(min-width:1300px) {
+@media(min-width:450px) {
     #onewconbtn {
         padding-left: 10px;
 
@@ -447,14 +449,6 @@ display: flex;
     color:black;
 
 }
-/* #pf-card{
-    display:flex;
-    width: 1000px;
-    text-align: center;
-    overflow: hidden;
-    
-
-}      */
     div.scrollmenu {
     
     overflow: auto;
@@ -495,7 +489,8 @@ display: flex;
     text-decoration: none;
     margin-left:10px;
     height:53px!important;
-    margin-top: 2%;
+    margin-top: 1.5%;
+    float:right !important;
 }
 .addpfbtn:hover {
     background-color: rgb(2, 105, 112);
@@ -529,7 +524,7 @@ display: flex;
     @media(min-width:1300px) {
     
         #dbques{
-            margin-left: -110%;
+            margin-left: 0%;
             width: 150%;
             padding-bottom: 10px;
             padding-top: 10px;
@@ -549,3 +544,18 @@ display: flex;
     #sectionpf{
         display: flex;
     }
+
+    .wrapper{
+        background-image:url("img/image1.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    #blogdiv{
+        padding-left:0% !important;
+        margin-left:0% !important;
+    }
+    

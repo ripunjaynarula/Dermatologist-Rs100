@@ -1,4 +1,7 @@
-@media(min-width:600px) {
+element.style {
+    min-height: 0vh!important;
+}
+@media(min-width:870px) {
     #faq {
         width: 1000px;
         align-items: flex;
@@ -37,9 +40,10 @@
 
 #gloves {
     width: 389.9%;
+    height:100vh;
     margin-left: -150%;
-    overflow-x: hidden;
-    margin-top: -107%;
+    overflow: hidden;
+    margin-top: 0%;
 }
 
 .card {
@@ -83,7 +87,7 @@
     
 }
 
-@media(min-width:600px) {
+@media(min-width:870px) {
     #consultancycard {
         width: 900px;
         margin-left: -65%;
@@ -119,6 +123,10 @@
     #cardbtn {
         text-align: center;
     }
+    #hometxt {
+        font-size: larger;
+        margin-top: -170%;
+    }
     .newconbtn {
         margin-left: 12%;
     }
@@ -127,22 +135,28 @@
     }
 }
 
-@media(min-width:500px) {
+@media(min-width:870px) {
     .endbtn {
         margin-left: 4px;
     }
 }
 
-@media(min-width:500px) {
+@media(min-width:870px) {
     #cardsecondary {
         float: right;
     }
 }
 
-@media(min-width:500px) {
+@media(min-width:470px) {
     #cardprimary {
         float: left;
     }
+    
+#hometxt {
+    font-size: larger;
+    margin-top: -140%;
+}
+
 }
 
 #bookbtn {
@@ -177,11 +191,6 @@
 #eellipsebtn {
     margin-left: -2%;
 }
-#hometxt {
-    font-size: larger;
-    margin-top: -120%;
-}
-
 #smalltxt {
     color: black;
     font-family: Work Sans;
@@ -196,7 +205,7 @@
     line-height: 64px;
 }
 
-@media(min-width:450px) {
+@media(min-width:1300px) {
     #bookbtn {
         margin-left: -112%
     }
@@ -248,10 +257,11 @@
 @media(min-width:200px) {
     .newconbtn {
         padding-left: 10px;
+        flex-wrap: nowrap;
     }
 }
 
-@media(min-width:500px) {
+@media(min-width:1300px) {
     .newconbtn {
         padding-left: 10px;
     }
@@ -369,9 +379,10 @@ display: flex;
     }
 }
 
-@media(min-width:450px) {
+@media(min-width:1300px) {
     #onewconbtn {
         padding-left: 10px;
+
     }
     #profile{
         padding-right:0%;
@@ -381,7 +392,7 @@ display: flex;
     
 }
 
-@media(min-width:450px) {
+@media(min-width:870px) {
 
 #formbody{
 
@@ -510,9 +521,12 @@ display: flex;
     color: #495057;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    font-family: Work Sans;}
+    font-family: Work Sans;
+    position: relative;
+    display: flex;
+}
 
-    @media(min-width:450px) {
+    @media(min-width:1300px) {
     
         #dbques{
             margin-left: -110%;

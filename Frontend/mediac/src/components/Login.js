@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
@@ -46,7 +46,7 @@ console.log(await user.user.getIdToken())
   return (
 
 
-    <>
+    <><Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
       <Card style={CardMain}  >
 <Card.Title>
 
@@ -83,6 +83,7 @@ console.log(await user.user.getIdToken())
         Need an account? <Link to="/signup">Sign Up</Link>
       </div><br/>
       </Card>
+      </Container>
     </>
   )
 }

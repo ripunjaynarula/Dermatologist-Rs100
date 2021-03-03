@@ -57,9 +57,6 @@ export default function Dashboard() {
 
   return (
     <>
-    
-      <ConsultancyCard  name="Shivansh Sharma" doctorname="Sehgal" startdate="10-01-2021" lastconsult="15-02-2021" age="20" height="180 cm" weight="69 kg"/>     
-    
     <div id="container" >
           <img id="gloves" src={bgimg} alt="bg" />
           <div id="hometxt">
@@ -68,7 +65,6 @@ export default function Dashboard() {
           <p id="smalltxt">Ask us a question </p>
           </div>
           <Form onSubmit={handleSubmit}>
-
           <Form.Group id="ocity">
                   <input type="text" id="dbques" placeholder="Your query goes here..."/>
                 </Form.Group>

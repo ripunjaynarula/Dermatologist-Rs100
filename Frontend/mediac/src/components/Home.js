@@ -1,6 +1,6 @@
 import React, {useRef,useEffect, useState, useContext} from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap"
-import { Link,useHistory } from 'react-router-dom'
+import { Form, Button, Alert } from "react-bootstrap"
+import { useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
 import ellipse from './img/ellipse.png';
 import  "./styles.css";
@@ -8,8 +8,6 @@ import firebase from 'firebase'
 import { auth } from '../firebase'
 import { useAuth } from "../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
-import {CardMain} from "../css/Card";
-import {Texts} from "../css/Texts";
 import LoginPopup from "./LoginPopup"
 import { DataContext } from './App';
 export default function Home() {
@@ -67,8 +65,8 @@ export default function Home() {
 
     return (
     <>
-        <div id="container" >
-          <img id="gloves" src={bgimg} alt="bg" />
+        <div id="xyz" >
+          <img id="gloves" src={bgimg} alt="bg" style={{ minHeight: "100vh" }} />
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>

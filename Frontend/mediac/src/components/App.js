@@ -28,7 +28,8 @@ function App() {
           <AuthProvider>
             <DataContext.Provider value={[consultationData, setConsultationData]}>
           <div className="Navb"><Navbar /></div>
-          <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+          
+          <Container className="d-flex align-items-center justify-content-center" >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />

@@ -15,7 +15,6 @@ import {   Form, Button,   Row, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../../firebase'
-import firebase from 'firebase'
 // Form Editor
 import { EditorState } from 'draft-js';
 import {Styles} from "../../css/Styles"
@@ -34,9 +33,8 @@ const FormEditors = () => {
 
   const [picture, setPicture] = useState(null);
   const [content, setContent] = useState("");
-
+const [file, setFile] = useState("");
   const title = useRef()
-  const passwordRef = useRef()
   const {  currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -48,12 +46,18 @@ const FormEditors = () => {
 
 
    const onChangePicture = e => {
-    if (e.target.files && e.target.files[0])
-       setPicture(URL.createObjectURL(e.target.files[0]) );
+    if (e.target.files && e.target.files[0]){
+           setPicture(URL.createObjectURL(e.target.files[0]) );
+      setFile(e.target.files[0])
+    }
+  
    else {
       setPicture(null)  
+      setFile("")
   }
 };
+ 
+ 
   async function handleSubmit(i) {
     if(!content)
     {
@@ -80,25 +84,85 @@ return
           setLoading(true)
 
           const token = await app.auth().currentUser.getIdToken(true)
-          console.log(content)
-          console.log(title.current.value)
+   
           var d={ postData: content, title : title.current.value, 
+          fileName : file["name"] ? file["name"] : null,
+          isPublished : i ===0 ? false : true, 
+          fileUploaded : false,
+          blogId : null,
+          image : file["name"]
+           
+            };
 
-          isPublished : i ===0 ? false : true };
+ 
 
-
-
-          const requestOptions = {
+          var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
           body:JSON.stringify(d)
         };
 
-
           let res = await fetch('http://localhost:5000/add-blog', requestOptions);
-          res = await res.text();
+   res = await res.text();
           res = JSON.parse(res)
-          console.log(res)
+ 
+          d.image = res.fileName
+          d.blogId = res.blogId
+
+
+
+
+          if(file)
+          {
+
+
+              await  uploadFile(res.url)
+
+
+              d.fileUploaded = true
+              requestOptions = {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'token': token },
+              body:JSON.stringify(d)
+              };
+                        let res2 = await fetch('http://localhost:5000/add-blog', requestOptions);
+
+              res2 = await res2.text();
+              res= JSON.parse(res2)
+    
+
+          }
+
+ 
+          if(!res.isError)
+          {
+
+            if(res.status === "saved_draft")
+            {
+              alert("Draft saved successfully")
+            }
+            if(res.status === "saved")
+            {
+              alert("Post Published")
+            }
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       }
 
@@ -118,6 +182,33 @@ return
 
 
   }
+
+
+async function uploadFile(putURL) {
+ 
+   
+ let r = await fetch(putURL, {
+    method: "PUT",
+    body: file,
+    headers: {
+      "Content-Type": "image/jpeg",
+      "x-amz-acl": "public",
+   
+     },
+  });
+
+  console.log(r)
+    
+  };
+
+
+
+
+
+
+
+
+
 
 
  const handleEditorChange = (state) => {
@@ -191,7 +282,7 @@ return
 
 <div style = {{width : "10px", height : "10px"}}></div>
      
-   <Button disabled={loading}  type="submit" className = "primaryButton">
+   <Button disabled={loading}  type="submit" className = "primaryButton" onClick= {() => handleSubmit(1)}>
               Publish
             </Button>
           </Row>

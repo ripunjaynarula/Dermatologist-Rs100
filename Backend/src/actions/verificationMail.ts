@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 const sendVerificationMails = (email: string, token: string) => {
 
     let transporter=nodemailer.createTransport({
-        host:'smtp.gmail.com',
+        host:'smtp.hostinger.com',
         port:587,
         secure:false,
         auth:{
@@ -21,7 +21,7 @@ const sendVerificationMails = (email: string, token: string) => {
         subject: 'Mediac Verification',
         html: ` <p>Thank you for registering with Mediac. <a href="http://localhost:5000/verify?token=${token}">Click here to verify your account.</a></p>`
     };
-
+ 
     transporter.sendMail(mailOptions,(error,info)=>{
         if(error){
             return console.log(error);

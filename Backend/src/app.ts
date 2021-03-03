@@ -17,6 +17,10 @@ import getProfiles from './routes/getProfiles';
 import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
 import blogs from './models/blog';
+import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
+
+
+
 const app = express();
 
 const port = process.env.PORT
@@ -44,6 +48,7 @@ app.use('/doctorLogin', doctorLogin);
 
 
 
+app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 
 app.use('/add-blog', checkAuth, addBlog);
 

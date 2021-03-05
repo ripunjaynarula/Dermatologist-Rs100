@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap"
+import { Card, Form, Container, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
@@ -58,8 +58,8 @@ export default function Dashboard() {
   return (
     <>
     
-    <div id="bg" className="wrapper" >
-    <div id="container" style={{ maxWidth: "400px" }}>
+    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+    <div id="container" >
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>

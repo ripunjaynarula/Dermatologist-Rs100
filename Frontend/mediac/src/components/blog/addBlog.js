@@ -229,7 +229,7 @@ async function uploadFile(putURL) {
   }
   return (
 
- 
+    <Container className="d-flex align-items-center justify-content-center">
       <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-15 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
       <div >
@@ -294,6 +294,7 @@ async function uploadFile(putURL) {
       </div>
     </React.Fragment>
 </div>
+</Container>
    )
 }
 

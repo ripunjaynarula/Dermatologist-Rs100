@@ -28,7 +28,7 @@ export default function NewConsultation(props){
         <>
           
               <div id="formbody">
-              <h3 className=" mb-4">Consult Us</h3>
+              <h2 className=" mb-4">Consult Us</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 

@@ -50,11 +50,9 @@ export default function UpdateProfile() {
           <div>
 <br></br>
 
- <Card  >
+ <div  >
 
-   <Card.Title>
-     
-   </Card.Title>
+  
         <Card.Body>
 
  
@@ -95,7 +93,7 @@ export default function UpdateProfile() {
             </Button>
           </Form>
         </Card.Body>
-      </Card>
+      </div>
       <div className="w-100 text-center mt-2">
         <Link to="/">Cancel</Link>
       </div>

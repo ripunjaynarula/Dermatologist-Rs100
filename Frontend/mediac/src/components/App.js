@@ -30,7 +30,7 @@ function App() {
             <DataContext.Provider value={[consultationData, setConsultationData]}>
           <div className="Navb"><Navbar /></div>
           
-          <Container className="d-flex align-items-center justify-content-center" >
+          <div className="everything" >
           
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
@@ -49,7 +49,7 @@ function App() {
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
             </Switch>
-          </Container>
+          </div>
           </DataContext.Provider>
           </AuthProvider>
         </Router>

@@ -65,11 +65,11 @@ export default function Home() {
 
     return (
     <>
-        <div id="xyz" >
-          <img id="gloves" src={bgimg} alt="bg" style={{ minHeight: "100vh" }} />
+        <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+    <div id="container" >
           <div id="hometxt">
           <p id="smalltxt">Lorem ipsum dolor sit amet</p>
-          <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
+          <h2 id="bigtxt">Best Care & <br/>Better Doctors.</h2>
           <p id="smalltxt">Ask us a question </p>
           </div>
           <Form onSubmit={handleSubmit}>
@@ -91,6 +91,8 @@ export default function Home() {
         </Modal.Footer>
       </Modal>
         </div>
+        </div>
+        
     </>
   )
 }

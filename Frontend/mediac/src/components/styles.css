@@ -1,12 +1,20 @@
-element.style {
-    min-height: 0vh!important;
+.everything{
+    font-family: "Work Sans";
+
 }
+
+
+
 @media(min-width:870px) {
     #faq {
         width: 1000px;
         align-items: flex;
         margin-left: -72%;
     }
+    #wrapper{
+        background-image:url("img/image1.png");
+    }
+
 }
 
 .bookbtn {
@@ -39,11 +47,13 @@ element.style {
 }
 
 #gloves {
-    width: 389.9%;
+    width: 100vh;
     height:100vh;
     margin-left: -0%;
     overflow: hidden;
     margin-top: 0%;
+    
+
 }
 
 .card {
@@ -126,8 +136,13 @@ element.style {
     #cardbtn {
         text-align: center;
     }
+    #wrapper{
+        background-image:url("img/glove.png");
+    }
+
     #hometxt {
         font-size: larger;
+        margin-top: 30%;
     }
     .newconbtn {
         margin-left: 1%;
@@ -156,7 +171,8 @@ element.style {
     
 #hometxt {
     font-size: larger;
-    
+    margin-top: 20%;
+    width:100vh;    
 }
 
 }
@@ -203,16 +219,16 @@ element.style {
     font-family: Lora;
     font-style: normal;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 65px;
     line-height: 64px;
 }
 
-@media(min-width:1300px) {
+@media(min-width:870px) {
     #bookbtn {
-        margin-left: 0%
+        margin-left: 7%
     }
     #hometxt {
-        margin-left: -0%
+        margin-left: 8%;
     }
     .newcontbn {
         /*margin-left: 10%;*/
@@ -263,7 +279,7 @@ element.style {
     }
 }
 
-@media(min-width:1300px) {
+@media(min-width:870px) {
     .newconbtn {
         padding-left: 10px;
     }
@@ -519,13 +535,15 @@ display: flex;
     font-family: Work Sans;
     position: relative;
     display: flex;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-    @media(min-width:1300px) {
+    @media(min-width:870px) {
     
         #dbques{
-            margin-left: 0%;
-            width: 150%;
+            margin-left: 8%;
+            width: 100%;
             padding-bottom: 10px;
             padding-top: 10px;
 
@@ -545,17 +563,14 @@ display: flex;
         display: flex;
     }
 
-    .wrapper{
+    #wrapper{
         background-image:url("img/image1.png");
-        background-position: center;
-        background-repeat: no-repeat;
         background-size: cover;
-        position: relative;
-        height: 100%;
-        width: 100%;
+        display:flex;
+        padding: 23px ;
+        
     }
     #blogdiv{
         padding-left:0% !important;
         margin-left:0% !important;
     }
-    

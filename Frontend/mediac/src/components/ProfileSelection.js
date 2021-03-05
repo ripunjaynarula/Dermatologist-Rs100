@@ -59,10 +59,10 @@ export default function ProfileSelection(props) {
 
   if (profiles) {
     return (
-        <div>
+        <div id="formbody">
           <br/>  <br/>
-           <h2 className="text-center mb-4">Is this for you or someone else? </h2>
-            <Card id="formbody">
+           <h2 >Is this for you or someone else? </h2><br/>
+            <Card id="cardbox">
             
             <Card.Body>
              

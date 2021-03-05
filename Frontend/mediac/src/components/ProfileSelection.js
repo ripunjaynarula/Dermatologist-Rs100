@@ -5,10 +5,11 @@ import usersvg from './img/user.svg';
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 export default function ProfileSelection(props) {
 
- 
+  
     const [error, setError] = useState("")
     const { currentUser } = useAuth()
     
@@ -55,6 +56,8 @@ export default function ProfileSelection(props) {
     tempProfs.push({id: id, name: name});
     console.log(tempProfs);
     setProfiles(tempProfs);
+
+    {}
   }
 
   if (profiles) {
@@ -76,6 +79,7 @@ export default function ProfileSelection(props) {
                     <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name']);}}><img id="usersvg" src={usersvg}/><br/>
                        {profile['name']}</a></>
                   ))}
+                  
                   </div>
                  
                   <a href="#" className="addpfbtn" onClick={handleShow}>+</a>

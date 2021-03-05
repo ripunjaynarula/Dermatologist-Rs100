@@ -31,7 +31,7 @@ export default function Choice(){
   return (
         <>
         
-         <Container className=" align-items-center justify-content-center" style={{ maxWidth: "60vh" }}>
+         <Container className=" align-items-center justify-content-center" style={{ maxWidth: "50vh" }}>
           <ProfileSelection handleSubmit={handleProfileSelection} id={currentProfile}/>    
           {currentProfile == 0?<></>:<><br/><button className="newconbtn" id="resetbtn" onClick={resetSelection}>Reset Selection</button>    <br/></>}
           <br />

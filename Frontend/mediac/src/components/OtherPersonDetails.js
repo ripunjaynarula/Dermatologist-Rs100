@@ -44,6 +44,7 @@ export default function OtherPersonForm(props) {
           props.close();
         } else {
           // display error!
+          setError('Error adding profile.');
         }
         setLoading(false);
     }

@@ -73,21 +73,21 @@ export default function OtherPersonForm(props) {
   <select name="Relation" ref={relRef} id="dropdown-basic">
         <option style={{display:"none"}}>  </option>
 
-                      <option value="others">Daughter</option>
-                        <option value="male">Son</option>
-                        <option value="female">Mother</option>
+                      <option value="daughter">Daughter</option>
+                        <option value="son">Son</option>
+                        <option value="mother">Mother</option>
                                                 <option value="female">Father</option>
-                        <option value="female">Grandmother</option>
-                        <option value="female">Grandfather</option>
-                        <option value="female">Sister</option>
-                        <option value="female">Brother</option>
-                        <option value="female">Aunt</option>
-                        <option value="female">Uncle</option>
+                        <option value="grandmother">Grandmother</option>
+                        <option value="grandfather">Grandfather</option>
+                        <option value="sister">Sister</option>
+                        <option value="brother">Brother</option>
+                        <option value="aunt">Aunt</option>
+                        <option value="uncle">Uncle</option>
                                                 <option value="female">Wife</option>
-                        <option value="female">Husband</option>
-                        <option value="female">Cousin</option>
+                        <option value="husband">Husband</option>
+                        <option value="cousin">Cousin</option>
 
-                        <option value="female">Friend</option>
+                        <option value="friend">Friend</option>
 
                         
                 </select>                </Form.Group>

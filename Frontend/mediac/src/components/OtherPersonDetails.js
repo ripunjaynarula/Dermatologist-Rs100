@@ -10,13 +10,10 @@ import app from '../firebase'
 
 export default function OtherPersonForm(props) {
 
-  const emailRef = useRef()
-  const onameRef = useRef()
+   const onameRef = useRef()
   const ogenRef = useRef()
   const odobRef = useRef()
-  const ocityRef = useRef()
-  const oweightRef = useRef()
-  const oheightRef = useRef()
+ 
   const relRef = useRef()
   const { signup, currentUser } = useAuth()
   const [error, setError] = useState("")
@@ -25,14 +22,18 @@ export default function OtherPersonForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitted.')
+        console.log( onameRef.current.value)
+    console.log( relRef.current.value)
+    console.log( ogenRef.current.value)
+
+    console.log( odobRef.current.value)
     if (currentUser) {
         setLoading(true);
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
-          body: JSON.stringify({name: onameRef.current.value, dob: odobRef.current.value, gender: ogenRef.current.value})
+          body: JSON.stringify({name: onameRef.current.value, gender: ogenRef.current.value, relation : relRef.current.value, age : odobRef.current.value })
         };
 
         let res = await fetch('http://localhost:5000/addNewProfile', requestOptions);
@@ -41,6 +42,10 @@ export default function OtherPersonForm(props) {
         if (res['status'] === 'saved_successfuly') {
           props.setProfile(res['id'], res['name']);
           props.addNewProfile(res['id'],res['name']);
+          props.addNewAge(res['id'],odobRef.current.value)
+          props.addGender(res['id'],ogenRef.current.value)
+          props.setCurrentRelation(res['id'],relRef.current.value)
+
           props.close();
         } else {
           // display error!
@@ -54,8 +59,9 @@ export default function OtherPersonForm(props) {
         <Container className=" align-items-center justify-content-center" style={{ minWidth: "100%" }}>
           <div id="oform">
           <br/>
-          <h2 style={Texts.Heading} >Personal Information</h2>
-              {error && <Alert variant="danger">{error}</Alert>}
+          <h5 style={Texts.Heading} >Consult for someone else</h5>
+ <br></br>
+               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group  id="oname">
                   <Form.Label style={Texts.FormLabel}>Name</Form.Label>
@@ -63,34 +69,45 @@ export default function OtherPersonForm(props) {
                 </Form.Group>
                 <Form.Group id="user-relation">
                   <Form.Label style={Texts.FormLabel}>Relation</Form.Label>
-                  <Form.Control type="text" ref={relRef} required />
-                </Form.Group>
+  <select name="Relation" ref={relRef} id="dropdown-basic">
+        <option style={{display:"none"}}>  </option>
+
+                      <option value="others">Daughter</option>
+                        <option value="male">Son</option>
+                        <option value="female">Mother</option>
+                                                <option value="female">Father</option>
+                        <option value="female">Grandmother</option>
+                        <option value="female">Grandfather</option>
+                        <option value="female">Sister</option>
+                        <option value="female">Brother</option>
+                        <option value="female">Aunt</option>
+                        <option value="female">Uncle</option>
+                                                <option value="female">Wife</option>
+                        <option value="female">Husband</option>
+                        <option value="female">Cousin</option>
+
+                        <option value="female">Friend</option>
+
+                        
+                </select>                </Form.Group>
                 <Form.Group id="odob">
-                <Form.Label style={Texts.FormLabel}>Date of Birth</Form.Label>
-              <Form.Control type="date" ref={odobRef} required />
+                <Form.Label style={Texts.FormLabel}>Age</Form.Label>
+              <Form.Control type="number" ref={odobRef} required />
                 </Form.Group>
                 <Form.Group id="ogen">
                   <Form.Label style={Texts.FormLabel}>Gender</Form.Label>
                       <select name="Gender" ref={ogenRef} id="dropdown-basic">
-                      <option value="others">Rather not say</option>
+                                <option style={{display:"none"}}>  </option>
+
                         <option value="male">Male</option>
                         <option value="female">Female</option>
+                                              <option value="others">Rather not say</option>
+
                         
                 </select>
                 </Form.Group>
-                
-                <Form.Group id="ocity">
-                  <Form.Label style={Texts.FormLabel}>Weight (in kg)</Form.Label>
-                  <Form.Control type="number" ref={oweightRef} required />
-                </Form.Group>
-                <Form.Group id="ocity">
-                  <Form.Label style={Texts.FormLabel}>Height (in cm)</Form.Label>
-                  <Form.Control type="number" ref={oheightRef} required />
-                </Form.Group>
-                <Form.Group id="ocity">
-                  <Form.Label style={Texts.FormLabel}>City</Form.Label>
-                  <Form.Control type="text" ref={ocityRef} required />
-                </Form.Group>
+                <br></br>
+         
                 <Button disabled={loading} className="submitbtn" type="submit">
                   Add Profile
                 </Button>

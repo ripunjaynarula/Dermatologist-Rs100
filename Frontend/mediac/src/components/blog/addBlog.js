@@ -143,7 +143,8 @@ return
             }
             if(res.status === "saved")
             {
-              alert("Post Published")
+             var da = await alert("Post Published")
+             console.log(da)
             }
 
           }
@@ -229,14 +230,14 @@ async function uploadFile(putURL) {
   }
   return (
 
- 
-      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width , backgroundColor : "#ededf2"}}>
+    <Container className="d-flex align-items-center justify-content-center">
+      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-15 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
       <div >
         <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>
           <Row>
             <Col>
-              <h2><strong>Write Blog</strong></h2>
+              <h2><strong>Publish</strong></h2>
               <br></br>
               <Card>
                 <CardBody>
@@ -294,6 +295,7 @@ async function uploadFile(putURL) {
       </div>
     </React.Fragment>
 </div>
+</Container>
    )
 }
 

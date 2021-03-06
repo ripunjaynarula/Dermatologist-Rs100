@@ -1,6 +1,7 @@
 import express from 'express'
 const router = express.Router();
 import patients from '../../models/patients';
+import fbUpdate from '../../actions/updateDetailsFIrebaseAuth';
 
 router.post('/', async (req, res) => {
 
@@ -12,6 +13,7 @@ router.post('/', async (req, res) => {
 
 
     var patient: any = await patients.updateOne({uid: req.body.uid},  { $set: { name, dob, gender,  } });
+fbUpdate.changeNameFirebaseAuth(req, name )
 
             return res.send({status: "updated", isError : false})
 

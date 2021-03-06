@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap"
+import { Card, Form, Container, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
@@ -58,20 +58,19 @@ export default function Dashboard() {
   return (
     <>
     
-    <div id="bg" className="wrapper" >
-    <div id="container" style={{ maxWidth: "400px" }}>
+    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+    <div id="container" >
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
-          <p id="smalltxt">Lorem ipsum dolor sit amet</p>
           <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
           <p id="smalltxt">Ask us a question </p>
           </div>
           <Form onSubmit={handleSubmit}>
           <Form.Group id="ocity">
-                  <input type="text" id="dbques" placeholder="Your query goes here..."/>
+                  <input type="text" id="dbques" style = {{borderRadius : "8px"}} placeholder="Tell us your symptom or health problem"/>
                 </Form.Group>
           </Form>
-          <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Book your Appointment</a>
+          <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultaion</a>
         </div>
     {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}

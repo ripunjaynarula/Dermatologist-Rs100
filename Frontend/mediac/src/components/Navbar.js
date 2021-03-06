@@ -20,6 +20,8 @@ const NavBar = () => {
 
     try {
       await logout()
+          setFlag(false);
+
       history.push("/login")
     } catch {
       setError("Failed to log out")
@@ -28,6 +30,8 @@ const NavBar = () => {
 
 
   useEffect( () => {
+ 
+ console.log(currentUser)
     if (currentUser) {
  
       setFlag(true);
@@ -41,7 +45,7 @@ const NavBar = () => {
   return(
         <div className="Navbar" style={{  }}>
             <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc">
-            <ReactBootStrap.Navbar.Brand id="brand" href="/">MEDIAC</ReactBootStrap.Navbar.Brand>
+            <ReactBootStrap.Navbar.Brand id="brand" href="/">LOGO</ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="mr-auto"> 
@@ -50,18 +54,21 @@ const NavBar = () => {
               <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">Blog</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link  className="navlink" href="/faq">FAQs</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link>
-
+{!flag ?               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link> : <div></div>}
             </ReactBootStrap.Nav>
             
               <ReactBootStrap.Nav className="form-inline">
               {flag?<div> 
               <ReactBootStrap.Dropdown  >
-                <ReactBootStrap.Dropdown.Toggle variant="success" style = {{backgroundColor: "white", color : "#737373", border : "none", borderInlineColor : "white"}}   >
-                
+                <ReactBootStrap.Dropdown.Toggle variant="primary" style = {{backgroundColor: "white", color : "#737373", border : "none", borderInlineColor : "white"}}   >
+                {currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName}
                 </ReactBootStrap.Dropdown.Toggle >
 
-                <ReactBootStrap.Dropdown.Menu style = {{ border : "none",      boxShadow: "0px 0px 13px 1px #e2d9d9",
+
+
+                
+
+                <ReactBootStrap.Dropdown.Menu style = {{ border : "none", boxShadow: "0px 0px 13px 1px #e2d9d9", 
 }}>
                   
                   <ReactBootStrap.Dropdown.Item href="#/action-2">My Consultations</ReactBootStrap.Dropdown.Item>

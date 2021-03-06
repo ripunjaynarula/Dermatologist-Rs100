@@ -36,7 +36,7 @@ if(d)
 
 
     var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, education, pastExperience , awards, specialisation, city, state, graduationYear, degree, languages } });
-
+fbUpdate.changeNameFirebaseAuth(req, name )
             return res.send({status: "updated", isError : false})
 
 

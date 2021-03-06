@@ -6,10 +6,13 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     var patient: any = await patients.findOne({uid: req.body.uid});
     if (patient){
+ 
         let l = patient.profiles.length
         var info = {
             name: req.body.name,
-            dob: req.body.dob,
+            age: req.body.age,
+            relation: req.body.relation,
+
             id: (l+1),
             gender: req.body.gender,
         };
@@ -17,6 +20,7 @@ router.post('/', async (req, res) => {
         try {
             patient.save()
             return res.send({status: 'saved_successfuly', id: info['id'], name: info['name']});
+
         } catch (e) {
             return res.send({status: 'technical_error'});
         }

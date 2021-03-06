@@ -26,11 +26,16 @@ export default function NewConsultation(props){
   }
     return (
         <>
-          
+                          <br></br>
+
               <div id="formbody">
-              <h3 className=" mb-4">Consult Us</h3>
+              <h4 className=" mb-4">Consult Us</h4>
               {error && <Alert variant="danger">{error}</Alert>}
-              <Form onSubmit={handleSubmit}>
+            <Card>
+
+<Card.Body>
+
+  <Form onSubmit={handleSubmit}>
                 
                 <Form.Group id="docType">
                   <Form.Label style={Texts.FormLabel}>Type of Doctor</Form.Label>
@@ -59,6 +64,15 @@ export default function NewConsultation(props){
                     Proceed to Payment
                 </p>
               </Form>
+            
+
+
+</Card.Body>
+
+
+            </Card>
+            
+            
               </div>
             
           </>

@@ -10,7 +10,9 @@ import Dashboard from "./Dashboard"
 import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
-import UpdateProfile from "./UpdateProfile"
+import UpdateProfile from "./Profile/UpdateProfile"
+import ChangePassword from "./Profile/changePassword"
+
 import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
@@ -30,10 +32,12 @@ function App() {
             <DataContext.Provider value={[consultationData, setConsultationData]}>
           <div className="Navb"><Navbar /></div>
           
-          <Container className="d-flex align-items-center justify-content-center" >
+          <div className="everything" >
           
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
+                            <PrivateRoute path="/change-password" component={ChangePassword} />
+
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
@@ -49,7 +53,7 @@ function App() {
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
             </Switch>
-          </Container>
+          </div>
           </DataContext.Provider>
           </AuthProvider>
         </Router>

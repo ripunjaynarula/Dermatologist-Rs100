@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
 
     var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { profileImage: imageUrl } });
-    fbUpdate.changeProfilePicture(req, imageUrl)
+    fbUpdate.changeProfilePicture(req,process.env.cdnUrl +  imageUrl)
 
             return res.send({status: "updated", isError : false})
 

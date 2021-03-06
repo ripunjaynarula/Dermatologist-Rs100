@@ -18,6 +18,8 @@ import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
+import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
+import profilePicturePatientSave from './routes/profile/savePatientProfileImage'
 
 
 
@@ -49,6 +51,8 @@ app.use('/doctorLogin', doctorLogin);
 
 
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
+app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
+app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
 
 app.use('/add-blog', checkAuth, addBlog);
 

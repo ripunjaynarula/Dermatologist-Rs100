@@ -62,7 +62,7 @@ export default function Dashboard() {
     <div id="container" >
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
-          <h2 id="bigtxt">Best Care &<br></br>Better Doctors.</h2>
+          <h2 id="bigtxt"><br></br>Best Care &<br></br>Better Doctors.</h2>
           <p id="smalltxt">Ask us a question </p>
           </div>
           <Form onSubmit={handleSubmit}>

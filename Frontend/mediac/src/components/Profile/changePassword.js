@@ -22,6 +22,8 @@ export default function ChangePassword() {
     e.preventDefault()
         setError("")
     setSuccess("")
+
+    
     if (newPasswordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("New Passwords do not match")
     }
@@ -133,9 +135,7 @@ setError("Cannot update password")
                 ref={passwordConfirmRef}
                />
             </Form.Group>
-            <Button disabled={loading} className="submitbtn" type="submit">
-              Update
-            </Button>
+         
           </Form>
         </Card.Body>
      
@@ -143,9 +143,19 @@ setError("Cannot update password")
 
       </Card>
       
-      <div className="w-100 text-center mt-2">
-        <Link to="/">Cancel</Link>
-      </div>
+      <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px" }}>
+           
+      
+
+<Button disabled={loading}   className = "secondaryButton" onClick= {() =>        history.push('/')} >
+Cancel            </Button>
+
+<div style = {{width : "10px", height : "10px"}}></div>
+
+
+   <Button disabled={loading} style={{height : "42px" }}  type="submit" className = "primaryButton" onClick= {handleSubmit}>
+Update            </Button>
+          </Row>
 
 
 

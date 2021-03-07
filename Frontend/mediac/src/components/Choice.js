@@ -7,6 +7,7 @@ import NewConsultation from './ConsultationForm';
 import {Texts} from "../css/Texts";
 import { Link, useHistory } from "react-router-dom"
 
+import {CardMain} from "../css/Card"
 
 import { DataContext } from './App'
 
@@ -83,16 +84,16 @@ export default function Choice(){
               <div id="formbody">
 
 
-{currentProfile <0 ?  <h5 className=" mb-4">Please share some basic info about yourself
+{currentProfile <0 ?  <h5 style = {{fontWeight:"bold"}} className=" mb-4">Please share some basic info about yourself
  </h5>
 :
- <h5 className=" mb-4">Please share some basic info about your {currentRelation}, {currentProfileName}
+ <h5 style = {{fontWeight:"bold"}} className=" mb-4">Please share some basic info about your {currentRelation}, {currentProfileName}
  </h5>
 }
           
       
           
-            <Card>
+            <Card style = {CardMain}>
 
 
 <Card.Body>
@@ -161,14 +162,14 @@ export default function Choice(){
 
 
            
-      {currentProfile <0 ?  <h5 style = {{marginTop : "20px"}} className=" mb-4">Additonal information about yourself
+      {currentProfile <0 ?  <h5 style = {{marginTop : "20px", fontWeight:"bold"}} className=" mb-4">Additonal information about yourself
  </h5>
 :
- <h5 style = {{marginTop : "20px"}} className=" mb-4">Additonal information about your {currentRelation}, {currentProfileName}
+ <h5 style = {{marginTop : "20px", fontWeight:"bold"}} className=" mb-4">Additonal information about your {currentRelation}, {currentProfileName}
  </h5>
 }
           
-            <Card>
+            <Card style = {CardMain}>
 
 
 <Card.Body>
@@ -211,10 +212,7 @@ export default function Choice(){
                   <Form.Control type="text" ref={allergiesRef} required />
                 </Form.Group>
                 
-               
-                <p disabled={loading} className="submitbtn" onClick={handleSubmit}>
-                    Proceed to Payment
-                </p>
+             
               </Form>
             
 
@@ -224,9 +222,21 @@ export default function Choice(){
 
             </Card>
             
+   <Row style= {{paddingTop :"22px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "14px" }}>
+           
+      
+   <Button disabled={loading} style={{height : "45px" , width : "250px"}}  type="submit" className = "primaryButton" onClick= {handleSubmit}>
+              Proceed to Payment
+            </Button>
+          </Row>
             
               </div>
-                      </Container>
+
+
+
+           <br></br>
+               <br></br>       </Container>
+               
         </>
   )
 }

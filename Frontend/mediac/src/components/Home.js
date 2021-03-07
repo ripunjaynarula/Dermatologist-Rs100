@@ -65,10 +65,10 @@ export default function Home() {
 
     return (
     <>
-        <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
-    <div id="container" >
-          <div id="hometxt">
-           <h2 id="bigtxt">Best Care & <br/>Better Doctors.</h2>
+    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+    <div id="container"  >
+          <div id="hometxt" >
+            <h2 id="bigtxt"><br></br>Best Care & <br/>Better Doctors.</h2>
           <p id="smalltxt">Ask us a question </p>
           </div>
           <Form onSubmit={handleSubmit}>

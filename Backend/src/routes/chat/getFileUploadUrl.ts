@@ -23,7 +23,7 @@ if(s.split(".").length < 2)
      var extention = s.split(".")[s.split(".").length-1];
 
 
-            var fileName = nanoid(12) + extention;
+            var fileName = nanoid(12)+ "." + extention;
 
             
 

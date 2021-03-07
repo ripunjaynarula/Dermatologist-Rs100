@@ -59,7 +59,7 @@ export default function ProfileSelection(props) {
      return (
         <div id="formbody">
           <br/>  <br/>
-           <h5 style ={{marginBottom : "22px"}}>Is this for you or someone else? </h5> 
+           <h5 style ={{marginBottom : "22px",fontWeight:"bold"}}>Is this for you or someone else? </h5> 
              <Card id="cardbox">
             
             <Card.Body>

@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import {CardMain} from "../../css/Card";
 import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
+ 
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -12,7 +13,7 @@ export default function UpdateProfile() {
   const phoneRef = useRef()
   const genderRef = useRef()
   const dobRef = useRef()
-
+ 
   const passwordConfirmRef = useRef()
   const { currentUser, updatePassword, updateEmail } = useAuth()
   const [error, setError] = useState("")
@@ -20,7 +21,7 @@ export default function UpdateProfile() {
 
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-const [file, setFile] = useState("");
+const [fil, setFil] = useState(null);
   const [picture, setPicture] = useState(null);
   const { height, width } = useWindowDimensions();
 
@@ -35,8 +36,11 @@ const [file, setFile] = useState("");
    const onChangePicture = e => {
     if (e.target.files && e.target.files[0]){
            setPicture(URL.createObjectURL(e.target.files[0]) );
-      setFile(e.target.files[0])
-updateProfileImage();
+      setFil(e.target.files[0])
+      console.log(e.target.files[0])
+      
+ 
+  updateProfileImage(e.target.files[0]);
 
      
 
@@ -46,7 +50,7 @@ updateProfileImage();
     
 };
 
-async function updateProfileImage(){
+async function updateProfileImage(file){
 
 
 
@@ -55,8 +59,10 @@ try{
           setLoading(true)
           setError("")
           const token = await currentUser.getIdToken()
+console.log(file.src)
+   console.log(file.name)
+   console.log(file.type)
 
-   
           var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
@@ -72,15 +78,23 @@ setLoading ( false)
 setError("Some error occured")
    return ;
  }
+
+
+ 
+// append the fields in presignedPostData in formData            
+ 
+
  let r = await fetch(res.url, {
     method: "PUT",
     body: file,
     headers: {
-      "Content-Type": "image/jpeg",
-      "x-amz-acl": "public",
-   
+    //  "Content-Type": file.type,
+        "Content-Type": "application/octet-stream",
+        'x-amz-acl': 'public',   
      },
   });
+
+  console.log(r)
 
 if(r.status !== 200)
 {
@@ -265,25 +279,30 @@ disabled = "true"
             </Form.Group></Col>
 
  </Row>
-
-          <br></br>
-          
-            <Button disabled={loading} className="submitbtn" type="submit">
-              Update
-            </Button>
+ 
+         
           </Form>
         </Card.Body>
       </Card>
       
+ 
+
+
+   <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "14px" }}>
+           
       
-      <div className="w-100 text-center mt-2" style = {{marginBottom :"20px"}}>
-        <Link to="/">Cancel</Link>
-      </div>
+
+<Button disabled={loading}   className = "secondaryButton" onClick= {() =>        history.push('/')} >
+Cancel            </Button>
+
+<div style = {{width : "10px", height : "10px"}}></div>
 
 
+   <Button disabled={loading} style={{height : "42px" }}  type="submit" className = "primaryButton" onClick= {handleSubmit}>
+Update            </Button>
+          </Row>
 
 </Container>
-
 
           </div>
      

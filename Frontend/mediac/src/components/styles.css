@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
-    font-family: "Work Sans";
+    font-family: "Open Sans";
     background-color: #ededf2;
 }
 
@@ -89,7 +92,7 @@
 #cardcontainer {
     width: 100%;
     position: relative;
-    font-family: "Work Sans";
+    font-family: "Open Sans";
     padding-top: 15px;
 }
 
@@ -229,7 +232,7 @@
 }
 
 .card {
-    font-family: work sans;
+    font-family: open sans;
 }
 
 .newconbtn {
@@ -240,7 +243,7 @@
     display: inline-block;
     cursor: pointer;
     color: black;
-    font-family: Work Sans;
+    font-family: Open Sans;
     font-size: 18px;
     padding: 4px;
     padding-left: 10px;
@@ -342,7 +345,7 @@
     display: inline-block;
     cursor: pointer;
     color: black;
-    font-family: Work Sans;
+    font-family: Open Sans;
     font-size: 18px;
     padding: 3px;
     padding-left: 20%;
@@ -540,6 +543,7 @@ div.scrollmenu a {
     background-size: cover;
     display: flex;
     padding: 23px;
+    margin: -3.5rem 0rem;
 }
 
 #blogdiv {

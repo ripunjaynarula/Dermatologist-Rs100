@@ -67,7 +67,7 @@ export default function Choice(){
         <>
                       {error && <Alert variant="danger">{error}</Alert>}
 
-         <Container className=" align-items-center justify-content-center" style={{ maxWidth: "50vh" }}>
+         <Container className="align-items-center justify-content-center" style={{ maxWidth: "50vh" }}>
           <ProfileSelection handleSubmit={handleProfileSelection} id={currentProfile}/>    
          {console.log(currentProfileName)}
                   {console.log(currentRelation)}

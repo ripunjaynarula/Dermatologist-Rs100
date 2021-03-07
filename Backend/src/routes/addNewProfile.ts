@@ -12,14 +12,13 @@ router.post('/', async (req, res) => {
             name: req.body.name,
             age: req.body.age,
             relation: req.body.relation,
-
             id: (l+1),
             gender: req.body.gender,
         };
         patient.profiles.push(info);
         try {
             patient.save()
-            return res.send({status: 'saved_successfuly', id: info['id'], name: info['name']});
+            return res.send({status: 'saved_successfuly', id: info['id'], name: info['name'], age: info['age'], gender: info['gender'], relation:['relation']});
 
         } catch (e) {
             return res.send({status: 'technical_error'});

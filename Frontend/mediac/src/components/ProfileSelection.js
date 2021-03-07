@@ -48,10 +48,10 @@ export default function ProfileSelection(props) {
     getProfiles();
   }, [currentUser, setProfiles]);
 
-  const addNewProfile = (id, name) => {
+  const addNewProfile = (id, name, age, gender, relation) => {
     console.log(id);
     let tempProfs = profiles;
-    tempProfs.push({id: id, name: name});
+    tempProfs.push({id: id, name: name, age: age, gender: gender, relation});
     console.log(tempProfs);
     setProfiles(tempProfs);
   }
@@ -70,7 +70,7 @@ export default function ProfileSelection(props) {
                   <div id="pf-card" className="scrollmenu">
                     <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="usersvg" src={usersvg}/><br/>Me</a>
                     {profiles.map(profile =>(<>
-                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age'],);}}><img id="usersvg" src={usersvg}/><br/>
+                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}><img id="usersvg" src={usersvg}/><br/>
                         {profile['name']}</a></>
                     ))}
 

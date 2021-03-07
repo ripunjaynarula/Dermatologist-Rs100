@@ -14,6 +14,10 @@
     }
 }
 
+.pfcardstyles{
+    float: left;
+}
+
 .bookbtn {
     box-shadow: inset 0px 1px 0px 0px rgba(4, 168, 181, 1);
     background-color: rgba(4, 168, 181, 1);
@@ -481,6 +485,15 @@ div.scrollmenu a {
     margin-top: 1.5%;
     float: right !important;
 }
+
+.pfdiv{
+    float: right;
+}
+
+.fixdisplay{
+    display: inline-flex;
+}
+
 
 .addpfbtn:hover {
     background-color: rgb(2, 105, 112);

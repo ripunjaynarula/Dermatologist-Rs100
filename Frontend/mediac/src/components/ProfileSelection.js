@@ -63,22 +63,19 @@ export default function ProfileSelection(props) {
              <Card id="cardbox">
             
             <Card.Body>
-             
+             <div>
               {error && <Alert variant="danger">{error}</Alert>}
               
-              <div id="pf-card" >
+              <div id="pf-card" className='pfcardstyles'>
                 <div id="sectionpf">
                   <div id="pf-card" className="scrollmenu">
-                  <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="usersvg" src={usersvg}/><br/>Me</a>
-                  {profiles.map(profile =>(<>
-                    <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age'],);}}><img id="usersvg" src={usersvg}/><br/>
-                       {profile['name']}</a></>
-                  ))}
-                  
-                  </div>
-                 
-                  <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
-                  </div>
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="usersvg" src={usersvg}/><br/>Me</a>
+                    {profiles.map(profile =>(<>
+                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age'],);}}><img id="usersvg" src={usersvg}/><br/>
+                        {profile['name']}</a></>
+                    ))}
+                   </div>
+                 </div>  
 
               <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>
        <div>
@@ -92,6 +89,10 @@ export default function ProfileSelection(props) {
           
         </Modal.Footer>
       </Modal>
+              </div>
+              <div className='pfdiv'>
+                    <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
+              </div>
               </div>
             </Card.Body>
           </Card>

@@ -130,7 +130,7 @@ setError("Some error occured")
 
 }
 
-  function handleSubmit(e) {
+ async function handleSubmit(e) {
     e.preventDefault()
    setError("")
  
@@ -141,13 +141,74 @@ setError("Some error occured")
     
 
 try{
+     if(currentUser)
+      {
+          setError("")
+          setLoading(true)
+
+          const token = await  currentUser.getIdToken()
+   
+          var d={  
+           name : nameRef.current.value,
+           gender : genderRef.current.value,
+           dob : dobRef.current.value,
+           phone : phoneRef.current.value
+
+
+            };
+
+ 
+
+          var requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'token': token },
+          body:JSON.stringify(d)
+        };
+
+          let res = await fetch('http://localhost:5000/update-patient-profile', requestOptions);
+   res = await res.text();
+          res = JSON.parse(res)
+
+ 
+          if(res.isError)
+          {
+
+            
+               setError("Error while updating profile")  
+
+          }else{
+
+
+            setSuccess("Profile updated successfully")
+          }
+
+     setLoading(false)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      }
 
 }catch(e)
 {
+         setLoading(false)
 
 }
 
 
+     setLoading(false)
 
 
 

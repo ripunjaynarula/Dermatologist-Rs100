@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Card, Alert, Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import usersvg from './img/user.svg';
+import addusersvg from './img/add-group.svg';
+
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
@@ -71,9 +73,13 @@ export default function ProfileSelection(props) {
                       <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age'],);}}><img id="usersvg" src={usersvg}/><br/>
                         {profile['name']}</a></>
                     ))}
-                   </div>
-                   <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
 
+
+
+                      <a  href="#" className='inactive'   id="profile" onClick={handleShow}><img id="usersvg" src={addusersvg}/><br/>Add Profile</a>
+
+                   </div>
+ 
                  </div>  
 
               <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>

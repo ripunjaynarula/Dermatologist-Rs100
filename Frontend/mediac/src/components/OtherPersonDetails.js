@@ -42,10 +42,7 @@ export default function OtherPersonForm(props) {
         if (res['status'] === 'saved_successfuly') {
           props.setProfile(res['id'], res['name']);
           props.addNewProfile(res['id'],res['name']);
-          props.addNewAge(res['id'],odobRef.current.value)
-          props.addGender(res['id'],ogenRef.current.value)
-          props.setCurrentRelation(res['id'],relRef.current.value)
-
+       
           props.close();
         } else {
           // display error!

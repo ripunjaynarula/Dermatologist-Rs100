@@ -39,6 +39,7 @@ export default function OtherPersonForm(props) {
         let res = await fetch('http://localhost:5000/addNewProfile', requestOptions);
         res = await res.text()
         res = JSON.parse(res)
+        console.log
         if (res['status'] === 'saved_successfuly') {
           props.setProfile(res['id'], res['name']);
           props.addNewProfile(res['id'],res['name']);

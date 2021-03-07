@@ -52,8 +52,6 @@ export default function ProfileSelection(props) {
     tempProfs.push({id: id, name: name});
     console.log(tempProfs);
     setProfiles(tempProfs);
-
-    {}
   }
 
      return (
@@ -63,10 +61,9 @@ export default function ProfileSelection(props) {
              <Card id="cardbox">
             
             <Card.Body>
-             <div>
               {error && <Alert variant="danger">{error}</Alert>}
               
-              <div id="pf-card" className='pfcardstyles'>
+              <div id="pf-card">
                 <div id="sectionpf">
                   <div id="pf-card" className="scrollmenu">
                     <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="usersvg" src={usersvg}/><br/>Me</a>
@@ -75,6 +72,8 @@ export default function ProfileSelection(props) {
                         {profile['name']}</a></>
                     ))}
                    </div>
+                   <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
+
                  </div>  
 
               <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>
@@ -89,10 +88,6 @@ export default function ProfileSelection(props) {
           
         </Modal.Footer>
       </Modal>
-              </div>
-              <div className='pfdiv'>
-                    <a href="#" className="addpfbtn" onClick={handleShow}>+</a>
-              </div>
               </div>
             </Card.Body>
           </Card>

@@ -31,9 +31,6 @@ export default function Choice(){
   const allergiesRef = useRef()
   const previousRef = useRef()
   
-
-
-
   const prev = useRef()
   const docType = useRef()
   const info = useRef()

@@ -5,6 +5,10 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     var patient: any = await patients.findOne({uid: req.body.uid});
+   
+   console.log(req.body)
+   
+   
     if (patient){
  
         let l = patient.profiles.length
@@ -15,12 +19,16 @@ router.post('/', async (req, res) => {
             id: (l+1),
             gender: req.body.gender,
         };
-        patient.profiles.push(info);
         try {
-            patient.save()
+              console.log("lodalassun")
+                    patient.profiles.push(info);
+console.log(info)
+       var i=   await  patient.save()
+            console.log(i)
             return res.send({status: 'saved_successfuly', id: info['id'], name: info['name'], age: info['age'], gender: info['gender'], relation:['relation']});
 
         } catch (e) {
+            console.log(e)
             return res.send({status: 'technical_error'});
         }
     }

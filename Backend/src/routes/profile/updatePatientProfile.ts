@@ -8,11 +8,12 @@ router.post('/', async (req, res) => {
 
         var name = req.body.name;
         var dob = req.body.dob;
+        var phone = req.body.phone
         var gender = req.body.gender
         try {
 
-
-    var patient: any = await patients.updateOne({uid: req.body.uid},  { $set: { name, dob, gender,  } });
+console.log(req.body)
+    var patient: any = await patients.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, phone  } });
 fbUpdate.changeNameFirebaseAuth(req, name )
 
             return res.send({status: "updated", isError : false})

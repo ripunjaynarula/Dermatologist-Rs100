@@ -20,6 +20,9 @@ import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
 import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
 import profilePicturePatientSave from './routes/profile/savePatientProfileImage'
+import updatePatientProfile from './routes/profile/updatePatientProfile'
+import updateDoctorProfile from './routes/profile/updateDoctorProfile'
+import addYtVideo from './routes/videos/addVideo'
 
 
 
@@ -53,8 +56,10 @@ app.use('/doctorLogin', doctorLogin);
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
+app.use('/update-patient-profile', checkAuth, updatePatientProfile);
 
 app.use('/add-blog', checkAuth, addBlog);
+app.use('/add-video', checkAuth, addYtVideo);
 
 
 

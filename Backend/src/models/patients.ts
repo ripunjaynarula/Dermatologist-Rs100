@@ -23,12 +23,11 @@ const patients = mongoose.model('patients', new mongoose.Schema({
      },
     phone: {
         type: Number,
-        required: true,
-        unique: true,
+         unique: true,
     },
     gender: {
         type: String,
-        enum: ['Male', 'Female', 'Rather not say']
+        enum: ['Male', 'Female','Others', 'Rather not say']
     },
     verified: {
         type: Boolean,

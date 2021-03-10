@@ -60,7 +60,7 @@ export default function ProfileSelection(props) {
         <div id="formbody">
           <br/>  <br/>
            <h5 style ={{marginBottom : "22px",fontWeight:"bold"}}>Is this for you or someone else? </h5> 
-             <Card id="cardbox">
+          <Card id="cardbox">
             
             <Card.Body>
               {error && <Alert variant="danger">{error}</Alert>}

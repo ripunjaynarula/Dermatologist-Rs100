@@ -17,33 +17,8 @@
     }
 }
 
-.pfcardstyles{
+.pfcardstyles {
     float: left;
-}
-
-.bookbtn {
-    box-shadow: inset 0px 1px 0px 0px rgba(4, 168, 181, 1);
-    background-color: rgba(4, 168, 181, 1);
-    border-radius: 15px;
-    border: 1px solid rgba(4, 168, 181, 1);
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Work Sans;
-    font-size: 13px;
-    padding: 6px 24px;
-    text-decoration: none;
-}
-
-.bookbtn:hover {
-    background-color: rgb(2, 105, 112);
-    border: 1px solid rgb(2, 105, 112);
-    box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
-}
-
-.bookbtn:active {
-    position: relative;
-    top: 1px;
 }
 
 #home1 {
@@ -175,13 +150,13 @@
 }
 
 #bookbtn {
-    box-shadow: inset 0px 1px 0px 0px white;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
     background-color: white;
     border-radius: 50px;
-    border: 1px solid white;
-    display: inline-block;
+    border: none;
     cursor: pointer;
     color: black;
+    margin-left: 0.1rem;
     font-family: Work Sans;
     font-size: 18px;
     padding: 6px 20px;
@@ -189,15 +164,16 @@
 }
 
 #bookbtn:hover {
-    background-color: rgb(2, 105, 112);
-    border: 1px solid rgb(2, 105, 112);
-    box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
+    background-color: #0062af;
+    border: none;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
     color: white;
 }
 
 #bookbtn:active {
     position: relative;
     top: 1px;
+    border: none;
 }
 
 #ellipsebtn {
@@ -214,7 +190,7 @@
 }
 
 #bigtxt {
-    color: rgba(4, 168, 181, 1);
+    color: #0096e0;
     font-family: Lora;
     font-style: normal;
     font-weight: 500;
@@ -224,7 +200,7 @@
 
 @media(min-width:870px) {
     #bookbtn {
-        margin-left: 7%
+        margin-left: 8%
     }
     #hometxt {
         margin-left: 8%;
@@ -256,9 +232,9 @@
 }
 
 .newconbtn:hover {
-    background-color: rgb(2, 105, 112);
-    border: 1px solid rgb(2, 105, 112);
-    box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
+    background-color: #0062af;
+    border: 1px solid #0062af;
+    box-shadow: inset 0px 1px 0px 0px #0062af;
     color: white;
     text-decoration: none;
 }
@@ -282,7 +258,7 @@
 }
 
 .btn {
-    background-color: rgba(4, 168, 181, 1);
+    background-color: #0062af;
 }
 
 .submitbtn {
@@ -300,18 +276,20 @@
     line-height: 1.5 !important;
     border-radius: .25rem !important;
     color: #fff !important;
-    background-color: rgba(4, 168, 181, 1) !important;
-    border-color: rgba(4, 168, 181, 1) !important;
+    background-color: #0062af !important;
+    border-color: #0062af !important;
     box-sizing: border-box !important;
     width: 100% !important;
 }
 
 .submitbtn:hover {
-    background-color: rgb(2, 105, 112) !important;
+    background-color: #1c87da !important;
+    border: none;
 }
 
 .submitbtn:active {
     position: relative;
+    border: none;
     top: 1px;
 }
 
@@ -333,6 +311,7 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    font-family: Work sans;
     align-items: left;
 }
 
@@ -430,9 +409,9 @@
 
 #profile:hover {
     box-shadow: 0 0px 13px 0 rgba(0, 0, 0, 0.2);
-    background-color: rgb(2, 105, 112);
-    border: 0px solid rgb(2, 105, 112);
-    color: white;
+    background-color: #e4e4e4;
+    border: none;
+    color: black;
 }
 
 .inactive {
@@ -441,9 +420,9 @@
 }
 
 .active {
-    box-shadow: 0 0px 13px 0 rgba(0, 0, 0, 0.2);
-    background-color: rgb(2, 105, 112);
-    border: 0px solid rgb(2, 105, 112);
+    box-shadow: 0 0px 13px 0 rgba(4, 168, 181, 1);
+    background-color: #0062af;
+    border: 0px solid #0062af;
     color: white;
     color: black;
 }
@@ -461,8 +440,8 @@ div.scrollmenu a {
 }
 
 .dropdown-item:hover {
-    background-color: rgb(2, 105, 112) !important;
-    color: white !important;
+    background-color: rgb(228, 228, 228) !important;
+    color: black !important;
 }
 
 #popup {
@@ -470,10 +449,10 @@ div.scrollmenu a {
 }
 
 .addpfbtn {
-    box-shadow: inset 0px 1px 0px 0px rgba(4, 168, 181, 1);
+    box-shadow: inset 0px 1px 0px 0px rgb(190, 195, 196);
     background-color: rgba(4, 168, 181, 1);
     border-radius: 50%;
-    border: 1px solid rgba(4, 168, 181, 1);
+    border: none;
     display: flex;
     font-weight: 500;
     color: white;
@@ -489,19 +468,18 @@ div.scrollmenu a {
     float: right !important;
 }
 
-.pfdiv{
+.pfdiv {
     float: right;
 }
 
-.fixdisplay{
+.fixdisplay {
     display: inline-flex;
 }
 
-
 .addpfbtn:hover {
-    background-color: rgb(2, 105, 112);
-    border: 1px solid rgb(2, 105, 112);
-    box-shadow: inset 0px 1px 0px 0px rgb(2, 105, 112);
+    background-color: #0062af;
+    border: 1px solid #0062af;
+    box-shadow: inset 0px 1px 0px 0px #0062af;
     color: white;
     text-decoration: none;
     text-decoration: none!important;
@@ -513,13 +491,14 @@ div.scrollmenu a {
 }
 
 #dbques {
-    width: 100%;
+    width: 80%;
     padding: .375rem .75rem;
     font-size: 1rem;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 10, 0.18);
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
-    border: 1px solid #ced4da;
+    border: none;
     border-radius: .25rem;
     font-family: Work Sans;
     position: relative;
@@ -528,10 +507,14 @@ div.scrollmenu a {
     padding-top: 10px;
 }
 
+#dbques:focus {
+    outline: none;
+}
+
 @media(min-width:870px) {
     #dbques {
         margin-left: 8%;
-        width: 100%;
+        width: 93%;
         padding-bottom: 10px;
         padding-top: 10px;
     }
@@ -552,7 +535,7 @@ div.scrollmenu a {
 }
 
 #wrapper {
-    background-image: url("img/image1.png");
+    background-image: url("img/banner3.jpg");
     background-size: cover;
     display: flex;
     padding: 23px;

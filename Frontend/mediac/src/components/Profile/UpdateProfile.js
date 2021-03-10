@@ -322,9 +322,12 @@ disabled = "true"
 <Col sm>    <Form.Group id="gender">
               <Form.Label style = {Texts.FormLabel}>Gender</Form.Label>
                   <select name="Gender" ref={genderRef} id="dropdown-basic">
-                      <option value="others">Rather not say</option>
+                     <option style={{display:"none"}}>  </option>
+
                         <option value="male">Male</option>
                         <option value="female">Female</option>
+                                              <option value="Rather not say">Rather not say</option>
+
                         
                 </select>
             </Form.Group></Col>

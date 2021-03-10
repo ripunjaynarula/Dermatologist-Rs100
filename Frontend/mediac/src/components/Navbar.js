@@ -52,7 +52,10 @@ const NavBar = () => {
     
               <ReactBootStrap.Nav.Link className="navlink" href="/about">About</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">Blog</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/faq">FAQs</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link  className="navlink" href="/conditions">Conditions</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link  className="navlink" href="/treatments">Treatments</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link  className="navlink" href="/tube">Tube</ReactBootStrap.Nav.Link>
+
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
 {!flag ?               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link> : <div></div>}
             </ReactBootStrap.Nav>
@@ -71,18 +74,19 @@ const NavBar = () => {
                 <ReactBootStrap.Dropdown.Menu style = {{ border : "none", boxShadow: "0px 0px 13px 1px #e2d9d9", 
 }}>
                   
-                  <ReactBootStrap.Dropdown.Item href="#/action-2">My Consultations</ReactBootStrap.Dropdown.Item>
-                  <ReactBootStrap.Dropdown.Item href="#/action-2">My Medical Records</ReactBootStrap.Dropdown.Item>
+                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Consultations</ReactBootStrap.Dropdown.Item>
+                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Medical Records</ReactBootStrap.Dropdown.Item>
 
-                  <ReactBootStrap.Dropdown.Item   href="/update-profile">Edit Profile</ReactBootStrap.Dropdown.Item>
-  
+                  <ReactBootStrap.Dropdown.Item   href="/update-profile" style = {{fontFamily : "work sans"}}>Edit Profile</ReactBootStrap.Dropdown.Item>
+                    <ReactBootStrap.Dropdown.Item   href="/change-password" style = {{fontFamily : "work sans"}}>Change Password</ReactBootStrap.Dropdown.Item>
+
                   <ReactBootStrap.Dropdown.Divider />
 
-                  <ReactBootStrap.Dropdown.Item  variant="link" onClick={handleLogout}>Log Out</ReactBootStrap.Dropdown.Item>
+                  <ReactBootStrap.Dropdown.Item  variant="link" style = {{fontFamily : "work sans"}} onClick={handleLogout}>Log Out</ReactBootStrap.Dropdown.Item>
                 </ReactBootStrap.Dropdown.Menu>
               </ReactBootStrap.Dropdown>
               </div>:arr.map((elem) => (
-                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
+                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} style = {{fontFamily : "work sans"}} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
               ))}
             </ReactBootStrap.Nav>
            </ReactBootStrap.Navbar.Collapse>

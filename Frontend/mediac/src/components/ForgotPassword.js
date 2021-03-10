@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Container,Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
-
+import {CardMain} from "../css/Card";
+import {Texts} from "../css/Texts";
 export default function ForgotPassword() {
   const emailRef = useRef()
   const { resetPassword } = useAuth()
@@ -17,7 +18,8 @@ export default function ForgotPassword() {
       setMessage("")
       setError("")
       setLoading(true)
-      await resetPassword(emailRef.current.value)
+   var res =   await resetPassword(emailRef.current.value)
+   console.log(res)
       setMessage("Check your inbox for further instructions")
     } catch {
       setError("Failed to reset password")
@@ -28,28 +30,46 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <Card>
+
+   <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "90vh" }}>
+      
+      <Card style={{CardMain},{ maxWidth: "400px" }}  >
+<Card.Title>
+
+</Card.Title>
         <Card.Body>
-          <h2 className="text-center mb-4">Password Reset</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+
+          <h4 className="text-center mb-4" style = {Texts.Heading}>Password Reset</h4>
+
+<hr></hr>       
+     {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}
-          <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label style = {Texts.FormLabel}>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+
+     
+    <Button disabled={loading} className="w-100" type="submit">
               Reset Password
             </Button>
+         
+            {/* <p className="submitbtn" type="submit">Login</p> */}
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/login">Login</Link>
-          </div>
+
+        
         </Card.Body>
-      </Card>
+      
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
-    </>
+      </div><br/>
+      </Card>
+      
+      </Container>
+
+
+       </>
   )
 }
+ 

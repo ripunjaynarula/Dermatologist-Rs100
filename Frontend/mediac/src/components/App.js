@@ -18,6 +18,8 @@ import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
 import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
+import AddVideo from "../components/videos/addVideos"
+
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
 
@@ -43,7 +45,9 @@ function App() {
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
               <PrivateRoute path='/Choice' component={Choice} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
-              <Route path='/add-blog' component={FormEditors} />
+              <PrivateRoute path='/add-blog' component={FormEditors} />
+                            <PrivateRoute path='/add-video' component={AddVideo} />
+
 
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Card, Form, Container, Alert } from "react-bootstrap"
+import { Card, Form,Button, Container, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import Accordion from "./Accordion";
@@ -21,6 +21,7 @@ export default function Dashboard() {
   const { currentUser, logout } = useAuth()
   const dbinfo = useRef()
   const history = useHistory()
+  const quest = useRef()
 
   async function handleLogout() {
     setError("")
@@ -52,6 +53,10 @@ export default function Dashboard() {
     fetchVerification();
   }, [currentUser, history])
 
+ function onClick(){
+ history.push('/Choice/?ques=' + quest.current.value ) 
+}
+
   async function handleSubmit(e) {
     e.preventDefault()}
 
@@ -67,10 +72,10 @@ export default function Dashboard() {
           </div>
           <Form onSubmit={handleSubmit}>
           <Form.Group id="ocity">
-                  <input type="text" id="dbques" style = {{borderRadius : "8px"}} placeholder="Tell us your symptom or health problem"/>
+                  <input type="text" ref = {quest} id="dbques" style = {{borderRadius : "8px",  }} placeholder="Tell us your symptom or health problem"/>
                 </Form.Group>
           </Form>
-          <a href="/Choice" id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultaion</a>
+          <Button onClick={onClick}  id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultaion</Button>
         </div>
     {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
     {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}

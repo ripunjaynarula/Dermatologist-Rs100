@@ -13,19 +13,21 @@
     line-height: 1.5 !important;
     border-radius: .25rem !important;
     color: #fff !important;
-    background-color: rgba(4, 168, 181, 1) !important;
+    background-color: #0062af !important;
     box-shadow: 0 0px 5px 0px #e2d9d9, 0 0px 0px 0px #e2d9d9, 0px 0 0px 0px #e2d9d9, 0px 0 10px 1px #e2d9d9;
     border: none !important;
     min-width: 200px !important;
 }
 
 .primaryButton:hover {
-    background-color: rgb(2, 105, 112) !important;
+    background-color: #1c87da !important;
+    border: none;
 }
 
 .primaryButton:active {
     position: relative;
     top: 1px;
+    border: none
 }
 
 .secondaryButton {

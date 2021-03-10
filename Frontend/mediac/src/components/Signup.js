@@ -82,11 +82,12 @@ console.log(e)
 
   return (
     <>
-    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "90vh" }}>
-      <Card  style={{CardMain},{ minHeight: "100vh" },{ maxWidth: "100vh" }} >
+    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "92vh" }}>
+      <Card  style={{CardMain},{ maxWidth: "60vh" }} >
         <Card.Body>
          < div id="cardbox">
           <h2 className="text-center mb-4"  style={Texts.Heading} >Sign Up</h2>
+          <hr></hr>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group  id="name">

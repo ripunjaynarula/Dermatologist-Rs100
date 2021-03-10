@@ -2,7 +2,7 @@ import React, {useRef,useEffect, useState, useContext} from "react";
 import { Form, Button, Alert } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
 import bgimg from './img/image1.png';
-import ellipse from './img/ellipse.png';
+import ellipse from './img/ellipse2.png';
 import  "./styles.css";
 import firebase from 'firebase'
 import { auth } from '../firebase'
@@ -77,7 +77,9 @@ export default function Home() {
                   <input type="text" id="dbques" style = {{borderRadius : "8px"}} placeholder="Tell us your symptom or health problem" ref={dataRef} onChange={handleChange}/>
           </Form.Group>
           </Form>
-          <a onClick={handleShow} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultation</a>
+          <Button onClick={handleShow} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultation</Button>
+      
+      
         <Modal show={show} onHide={handleClose} id="nlogin">
        
        <LoginPopup/>

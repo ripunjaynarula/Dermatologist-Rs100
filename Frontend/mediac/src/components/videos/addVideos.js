@@ -31,10 +31,12 @@ import useWindowDimensions from "../../functions/windowDimensions"
 }
 const FormEditors = () => {
 
-  const [picture, setPicture] = useState(null);
-  const [content, setContent] = useState("");
-const [file, setFile] = useState("");
-  const title = useRef()
+   const [content, setContent] = useState("");
+   const title = useRef()
+      const ytLink = useRef()
+   const keyword = useRef()
+   const metaDesc = useRef()
+
   const {  currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -45,19 +47,18 @@ const [file, setFile] = useState("");
   );
 
 
-   const onChangePicture = e => {
-    if (e.target.files && e.target.files[0]){
-           setPicture(URL.createObjectURL(e.target.files[0]) );
-      setFile(e.target.files[0])
-    }
-  
-   else {
-      setPicture(null)  
-      setFile("")
-  }
-};
  
  
+ function matchYoutubeUrl(url) {
+ var regExp= /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+if (match && match[2].length === 11) {
+     console.log(match[2])
+
+  return match[2];
+} 
+    return false;
+}
   async function handleSubmit(i) {
     if(!content)
     {
@@ -69,19 +70,31 @@ const [file, setFile] = useState("");
                   alert("Content should be more than 100 letters")
 return
     } 
-
-    if(!title.current)
+     if(!title.current)
     {
              alert("Title is missing")
 return  
     }
     if(title.current.value.trim().length===0){
-       alert("Title is missing")
+       alert("Title is missings")
+return    
+}
+   if(!ytLink.current)
+    {
+             alert("Youtube Link is missing")
+return  
+    }
+    if(ytLink.current.value.trim().length===0){
+       alert("Youtube link is missing")
 return    
 }
 
+if(!matchYoutubeUrl(ytLink.current.value)){
 
+       alert("Link is not valid. Use only youtube link")
+return;
 
+}
 
     try {
 
@@ -93,13 +106,13 @@ return
 
           const token = await app.auth().currentUser.getIdToken(true)
    
-          var d={ postData: content, title : title.current.value, 
-          fileName : file["name"] ? file["name"] : null,
-          isPublished : i ===0 ? false : true, 
-          fileUploaded : false,
-          blogId : null,
-          image : file["name"]
-           
+          var d={ postData: content,
+           title : title.current.value, 
+          ytUrl : ytLink.current.value,
+          keywords: keyword.current.value,
+          metaDescription : metaDesc.current.value
+         
+             
             };
 
  
@@ -110,52 +123,34 @@ return
           body:JSON.stringify(d)
         };
 
-          let res = await fetch('http://localhost:5000/add-blog', requestOptions);
+          let res = await fetch('http://localhost:5000/add-video', requestOptions);
    res = await res.text();
           res = JSON.parse(res)
  
-          d.image = res.fileName
-          d.blogId = res.blogId
+          console.log(res)
 
 
 
-
-          if(file)
+      
+          if(res.status === "invalid_link")
           {
-
-
-              await  uploadFile(res.url)
-
-
-              d.fileUploaded = true
-              requestOptions = {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'token': token },
-              body:JSON.stringify(d)
-              };
-                        let res2 = await fetch('http://localhost:5000/add-blog', requestOptions);
-
-              res2 = await res2.text();
-              res= JSON.parse(res2)
-    
+              alert ("Invalid video link")
 
           }
 
- 
-          if(!res.isError)
-          {
-
-            if(res.status === "saved_draft")
+            if(res.status === "technical_error")
             {
-              alert("Draft saved successfully")
-            }
+            await alert("Some error occured")
+ 
+             }
             if(res.status === "saved")
             {
-             var da = await alert("Post Published")
-             console.log(da)
-            }
+         await alert("Post Published")
+history.push('/')        
 
-          }
+    }
+
+      
 
 
 
@@ -192,28 +187,7 @@ return
 
   }
 
-
-async function uploadFile(putURL) {
  
- 
- let r = await fetch(putURL, {
-    method: "PUT",
-    body: file,
-    headers: {
-        "Content-Type": "application/octet-stream",
-      "x-amz-acl": "public",
-   
-     },
-  });
-
-  console.log(r)
-
- 
-
-    
-  };
-
-
 
 
 
@@ -242,20 +216,28 @@ async function uploadFile(putURL) {
   return (
 
     <Container className="d-flex align-items-center justify-content-center">
-      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-30 , backgroundColor : "#ededf2"}}>
+      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-80 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
       <div >
         <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>
           <Row>
             <Col>
-              <h2><strong>Publish</strong></h2>
+              <h2><strong>Add Video</strong></h2>
               <br></br>
               <Card>
                 <CardBody>
               
 
                   <Form method="post">
- <Form.Group id="email" style={{paddingTop: 14}}>
+
+
+                       <Form.Group id="vi" style={{paddingTop: 14}}>
+              <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Youtube Video Link</Form.Label>
+              <Form.Control type="url" ref={ytLink} required />
+            </Form.Group>
+
+
+ <Form.Group id="email" style={{paddingTop: 1}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Title</Form.Label>
               <Form.Control type="email" ref={title} required />
             </Form.Group>
@@ -270,16 +252,26 @@ async function uploadFile(putURL) {
         onEditorStateChange={handleEditorChange}
                       editorStyle={{ minHeight :"200px", border: "1.2px solid #ced3da", borderRadius : "4px", paddingLeft: "13px" }} 
                      />
+
+
+
+ <Form.Group id="keyword" style={{marginTop: 18}}>
+              <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Keywords</Form.Label>
+              <Form.Control type="text" ref={title} placeholder = "Write keywords related to the video seperated with comma. Example - skin care, hairfall" />
+            </Form.Group>
+
+
+
+
+ <Form.Group id="desc" style={{paddingTop: 1}}>
+              <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Meta Description</Form.Label>
+              <Form.Control type="text" ref={metaDesc} placeholder = "A short description that appears in google search result" />
+            </Form.Group>
                   </Form>
 <br></br>
    
-{picture &&              <img width="200" height="200" src={picture} alt="No" />   }
-{picture && <br></br>}
-{picture && <br></br>}
-            <input type="file" name="myImage" onChange={onChangePicture}/>
-
-
-                </CardBody>
+ 
+         </CardBody>
               </Card>
             </Col>
           </Row>
@@ -288,14 +280,12 @@ async function uploadFile(putURL) {
           <Row style= {{paddingTop :"22px", paddingLeft : "18px", flexDirection: 'row', justifyContent: 'flex-end', paddingRight : "16px",  }}>
            
 
-<Button disabled={loading}  type="submit"  className = "secondaryButton" onClick= {() => handleSubmit(0)} >
-              Save as draft
-            </Button>
+ 
 
 <div style = {{width : "10px", height : "10px"}}></div>
      
    <Button disabled={loading}  type="submit" className = "primaryButton" onClick= {() => handleSubmit(1)}>
-              Publish
+              Add video
             </Button>
           </Row>
 

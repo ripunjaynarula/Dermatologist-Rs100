@@ -22,13 +22,10 @@ export default function OtherPersonForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-        console.log( onameRef.current.value)
-    console.log( relRef.current.value)
-    console.log( ogenRef.current.value)
-
-    console.log( odobRef.current.value)
+ 
     if (currentUser) {
         setLoading(true);
+        setError('')
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'POST',
@@ -39,9 +36,8 @@ export default function OtherPersonForm(props) {
         let res = await fetch('http://localhost:5000/addNewProfile', requestOptions);
         res = await res.text()
         res = JSON.parse(res)
-        console.log
         if (res['status'] === 'saved_successfuly') {
-          props.setProfile(res['id'], res['name'], res['age'], res['gender'], res['relation']);
+          props.setProfile(res['id'], res['name'], res['relation'], res['gender'], res['age']);
           props.addNewProfile(res['id'],res['name'], res['relation'], res['gender'], res['age']);
           props.close();
         } else {
@@ -97,9 +93,9 @@ export default function OtherPersonForm(props) {
                       <select name="Gender" ref={ogenRef} id="dropdown-basic">
                                 <option style={{display:"none"}}>  </option>
 
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                                              <option value="others">Rather not say</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                                              <option value="Rather not say">Rather not say</option>
 
                         
                 </select>

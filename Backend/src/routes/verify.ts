@@ -1,6 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import patients from '../models/patients'
+import fbUpdate from '../actions/updateDetailsFIrebaseAuth';
 
 const verify = express.Router()
 
@@ -14,17 +15,18 @@ verify.get('/', (req, res) => {
             return res.send({error: 'Could not verify!'});
         }
 
-        const patient: any = await patients.findOne({_id: decoded._id});
+        var patient: any = await patients.findOne({uid: decoded._id});
         if (patient) {
             patient.verified = true;
             try {
                 patient.save()
+                fbUpdate.changeEmailVerificationStatus(patient.uid);
+                
             } catch (e) {
                 console.log(`Error in saving: ${e}`)
                 return
             }
-        }
-
+        } 
         res.redirect('http://localhost:3000/login')
     });
 

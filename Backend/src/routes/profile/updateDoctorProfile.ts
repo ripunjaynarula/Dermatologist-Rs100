@@ -15,14 +15,14 @@ router.post('/', async (req, res) => {
         var pastExperience = req.body.pastExperience
         var awards = req.body.awards
         var specialisation = req.body.specialisation
-        var city = req.body.city
-        var state = req.body.state
-        var languages = req.body.languages
+        var city = "Delhi"
+        var state = "Delhi"
+        var languages = ["english"]
         var username = req.body.username
 
 
         try {
-    const d: any = await doctors.findOne({username});
+    var d: any = await doctors.findOne({username});
     console.log(d)
 if(d)
 {

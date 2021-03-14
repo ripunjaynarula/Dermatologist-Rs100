@@ -9,6 +9,7 @@ import { convertToHTML } from 'draft-convert';
 
  import "../../css/buttons.css";
 import app from '../../firebase'
+import firebase from 'firebase'
 
 import React, { useRef, useState, useEffect } from "react"
 import {   Form, Button,   Row, Alert } from "react-bootstrap"
@@ -43,10 +44,13 @@ const FormEditors = () => {
   const history = useHistory()
   const { height, width } = useWindowDimensions();
  const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
+
+     
+      ()=> EditorState.createEmpty(),
   );
 
-
+ 
+ 
  
  
  function matchYoutubeUrl(url) {

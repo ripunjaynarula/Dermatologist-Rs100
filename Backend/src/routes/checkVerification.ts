@@ -4,7 +4,8 @@ import patients from '../models/patients';
 const router = express.Router();
 
 router.post('/', async (req, res, next) => {
-    var patient: any = await patients.findOne({email: req.body.email})
+
+     var patient: any = await patients.findOne({email: req.body.email})
     if (patient) {
         var verificationStatus = patient.verified;
             if(verificationStatus){

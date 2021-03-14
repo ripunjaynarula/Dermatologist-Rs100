@@ -69,7 +69,7 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     languages: {
         type: Array,
-        default: ['English']
+        default: ['english']
     },
     profileImage: {
         type : String

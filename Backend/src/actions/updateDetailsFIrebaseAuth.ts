@@ -87,6 +87,29 @@ const changeNamePhoneAccessFirebaseAuth = async(req: any, name : string, phone :
 }
 
 
+const changeEmailVerificationStatus = async(uid: any,) => {
+ 
+       admin
+  .auth()
+  .updateUser(uid, {
+    
+    emailVerified: true,
+   })
+  .then((userRecord) => {
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log('Successfully updated user', userRecord.toJSON());
+  })
+  .catch((error) => {
+    console.log('Error updating user:', error);
+  });
+
+
+
+
+   
+}
+
+
 
 
 const changeNameAccessFirebaseAuth = async(req: any, name : string,  role: string) => {
@@ -148,4 +171,4 @@ const changeProfilePicture = async(req: any, imageUrl : string) => {
    
 }
 
-export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture};
+export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus};

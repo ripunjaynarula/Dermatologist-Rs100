@@ -13,6 +13,13 @@ export default function UpdateProfile() {
   const phoneRef = useRef()
   const genderRef = useRef()
   const dobRef = useRef()
+  const degreeRef = useRef()
+  const eduRef = useRef()
+  const graduationRef = useRef()
+  const usernameRef = useRef()
+  const awardsRef = useRef()
+const pastExpRef = useRef()
+const specializatoinRef = useRef()
 
   const passwordConfirmRef = useRef()
   const { currentUser, updatePassword, updateEmail } = useAuth()
@@ -26,13 +33,67 @@ const [file, setFile] = useState("");
   const { height, width } = useWindowDimensions();
 
  
- 
-
 
  
+ const [name, setName] = useState("")
+
+ const [gender, setGender] = useState("")
+ const [dob, setDob] = useState("")
+ const [phone, setPhone] = useState("") 
+  const [degree, setDegree] = useState("") 
+ const [education, setEducation] = useState("") 
+ const [special, setSpecial] = useState("") 
+ const [graduation, setGraduation] = useState("") 
+  const [username, setUsername] = useState("") 
+  const [pastExp, setPastExp] = useState("") 
+  const [awards, setawards] = useState("") 
+   useEffect( () => {
+    
+    getProfiles();
+  }, [ ]);
 
 
- 
+ async function getProfiles() {
+
+
+       if (currentUser) {
+        const token = await  currentUser.getIdToken(true)
+         const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({patientUid: currentUser.uid})
+
+          };
+        let res = await fetch('http://localhost:5000/doctor-profile', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+console.log(res)
+        if(res.isError)
+        {
+          return
+        }
+       var resp = res.data
+        if(resp.dob)
+        {
+
+          setDob(resp.dob.split("T")[0])
+        }
+        setName(resp.name)
+         setGender(resp.gender)
+        setPhone(resp.phone)
+        setGraduation(resp.graduationYear)
+                setDegree(resp.degree)
+        setEducation(resp.education)
+        setPastExp(resp.pastExp)
+        setawards(resp.awards)
+        setSpecial(resp.specialisation)
+        setUsername(resp.username)
+
+
+        console.log(resp)
+       }
+
+    }
    const onChangePicture = e => {
     if (e.target.files && e.target.files[0]){
            setPicture(URL.createObjectURL(e.target.files[0]) );
@@ -61,6 +122,11 @@ try{
           var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
+                body : JSON.stringify({
+
+fileName :   file["name"]
+
+          })
          };
 
           let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
@@ -92,7 +158,7 @@ setError("Some error occured")
  setLoading (false)
 requestOptions.body = JSON.stringify({profileImage: res.fileName})
 
-          let resp = await fetch('http://localhost:5000/save-patient-profile-image', requestOptions);
+          let resp = await fetch('http://localhost:5000/save-doctor-profile-image', requestOptions);
 
 if(resp.isError)
 {
@@ -117,7 +183,7 @@ setError("Some error occured")
 
 }
 
-  function handleSubmit(e) {
+ async function handleSubmit(e) {
     e.preventDefault()
    setError("")
  
@@ -128,13 +194,82 @@ setError("Some error occured")
     
 
 try{
+     if(currentUser)
+      {
+          setError("")
+          setLoading(true)
+
+          const token = await  currentUser.getIdToken()
+   
+          var d={  
+           name : nameRef.current.value,
+           gender : genderRef.current.value,
+           dob : dobRef.current.value,
+           phone : phoneRef.current.value,
+           graduationYear : graduationRef.current.value,
+           degree : degreeRef.current.value,
+           education : eduRef.current.value,
+           pastExperience : pastExpRef.current.value,
+           awards : awardsRef.current.value,
+           specialisation : specializatoinRef.current.value,
+           username : usernameRef.current.value,
+           
+
+
+            };
+
+ 
+
+          var requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'token': token },
+          body:JSON.stringify(d)
+        };
+
+          let res = await fetch('http://localhost:5000/update-doctor-profile', requestOptions);
+   res = await res.text();
+          res = JSON.parse(res)
+
+ 
+          if(res.isError)
+          {
+
+            
+               setError("Error while updating profile")  
+
+          }else{
+
+
+            setSuccess("Profile updated successfully")
+          }
+
+     setLoading(false)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      }
 
 }catch(e)
 {
+         setLoading(false)
 
 }
 
 
+     setLoading(false)
 
 
 
@@ -153,7 +288,7 @@ try{
           <div>
 <br></br>
 
-<Container  style={{    paddingTop: '20px', height: height - 80}}>
+<Container  style={{    paddingTop: '20px', }}>
 
 
  <Card style = {CardMain} >
@@ -248,9 +383,16 @@ disabled = "true"
 <Col sm>    <Form.Group id="gender">
               <Form.Label style = {Texts.FormLabel}>Gender</Form.Label>
                   <select name="Gender" ref={genderRef} id="dropdown-basic">
-                      <option value="others">Rather not say</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                                         <option style={{display:"none"}}>  </option>
+{gender === "Male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+                       
+                       {gender === "Female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+
+ {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
+:
+                                            <option value="Rather not say">Rather not say</option>
+}                       
+  
                         
                 </select>
             </Form.Group></Col>
@@ -267,24 +409,138 @@ disabled = "true"
 
  </Row>
 
+
+            <hr style = {{}}></hr>
+
+
+ <Row>
+
+<Col sm>    <Form.Group id="degree">
+              <Form.Label style = {Texts.FormLabel}>Degree</Form.Label>
+                 <Form.Control
+                type="text"
+                ref={dobRef}
+               />
+            </Form.Group></Col>
+
+<Col sm>   
+ <Form.Group id="education">
+              <Form.Label style = {Texts.FormLabel}>Education</Form.Label>
+              <Form.Control
+                type="text"
+                ref={dobRef}
+               />
+            </Form.Group></Col>
+
+ </Row>
+
+ <Row>
+
+<Col sm>    <Form.Group id="graduationYear">
+              <Form.Label style = {Texts.FormLabel}>Graduation Year</Form.Label>
+                 <Form.Control
+                type="text"
+                ref={dobRef}
+               />
+            </Form.Group></Col>
+
+<Col sm>   
+ <Form.Group id="username">
+              <Form.Label style = {Texts.FormLabel}>Specialisation</Form.Label>
+              <Form.Control
+                type="text"
+                ref={dobRef}
+               />
+            </Form.Group></Col>
+
+ </Row>
+
+
+ <Row>
+
+ 
+
+<Col sm>   
+ <Form.Group id="username">
+              <Form.Label style = {Texts.FormLabel}>Username</Form.Label>
+              <Form.Control
+                type="text"
+                ref={dobRef}
+               />
+            </Form.Group></Col>
+
+ </Row>
+<hr></hr>
+
+ <Row>
+
+<Col sm>    <Form.Group id="graduationYear">
+              <Form.Label style = {Texts.FormLabel}>Past Experience</Form.Label>
+                 <textarea             className="form-control"
+ name="comments" style={{width: '100%', 
+  
+  }} rows="3"></textarea>
+
+            </Form.Group></Col>
+
+ 
+ 
+
+ </Row>
+<Row>
+
+<Col sm>    <Form.Group id="graduationYear">
+              <Form.Label style = {Texts.FormLabel}>Awards</Form.Label>
+                 <textarea             className="form-control"
+ name="comments" style={{width: '100%', 
+ 
+  }} rows="3"></textarea>
+
+            </Form.Group></Col>
+
+ 
+ 
+
+ </Row>
+
+
+
+
+
+
+
+
+
+
+
           <br></br>
-          
-            <Button disabled={loading} className="submitbtn" type="submit">
-              Update
-            </Button>
+        
           </Form>
         </Card.Body>
       </Card>
       
+     
       
-      <div className="w-100 text-center mt-2" style = {{marginBottom :"20px"}}>
-        <Link to="/">Cancel</Link>
-      </div>
+      <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px" }}>
+           
+      
+
+<Button disabled={loading}   className = "secondaryButton" onClick= {() =>        history.push('/')} >
+Cancel            </Button>
+
+<div style = {{width : "10px", height : "10px"}}></div>
+
+
+   <Button disabled={loading} style={{height : "42px" }}  type="submit" className = "primaryButton" onClick= {handleSubmit}>
+Update            </Button>
+          </Row>
 
 
 
 </Container>
 
+<br></br>
+<br></br>
 
           </div>
      

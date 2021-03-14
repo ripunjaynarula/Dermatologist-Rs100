@@ -6,8 +6,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     var patient: any = await patients.findOne({uid: req.body.uid});
    
-   console.log(req.body)
-   
+    
    
     if (patient){
  
@@ -20,12 +19,9 @@ router.post('/', async (req, res) => {
             gender: req.body.gender,
         };
         try {
-              console.log("lodalassun")
-                    patient.profiles.push(info);
-console.log(info)
-       var i=   await  patient.save()
-            console.log(i)
-            return res.send({status: 'saved_successfuly', id: info['id'], name: info['name'], age: info['age'], gender: info['gender'], relation:['relation']});
+                     patient.profiles.push(info);
+        var i=   await  patient.save()
+             return res.send({status: 'saved_successfuly', id: info['id'], name: info['name'], age: info['age'], gender: info['gender'], relation:['relation']});
 
         } catch (e) {
             console.log(e)

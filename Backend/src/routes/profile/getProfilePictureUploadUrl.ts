@@ -8,9 +8,15 @@ router.post('/', async (req, res) => {
   
  
         try {
+console.log(req.body.fileName)
+             var s = req.body.fileName;
+            if(s.split(".").length < 2)
+            {
+                return res.send({status: "invalid_filename", isError : true})
+            }
+            var extention = s.split(".")[s.split(".").length-1];
 
-
-            var fileName = req.body.uid + ".png";
+            var fileName = req.body.uid + "." + extention;
 
         } catch (e) {
             console.log(e);

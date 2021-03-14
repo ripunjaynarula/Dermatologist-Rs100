@@ -38,3 +38,12 @@
          margin-left: 80px;
      }
  }
+ 
+ .customDrop {
+     margin-left: 25px;
+     border-radius: 4px;
+ }
+ 
+ .navbar .dropdown-menu:after {
+     display: none;
+ }

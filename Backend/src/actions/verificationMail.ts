@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-const sendVerificationMails = (email: string, token: string) => {
+const sendVerificationMails = (email: any, token: string) => {
 
     let transporter=nodemailer.createTransport({
         host:'smtp.hostinger.com',

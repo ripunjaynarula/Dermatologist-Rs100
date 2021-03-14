@@ -26,12 +26,53 @@ const [fil, setFil] = useState(null);
   const { height, width } = useWindowDimensions();
 
  
+ const [name, setName] = useState("")
+
+ const [gender, setGender] = useState("")
+ const [dob, setDob] = useState("")
+ const [phone, setPhone] = useState("")
+ 
+  useEffect( () => {
+    
+    getProfiles();
+  }, [ ]);
+
+
  
 
+async function getProfiles() {
 
- 
 
+       if (currentUser) {
+        const token = await  currentUser.getIdToken(true)
+        console.log(token)
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({patientUid: currentUser.uid})
 
+          };
+        let res = await fetch('http://localhost:5000/patient-profile', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+console.log(currentUser.photoURL)
+        if(res.isError)
+        {
+
+        }
+        res = res.data
+        setName(res.name)
+        if(res.dob)
+        {
+
+          setDob(res.dob.split("T")[0])
+        }
+         setGender(res.gender)
+        setPhone(res.phone)
+        console.log(res)
+       }
+
+    }
  
    const onChangePicture = e => {
     if (e.target.files && e.target.files[0]){
@@ -59,13 +100,16 @@ try{
           setLoading(true)
           setError("")
           const token = await currentUser.getIdToken()
-console.log(file.src)
-   console.log(file.name)
-   console.log(file.type)
+ 
 
           var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
+          body : JSON.stringify({
+
+fileName :   file["name"]
+
+          })
          };
 
           let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
@@ -227,7 +271,9 @@ try{
           <div>
 <br></br>
 
-<Container  style={{    paddingTop: '20px', height: height - 80}}>
+<div>
+  
+  <Container  style={{   height : "100vh" , paddingTop: '20px',}}>
 
 
  <Card  style = {CardMain}>
@@ -275,7 +321,7 @@ try{
                 type="text"
                 ref={nameRef}
                 required
-                defaultValue={currentUser.displayName}
+                defaultValue={name}
               />
             </Form.Group>
 
@@ -308,6 +354,8 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Phone number</Form.Label>
               <Form.Control
                 type="text"
+                                                defaultValue={phone}
+
                 ref={phoneRef}
               />
             </Form.Group></Col>
@@ -324,11 +372,15 @@ disabled = "true"
                   <select name="Gender" ref={genderRef} id="dropdown-basic">
                      <option style={{display:"none"}}>  </option>
 
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                                              <option value="Rather not say">Rather not say</option>
 
-                        
+{gender === "Male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+                       
+                       {gender === "Female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+
+ {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
+:
+                                            <option value="Rather not say">Rather not say</option>
+}                       
                 </select>
             </Form.Group></Col>
 
@@ -337,7 +389,7 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Date of birth</Form.Label>
               <Form.Control
                 type="date"
-                ref={dobRef}
+defaultValue={dob}               ref={dobRef}
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group></Col>
@@ -365,10 +417,13 @@ Cancel            </Button>
    <Button disabled={loading} style={{height : "42px" }}  type="submit" className = "primaryButton" onClick= {handleSubmit}>
 Update            </Button>
           </Row>
+<br></br>
+<br></br>
 
 </Container>
 
-          </div>
+     
+  </div>     </div>
      
     </>
   )

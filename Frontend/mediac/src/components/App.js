@@ -11,6 +11,8 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./Profile/UpdateProfile"
+import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
+
 import ChangePassword from "./Profile/changePassword"
 
 import VerificationSent from './VerificationSent'
@@ -19,6 +21,7 @@ import Choice from './Choice'
 import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
 import AddVideo from "../components/videos/addVideos"
+import ViewVideos from "../components/videos/viewVideos"
 
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
@@ -47,11 +50,14 @@ function App() {
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
               <PrivateRoute path='/add-blog' component={FormEditors} />
                             <PrivateRoute path='/add-video' component={AddVideo} />
+                            <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
 
-
+ 
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
+                            <Route path="/videos" component={ViewVideos} />
+
               <Route path="/login" component={Login} />
               <Route path="/DoctorLogin" component={DoctorLogin} />
               <Route path="/forgot-password" component={ForgotPassword} />

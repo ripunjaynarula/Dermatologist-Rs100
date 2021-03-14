@@ -14,13 +14,18 @@ export default function Login() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-
   useEffect( () => {
-    if (currentUser) {
+
+    onlyOnce();
+
+  }, [])
+
+function onlyOnce(){
+ 
+     if (currentUser) {
       history.push('/');
     }
-  }, [currentUser, history])
-
+}
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -29,9 +34,52 @@ export default function Login() {
       setLoading(true)
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       var user =  await login(emailRef.current.value, passwordRef.current.value)
-console.log(await user.user.getIdToken())
+
+
+ 
+ 
+ 
+
+
+var d={ email: emailRef.current.value, name : user.user.displayName};
+
+
+       const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', token : await user.user.getIdToken() },
+        body: JSON.stringify(d)
+        }; 
+
+      let res = await fetch('http://localhost:5000/login', requestOptions)
+ 
+
+      res = await res.text()
+      res = JSON.parse(res)
+
+      console.log(res);
+      setLoading(false)
+
+
+
+
+      if (res['status'] === 'logged_in') {
+        setError('');
+        setLoading(false)
+              history.push('/');
+
+        return;
+      }
+
+      if (res['status'] === 'verification_mail_sent') {
+         setError('');
+        setLoading(false)
+              history.push('/verification-sent');
+
+        return;
+      }
+
        setLoading(false)
-      history.push("/dashboard")
+    //  history.push("/dashboard")
      } catch(e) {
       if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
         setError("Incorrect email or password")

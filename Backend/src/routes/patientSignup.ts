@@ -34,7 +34,7 @@ router.post('/',checkAuth, async (req, res) => {
 
         }       
         let jwtSecret: any = process.env.JWT_SECRET;
-       let verificationToken: string = jwt.sign({_id : patient._id}, jwtSecret);
+       let verificationToken: string = jwt.sign({_id : req.body.uid}, jwtSecret);
 
         sendVerificationMails(req.body.email, verificationToken);
 

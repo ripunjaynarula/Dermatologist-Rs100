@@ -5,6 +5,8 @@ import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser'
 import patientSignup from './routes/patientSignup'
+import login from './routes/login'
+
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
 import checkVerificationRouter from './routes/checkVerification';
@@ -23,6 +25,8 @@ import profilePicturePatientSave from './routes/profile/savePatientProfileImage'
 import updatePatientProfile from './routes/profile/updatePatientProfile'
 import updateDoctorProfile from './routes/profile/updateDoctorProfile'
 import addYtVideo from './routes/videos/addVideo'
+import viewPatientProfile from './routes/profile/viewPatientProfile'
+import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 
 
 
@@ -43,9 +47,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/patientSignup', patientSignup);
+app.use('/login', login);
+
 app.use('/verify', verifyRouter);
-app.use('/checkVerification', checkVerificationRouter);
-app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
+ app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
@@ -57,9 +62,13 @@ app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
 app.use('/update-patient-profile', checkAuth, updatePatientProfile);
+app.use('/update-doctor-profile', checkAuth, updateDoctorProfile);
 
 app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
+app.use('/patient-profile', checkAuth, viewPatientProfile);
+app.use('/doctor-profile',  viewDoctorProfile);
+
 
 
 

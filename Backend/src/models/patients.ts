@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 const patients = mongoose.model('patients', new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        trim: true
+         trim: true,
+        default : ''
     },
     uid: {
         type: String,
@@ -22,8 +22,9 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         type: Date,
      },
     phone: {
-        type: Number,
-         unique: true,
+        type: String,
+         unique: false,
+         default :""
     },
     gender: {
         type: String,
@@ -37,8 +38,14 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         type: Array,
     },
     profileImage:{
-    type : String
-    }
+        type : String
+    },
+     role: {
+        type: String,
+        enum: ['admin', 'customer_care', 'patient'],
+        required: true,
+        default : "patient"
+    },
 }));
 
 export default patients;

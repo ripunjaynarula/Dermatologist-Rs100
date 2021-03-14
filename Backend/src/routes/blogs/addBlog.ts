@@ -28,8 +28,7 @@ router.post('/', async (req, res) => {
         {
             var p = await blogPost.save();
 
-            console.log("inside 1")
-            var s = req.body.fileName;
+             var s = req.body.fileName;
             if(s.split(".").length < 2)
             {
                 return res.send({status: "invalid_filename", isError : true})

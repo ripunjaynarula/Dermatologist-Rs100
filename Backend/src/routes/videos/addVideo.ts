@@ -8,7 +8,11 @@ const router = express.Router();
 router.post('/', async (req, res) => {
 
 
-  
+if(req.body.role != "admin")
+  {
+
+      return res.send({isError : false, status : "invalid_access"})
+  }
  
 
 

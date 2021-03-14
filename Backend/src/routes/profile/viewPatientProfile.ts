@@ -3,15 +3,14 @@ const router = express.Router();
 import patients from '../../models/patients';
 
 router.post('/', async (req, res) => {
-
-
-    
+console.log(req.body)
+ 
         var patientUid = req.body.patientUid
 
 
         try {
-    const d: any = await patients.findOne({patientUid});
-    console.log(d)
+    var d :any = await patients.findOne({uid:patientUid});
+    console.log(d, "---")
 if(d)
 {
 

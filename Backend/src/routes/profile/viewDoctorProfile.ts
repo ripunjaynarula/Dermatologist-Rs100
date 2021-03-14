@@ -6,19 +6,36 @@ import fbUpdate from '../../actions/updateDetailsFIrebaseAuth';
 router.post('/', async (req, res) => {
 
 
-    
-        var username = req.body.username
-
+ 
 
         try {
-    const d: any = await doctors.findOne({username});
+
+
+var d : any;
+
+if(req.body.username)
+ {
+ 
+ var username = req.body.username;
+   d = await doctors.findOne({username});
     console.log(d)
+
+ }else{
+ var uid = req.body.uid;
+   d = await doctors.findOne({uid});
+    console.log(d)
+
+ }
 if(d)
 {
 
-            return res.send({status: "okay", isError : false, data : d})
+    if(req.body.uid === d.uid)
 
-   
+
+            return res.send({status: "private_access", isError : false, data : d})
+else
+               return res.send({status: "public_access", isError : false, data : d})
+
 
 }else{
 

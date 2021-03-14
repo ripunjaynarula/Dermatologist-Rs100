@@ -35,22 +35,7 @@ export default function Dashboard() {
   }
 
   useEffect( () => {
-    async function fetchVerification() {
-      if (currentUser) {
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: currentUser.email, uid: currentUser['uid'] })
-          };
-        let res = await fetch('http://localhost:5000/checkVerification', requestOptions);
-        res = await res.text();
-//        res = JSON.parse(res)
-        if (!res['status']) {
-          history.push('/verification-sent')
-        }
-      }
-    }
-    fetchVerification();
+    
   }, [currentUser, history])
 
  function onClick(){

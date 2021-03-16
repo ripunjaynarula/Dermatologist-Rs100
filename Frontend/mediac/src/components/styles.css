@@ -177,7 +177,7 @@
 }
 
 #ellipsebtn {
-    margin-left: -5%;
+    margin-left: -10%;
 }
 
 #eellipsebtn {
@@ -545,4 +545,8 @@ div.scrollmenu a {
 #blogdiv {
     padding-left: 0% !important;
     margin-left: 0% !important;
+}
+
+#cardbox{
+    width: 80%;
 }

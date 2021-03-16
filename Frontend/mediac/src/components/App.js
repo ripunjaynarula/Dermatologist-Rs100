@@ -7,6 +7,7 @@ import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Dashboard from "./Dashboard"
+import DoctorDashboard from "./DoctorDashboard"
 import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
@@ -22,7 +23,7 @@ import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
 import AddVideo from "../components/videos/addVideos"
 import ViewVideos from "../components/videos/viewVideos"
-
+import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
 
@@ -41,8 +42,8 @@ function App() {
           
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                            <PrivateRoute path="/change-password" component={ChangePassword} />
-
+              <PrivateRoute path="/change-password" component={ChangePassword} />
+              <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />

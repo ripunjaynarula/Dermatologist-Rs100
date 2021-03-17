@@ -47,7 +47,7 @@ export default function DoctorDashboard() {
     <Header/>
     <br/>
 
-    <Container  className="d-flex align-items-center justify-content-center">
+    <Container id="doc" className="d-flex align-items-center justify-content-center">
     <Card id="doccard">
                 <CardBody >
                 <img id="docimg" src={docimg}/>    <br/><br/>

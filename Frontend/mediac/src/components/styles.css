@@ -366,6 +366,7 @@
         padding-right: 0px;
         margin-right: 2%;
         border: 1px solid black;
+        text-align: center;
     }
     #nlogin {
         width: 43%;
@@ -595,3 +596,6 @@ div.scrollmenu a {
     display: inline-block;
 }
 
+#userimg{
+    width: 60%;
+}

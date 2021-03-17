@@ -20,7 +20,21 @@ export default function DoctorDashboard() {
   const [docMail, setDocMail] = useContext(DocMailContext);
 
   useEffect(() =>{
-    console.log(docMail);
+    async function checkLogin(){
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email: docMail})
+      }
+
+      let res = await fetch('http://localhost:5000/verifyDoc', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      if(!res['status']){
+        history.push('/DoctorLogin');
+      }
+    }
+    checkLogin();
   })
 
 

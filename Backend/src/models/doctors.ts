@@ -17,6 +17,10 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         unique: true,
         trim: true
     },
+    token:{
+        type: String,
+        time: true,
+    },
     password: {
         type: String,
         required: true,

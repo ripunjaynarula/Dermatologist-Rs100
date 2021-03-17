@@ -34,10 +34,6 @@ export default function Dashboard() {
     }
   }
 
-  useEffect( () => {
-    
-  }, [currentUser, history])
-
  function onClick(){
  history.push('/Choice/?ques=' + quest.current.value ) 
 }

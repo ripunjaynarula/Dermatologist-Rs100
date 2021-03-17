@@ -1,12 +1,14 @@
 import doctors from '../models/doctors';
-import hashPassword from '../actions/hash';
+import bcrypt from 'bcrypt'
 
 const checkDocAuth = async (req:any, res:any, next:any) => {
     const doc: any = await doctors.findOne({email: req.body.email});
-    const hash: string = await  hashPassword(req.body.email+doc.uid);
-    if (hash === req.session.token) {
-        next();
-        return;
+    if (doc) {
+        const check = await bcrypt.compare((req.body.email+doc.uid), doc.token)
+        if (check) {
+            next();
+            return;
+        }
     }
     return res.send({status:'not_logged_in'});
 }

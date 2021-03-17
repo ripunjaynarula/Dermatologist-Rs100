@@ -28,10 +28,12 @@ import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
 
 export const DataContext = React.createContext();
+export const DocMailContext = React.createContext();
 
 
 function App() {
-  const [consultationData, setConsultationData] = useState('')
+  const [consultationData, setConsultationData] = useState('');
+  const [docMail, setDocMail] = useState("");
   return (
         <Router>
           <AuthProvider>
@@ -43,7 +45,6 @@ function App() {
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/change-password" component={ChangePassword} />
-              <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
@@ -53,14 +54,18 @@ function App() {
                             <PrivateRoute path='/add-video' component={AddVideo} />
                             <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
 
- 
+              <DocMailContext.Provider value={[docMail, setDocMail]}>
+                {/*All doctor private routes go in here*/}
+                <Route path="/DoctorLogin" component={DoctorLogin} />
+                <Route path='/doctordashboard' component={DoctorDashboard}/>
+              </DocMailContext.Provider>
+              
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
                             <Route path="/videos" component={ViewVideos} />
 
               <Route path="/login" component={Login} />
-              <Route path="/DoctorLogin" component={DoctorLogin} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
             </Switch>

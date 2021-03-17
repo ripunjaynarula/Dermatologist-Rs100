@@ -1,21 +1,24 @@
 #header {
-    position: absolute;
-    width: 220px;
+    position:absolute;
+    display:flex;
+    width: 200px;
+    flex-direction:row;
   }
   #header .pro-sidebar {
     height: 100vh;
   }
   #header .closemenu {
     color: white;
-    position: absolute;
-    right: 0;
+    position: relative;
+    display:flex;
     z-index: 9999;
     line-height: 20px;
     border-radius: 50%;
     font-weight: black;
-    font-size: 22px;
-    top: 10px;
+    font-size:25px;
+    top: 15px;
     cursor: pointer;
+    margin-left: 38%;
   }
   #header .pro-sidebar {
     width: 100%;
@@ -30,7 +33,6 @@
     box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
   }
   #header .pro-sidebar-inner .pro-sidebar-layout {
-    overflow-y: hidden;
   }
   #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
     font-size: 20px;
@@ -65,6 +67,5 @@
   
   @media only screen and (max-width: 720px) {
     html {
-      overflow: hidden;
     }
   }

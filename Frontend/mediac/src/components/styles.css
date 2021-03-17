@@ -352,6 +352,10 @@
     #onewconbtn {
         padding-left: 10px;
     }
+    #docidc{
+        width:100%;
+        display:flex;
+    }
     #resetbtn {
         text-align: center !important;
         margin-left: 29.8% !important;
@@ -367,6 +371,15 @@
         width: 43%;
         box-shadow: none!important;
     }
+    #doccard{
+        margin-left:20%;
+    }
+    #usersvg {
+        width: 65%;
+        padding-top: 10px;
+        padding-left:10px;
+    }
+    
 }
 
 @media(min-width:450px) {
@@ -376,6 +389,10 @@
     #profile {
         padding-right: 0%;
         border: 0px solid black;
+    }
+    #docidc{
+        width:80%;
+        display:flex;
     }
 }
 
@@ -388,6 +405,14 @@
         text-align: center !important;
         margin-left: 32.8% !important;
     }
+    #doccard{
+        margin-left:10%;
+    }
+    #docidc{
+        width:70%;
+        display:flex;
+    }
+    
 }
 
 #oform {
@@ -518,17 +543,18 @@ div.scrollmenu a {
         padding-bottom: 10px;
         padding-top: 10px;
     }
+    #usersvg {
+        width: 70%;
+        padding-left:10%;
+        padding-top: 10px;
+    }
+    
 }
 
 #loginpopup {
     box-shadow: none!important;
 }
 
-#usersvg {
-    width: 30%;
-    margin-left: 0%;
-    margin-top: 0%;
-}
 
 #sectionpf {
     display: flex;
@@ -547,6 +573,25 @@ div.scrollmenu a {
     margin-left: 0% !important;
 }
 
-#cardbox{
-    width: 80%;
+#docimg{
+    width: 100%;
 }
+
+#posttitle{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#docedit{
+    color: black;
+    margin-left: 2%;
+}
+
+#docname{
+
+    font-weight: 900;
+}
+#docdesc{
+    display: inline-block;
+}
+

@@ -5,7 +5,6 @@ import { useAuth } from "../contexts/AuthContext"
 import OtherPersonDetails from './OtherPersonDetails';
 import {Texts} from "../css/Texts";
 import { Link, useHistory } from "react-router-dom"
-import usersvg from './img/user.svg';
 import addusersvg from './img/add-group.svg';
 
 import {CardMain} from "../css/Card"

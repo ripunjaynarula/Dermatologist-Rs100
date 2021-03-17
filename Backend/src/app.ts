@@ -27,6 +27,7 @@ import updateDoctorProfile from './routes/profile/updateDoctorProfile'
 import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
+import verifyDocLogin from './routes/verifyDocLogin';
 
 
 
@@ -55,6 +56,7 @@ app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/doctorLogin', doctorLogin);
+app.use('/verifyDoc', verifyDocLogin);
 
 
 

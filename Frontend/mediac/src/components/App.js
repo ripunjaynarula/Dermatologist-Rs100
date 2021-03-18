@@ -25,6 +25,7 @@ import ViewVideos from "../components/videos/viewVideos"
 
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
+import pimplesAcnePage from './Conditions/pimplesAcne';
 
 export const DataContext = React.createContext();
 
@@ -56,7 +57,9 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
-                            <Route path="/videos" component={ViewVideos} />
+              <Route path="/videos" component={ViewVideos} />
+              <Route exact path="/pimples-acne" component={pimplesAcnePage} />
+
 
               <Route path="/login" component={Login} />
               <Route path="/DoctorLogin" component={DoctorLogin} />

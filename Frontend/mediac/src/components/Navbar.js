@@ -4,6 +4,7 @@ import { useHistory, Link } from "react-router-dom"
 import "../css/Navbar.css";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
+import useWindowDimensions from "../functions/windowDimensions"
 
 const NavBar = () => {
 
@@ -13,6 +14,30 @@ const NavBar = () => {
   const [error, setError] = useState("")
   const history = useHistory()
   const [name, setName] = useState("");
+  const { height, width } = useWindowDimensions();
+  const right =  flag? 
+
+     <ReactBootStrap.NavDropdown  
+    className="drop" title={currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName} id="basic-nav-dropdown"    >
+                          <ReactBootStrap.NavDropdown.Item href="/update-profile" style = {{fontFamily : "work sans"}}>Edit Profile</ReactBootStrap.NavDropdown.Item>
+
+                    <ReactBootStrap.NavDropdown.Item href="#action/3.1" className = "tile">My Consultations</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item href="#action/3.3" className = "tile">My Medical Records</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item href="#action/3.3" className = "tile">Need Help</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item href="/change-password" className = "tile">Change Password</ReactBootStrap.NavDropdown.Item>
+
+                    <ReactBootStrap.NavDropdown.Divider />
+                    <ReactBootStrap.NavDropdown.Item variant="link" onClick={handleLogout} className = "tile">Log Out</ReactBootStrap.NavDropdown.Item>
+                </ReactBootStrap.NavDropdown>
+
+
+:
+
+   arr.map((elem) => (
+                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} style = {{fontFamily : "work sans"}} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
+              ))
+
+
 
 const [show, setShow] = useState(false);
 const showDropdown = (e)=>{
@@ -48,7 +73,7 @@ const hideDropdown = e => {
     setFlag(false);
   }, [currentUser, setFlag])
 
-
+console.log(width)
 
   return(
         <div className="Navbar" style={{  }}>
@@ -60,12 +85,38 @@ const hideDropdown = e => {
     
               <ReactBootStrap.Nav.Link className="navlink" href="/about">About</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">Blog</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/conditions">Conditions</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/treatments">Treatments</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/videos">Tube</ReactBootStrap.Nav.Link>
-   <ReactBootStrap.NavDropdown className="navlink" title="Dropdown" id="basic-nav-dropdown"   show={show}
-   onMouseEnter={showDropdown}  
-   onMouseLeave={hideDropdown}  >
+                <ReactBootStrap.Nav.Link  className="navlink" href="/videos">Tube</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.NavDropdown className="navlink" title="Conditions" id="basic-nav-dropdown"   >
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="/pimples-acne">Pimples or Acne</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.2">Psoriasis</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile"href="#action/3.3">Eczema</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Warts And Molluscumcontagiosum</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Vitiligo</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Hyper Pigmentation/ Malesma</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Fungal Infection</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Moles or Nevi or skin tags</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Keloid And Hypertrophic Scar</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Lichen planus</ReactBootStrap.NavDropdown.Item>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">Hair Loss</ReactBootStrap.NavDropdown.Item>
+
+<tr>
+<td   >
+  <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.1">Pimples or Acne</ReactBootStrap.NavDropdown.Item>
+                   
+</td>
+
+<td >
+  <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.1">Warts And Molluscumcontagiosum</ReactBootStrap.NavDropdown.Item>
+                   
+
+</td>
+
+</tr>
+                    <ReactBootStrap.NavDropdown.Item className = "tile" href="#action/3.3">What Is Hirusitism?</ReactBootStrap.NavDropdown.Item>
+                  
+                </ReactBootStrap.NavDropdown>
+
+ <ReactBootStrap.NavDropdown className="navlink" title="Treatments" id="basic-nav-dropdown"   >
                     <ReactBootStrap.NavDropdown.Item href="#action/3.1">Action</ReactBootStrap.NavDropdown.Item>
                     <ReactBootStrap.NavDropdown.Item href="#action/3.2">Another action</ReactBootStrap.NavDropdown.Item>
                     <ReactBootStrap.NavDropdown.Item href="#action/3.3">Something</ReactBootStrap.NavDropdown.Item>
@@ -74,44 +125,31 @@ const hideDropdown = e => {
                 </ReactBootStrap.NavDropdown>
 
 
-
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
 {!flag ?               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link> : <div></div>}
-            </ReactBootStrap.Nav>
             
-              <ReactBootStrap.Nav className="form-inline">
-              {flag?<div> 
-              <ReactBootStrap.Dropdown  >
-                <ReactBootStrap.Dropdown.Toggle variant="primary" style = {{backgroundColor: "white", color : "#737373", border : "none", borderInlineColor : "white"}}   >
-                {currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName}
-                </ReactBootStrap.Dropdown.Toggle >
+ 
 
+  
+</ReactBootStrap.Nav>
+            
+            {width > 1200 ?   <ReactBootStrap.Nav    style = {{marginLeft : "80px"}} className="mr-auto"> 
+  
 
+{right}
+  
+                          </ReactBootStrap.Nav> : 
 
-                
+                            <ReactBootStrap.Nav     className="mr-auto"> 
+  
 
-                <ReactBootStrap.Dropdown.Menu style = {{ border : "none", boxShadow: "0px 0px 13px 1px #e2d9d9", 
-}}>
-                  
-             
-                               <ReactBootStrap.Dropdown.Item   href="/update-profile" style = {{fontFamily : "work sans"}}>Edit Profile</ReactBootStrap.Dropdown.Item>
+{right}
+  
+                          </ReactBootStrap.Nav>
+                          
+                          }
 
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Consultations</ReactBootStrap.Dropdown.Item>
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Medical Records</ReactBootStrap.Dropdown.Item>
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>Need Help</ReactBootStrap.Dropdown.Item>
-
-                    <ReactBootStrap.Dropdown.Item   href="/change-password" style = {{fontFamily : "work sans"}}>Change Password</ReactBootStrap.Dropdown.Item>
-
-                  <ReactBootStrap.Dropdown.Divider />
-
-                  <ReactBootStrap.Dropdown.Item  variant="link" style = {{fontFamily : "work sans"}} onClick={handleLogout}>Log Out</ReactBootStrap.Dropdown.Item>
-                </ReactBootStrap.Dropdown.Menu>
-              </ReactBootStrap.Dropdown>
-              </div>:arr.map((elem) => (
-                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} style = {{fontFamily : "work sans"}} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
-              ))}
-            </ReactBootStrap.Nav>
-           </ReactBootStrap.Navbar.Collapse>
+            </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>
         </div>
     )

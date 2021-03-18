@@ -542,6 +542,17 @@ div.scrollmenu a {
     margin: -3.5rem 0rem;
 }
 
+#banner {
+    background-image: url("img/banner1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: -3.5rem 0rem;
+}
+
 #blogdiv {
     padding-left: 0% !important;
     margin-left: 0% !important;

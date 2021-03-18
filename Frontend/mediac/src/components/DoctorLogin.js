@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -6,6 +6,7 @@ import { auth } from '../firebase'
 import firebase from 'firebase'
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
+import { DocMailContext } from './App'
 
 export default function DoctorLogin() {
   const demailRef = useRef()
@@ -14,7 +15,7 @@ export default function DoctorLogin() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-
+  const [docMail, setDocMail] = useContext(DocMailContext);
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true);
@@ -26,8 +27,11 @@ export default function DoctorLogin() {
     let res = await fetch('http://localhost:5000/doctorLogin', requestOptions);
     res = await res.text();
     res = JSON.parse(res)
-    console.log(res)
-    setLoading(false);
+    if (res['status'] === 'logged_in'){
+      setDocMail(demailRef.current.value)
+      setLoading(false);
+      history.push('/doctordashboard')
+    }
   }
 
   return (

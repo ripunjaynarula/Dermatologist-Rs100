@@ -19,7 +19,8 @@ router.post('/', async (req, res) => {
             }
         }
         const session_token: string = await hashPassword(req.body.email+doc.uid)
-        req.session.token = session_token;
+        doc['token'] = session_token;
+        doc = await doc.save();
         return res.send({status: 'logged_in'})
     }
     return res.send({status: 'user_not_found'})

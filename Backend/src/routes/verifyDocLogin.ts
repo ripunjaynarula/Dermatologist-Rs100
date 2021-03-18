@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     if (doc){
         const check = await bcrypt.compare((req.body.email+doc.uid), doc.token);
         if (check) {
-            res.send({status: true})
+            res.send({status: true, name: doc.name, education: doc.education, degree: doc.degree, experience: doc.pastExperience, specialisation: doc.specialisation});
             return;
         }
     }

@@ -22,6 +22,11 @@ export default function DoctorDashboard() {
   const history = useHistory()
   const quest = useRef()
   const [docMail, setDocMail] = useContext(DocMailContext);
+  const [name, setName] = useState('');
+  const [degree, setDegree] = useState('');
+  const [education, setEducation] = useState('');
+  const [experience, setExperience] = useState('');
+  const [specialisation, setSpecialisation] = useState('');
 
   useEffect(() =>{
     async function checkLogin(){
@@ -36,6 +41,12 @@ export default function DoctorDashboard() {
       res = JSON.parse(res)
       if(!res['status']){
         history.push('/DoctorLogin');
+      } else {
+        setName(res['name']);
+        setDegree(res['degree']);
+        setExperience(res['experience']);
+        setEducation(res['education']);
+        setSpecialisation(res['specialisation']);
       }
     }
     checkLogin();
@@ -57,8 +68,6 @@ export default function DoctorDashboard() {
                 </CardBody>
                 <Row style= {{paddingTop :"22px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "34px", paddingBottom: "4px" }}>
 
-                  <a id="docedit" href="EditProfile">Edit</a>
-                  <a id="docedit" href="DeleteProfile">Delete</a>
                 </Row>
                 </Card>
                 
@@ -72,10 +81,9 @@ export default function DoctorDashboard() {
     </div>
     <div class="col-md-8">
       <div class="card-body">
-      <h4 className="card-title" id="docname">Dr. ABC DEF</h4>
-      <p className="card-text">MBBS</p>
-      <p className="card-text">Dermatologist, Dermatosurgeon, Trichologist, Hair Transplant</p> <p>Surgeon</p><p>20 Years Experience Overall  (18 years as specialist)</p>
-                    
+      <h4 className="card-title" id="docname">Doc {name}</h4>
+      <p className="card-text">{degree}</p>
+      <p className="card-text">{education}</p> <p>{specialisation}</p><p>{experience}</p>     
       </div>
     </div>
   </div>
@@ -84,5 +92,5 @@ export default function DoctorDashboard() {
     <br/><br/>
     </>
 
-)
+  )
 }

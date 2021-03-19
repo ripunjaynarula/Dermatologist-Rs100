@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import Signup from "./Signup"
 import Navbar from "./Navbar"
 import Home from './Home'
+import DocNav from "./DocNav"
 import Faq from './Faq'
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
@@ -13,9 +14,7 @@ import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./Profile/UpdateProfile"
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
-
 import ChangePassword from "./Profile/changePassword"
-
 import VerificationSent from './VerificationSent'
 import ConsultancyForm from './ConsultationForm'
 import Choice from './Choice'
@@ -26,7 +25,7 @@ import ViewVideos from "../components/videos/viewVideos"
 import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
-
+import DocProfile from "./DocProfile"
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
 
@@ -53,6 +52,7 @@ function App() {
               <PrivateRoute path='/add-blog' component={FormEditors} />
                             <PrivateRoute path='/add-video' component={AddVideo} />
                             <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
+                            <PrivateRoute path='/DocProfile' component={DocProfile} />
 
               <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}

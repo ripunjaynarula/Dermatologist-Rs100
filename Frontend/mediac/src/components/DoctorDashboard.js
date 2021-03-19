@@ -6,6 +6,8 @@ import {  useHistory } from "react-router-dom"
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import Header from './Header';
+import DocNav from './DocNav';
+
 import {CardMain} from "../css/Card"
 import docimg from './img/doc.jpeg';
 import  "./styles.css";
@@ -73,7 +75,7 @@ export default function DoctorDashboard() {
                 
     </Container> <br/> <br/>
     
-    <Container  className="d-flex align-items-center justify-content-center">
+    {/* <Container  className="d-flex align-items-center justify-content-center">
     <div class="card mb-3" >
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -88,7 +90,7 @@ export default function DoctorDashboard() {
     </div>
   </div>
 </div>
-</Container>
+</Container> */}
     <br/><br/>
     </>
 

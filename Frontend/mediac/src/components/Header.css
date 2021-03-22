@@ -31,7 +31,6 @@
   }
   #header .closemenu {
     margin-top: 90%;
-
     position: relative;
     display:flex;
     z-index: 9999;
@@ -51,7 +50,7 @@
     width: 80px;
     min-width: 80px;
     color: white;
-
+    margin-left:-50%;margin-left:-50%;
   }
   #header .pro-sidebar-inner {
     background-color: #0062af;
@@ -111,6 +110,8 @@
   }
 
   #arrow{
-    height: 100% !important;
+    height: 2em !important;
+    margin-right:-20%;
+    width: 2em !important;
     cursor: pointer;
   }

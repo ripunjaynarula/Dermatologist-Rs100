@@ -1,4 +1,3 @@
-<<<<<<< HEAD
      .bc {
          background: white;
          color: #000;
@@ -7,55 +6,8 @@
          box-shadow: 0px 0px 10px rgba(147, 149, 151, 0.25);
      }
      
-     .bcd {
-         background: white;
-         color: #737373;
-         font-family: Open Sans;
-         font-weight: 600;
-=======
- .bc {
-     background: white;
-     color: #000;
-     font-family: Open Sans;
-     font-weight: 600;
-     box-shadow: 0 0px 0px 0px white, 0 0px 0px 0px white, 0px 0 0px 0px white, 0px 0 10px 1px #e2d9d9;
- }
- .navbar{
-    z-index: 5!important;
-
- }
- .navlink {
-     margin-left: 25px;
-     border-radius: 4px;
- }
- 
- .navlink:active {
-     background-color: white;
- }
- 
- @media(max-width:450px) {
-     #updprf {
-         margin-bottom: -39.9px;
-         /*padding-left: 80px;*/
-         margin-left: 100px;
-     }
- }
- 
- @media(min-width:500px) {
-     #logout {
-         margin-left: -0%;
-     }
-     #brand {
-         margin-left: 10%;
-     }
-     .form-inline.navbar-nav {
->>>>>>> aab2c3cd45268d64fb87067551f50c139a4a56d6
-         margin-right: 22%;
-     }
-     
-     .tile {
-         width: 200px;
-         font-family: work sans;
+     .navbar {
+         z-index: 5!important;
      }
      
      .navlink {
@@ -65,6 +17,19 @@
      
      .navlink:active {
          background-color: white;
+     }
+     
+     .bcd {
+         background: white;
+         color: #737373;
+         font-family: Open Sans;
+         font-weight: 600;
+         margin-right: 22%;
+     }
+     
+     .tile {
+         width: 200px;
+         font-family: work sans;
      }
      
      @media(max-width:450px) {

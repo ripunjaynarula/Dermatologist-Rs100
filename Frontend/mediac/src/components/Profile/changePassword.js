@@ -143,7 +143,7 @@ setError("Cannot update password")
 
       </Card>
       
-      <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px" }}>
+      <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px",  }}>
            
       
 

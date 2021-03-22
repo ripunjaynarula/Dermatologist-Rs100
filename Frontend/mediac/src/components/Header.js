@@ -9,13 +9,14 @@ import {
   Menu,
   MenuItem,
   SidebarHeader,
-  FiAlignJustify,
+  
   SidebarContent,
+  
 } from "react-pro-sidebar";
 
 //import icons from react icons
 import { FaList } from "react-icons/fa";
-import {  FiArrowLeftCircle, FiArrowRightCircle,FiArrowRight,FiArrowLeft } from "react-icons/fi";
+import {  FiArrowLeftCircle, FiArrowRightCircle,FiArrowRight,FiArrowLeft, FiAlignJustify} from "react-icons/fi";
 
 
 //import sidebar css from react-pro-sidebar module and our custom css 

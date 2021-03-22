@@ -132,12 +132,6 @@
     }
 }
 
-@media(min-width:870px) {
-    #cardsecondary {
-        float: right;
-    }
-}
-
 @media(min-width:470px) {
     #cardprimary {
         float: left;
@@ -146,6 +140,20 @@
         font-size: larger;
         margin-top: 20%;
         width: 100vh;
+    }
+    #titleText {
+        margin-top: 40px;
+        margin-left: 7%;
+    }
+}
+
+@media(min-width:870px) {
+    #cardsecondary {
+        float: right;
+    }
+    #titleText {
+        margin-top: 40px;
+        margin-left: 13%;
     }
 }
 
@@ -196,6 +204,14 @@
     font-weight: 500;
     font-size: 65px;
     line-height: 64px;
+}
+
+#headText {
+    color: #0096e0;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
 }
 
 @media(min-width:870px) {
@@ -352,9 +368,9 @@
     #onewconbtn {
         padding-left: 10px;
     }
-    #docidc{
-        width:100%;
-        display:flex;
+    #docidc {
+        width: 100%;
+        display: flex;
     }
     #resetbtn {
         text-align: center !important;
@@ -372,15 +388,14 @@
         width: 43%;
         box-shadow: none!important;
     }
-    #doccard{
-        margin-left:20%;
+    #doccard {
+        margin-left: 20%;
     }
     #usersvg {
         width: 65%;
         padding-top: 10px;
-        padding-left:10px;
+        padding-left: 10px;
     }
-    
 }
 
 @media(min-width:450px) {
@@ -391,9 +406,9 @@
         padding-right: 0%;
         border: 0px solid black;
     }
-    #docidc{
-        width:80%;
-        display:flex;
+    #docidc {
+        width: 80%;
+        display: flex;
     }
 }
 
@@ -406,14 +421,13 @@
         text-align: center !important;
         margin-left: 32.8% !important;
     }
-    #doccard{
-        margin-left:10%;
+    #doccard {
+        margin-left: 10%;
     }
-    #docidc{
-        width:70%;
-        display:flex;
+    #docidc {
+        width: 70%;
+        display: flex;
     }
-    
 }
 
 #oform {
@@ -546,16 +560,14 @@ div.scrollmenu a {
     }
     #usersvg {
         width: 70%;
-        padding-left:10%;
+        padding-left: 10%;
         padding-top: 10px;
     }
-    
 }
 
 #loginpopup {
     box-shadow: none!important;
 }
-
 
 #sectionpf {
     display: flex;
@@ -585,28 +597,28 @@ div.scrollmenu a {
     margin-left: 0% !important;
 }
 
-#docimg{
+#docimg {
     width: 100%;
 }
 
-#posttitle{
+#posttitle {
     font-weight: bold;
     font-size: 30px;
 }
 
-#docedit{
+#docedit {
     color: black;
     margin-left: 2%;
 }
 
-#docname{
-
+#docname {
     font-weight: 900;
 }
-#docdesc{
+
+#docdesc {
     display: inline-block;
 }
 
-#userimg{
+#userimg {
     width: 60%;
 }

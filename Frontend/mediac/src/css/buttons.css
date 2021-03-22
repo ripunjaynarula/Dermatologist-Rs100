@@ -21,6 +21,7 @@
 
 .primaryButton:hover {
     background-color: #1c87da !important;
+    cursor: pointer;
     border: none;
 }
 
@@ -52,9 +53,43 @@
 
 .secondaryButton:hover {
     background-color: rgb(235, 235, 235) !important;
+    cursor: pointer;
 }
 
 .secondaryButton:active {
     position: relative;
     top: 1px;
+}
+
+.primaryButtonSmall {
+    display: inline-block !important;
+    font-weight: 400 !important;
+    color: #212529 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: .25rem !important;
+    color: #fff !important;
+    background-color: #0062af !important;
+    box-shadow: 0 0px 5px 0px #e2d9d9, 0 0px 0px 0px #e2d9d9, 0px 0 0px 0px #e2d9d9, 0px 0 10px 1px #e2d9d9;
+    border: none !important;
+    min-width: 120px !important;
+}
+
+.primaryButtonSmall:hover {
+    background-color: #1c87da !important;
+    border: none;
+    cursor: pointer;
+}
+
+.primaryButtonSmall:active {
+    position: relative;
+    top: 1px;
+    border: none
 }

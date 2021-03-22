@@ -26,7 +26,8 @@ import ViewVideos from "../components/videos/viewVideos"
 import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
-import pimplesAcnePage from './Conditions/pimplesAcne';
+import pimplesAcnePage from './blog/Conditions/pimplesAcne';
+import viewBlogs from './blog/blog';
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -55,13 +56,11 @@ function App() {
                             <PrivateRoute path='/add-video' component={AddVideo} />
                             <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
 
-              <DocMailContext.Provider value={[docMail, setDocMail]}>
-                {/*All doctor private routes go in here*/}
-                <Route path="/DoctorLogin" component={DoctorLogin} />
-                <Route path='/doctordashboard' component={DoctorDashboard}/>
-              </DocMailContext.Provider>
+            
               
               <Route exact path="/" component={Home} />
+                            <Route exact path="/blogs" component={viewBlogs} />
+
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
@@ -71,6 +70,11 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
+                <DocMailContext.Provider value={[docMail, setDocMail]}>
+                {/*All doctor private routes go in here*/}
+                <Route path="/DoctorLogin" component={DoctorLogin} />
+                <Route path='/doctordashboard' component={DoctorDashboard}/>
+              </DocMailContext.Provider>
             </Switch>
           </div>
           </DataContext.Provider>

@@ -61,6 +61,7 @@ console.log(currentUser.photoURL)
 
         }
         res = res.data
+        if(!res) return
         setName(res.name)
         if(res.dob)
         {

@@ -9,7 +9,7 @@ import {
   Menu,
   MenuItem,
   SidebarHeader,
-  SidebarFooter,
+  FiAlignJustify,
   SidebarContent,
 } from "react-pro-sidebar";
 
@@ -120,9 +120,9 @@ const hideDropdown = e => {
             <div className="closemenu"  onClick={menuIconClick}>
                 {/* changing menu collapse icon on click */}
               {menuCollapse ? (
-                <FiArrowRightCircle id="arrow"/>
+                <FiAlignJustify id="arrow"/>
               ) : (
-                <FiArrowLeftCircle id="arrow"/>
+                <FiAlignJustify id="arrow"/>
               )}
             </div>
             <ReactBootStrap.Navbar.Brand id="brand" href="/">LOGO</ReactBootStrap.Navbar.Brand>

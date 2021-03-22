@@ -10,7 +10,7 @@ import docimgsq from './img/docsq.jpeg';
 import docimg from './img/doc.jpeg'
 import  "./styles.css";
 import usersvg from './img/user.svg';
-
+import Navbar from "./Navbar"
 
 import {DocMailContext} from './App';
 
@@ -33,6 +33,7 @@ export default function DocProfile() {
 
   return (
     <>
+    <div className="Navb"><Navbar /></div>
     <div style={{backgroundColor:"white"}}>
         <div className="row"style={{backgroundColor:"white"}}>
             <div className="col-md-12 col-sm-12 col-xs-12 image-section" id="profcover">

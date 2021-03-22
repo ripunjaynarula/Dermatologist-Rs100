@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
+import Navbar from "./Navbar"
 export default function ForgotPassword() {
   const emailRef = useRef()
   const { resetPassword } = useAuth()

@@ -10,6 +10,8 @@ import { useAuth } from "../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "./LoginPopup"
 import { DataContext } from './App';
+import Navbar from "./Navbar"
+
 export default function Home() {
 
   const history = useHistory();
@@ -65,6 +67,7 @@ export default function Home() {
 
     return (
     <>
+     <div className="Navb"><Navbar /></div>
     <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
     <div id="container"  >
           <div id="hometxt" >

@@ -6,6 +6,7 @@ import { auth } from '../firebase'
 import firebase from 'firebase'
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
+import Navbar from "./Navbar"
 
 export default function Signup() {
   const emailRef = useRef()
@@ -82,6 +83,7 @@ console.log(e)
 
   return (
     <>
+     <div className="Navb"><Navbar /></div>
     <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "92vh" }}>
       <Card  style={{CardMain},{ maxWidth: "60vh" }} >
         <Card.Body>

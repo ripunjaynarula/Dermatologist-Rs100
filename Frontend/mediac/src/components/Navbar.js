@@ -9,6 +9,10 @@ import useWindowDimensions from "../functions/windowDimensions"
 const NavBar = () => {
 
   const arr = [{link: '/login', text: 'Login'}, {link: '/Signup', text: 'Signup'}];
+  // const menuIconClick = () => {
+  //   //condition checking to change state from true to false and vice versa
+  //   menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+  // };
   const [flag, setFlag] = useState(false);
   const { currentUser, logout } = useAuth()
   const [error, setError] = useState("")
@@ -122,8 +126,7 @@ console.log(width)
                     <ReactBootStrap.NavDropdown.Item href="#action/3.3">Something</ReactBootStrap.NavDropdown.Item>
                     <ReactBootStrap.NavDropdown.Divider />
                     <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item>
-                </ReactBootStrap.NavDropdown>
-
+                </ReactBootStrap.NavDropdown>  
 
               <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
 {!flag ?               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link> : <div></div>}

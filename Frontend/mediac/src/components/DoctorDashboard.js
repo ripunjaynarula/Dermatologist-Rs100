@@ -6,9 +6,12 @@ import {  useHistory } from "react-router-dom"
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import Header from './Header';
-import {CardMain} from "../css/Card"
+import DocNav from './DocNav';
+import Navbar from "./Navbar"
 import docimg from './img/doc.jpeg';
 import  "./styles.css";
+import  "./docdash.css";
+
 import usersvg from './img/user.svg';
 
 import {DocMailContext} from './App';
@@ -55,9 +58,12 @@ export default function DoctorDashboard() {
 
   return (
     <>
-    <Header/>
-    <br/>
+              {/* <div className="Navb"><Navbar /></div> */}
+              
 
+    <Header/>
+    {/* <div className="Navb"><DocNav /></div> */}
+<br/>
     <Container id="doc" className="d-flex align-items-center justify-content-center">
     <Card id="doccard">
                 <CardBody >
@@ -73,7 +79,7 @@ export default function DoctorDashboard() {
                 
     </Container> <br/> <br/>
     
-    <Container  className="d-flex align-items-center justify-content-center">
+    {/* <Container  className="d-flex align-items-center justify-content-center">
     <div class="card mb-3" >
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -88,7 +94,7 @@ export default function DoctorDashboard() {
     </div>
   </div>
 </div>
-</Container>
+</Container> */}
     <br/><br/>
     </>
 

@@ -3,6 +3,8 @@ import Signup from "./Signup"
 import Navbar from "./Navbar"
 import Home from './Home'
 import Faq from './Faq'
+import DocProfile from './DocProfile'
+
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
@@ -40,13 +42,14 @@ function App() {
         <Router>
           <AuthProvider>
             <DataContext.Provider value={[consultationData, setConsultationData]}>
-          <div className="Navb"><Navbar /></div>
+          {/* <div className="Navb"><Navbar /></div> */}
           
           <div className="everything" >
           
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/change-password" component={ChangePassword} />
+              <PrivateRoute path='/DocProfile' component={DocProfile}/>
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />

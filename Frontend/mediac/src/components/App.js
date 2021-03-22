@@ -28,6 +28,7 @@ import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
 import pimplesAcnePage from './blog/Conditions/pimplesAcne';
 import viewBlogs from './blog/blog';
+import singleBlog from './blog/blogSingle';
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -60,6 +61,7 @@ function App() {
               
               <Route exact path="/" component={Home} />
                             <Route exact path="/blogs" component={viewBlogs} />
+                            <Route exact path="/blog" component={singleBlog} />
 
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

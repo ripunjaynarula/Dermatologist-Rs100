@@ -4,11 +4,12 @@ import AdminBroMongoose from '@admin-bro/mongoose';
 import patients from '../models/patients';
 import doctors from '../models/doctors';
 import consultations from '../models/consultation';
- 
+ import blogs from '../models/blog';
+
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro ({
-    resources: [patients, doctors, consultations, ],
+    resources: [patients, doctors, consultations,blogs ],
     rootPath: '/admin',
 });
 

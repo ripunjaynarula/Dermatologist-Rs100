@@ -364,7 +364,7 @@ section {
 
 .blog {
     padding: 40px 0 20px 0;
-    background-color: white;
+    background-color: #f8f8f8;
 }
 
 .blog .entry {
@@ -372,6 +372,7 @@ section {
     border-radius: 5px !important;
     margin-bottom: 60px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .blog .entry .entry-img {
@@ -549,8 +550,10 @@ section {
 
 .blog .blog-author {
     padding: 20px;
+    border-radius: 3px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .blog .blog-author img {
@@ -724,8 +727,20 @@ section {
 
 .blog .sidebar {
     padding: 30px;
-    margin: 0 0 60px 20px;
+    border-radius: 3px;
+    margin: 0 0 40px 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+@media(max-width:990px) {
+    .blog .sidebar {
+        padding: 30px;
+        border-radius: 3px;
+        margin: 0 0 40px 0px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
 }
 
 .blog .sidebar .sidebar-title {
@@ -1050,4 +1065,17 @@ section {
     text-align: center;
     font-size: 13px;
     color: #012970;
+}
+
+.icon {
+    height: 14px;
+    width: 14px;
+    margin-right: 8px;
+}
+
+.icon-big {
+    height: 18px;
+    width: 17px;
+    margin-right: 8px;
+    margin-top: 3.3px;
 }

@@ -2,8 +2,12 @@ import React, {useRef,useEffect, useState, useContext} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
  
-import  "../styles.css";
- import  "./blog.css";
+  import  "./blog.css";
+ import userSvg from '../img/person.svg'
+   import clockSvg from '../img/clock.svg'
+   import heartSvg from '../img/heart.svg'
+
+import SideBar from "./sidebar"
 
 import firebase from 'firebase'
 import { auth } from '../../firebase'
@@ -58,9 +62,9 @@ if(width > 870) style = {
            <div class = "col-lg-8 entries">
 
  
-        <article class="entry">
+        <article class="entry"  style = {{backgroundColor : "white"}}>
 
-              <div class="entry-img" style = {{backgroundColor: "pink", height: "300px", 
+              <div class="entry-img" style = {{ height: "300px", 
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                 <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" alt="" style = {{  
    width: "100vh",
@@ -73,8 +77,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
                  </ul>
               </div>
 
@@ -86,7 +90,13 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
 
 
-   <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "14px" }}>
+   <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+             
+<Row style = {{flexDirection: 'row', }}>
+
+      <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}> 11190 people found this helpful </p>
+</Row>
+
               <div class="primaryButtonSmall" >
                   <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href="blog-single.html">Read More</a>
                 </div>
@@ -106,26 +116,11 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
 <div class="col-lg-4">
 
-            <div class="sidebar">
-
-             
-
-            
-              <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
-                
-                <div class="post-item clearfix">
-                  <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" alt=""></img>
-                  <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-             
-              </div> 
-
-              
-            </div> 
+             <SideBar></SideBar>
           </div>
+  
+  
+  
        </div>
 
 

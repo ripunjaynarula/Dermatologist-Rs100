@@ -11,7 +11,7 @@ import ConsultancyCard from "./ConsultancyCard"
 import ellipse from './img/ellipse.png';
 import bgimg from './img/image1.png';
 import {Texts} from "../css/Texts";
-
+import Navbar from "./Navbar"
 
 
 export default function Dashboard() {
@@ -43,7 +43,7 @@ export default function Dashboard() {
 
   return (
     <>
-    
+     <div className="Navb"><Navbar /></div>
     <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
     <div id="container" >
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}

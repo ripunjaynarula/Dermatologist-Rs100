@@ -753,3 +753,7 @@ div.scrollmenu a {
     background-color:rgb(73, 73, 73);
 
 }
+
+.DocNav{
+    position: fixed !important;
+}

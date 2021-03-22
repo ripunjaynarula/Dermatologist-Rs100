@@ -37,22 +37,12 @@ function App() {
         <Router>
           <AuthProvider>
             <DataContext.Provider value={[consultationData, setConsultationData]}>
-          <div className="Navb"><Navbar /></div>
+          {/* <div className="Navb"><Navbar /></div> */}
           
           <div className="everything" >
           
             <Switch >
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <PrivateRoute path="/change-password" component={ChangePassword} />
-              <PrivateRoute path="/verification-sent" component={VerificationSent} />
-              <PrivateRoute path='/dashboard' component={Dashboard}/>
-              <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
-              <PrivateRoute path='/Choice' component={Choice} />
-              <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
-              <PrivateRoute path='/add-blog' component={FormEditors} />
-                            <PrivateRoute path='/add-video' component={AddVideo} />
-                            <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
-                            <PrivateRoute path='/DocProfile' component={DocProfile} />
+              
 
               <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
@@ -63,11 +53,19 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
-                            <Route path="/videos" component={ViewVideos} />
-
+              <Route path="/videos" component={ViewVideos} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <PrivateRoute path="/change-password" component={ChangePassword} />
+              <PrivateRoute path="/verification-sent" component={VerificationSent} />
+              <PrivateRoute path='/dashboard' component={Dashboard}/>
+              <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
+              <PrivateRoute path='/Choice' component={Choice} />
+              <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
+              <PrivateRoute path='/add-blog' component={FormEditors} />
+              <PrivateRoute path='/add-video' component={AddVideo} />
             </Switch>
           </div>
           </DataContext.Provider>

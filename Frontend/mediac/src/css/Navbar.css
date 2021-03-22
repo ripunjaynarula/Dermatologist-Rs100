@@ -5,7 +5,10 @@
      font-weight: 600;
      box-shadow: 0 0px 0px 0px white, 0 0px 0px 0px white, 0px 0 0px 0px white, 0px 0 10px 1px #e2d9d9;
  }
- 
+ .navbar{
+    z-index: 5!important;
+
+ }
  .navlink {
      margin-left: 25px;
      border-radius: 4px;

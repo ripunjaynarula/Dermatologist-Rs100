@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-//import react pro sidebar components
 import {
   ProSidebar,
   Menu,
@@ -11,10 +10,8 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaList, FaRegHeart } from "react-icons/fa";
-import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-import { RiPencilLine } from "react-icons/ri";
-import { BiCog } from "react-icons/bi";
+import { FaList } from "react-icons/fa";
+import {  FiArrowLeftCircle, FiArrowRightCircle,FiArrowRight,FiArrowLeft } from "react-icons/fi";
 
 
 //import sidebar css from react-pro-sidebar module and our custom css 
@@ -35,12 +32,13 @@ const Header = () => {
 
   return (
     <>
+    <div>
       <div id="header">
           {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
          
           
-            <div className="closemenu" onClick={menuIconClick}>
+            <div className="closemenu" id="pcarrow" onClick={menuIconClick}>
                 {/* changing menu collapse icon on click */}
               {menuCollapse ? (
                 <FiArrowRightCircle/>
@@ -61,6 +59,14 @@ const Header = () => {
           </SidebarContent>
           
         </ProSidebar>
+        {/* <div className="closemenu" id="phonearrow" onClick={menuIconClick}>
+              {menuCollapse ? (
+                <FiArrowRightCircle/>
+              ) : (
+                <FiArrowLeftCircle/>
+              )}
+            </div> */}
+      </div>
       </div>
     </>
   );

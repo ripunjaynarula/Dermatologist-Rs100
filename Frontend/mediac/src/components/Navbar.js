@@ -4,10 +4,24 @@ import { useHistory, Link } from "react-router-dom"
 import "../css/Navbar.css";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarContent,
+} from "react-pro-sidebar";
+import "react-pro-sidebar/dist/css/styles.css";
+
 
 const NavBar = () => {
 
   const arr = [{link: '/login', text: 'Login'}, {link: '/Signup', text: 'Signup'}];
+  // const menuIconClick = () => {
+  //   //condition checking to change state from true to false and vice versa
+  //   menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+  // };
   const [flag, setFlag] = useState(false);
   const { currentUser, logout } = useAuth()
   const [error, setError] = useState("")
@@ -63,7 +77,7 @@ const hideDropdown = e => {
               <ReactBootStrap.Nav.Link  className="navlink" href="/conditions">Conditions</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link  className="navlink" href="/treatments">Treatments</ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link  className="navlink" href="/videos">Tube</ReactBootStrap.Nav.Link>
-   <ReactBootStrap.NavDropdown className="navlink" title="Dropdown" id="basic-nav-dropdown"   show={show}
+   {/* <ReactBootStrap.NavDropdown className="navlink" title="Dropdown" id="basic-nav-dropdown"   show={show}
    onMouseEnter={showDropdown}  
    onMouseLeave={hideDropdown}  >
                     <ReactBootStrap.NavDropdown.Item href="#action/3.1">Action</ReactBootStrap.NavDropdown.Item>
@@ -71,7 +85,7 @@ const hideDropdown = e => {
                     <ReactBootStrap.NavDropdown.Item href="#action/3.3">Something</ReactBootStrap.NavDropdown.Item>
                     <ReactBootStrap.NavDropdown.Divider />
                     <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item>
-                </ReactBootStrap.NavDropdown>
+                </ReactBootStrap.NavDropdown> */}
 
 
 

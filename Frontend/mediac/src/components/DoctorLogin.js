@@ -7,7 +7,7 @@ import firebase from 'firebase'
 import {CardMain} from "../css/Card";
 import {Texts} from "../css/Texts";
 import { DocMailContext } from './App'
-
+import Navbar from "./Navbar"
 export default function DoctorLogin() {
   const demailRef = useRef()
   const dpasswordRef = useRef()
@@ -38,6 +38,7 @@ export default function DoctorLogin() {
 
 
     <>
+     <div className="Navb"><Navbar /></div>
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
       <Card style={{CardMain},{ maxWidth: "400px" } } >
         <Card.Body>

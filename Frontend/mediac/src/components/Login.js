@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
 import firebase from 'firebase'
 import {CardMain} from "../css/Card";
+import Navbar from "./Navbar"
 import {Texts} from "../css/Texts";
 
 export default function Login() {
@@ -95,7 +96,7 @@ var d={ email: emailRef.current.value, name : user.user.displayName};
 
 
     <>
-    
+     <div className="Navb"><Navbar /></div>
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "90vh" }}>
       
       <Card style={{CardMain},{ maxWidth: "400px" }}  >

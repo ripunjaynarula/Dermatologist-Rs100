@@ -7,10 +7,11 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import Header from './Header';
 import DocNav from './DocNav';
-
-import {CardMain} from "../css/Card"
+import Navbar from "./Navbar"
 import docimg from './img/doc.jpeg';
 import  "./styles.css";
+import  "./docdash.css";
+
 import usersvg from './img/user.svg';
 
 import {DocMailContext} from './App';
@@ -57,8 +58,11 @@ export default function DoctorDashboard() {
 
   return (
     <>
+              {/* <div className="Navb"><Navbar /></div> */}
+              
+
     <Header/>
-    <br/>
+    <div className="Navb"><DocNav /></div>
 
     <Container id="doc" className="d-flex align-items-center justify-content-center">
     <Card id="doccard">

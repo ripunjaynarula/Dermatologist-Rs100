@@ -6,7 +6,7 @@ import OtherPersonDetails from './OtherPersonDetails';
 import {Texts} from "../css/Texts";
 import { Link, useHistory } from "react-router-dom"
 import addusersvg from './img/add-group.svg';
-
+import Navbar from "./Navbar"
 import {CardMain} from "../css/Card"
 
 import { DataContext } from './App'
@@ -78,6 +78,7 @@ console.log(question)
   }
   return (
         <>
+         <div className="Navb"><Navbar /></div>
                       {error && <Alert variant="danger">{error}</Alert>}
 
          <Container className="align-items-center justify-content-center" style={{ maxWidth: "50vh" }}>

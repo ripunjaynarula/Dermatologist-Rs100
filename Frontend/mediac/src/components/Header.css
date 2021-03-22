@@ -1,12 +1,37 @@
 #header {
-    position:absolute;
+    position:fixed;
     width: 200px;
+    height:100vh !important;
+    z-index: 1!important;
+    display:flex;
+    
   }
+  
+  @media only screen and (min-width: 200px) {
+    
+    #header .pro-sidebar.collapsed {
+      width: 100%
+    }
+    #pcarrow{
+      display:none!important  ;
+      fill:white !important;
+    }
+
+    #phonearrow{
+      display:flex;
+      margin-left:-60%;
+      margin-right:20%;
+      fill: #000 !important;
+    }
+    
+  
+  
   #header .pro-sidebar {
     height: 100vh;
   }
   #header .closemenu {
-    color: white;
+    margin-top: 90%;
+
     position: relative;
     display:flex;
     z-index: 9999;
@@ -25,6 +50,8 @@
   #header .pro-sidebar.collapsed {
     width: 80px;
     min-width: 80px;
+    color: white;
+
   }
   #header .pro-sidebar-inner {
     background-color: #0062af;
@@ -62,9 +89,23 @@
   #header .logo {
     padding: 20px;
   }
-  
+}
   @media only screen and (max-width: 720px) {
     html {
       overflow:hidden;
+      
+    }
+   
+  }
+  @media only screen and (min-width: 700px) {
+    #phonearrow{
+      display:none !important ;
+    }
+    #header .pro-sidebar.collapsed {
+      margin-left:0%
+    }
+    #pcarrow{
+      display:block !important;
     }
   }
+

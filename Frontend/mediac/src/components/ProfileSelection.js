@@ -7,7 +7,6 @@ import addusersvg from './img/add-group.svg';
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
-import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 export default function ProfileSelection(props) {
 

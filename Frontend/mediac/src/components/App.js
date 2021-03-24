@@ -4,7 +4,8 @@ import Navbar from "./Navbar"
 import Home from './Home'
 import Faq from './Faq'
 import DocProfile from './DocProfile'
-
+import BlogList from './BlogList'
+import BlogListItem from './BlogListItem'
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"

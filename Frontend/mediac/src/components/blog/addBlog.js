@@ -1,4 +1,4 @@
- 
+import Navbar from "../Navbar"
 import {
    CardBody,
   Col,
@@ -240,7 +240,8 @@ async function uploadFile(putURL) {
 
   }
   return (
-
+    <>
+    <div className="Navb"><Navbar /></div>
     <Container className="d-flex align-items-center justify-content-center">
       <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-30 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
@@ -307,6 +308,7 @@ async function uploadFile(putURL) {
     </React.Fragment>
 </div>
 </Container>
+</>
    )
 }
 

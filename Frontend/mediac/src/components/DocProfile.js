@@ -12,8 +12,7 @@ import  "./styles.css";
 import usersvg from './img/user.svg';
 import Navbar from "./Navbar"
 import BlogList from "./BlogList"
-
-
+import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons/bi";
 import {DocMailContext} from './App';
 
 export default function DocProfile() {
@@ -96,39 +95,44 @@ export default function DocProfile() {
 
             <Container  className="align-items-center justify-content-center">
             <hr/>
+            <br/> 
+            
+            <h4>Blogs Posted by the Doctor</h4>
                     <BlogList/>
-                </Container>
+                    <hr/>
+                    <br/>
+                    </Container>
+            <Container id="adincon" className="align-items-center justify-content-center">                
+            <h3 id="adinf">Additional Information</h3><br/><br/>
+
+            <h5 id="adinf"><BiNotepad style={{marginRight: "5px"}}/>Speciality</h5>
+            <p>Dermatologist</p>
+            <br/>
+
+            <h5 id="adinf"><BiBriefcaseAlt style={{marginRight: "5px"}}/>Past Experience</h5>
+            <p>Dermatologist</p>
+            <br/>
+
+            <h5 id="adinf"><BiLocationPlus style={{marginRight: "5px"}}/>Location</h5>
+            <p>Delhi</p>
+            <br/>
+
+            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Educational Details</h5>
+            <p>Lorem ipsum dolor sit amet,</p>
+            <p> consectetur adipiscing elit.</p>
+            <p> Curabitur luctus nunc aliquet congue ultricies. </p>
+            <br/>
+
+            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Professional Memberships</h5>
+            <p>Lorem ipsum dolor sit amet,</p>
+            <p> consectetur adipiscing elit.</p>
+            <p> Curabitur luctus nunc aliquet congue ultricies. </p>
+            <br/>
+     
+            </Container>
 
 
-
-
-            {/* <div className="col-md-12">
-                            <div className="border"></div>
-                            <h4>Posts by Doctor</h4>
-                            <div className="row">
-                                <div className="  profile-tag-section text-center" style={{width:"100%"}}>
-                                    <div className="row">
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-calendar-check-o" aria-hidden="true"></i></a>
-                                            <p>info</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-address-book" aria-hidden="true"></i></a>
-                                            <p>feed</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-id-card-o" aria-hidden="true"></i></a>
-                                            <p>Agenda</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-paperclip" aria-hidden="true"></i></a>
-                                            <p>Resume</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> */}
+                   
         </div></div>
        </>
   )

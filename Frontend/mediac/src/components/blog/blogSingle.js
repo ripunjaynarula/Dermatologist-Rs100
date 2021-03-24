@@ -17,6 +17,7 @@ import LoginPopup from "../LoginPopup"
 import useWindowDimensions from "../../functions/windowDimensions"
 import SideBar from "./sidebar"
 import { DataContext } from '../App';
+
 export default function Home() {
 
   const history = useHistory();

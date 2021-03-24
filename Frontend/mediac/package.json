@@ -12,7 +12,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "chokidar": "^3.5.1",
-    "dompurify": "^2.2.6",
+    "dompurify": "^2.2.7",
     "draft-convert": "^2.1.10",
     "draft-js": "^0.11.7",
     "emotion": "^11.0.0",
@@ -33,6 +33,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "reactstrap": "^8.9.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

@@ -18,7 +18,8 @@ import {DocMailContext} from './App';
 export default function DocProfile() {
   
   const [show, setShow] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [docMail, setDocMail] = useContext(DocMailContext);
   const { currentUser, logout } = useAuth()
   const dbinfo = useRef()
   const history = useHistory()
@@ -28,9 +29,35 @@ export default function DocProfile() {
   const [education, setEducation] = useState('');
   const [experience, setExperience] = useState('');
   const [specialisation, setSpecialisation] = useState('');
+  const [city, setCity] = useState('');
 
- 
+  
+  useEffect(() =>{
+    async function checkLogin(){
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email: docMail})
+      }
 
+      let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      console.log(res);
+      if(!res['status']){
+        history.push('/DoctorLogin');
+      }
+      else{
+          setDegree(res['degree']);
+          setName(res['name']);
+          setEducation(res['education']);
+          setExperience(res['experience']);
+          setSpecialisation(res['specialisation']);
+          setCity(res['city'])
+      }
+    }
+    checkLogin();
+  })
 
   return (
     <>
@@ -74,8 +101,8 @@ export default function DocProfile() {
                         <div className=" profile-header" >
                             <div className="row" style={{display: 'block'}}>
                                 <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
-                                    <h1>Dr. Sarthak Singhal</h1>
-                                    <p>Senior Surgeon</p>
+                                    <h1>{name}</h1>
+                                    <p>{degree}</p>
                             <a href="#" id="socmed" className="fa fa-facebook"></a>  
                             <a href="#" id="socmed" className="fa fa-twitter"></a>  
                             <a href="#" id="socmed" className="fa fa-linkedin"></a> <br/><br/>
@@ -106,21 +133,19 @@ export default function DocProfile() {
             <h3 id="adinf">Additional Information</h3><br/><br/>
 
             <h5 id="adinf"><BiNotepad style={{marginRight: "5px"}}/>Speciality</h5>
-            <p>Dermatologist</p>
+            <p>{specialisation}</p>
             <br/>
 
             <h5 id="adinf"><BiBriefcaseAlt style={{marginRight: "5px"}}/>Past Experience</h5>
-            <p>Dermatologist</p>
+            <p>{experience}</p>
             <br/>
 
             <h5 id="adinf"><BiLocationPlus style={{marginRight: "5px"}}/>Location</h5>
-            <p>Delhi</p>
+            <p>{city}</p>
             <br/>
 
             <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Educational Details</h5>
-            <p>Lorem ipsum dolor sit amet,</p>
-            <p> consectetur adipiscing elit.</p>
-            <p> Curabitur luctus nunc aliquet congue ultricies. </p>
+            <p>{education}</p>
             <br/>
 
             <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Professional Memberships</h5>

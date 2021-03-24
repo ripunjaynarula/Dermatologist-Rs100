@@ -6,65 +6,58 @@ import { useHistory } from 'react-router-dom'
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
    import heartSvg from '../img/heart.svg'
-import { convertToHTML } from 'draft-convert';
-
-import SideBar from "./sidebar"
-
+ 
+ 
 import firebase from 'firebase'
 import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
-import Modal from 'react-bootstrap/Modal'
-import LoginPopup from "../LoginPopup"
-import useWindowDimensions from "../../functions/windowDimensions"
+   import DOMPurify from 'dompurify';
 
 import { DataContext } from '../App';
 export default function BlogCard(prop) {
 
-  const history = useHistory();
-  const handleClose = () => setShow(false);
-  const [flag, setFlag] = useState(false);
-  const [show, setShow] = useState(false);
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login, currentUser } = useAuth();
-  const dataRef = useRef();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const handleShow = () => setShow(true);
-  const [consultationData, setConsultationData] = useContext(DataContext);
-  const { height, width } = useWindowDimensions();
+    const [flag, setFlag] = useState(false);
+   const { login, currentUser } = useAuth();
+   const [loading, setLoading] = useState(false)
+   const [consultationData, setConsultationData] = useContext(DataContext);
+   const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
 
-    let currentContentAsHTML = convertToHTML(prop.content);
-    console.log(prop.content)
-console.log(currentContentAsHTML)
-    return (
+
+
+
+  
+      return (
     <>
  
   
 
      
-        <article class="entry"  style = {{backgroundColor : "white"}}>
+        <article className="entry"  style = {{backgroundColor : "white"}}>
 
-              <div class="entry-img" style = {{ height: "300px", 
+              <div className="entry-img" style = {{ height: "300px", 
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                 <img src= {prop.image} alt="" style = {{  
    width: "100vh",
   objectFit: "cover"}} ></img>
               </div>
 
-              <h2 class="entry-title">
-                <a href="blog-single.html">{prop.title}</a>
+              <h2 className="entry-title">
+                <a href={prop.blogLink}>{prop.title}</a>
               </h2>
 
-              <div class="entry-meta">
+              <div className="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">{prop.author}</a></li>
-                  <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time dateTime="2020-01-01">{prop.publishDate}</time></a></li>
+                  <li className="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">{prop.author}</a></li>
+                  <li className="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time dateTime="2020-01-01">{prop.publishDate}</time></a></li>
                  </ul>
               </div>
 
-              <div class="entry-content">
-                {currentContentAsHTML}
+              <div className="entry-content">
+      <div className="preview" dangerouslySetInnerHTML={createMarkup(prop.content)}></div>
 
 
    <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
@@ -74,7 +67,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
       <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}> {prop.likes} people found this helpful </p>
 </Row>
 
-              <div class="primaryButtonSmall" >
+              <div className="primaryButtonSmall" >
                   <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href={prop.blogLink}>Read More</a>
                 </div>
            </Row>

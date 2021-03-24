@@ -26,6 +26,8 @@ import OtherPersonDetails from './OtherPersonDetails'
 import DoctorLogin from './DoctorLogin'
 import AddVideo from "../components/videos/addVideos"
 import ViewVideos from "../components/videos/viewVideos"
+import Video from "../components/blog/singleVideoPage"
+
 import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';

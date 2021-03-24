@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom'
    import heartSvg from '../img/heart.svg'
 
 import SideBar from "./sidebar"
+import DOMPurify from 'dompurify';
+
 
 import firebase from 'firebase'
 import { auth } from '../../firebase'
@@ -33,7 +35,11 @@ export default function Home() {
   const handleShow = () => setShow(true);
   const [consultationData, setConsultationData] = useContext(DataContext);
   const { height, width } = useWindowDimensions();
-
+ const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
 const title = "Better Doctors.";
 var style = {};
  console.log(width)

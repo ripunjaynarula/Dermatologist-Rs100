@@ -8,32 +8,26 @@ import  "../styles.css";
    import clockSvg from '../img/clock.svg'
    import heartSvg from '../img/heart.svg'
    import heartSvgRed from '../img/heartRed.svg'
+import DOMPurify from 'dompurify';
 
 import firebase from 'firebase'
 import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
-import Modal from 'react-bootstrap/Modal'
-import LoginPopup from "../LoginPopup"
-import useWindowDimensions from "../../functions/windowDimensions"
-import SideBar from "./sidebar"
+   import SideBar from "./sidebar"
 import { DataContext } from '../App';
 
 export default function Home() {
 
-  const history = useHistory();
-  const handleClose = () => setShow(false);
-  const [flag, setFlag] = useState(false);
-  const [show, setShow] = useState(false);
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login, currentUser } = useAuth();
+        const { login, currentUser } = useAuth();
   const dataRef = useRef();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const handleShow = () => setShow(true);
-  const [consultationData, setConsultationData] = useContext(DataContext);
-  const { height, width } = useWindowDimensions();
-
+ 
+  const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
   
  
     return (

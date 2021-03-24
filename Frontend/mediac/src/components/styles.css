@@ -103,6 +103,11 @@
     #cardbtn {
         text-align: center;
     }
+    .user-image {
+
+        margin-top: 0px !important;
+    
+    }
     #wrapper {
         background-image: url("img/glove.png");
     }
@@ -756,8 +761,9 @@ div.scrollmenu a {
 }
 
 .dp {
-    width: 70% !important;
+    width: 100% !important;
     height: 100% !important;
+    margin-right: 20px;
     border-radius: 50%;
     background-color: gray;
     box-shadow: 1px 1px 10px gray, 0 0 10px gray, 0 0 1px gray;
@@ -779,3 +785,9 @@ div.scrollmenu a {
 .DocNav {
     position: fixed !important;
 }
+.user-image {
+
+    margin-top: -50px !important;
+
+}
+

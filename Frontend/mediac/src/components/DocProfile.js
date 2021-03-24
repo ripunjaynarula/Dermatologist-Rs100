@@ -11,6 +11,8 @@ import docimg from './img/doc.jpeg'
 import  "./styles.css";
 import usersvg from './img/user.svg';
 import Navbar from "./Navbar"
+import BlogList from "./BlogList"
+
 
 import {DocMailContext} from './App';
 
@@ -35,14 +37,15 @@ export default function DocProfile() {
     <>
     <div className="Navb"><Navbar /></div>
     <div style={{backgroundColor:"white"}}>
-        <div className="row"style={{backgroundColor:"white"}}>
-            <div className="col-md-12 col-sm-12 col-xs-12 image-section" id="profcover">
+        <div style={{backgroundColor:"white"}}>
+            <div  id="profcover">
                 <img id="coverimg" src={docimg}/>
             </div>
-            <div className="row user-left-part"style={{backgroundColor:"white"}}>
+
+            <Container className="d-flex align-items-center justify-content-center">
                 <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" style={{backgroundColor:"white"}}>
                     <div className="row ">
-                        <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                        <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center" style={{paddingLeft:"0px",paddingRight:"0px"}}>
                             <img className="dp" src={docimgsq}/>
                         </div>
                         <div className="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
@@ -67,27 +70,39 @@ export default function DocProfile() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
-                    <div className="row profile-right-section-row">
-                        <div className="col-md-12 profile-header">
-                            <div className="row">
-                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                    <h1>Dr. Mario Mendez</h1>
+                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style={{marginLeft:"10%"}}>
+                    <div className="row profile-right-section-row" style={{display: 'block'}}>
+                        <div className=" profile-header" >
+                            <div className="row" style={{display: 'block'}}>
+                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
+                                    <h1>Dr. Sarthak Singhal</h1>
                                     <p>Senior Surgeon</p>
                             <a href="#" id="socmed" className="fa fa-facebook"></a>  
                             <a href="#" id="socmed" className="fa fa-twitter"></a>  
                             <a href="#" id="socmed" className="fa fa-linkedin"></a> <br/><br/>
                                 </div>
                                 
-                                <div className="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
-                                    {/* <button className=" primaryButton btn btn-primary"style={{margin:"auto",width:"7%",textAlign:"center"}}> CONSULT</button>                           */}
-                                </div>
+                                
                             </div>
                         </div>
                         
                     </div>
                 </div>
-            </div><div className="col-md-12">
+                
+            </Container>
+
+                            
+            <br/>
+
+            <Container  className="align-items-center justify-content-center">
+            <hr/>
+                    <BlogList/>
+                </Container>
+
+
+
+
+            {/* <div className="col-md-12">
                             <div className="border"></div>
                             <h4>Posts by Doctor</h4>
                             <div className="row">
@@ -113,7 +128,7 @@ export default function DocProfile() {
                                 </div>
                                 
                             </div>
-                        </div>
+                        </div> */}
         </div></div>
        </>
   )

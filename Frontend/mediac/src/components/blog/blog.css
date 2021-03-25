@@ -557,8 +557,10 @@ section {
 }
 
 .blog .blog-author img {
-    width: 120px;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 4px;
+    margin-left: 2px;
 }
 
 .blog .blog-author h4 {
@@ -1076,6 +1078,13 @@ section {
 .icon-big {
     height: 18px;
     width: 17px;
+    margin-right: 8px;
+    margin-top: 3.3px;
+}
+
+.icon-bigger {
+    height: 21px;
+    width: 21px;
     margin-right: 8px;
     margin-top: 3.3px;
 }

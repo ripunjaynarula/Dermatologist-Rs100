@@ -72,6 +72,8 @@ function App() {
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
+              <Route path="/video" component={Video} />
+
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
 
 

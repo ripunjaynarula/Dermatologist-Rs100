@@ -62,9 +62,15 @@ export default function Home() {
 
               <div class="entry-img" style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-                <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" alt=""  style = {{  
-   width: "100vh",
-  objectFit: "cover"}}></img>
+              
+                <iframe  width = "599" height="500" src="https://www.youtube.com/embed/34wQaNSvi10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+                
+                
+                
+                
+                
+                
               </div>
 
               <h2 class="entry-title">
@@ -99,20 +105,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </div>
 
             </article>
-  <div class="blog-author d-flex align-items-center">
-              <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" class="rounded-circle float-left" alt=""></img>
-              <div>
-                <h4>Jane Smith</h4>
-                <div class="social-links">
-                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                </div>
-                <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                </p>
-              </div>
-            </div>
+ 
 
 
  </div>

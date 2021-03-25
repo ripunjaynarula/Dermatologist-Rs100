@@ -17,36 +17,79 @@ const breakPoints = [
 export default function BlogList() {
   return (
     <>
-      <h1 style={{ textAlign: "center" }}></h1>
       <div className="BlogList">
+
         <Carousel breakPoints={breakPoints}>
-          <BlogListItem>
-          <div class="card" style={{display:"block", width:"33.34%"}} >
-          <img id="blogcardimg" src={docimg} style={{height:"100%",width:"100%"}}/>
-  <div>
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-              
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
           </BlogListItem>
-          {/* <BlogListItem>
-              <Card id="cardbox">
-              </Card>
-          </BlogListItem><BlogListItem>
-              <Card id="cardbox">
-              </Card>
-          </BlogListItem><BlogListItem>
-              <Card id="cardbox">
-              </Card>
-          </BlogListItem><BlogListItem>
-              <Card id="cardbox">
-              </Card>
-          </BlogListItem><BlogListItem>
-              <Card id="cardbox">
-              </Card>
-          </BlogListItem> */}
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
+          <BlogListItem className="BlogListItem">
+            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
+            <div>
+              <h5 style={{color:"black"}}>Blog Title</h5>
+              <p style={{color:"black", fontSize:"15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ac ante in convallis. In sit amet elementum leo.</p>
+            </div>
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </div>
+          </BlogListItem>
         </Carousel>
       </div>
       

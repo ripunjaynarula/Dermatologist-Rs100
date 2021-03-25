@@ -28,6 +28,7 @@ import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
+import docDetailsRouter from './routes/getDocDetails';
 
 
 
@@ -70,6 +71,7 @@ app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
 app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/doctor-profile',  viewDoctorProfile);
+app.use('/getDocDetails', docDetailsRouter);
 
 
 

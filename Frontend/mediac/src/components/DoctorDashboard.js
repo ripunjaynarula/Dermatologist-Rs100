@@ -31,31 +31,6 @@ export default function DoctorDashboard() {
   const [experience, setExperience] = useState('');
   const [specialisation, setSpecialisation] = useState('');
 
-  useEffect(() =>{
-    async function checkLogin(){
-      const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({email: docMail})
-      }
-
-      let res = await fetch('http://localhost:5000/verifyDoc', requestOptions);
-      res = await res.text();
-      res = JSON.parse(res)
-      if(!res['status']){
-        history.push('/DoctorLogin');
-      } else {
-        setName(res['name']);
-        setDegree(res['degree']);
-        setExperience(res['experience']);
-        setEducation(res['education']);
-        setSpecialisation(res['specialisation']);
-      }
-    }
-    checkLogin();
-  })
-
-
   return (
     <>
               {/* <div className="Navb"><Navbar /></div> */}

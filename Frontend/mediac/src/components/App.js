@@ -53,7 +53,6 @@ function App() {
             <Switch >
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/change-password" component={ChangePassword} />
-              <PrivateRoute path='/DocProfile' component={DocProfile}/>
               <PrivateRoute path="/verification-sent" component={VerificationSent} />
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/ConsultationForm' component={ConsultancyForm} />
@@ -82,6 +81,7 @@ function App() {
               <Route exact path="/home#faqhead" component={Home} />
                 <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
+                <Route path='/DocProfile' component={DocProfile}/>
                 <Route path="/DoctorLogin" component={DoctorLogin} />
                 <Route path='/doctordashboard' component={DoctorDashboard}/>
               </DocMailContext.Provider>

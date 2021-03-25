@@ -12,14 +12,14 @@ import  "./styles.css";
 import usersvg from './img/user.svg';
 import Navbar from "./Navbar"
 import BlogList from "./BlogList"
-
-
+import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons/bi";
 import {DocMailContext} from './App';
 
 export default function DocProfile() {
   
   const [show, setShow] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [docMail, setDocMail] = useContext(DocMailContext);
   const { currentUser, logout } = useAuth()
   const dbinfo = useRef()
   const history = useHistory()
@@ -29,9 +29,35 @@ export default function DocProfile() {
   const [education, setEducation] = useState('');
   const [experience, setExperience] = useState('');
   const [specialisation, setSpecialisation] = useState('');
+  const [city, setCity] = useState('');
 
- 
+  
+  useEffect(() =>{
+    async function checkLogin(){
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email: docMail})
+      }
 
+      let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      console.log(res);
+      if(!res['status']){
+        history.push('/DoctorLogin');
+      }
+      else{
+          setDegree(res['degree']);
+          setName(res['name']);
+          setEducation(res['education']);
+          setExperience(res['experience']);
+          setSpecialisation(res['specialisation']);
+          setCity(res['city'])
+      }
+    }
+    checkLogin();
+  })
 
   return (
     <>
@@ -75,8 +101,8 @@ export default function DocProfile() {
                         <div className=" profile-header" >
                             <div className="row" style={{display: 'block'}}>
                                 <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
-                                    <h1>Dr. Sarthak Singhal</h1>
-                                    <p>Senior Surgeon</p>
+                                    <h1>{name}</h1>
+                                    <p>{degree}</p>
                             <a href="#" id="socmed" className="fa fa-facebook"></a>  
                             <a href="#" id="socmed" className="fa fa-twitter"></a>  
                             <a href="#" id="socmed" className="fa fa-linkedin"></a> <br/><br/>
@@ -96,39 +122,44 @@ export default function DocProfile() {
 
             <Container  className="align-items-center justify-content-center">
             <hr/>
+            <br/> 
+            
+            <h4>Blogs Posted by the Doctor</h4>
                     <BlogList/>
-                </Container>
+                    <hr/>
+                    <br/>
+                    </Container>
+            <Container id="adincon" className="align-items-center justify-content-center">                
+            <h3 id="adinf">Additional Information</h3><br/><br/>
+
+            <h5 id="adinf"><BiNotepad style={{marginRight: "5px"}}/>Speciality</h5>
+            <p>{specialisation}</p>
+            <br/>
+
+            <h5 id="adinf"><BiBriefcaseAlt style={{marginRight: "5px"}}/>Past Experience</h5>
+            <p>{experience}</p>
+            <br/>
+
+            <h5 id="adinf"><BiLocationPlus style={{marginRight: "5px"}}/>Location</h5>
+            <p>{city}</p>
+            <br/>
+
+            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Educational Details</h5>
+            <p>{education}</p>
+            <br/>
+
+            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Professional Memberships</h5>
+            <p>Lorem ipsum dolor sit amet,</p>
+            <p> consectetur adipiscing elit.</p>
+            <p> Curabitur luctus nunc aliquet congue ultricies. </p>
+            <br/>
+     
+            </Container>
+            <br/>
+            <br/>
 
 
-
-
-            {/* <div className="col-md-12">
-                            <div className="border"></div>
-                            <h4>Posts by Doctor</h4>
-                            <div className="row">
-                                <div className="  profile-tag-section text-center" style={{width:"100%"}}>
-                                    <div className="row">
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-calendar-check-o" aria-hidden="true"></i></a>
-                                            <p>info</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-address-book" aria-hidden="true"></i></a>
-                                            <p>feed</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-id-card-o" aria-hidden="true"></i></a>
-                                            <p>Agenda</p>
-                                        </div>
-                                        <div className="col-md-3 col-sm-3 profile-tag">
-                                            <a href="#"><i className="fa fa-paperclip" aria-hidden="true"></i></a>
-                                            <p>Resume</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> */}
+                   
         </div></div>
        </>
   )

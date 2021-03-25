@@ -30,7 +30,7 @@ export default function DoctorLogin() {
     if (res['status'] === 'logged_in'){
       setDocMail(demailRef.current.value)
       setLoading(false);
-      history.push('/doctordashboard')
+      history.push('/DocProfile')
     }
   }
 

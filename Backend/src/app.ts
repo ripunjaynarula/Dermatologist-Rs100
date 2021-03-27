@@ -30,6 +30,7 @@ import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
 import docDetailsRouter from './routes/getDocDetails';
 import adminLogin from './routes/adminLogin';
+import verifyAdmin from './routes/verifyAdmin';
 
 
 const app = express();
@@ -69,7 +70,7 @@ app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
 app.use('/adminLogin', adminLogin);
-
+app.use('/verifyAdmin', verifyAdmin);
 
 
 app.get('/', (req, res) => {

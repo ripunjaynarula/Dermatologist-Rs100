@@ -61,7 +61,23 @@ function AddDoc() {
  };
 
   useEffect(() =>{
-    console.log(token);
+    const verifyAdmin = async () => {
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({token: token})
+      }
+
+      let res = await fetch('http://localhost:5000/verifyAdmin', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      console.log(res)
+      if(!res['status']){
+        history.push('/adminlogin');
+      }
+    }
+
+    verifyAdmin();
   })
     return (
         <>

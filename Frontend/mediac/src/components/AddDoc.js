@@ -117,7 +117,6 @@ function AddDoc() {
                     type="text"
                     ref={nameRef}
                     required
-                    // defaultValue={currentUser.name}
                   />
                 </Form.Group>
     

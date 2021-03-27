@@ -48,8 +48,7 @@ function AddDoc() {
         body: JSON.stringify({
           
           name: nameRef.current.value, 
-          email: emailRef.current.value,  
-          password: passwordRef.current.value, 
+          email: emailRef.current.value,
           phone: phoneRef.current.value, 
           gender: genderRef.current.value, 
           dob: dobRef.current.value, 
@@ -61,7 +60,8 @@ function AddDoc() {
           username: usernameRef.current.value, 
           awards: awardsRef.current.value, 
           pastExp: pastExpRef.current.value, 
-          specialization: specializationRef.current.value 
+          specialization: specializationRef.current.value,
+          token: token
           
         })
       }

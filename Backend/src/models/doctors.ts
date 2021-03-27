@@ -21,12 +21,6 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         type: String,
         time: true,
     },
-    password: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 8
-    },
     uid: {
         type: String,
         default: '',
@@ -41,7 +35,12 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['male', 'female', 'others'],
+    },
+    fb: {
+        type: String,
+    },
+    linkedin: {
+        type: String,
     },
     dob: {
         type: Date,

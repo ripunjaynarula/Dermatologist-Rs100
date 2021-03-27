@@ -41,16 +41,7 @@ function AddDoc() {
   
    const [gender, setGender] = useState("")
 
-    async function handleSubmit(e) {}
-    const hiddenFileInput = React.useRef(null);
-
-    const handleClick = event => {
-        hiddenFileInput.current.click();
-
- };
-
-  useEffect(() =>{
-    const verifyAdmin = async () => {
+    async function handleSubmit(e) {
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -73,6 +64,27 @@ function AddDoc() {
           specialization: specializationRef.current.value 
           
         })
+      }
+
+      let res = await fetch('http://localhost:5000/doctorSignup', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      console.log(res)
+    }
+
+    const hiddenFileInput = React.useRef(null);
+
+    const handleClick = event => {
+        hiddenFileInput.current.click();
+
+ };
+
+  useEffect(() =>{
+    const verifyAdmin = async () => {
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({token: token})
       }
 
       let res = await fetch('http://localhost:5000/verifyAdmin', requestOptions);

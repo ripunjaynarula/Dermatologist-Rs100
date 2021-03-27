@@ -16,6 +16,7 @@ import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./Profile/UpdateProfile"
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
+import AdminLogin from "./AdminLogin"
 
 import ChangePassword from "./Profile/changePassword"
 
@@ -67,6 +68,7 @@ function App() {
               <Route exact path="/" component={Home} />
                             <Route exact path="/blogs" component={viewBlogs} />
                             <Route exact path="/blog" component={singleBlog} />
+                            <Route exact path="/adminlogin" component={AdminLogin} />
 
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

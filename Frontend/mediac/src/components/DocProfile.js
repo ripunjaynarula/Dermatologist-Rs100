@@ -9,7 +9,6 @@ import {CardMain} from "../css/Card"
 import docimgsq from './img/docsq.jpeg';
 import docimg from './img/doc.jpeg'
 import  "./styles.css";
-import usersvg from './img/user.svg';
 import Navbar from "./Navbar"
 import BlogList from "./BlogList"
 import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons/bi";
@@ -30,7 +29,7 @@ export default function DocProfile() {
   const [experience, setExperience] = useState('');
   const [specialisation, setSpecialisation] = useState('');
   const [city, setCity] = useState('');
-
+  
   
   useEffect(() =>{
     async function checkLogin(){
@@ -101,7 +100,7 @@ export default function DocProfile() {
                         <div className=" profile-header" >
                             <div className="row" style={{display: 'block'}}>
                                 <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
-                                    <h1>{name}</h1>
+                                    <h1>Dr. {name}</h1>
                                     <p>{degree}</p>
                             <a href="#" id="socmed" className="fa fa-facebook"></a>  
                             <a href="#" id="socmed" className="fa fa-twitter"></a>  
@@ -125,7 +124,7 @@ export default function DocProfile() {
             <br/> 
             
             <h4>Blogs Posted by the Doctor</h4>
-                    <BlogList/>
+                    <BlogList mail={docMail}/>
                     <hr/>
                     <br/>
                     </Container>

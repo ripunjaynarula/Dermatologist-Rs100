@@ -26,7 +26,6 @@ export default function Signup() {
   }, [])
 
 function onlyOnce(){
- 
      if (currentUser) {
       history.push('/');
     }

@@ -16,6 +16,8 @@ import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./Profile/UpdateProfile"
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
+import AdminLogin from "./AdminLogin"
+import AddDoc from "./AddDoc"
 
 import ChangePassword from "./Profile/changePassword"
 
@@ -37,11 +39,13 @@ import singleBlog from './blog/blogSingle';
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
+export const TokenContext = React.createContext();
 
 
 function App() {
   const [consultationData, setConsultationData] = useState('');
   const [docMail, setDocMail] = useState("");
+  const [token, setToken] = useState("");
   return (
         <Router>
           <AuthProvider>
@@ -67,6 +71,11 @@ function App() {
               <Route exact path="/" component={Home} />
                             <Route exact path="/blogs" component={viewBlogs} />
                             <Route exact path="/blog" component={singleBlog} />
+              <TokenContext.Provider value={[token, setToken]}>
+                <Route exact path="/adminlogin" component={AdminLogin} />
+                <Route exact path="/AddDoc" component={AddDoc} />
+              </TokenContext.Provider>
+              
 
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

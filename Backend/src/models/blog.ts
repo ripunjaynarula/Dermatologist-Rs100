@@ -14,11 +14,11 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     metaDescription: {
         type: String,
         trim: true,
-     },
+    },
     postData: {
         type: String,
         required: true,
-     },
+    },
     isPublished: {
         type: Boolean,
         default: false
@@ -28,7 +28,6 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
         length: 6,
         default:0
     },
-  
     postDate: {
         type: Date,
         required: true,
@@ -42,12 +41,9 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     },
     image: {
         type : String
-
     },
- 
     keywords: {
         type: String,
- 
     }
 }));
 

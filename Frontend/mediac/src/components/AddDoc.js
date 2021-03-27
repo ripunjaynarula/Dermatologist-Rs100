@@ -1,16 +1,18 @@
-import React, { useRef,useEffect, useState } from "react"
+import React, { useRef,useEffect, useState, useContext } from "react"
 import { Form, Button,Row,Container,Col,  Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import {CardMain} from "../css/Card";
 import useWindowDimensions from "../functions/windowDimensions"
- import {Texts} from "../css/Texts";
+import {Texts} from "../css/Texts";
+import {TokenContext} from './App';
 
 function AddDoc() {
 
     const emailRef = useRef()
+    const [token, setToken] = useContext(TokenContext);
     const passwordRef = useRef()
-      const nameRef = useRef()
+    const nameRef = useRef()
     const phoneRef = useRef()
     const genderRef = useRef()
     const dobRef = useRef()
@@ -22,17 +24,15 @@ function AddDoc() {
     const graduationRef = useRef()
     const usernameRef = useRef()
     const awardsRef = useRef()
-  const pastExpRef = useRef()
-  const specializatoinRef = useRef()
-  
+    const pastExpRef = useRef()
+    const specializatoinRef = useRef()
     const passwordConfirmRef = useRef()
-    const { currentUser, updatePassword, updateEmail } = useAuth()
     const [error, setError] = useState("")
-      const [success, setSuccess] = useState("")
+    const [success, setSuccess] = useState("")
   
     const [loading, setLoading] = useState(false)
     const history = useHistory()
-  const [file, setFile] = useState("");
+    const [file, setFile] = useState("");
     const [picture, setPicture] = useState(null);
     const { height, width } = useWindowDimensions();
   
@@ -59,6 +59,10 @@ function AddDoc() {
         hiddenFileInput.current.click();
 
  };
+
+  useEffect(() =>{
+    console.log(token);
+  })
     return (
         <>
     
@@ -113,7 +117,7 @@ function AddDoc() {
                     type="text"
                     ref={nameRef}
                     required
-                    defaultValue={currentUser.name}
+                    // defaultValue={currentUser.name}
                   />
                 </Form.Group>
     

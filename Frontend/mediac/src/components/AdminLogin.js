@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -7,9 +7,12 @@ import firebase from 'firebase'
 import {CardMain} from "../css/Card";
 import Navbar from "./Navbar"
 import {Texts} from "../css/Texts";
+import {TokenContext} from './App'
+
 function AdminLogin() {
 
     const emailRef = useRef()
+    const [token, setToken] = useContext(TokenContext);
     const passwordRef = useRef()
     const { login, currentUser } = useAuth()
     const [error, setError] = useState("")
@@ -31,7 +34,8 @@ function AdminLogin() {
         history.push('/adminlogin');
       }
       else{
-        console.log('Logged in!')
+        setToken(res['secret']);
+        history.push('/AddDoc');
       }
     }
 

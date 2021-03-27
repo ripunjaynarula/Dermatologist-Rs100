@@ -10,6 +10,7 @@ import {TokenContext} from './App';
 function AddDoc() {
 
     const emailRef = useRef()
+    const { signup, currentUser } = useAuth()
     const [token, setToken] = useContext(TokenContext);
     const passwordRef = useRef()
     const nameRef = useRef()
@@ -42,11 +43,13 @@ function AddDoc() {
    const [gender, setGender] = useState("")
 
     async function handleSubmit(e) {
+      e.preventDefault();
+      console.log("Submitting");
+      setLoading(true);
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
-          
           name: nameRef.current.value, 
           email: emailRef.current.value,
           phone: phoneRef.current.value, 
@@ -62,14 +65,24 @@ function AddDoc() {
           pastExp: pastExpRef.current.value, 
           specialization: specializationRef.current.value,
           token: token
-          
         })
       }
 
       let res = await fetch('http://localhost:5000/doctorSignup', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
-      console.log(res)
+      console.log('recieved');
+      console.log(res);
+      if(res['status'] === true && res['message'] === 'Signup Complete'){
+        try {
+          console.log('executing');
+          var user =   await signup(emailRef.current.value, passwordRef.current.value);
+          console.log("User added succesfully!")
+        }catch(e){
+          console.log('error occured!')
+        }
+      }
+      setLoading(false);
     }
 
     const hiddenFileInput = React.useRef(null);
@@ -86,7 +99,6 @@ function AddDoc() {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({token: token})
       }
-
       let res = await fetch('http://localhost:5000/verifyAdmin', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
@@ -95,9 +107,9 @@ function AddDoc() {
         history.push('/adminlogin');
       }
     }
-
     verifyAdmin();
-  })
+  }, []);
+
     return (
         <>
     

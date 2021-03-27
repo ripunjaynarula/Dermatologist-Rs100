@@ -29,10 +29,6 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     phone: {
         type: Number,
     },
-    verified: {
-        type: Boolean,
-        default: false
-    },
     gender: {
         type: String,
     },

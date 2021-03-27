@@ -11,8 +11,7 @@ router.post('/', async (req, res) =>{
         const sec: any = process.env.JWT_SECRET;
         let token:any = jwt.verify(req.body.token, sec);
         if(token['email'] === process.env.ADMIN_EMAIL){
-            let doc:any = doctors.findOne({email: req.body.email});
-
+            let doc:any = await doctors.findOne({email: req.body.email});
             if(doc){
                 return res.send({status: false, message: 'Account already exists'});
             }

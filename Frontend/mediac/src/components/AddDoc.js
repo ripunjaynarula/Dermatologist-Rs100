@@ -18,15 +18,13 @@ function AddDoc() {
     const dobRef = useRef()
     const fbRef = useRef()
     const linkedinRef = useRef()
-
     const degreeRef = useRef()
     const eduRef = useRef()
     const graduationRef = useRef()
     const usernameRef = useRef()
     const awardsRef = useRef()
     const pastExpRef = useRef()
-    const specializatoinRef = useRef()
-    const passwordConfirmRef = useRef()
+    const specializationRef = useRef()
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
   
@@ -42,15 +40,6 @@ function AddDoc() {
    const [name, setName] = useState("")
   
    const [gender, setGender] = useState("")
-   const [dob, setDob] = useState("")
-   const [phone, setPhone] = useState("") 
-    const [degree, setDegree] = useState("") 
-   const [education, setEducation] = useState("") 
-   const [special, setSpecial] = useState("") 
-   const [graduation, setGraduation] = useState("") 
-    const [username, setUsername] = useState("") 
-    const [pastExp, setPastExp] = useState("") 
-    const [awards, setawards] = useState("") 
 
     async function handleSubmit(e) {}
     const hiddenFileInput = React.useRef(null);
@@ -65,7 +54,25 @@ function AddDoc() {
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({token: token})
+        body: JSON.stringify({
+          
+          name: nameRef.current.value, 
+          email: emailRef.current.value,  
+          password: passwordRef.current.value, 
+          phone: phoneRef.current.value, 
+          gender: genderRef.current.value, 
+          dob: dobRef.current.value, 
+          fb: fbRef.current.value, 
+          linkedin: linkedinRef.current.value, 
+          degree: degreeRef.current.value, 
+          edu: eduRef.current.value, 
+          graduation: graduationRef.current.value, 
+          username: usernameRef.current.value, 
+          awards: awardsRef.current.value, 
+          pastExp: pastExpRef.current.value, 
+          specialization: specializationRef.current.value 
+          
+        })
       }
 
       let res = await fetch('http://localhost:5000/verifyAdmin', requestOptions);
@@ -124,14 +131,22 @@ function AddDoc() {
      
     
     </Col>
+    <Col sm>   
+     <Form.Group id="username">
+                  <Form.Label style = {Texts.FormLabel}>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    ref={usernameRef}
+                   />
+                </Form.Group></Col>
     
     <Col sm>
     
     <Form.Group id="name">
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Password</Form.Label>
                   <Form.Control
-                    type="text"
-                    ref={nameRef}
+                    type="password"
+                    ref={passwordRef}
                     required
                   />
                 </Form.Group>
@@ -147,7 +162,24 @@ function AddDoc() {
     
                 <hr style = {{}}></hr>
      
+                <Row>
     
+     
+    
+                <Col sm>
+    
+    <Form.Group id="name">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    ref={nameRef}
+                    required
+                  />
+                </Form.Group>
+    
+    </Col>
+    
+     </Row>
      <Row>
     
     <Col sm>    <Form.Group id="email">
@@ -198,7 +230,6 @@ function AddDoc() {
                   <Form.Control
                     type="date"
                     ref={dobRef}
-                    placeholder="Leave blank to keep the same"
                   />
                 </Form.Group></Col>
     
@@ -214,7 +245,7 @@ function AddDoc() {
                   <Form.Label style = {Texts.FormLabel}>Degree</Form.Label>
                      <Form.Control
                     type="text"
-                    ref={dobRef}
+                    ref={degreeRef}
                    />
                 </Form.Group></Col>
     
@@ -223,7 +254,7 @@ function AddDoc() {
                   <Form.Label style = {Texts.FormLabel}>Education</Form.Label>
                   <Form.Control
                     type="text"
-                    ref={dobRef}
+                    ref={eduRef}
                    />
                 </Form.Group></Col>
     
@@ -234,8 +265,8 @@ function AddDoc() {
     <Col sm>    <Form.Group id="graduationYear">
                   <Form.Label style = {Texts.FormLabel}>Graduation Year</Form.Label>
                      <Form.Control
-                    type="text"
-                    ref={dobRef}
+                    type="number"
+                    ref={graduationRef}
                    />
                 </Form.Group></Col>
     
@@ -245,7 +276,7 @@ function AddDoc() {
                   <Form.Label style = {Texts.FormLabel}>Specialisation</Form.Label>
                   <Form.Control
                     type="text"
-                    ref={dobRef}
+                    ref={specializationRef}
                    />
                 </Form.Group></Col>
     
@@ -268,30 +299,18 @@ function AddDoc() {
                    />
                 </Form.Group></Col>
     </Row>
-     <Row>
-    
      
-    
-    <Col sm>   
-     <Form.Group id="username">
-                  <Form.Label style = {Texts.FormLabel}>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    ref={dobRef}
-                   />
-                </Form.Group></Col>
-    
-     </Row>
     <hr></hr>
     
      <Row>
     
     <Col sm>    <Form.Group id="graduationYear">
                   <Form.Label style = {Texts.FormLabel}>Past Experience</Form.Label>
-                     <textarea             className="form-control"
-     name="comments" style={{width: '100%', 
-      
-      }} rows="3"></textarea>
+                  <Form.Control
+                    type="year"
+                    ref={pastExpRef}
+                   />
+                    
     
                 </Form.Group></Col>
     
@@ -303,10 +322,10 @@ function AddDoc() {
     
     <Col sm>    <Form.Group id="graduationYear">
                   <Form.Label style = {Texts.FormLabel}>Awards</Form.Label>
-                     <textarea             className="form-control"
-     name="comments" style={{width: '100%', 
-     
-      }} rows="3"></textarea>
+                  <Form.Control className="form-control"
+                    ref={awardsRef}
+                   />
+                    
     
                 </Form.Group></Col>
     

@@ -296,7 +296,7 @@ function AddDoc() {
     
     <Row>
     <Col sm>    <Form.Group id="linkedinlink">
-                  <Form.Label style = {Texts.FormLabel}>Linkedin Profile Link</Form.Label>
+                  <Form.Label style = {Texts.FormLabel}>LinkedIn Profile Link</Form.Label>
                      <Form.Control
                     type="url"
                     ref={linkedinRef}

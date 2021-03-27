@@ -17,6 +17,7 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./Profile/UpdateProfile"
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
 import AdminLogin from "./AdminLogin"
+import AddDoc from "./AddDoc"
 
 import ChangePassword from "./Profile/changePassword"
 
@@ -69,6 +70,7 @@ function App() {
                             <Route exact path="/blogs" component={viewBlogs} />
                             <Route exact path="/blog" component={singleBlog} />
                             <Route exact path="/adminlogin" component={AdminLogin} />
+                            <Route exact path="/AddDoc" component={AddDoc} />
 
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

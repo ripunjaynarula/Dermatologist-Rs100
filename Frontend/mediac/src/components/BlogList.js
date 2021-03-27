@@ -30,6 +30,8 @@ export default function BlogList(props) {
   const [postdata, setPostData] = useState('');
   const [specialisation, setSpecialisation] = useState('');
   const [city, setCity] = useState('');
+  const [blogs, setBlogs] = useState([])
+
 
   useEffect(() =>{
     async function checkLogin(){
@@ -49,31 +51,39 @@ export default function BlogList(props) {
       else{
           setDoctorId(res['doctorId']);
           setTitle(res['title']);
-          setBlogImg(res['blogimg']);
+          // setBlogImg(res['blogimg']);
           setPostData(res['postdata']);
-          setSpecialisation(res['specialisation']);
+          setBlogs(res['docBlogs']);
           setCity(res['city'])
       }
     }
     checkLogin();
-  }, [history])
+  }, [history, setBlogs])
 
   return (
     <>
       <div className="BlogList">
-
+        {blogs.length>0?
         <Carousel breakPoints={breakPoints}>
-          <BlogListItem className="BlogListItem">
+        {blogs.map(blog =>(<>
+          <BlogListItem className="BlogListItem" key={blog.title}>
             <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
-              <img id="blogcardimg" src={blogimg} style={{height:"50%", marginBottom:"15px"}}/>
+              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
             <div>
-              <h5 style={{color:"black"}}>{title}</h5>
-              <p style={{color:"black", fontSize:"15px"}}>{postdata}</p>
+              <h5 style={{color:"black"}}>{blog.title}</h5>
+              <p style={{color:"black", fontSize:"15px"}}>{blog.postdata}</p>
             </div>
-            <Button href="/blog" id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            <Link to="">
+            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
+            </Link>
             </div>
           </BlogListItem>
+          </>))}
         </Carousel>
+        :<>
+        <br></br>
+        <h5>No Blogs yet</h5></>
+}
       </div>
       
     </>

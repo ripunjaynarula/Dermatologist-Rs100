@@ -16,7 +16,24 @@ function AdminLogin() {
     const [loading, setLoading] = useState(false)
     const history = useHistory()
 
-    async function handleSubmit(e) {}
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email: emailRef.current.value, pass: passwordRef.current.value})
+      }
+
+      let res = await fetch('http://localhost:5000/adminLogin', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      if(!res['status']){
+        history.push('/adminlogin');
+      }
+      else{
+        console.log('Logged in!')
+      }
+    }
 
     return (
         <div>

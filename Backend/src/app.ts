@@ -29,7 +29,7 @@ import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
 import docDetailsRouter from './routes/getDocDetails';
-
+import adminLogin from './routes/adminLogin';
 
 
 const app = express();
@@ -58,23 +58,17 @@ app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/doctorLogin', doctorLogin);
 app.use('/verifyDoc', verifyDocLogin);
-
-
-
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
 app.use('/update-patient-profile', checkAuth, updatePatientProfile);
 app.use('/update-doctor-profile', checkAuth, updateDoctorProfile);
-
 app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
 app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
-
-
-
+app.use('/adminLogin', adminLogin);
 
 
 

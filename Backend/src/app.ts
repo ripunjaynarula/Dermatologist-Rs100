@@ -18,6 +18,9 @@ import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
 import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
+import getRandomBlogs from './routes/blogs/blogsAndVideos'
+import viewBlogs from './routes/blogs/viewBlogs'
+
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
 import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
@@ -58,6 +61,9 @@ app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/doctorLogin', doctorLogin);
 app.use('/verifyDoc', verifyDocLogin);
+app.use('/get-sidebar', getRandomBlogs);
+app.use('/blogs', viewBlogs);
+
 
 
 

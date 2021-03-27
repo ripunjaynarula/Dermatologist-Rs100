@@ -35,11 +35,7 @@ export default function Home() {
   const handleShow = () => setShow(true);
   const [consultationData, setConsultationData] = useContext(DataContext);
   const { height, width } = useWindowDimensions();
- const createMarkup = (html) => {
-    return  {
-      __html: DOMPurify.sanitize(html)
-    }
-  }
+
 const title = "Better Doctors.";
 var style = {};
  console.log(width)

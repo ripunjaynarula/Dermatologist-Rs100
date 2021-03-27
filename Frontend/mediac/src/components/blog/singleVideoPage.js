@@ -1,37 +1,90 @@
-import React, {useRef,useEffect, useState, useContext} from "react";
+import React, {useRef,useEffect, useState, useContext, Component} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
-import { useHistory } from 'react-router-dom'
- 
+ import DOMPurify from 'dompurify';
+import { useAuth } from "../../contexts/AuthContext"
+
 import  "../styles.css";
  import  "./blog.css";
-
-import firebase from 'firebase'
-import { auth } from '../../firebase'
-import { useAuth } from "../../contexts/AuthContext"
-import Modal from 'react-bootstrap/Modal'
-import LoginPopup from "../LoginPopup"
-import useWindowDimensions from "../../functions/windowDimensions"
 import SideBar from "./sidebar"
-import { DataContext } from '../App';
-export default function Home() {
-
-  const history = useHistory();
-  const handleClose = () => setShow(false);
-  const [flag, setFlag] = useState(false);
-  const [show, setShow] = useState(false);
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login, currentUser } = useAuth();
-  const dataRef = useRef();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const handleShow = () => setShow(true);
-  const [consultationData, setConsultationData] = useContext(DataContext);
-  const { height, width } = useWindowDimensions();
-
-  
+   import heartSvg from '../img/heart.svg'
+ import userSvg from '../img/person.svg'
+   import clockSvg from '../img/clock.svg'
  
-    return (
+export default function Video () {
+    const { currentUser,  } = useAuth()
+
+ const [error, setError] = useState(false)
+   const [width, setWidth] = useState(false)
+const [loading, setLoading] = useState(false)
+   const ref = useRef(null);
+
+
+
+const queryString = window.location.pathname;
+const urlParams = new URLSearchParams(queryString);
+console.log(queryString)
+
+
+ useEffect(() => {
+     function handleResize() {
+
+       setWidth(ref.current ? ref.current.offsetWidth : 0)
+    
+}
+
+    window.addEventListener('resize', handleResize)
+       setWidth(ref.current ? ref.current.offsetWidth : 0)
+  }, [ref.current]);
+
+
+  useEffect(() => getData(), []);
+
+ async function  getData() {
+       setLoading(true)
+          setError("")
+
+try{
+
+  var token = null;
+  if(currentUser)
+  {
+     token = await  currentUser.getIdToken(true)
+  }
+   const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({patientUid: currentUser.uid})
+
+          };
+        let res = await fetch('http://localhost:5000/patient-profile', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+
+
+
+
+}
+catch(e){}
+
+       setLoading(false)
+
+
+  }
+
+
+
+
+
+
+
+  const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
+ 
+
+   return (
     <>
  
      <section class="breadcrumbs">
@@ -58,12 +111,15 @@ export default function Home() {
 
           <div class="col-lg-8 entries" >
 
-            <article class="entry entry-single">
+            <article ref={ref} class="entry entry-single">
 
-              <div class="entry-img" style = {{  
+              <div class="entry-img"  style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               
-                <iframe  width = "599" height="500" src="https://www.youtube.com/embed/34wQaNSvi10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe  width = {width} height={width / 1.77} src="https://www.youtube.com/embed/34wQaNSvi10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+
+                </iframe>
             
                 
                 
@@ -78,10 +134,10 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </h2>
 
               <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-               
+                    <ul>
+                  <li class="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  
                 </ul>
               </div>
 
@@ -91,17 +147,17 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </div>
 
               <div class="entry-footer">
-                <i class="bi bi-folder"></i>
-                <ul class="cats">
-                  <li><a href="/">Business</a></li>
-                </ul>
+                 <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+             
+<Row style = {{flexDirection: 'row', }}>
 
-                <i class="bi bi-tags"></i>
-                <ul class="tags">
-                  <li><a href="/">Creative</a></li>
-                  <li><a href="/">Tips</a></li>
-                  <li><a href="/">Marketing</a></li>
-                </ul>
+      <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}>  people found this helpful </p>
+</Row>
+
+              <div className="primaryButtonSmall" >
+                  <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href="/">Read More</a>
+                </div>
+           </Row>     
               </div>
 
             </article>
@@ -113,7 +169,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  
 <div class="col-lg-4">
 
-             <SideBar></SideBar>
+   <SideBar></SideBar>
+
           </div>
  
  
@@ -155,5 +212,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
     </>
   )
+ 
+ 
 }
-  
+ 

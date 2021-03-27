@@ -37,6 +37,7 @@ const FormEditors = () => {
       const ytLink = useRef()
    const keyword = useRef()
    const metaDesc = useRef()
+   const link = useRef()
 
   const {  currentUser } = useAuth()
   const [error, setError] = useState("")
@@ -270,6 +271,13 @@ history.push('/')
  <Form.Group id="desc" style={{paddingTop: 1}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Meta Description</Form.Label>
               <Form.Control type="text" ref={metaDesc} placeholder = "A short description that appears in google search result" />
+            </Form.Group>
+ 
+
+
+ <Form.Group id="desc" style={{paddingTop: 1}}>
+              <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Link</Form.Label>
+              <Form.Control type="text" ref={metaDesc} placeholder = "link after " />
             </Form.Group>
                   </Form>
 <br></br>

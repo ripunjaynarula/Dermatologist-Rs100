@@ -59,8 +59,8 @@ function App() {
               <PrivateRoute path='/Choice' component={Choice} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
               <PrivateRoute path='/add-blog' component={FormEditors} />
-                            <PrivateRoute path='/add-video' component={AddVideo} />
-                            <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
+              <PrivateRoute path='/add-video' component={AddVideo} />
+              <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
 
             
               

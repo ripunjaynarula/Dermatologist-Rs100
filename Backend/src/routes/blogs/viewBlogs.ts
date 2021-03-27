@@ -12,13 +12,20 @@ router.post('/', async (req, res) => {
  
    try {
 
+var arr = []
 
 
-        var blogs;
-  
+        var blogs : any;
+ var sort = {'_id': -1}
 
-         blogs =  await blog.find({isPublished: true},  );
-        
+
+         blogs =  await blog.find({isPublished: true}  ).skip(1).limit(5).sort('-postDate') ;
+         for (var i =0; i< blogs.length; i++)
+        {
+             arr.push(blogs[i].doctorId)
+            blogs[i].image = process.env.cdnUrl + blogs[i].image 
+
+        }
   
         return res.send({status: 'valid', isError : false, blogs})
 

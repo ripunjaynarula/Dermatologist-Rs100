@@ -55,8 +55,7 @@ async function getProfiles() {
         let res = await fetch('http://localhost:5000/patient-profile', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
-console.log(currentUser.photoURL)
-        if(res.isError)
+         if(res.isError)
         {
 
         }

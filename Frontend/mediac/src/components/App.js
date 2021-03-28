@@ -63,35 +63,27 @@ function App() {
               <PrivateRoute path='/Choice' component={Choice} />
               <PrivateRoute path='/OtherPersonDetails' component={OtherPersonDetails} />
               <PrivateRoute path='/add-blog' component={FormEditors} />
-                            <PrivateRoute path='/add-video' component={AddVideo} />
-                            <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
-
-            
-              
+              <PrivateRoute path='/add-video' component={AddVideo} />
+              <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
               <Route exact path="/" component={Home} />
-                            <Route exact path="/blogs" component={viewBlogs} />
-                            <Route exact path="/blog" component={singleBlog} />
-              <TokenContext.Provider value={[token, setToken]}>
-                <Route exact path="/adminlogin" component={AdminLogin} />
-                <Route exact path="/AddDoc" component={AddDoc} />
-              </TokenContext.Provider>
-              
-
+              <Route exact path="/blogs" component={viewBlogs} />
+              <Route exact path="/blog" component={singleBlog} />
+              <Route path="/login" component={Login}/>
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
-
-
-              <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
                 <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
-                <Route path='/DocProfile' component={DocProfile}/>
-                <Route path="/DoctorLogin" component={DoctorLogin} />
-                <Route path='/doctordashboard' component={DoctorDashboard}/>
+                <PrivateRoute path='/DocProfile' component={DocProfile}/>
+                <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
               </DocMailContext.Provider>
+              <TokenContext.Provider value={[token, setToken]}>
+                <Route exact path="/adminlogin" component={AdminLogin} />
+                <Route exact path="/AddDoc" component={AddDoc} />
+              </TokenContext.Provider>
             </Switch>
           </div>
           </DataContext.Provider>

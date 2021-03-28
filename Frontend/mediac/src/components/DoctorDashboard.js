@@ -24,12 +24,14 @@ export default function DoctorDashboard() {
   const dbinfo = useRef()
   const history = useHistory()
   const quest = useRef()
-  const [docMail, setDocMail] = useContext(DocMailContext);
-  const [name, setName] = useState('');
-  const [degree, setDegree] = useState('');
-  const [education, setEducation] = useState('');
-  const [experience, setExperience] = useState('');
-  const [specialisation, setSpecialisation] = useState('');
+
+
+  useEffect( () => {
+    if (!currentUser) {
+      history.push('/login');
+      return
+    }
+  }, [currentUser, history])
 
   return (
     <>

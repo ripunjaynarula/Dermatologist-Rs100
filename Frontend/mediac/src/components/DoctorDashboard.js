@@ -31,15 +31,14 @@ export default function DoctorDashboard() {
       history.push('/login');
       return
     }
+    if (currentUser.role !== 'doctor'){
+      history.push('/dashboard')
+    }
   }, [currentUser, history])
 
   return (
     <>
-              {/* <div className="Navb"><Navbar /></div> */}
-              
-
     <Header/>
-    {/* <div className="Navb"><DocNav /></div> */}
 <br/>
     <Container id="doc" className="d-flex align-items-center justify-content-center">
     <Card id="doccard">

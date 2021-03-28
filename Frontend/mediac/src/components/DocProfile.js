@@ -36,6 +36,9 @@ export default function DocProfile() {
         history.push('/login');
         return
     }
+    if (currentUser.role !== 'doctor'){
+        history.push('/dashboard')
+    }
     async function checkLogin(){
       const requestOptions = {
         method: 'POST',

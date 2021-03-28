@@ -21,8 +21,10 @@ export default function Login() {
 
 function onlyOnce(){
      if (currentUser) {
-      history.push('/');
+      if (currentUser.role === "doctor")
+      return history.push('/doctordashboard');
     }
+    return history.push('/dashboard');
 }
   async function handleSubmit(e) {
     e.preventDefault()
@@ -44,13 +46,15 @@ function onlyOnce(){
       console.log(res);
       setLoading(false)
       if (res['status'] === 'logged_in' && res['scope'] === 'patient') {
+        currentUser.role = 'patient';
         setError('');
         setLoading(false)
         history.push('/');
         return;
       }
       if (res['status'] === 'logged_in' && res['scope'] === 'doctor') {
-        console.log('reedirecting!')
+        currentUser.role = 'doctor';
+        console.log('changed: '+ currentUser);
         setError('');
         setLoading(false)
         history.push('/doctordashboard');

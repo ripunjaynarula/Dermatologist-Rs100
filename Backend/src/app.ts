@@ -18,7 +18,7 @@ import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
 import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
-import getRandomBlogs from './routes/blogs/blogsAndVideos'
+import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
 
 import blogs from './models/blog';
@@ -35,6 +35,8 @@ import docDetailsRouter from './routes/getDocDetails';
 import adminLogin from './routes/adminLogin';
 import doctorSignup from './routes/doctorSignup';
 import verifyAdmin from './routes/verifyAdmin';
+import viewSingleVideo from './routes/videos/viewVideoSingle';
+import likeVideo from './routes/videos/likeVideo';
 
 
 const app = express();
@@ -63,15 +65,6 @@ app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/doctorLogin', doctorLogin);
 app.use('/verifyDoc', verifyDocLogin);
-<<<<<<< HEAD
-app.use('/get-sidebar', getRandomBlogs);
-app.use('/blogs', viewBlogs);
-
-
-
-
-=======
->>>>>>> 6671f59539b0bd4cdf03861c5ad9cff2fb7ea9a0
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
@@ -85,6 +78,12 @@ app.use('/getDocDetails', docDetailsRouter);
 app.use('/adminLogin', adminLogin);
 app.use('/verifyAdmin', verifyAdmin);
 app.use('/doctorSignup', doctorSignup);
+app.use('/get-sidebar', getRandomBlogsAndVideos);
+app.use('/blogs', viewBlogs);
+app.use('/video', viewSingleVideo);
+app.use('/like-video', checkAuth, likeVideo);
+
+
 
 
 app.get('/', (req, res) => {

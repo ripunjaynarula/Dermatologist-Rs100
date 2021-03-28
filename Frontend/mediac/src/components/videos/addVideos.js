@@ -77,11 +77,24 @@ return
     } 
      if(!title.current)
     {
-             alert("Title is missing")
+             alert("Title is missing"  )
 return  
     }
     if(title.current.value.trim().length===0){
-       alert("Title is missings")
+       alert("Title is missing")
+return    
+}
+   if(!link.current)
+    {
+             alert("Page link is missing"  )
+return  
+    }
+    if(link.current.value.trim().length===0){
+       alert("Page link is missing")
+return    
+}
+   if(link.includes("/")){
+       alert("Page link cannot contain '/'")
 return    
 }
    if(!ytLink.current)
@@ -115,7 +128,8 @@ return;
            title : title.current.value, 
           ytUrl : ytLink.current.value,
           keywords: keyword.current.value,
-          metaDescription : metaDesc.current.value
+          metaDescription : metaDesc.current.value,
+          link : link.current.value
          
              
             };
@@ -134,12 +148,16 @@ return;
  
           console.log(res)
 
+ if(res.status === "link_used")
+          {
+              alert ("Link already used")
 
+          }
 
       
           if(res.status === "invalid_link")
           {
-              alert ("Invalid video link")
+              alert ("Invalid youtube link")
 
           }
 
@@ -242,9 +260,9 @@ history.push('/')
             </Form.Group>
 
 
- <Form.Group id="email" style={{paddingTop: 1}}>
+ <Form.Group id="title" style={{paddingTop: 1}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Title</Form.Label>
-              <Form.Control type="email" ref={title} required />
+              <Form.Control type="text" ref={title} required />
             </Form.Group>
 
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Content</Form.Label>
@@ -262,7 +280,7 @@ history.push('/')
 
  <Form.Group id="keyword" style={{marginTop: 18}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Keywords</Form.Label>
-              <Form.Control type="text" ref={title} placeholder = "Write keywords related to the video seperated with comma. Example - skin care, hairfall" />
+              <Form.Control type="text" ref={keyword} placeholder = "Write keywords related to the video seperated with comma. Example - skin care, hairfall" />
             </Form.Group>
 
 
@@ -277,7 +295,7 @@ history.push('/')
 
  <Form.Group id="desc" style={{paddingTop: 1}}>
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Link</Form.Label>
-              <Form.Control type="text" ref={metaDesc} placeholder = "link after " />
+              <Form.Control type="text" ref={link} placeholder = "link after /video/" />
             </Form.Group>
                   </Form>
 <br></br>

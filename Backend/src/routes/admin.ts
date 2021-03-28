@@ -5,11 +5,12 @@ import patients from '../models/patients';
 import doctors from '../models/doctors';
 import consultations from '../models/consultation';
  import blogs from '../models/blog';
+ import Videos from '../models/videos';
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro ({
-    resources: [patients, doctors, consultations,blogs ],
+    resources: [patients, doctors, consultations,blogs, Videos ],
     rootPath: '/admin',
 });
 

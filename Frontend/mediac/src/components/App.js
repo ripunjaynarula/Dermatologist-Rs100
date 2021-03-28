@@ -71,11 +71,7 @@ function App() {
               <Route exact path="/" component={Home} />
                             <Route exact path="/blogs" component={viewBlogs} />
                             <Route exact path="/blog" component={singleBlog} />
-              <TokenContext.Provider value={[token, setToken]}>
-                <Route exact path="/adminlogin" component={AdminLogin} />
-                <Route exact path="/AddDoc" component={AddDoc} />
-              </TokenContext.Provider>
-              
+
 
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
@@ -88,12 +84,25 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
-                <DocMailContext.Provider value={[docMail, setDocMail]}>
+
+          <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
                 <Route path='/DocProfile' component={DocProfile}/>
                 <Route path="/DoctorLogin" component={DoctorLogin} />
                 <Route path='/doctordashboard' component={DoctorDashboard}/>
               </DocMailContext.Provider>
+
+
+
+
+                          <TokenContext.Provider value={[token, setToken]}>
+                <Route exact path="/adminlogin" component={AdminLogin} />
+                <Route exact path="/AddDoc" component={AddDoc} />
+              </TokenContext.Provider>
+
+      
+                
+              
             </Switch>
           </div>
           </DataContext.Provider>

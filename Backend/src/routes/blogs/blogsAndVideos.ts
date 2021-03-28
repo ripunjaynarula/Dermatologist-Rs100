@@ -24,6 +24,7 @@ var arr = []
         for (var i =0; i< blogs.length; i++)
         {
             arr.push(blogs[i].doctorId)
+            blogs[i].image = process.env.cdnUrl + blogs[i].image
         }
         console.log(arr)
         var d = await doc.find({ })

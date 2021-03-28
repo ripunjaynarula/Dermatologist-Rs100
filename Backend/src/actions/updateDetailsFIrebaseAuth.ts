@@ -171,4 +171,35 @@ const changeProfilePicture = async(req: any, imageUrl : string) => {
    
 }
 
+
+
+const createUser = async(req: any, imageUrl : string) => {
+
+    admin
+  .auth()
+  .createUser( {
+    
+ email: 'user@example.com',
+    emailVerified: false,
+    phoneNumber: '+11234567890',
+    password: 'secretPassword',
+    displayName: 'John Doe',
+    photoURL: 'http://www.example.com/12345678/photo.png',   })
+  .then((userRecord) => {
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log('Successfully updated user', userRecord.toJSON());
+  })
+  .catch((error) => {
+    console.log('Error updating user:', error);
+  });
+
+
+   
+}
+
+
+
+
+
+
 export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus};

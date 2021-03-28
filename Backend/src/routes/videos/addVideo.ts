@@ -33,10 +33,25 @@ var videoId = matchYoutubeUrl(req.body.ytUrl);
         postData: req.body.postData,
          keywords : req.body.keywords,
         videoLink : "https://www.youtube.com/embed/" + videoId,
-        thumbnail : "https://img.youtube.com/vi/" + videoId+"/hqdefault.jpg"
+        thumbnail : "https://img.youtube.com/vi/" + videoId+"/hqdefault.jpg",
+        link: req.body.link
  
  
     });
+
+
+    var d = await videos.findOne({link : req.body.link})
+    console.log(d)
+    if(d != null)
+    {
+                return res.send({
+          
+                isError : true,
+                status : "link_used"
+              
+
+            })
+    }
  
              var p = await video.save();
                 return res.send({

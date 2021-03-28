@@ -6,15 +6,19 @@ const checkAuthStatus = async (req: any) => {
 
 
     if (req.headers.token) {
-    admin.auth().verifyIdToken(req.headers.token)
-    .then((data)=>{
-     req.body.uid = data.user_id
-    return true;
+try{
+      var data = await admin.auth().verifyIdToken(req.headers.token)
+  req.body.uid = data.user_id
+ req.body.role = data.role
+      return true;
 
-     }).catch((e) => {
-      console.log(e)
+}
+
+    catch(e)
+    {
+         console.log(e)
       return false;
-    });
+    }
   } else {
     return false
   }

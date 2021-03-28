@@ -7,23 +7,29 @@ import  "../styles.css";
  import  "./blog.css";
 import SideBar from "./sidebar"
    import heartSvg from '../img/heart.svg'
+      import heartRed from '../img/heartRed.svg'
+
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
  
 export default function Video () {
     const { currentUser,  } = useAuth()
-
+const [postId, setPostId] = useState('')
  const [error, setError] = useState(false)
    const [width, setWidth] = useState(false)
 const [loading, setLoading] = useState(false)
    const ref = useRef(null);
+const [youtubeVideo, setyoutubeVideo] = useState("")
+const [title, setTitle] = useState("")
+const [content, setContent] = useState("")
+const [link, setLink] = useState("")
 
-
-
+const [likes, setLikes] = useState(0)
+const [date, setDate] = useState("")
+const [liked, setLiked] = useState(false)
 const queryString = window.location.pathname;
 const urlParams = new URLSearchParams(queryString);
-console.log(queryString)
-
+ 
 
  useEffect(() => {
      function handleResize() {
@@ -53,15 +59,24 @@ try{
    const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json','token': token },
-          body : JSON.stringify({patientUid: currentUser.uid})
+          body : JSON.stringify({videoLink: queryString.split("/")[queryString.split("/").length - 1]})
 
           };
-        let res = await fetch('http://localhost:5000/patient-profile', requestOptions);
+        let res = await fetch('http://localhost:5000/video', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
-
-
-
+        console.log(res)
+        if(res.status === "valid")
+        {
+                 setyoutubeVideo(res.video.videoLink)
+        setTitle(res.video.title)
+        setContent((res.video.postData))
+        setDate(res.video.postDate.split("T")[0])
+        setLikes(res.video.likes)
+        setPostId(res.video._id);
+ setLink(res.video.link)
+        setLiked(res.liked)
+        }
 
 }
 catch(e){}
@@ -74,6 +89,15 @@ catch(e){}
 
 
 
+var text = "people found this helpful"
+if(likes === 0)
+{
+  text = ""
+}
+if(likes === 1)
+{
+  text = "person found this helpful"
+}
 
 
 
@@ -84,6 +108,55 @@ catch(e){}
   }
  
 
+ 
+ async function handleClick(e) {
+        e.preventDefault();
+
+     if(liked) return
+   setLikes(likes+1)
+   setLiked(true)
+
+
+
+          setLoading(true)
+          setError("")
+
+try{
+
+  var token = null;
+  if(currentUser)
+  {
+     token = await  currentUser.getIdToken(true)
+  }else{
+
+
+  }
+   const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({videoId: postId})
+
+          };
+           console.log(JSON.stringify({videoId: postId}))
+        let res = await fetch('http://localhost:5000/like-video', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+         if(res.status !== "saved_successfuly")
+         {
+   setLikes(likes-1)
+   setLiked(false)
+         }
+      
+
+}
+catch(e){}
+
+       setLoading(false)
+
+
+
+  }
+
    return (
     <>
  
@@ -91,11 +164,10 @@ catch(e){}
       <div class="container">
 
        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li>Blog Single</li>
-        </ol>
-        <h2>Blog Single</h2>
+          <li><a href="/">Home</a></li>
+          <li><a href="/videos">Videos</a></li>
+         </ol>
+        <h2>{title}</h2>
 
       </div>
     </section>
@@ -116,7 +188,7 @@ catch(e){}
               <div class="entry-img"  style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               
-                <iframe  width = {width} height={width / 1.77} src="https://www.youtube.com/embed/34wQaNSvi10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                <iframe  width = {width} height={width / 1.777} src={youtubeVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 
                 </iframe>
@@ -130,33 +202,34 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href={link}>{title}</a>
               </h2>
 
               <div class="entry-meta">
                     <ul>
-                  <li class="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                   <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a ><time datetime="2020-01-01">{date}</time></a></li>
                   
                 </ul>
               </div>
 
               <div class="entry-content">
             
-           
+      <div className="preview" dangerouslySetInnerHTML={createMarkup(content)}></div>
               </div>
 
               <div class="entry-footer">
                  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
-             
+              <a href="#" onClick={handleClick} >
 <Row style = {{flexDirection: 'row', }}>
 
-      <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}>  people found this helpful </p>
+     <img src = {!liked ? heartSvg : heartRed} className = "icon-big" alt=""></img>
+     
+     <p style = {{fontSize : "14px", color : "#777777"}}> {likes} {text} </p>
+     
 </Row>
 
-              <div className="primaryButtonSmall" >
-                  <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href="/">Read More</a>
-                </div>
+     </a>
+ 
            </Row>     
               </div>
 

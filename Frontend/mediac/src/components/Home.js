@@ -15,7 +15,6 @@ import Navbar from "./Navbar"
 export default function Home() {
 
   const history = useHistory();
-  const handleClose = () => setShow(false);
   const [flag, setFlag] = useState(false);
   const [show, setShow] = useState(false);
   const emailRef = useRef()
@@ -25,6 +24,8 @@ export default function Home() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+
   const [consultationData, setConsultationData] = useContext(DataContext);
 
 

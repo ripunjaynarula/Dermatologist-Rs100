@@ -46,6 +46,9 @@ const patients = mongoose.model('patients', new mongoose.Schema({
         required: true,
         default : "patient"
     },
+    videoLikes : {
+        type : Array
+    }
 }));
 
 export default patients;

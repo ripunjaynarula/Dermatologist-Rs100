@@ -83,16 +83,16 @@ function App() {
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
-
+   <TokenContext.Provider value={[token, setToken]}>
+                <Route exact path="/adminlogin" component={AdminLogin} />
+                <Route exact path="/AddDoc" component={AddDoc} />
+              </TokenContext.Provider>
           <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
                 <PrivateRoute path='/DocProfile' component={DocProfile}/>
                 <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
               </DocMailContext.Provider>
-              <TokenContext.Provider value={[token, setToken]}>
-                <Route exact path="/adminlogin" component={AdminLogin} />
-                <Route exact path="/AddDoc" component={AddDoc} />
-              </TokenContext.Provider>
+           
             </Switch>
           </div>
           </DataContext.Provider>

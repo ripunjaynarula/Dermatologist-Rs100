@@ -27,7 +27,8 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         unique: true
     },
     phone: {
-        type: Number,
+        type: String,
+        unique: false
     },
     gender: {
         type: String,

@@ -76,16 +76,22 @@ function AddDoc() {
       res = JSON.parse(res)
       console.log('recieved');
       console.log(res);
-      if(res['status'] === true && res['message'] === 'Signup Complete'){
+      if(res['status'] === true && res['message'] === 'signup_complete'){
+        console.log("SSSSSSSSSSSSSSSSSSSSs")
         setSuccess("Account created successfully")
       }else if(res["firebaseError"]){
-         if (res.status['code']==='auth/email-already-in-use') {
-        setError('Email already in use.')
-       }
-       else{
+                 setError(res.message.message)
+
+
+      }
+        else{
+                  console.log("rrrrrrrrrrrr")
+
          setError(res['message'])
        }
-      }
+
+        console.log("iiiiiiiiiiiiiiii")
+
       setLoading(false);
     }
 
@@ -378,7 +384,12 @@ function AddDoc() {
             </Card.Body>
           </Card>
           
-         
+
+          {(error || success) ? <div style = {{height : "20px"}}></div> : <div></div> }
+                  {error && <Alert variant="danger">{error}</Alert>}
+              {success && <Alert variant="success">{success}</Alert>}
+    
+    
           
           <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px" }}>
                

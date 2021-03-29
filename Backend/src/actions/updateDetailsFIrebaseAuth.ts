@@ -217,7 +217,18 @@ const changeAccess = async(role : string, uid : string)=>{
 
 }
 
+const deleteUser = async(uid : string) =>
+{
+
+  try{
+var s =    await admin.auth().deleteUser(uid)
+
+  }catch(e)
+  {
+    console.log(e)
+  }
+
+}
 
 
-
-export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus, createDoctor, changeAccess};
+export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus, createDoctor, changeAccess, deleteUser};

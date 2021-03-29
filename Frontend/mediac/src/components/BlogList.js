@@ -46,7 +46,7 @@ export default function BlogList(props) {
       res = JSON.parse(res)
       console.log(res);
       if(!res['status']){
-        // history.push('/DoctorLogin');
+        history.push('/login');
       }
       else{
           setDoctorId(res['doctorId']);
@@ -57,7 +57,7 @@ export default function BlogList(props) {
           setCity(res['city'])
       }
     }
-    checkLogin();
+    // checkLogin();
   }, [history, setBlogs])
 
   return (

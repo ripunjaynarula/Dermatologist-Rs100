@@ -140,8 +140,7 @@ const changeNameAccessFirebaseAuth = async(req: any, name : string,  role: strin
 
 
 
-    console.log('Successfully updated user', userRecord.toJSON());
-  })
+   })
   .catch((error) => {
     console.log('Error updating user:', error);
   });
@@ -173,33 +172,52 @@ const changeProfilePicture = async(req: any, imageUrl : string) => {
 
 
 
-const createUser = async(req: any, imageUrl : string) => {
+const createDoctor = async(name: string, password : string, email : string, imageUrl : string) => {
 
-    admin
+try{
+
+   var userRecord =  await  admin
   .auth()
   .createUser( {
     
- email: 'user@example.com',
-    emailVerified: false,
-    phoneNumber: '+11234567890',
-    password: 'secretPassword',
-    displayName: 'John Doe',
-    photoURL: 'http://www.example.com/12345678/photo.png',   })
-  .then((userRecord) => {
-    // See the UserRecord reference doc for the contents of userRecord.
-    console.log('Successfully updated user', userRecord.toJSON());
-  })
-  .catch((error) => {
-    console.log('Error updating user:', error);
-  });
+ email: email,
+    emailVerified: true,
+     password: password,
+    displayName: name,
+    photoURL: imageUrl,   
+    })
 
+
+
+ console.log('Successfully updated user', userRecord.toJSON());
+
+    return {data : userRecord, error : false};
+}
+ 
+ catch(e){
+   console.log('Error updating user:', e);
+    return {data: e, error : true};
+ }
 
    
+}
+
+const changeAccess = async(role : string, uid : string)=>{
+  admin
+            .auth()
+            .setCustomUserClaims(uid, {
+                role
+            })
+            .then((b) => {
+
+            })
+            .catch((error) => {
+                console.log('Error updating user:', error);
+            }); 
+
 }
 
 
 
 
-
-
-export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus};
+export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus, createDoctor, changeAccess};

@@ -46,6 +46,8 @@ function AddDoc() {
       e.preventDefault();
       console.log("Submitting");
       setLoading(true);
+      setSuccess("")
+      setError("")
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -59,6 +61,7 @@ function AddDoc() {
           linkedin: linkedinRef.current.value, 
           degree: degreeRef.current.value, 
           edu: eduRef.current.value, 
+          password : passwordRef.current.value,
           graduation: graduationRef.current.value, 
           username: usernameRef.current.value, 
           awards: awardsRef.current.value, 
@@ -74,13 +77,14 @@ function AddDoc() {
       console.log('recieved');
       console.log(res);
       if(res['status'] === true && res['message'] === 'Signup Complete'){
-        try {
-          console.log('executing');
-          var user =   await signup(emailRef.current.value, passwordRef.current.value);
-          console.log("User added succesfully!")
-        }catch(e){
-          console.log('error occured!')
-        }
+        setSuccess("Account created successfully")
+      }else if(res["firebaseError"]){
+         if (res.status['code']==='auth/email-already-in-use') {
+        setError('Email already in use.')
+       }
+       else{
+         setError(res['message'])
+       }
       }
       setLoading(false);
     }

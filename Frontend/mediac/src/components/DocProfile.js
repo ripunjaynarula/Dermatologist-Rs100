@@ -32,11 +32,18 @@ export default function DocProfile() {
   
   
   useEffect(() =>{
+    if (!currentUser) {
+        history.push('/login');
+        return
+    }
+    if (currentUser.role !== 'doctor'){
+        history.push('/dashboard')
+    }
     async function checkLogin(){
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({email: docMail})
+        body: JSON.stringify({email: currentUser.email})
       }
 
       let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
@@ -44,7 +51,7 @@ export default function DocProfile() {
       res = JSON.parse(res)
       console.log(res);
       if(!res['status']){
-        history.push('/DoctorLogin');
+        history.push('/login');
       }
       else{
           setDegree(res['degree']);
@@ -52,11 +59,10 @@ export default function DocProfile() {
           setEducation(res['education']);
           setExperience(res['experience']);
           setSpecialisation(res['specialisation']);
-          setCity(res['city'])
       }
     }
     checkLogin();
-  })
+  }, [])
 
   return (
     <>

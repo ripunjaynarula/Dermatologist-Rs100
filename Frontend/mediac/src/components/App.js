@@ -68,41 +68,31 @@ function App() {
 
             
               
+     
+
+
               <Route exact path="/" component={Home} />
-                            <Route exact path="/blogs" component={viewBlogs} />
-                            <Route exact path="/blog" component={singleBlog} />
-
-
+              <Route exact path="/blogs" component={viewBlogs} />
+              <Route exact path="/blog" component={singleBlog} />
+              <Route path="/login" component={Login}/>
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
               <Route path="/video" component={Video} />
 
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
-
-
-              <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
 
           <DocMailContext.Provider value={[docMail, setDocMail]}>
                 {/*All doctor private routes go in here*/}
-                <Route path='/DocProfile' component={DocProfile}/>
-                <Route path="/DoctorLogin" component={DoctorLogin} />
-                <Route path='/doctordashboard' component={DoctorDashboard}/>
+                <PrivateRoute path='/DocProfile' component={DocProfile}/>
+                <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
               </DocMailContext.Provider>
-
-
-
-
-                          <TokenContext.Provider value={[token, setToken]}>
+              <TokenContext.Provider value={[token, setToken]}>
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
               </TokenContext.Provider>
-
-      
-                
-              
             </Switch>
           </div>
           </DataContext.Provider>

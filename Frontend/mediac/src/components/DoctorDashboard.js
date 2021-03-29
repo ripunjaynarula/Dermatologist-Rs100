@@ -24,20 +24,21 @@ export default function DoctorDashboard() {
   const dbinfo = useRef()
   const history = useHistory()
   const quest = useRef()
-  const [docMail, setDocMail] = useContext(DocMailContext);
-  const [name, setName] = useState('');
-  const [degree, setDegree] = useState('');
-  const [education, setEducation] = useState('');
-  const [experience, setExperience] = useState('');
-  const [specialisation, setSpecialisation] = useState('');
+
+
+  useEffect( () => {
+    if (!currentUser) {
+      history.push('/login');
+      return
+    }
+    if (currentUser.role !== 'doctor'){
+      history.push('/dashboard')
+    }
+  }, [currentUser, history])
 
   return (
     <>
-              {/* <div className="Navb"><Navbar /></div> */}
-              
-
     <Header/>
-    {/* <div className="Navb"><DocNav /></div> */}
 <br/>
     <Container id="doc" className="d-flex align-items-center justify-content-center">
     <Card id="doccard">

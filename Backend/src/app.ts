@@ -38,6 +38,7 @@ import doctorSignup from './routes/doctorSignup';
 import verifyAdmin from './routes/verifyAdmin';
 import viewSingleVideo from './routes/videos/viewVideoSingle';
 import likeVideo from './routes/videos/likeVideo';
+import subscribeNotif from './routes/subscribe';
 
 
 const app = express();
@@ -52,10 +53,19 @@ declare module 'express-session' {
         token: string;
     }
 }
+app.use(express.static(path.join(__dirname, "client")));
 app.use(session({ secret: session_secret, saveUninitialized: true, resave: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
+const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
+
+webPush.setVapidDetails(
+  "mailto:cr7shivanshsharma@gmail.com",
+  publicVapidKey,
+  privateVapidKey
+);
 
 app.use('/patientSignup', patientSignup);
 app.use('/login', login);
@@ -82,14 +92,15 @@ app.use('/doctorSignup', doctorSignup);
 app.use('/get-sidebar', getRandomBlogsAndVideos);
 app.use('/blogs', viewBlogs);
 app.use('/video', viewSingleVideo);
+app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
 
 
 
 
-app.get('/', (req, res) => {
-    return res.send('Hello world!');
-});
+// app.get('/', (req, res) => {
+//     return res.send('Hello world!');
+// });
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

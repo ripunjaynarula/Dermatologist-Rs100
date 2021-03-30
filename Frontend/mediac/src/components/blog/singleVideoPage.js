@@ -1,48 +1,173 @@
-import React, {useRef,useEffect, useState, useContext} from "react";
+import React, {useRef,useEffect, useState, useContext, Component} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
-import { useHistory } from 'react-router-dom'
- 
+ import DOMPurify from 'dompurify';
+import { useAuth } from "../../contexts/AuthContext"
+
 import  "../styles.css";
  import  "./blog.css";
-
-import firebase from 'firebase'
-import { auth } from '../../firebase'
-import { useAuth } from "../../contexts/AuthContext"
-import Modal from 'react-bootstrap/Modal'
-import LoginPopup from "../LoginPopup"
-import useWindowDimensions from "../../functions/windowDimensions"
 import SideBar from "./sidebar"
-import { DataContext } from '../App';
-export default function Home() {
+   import heartSvg from '../img/heart.svg'
+      import heartRed from '../img/heartRed.svg'
 
-  const history = useHistory();
-  const handleClose = () => setShow(false);
-  const [flag, setFlag] = useState(false);
-  const [show, setShow] = useState(false);
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login, currentUser } = useAuth();
-  const dataRef = useRef();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const handleShow = () => setShow(true);
-  const [consultationData, setConsultationData] = useContext(DataContext);
-  const { height, width } = useWindowDimensions();
-
-  
+ import userSvg from '../img/person.svg'
+   import clockSvg from '../img/clock.svg'
  
-    return (
+export default function Video () {
+    const { currentUser,  } = useAuth()
+const [postId, setPostId] = useState('')
+ const [error, setError] = useState(false)
+   const [width, setWidth] = useState(false)
+const [loading, setLoading] = useState(false)
+   const ref = useRef(null);
+const [youtubeVideo, setyoutubeVideo] = useState("")
+const [title, setTitle] = useState("")
+const [content, setContent] = useState("")
+const [link, setLink] = useState("")
+
+const [likes, setLikes] = useState(0)
+const [date, setDate] = useState("")
+const [liked, setLiked] = useState(false)
+const queryString = window.location.pathname;
+const urlParams = new URLSearchParams(queryString);
+ 
+
+ useEffect(() => {
+     function handleResize() {
+
+       setWidth(ref.current ? ref.current.offsetWidth : 0)
+    
+}
+
+    window.addEventListener('resize', handleResize)
+       setWidth(ref.current ? ref.current.offsetWidth : 0)
+  }, [ref.current]);
+
+
+  useEffect(() => getData(), []);
+
+ async function  getData() {
+       setLoading(true)
+          setError("")
+
+try{
+
+  var token = null;
+  if(currentUser)
+  {
+     token = await  currentUser.getIdToken(true)
+  }
+   const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({videoLink: queryString.split("/")[queryString.split("/").length - 1]})
+
+          };
+        let res = await fetch('http://localhost:5000/video', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+        console.log(res)
+        if(res.status === "valid")
+        {
+                 setyoutubeVideo(res.video.videoLink)
+        setTitle(res.video.title)
+        setContent((res.video.postData))
+        setDate(res.video.postDate.split("T")[0])
+        setLikes(res.video.likes)
+        setPostId(res.video._id);
+ setLink(res.video.link)
+        setLiked(res.liked)
+        }
+
+}
+catch(e){}
+
+       setLoading(false)
+
+
+  }
+
+
+
+
+var text = "people found this helpful"
+if(likes === 0)
+{
+  text = ""
+}
+if(likes === 1)
+{
+  text = "person found this helpful"
+}
+
+
+
+  const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
+ 
+
+ 
+ async function handleClick(e) {
+        e.preventDefault();
+
+     if(liked) return
+   setLikes(likes+1)
+   setLiked(true)
+
+
+
+          setLoading(true)
+          setError("")
+
+try{
+
+  var token = null;
+  if(currentUser)
+  {
+     token = await  currentUser.getIdToken(true)
+  }else{
+
+
+  }
+   const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({videoId: postId})
+
+          };
+           console.log(JSON.stringify({videoId: postId}))
+        let res = await fetch('http://localhost:5000/like-video', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+         if(res.status !== "saved_successfuly")
+         {
+   setLikes(likes-1)
+   setLiked(false)
+         }
+      
+
+}
+catch(e){}
+
+       setLoading(false)
+
+
+
+  }
+
+   return (
     <>
  
      <section class="breadcrumbs">
       <div class="container">
 
        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li>Blog Single</li>
-        </ol>
-        <h2>Blog Single</h2>
+          <li><a href="/">Home</a></li>
+          <li><a href="/videos">Videos</a></li>
+         </ol>
+        <h2>{title}</h2>
 
       </div>
     </section>
@@ -58,61 +183,58 @@ export default function Home() {
 
           <div class="col-lg-8 entries" >
 
-            <article class="entry entry-single">
+            <article ref={ref} class="entry entry-single">
 
-              <div class="entry-img" style = {{  
+              <div class="entry-img"  style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-                <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" alt=""  style = {{  
-   width: "100vh",
-  objectFit: "cover"}}></img>
+              
+                <iframe  width = {width} height={width / 1.777} src={youtubeVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+
+                </iframe>
+            
+                
+                
+                
+                
+                
+                
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href={link}>{title}</a>
               </h2>
 
               <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-               
+                    <ul>
+                   <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a ><time datetime="2020-01-01">{date}</time></a></li>
+                  
                 </ul>
               </div>
 
               <div class="entry-content">
             
-           
+      <div className="preview" dangerouslySetInnerHTML={createMarkup(content)}></div>
               </div>
 
               <div class="entry-footer">
-                <i class="bi bi-folder"></i>
-                <ul class="cats">
-                  <li><a href="/">Business</a></li>
-                </ul>
+                 <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+              <a href="#" onClick={handleClick} >
+<Row style = {{flexDirection: 'row', }}>
 
-                <i class="bi bi-tags"></i>
-                <ul class="tags">
-                  <li><a href="/">Creative</a></li>
-                  <li><a href="/">Tips</a></li>
-                  <li><a href="/">Marketing</a></li>
-                </ul>
+     <img src = {!liked ? heartSvg : heartRed} className = "icon-big" alt=""></img>
+     
+     <p style = {{fontSize : "14px", color : "#777777"}}> {likes} {text} </p>
+     
+</Row>
+
+     </a>
+ 
+           </Row>     
               </div>
 
             </article>
-  <div class="blog-author d-flex align-items-center">
-              <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" class="rounded-circle float-left" alt=""></img>
-              <div>
-                <h4>Jane Smith</h4>
-                <div class="social-links">
-                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                </div>
-                <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                </p>
-              </div>
-            </div>
+ 
 
 
  </div>
@@ -120,7 +242,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  
 <div class="col-lg-4">
 
-             <SideBar></SideBar>
+   <SideBar></SideBar>
+
           </div>
  
  
@@ -162,5 +285,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
     </>
   )
+ 
+ 
 }
-  
+ 

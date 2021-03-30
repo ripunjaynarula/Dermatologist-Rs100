@@ -7,6 +7,12 @@ import  "../styles.css";
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
    import heartSvg from '../img/heart.svg'
+   import facebook from '../img/facebook.svg'
+   import linkedin from '../img/linkedin.svg'
+   import twitter from '../img/twitter.svg'
+
+
+
    import heartSvgRed from '../img/heartRed.svg'
 import DOMPurify from 'dompurify';
 
@@ -84,28 +90,41 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </div>
 
               <div class="entry-footer">
-                <i class="bi bi-folder"></i>
-                <ul class="cats">
-                  <li><a href="/">Business</a></li>
-                </ul>
+  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+             
+<Row style = {{flexDirection: 'row', }}>
 
-                <i class="bi bi-tags"></i>
-                <ul class="tags">
-                  <li><a href="/">Creative</a></li>
-                  <li><a href="/">Tips</a></li>
-                  <li><a href="/">Marketing</a></li>
-                </ul>
+      <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}>  people found this helpful </p>
+</Row>
+
+              <div className="primaryButtonSmall" >
+                  <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href="/">Read More</a>
+                </div>
+           </Row>            
+
+            
               </div>
 
             </article>
   <div class="blog-author d-flex align-items-center">
-              <img src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" class="rounded-circle float-left" alt=""></img>
+              <img style = {{
+ width: "120px",
+    marginRight: "20px"
+
+              }} src="https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" class="rounded-circle float-left" alt=""></img>
               <div>
                 <h4>Jane Smith</h4>
                 <div class="social-links">
-                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                  <a href="https://twitters.com/#">
+                    <img src = {facebook} className = "icon-bigger" alt=""></img>
+                    </a>
+                  <a href="https://facebook.com/#">
+                    <img src = {twitter} className = "icon-bigger" alt=""></img>
+                    </a>
+                  <a href="https://instagram.com/#">
+                    <img src = {linkedin} className = "icon-bigger" alt=""></img>
+                    </a>
+
                 </div>
                 <p>
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.

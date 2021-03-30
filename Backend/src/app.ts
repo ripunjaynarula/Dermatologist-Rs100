@@ -19,6 +19,9 @@ import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
 import addBlog from '../src/routes/blogs/addBlog'
+import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
+import viewBlogs from './routes/blogs/viewBlogs'
+
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
 import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
@@ -33,6 +36,8 @@ import docDetailsRouter from './routes/getDocDetails';
 import adminLogin from './routes/adminLogin';
 import doctorSignup from './routes/doctorSignup';
 import verifyAdmin from './routes/verifyAdmin';
+import viewSingleVideo from './routes/videos/viewVideoSingle';
+import likeVideo from './routes/videos/likeVideo';
 
 
 const app = express();
@@ -74,6 +79,12 @@ app.use('/getDocDetails', docDetailsRouter);
 app.use('/adminLogin', adminLogin);
 app.use('/verifyAdmin', verifyAdmin);
 app.use('/doctorSignup', doctorSignup);
+app.use('/get-sidebar', getRandomBlogsAndVideos);
+app.use('/blogs', viewBlogs);
+app.use('/video', viewSingleVideo);
+app.use('/like-video', checkAuth, likeVideo);
+
+
 
 
 app.get('/', (req, res) => {

@@ -46,6 +46,8 @@ function AddDoc() {
       e.preventDefault();
       console.log("Submitting");
       setLoading(true);
+      setSuccess("")
+      setError("")
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -59,6 +61,7 @@ function AddDoc() {
           linkedin: linkedinRef.current.value, 
           degree: degreeRef.current.value, 
           edu: eduRef.current.value, 
+          password : passwordRef.current.value,
           graduation: graduationRef.current.value, 
           username: usernameRef.current.value, 
           awards: awardsRef.current.value, 
@@ -73,15 +76,22 @@ function AddDoc() {
       res = JSON.parse(res)
       console.log('recieved');
       console.log(res);
-      if(res['status'] === true && res['message'] === 'Signup Complete'){
-        try {
-          console.log('executing');
-          var user =   await signup(emailRef.current.value, passwordRef.current.value);
-          console.log("User added succesfully!")
-        }catch(e){
-          console.log('error occured!')
-        }
+      if(res['status'] === true && res['message'] === 'signup_complete'){
+        console.log("SSSSSSSSSSSSSSSSSSSSs")
+        setSuccess("Account created successfully")
+      }else if(res["firebaseError"]){
+                 setError(res.message.message)
+
+
       }
+        else{
+                  console.log("rrrrrrrrrrrr")
+
+         setError(res['message'])
+       }
+
+        console.log("iiiiiiiiiiiiiiii")
+
       setLoading(false);
     }
 
@@ -374,7 +384,12 @@ function AddDoc() {
             </Card.Body>
           </Card>
           
-         
+
+          {(error || success) ? <div style = {{height : "20px"}}></div> : <div></div> }
+                  {error && <Alert variant="danger">{error}</Alert>}
+              {success && <Alert variant="success">{success}</Alert>}
+    
+    
           
           <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'flex-end',paddingRight: "15px" }}>
                

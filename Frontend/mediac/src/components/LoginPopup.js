@@ -14,7 +14,7 @@ import {DataContext} from './App';
 
 
  
-export default function LoginPopup() {
+export default function LoginPopup(prop) {
     const history = useHistory();
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -25,6 +25,7 @@ export default function LoginPopup() {
     
     
     async function handleSubmit(e) {
+      console.log(prop.question)
         e.preventDefault()
         console.log('Submitting');
         try {
@@ -34,7 +35,7 @@ export default function LoginPopup() {
           await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
           var user =  await login(emailRef.current.value, passwordRef.current.value);
           console.log(consultationData);
-          history.push('/Choice');
+          history.push('/Choice/?ques=' + prop.question);
 
         } catch (e) {
           console.log(e)

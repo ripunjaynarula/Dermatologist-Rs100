@@ -6,6 +6,12 @@ const videos = mongoose.model('videos', new mongoose.Schema({
         required: true,
         trim: true
     },
+    link: {
+        type: String,
+        required: true,
+        trim: true
+        
+    },
     doctorId: {
         type: String,
         required: true,
@@ -43,6 +49,11 @@ trim : true
     keywords: {
         type: String,
  
+    },
+    likes : {
+
+        type : Number,
+        default : 0
     }
 }));
 

@@ -140,8 +140,7 @@ const changeNameAccessFirebaseAuth = async(req: any, name : string,  role: strin
 
 
 
-    console.log('Successfully updated user', userRecord.toJSON());
-  })
+   })
   .catch((error) => {
     console.log('Error updating user:', error);
   });
@@ -171,4 +170,65 @@ const changeProfilePicture = async(req: any, imageUrl : string) => {
    
 }
 
-export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus};
+
+
+const createDoctor = async(name: string, password : string, email : string, imageUrl : string) => {
+
+try{
+
+   var userRecord =  await  admin
+  .auth()
+  .createUser( {
+    
+ email: email,
+    emailVerified: true,
+     password: password,
+    displayName: name,
+    photoURL: imageUrl,   
+    })
+
+
+
+ console.log('Successfully updated user', userRecord.toJSON());
+
+    return {data : userRecord, error : false};
+}
+ 
+ catch(e){
+   console.log('Error updating user:', e);
+    return {data: e, error : true};
+ }
+
+   
+}
+
+const changeAccess = async(role : string, uid : string)=>{
+  admin
+            .auth()
+            .setCustomUserClaims(uid, {
+                role
+            })
+            .then((b) => {
+
+            })
+            .catch((error) => {
+                console.log('Error updating user:', error);
+            }); 
+
+}
+
+const deleteUser = async(uid : string) =>
+{
+
+  try{
+var s =    await admin.auth().deleteUser(uid)
+
+  }catch(e)
+  {
+    console.log(e)
+  }
+
+}
+
+
+export default {changeNameFirebaseAuth, changeNamePhoneFirebaseAuth, changeNamePhoneAccessFirebaseAuth, changeNameAccessFirebaseAuth, changeProfilePicture, changeEmailVerificationStatus, createDoctor, changeAccess, deleteUser};

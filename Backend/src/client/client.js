@@ -1,11 +1,14 @@
 const publicVapidKey = "BCuKfp1V0Lq-Vp3HaYQaa7VkR91ILkEqnrVhupowWwCgG-dOjpTRSSIhC2fpda1C3cO1xV5PU3EkEFUw9rUWEs8";
 // Check for service worker
-if ("serviceWorker" in navigator) {
-  send().catch(err => console.error(err));
+
+const checkForSW = (email, password) =>{
+  if ("serviceWorker" in navigator) {
+    send(email, password).catch(err => console.error(err));
+  }
 }
 
 // Register SW, Register Push, Send Push
-async function send() {
+async function send(email, password) {
   // Register Service Worker
   console.log("Registering service worker...");
   const register = await navigator.serviceWorker.register("/worker.js", {
@@ -25,7 +28,7 @@ async function send() {
   console.log("Sending Push...");
   let res = await fetch("/subscribe", {
     method: "POST",
-    body: JSON.stringify(subscription),
+    body: JSON.stringify({sub: subscription ,email: email, password: password}),
     headers: {
       "content-type": "application/json"
     }
@@ -50,3 +53,15 @@ function urlBase64ToUint8Array(base64String) {
   }
   return outputArray;
 }
+
+
+console.log('loaded');
+const btn = document.getElementById("submit");
+
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("pass").value;
+  checkForSW(email, password);
+
+})

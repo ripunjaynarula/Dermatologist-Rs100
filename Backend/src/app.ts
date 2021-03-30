@@ -6,6 +6,8 @@ import session from 'express-session';
 import bodyParser from 'body-parser'
 import patientSignup from './routes/patientSignup'
 import login from './routes/login'
+import webPush from 'web-push';
+import path from 'path';
 
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
@@ -16,7 +18,6 @@ import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
-import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
@@ -50,6 +51,7 @@ app.use(session({ secret: session_secret, saveUninitialized: true, resave: true 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 app.use('/patientSignup', patientSignup);
 app.use('/login', login);
 
@@ -58,7 +60,6 @@ app.use('/verify', verifyRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
-app.use('/doctorLogin', doctorLogin);
 app.use('/verifyDoc', verifyDocLogin);
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);

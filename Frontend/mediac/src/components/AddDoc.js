@@ -53,6 +53,7 @@ function AddDoc() {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
           name: nameRef.current.value, 
+          password: passwordRef.current.value,
           email: emailRef.current.value,
           phone: phoneRef.current.value, 
           gender: genderRef.current.value, 
@@ -77,7 +78,6 @@ function AddDoc() {
       console.log('recieved');
       console.log(res);
       if(res['status'] === true && res['message'] === 'signup_complete'){
-        console.log("SSSSSSSSSSSSSSSSSSSSs")
         setSuccess("Account created successfully")
       }else if(res["firebaseError"]){
                  setError(res.message.message)

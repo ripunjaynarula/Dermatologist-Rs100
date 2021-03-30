@@ -11,6 +11,10 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         required : false,
         unique : true
     },
+    password: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,

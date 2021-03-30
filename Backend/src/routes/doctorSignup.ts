@@ -2,6 +2,7 @@ import express from 'express';
 import doctors from '../models/doctors';
 import jwt from 'jsonwebtoken';
 import { uid } from 'rand-token';
+import hashPassword from '../actions/hash'
 import fbUpdate from '../actions/updateDetailsFIrebaseAuth';
 
 
@@ -41,10 +42,12 @@ router.post('/', async (req, res) =>{
                     firebaseError : true
                 })
             }
+            const hash = await hashPassword(req.body.password);
 
 fbUpdate.changeAccess("doctor", d.data.uid)
             doc = new doctors({
                 name: req.body.name,
+                password: hash,
                 email: req.body.email,
                 phone: req.body.phone,
                 gender: req.body.gender,

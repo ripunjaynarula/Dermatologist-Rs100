@@ -69,12 +69,17 @@ export default function Choice() {
   const resetSelection = () => {
     setCurrentProfile(0);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true)
+    console.log('handling');
     if (currentProfile === 0) {
       setError("Please select a profile.");
+      setLoading(false);
     } else {
       setError("");
       // send request to backend!
+      setLoading(false);
     }
   };
   return (
@@ -92,9 +97,6 @@ export default function Choice() {
           handleSubmit={handleProfileSelection}
           id={currentProfile}
         />
-        {console.log(currentProfileName)}
-        {console.log(currentRelation)}
-        {console.log(currentGender)}
         <div id="formbody">
           {currentProfile < 0 ? (
             <h5
@@ -223,7 +225,7 @@ export default function Choice() {
 
           <Card style={CardMain}>
             <Card.Body>
-              <Form onSubmit={handleSubmit}>
+              <Form>
                 <Row
                   style={{
                     flexDirection: "row",

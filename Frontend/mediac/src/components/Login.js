@@ -49,7 +49,7 @@ function onlyOnce(){
         currentUser.role = 'patient';
         setError('');
         setLoading(false)
-     //   history.push('/');
+       history.push('/');
         return;
       }
       if (res['status'] === 'logged_in' && res['scope'] === 'doctor') {

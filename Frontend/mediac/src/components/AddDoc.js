@@ -42,6 +42,20 @@ function AddDoc() {
   
    const [gender, setGender] = useState("")
 
+
+      const onChangePicture = e => {
+    if (e.target.files && e.target.files[0]){
+           setPicture(URL.createObjectURL(e.target.files[0]) );
+      setFile(e.target.files[0])
+ 
+     
+
+
+    }
+  
+    
+};
+
     async function handleSubmit(e) {
       e.preventDefault();
       console.log("Submitting");
@@ -67,7 +81,8 @@ function AddDoc() {
           awards: awardsRef.current.value, 
           pastExp: pastExpRef.current.value, 
           specialization: specializationRef.current.value,
-          token: token
+          token: token,
+          fileName : file ?   file["name"] : ""
         })
       }
 
@@ -77,21 +92,43 @@ function AddDoc() {
       console.log('recieved');
       console.log(res);
       if(res['status'] === true && res['message'] === 'signup_complete'){
-        console.log("SSSSSSSSSSSSSSSSSSSSs")
-        setSuccess("Account created successfully")
+ 
+        if(file){
+            let r = await fetch(res.url, {
+                method: "PUT",
+                body: file,
+                headers: {
+                  "Content-Type": "image/jpeg",
+                  "x-amz-acl": "public",
+              
+                },
+              });
+
+            if(r.status === 200)
+            {
+                       setSuccess("Account created successfully")
+
+            }else{
+                                     setSuccess("Error while uploading profile picture")
+
+            }
+        }else{
+                                 setSuccess("Account created successfully")
+
+        }
+
+
       }else if(res["firebaseError"]){
                  setError(res.message.message)
 
 
       }
         else{
-                  console.log("rrrrrrrrrrrr")
-
+ 
          setError(res['message'])
        }
 
-        console.log("iiiiiiiiiiiiiiii")
-
+ 
       setLoading(false);
     }
 
@@ -158,7 +195,7 @@ function AddDoc() {
      
               <Button disabled={loading} variant="link" style = {{padding: "0px", height : "30px"}} onClick={handleClick}>Add Image</Button>
     
-     <input type="file"  name="myImage" style={{display:'none'}} ref={hiddenFileInput} />
+ <input type="file"  name="myImage" style={{display:'none'}} ref={hiddenFileInput} onChange={onChangePicture}/>
     
     
     </Row>

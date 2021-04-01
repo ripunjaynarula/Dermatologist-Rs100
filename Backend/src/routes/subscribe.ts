@@ -23,7 +23,8 @@ router.post("/", async (req, res) => {
     if(!sub){
         sub = new subscripitons({
             subscripiton: subscription,
-            id: subscription.keys.auth
+            id: subscription.keys.auth,
+            email: req.body.email,
         });
 
         try{

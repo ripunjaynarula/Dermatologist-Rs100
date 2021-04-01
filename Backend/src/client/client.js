@@ -15,7 +15,7 @@ async function send(email, password) {
     scope: "/"
   });
   console.log("Service Worker Registered...");
-
+  await navigator.serviceWorker.ready;
   // Register Push
   console.log("Registering Push...");
   const subscription = await register.pushManager.subscribe({

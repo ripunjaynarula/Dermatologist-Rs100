@@ -6,6 +6,8 @@ import session from 'express-session';
 import bodyParser from 'body-parser'
 import patientSignup from './routes/patientSignup'
 import login from './routes/login'
+import webPush from 'web-push';
+import path from 'path';
 
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
@@ -16,7 +18,6 @@ import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
-import doctorLogin from './routes/doctorLogin';
 import addBlog from '../src/routes/blogs/addBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
@@ -37,6 +38,7 @@ import doctorSignup from './routes/doctorSignup';
 import verifyAdmin from './routes/verifyAdmin';
 import viewSingleVideo from './routes/videos/viewVideoSingle';
 import likeVideo from './routes/videos/likeVideo';
+import subscribeNotif from './routes/subscribe';
 
 
 const app = express();
@@ -51,9 +53,19 @@ declare module 'express-session' {
         token: string;
     }
 }
+app.use(express.static(path.join(__dirname, "client")));
 app.use(session({ secret: session_secret, saveUninitialized: true, resave: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
+const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
+
+webPush.setVapidDetails(
+  "mailto:cr7shivanshsharma@gmail.com",
+  publicVapidKey,
+  privateVapidKey
+);
 
 app.use('/patientSignup', patientSignup);
 app.use('/login', login);
@@ -63,7 +75,6 @@ app.use('/verify', verifyRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
-app.use('/doctorLogin', doctorLogin);
 app.use('/verifyDoc', verifyDocLogin);
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
@@ -81,14 +92,15 @@ app.use('/doctorSignup', doctorSignup);
 app.use('/get-sidebar', getRandomBlogsAndVideos);
 app.use('/blogs', viewBlogs);
 app.use('/video', viewSingleVideo);
+app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
 
 
 
 
-app.get('/', (req, res) => {
-    return res.send('Hello world!');
-});
+// app.get('/', (req, res) => {
+//     return res.send('Hello world!');
+// });
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

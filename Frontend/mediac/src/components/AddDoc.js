@@ -67,6 +67,7 @@ function AddDoc() {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
           name: nameRef.current.value, 
+          password: passwordRef.current.value,
           email: emailRef.current.value,
           phone: phoneRef.current.value, 
           gender: genderRef.current.value, 

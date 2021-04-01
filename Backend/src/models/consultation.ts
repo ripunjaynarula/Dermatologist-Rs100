@@ -12,16 +12,10 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
     doctorEmail: {
         type: String,
-        required: true,
         trim: true
     },
     description: {
         type: String
-    },
-    title: {
-        type: String,
-        required: true,
-        trim: true
     },
     active: {
         type: Boolean,
@@ -40,6 +34,10 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    accepted: {
+        type: Boolean,
+        default: false,
     }
 }));
 

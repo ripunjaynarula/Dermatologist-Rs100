@@ -19,6 +19,7 @@ import Navbar from "./Navbar";
 import { CardMain } from "../css/Card";
 
 import { DataContext } from "./App";
+import app from "../firebase"
 
 export default function Choice() {
   const [currentProfile, setCurrentProfile] = useState(-1);
@@ -69,7 +70,7 @@ export default function Choice() {
   const resetSelection = () => {
     setCurrentProfile(0);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true)
     console.log('handling');
@@ -78,7 +79,16 @@ export default function Choice() {
       setLoading(false);
     } else {
       setError("");
-      // send request to backend!
+      const token = await app.auth().currentUser.getIdToken(true)
+      const requestOptions = {
+        method: "POST",
+        header: { 'Content-Type': 'application/json','token': token },
+        body: {name: nameRef.current.value, gender: genderRef.current.value, height: heightRef.current.value, age: ageRef.current.value, weight: weightRef.current.value, medication: medicationRef.current.value, allergies: allergiesRef.current.value, previousConditions: previousRef.current.value, question: quest.current.value}
+      }
+      let res = await fetch('http://localhost:5000/newConsultancy', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res)
       setLoading(false);
     }
   };

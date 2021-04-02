@@ -6,6 +6,11 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         required: true,
         trim: true
     },
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     startDate: {
         type: Date,
         required: true,
@@ -38,6 +43,15 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     accepted: {
         type: Boolean,
         default: false,
+    },
+    previousCondition: {
+        type: String,
+    },
+    allergies: {
+        type: String
+    },
+    medication: {
+        type: String
     }
 }));
 

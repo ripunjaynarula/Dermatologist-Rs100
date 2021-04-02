@@ -79,9 +79,39 @@ export default function Choice() {
     setCurrentAge(age);
   };
 
-  const resetSelection = () => {
-    setCurrentProfile(0);
-  };
+  const addConsultation = async () => {
+    console.log("handling");
+    if (currentProfile === 0) {
+      setError("Please select a profile.");
+      setLoading(false);
+    } else {
+      setError("");
+      const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({
+          name: nameRef.current.value,
+          gender: genderRef.current.value,
+          height: heightRef.current.value,
+          age: ageRef.current.value,
+          weight: weightRef.current.value,
+          medication: medicationRef.current.value,
+          allergies: allergiesRef.current.value,
+          previousConditions: previousRef.current.value,
+          question: quest.current.value,
+        }),
+      };
+      let res = await fetch(
+        "http://localhost:5000/newConsultancy",
+        requestOptions
+      );
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res);
+      setLoading(false);
+    }
+  }
 
   const displayRazorpay = async () => {
     let res = await loadRazorpay();
@@ -111,9 +141,10 @@ export default function Choice() {
       description: "Payment for consultation",
       order_id: res.id,
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        addConsultation();
+        if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature){
+          return true;
+        }
       },
       prefill: {
         name: nameRef.current.value,
@@ -131,7 +162,7 @@ export default function Choice() {
       alert(response.error.metadata.order_id);
       alert(response.error.metadata.payment_id);
     });
-    return true;
+    // return true;
   };
 
   const handleSubmit = async (e) => {
@@ -141,39 +172,7 @@ export default function Choice() {
     if(!pay){
       console.log("Error occurred");
     }
-
-    console.log("handling");
-    if (currentProfile === 0) {
-      setError("Please select a profile.");
-      setLoading(false);
-    } else {
-      setError("");
-      const token = await app.auth().currentUser.getIdToken(true);
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json", token: token },
-        body: {
-          name: nameRef.current.value,
-          gender: genderRef.current.value,
-          height: heightRef.current.value,
-          age: ageRef.current.value,
-          weight: weightRef.current.value,
-          medication: medicationRef.current.value,
-          allergies: allergiesRef.current.value,
-          previousConditions: previousRef.current.value,
-          question: quest.current.value,
-        },
-      };
-      // let res = await fetch(
-      //   "http://localhost:5000/newConsultancy",
-      //   requestOptions
-      // );
-      // res = await res.text();
-      // res = JSON.parse(res);
-      // console.log(res);
-      setLoading(false);
-    }
-  };
+  }
   return (
     <>
       <div className="Navb">

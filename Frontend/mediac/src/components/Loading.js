@@ -27,15 +27,15 @@ export default function Loading()
     return (
         <>
                  <div className="Navb"><Navbar /></div>
-            <div class="d-flex justify-content-center align-items-center   p-5" style={{marginTop:"5%", backgroundColor:"white !important"}}>
+            <div className="d-flex justify-content-center align-items-center   p-5" style={{marginTop:"5%", backgroundColor:"white !important"}}>
             <img src={loadimg}  />
             
             </div>
-            <div class="d-flex justify-content-center  " style={{marginTop:"10%", backgroundColor:"white !important"}}>
+            <div className="d-flex justify-content-center  " style={{marginTop:"10%", backgroundColor:"white !important"}}>
             <p style={{marginTop:"-10%"}}><b>Please wait till we connect you to a doctor...</b></p>
             </div>
 
-            <div class="d-flex align-items-center justify-content-center  " style={{marginTop:"12%", backgroundColor:"white !important"}}>
+            <div className="d-flex align-items-center justify-content-center  " style={{marginTop:"12%", backgroundColor:"white !important"}}>
             <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%", display:{visible} }}><b>Cancel Consultation</b></Button>
             </div>
 

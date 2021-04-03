@@ -800,4 +800,14 @@ div.scrollmenu a {
 #adincon{
     line-height: 0.6;
 }
+#cancelbtn{
+
+    background-color:red !important;
+    border-color:red !important;
+}
+#cancelbtn:hover{
+
+    background-color:rgb(165, 5, 5) !important;
+    border-color:rgb(165, 5, 5) !important;
+}
 

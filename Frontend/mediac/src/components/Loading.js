@@ -14,12 +14,12 @@ export default function Loading()
 {
 
     const [flag, setFlag] = useState(true);
-    const [visible, setVisibility] = useState('hidden')
+    const [visible, setVisibility] = useState("hidden !important")
 
     useEffect(() => {
         const timer = setTimeout(() => {
                 setFlag(false);
-                setVisibility('block');
+                setVisibility("block !important");
           }, 120000);
       }, []);
 
@@ -36,7 +36,7 @@ export default function Loading()
             </div>
 
             <div class="d-flex align-items-center justify-content-center  " style={{marginTop:"12%", backgroundColor:"white !important"}}>
-            <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%", display: {visible}}}><b>Cancel Consultation</b></Button>
+            <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%", display:{visible} }}><b>Cancel Consultation</b></Button>
             </div>
 
         </>)

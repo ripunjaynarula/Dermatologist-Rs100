@@ -13,13 +13,13 @@ import Navbar from "./Navbar"
 export default function Loading() 
 {
 
-    const [flag, setFlag] = useState(true);
-    const [visible, setVisibility] = useState("hidden !important")
+    const [flag, setFlag] = useState(true)
 
     useEffect(() => {
+        document.getElementById("cancelbtn").style.visibility = "hidden";
         const timer = setTimeout(() => {
-                setFlag(false);
-                setVisibility("block !important");
+            setFlag(false);
+            document.getElementById("cancelbtn").style.visibility = "visible";
           }, 120000);
       }, []);
 
@@ -36,8 +36,7 @@ export default function Loading()
             </div>
 
             <div class="d-flex align-items-center justify-content-center  " style={{marginTop:"12%", backgroundColor:"white !important"}}>
-            <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%", display:{visible} }}><b>Cancel Consultation</b></Button>
+            <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%"}}><b>Cancel Consultation</b></Button>
             </div>
-
         </>)
 }

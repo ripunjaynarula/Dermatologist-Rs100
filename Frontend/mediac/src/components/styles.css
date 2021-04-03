@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
     font-family: "Open Sans";
-    background-color: #ededf2;
+    /* background-color: #ededf2; */
 }
 
 @media(min-width:870px) {

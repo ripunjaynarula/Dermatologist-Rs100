@@ -8,7 +8,6 @@ import patientSignup from './routes/patientSignup'
 import login from './routes/login'
 import webPush from 'web-push';
 import path from 'path';
-
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
 import checkVerificationRouter from './routes/checkVerification';

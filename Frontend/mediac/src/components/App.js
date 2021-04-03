@@ -18,7 +18,7 @@ import UpdateProfile from "./Profile/UpdateProfile"
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile"
 import AdminLogin from "./AdminLogin"
 import AddDoc from "./AddDoc"
-
+import Loading from "./Loading"
 import ChangePassword from "./Profile/changePassword"
 
 import VerificationSent from './VerificationSent'
@@ -65,6 +65,7 @@ function App() {
               <PrivateRoute path='/add-blog' component={FormEditors} />
               <PrivateRoute path='/add-video' component={AddVideo} />
               <PrivateRoute path='/update-doctor' component={UpdateDoctorProfile} />
+              <PrivateRoute path='/loading' component={Loading} />
 
             
               

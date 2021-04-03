@@ -17,7 +17,7 @@ export default function Loading()
 
     useEffect(() => {
         const timer = setTimeout(() => {
-                setFlag:false;
+                setFlag(false);
             
           }, 120000);
       }, []);

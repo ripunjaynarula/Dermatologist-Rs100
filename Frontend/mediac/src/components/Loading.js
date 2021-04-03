@@ -10,8 +10,20 @@ import  "./styles.css";
 import Navbar from "./Navbar"
 
 
-export default function Loading() {
+export default function Loading() 
+{
 
+    const [flag, setFlag] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            displaybtn(){
+                flag:false;
+            }
+          }, 120000);
+      }, []);
+
+    
     return (
         <>
                  <div className="Navb"><Navbar /></div>
@@ -24,7 +36,7 @@ export default function Loading() {
             </div>
 
             <div class="d-flex align-items-center justify-content-center  " style={{marginTop:"12%", backgroundColor:"white !important"}}>
-            <Button  style={{marginTop:"-20%"}}><b>Cancel Consultation</b></Button>
+            <Button disabled={flag} id="cancelbtn" style={{marginTop:"-20%"}}><b>Cancel Consultation</b></Button>
             </div>
 
         </>)

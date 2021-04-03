@@ -19,6 +19,8 @@ import Navbar from "./Navbar";
 import { CardMain } from "../css/Card";
 
 import { DataContext } from "./App";
+import app from "../firebase";
+
 
 export default function Choice() {
   const [currentProfile, setCurrentProfile] = useState(-1);
@@ -54,8 +56,19 @@ export default function Choice() {
   var question = "";
 
   if (urlParams.get("ques")) question = urlParams.get("ques");
-
-  console.log(question);
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
 
   //console.log(URLSearchParams(quest))
   const handleProfileSelection = (id, name, relation, gender, age) => {
@@ -66,22 +79,100 @@ export default function Choice() {
     setCurrentAge(age);
   };
 
-  const resetSelection = () => {
-    setCurrentProfile(0);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true)
-    console.log('handling');
+  const addConsultation = async () => {
+    console.log("handling");
     if (currentProfile === 0) {
       setError("Please select a profile.");
       setLoading(false);
     } else {
       setError("");
-      // send request to backend!
+      const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({
+          name: nameRef.current.value,
+          gender: genderRef.current.value,
+          height: heightRef.current.value,
+          age: ageRef.current.value,
+          weight: weightRef.current.value,
+          medication: medicationRef.current.value,
+          allergies: allergiesRef.current.value,
+          previousConditions: previousRef.current.value,
+          question: quest.current.value,
+        }),
+      };
+      let res = await fetch(
+        "http://localhost:5000/newConsultancy",
+        requestOptions
+      );
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res);
       setLoading(false);
     }
+  }
+
+  const displayRazorpay = async () => {
+    let res = await loadRazorpay();
+    if (!res) {
+      alert("Unable to load Razropay SDK. Are you online?");
+      return;
+    }
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+    };
+
+    res = await fetch('http://localhost:5000/razorpay', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+
+    if(!res['success']){
+      return false;
+    }
+
+    const options = {
+      key: process.env.REACT_APP_RAZORPAY_TEST_KEY,
+      amount: res.amount,
+      currency: res.currency,
+      name: "Mediac",
+      description: "Payment for consultation",
+      order_id: res.id,
+      handler: function (response) {
+        addConsultation();
+        if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature){
+          return true;
+        }
+      },
+      prefill: {
+        name: nameRef.current.value,
+        email: currentUser.email,
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    // return true;
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const pay = await displayRazorpay();
+    if(!pay){
+      console.log("Error occurred");
+    }
+  }
   return (
     <>
       <div className="Navb">

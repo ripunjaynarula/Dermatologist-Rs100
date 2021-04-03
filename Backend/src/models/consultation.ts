@@ -6,22 +6,21 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         required: true,
         trim: true
     },
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     startDate: {
         type: Date,
         required: true,
     },
     doctorEmail: {
         type: String,
-        required: true,
         trim: true
     },
     description: {
         type: String
-    },
-    title: {
-        type: String,
-        required: true,
-        trim: true
     },
     active: {
         type: Boolean,
@@ -40,6 +39,19 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    accepted: {
+        type: Boolean,
+        default: false,
+    },
+    previousCondition: {
+        type: String,
+    },
+    allergies: {
+        type: String
+    },
+    medication: {
+        type: String
     }
 }));
 

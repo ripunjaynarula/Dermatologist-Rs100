@@ -60,11 +60,12 @@ app.use(bodyParser.json());
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
 const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
+const vapidKeys = webPush.generateVAPIDKeys();
 
 webPush.setVapidDetails(
   "mailto:cr7shivanshsharma@gmail.com",
-  publicVapidKey,
-  privateVapidKey
+   vapidKeys.publicKey,
+  vapidKeys.privateKey
 );
 
 app.use('/patientSignup', patientSignup);

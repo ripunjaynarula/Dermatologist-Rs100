@@ -14,7 +14,7 @@ export default function Loading()
 {
 
     const [flag, setFlag] = useState(true);
-    const [visible, setVisibility] = useState('none')
+    const [visible, setVisibility] = useState('hidden')
 
     useEffect(() => {
         const timer = setTimeout(() => {

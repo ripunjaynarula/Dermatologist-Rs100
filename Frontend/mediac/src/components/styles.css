@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
     font-family: "Open Sans";
-    background-color: #ededf2;
+    /* background-color: #ededf2; */
 }
 
 @media(min-width:870px) {
@@ -799,5 +799,15 @@ div.scrollmenu a {
 }
 #adincon{
     line-height: 0.6;
+}
+#cancelbtn{
+
+    background-color:red !important;
+    border-color:red !important;
+}
+#cancelbtn:hover{
+
+    background-color:rgb(165, 5, 5) !important;
+    border-color:rgb(165, 5, 5) !important;
 }
 

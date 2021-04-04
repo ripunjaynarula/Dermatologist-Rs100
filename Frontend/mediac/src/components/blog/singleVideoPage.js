@@ -28,8 +28,7 @@ const [likes, setLikes] = useState(0)
 const [date, setDate] = useState("")
 const [liked, setLiked] = useState(false)
 const queryString = window.location.pathname;
-const urlParams = new URLSearchParams(queryString);
- 
+  
 
  useEffect(() => {
      function handleResize() {

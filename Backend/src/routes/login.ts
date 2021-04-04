@@ -19,29 +19,35 @@ router.post('/',checkAuth, async (req, res) => {
    var d :any = await patients.findOne({uid:req.body.uid});
     if(d !=null)
    {
-        return res.send({isError : false, status : "logged_in", scope: 'patient'})
+       if(d.verified)
+       {
+                    return res.send({status: 'verification_mail_sent', isError : false,   scope: 'patient'})
+
+       }
+         return res.send({isError : false, status : "logged_in", scope: 'patient'})
    }
    
-   d = await doctors.findOne({email: req.body.email})
+   d = await doctors.findOne({uid: req.body.uid})
 
    if(d !=null){
     return res.send({isError : false, status : "logged_in", scope: 'doctor'});
    }
 
-    const newPatient = new patients({
+ 
+    try {
+           var newPatient = new patients({
         name: req.body.name ? req.body.name : "",
         email: req.body.email,
          uid: req.body.uid,
         verified: false,
         role : req.body.role ? req.body.role : "patient" 
-    });
+       });
 
-    try {
         patient = await newPatient.save();
         let jwtSecret: any = process.env.JWT_SECRET;
         let verificationToken: string = jwt.sign({_id : req.body.uid}, jwtSecret);
         sendVerificationMails(req.body.email, verificationToken);
-        return res.send({status: 'verification_mail_sent', isError : false});
+        return res.send({status: 'verification_mail_sent', isError : false, scope: 'patient'});
     } catch(e) {
         console.error(e);
         return res.send({status: 'technical_error', isError : true});

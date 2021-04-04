@@ -18,8 +18,7 @@ export default function DocProfile() {
   
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-  const [docMail, setDocMail] = useContext(DocMailContext);
-  const { currentUser, logout } = useAuth()
+   const { currentUser, logout } = useAuth()
   const dbinfo = useRef()
   const history = useHistory()
   const quest = useRef()
@@ -29,21 +28,18 @@ export default function DocProfile() {
   const [experience, setExperience] = useState('');
   const [specialisation, setSpecialisation] = useState('');
   const [city, setCity] = useState('');
-  
-  
-  useEffect(() =>{
-    if (!currentUser) {
-        history.push('/login');
-        return
-    }
-    if (currentUser.role !== 'doctor'){
-        history.push('/dashboard')
-    }
+  const queryString = window.location.pathname;
+
+   useEffect(() =>{
+ 
+ 
     async function checkLogin(){
+                const token = await  currentUser.getIdToken(true);
+
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({email: currentUser.email})
+        body: JSON.stringify({token : token})
       }
 
       let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
@@ -130,7 +126,7 @@ export default function DocProfile() {
             <br/> 
             
             <h4>Blogs Posted by the Doctor</h4>
-                    <BlogList mail={docMail}/>
+                    <BlogList mail="mail"/>
                     <hr/>
                     <br/>
                     </Container>

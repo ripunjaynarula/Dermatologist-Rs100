@@ -9,6 +9,9 @@ router.post('/', async (req, res) => {
     if(doc){
         const consultation: any = await consultations.findOne({uid: req.body.cid});
         if(consultation){
+            if(consultation.accepted){
+                return res.end();
+            }
             consultation.accepted = true;
             consultation.doctorEmail = doc.email;
         }

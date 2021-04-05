@@ -86,7 +86,7 @@ function App() {
               <Route exact path="/home#faqhead" component={Home} />
 
 
-               <PrivateRoute path='/DocProfile' component={DocProfile}/>
+               <Route path='/doctor' component={DocProfile}/>
                 <PrivateRoute path='/doctordashboard' component={DoctorDashboard}/>
 
                 

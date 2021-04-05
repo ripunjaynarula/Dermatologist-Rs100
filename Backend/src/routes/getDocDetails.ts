@@ -5,14 +5,11 @@ import checkAuth from '../middlewares/auth';
 
 const router = express.Router();
 
-router.post('/',checkAuth, async (req, res) => {
-    if(req.body.role != "doctor")
-    {
-        return res.send({status : false , msg : "forbidden", code : 403})
-    }
-    const doc: any = await doctors.findOne({uid: req.body.uid});
+router.post('/', async (req, res) => {
+ 
+    var doc: any = await doctors.findOne({username: req.body.username});
     if (doc){
-        const blog: any = await blogs.find({doctorId: doc.uid});
+        var blog: any = await blogs.find({doctorId: doc.uid});
         res.send({status: true, name: doc.name, education: doc.education, degree: doc.degree, experience: doc.pastExperience, specialisation: doc.specialisation, docBlogs:blog});
         return;
     }

@@ -219,7 +219,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               <div class="entry-footer">
                  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
               <a href="#" onClick={handleClick} >
-<Row style = {{flexDirection: 'row', }}>
+<Row style = {{flexDirection: 'row', marginLeft: "16px" }}>
 
      <img src = {!liked ? heartSvg : heartRed} className = "icon-big" alt=""></img>
      

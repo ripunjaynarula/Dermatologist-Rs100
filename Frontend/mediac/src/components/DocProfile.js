@@ -12,7 +12,15 @@ import  "./styles.css";
 import Navbar from "./Navbar"
 import BlogList from "./BlogList"
 import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons/bi";
-import {DocMailContext} from './App';
+    import facebook from './img/facebook.svg'
+   import linkedin from './img/linkedin.svg'
+   import twitter from './img/twitter.svg'
+   import achievement from './img/achievement.svg'
+   import bcase from './img/case.svg'
+   import building from './img/building.svg'
+   import location from './img/location.svg'
+   import medal from './img/medal.svg'
+
 
 export default function DocProfile() {
   
@@ -33,13 +41,12 @@ export default function DocProfile() {
    useEffect(() =>{
  
  
-    async function checkLogin(){
-                const token = await  currentUser.getIdToken(true);
-
+    async function getData(){
+    
       const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({token : token})
+        body: JSON.stringify({username : queryString})
       }
 
       let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
@@ -47,7 +54,7 @@ export default function DocProfile() {
       res = JSON.parse(res)
       console.log(res);
       if(!res['status']){
-        history.push('/login');
+        history.push('/404');
       }
       else{
           setDegree(res['degree']);
@@ -57,7 +64,7 @@ export default function DocProfile() {
           setSpecialisation(res['specialisation']);
       }
     }
-    checkLogin();
+    getData();
   }, [])
 
   return (
@@ -70,9 +77,9 @@ export default function DocProfile() {
             </div>
 
             <Container className="d-flex align-items-center justify-content-center">
-                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" style={{backgroundColor:"white"}}>
-                    <div className="row ">
-                        <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center" style={{paddingLeft:"0px",paddingRight:"0px"}}>
+                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" style={{backgroundColor:"white", marginLeft: "-50px"}}>
+                    <div className="row" style = {{marginLeft : "0px", marginRight: "0px" }}>
+                        <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center" style={{marginLeft:"0px",paddingRight:"0px"}}>
                             <img className="dp" src={docimgsq}/>
                         </div>
                         <div className="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
@@ -97,16 +104,26 @@ export default function DocProfile() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style={{marginLeft:"10%"}}>
+                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style={{marginLeft:"34px", marginTop : "-10px"}}>
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
-                        <div className=" profile-header" >
+                        <div className="profile-header" >
                             <div className="row" style={{display: 'block'}}>
                                 <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
-                                    <h1>Dr. {name}</h1>
+                                    <h1 style = {{color : "black"}}>Dr. {name}</h1>
                                     <p>{degree}</p>
-                            <a href="#" id="socmed" className="fa fa-facebook"></a>  
-                            <a href="#" id="socmed" className="fa fa-twitter"></a>  
-                            <a href="#" id="socmed" className="fa fa-linkedin"></a> <br/><br/>
+ <a href="https://twitter.com/#" target="_blank" rel = "noreferrer">
+                    <img src = {facebook} className = "icon-mbigger" alt=""></img>
+                    </a>                           
+                    
+                     <a href="https://twitters.com/#" target="_blank" rel = "noreferrer">
+                    <img src = {linkedin} className = "icon-mbigger" alt=""></img>
+                    </a> 
+                    
+                    <a href="https://twitters.com/#" target="_blank" rel = "noreferrer">
+                    <img src = {twitter} className = "icon-mbigger" alt=""></img>
+                    </a>
+
+
                                 </div>
                                 
                                 
@@ -122,38 +139,61 @@ export default function DocProfile() {
             <br/>
 
             <Container  className="align-items-center justify-content-center">
-            <hr/>
+            <hr />
             <br/> 
             
-            <h4>Blogs Posted by the Doctor</h4>
+            <h4 style = {{fontWeight : 'bold'}}>Blogs by {name}</h4>
                     <BlogList mail="mail"/>
                     <hr/>
                     <br/>
                     </Container>
             <Container id="adincon" className="align-items-center justify-content-center">                
-            <h3 id="adinf">Additional Information</h3><br/><br/>
+            <h4 style = {{fontWeight : 'bold'}} >Additional Information</h4><br/><br/>
 
-            <h5 id="adinf"><BiNotepad style={{marginRight: "5px"}}/>Speciality</h5>
-            <p>{specialisation}</p>
+            <Row style = {{ marginLeft : "0px"}}>
+  <img src = {medal} className = "icon-bigger" alt=""></img>
+            <h5 id="adinf">Speciality</h5>
+
+            </Row>
+            <p style={{marginLeft: "31px", marginTop: "6px"}}> {specialisation}</p>
             <br/>
 
-            <h5 id="adinf"><BiBriefcaseAlt style={{marginRight: "5px"}}/>Past Experience</h5>
-            <p>{experience}</p>
+
+ <Row style = {{ marginLeft : "0px"}}>
+  <img src = {bcase} className = "icon-bigger" alt=""></img>
+            <h5 id="adinf"> Past Experience</h5>
+
+            </Row>
+            <p style={{marginLeft: "31px", marginTop: "6px"}}> {experience}</p>
             <br/>
 
-            <h5 id="adinf"><BiLocationPlus style={{marginRight: "5px"}}/>Location</h5>
-            <p>{city}</p>
+          
+           <Row style = {{ marginLeft : "0px"}}>
+  <img src = {location} className = "icon-bigger" alt=""></img>
+            <h5 id="adinf">Location</h5>
+
+            </Row>
+            <p style={{marginLeft: "31px", marginTop: "6px"}}>{city}</p>
             <br/>
 
-            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Educational Details</h5>
-            <p>{education}</p>
+
+
+  <Row style = {{ marginLeft : "0px"}}>
+  <img src = {building} className = "icon-bigger" alt=""></img>
+            <h5 id="adinf">Educational Details</h5>
+
+            </Row>
+            <p style={{marginLeft: "31px", marginTop: "6px"}}>{education}</p>
             <br/>
 
-            <h5 id="adinf"><BiBuilding style={{marginRight: "5px"}}/>Professional Memberships</h5>
-            <p>Lorem ipsum dolor sit amet,</p>
-            <p> consectetur adipiscing elit.</p>
-            <p> Curabitur luctus nunc aliquet congue ultricies. </p>
-            <br/>
+            
+            <Row style = {{ marginLeft : "0px"}}>
+  <img src = {achievement} className = "icon-bigger" alt=""></img>
+            <h5 id="adinf">Professional Memberships</h5>
+
+            </Row>
+            <p style={{marginLeft: "31px", marginTop: "6px"}}>Lorem ipsum dolor sit amet,</p>
+              <br/>
      
             </Container>
             <br/>

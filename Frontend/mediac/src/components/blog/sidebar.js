@@ -112,9 +112,9 @@ catch(e){}
            <Form.Control
                 type="text"
                 ref={quest}
-              />    <Row style= {{paddingTop :"14px", flexDirection: 'row', justifyContent: 'flex-start', paddingBottom : "10px" }}>
+              />    <Row style= {{paddingTop :"14px", flexDirection: 'row', justifyContent: 'flex-start', paddingBottom : "10px", marginLeft : "0px" }}>
               <div class="primaryButtonSmall"  onClick={handleShow}  >
-                  <a     style = {{color : "white", fontSize : "14px", textDecoration: "none", borderRadius : "30px"}} href >Consult Now</a>
+                  <a     style = {{color : "white", fontSize : "14px", textDecoration: "none", borderRadius : "30px",}} href >Consult Now</a>
                 </div>
            </Row>
              

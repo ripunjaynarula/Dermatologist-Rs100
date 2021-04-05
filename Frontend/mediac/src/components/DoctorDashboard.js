@@ -26,15 +26,31 @@ export default function DoctorDashboard() {
   const quest = useRef()
 
 
-  useEffect( () => {
-    if (!currentUser) {
-      history.push('/login');
-      return
+  useEffect(() =>{
+ 
+ 
+    async function checkLogin(){
+                const token = await  currentUser.getIdToken(true);
+
+      const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({token : token})
+      }
+
+      let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res)
+      console.log(res);
+      if(!res['status']){
+        history.push('/login');
+      }
+      else{
+ 
+      }
     }
-    if (currentUser.role !== 'doctor'){
-      history.push('/dashboard')
-    }
-  }, [currentUser, history])
+    checkLogin();
+  }, [])
 
   return (
     <>

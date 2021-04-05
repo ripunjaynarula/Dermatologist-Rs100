@@ -38,6 +38,7 @@ import viewSingleVideo from './routes/videos/viewVideoSingle';
 import likeVideo from './routes/videos/likeVideo';
 import subscribeNotif from './routes/subscribe';
 import razorpayRoute from './routes/razorpay';
+import acceptConsultations from './routes/acceptConsultation';
 
 
 const app = express();
@@ -95,9 +96,7 @@ app.use('/video', viewSingleVideo);
 app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
 app.use('/razorpay', checkAuth, razorpayRoute);
-
-
-
+app.use('/acceptConsultation', acceptConsultations);
 
 
 // app.get('/', (req, res) => {

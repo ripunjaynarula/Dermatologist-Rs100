@@ -1,6 +1,6 @@
  const Heading = { fontWeight: "bold" }
 
- const FormLabel = { color: "#737373", fontFamily: "work sans" }
+ const FormLabel = { color: "#000000ab", fontFamily: "work sans" }
 
 
 

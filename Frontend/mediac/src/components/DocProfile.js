@@ -21,13 +21,13 @@ import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons
    import location from './img/location.svg'
    import medal from './img/medal.svg'
 
+import useWindowDimensions from "../functions/windowDimensions"
 
 export default function DocProfile() {
   
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-   const { currentUser, logout } = useAuth()
-  const dbinfo = useRef()
+   const dbinfo = useRef()
   const history = useHistory()
   const quest = useRef()
   const [name, setName] = useState('');
@@ -37,7 +37,15 @@ export default function DocProfile() {
   const [specialisation, setSpecialisation] = useState('');
   const [city, setCity] = useState('');
   const queryString = window.location.pathname;
+  const { height, width } = useWindowDimensions();
 
+  console.log(width)
+
+var mar = "0px";
+if(width<1200)
+{
+    mar = "15px"
+}
    useEffect(() =>{
  
  
@@ -73,11 +81,13 @@ export default function DocProfile() {
     <div style={{backgroundColor:"white"}}>
         <div style={{backgroundColor:"white"}}>
             <div  id="profcover">
-                <img id="coverimg" src={docimg}/>
+               <div id = "round" >
+                    <img id="coverimg" src={docimg}/>
+               </div>
             </div>
 
             <Container className="d-flex align-items-center justify-content-center">
-                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" style={{backgroundColor:"white", marginLeft: "-50px"}}>
+                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" >
                     <div className="row" style = {{marginLeft : "0px", marginRight: "0px" }}>
                         <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center" style={{marginLeft:"0px",paddingRight:"0px"}}>
                             <img className="dp" src={docimgsq}/>
@@ -104,14 +114,15 @@ export default function DocProfile() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style={{marginLeft:"34px", marginTop : "-10px"}}>
+                <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section"  >
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
                         <div className="profile-header" >
                             <div className="row" style={{display: 'block'}}>
                                 <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
-                                    <h1 style = {{color : "black"}}>Dr. {name}</h1>
-                                    <p>{degree}</p>
- <a href="https://twitter.com/#" target="_blank" rel = "noreferrer">
+                                    <h1 style = {{color : "black", fontSize : "24px",  }}>Dr. adadasd</h1>
+                                     <p style = {{marginBottom : mar, color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>adsdadad arejdgiuh uahqjei</p>
+                                    {width > 1200 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>10 years of experience</p>}  
+ <a href="https://twitter.com/#" target="_blank" rel = "noreferrer" >
                     <img src = {facebook} className = "icon-mbigger" alt=""></img>
                     </a>                           
                     
@@ -136,63 +147,70 @@ export default function DocProfile() {
             </Container>
 
                             
-            <br/>
 
             <Container  className="align-items-center justify-content-center">
+          <h5 style = {{fontWeight : 'bold'}}>About</h5>
+<p style = {{color: "#000000ab", fontFamily:"work sans"}}>adauejaj fwsojae alwewhrwuawnlucefhou faweurhqowrehpNV WEFJUOIJDODEC  FSFCSFRFSF
+    SFSFSFDS
+</p>
+<br></br>
             <hr />
             <br/> 
             
-            <h4 style = {{fontWeight : 'bold'}}>Blogs by {name}</h4>
+            <h5 style = {{fontWeight : 'bold'}}>Blogs by {name}</h5>
                     <BlogList mail="mail"/>
+                                        <br/>
+
                     <hr/>
                     <br/>
                     </Container>
+                    
             <Container id="adincon" className="align-items-center justify-content-center">                
-            <h4 style = {{fontWeight : 'bold'}} >Additional Information</h4><br/><br/>
+            <h5 style = {{fontWeight : 'bold'}} >Additional Information</h5><br/><br/>
 
             <Row style = {{ marginLeft : "0px"}}>
-  <img src = {medal} className = "icon-bigger" alt=""></img>
-            <h5 id="adinf">Speciality</h5>
+  <img src = {medal} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Speciality</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "6px"}}> {specialisation}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}> {specialisation}</p>
             <br/>
 
 
  <Row style = {{ marginLeft : "0px"}}>
-  <img src = {bcase} className = "icon-bigger" alt=""></img>
-            <h5 id="adinf"> Past Experience</h5>
+  <img src = {bcase} className = "icon-small" alt=""></img>
+            <h6 id="adinf"> Past Experience</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "6px"}}> {experience}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}> {experience}</p>
             <br/>
 
           
            <Row style = {{ marginLeft : "0px"}}>
-  <img src = {location} className = "icon-bigger" alt=""></img>
-            <h5 id="adinf">Location</h5>
+  <img src = {location} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Location</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "6px"}}>{city}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}>{city}</p>
             <br/>
 
 
 
   <Row style = {{ marginLeft : "0px"}}>
-  <img src = {building} className = "icon-bigger" alt=""></img>
-            <h5 id="adinf">Educational Details</h5>
+  <img src = {building} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Educational Details</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "6px"}}>{education}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}>education</p>
             <br/>
 
             
             <Row style = {{ marginLeft : "0px"}}>
-  <img src = {achievement} className = "icon-bigger" alt=""></img>
-            <h5 id="adinf">Professional Memberships</h5>
+  <img src = {achievement} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Professional Memberships</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "6px"}}>Lorem ipsum dolor sit amet,</p>
+            <p style={{marginLeft: "30px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans",}}>Lorem ipsum dolor sit amet,</p>
               <br/>
      
             </Container>

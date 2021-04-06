@@ -7,7 +7,7 @@ import { Card, Button, Alert } from "react-bootstrap"
 import docimg from './img/doc.jpeg'
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory, Link } from "react-router-dom"
-
+import {Texts} from "../css/Texts";
 
 
 const breakPoints = [
@@ -31,8 +31,7 @@ export default function BlogList(props) {
   const [specialisation, setSpecialisation] = useState('');
   const [city, setCity] = useState('');
   const [blogs, setBlogs] = useState([])
-
-
+ 
   useEffect(() =>{
     async function checkLogin(){
       const requestOptions = {
@@ -82,7 +81,7 @@ export default function BlogList(props) {
         </Carousel>
         :<>
         <br></br>
-        <h5>No Blogs yet</h5></>
+        <p style = {Texts.FormLabel}>No Blogs yet</p></>
 }
       </div>
       

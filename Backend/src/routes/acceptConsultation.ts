@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
             consultation.doctorEmail = doc.email;
         }
     }
+    // create chat
     return res.end();
 });
 

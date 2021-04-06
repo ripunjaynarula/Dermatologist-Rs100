@@ -2,6 +2,7 @@ require('dotenv').config()
 require('./models/dbinit');
 
 import express from 'express';
+import http from 'http';
 import session from 'express-session';
 import bodyParser from 'body-parser'
 import patientSignup from './routes/patientSignup'
@@ -44,7 +45,7 @@ import acceptConsultations from './routes/acceptConsultation';
 
 const app = express();
 
-const port = process.env.PORT
+const port: any = process.env.PORT
 const session_secret: any = process.env.SESSION_SECRET
 
 app.use('/admin',adminRouter);
@@ -58,6 +59,19 @@ app.use(express.static(path.join(__dirname, "client")));
 app.use(session({ secret: session_secret, saveUninitialized: true, resave: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+const handler = (_req: any, res: any) => {
+    const headers = {
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Origin": `http://localhost:${process.env.PORT}`, // or the specific origin you want to give access to,
+        "Access-Control-Allow-Credentials": true,
+    };
+    res.writeHead(200, headers);
+    res.end();
+}
+
+const ioApp = http.createServer(handler);
+const io = require('socket.io')(ioApp);
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
 const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
@@ -102,7 +116,13 @@ app.use('/acceptConsultation', acceptConsultations);
 // app.get('/', (req, res) => {
 //     return res.send('Hello world!');
 // });
-
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Express server listening on port ${port}`);
 });
+
+const ioPort = parseInt(port)+1
+ioApp.listen(ioPort, () => {
+    console.log(`Socker server listening on port ${ioPort}`);
+});
+
+export default io;

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { uid } from 'rand-token';
 import hashPassword from '../actions/hash'
 import fbUpdate from '../actions/updateDetailsFIrebaseAuth';
+ import generateUploadSignedUrl from '../actions/awsUpload';
 
 
 const router = express.Router();
@@ -66,6 +67,28 @@ fbUpdate.changeAccess("doctor", d.data.uid)
 
             try {
                 doc = await doc.save();
+
+                if(req.body.fileName)
+                {
+                             var s = req.body.fileName;
+                            if(s.split(".").length < 2)
+                            {
+                                return res.send({status: "invalid_filename", isError : true})
+                            }
+                            var extention = s.split(".")[s.split(".").length-1];
+
+                            var fileName = req.body.uid + "." + extention;
+                        var p = {
+                            region: process.env.mumbai_bucket_region,
+                            bucket: process.env.bucket_name,
+                            path: "profilePic/" + fileName
+                        }
+
+
+                        var x = await generateUploadSignedUrl(p);
+            return res.send({status: true, message: 'signup_complete', url : x});
+
+                }
             } catch(e) {
                 console.log(e)
                 fbUpdate.deleteUser(d.data.uid)

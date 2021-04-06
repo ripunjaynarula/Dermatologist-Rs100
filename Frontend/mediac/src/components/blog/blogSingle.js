@@ -90,9 +90,9 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </div>
 
               <div class="entry-footer">
-  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', marginRight: "1px", marginLeft: "15px"}}>
              
-<Row style = {{flexDirection: 'row', }}>
+<Row style = {{flexDirection: 'row',  }}>
 
       <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}>  people found this helpful </p>
 </Row>
@@ -115,13 +115,13 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               <div>
                 <h4>Jane Smith</h4>
                 <div class="social-links">
-                  <a href="https://twitters.com/#">
+                  <a href="https://twitters.com/#" target="_blank" rel = "noreferrer">
                     <img src = {facebook} className = "icon-bigger" alt=""></img>
                     </a>
-                  <a href="https://facebook.com/#">
+                  <a href="https://facebook.com/#" target="_blank" rel = "noreferrer">
                     <img src = {twitter} className = "icon-bigger" alt=""></img>
                     </a>
-                  <a href="https://instagram.com/#">
+                  <a href="https://instagram.com/#" target="_blank" rel = "noreferrer">
                     <img src = {linkedin} className = "icon-bigger" alt=""></img>
                     </a>
 

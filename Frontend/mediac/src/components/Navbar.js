@@ -120,7 +120,7 @@ const NavBar = () => {
               Blog
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.Nav.Link className="navlink" href="/videos">
-              Tube
+              Videos
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.NavDropdown
               className="navlink"
@@ -241,16 +241,7 @@ const NavBar = () => {
               </ReactBootStrap.NavDropdown.Item>
             </ReactBootStrap.NavDropdown>
 
-            <ReactBootStrap.Nav.Link className="navlink" href="/contact">
-              Contact
-            </ReactBootStrap.Nav.Link>
-            {!flag ? (
-              <ReactBootStrap.Nav.Link className="navlink" href="/DoctorLogin">
-                Doctor Login
-              </ReactBootStrap.Nav.Link>
-            ) : (
-              <div></div>
-            )}
+        
           </ReactBootStrap.Nav>
 
           {width > 1200 ? (

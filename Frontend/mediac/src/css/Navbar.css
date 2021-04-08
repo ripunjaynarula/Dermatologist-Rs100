@@ -1,9 +1,31 @@
      .bc {
          background: white;
          color: #000;
-         font-family: Open Sans;
+         font-family: roboto;
          font-weight: 600;
          box-shadow: 0px 0px 10px rgba(147, 149, 151, 0.25);
+     }
+     
+     #basic-nav-dropdown {
+         color: rgb(0, 0, 0);
+         transition: 1s ease
+     }
+     
+     .home .bc {
+         background: rgba(255, 255, 255, 0);
+         font-family: roboto;
+         font-weight: 600;
+         color: white;
+         box-shadow: 0px 0px 10px rgba(255, 255, 255, 0);
+     }
+     
+     .home #basic-nav-dropdown {
+         color: rgb(255, 255, 255);
+         transition: 0.5s ease
+     }
+     
+     #brand {
+         color: white;
      }
      
      .navbar {
@@ -15,8 +37,15 @@
          border-radius: 4px;
      }
      
+     .navbar-light .navbar-nav .active>.nav-link,
+     .navbar-light .navbar-nav .nav-link.active,
+     .navbar-light .navbar-nav .nav-link.show,
+     .navbar-light .navbar-nav .show>.nav-link {
+         background-color: transparent;
+     }
+     
      .navlink:active {
-         background-color: white;
+         box-shadow: 0px 0px 10px rgba(255, 255, 255, 0);
      }
      
      .bcd {

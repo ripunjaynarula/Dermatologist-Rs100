@@ -1,12 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import * as ReactBootStrap from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import "../css/Navbar.css";
+import "./styles.css";
+import SelectBox from './navDopdown'
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import useWindowDimensions from "../functions/windowDimensions";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  
+  
+  
+  
+  const [navBackground, setNavBackground] = useState(false)
+    const navRef = useRef()
+    navRef.current = navBackground
+    useEffect(() => {
+     console.log(props.type)
+     if(props.type === "trans")
+     {
+       const handleScroll = () => {
+        const show = window.scrollY > 20
+        if (navRef.current !== show) {
+          setNavBackground(show)
+        }
+      }
+      document.addEventListener('scroll', handleScroll)
+      return () => {
+        document.removeEventListener('scroll', handleScroll)
+      }
+     }else{
+       setNavBackground(true)
+     }
+
+    }, [])
+  
+  
+  
+  
   const arr = [
     { link: "/login", text: "Login" },
     { link: "/Signup", text: "Signup" },
@@ -67,21 +99,17 @@ const NavBar = () => {
       <ReactBootStrap.Nav.Link
         className="navlink"
         href={elem.link}
-        style={{ fontFamily: "work sans" }}
-        key={elem["link"]}
+  style={{ transition: '0.5s ease',  color :  width < 1201 ? "#62636a" :  !navBackground ? "white" : "#62636a" }}        key={elem["link"]}
       >
         {elem["text"]}
       </ReactBootStrap.Nav.Link>
     ))
   );
 
-  const [show, setShow] = useState(false);
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
+ 
+ const conditions = <div aria-labelledby="" class="dropdown-menu show" style={{margin: "0px"}}><a href="/pimples-acne" class="tile dropdown-item">Pimples or Acne</a><a href="#action/3.2" class="tile dropdown-item">Psoriasis</a><a href="#action/3.3" class="tile dropdown-item">Eczema</a><a href="#action/3.3" class="tile dropdown-item">Warts And Molluscumcontagiosum</a><a href="#action/3.3" class="tile dropdown-item">Vitiligo</a><a href="#action/3.3" class="tile dropdown-item">Hyper Pigmentation/ Malesma</a><a href="#action/3.3" class="tile dropdown-item">Fungal Infection</a><a href="#action/3.3" class="tile dropdown-item">Moles or Nevi or skin tags</a><a href="#action/3.3" class="tile dropdown-item">Keloid And Hypertrophic Scar</a><a href="#action/3.3" class="tile dropdown-item">Lichen planus</a><a href="#action/3.3" class="tile dropdown-item">Hair Loss</a><tr><td><a href="#action/3.1" class="tile dropdown-item">Pimples or Acne</a></td><td><a href="#action/3.1" class="tile dropdown-item">Warts And Molluscumcontagiosum</a></td></tr><a href="#action/3.3" class="tile dropdown-item">What Is Hirusitism?</a></div>
+
+ 
 
   async function handleLogout() {
     setError("");
@@ -105,148 +133,41 @@ const NavBar = () => {
   }, [currentUser, setFlag]);
 
   return (
-    <div className="Navbar" style={{}}>
-      <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc">
-        <ReactBootStrap.Navbar.Brand id="brand" href="/">
+    <div className="Navbar" style={{ }}>
+      <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc"  fixed="top" 
+      
+      
+       style={{ transition: '0.3s ease',  backgroundColor : width < 1201 ? "white" : !navBackground ? "transparent" : "white" }}
+        >
+        <ReactBootStrap.Navbar.Brand id="brand"    style={{ transition: '0.5s ease',  color :  width < 1201 ? "black" : !navBackground ? "white" : "black" }} href="/">
           LOGO
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
           <ReactBootStrap.Nav className="mr-auto">
-            <ReactBootStrap.Nav.Link className="navlink" href="/about">
+            <ReactBootStrap.Nav.Link className="navlink" href="/#"  style={{ transition: '0.5s ease',  color :  width < 1201 ? "#62636a" :  !navBackground ? "white" : "#62636a" }}>
               About
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">
+            <ReactBootStrap.Nav.Link className="navlink" href="/add-blog"  style={{ transition: '0.5s ease',  color :   width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a" }}>
               Blog
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link className="navlink" href="/videos">
+            <ReactBootStrap.Nav.Link className="navlink" href="/videos"  style={{ transition: '0.5s ease',  color :   width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a" }}>
               Videos
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.NavDropdown
-              className="navlink"
-              title="Conditions"
-              id="basic-nav-dropdown"
-            >
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="/pimples-acne"
-              >
-                Pimples or Acne
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.2"
-              >
-                Psoriasis
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Eczema
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Warts And Molluscumcontagiosum
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Vitiligo
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Hyper Pigmentation/ Malesma
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Fungal Infection
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Moles or Nevi or skin tags
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Keloid And Hypertrophic Scar
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Lichen planus
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                Hair Loss
-              </ReactBootStrap.NavDropdown.Item>
 
-              <tr>
-                <td>
-                  <ReactBootStrap.NavDropdown.Item
-                    className="tile"
-                    href="#action/3.1"
-                  >
-                    Pimples or Acne
-                  </ReactBootStrap.NavDropdown.Item>
-                </td>
 
-                <td>
-                  <ReactBootStrap.NavDropdown.Item
-                    className="tile"
-                    href="#action/3.1"
-                  >
-                    Warts And Molluscumcontagiosum
-                  </ReactBootStrap.NavDropdown.Item>
-                </td>
-              </tr>
-              <ReactBootStrap.NavDropdown.Item
-                className="tile"
-                href="#action/3.3"
-              >
-                What Is Hirusitism?
-              </ReactBootStrap.NavDropdown.Item>
-            </ReactBootStrap.NavDropdown>
 
-            <ReactBootStrap.NavDropdown
-              className="navlink"
-              title="Treatments"
-              id="basic-nav-dropdown"
-            >
-              <ReactBootStrap.NavDropdown.Item href="#action/3.1">
-                Action
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item href="#action/3.2">
-                Another action
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item href="#action/3.3">
-                Something
-              </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Divider />
-              <ReactBootStrap.NavDropdown.Item href="#action/3.4">
-                Separated link
-              </ReactBootStrap.NavDropdown.Item>
-            </ReactBootStrap.NavDropdown>
+<SelectBox data = {conditions} title = "Conditions" type = {props.type}></SelectBox>
+<SelectBox data = {conditions} title = "Treatments" type = {props.type}></SelectBox>
 
+
+        
         
           </ReactBootStrap.Nav>
 
           {width > 1200 ? (
             <ReactBootStrap.Nav
-              style={{ marginLeft: "80px" }}
+              style={{ marginLeft: width < 1250 ? "80px" : width < 1300 ? "110px" : width < 1350 ? "165px"  : width < 1400 ? "205px" :   width < 1450 ? "280px":  width < 1500 ? "300px":  "350px" }}
               className="mr-auto"
             >
               {right}

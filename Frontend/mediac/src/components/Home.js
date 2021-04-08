@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "./LoginPopup"
 import { DataContext } from './App';
 import Navbar from "./Navbar"
-
+import bgImg from './img/b1.jpg'
 export default function Home() {
 
   const history = useHistory();
@@ -28,7 +28,21 @@ export default function Home() {
 
   const [consultationData, setConsultationData] = useContext(DataContext);
 
-
+const [navBackground, setNavBackground] = useState(false)
+    const navRef = useRef()
+    navRef.current = navBackground
+    useEffect(() => {
+       const handleScroll = () => {
+        const show = window.scrollY > 50
+        if (navRef.current !== show) {
+          setNavBackground(show)
+        }
+      }
+      document.addEventListener('scroll', handleScroll)
+      return () => {
+        document.removeEventListener('scroll', handleScroll)
+      }
+    }, [])
   useEffect( () => {
     dataRef.current.value = '';
     if (currentUser) {
@@ -65,11 +79,18 @@ export default function Home() {
   const handleChange = () => {
     setConsultationData(dataRef.current.value)
   }
+  
 
     return (
     <>
-     <div className="Navb"><Navbar /></div>
-    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+      <div className =  "home">
+       <div className="Navb" ><Navbar type = "trans" /></div>
+     </div>
+    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "84vh" ,         backgroundImage: "url(" + bgImg + ")",
+ backgroundSize: "cover",
+    display: "flex",
+    padding: "23px",
+    margin: "-3.5rem 0rem",  backgroundRepeat: 'no-repeat'}}>
     <div id="container"  >
           <div id="hometxt" >
             <h2 id="bigtxt"><br></br>Best Care & <br/>Better Doctors.</h2>
@@ -81,19 +102,14 @@ export default function Home() {
                   <input type="text" id="dbques" style = {{borderRadius : "8px"}} placeholder="Tell us your symptom or health problem" ref={dataRef} onChange={handleChange}/>
           </Form.Group>
           </Form>
-          <Button onClick={handleShow} id="bookbtn"><img id="ellipsebtn" src={ellipse}/> Start Consultation</Button>
+          <Button onClick={handleShow} id="bookbtn">
+            <img id="ellipsebtn" src={ellipse}/> Start Consultation</Button>
       
       
         <Modal show={show} onHide={handleClose} id="nlogin">
        
-       <LoginPopup/>
-        
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          
-        </Modal.Footer>
+       <LoginPopup onClick={handleClose}/>
+ 
       </Modal>
         </div>
         </div>

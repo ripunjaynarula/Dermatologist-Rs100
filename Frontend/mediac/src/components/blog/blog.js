@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom'
 import SideBar from "./sidebar"
 import DOMPurify from 'dompurify';
 
-
+import Navbar from '../Navbar'
 import firebase from 'firebase'
 import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
@@ -45,9 +45,10 @@ if(width > 870) style = {
 }
     return (
     <>
- 
-     <section class="breadcrumbs">
-      <div class="container">
+        <div className="Navb" ><Navbar  /></div>
+
+     <section className="breadcrumbs">
+      <div className="container">
 
         <ol>
           <li><a href="index.html">Home</a></li>
@@ -58,11 +59,11 @@ if(width > 870) style = {
       </div>
     </section>
 
-    <section id="blog" class="blog">
+    <section id="blog" className="blog">
    
-   <div class = "container" >
-       <div class = "row">
-           <div class = "col-lg-8 entries">
+   <div className = "container" >
+       <div className = "row">
+           <div className = "col-lg-8 entries">
 
  
  <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
@@ -78,7 +79,7 @@ if(width > 870) style = {
 
 
 
-<div class="col-lg-4">
+<div className="col-lg-4">
 
              <SideBar></SideBar>
           </div>

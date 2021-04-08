@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap";
+import { Card, Form, Button, Alert, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import bgimg from "./img/image1.png";
 import ellipse from "./img/ellipse.png";
@@ -11,7 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import { CardMain } from "../css/Card";
 import { Texts } from "../css/Texts";
 import { DataContext } from "./App";
-
+import close from './img/close.svg'
 export default function LoginPopup(prop) {
   const history = useHistory();
   const emailRef = useRef();
@@ -40,14 +40,21 @@ export default function LoginPopup(prop) {
   return (
     <div>
       <Card style={CardMain} id="loginpopup">
-        <Card.Title></Card.Title>
+        <Card.Title>
+
+ <div style = {{float: "right", marginLeft : "auto", marginRight : "20px", marginTop : "30px"}}>
+        <img src = {close} className = "icon-button" alt="" onClick = {prop.onClick}></img>
+
+
+ </div>
+
+        </Card.Title>
         <Card.Body>
-          <h2 className="text-center mb-4" style={Texts.Heading}>
+           <h2 className="text-left mb-4" style={Texts.Heading}>
             Log In
           </h2>
 
-          <hr></hr>
-          {error && <Alert variant="danger">{error}</Alert>}
+           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email" style={{ paddingTop: 14 }}>
               <Form.Label style={Texts.FormLabel}>Email</Form.Label>

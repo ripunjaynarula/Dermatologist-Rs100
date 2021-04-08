@@ -8,6 +8,7 @@ import  "../styles.css";
 import SideBar from "./sidebar"
    import heartSvg from '../img/heart.svg'
       import heartRed from '../img/heartRed.svg'
+   import Navbar from '../Navbar'
 
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
@@ -158,7 +159,8 @@ catch(e){}
 
    return (
     <>
- 
+     <div className="Navb" ><Navbar  /></div>
+
      <section class="breadcrumbs">
       <div class="container">
 

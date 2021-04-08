@@ -11,7 +11,7 @@ import  "../styles.css";
    import linkedin from '../img/linkedin.svg'
    import twitter from '../img/twitter.svg'
 
-
+import Navbar from '../Navbar'
 
    import heartSvgRed from '../img/heartRed.svg'
 import DOMPurify from 'dompurify';
@@ -38,7 +38,8 @@ export default function Home() {
  
     return (
     <>
- 
+         <div className="Navb" ><Navbar  /></div>
+
      <section class="breadcrumbs">
       <div class="container">
 

@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
     font-family: "Open Sans";
-    /* background-color: #ededf2; */
+    background-color: #ededf2;
 }
 
 @media(min-width:870px) {
@@ -106,9 +106,6 @@
     .user-image {
         margin-top: 0px !important;
     }
-    #wrapper {
-        background-image: url("img/glove.png");
-    }
     #hometxt {
         font-size: larger;
         margin-top: 30%;
@@ -139,7 +136,7 @@
     }
     #hometxt {
         font-size: larger;
-        margin-top: 20%;
+        margin-top: 16%;
         width: 100vh;
     }
 }
@@ -180,12 +177,12 @@
 }
 
 #smalltxt {
-    color: black;
+    color: rgba(255, 255, 255, 0.644);
     font-family: Work Sans;
 }
 
 #bigtxt {
-    color: #0096e0;
+    color: #ffffff;
     font-family: Lora;
     font-style: normal;
     font-weight: 500;
@@ -195,10 +192,10 @@
 
 @media(min-width:870px) {
     #bookbtn {
-        margin-left: 8%
+        margin-left: 10%
     }
     #hometxt {
-        margin-left: 8%;
+        margin-left: 10%;
     }
     .newcontbn {
         /*margin-left: 10%;*/
@@ -368,8 +365,11 @@
         text-align: center;
     }
     #nlogin {
-        width: 43%;
+        max-width: 450px;
+        margin-left: auto;
         box-shadow: none!important;
+        margin-right: auto;
+        margin-top: 14vh;
     }
     #doccard {
         margin-left: 00%;
@@ -451,11 +451,8 @@
 }
 
 .active {
-    box-shadow: 0 0px 13px 0 rgba(4, 168, 181, 1);
     background-color: #0062af;
     border: 0px solid #0062af;
-    color: white;
-    color: black;
 }
 
 div.scrollmenu {
@@ -522,7 +519,7 @@ div.scrollmenu a {
 }
 
 #dbques {
-    width: 80%;
+    width: 80vw;
     padding: .375rem .75rem;
     font-size: 1rem;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 10, 0.18);
@@ -544,7 +541,7 @@ div.scrollmenu a {
 
 @media(min-width:870px) {
     #dbques {
-        margin-left: 8%;
+        margin-left: 10%;
         width: 93%;
         padding-bottom: 10px;
         padding-top: 10px;
@@ -558,6 +555,9 @@ div.scrollmenu a {
 
 #loginpopup {
     box-shadow: none!important;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 40px;
 }
 
 #sectionpf {
@@ -565,7 +565,7 @@ div.scrollmenu a {
 }
 
 #wrapper {
-    background-image: url("img/banner3.jpg");
+    background-image: url("img/b1.jpg");
     background-size: cover;
     display: flex;
     padding: 23px;
@@ -943,4 +943,17 @@ div.scrollmenu a {
     margin-right: 10px;
     margin-top: .3px;
     color: #0000009d
+}
+
+.icon-button {
+    height: 27px;
+    width: 27px;
+    transition: 0.3s ease;
+    padding: 5px;
+}
+
+.icon-button:hover {
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
 }

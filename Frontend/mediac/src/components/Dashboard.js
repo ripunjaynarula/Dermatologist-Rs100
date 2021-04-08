@@ -42,9 +42,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="Navb">
-        <Navbar />
-      </div>
+
+    
+     <div className = "home">
+       <div className="Navb" ><Navbar type = "trans" /></div>
+     </div>
       <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
         <div id="container">
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}

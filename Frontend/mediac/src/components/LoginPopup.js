@@ -50,11 +50,13 @@ export default function LoginPopup(prop) {
 
         </Card.Title>
         <Card.Body>
-           <h2 className="text-left mb-4" style={Texts.Heading}>
+           <h2 className="text-left" style={Texts.Heading}>
             Log In
           </h2>
-
-           {error && <Alert variant="danger">{error}</Alert>}
+  <div className="w-100 text-left  " style ={{marginTop : "4px", marginBottom: "10px"}}>
+          New User? <Link to="/signup">Sign Up</Link>
+        </div>
+           {error && <Alert variant="danger" style= {{marginTop : "20px", marginBottom : "0px"}}>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email" style={{ paddingTop: 14 }}>
               <Form.Label style={Texts.FormLabel}>Email</Form.Label>
@@ -69,17 +71,17 @@ export default function LoginPopup(prop) {
             <Button disabled={loading} className="submitbtn" type="submit">
               Log In
             </Button>
+
+          
             {/* <p className="submitbtn" type="submit">Login</p> */}
           </Form>
 
-          <div className="w-100 text-center mt-3">
+          <div className="w-100 text-left mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </Card.Body>
 
-        <div className="w-100 text-center mt-2">
-          Need an account? <Link to="/signup">Sign Up</Link>
-        </div>
+      
       </Card>
       <br />
     </div>

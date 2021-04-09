@@ -47,7 +47,7 @@ export default function Dashboard() {
      <div className = "home">
        <div className="Navb" ><Navbar type = "trans" /></div>
      </div>
-      <div id="wrapper" className="w-100 p-3" style={{ minHeight: "100vh" }}>
+      <div id="wrapper" className="w-100 p-3" style={{   }}>
         <div id="container">
           {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
@@ -56,7 +56,7 @@ export default function Dashboard() {
             </h2>
             <p id="smalltxt">Ask us a question </p>
           </div>
-          <Form onSubmit={handleSubmit}>
+          <Form autocomplete="off" onSubmit={handleSubmit}>
             <Form.Group id="ocity">
               <input
                 type="text"

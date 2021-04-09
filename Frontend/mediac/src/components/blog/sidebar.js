@@ -170,18 +170,13 @@ catch(e){}
               
             </div> 
 
-     
+        
         <Modal show={show} onHide={handleClose} id="nlogin">
        
-       <LoginPopup question = {quest.current == null ? "" :quest.current.value }/>
-        
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          
-        </Modal.Footer>
+       <LoginPopup onClick={handleClose} question = {quest.current == null ? "" :quest.current.value }/>
+ 
       </Modal>
+        
  
 
     </>

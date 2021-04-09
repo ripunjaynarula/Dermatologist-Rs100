@@ -148,7 +148,7 @@ const NavBar = (props) => {
             <ReactBootStrap.Nav.Link className="navlink" href="/#"  style={{ transition: '0.5s ease',  color :  width < 1201 ? "#62636a" :  !navBackground ? "white" : "#62636a" }}>
               About
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link className="navlink" href="/add-blog"  style={{ transition: '0.5s ease',  color :   width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a" }}>
+            <ReactBootStrap.Nav.Link className="navlink" href="/blog"  style={{ transition: '0.5s ease',  color :   width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a" }}>
               Blog
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.Nav.Link className="navlink" href="/videos"  style={{ transition: '0.5s ease',  color :   width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a" }}>

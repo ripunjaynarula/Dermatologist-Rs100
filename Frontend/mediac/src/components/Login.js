@@ -79,24 +79,30 @@ function onlyOnce(){
       setLoading(false)
     }
   }
+    document.body.style.backgroundColor = "#ededf2";
 
   return (
 
 
     <>
      <div className="Navb"><Navbar /></div>
+<<<<<<< HEAD
     <Container className="d-flex align-items-center justify-content-center everything" style={{ minHeight: "90vh" }}>
+=======
+    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh", }}>
+>>>>>>> 80c0394e7e26776bd76ed538d9482b287b216263
       
-      <Card style={{CardMain},{ maxWidth: "400px" }}  >
+      <Card style={{CardMain},{ maxWidth: "450px" }}  >
 <Card.Title>
 
 </Card.Title>
-        <Card.Body>
-
-          <h2 className="text-center mb-4" style = {Texts.Heading}>Log In</h2>
-
-<hr></hr>       
-     {error && <Alert variant="danger">{error}</Alert>}
+        <Card.Body style = {{ padding: "36px"}}>
+<br></br>
+          <h2 className="text-left " style = {Texts.Heading}>Log In</h2>
+<div className="w-100 text-left" style ={{marginTop : "4px", marginBottom: "10px"}}>
+        New User? <Link to="/signup">Sign Up</Link>
+      </div>
+      {error && <Alert variant="danger" style= {{marginTop : "20px", marginBottom : "0px"}}>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email" style={{paddingTop: 14}}>
               <Form.Label style = {Texts.FormLabel}>Email</Form.Label>
@@ -114,14 +120,13 @@ function onlyOnce(){
             {/* <p className="submitbtn" type="submit">Login</p> */}
           </Form>
 
-          <div className="w-100 text-center mt-3">
+          <div className="w-100 text-left mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
+          <br></br>
         </Card.Body>
       
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
-      </div><br/>
+      <br/>
       </Card>
       
       </Container>

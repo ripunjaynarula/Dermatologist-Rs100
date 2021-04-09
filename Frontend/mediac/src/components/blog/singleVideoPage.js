@@ -12,7 +12,8 @@ import SideBar from "./sidebar"
 
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
- 
+import { useHistory } from 'react-router-dom'
+import page404 from '../utility/page_404'
 export default function Video () {
     const { currentUser,  } = useAuth()
 const [postId, setPostId] = useState('')
@@ -24,6 +25,7 @@ const [youtubeVideo, setyoutubeVideo] = useState("")
 const [title, setTitle] = useState("")
 const [content, setContent] = useState("")
 const [link, setLink] = useState("")
+  const history = useHistory();
 
 const [likes, setLikes] = useState(0)
 const [date, setDate] = useState("")
@@ -46,9 +48,16 @@ const queryString = window.location.pathname;
   useEffect(() => getData(), []);
 
  async function  getData() {
+
+if(queryString.split("/")[queryString.split("/").length - 1] === "video")
+{
+  history.push('/videos')
+  return;
+
+}
+   
        setLoading(true)
           setError("")
-
 try{
 
   var token = null;
@@ -76,10 +85,16 @@ try{
         setPostId(res.video._id);
  setLink(res.video.link)
         setLiked(res.liked)
+        }else{
+history.push('/404')
+return;
         }
 
 }
-catch(e){}
+catch(e){
+history.push('/404')
+return;
+}
 
        setLoading(false)
 
@@ -189,7 +204,7 @@ catch(e){}
               <div class="entry-img"  style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               
-                <iframe  width = {width} height={width / 1.777} src={youtubeVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                <iframe  width = {width} height={width / 1.777} src={youtubeVideo} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
 
 
                 </iframe>
@@ -202,23 +217,23 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                 
               </div>
 
-              <h2 class="entry-title">
+              <h2 className="entry-title">
                 <a href={link}>{title}</a>
               </h2>
 
-              <div class="entry-meta">
+              <div className="entry-meta">
                     <ul>
-                   <li class="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a ><time datetime="2020-01-01">{date}</time></a></li>
+                   <li className="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a ><time dateTime="2020-01-01">{date}</time></a></li>
                   
                 </ul>
               </div>
 
-              <div class="entry-content">
+              <div className="entry-content">
             
       <div className="preview" dangerouslySetInnerHTML={createMarkup(content)}></div>
               </div>
 
-              <div class="entry-footer">
+              <div clclassNameass="entry-footer">
                  <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
               <a href="#" onClick={handleClick} >
 <Row style = {{flexDirection: 'row', marginLeft: "16px" }}>
@@ -241,7 +256,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  </div>
  
  
-<div class="col-lg-4">
+<div className="col-lg-4">
 
    <SideBar></SideBar>
 
@@ -259,16 +274,16 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  </section>
 </main>
 
- <footer id="footer" class="footer">
+ <footer id="footer" className="footer">
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 text-center">
+    <div className="footer-newsletter">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-lg-12 text-center">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
           </div>
-          <div class="col-lg-6">
+          <div className="col-lg-6">
             <form action="" method="post">
               <input type="email" name="email">
                   </input>

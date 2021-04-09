@@ -79,17 +79,21 @@ console.log(e)
       setLoading(false)
     }
   }
+    document.body.style.backgroundColor = "#ededf2";
 
   return (
     <>
      <div className="Navb"><Navbar /></div>
-    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "92vh" }}>
-      <Card  style={{CardMain},{ maxWidth: "60vh" }} >
+    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "100vh" }}>
+      <Card  style={{CardMain},{ maxWidth: "500px", padding:"15px"}} >
         <Card.Body>
+          <br></br>
          < div id="cardbox">
-          <h2 className="text-center mb-4"  style={Texts.Heading} >Sign Up</h2>
-          <hr></hr>
-          {error && <Alert variant="danger">{error}</Alert>}
+          <h2 className="text-left"  style={Texts.Heading} >Sign Up</h2>
+           <div className="w-100 text-left">
+        Already have an account? <Link to="/login">Log In</Link>
+      </div><br></br>
+           {error && <Alert variant="danger" style= {{marginTop : "20px", marginBottom : "0px"}}>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group  id="name">
               <Form.Label style={Texts.FormLabel}>Name</Form.Label>
@@ -108,16 +112,15 @@ console.log(e)
               <Form.Label style={Texts.FormLabel}>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            
+            <br></br>
             <Button disabled={loading} className="submitbtn" type="submit">
               Sign Up
             </Button>
+            <br/>
           </Form>
           </div>
         </Card.Body>
-        <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
-      </div>
+       
       <br/>
       </Card>
   

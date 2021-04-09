@@ -5,7 +5,8 @@ import { Link, useHistory } from "react-router-dom"
 import {CardMain} from "../../css/Card";
 import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
- 
+ import Navbar from "../Navbar"
+
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -265,32 +266,41 @@ try{
          hiddenFileInput.current.click();
 
   };
+
+      document.body.style.backgroundColor = "#ededf2";
+
   return (
     <>
-
+    <div className="Navb"><Navbar /></div>
+ <br></br>
+ <br></br>
+ <br></br>
+ 
           <div>
 <br></br>
 
 <div>
   
-  <Container  style={{   height : "100vh" , paddingTop: '20px',}}>
+  <Container  className="d-flex align-items-center justify-content-center "   style={{     }}>
+
+<Container>
 
 
- <Card  style = {CardMain}>
+ <Card  style = {CardMain,  { padding:"15px", }}>
 
    <Card.Title>
      
    </Card.Title>
         <Card.Body>
 
- 
+ <br></br>
 
-          <h5 className="text-left mb-4" style={{letterSpacing : "0"}}>Update Profile</h5>
+          <h4 className="text-left mb-4" style={{letterSpacing : "0"}}>Update Profile</h4>
 
  
           <hr></hr>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {success && <Alert variant="success">{success}</Alert>}
+          {error && <Alert variant="danger"  style = {{marginBottom: "24px"}}>{error}</Alert>}
+          {success && <Alert variant="success" style = {{marginBottom: "24px"}}>{success}</Alert>}
 
 
           
@@ -399,6 +409,9 @@ defaultValue={dob}               ref={dobRef}
          
           </Form>
         </Card.Body>
+         <br></br>
+ <br></br>
+
       </Card>
       
  
@@ -420,6 +433,7 @@ Update            </Button>
 <br></br>
 <br></br>
 
+</Container>
 </Container>
 
      

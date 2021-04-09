@@ -29,6 +29,7 @@ import DoctorLogin from './DoctorLogin'
 import AddVideo from "../components/videos/addVideos"
 import ViewVideos from "../components/videos/viewVideos"
 import Video from "../components/blog/singleVideoPage"
+import page404 from "../components/utility/page_404"
 
 import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
@@ -80,6 +81,7 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
               <Route path="/video" component={Video} />
+              <Route path="/404" component={page404} />
 
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
               <Route path="/forgot-password" component={ForgotPassword} />

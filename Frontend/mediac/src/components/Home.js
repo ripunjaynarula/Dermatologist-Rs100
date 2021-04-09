@@ -86,7 +86,7 @@ const [navBackground, setNavBackground] = useState(false)
       <div className =  "home">
        <div className="Navb" ><Navbar type = "trans" /></div>
      </div>
-    <div id="wrapper" className="w-100 p-3" style={{ minHeight: "84vh" ,         backgroundImage: "url(" + bgImg + ")",
+    <div id="wrapper" className="w-100 p-3" style={{        backgroundImage: "url(" + bgImg + ")",
  backgroundSize: "cover",
     display: "flex",
     padding: "23px",
@@ -96,7 +96,7 @@ const [navBackground, setNavBackground] = useState(false)
             <h2 id="bigtxt"><br></br>Best Care & <br/>Better Doctors.</h2>
           <p id="smalltxt">Ask us a question </p>
           </div>
-          <Form onSubmit={handleSubmit}>
+          <Form autocomplete="off" onSubmit={handleSubmit}>
 
           <Form.Group id="ocity">
                   <input type="text" id="dbques" style = {{borderRadius : "8px"}} placeholder="Tell us your symptom or health problem" ref={dataRef} onChange={handleChange}/>

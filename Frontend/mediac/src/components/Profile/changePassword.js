@@ -5,7 +5,8 @@ import { Link, useHistory } from "react-router-dom"
 import {CardMain} from "../../css/Card";
  import {Texts} from "../../css/Texts";
 import useWindowDimensions from "../../functions/windowDimensions"
-
+import Navbar from "../Navbar"
+ 
 export default function ChangePassword() {
   const newPasswordRef = useRef()
   const passwordRef = useRef()
@@ -73,37 +74,42 @@ setError("Cannot update password")
   }
 
 
+    document.body.style.backgroundColor = "#ededf2";
 
 
 
   
   
-  CardMain.maxWidth = "400px";
-
+ 
   
   return (
     <>
+    <div className="Navb"><Navbar /></div>
 
           <div>
+<br></br>
+ <br></br>
+<br></br>
 <br></br>
 <br></br>
 
  <div  >
 
-<Container  style={{ minHeight: height -105 }}>
+<Container  className="d-flex align-items-center justify-content-center "  style={{   }}>
 
 
 
-<Container style = {{maxWidth : "600px"}}>
+<Container style = {{maxWidth : "500px"}}>
 
 
-      <Card  style={{CardMain}}  >
+      <Card  style={{CardMain}, { paddingLeft:"15px", paddingRight : "15px", paddingTop : "25px", paddingBotton : "25px"}}  >
 
   <Card.Body>
 
- 
+ <br></br>
 
-          <h5 className="text-left mb-4" style={{letterSpacing : "0"}}>Change Password</h5>
+
+          <h4 className="text-left mb-4" style={Texts.Heading,{letterSpacing : "0"}}>Change Password</h4>
 
  
           <hr></hr>
@@ -137,6 +143,9 @@ setError("Cannot update password")
             </Form.Group>
          
           </Form>
+        <br></br>
+                <br></br>
+
         </Card.Body>
      
 
@@ -158,7 +167,10 @@ Update            </Button>
           </Row>
 
 <br></br>
+<br></br>
 
+<br></br>
+ 
 
 </Container>
 

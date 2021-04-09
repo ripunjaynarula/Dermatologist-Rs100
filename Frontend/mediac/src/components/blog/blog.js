@@ -51,7 +51,7 @@ if(width > 870) style = {
       <div className="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li>Blog</li>
         </ol>
         <h2>Blog</h2>

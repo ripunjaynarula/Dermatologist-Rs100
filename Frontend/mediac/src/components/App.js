@@ -30,22 +30,7 @@ import AddVideo from "../components/videos/addVideos";
 import ViewVideos from "../components/videos/viewVideos";
 import Video from "../components/blog/singleVideoPage";
 
-<<<<<<< HEAD
-import Header from "./Header";
-import FormEditors from "../components/blog/addBlog";
-import bgimg from "./img/image1.png";
-import pimplesAcnePage from "./blog/Conditions/pimplesAcne";
-import viewBlogs from "./blog/blog";
-import singleBlog from "./blog/blogSingle";
-=======
-import VerificationSent from './VerificationSent'
-import ConsultancyForm from './ConsultationForm'
-import Choice from './Choice'
-import OtherPersonDetails from './OtherPersonDetails'
-import DoctorLogin from './DoctorLogin'
-import AddVideo from "../components/videos/addVideos"
-import ViewVideos from "../components/videos/viewVideos"
-import Video from "../components/blog/singleVideoPage"
+
 import page404 from "../components/utility/page_404"
 
 import Header from './Header'
@@ -54,7 +39,6 @@ import bgimg from './img/image1.png';
 import pimplesAcnePage from './blog/Conditions/pimplesAcne';
 import viewBlogs from './blog/blog';
 import singleBlog from './blog/blogSingle';
->>>>>>> 80c0394e7e26776bd76ed538d9482b287b216263
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -108,11 +92,8 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
               <Route path="/video" component={Video} />
-<<<<<<< HEAD
-=======
               <Route path="/404" component={page404} />
 
->>>>>>> 80c0394e7e26776bd76ed538d9482b287b216263
               <Route exact path="/pimples-acne" component={pimplesAcnePage} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />

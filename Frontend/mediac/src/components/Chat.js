@@ -15,12 +15,13 @@ function Chat() {
             <Csidebar/>
             <Container className="d-flex align-items-center justify-content-center">
 
-            <div class="card"style={{marginTop:"10%"}}>
+            <div class="card"style={{marginTop:"5%"}}>
   
   <div class="card-body" >
     {/* <h5 class="card-title">Special title treatment</h5> */}
     {/* <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
     <Sidebar/>
+    
   </div>
 </div>
 

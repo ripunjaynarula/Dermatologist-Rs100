@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Tab, Nav, Button, Modal, Form } from "react-bootstrap";
 import Conversation from "./Conversation";
-import  "./styles.css";
+import "./styles.css";
 
 function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,16 +24,14 @@ function Sidebar() {
             </Form.Group>
           </div>
           <Nav variant="tabs" className="justify-content-center">
-            
-              <Nav.Item><b>Conversations</b></Nav.Item>
-            
+            <Nav.Item>
+              <b>Conversations</b>
+            </Nav.Item>
           </Nav>
           <Tab.Content className=" overflow-auto flex-grow-1">
             <Conversation />
           </Tab.Content>
-        
         </Tab.Container>
-
       </div>
     </div>
   );

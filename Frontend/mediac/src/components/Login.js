@@ -85,7 +85,7 @@ function onlyOnce(){
 
     <>
      <div className="Navb"><Navbar /></div>
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "90vh" }}>
+    <Container className="d-flex align-items-center justify-content-center everything" style={{ minHeight: "90vh" }}>
       
       <Card style={{CardMain},{ maxWidth: "400px" }}  >
 <Card.Title>

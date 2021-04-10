@@ -11,7 +11,7 @@ function Sidebar() {
 
   return (
     <div>
-      <div style={{ width: "250px" }} className="d-flex flex-column">
+      <div  className="d-flex flex-column">
         <Tab.Container>
           <div className="justify-content-center">
             <Form.Group style={{ paddingTop: 14 }}>

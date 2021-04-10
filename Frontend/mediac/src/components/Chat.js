@@ -18,7 +18,7 @@ function Chat() {
             <Csidebar/>
             <Container className="d-flex align-items-center justify-content-center">
 
-            <div class="card"style={{marginTop:"7%"}}>
+            <div class="card"style={{marginTop:"9%"}}>
   
   <div class="card-body row" >
     {/* <h5 class="card-title">Special title treatment</h5> */}

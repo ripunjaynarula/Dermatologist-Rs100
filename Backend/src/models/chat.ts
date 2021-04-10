@@ -7,6 +7,14 @@ const chat = mongoose.model('chats',new mongoose.Schema({
         trim: true,
         unique: true
     },
+    doctorUsername:{
+        required: true,
+        type: String
+    },
+    patientUsername:{
+        type: String,
+        required: true
+    },
     doctorEmail:{
         type:String,
         required: true

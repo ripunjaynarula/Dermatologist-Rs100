@@ -1,83 +1,23 @@
 import mongoose from 'mongoose'
 
-const message = new mongoose.Schema({
-
-    chatId : {
-
+const chat = mongoose.model('chats',new mongoose.Schema({
+    chatId:{
         type: String,
         required: true,
-        trim: true
-},
-
-    fromId: {
-        type: String,
-        required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
-toId: {
-        type: String,
-        required: true,
-        trim: true
+    doctorEmail:{
+        type:String,
+        required: true
     },
- message: {
-        type: String,
-        required: true,
-        trim: true
+    patientEmail:{
+        type:String,
+        required: true
     },
-timestamp: {
-        type: Date,
-        required: true,
-        default: Date.now
+    messages:{
+        type: Array
     },
-messageType : {
-    type : Number,
-    required : true,
-default : 0
-
-
-},
-readStatus :{
-    type: Boolean,
-    required : true,
-    default : false
-
-},
-    filePath : {
-    type : String,
-    default : "",
-
-}
-
-  
-});
-
-
-
-const chatThread = mongoose.model('threads', new mongoose.Schema({
-    chat_id: {
-        type: String,
-        required: true,
-        trim: true
-    },
-   timestamp: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
-
-    lastMessage : {
-           type: String,
-        required: true,
-        trim: true
-    },
-
-    isRead : {
-        type : Boolean,
-        required : true,
-        default : false
-    }
- 
-     
 }));
 
-export default chatThread;
+export default chat;

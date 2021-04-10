@@ -3,6 +3,7 @@ import consultations from '../models/consultation';
 import doctors from '../models/doctors';
 import chat from '../models/chat';
 import { uid } from 'rand-token';
+import patients from '../models/patients';
 
 const router = express.Router()
 
@@ -27,8 +28,11 @@ router.post('/', async (req, res) => {
                     break
                 }
             }
+            const p: any = await patients.findOne({email: consultation.patientEmail});
             let newChat = new chat({
                 chatId: id,
+                doctorUsername: doc.username,
+                patientUsername: p.name,
                 doctorEmail: consultation.doctorEmail,
                 patientEmail: consultation.patientEmail,
             });

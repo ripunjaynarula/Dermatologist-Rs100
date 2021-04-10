@@ -111,7 +111,10 @@ const Csidebar = () => {
             </div> */}
         </div>
       </div>
-      <div className="Navbar" style={{position:"fixed", zIndex:"2", width:"100%"}}>
+      <div
+        className="Navbar"
+        style={{ position: "fixed", zIndex: "2", width: "100%" }}
+      >
         <ReactBootStrap.Navbar collapseOnSelect expand="xl" className="bc">
           <div className="closemenu" onClick={menuIconClick}>
             {/* changing menu collapse icon on click */}

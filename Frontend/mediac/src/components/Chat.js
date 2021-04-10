@@ -14,16 +14,14 @@ import {
  } from "reactstrap"
 function Chat() {
     return (
-        <div className="everything">
+        <div className="chat">
             <Csidebar/>
             <Container className="d-flex align-items-center justify-content-center">
 
-            <div class="card"style={{marginTop:"9%"}}>
+            <div class="card chatcard" >
   
-  <div class="card-body row" >
-    {/* <h5 class="card-title">Special title treatment</h5> */}
-    {/* <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
-    <div className="col-3 "> 
+  <div class="card-body row " >
+    <div className="col-3 chatsideb"> 
    
     <Sidebar/>
     

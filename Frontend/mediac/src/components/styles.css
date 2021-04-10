@@ -376,6 +376,12 @@
         padding-top: 10px;
         padding-left: 10px;
     }
+    .chatcard{
+        margin-top:35%;
+    }
+    .chatsideb{
+        width:100vh !important; 
+    }
 }
 
 @media(min-width:570px) {
@@ -416,6 +422,10 @@
         display: flex;
         text-align: left;
     }
+    .chatcard{
+        margin-top:9%;
+    }
+    
 }
 
 #oform {
@@ -882,6 +892,7 @@ div.scrollmenu a {
         min-width: 180px;
         max-width: 180px;
     }
+    
 }
 
 @media(max-width:575px) {
@@ -899,6 +910,7 @@ div.scrollmenu a {
     .icon-mbigger {
         margin-top: -6px;
     }
+    
 }
 
 #socmed {
@@ -966,3 +978,4 @@ div.scrollmenu a {
 .contacthead{
     font-weight: bold;
 }
+

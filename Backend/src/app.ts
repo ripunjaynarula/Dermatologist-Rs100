@@ -40,6 +40,7 @@ import likeVideo from './routes/videos/likeVideo';
 import subscribeNotif from './routes/subscribe';
 import razorpayRoute from './routes/razorpay';
 import acceptConsultations from './routes/acceptConsultation';
+import getChats from './routes/getChats';
 
 
 const app = express();
@@ -111,6 +112,7 @@ app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
 app.use('/razorpay', checkAuth, razorpayRoute);
 app.use('/acceptConsultation', acceptConsultations);
+app.use('/getChatData', checkAuth, getChats);
 
 
 // app.get('/', (req, res) => {

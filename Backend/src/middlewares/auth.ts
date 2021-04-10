@@ -16,7 +16,6 @@ const checkAuth = async (req: any, res: any, next: any) => {
           if (!data.emailVerified) {
           }
         }
-
         next();
       })
       .catch((e) => {

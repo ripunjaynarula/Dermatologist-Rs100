@@ -9,6 +9,7 @@ import { CurrentChatContext } from "./App";
 import loadimg from "./img/loading.webp";
 
 function OpenConversation() {
+  
   const messageRef = useRef();
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
@@ -16,10 +17,13 @@ function OpenConversation() {
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
   function handleSubmit(e) {
+    
     e.preventDefault();
+    var time = new Date();
+    
     chatData["messages"].push({
       from: currentUser.email,
-      time: Date.now(),
+      time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
       text: messageRef.current.value,
     });
     //append child
@@ -30,8 +34,11 @@ function OpenConversation() {
     textDiv.className = 'text-white bg-primary py-1 px-2 rounded';
     textDiv.textContent = messageRef.current.value;
     messageDiv.appendChild(textDiv);
+    const timeDiv=document.createElement('div');
+    timeDiv.className = 'text-muted small text-right';
+    timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
-
     messageRef.current.value = "";
     console.log(chatData);
   }

@@ -42,65 +42,67 @@ function OpenConversation() {
     }
     getChats();
   }, [currentChat])
-  return (
+
+  if(chatData){
+    return (
 
     
-    <>
-    
-    <div className="contacthead">
+      <>
       
-      {chatData['doctorEmail'] === currentUser.email?chatData['patientUsername']:chatData['doctorUsername']} 
-      <hr/>
-    </div>
-    <div className="d-flex flex-column flex-grow-1 chatbg " style={{maxHeight:"460px", marginTop:"-1.7%"}}>
-      <div className="flex-grow-1 overflow-auto">
-
-<br/>
-
-
-{chatData['messages'].map(message =>(<>
-          <div className={`my-1 d-flex flex-column ${currentUser.email===message['from'] ? "align-self-end align-items-end" : "align-items-start"
-                }`} >
-                <div
-                  className={`rounded px-2 py-1 ${ currentUser.email===message['from'] ? "bg-primary text-white" : "bg-light"}`} >
-                  {message['text']}
-                </div>
-                <div
-                  className={`text-muted small ${ currentUser.email===message['from'] ? "text-right" : ""}`} >
-                     {message['time']}
-                </div>
-              </div>
-              </>
-))}
-
-
+      <div className="contacthead">
         
-
-
-
-
-
+        {chatData['doctorEmail'] === currentUser.email?chatData['patientUsername']:chatData['doctorUsername']} 
+        <hr/>
       </div>
-      <Form>
-        <Form.Group className="m-2">
-          <InputGroup style={{ height: "40px" }}>
-            <Form.Control
-              as="textarea"
-              required
-              placeholder="Type your message here..."
-              style={{ height: "40px", resize: "none" }}
-            />
-            <InputGroup.Append>
-              <Button type="submit">
-                <AiOutlineSend style={{marginTop:"-3px"}}/>
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
-        </Form.Group>
-      </Form>
-    </div>
-    </>
-  );
+      <div className="d-flex flex-column flex-grow-1 chatbg " style={{maxHeight:"460px", marginTop:"-1.7%"}}>
+        <div className="flex-grow-1 overflow-auto">
+  
+  <br/>
+  
+  
+  {chatData['messages'].map(message =>(<>
+            <div className={`my-1 d-flex flex-column ${currentUser.email===message['from'] ? "align-self-end align-items-end" : "align-items-start"
+                  }`} >
+                  <div
+                    className={`rounded px-2 py-1 ${ currentUser.email===message['from'] ? "bg-primary text-white" : "bg-light"}`} >
+                    {message['text']}
+                  </div>
+                  <div
+                    className={`text-muted small ${ currentUser.email===message['from'] ? "text-right" : ""}`} >
+                       {message['time']}
+                  </div>
+                </div>
+                </>
+  ))}
+        </div>
+        <Form>
+          <Form.Group className="m-2">
+            <InputGroup style={{ height: "40px" }}>
+              <Form.Control
+                as="textarea"
+                required
+                placeholder="Type your message here..."
+                style={{ height: "40px", resize: "none" }}
+              />
+              <InputGroup.Append>
+                <Button type="submit">
+                  <AiOutlineSend style={{marginTop:"-3px"}}/>
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </Form.Group>
+        </Form>
+      </div>
+      </>
+    );
+  }else {
+    return(
+      <>
+        Nothing to show!
+      </>
+    )
+  }
+  
 }
 
 export default OpenConversation;

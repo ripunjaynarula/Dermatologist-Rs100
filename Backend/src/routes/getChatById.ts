@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const chats = await chat.find({ chatId: req.body.chatId });
+    const chats = await chat.findOne({ chatId: req.body.chatId });
     res.send({chats: chats});
 });
 

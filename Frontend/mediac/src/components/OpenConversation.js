@@ -9,7 +9,7 @@ import {CurrentChatContext} from './App';
 
 
 function OpenConversation() {
-  const [chats, setChats] = useState([]);
+  const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
@@ -20,17 +20,22 @@ function OpenConversation() {
       if(!currentUser){
         history.push('/login');
       }
+
+      if(currentChat===""){
+        return
+      }
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions={
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({chatId: currentChat})
       };
-      let res = await fetch('http://localhost:5000/getChatData', requestOptions);
+      let res = await fetch('http://localhost:5000/getChatById', requestOptions);
       res = await res.text();
       res = JSON.parse(res);
       console.log(res);
-      await setChats(res['chats']);
-      console.log(chats);
+      await setChatData(res['chats']);
+      console.log(chatData);
 
     }
     getChats();

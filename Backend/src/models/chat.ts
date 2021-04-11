@@ -26,6 +26,10 @@ const chat = mongoose.model('chats',new mongoose.Schema({
     messages:{
         type: Array
     },
+    archieved: {
+        type: Boolean,
+        default: false
+    }
 }));
 
 export default chat;

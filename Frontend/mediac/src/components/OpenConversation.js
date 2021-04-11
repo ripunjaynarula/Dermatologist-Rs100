@@ -43,7 +43,7 @@ function OpenConversation() {
     getChats();
   }, [currentChat])
 
-  if(chatData){
+  if(chatData['messages']){
     return (
 
     

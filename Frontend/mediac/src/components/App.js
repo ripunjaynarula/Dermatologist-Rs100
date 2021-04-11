@@ -43,11 +43,13 @@ import singleBlog from './blog/blogSingle';
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
+export const CurrentChatContext = React.createContext()
 
 function App() {
   const [consultationData, setConsultationData] = useState("");
   const [docMail, setDocMail] = useState("");
   const [token, setToken] = useState("");
+  const [currentChat, setCurrentChat] = useSate('')
   return (
     <Router>
       <AuthProvider>
@@ -82,7 +84,9 @@ function App() {
                 component={UpdateDoctorProfile}
               />
               <PrivateRoute path="/loading" component={Loading} />
-              <PrivateRoute path="/chat" component={Chat} />
+              <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
+                <PrivateRoute path="/chat" component={Chat} />
+              </CurrentChatContext.Provider>
 
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />

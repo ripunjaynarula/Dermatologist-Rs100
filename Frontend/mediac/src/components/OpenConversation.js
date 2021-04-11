@@ -7,12 +7,14 @@ import "./styles.css";
 import app from "../firebase";
 import { CurrentChatContext } from "./App";
 import loadimg from "./img/loading.webp";
+import io from 'socket.io-client';
 
 function OpenConversation() {
   const messageRef = useRef();
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
+  const [socket, setSocket] = useState();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
   function handleSubmit(e) {
@@ -31,7 +33,6 @@ function OpenConversation() {
     textDiv.textContent = messageRef.current.value;
     messageDiv.appendChild(textDiv);
     chatDiv.appendChild(messageDiv);
-
     messageRef.current.value = "";
     console.log(chatData);
   }
@@ -45,6 +46,9 @@ function OpenConversation() {
       if (currentChat === "") {
         return;
       }
+      
+      const newSocket = io('http://localhost:5000/', { query: { currentChat } });
+      setSocket(newSocket);
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
@@ -63,6 +67,7 @@ function OpenConversation() {
       //
       // })
       console.log(chatData);
+      return () => newSocket.close();
     }
     getChats();
   }, [currentChat]);

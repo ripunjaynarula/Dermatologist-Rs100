@@ -34,7 +34,7 @@ import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
 import docDetailsRouter from './routes/getDocDetails';
 import adminLogin from './routes/adminLogin';
- import verifyAdmin from './routes/verifyAdmin';
+import verifyAdmin from './routes/verifyAdmin';
 import viewSingleVideo from './routes/videos/viewVideoSingle';
 import likeVideo from './routes/videos/likeVideo';
 import subscribeNotif from './routes/subscribe';
@@ -44,6 +44,14 @@ import getChats from './routes/getChats';
 import getChatById from './routes/getChatById'
 
 const app = express();
+const server = http.createServer(app);
+
+const io = require('socket.io')(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"]
+    }
+  });
 
 const port: any = process.env.PORT
 const session_secret: any = process.env.SESSION_SECRET
@@ -60,18 +68,12 @@ app.use(session({ secret: session_secret, saveUninitialized: true, resave: true 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const handler = (_req: any, res: any) => {
-    const headers = {
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Access-Control-Allow-Origin": `http://localhost:${process.env.PORT}`, // or the specific origin you want to give access to,
-        "Access-Control-Allow-Credentials": true,
-    };
-    res.writeHead(200, headers);
-    res.end();
-}
 
-const ioApp = http.createServer(handler);
-const io = require('socket.io')(ioApp);
+
+io.on('connection', (socket: any)=>{
+    const id = socket.handshake.query.currentChat;
+    console.log(id);
+});
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
 const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
@@ -86,7 +88,7 @@ app.use('/patientSignup', patientSignup);
 app.use('/login', login);
 
 app.use('/verify', verifyRouter);
- app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
+app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
@@ -119,13 +121,6 @@ app.use('/getChatById', checkAuth,getChatById);
 // app.get('/', (req, res) => {
 //     return res.send('Hello world!');
 // });
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Express server listening on port ${port}`);
 });
-
-const ioPort = parseInt(port)+1
-ioApp.listen(ioPort, () => {
-    console.log(`Socker server listening on port ${ioPort}`);
-});
-
-export default io;

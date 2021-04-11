@@ -3,9 +3,9 @@ console.log("Service Worker Loaded...");
 let id ='';
 let email = '';
 self.addEventListener("push", e => {
+  const data = e.data.json();
   id = data.id;
   email = data.email;
-  const data = e.data.json();
   console.log("Push Recieved...");
   self.registration.showNotification(data.title, {
     body: `New consultation: ${data.description}. Click here to accept consultation.`,

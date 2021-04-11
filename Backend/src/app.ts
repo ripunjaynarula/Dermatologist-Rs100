@@ -75,12 +75,11 @@ const io = require('socket.io')(ioApp);
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
 const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
-const vapidKeys = webPush.generateVAPIDKeys();
 
 webPush.setVapidDetails(
   "mailto:cr7shivanshsharma@gmail.com",
-   vapidKeys.publicKey,
-  vapidKeys.privateKey
+   publicVapidKey,
+   privateVapidKey
 );
 
 app.use('/patientSignup', patientSignup);

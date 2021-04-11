@@ -1,4 +1,4 @@
-const publicVapidKey = "BCuKfp1V0Lq-Vp3HaYQaa7VkR91ILkEqnrVhupowWwCgG-dOjpTRSSIhC2fpda1C3cO1xV5PU3EkEFUw9rUWEs8";
+const publicVapidKey = "BJpjlvIqaOuxYlJlQhpaBdOE3r8lqbad_efST0Nu_owHRA-kt5agl4bDd5dHx2iEYYqDfBw0Mj2pJtcWmqO-VF0";
 // Check for service worker
 
 const checkForSW = (email, password) =>{

@@ -15,7 +15,7 @@ function OpenConversation() {
 
 <br/>
 
-        <div className="d-flex flex-column align-items-start justify-content-end px-3 ">
+        <div className="d-flex flex-column align-items-start justify-content-end px-3 " style={{fontSize: "15px"}}>
           <div className="my-1 d-flex flex-column align-self-end align-items-end">
             <div className={`rounded px-2 py-1 bg-primary text-white`}>
               <p>okay</p>

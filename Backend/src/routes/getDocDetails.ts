@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
  
-    var doc: any = await doctors.findOne({username: req.body.username});
+    var doc: any = await doctors.findOne({email: req.body.email});
     if (doc){
         var blog: any = await blogs.find({doctorId: doc.uid});
         res.send({status: true, name: doc.name, education: doc.education, degree: doc.degree, experience: doc.pastExperience, specialisation: doc.specialisation, docBlogs:blog});

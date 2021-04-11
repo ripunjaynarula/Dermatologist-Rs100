@@ -1,9 +1,37 @@
-import React, { useState, useCallback } from "react";
+import React, { useEffect, useState} from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from 'react-router-dom'
 import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
+import app from "../firebase";
+
 
 function OpenConversation() {
+  const [chats, setChats] = useState([]);
+  const { currentUser } = useAuth();
+  const history = useHistory();
+
+  useEffect(()=>{
+    async function getChats(){
+      if(!currentUser){
+        history.push('/login');
+      }
+      const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions={
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+      };
+      let res = await fetch('http://localhost:5000/getChatData', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res);
+      await setChats(res['chats']);
+      console.log(chats);
+
+    }
+    getChats();
+  }, [])
   return (
     <>
     <div className="contacthead">

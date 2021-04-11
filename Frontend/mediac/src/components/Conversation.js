@@ -12,7 +12,9 @@ function Conversation() {
   const { currentUser } = useAuth();
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
-
+function handleOpenChat(id){
+  setCurrentChat(id);
+}
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {

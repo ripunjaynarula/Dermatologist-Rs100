@@ -5,12 +5,15 @@ import { useHistory } from 'react-router-dom'
 import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
 import app from "../firebase";
+import {CurrentChatContext} from './App';
 
 
 function OpenConversation() {
   const [chats, setChats] = useState([]);
   const { currentUser } = useAuth();
   const history = useHistory();
+  const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+
 
   useEffect(()=>{
     async function getChats(){

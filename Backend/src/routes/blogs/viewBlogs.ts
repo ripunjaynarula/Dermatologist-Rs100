@@ -16,13 +16,12 @@ var arr = []
 
 
         var blogs : any;
- var sort = {'_id': -1}
-
+ 
 
          blogs =  await blog.find({isPublished: true}  ).skip(1).limit(5).sort('-postDate') ;
          for (var i =0; i< blogs.length; i++)
         {
-             arr.push(blogs[i].doctorId)
+            arr.push(blogs[i].doctorId)
             blogs[i].image = process.env.cdnUrl + blogs[i].image 
 
         }

@@ -21,6 +21,9 @@ import getProfiles from './routes/getProfiles';
 import addBlog from '../src/routes/blogs/addBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
+import viewBlog from './routes/blogs/viewBlog'
+import allVideos from './routes/videos/viewVideosPublic'
+import myVideos from './routes/videos/viewVideosPrivate'
 
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
@@ -99,6 +102,7 @@ app.use('/update-doctor-profile', checkAuth, updateDoctorProfile);
 app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
 app.use('/patient-profile', checkAuth, viewPatientProfile);
+
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
 app.use('/adminLogin', adminLogin);
@@ -106,6 +110,10 @@ app.use('/verifyAdmin', verifyAdmin);
 //app.use('/doctorSignup', doctorSignup);
 app.use('/get-sidebar', getRandomBlogsAndVideos);
 app.use('/blogs', viewBlogs);
+app.use('/blog', viewBlog);
+app.use('/videos', allVideos);
+app.use('/my-videos',checkAuth, myVideos);
+
 app.use('/video', viewSingleVideo);
 app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);

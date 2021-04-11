@@ -1,7 +1,6 @@
 import express from 'express'
 import blog from '../../models/blog'
-import authStatus from '../../actions/checkLoginStatus'
-import doc from '../../models/doctors'
+ import doc from '../../models/doctors'
 import Videos from '../../models/videos'
 
 const router = express.Router();

@@ -75,7 +75,7 @@ function App() {
 
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
-              <Route exact path="/blog" component={singleBlog} />
+              <Route path="/blog" component={singleBlog} />
               <Route path="/login" component={Login}/>
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

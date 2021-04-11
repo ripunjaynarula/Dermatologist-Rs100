@@ -5,6 +5,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 /*--------------------------------------------------------------
 # General
@@ -35,7 +36,7 @@ h6 {
 --------------------------------------------------------------*/
 
 section {
-    padding: 60px 0;
+    padding: 0px 0;
     overflow: hidden;
 }
 
@@ -375,15 +376,51 @@ section {
     background-color: white;
 }
 
+.blog .video {
+    padding: 30px;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0);
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
 .blog .entry .entry-img {
     max-height: 400px;
     margin: -30px -30px 20px -30px;
     overflow: hidden;
 }
 
+.blog .limit {
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 39px;
+    /* fallback */
+    max-height: 32px;
+    /* fallback */
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
 .blog .entry .entry-title {
     font-size: 28px;
     font-weight: bold;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+    font-family: roboto;
+}
+
+.blog .entry .title-small {
+    font-size: 21px;
+    font-weight: normal;
     padding: 0;
     margin: 0 0 20px 0;
 }
@@ -428,6 +465,13 @@ section {
     line-height: 1;
 }
 
+.blog .entry .entry-meta .txt {
+    color: #777777;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 1;
+}
+
 .blog .entry .entry-content p {
     line-height: 24px;
 }
@@ -457,36 +501,6 @@ section {
     font-size: 22px;
     margin-top: 30px;
     font-weight: bold;
-}
-
-.blog .entry .entry-content blockquote {
-    overflow: hidden;
-    background-color: #fafafa;
-    padding: 60px;
-    position: relative;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.blog .entry .entry-content blockquote p {
-    color: #444444;
-    line-height: 1.6;
-    margin-bottom: 0;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 22px;
-}
-
-.blog .entry .entry-content blockquote::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background-color: #012970;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .blog .entry .entry-footer {

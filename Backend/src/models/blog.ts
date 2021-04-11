@@ -44,7 +44,12 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     },
     keywords: {
         type: String,
-    }
+    },
+      url: {
+        type: String,
+        required: true,
+        unique: true
+    },
 }));
 
 export default blogs;

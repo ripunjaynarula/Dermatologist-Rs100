@@ -1,35 +1,18 @@
 import express from 'express'
-import generateUploadSignedUrl from '../../actions/awsUpload';
-import videos from '../../models/videos'
-import { nanoid } from 'nanoid'
-
-const router = express.Router();
+import Videos from '../../models/videos'
+ const router = express.Router();
 
 router.post('/', async (req, res) => {
+ 
+    
+   try {
 
-
+    var arr = []
   
- 
 
-
-    try {
-
-
- 
-
- 
-          
-                 return res.send({
-          
-                isError : false,
-                status : "saved"
-              
-
-            })
-   
-
-
-
+           var videos =  await Videos.aggregate([{$sample: {size: 18}}]) ;
+  
+        return res.send({status: 'valid', isError : false, videos : videos})
 
     } catch(e) {
         console.error(e);
@@ -38,9 +21,4 @@ router.post('/', async (req, res) => {
  
 });
 
-
- 
-
 export default router;
-
- 

@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
    try {
 
 
-        var blogs;
+        var blogs : any;
                   
  
         blogs =  await Videos.findOne({link: req.body.videoLink} );
@@ -43,8 +43,10 @@ if(await authStatus.checkAuthStatus(req))
 
              console.log(blogs._id)
 }
-console.log('unsigned')
-        return res.send({ status: "valid", isError : false, video: blogs, liked : isLiked})
+Videos.updateOne({_id : blogs._id}, {views : blogs.views + 1})
+
+
+         return res.send({ status: "valid", isError : false, video: blogs, liked : isLiked})
 
     } catch(e) {
         console.error(e);

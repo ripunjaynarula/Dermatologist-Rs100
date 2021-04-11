@@ -42,7 +42,7 @@ trim : true
     videoLink: {
         type : String,
                 required: true,
-
+unique : true
 
     },
  
@@ -51,6 +51,11 @@ trim : true
  
     },
     likes : {
+
+        type : Number,
+        default : 0
+    },
+      views : {
 
         type : Number,
         default : 0

@@ -83,7 +83,7 @@ try{
         setDate(res.video.postDate.split("T")[0])
         setLikes(res.video.likes)
         setPostId(res.video._id);
- setLink(res.video.link)
+ setLink("/video/"+res.video.link)
         setLiked(res.liked)
         }else{
 history.push('/404')

@@ -32,7 +32,8 @@ if(s.split(".").length < 2)
             region: process.env.mumbai_bucket_region,
             bucket: process.env.bucket_name,
             path: "blog/" + fileName
-        }
+        }  
+            
 
 
         var x = await generateUploadSignedUrl(p);

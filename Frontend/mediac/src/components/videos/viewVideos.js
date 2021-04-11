@@ -1,56 +1,215 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Card, Form,Button, Container, Alert } from "react-bootstrap"
-import { useAuth } from "../../contexts/AuthContext"
-import {  useHistory } from "react-router-dom"
- // import ReactDOM from "react-dom";
-// import bgimg from './img/image1.png';
-import  "../styles.css";
-import ConsultancyCard from "../ConsultancyCard"
-// import ScriptTag from 'react-script-tag';
-import ellipse from '../img/ellipse.png';
-import bgimg from '../img/image1.png';
-import {Texts} from "../../css/Texts";
+import React, {  useState, useEffect  } from "react";
+import {   Row,   } from "react-bootstrap"
+import { useHistory } from 'react-router-dom'
+ 
+   import  "../blog/blog.css";
+ 
+ import VideoComponent from "./videoComponent"
+  import InfiniteScroll from 'react-infinite-scroll-component';
 
-
-
-export default function Dashboard() {
+ 
+import Navbar from '../Navbar'
+ import { useAuth } from "../../contexts/AuthContext"
+   
+ export default function Home() {
+    document.body.style.backgroundColor = "#ededf2";
+  const history = useHistory();
+    const { login, currentUser } = useAuth();
+   const [error, setError] = useState("")
   
-  const [show, setShow] = useState(false);
-  const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
-  const dbinfo = useRef()
-  const history = useHistory()
-  const quest = useRef()
+  const [loading, setLoading] = useState(false)
+ 
+    const [list, setList] = useState([])
 
-  async function handleLogout() {
-    setError("")
 
-    try {
-      await logout()
-      history.push("/login")
-    } catch {
-      setError("Failed to log out")
-    }
+  
+
+  useEffect(() => getData(), []);
+ 
+
+
+
+ async function  getData() {
+
+ 
+ 
+   
+       setLoading(true)
+          setError("")
+try{
+
+      var token = null;
+      if(currentUser)
+      {
+        token = await  currentUser.getIdToken(true)
+      }
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+ 
+          };
+        let res = await fetch('http://localhost:5000/videos', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+        console.log(res)
+        if(res.status === "valid")
+        {
+ 
+              for(var i =0; i< res.videos.length ; i++)
+              {
+                res.videos.views = nFormatter(res.videos.views) 
+              }
+
+              setList(res.videos)
+        }else{
+              history.push('/404')
+              return;
+        }
+
+}
+catch(e){
+        //history.push('/404')
+        return;
+}
+
+       setLoading(false)
+
+
   }
 
-  useEffect( () => {
- 
-  }, [currentUser, history])
+
+
+ async function  fetchData() {
 
  
-  async function handleSubmit(e) {
-    e.preventDefault()}
+ 
+   
+       setLoading(true)
+          setError("")
+try{
 
-  return (
+      var token = null;
+      if(currentUser)
+      {
+        token = await  currentUser.getIdToken(true)
+      }
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+ 
+          };
+        let res = await fetch('http://localhost:5000/videos', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+        console.log(res)
+        if(res.status === "valid")
+        {
+ 
+              for(var i =0; i< res.videos.length ; i++)
+              {
+                res.videos.views = nFormatter(res.videos.views) 
+                list.push(res.videos[i])
+              }
+
+              setList(list)
+        }else{
+              history.push('/404')
+              return;
+        }
+
+}
+catch(e){
+        //history.push('/404')
+        return;
+}
+
+       setLoading(false)
+
+
+  }
+
+
+function nFormatter(num) {
+     if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+     }
+     if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+     }
+     if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+     }
+     return num;
+}
+
+
+
+
+    return (
     <>
+        <div className="Navb" ><Navbar  /></div>
+
+     <section className="breadcrumbs">
+      <div className="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Videos</li>
+        </ol>
+ 
+      </div>
+    </section>
+
+    <section  className="blog">
+            <div className = "container"  >
+
+ 
+
+   <Row>
+
+<InfiniteScroll
+  dataLength={list.length} //This is important field to render the next data
+  next={fetchData}
+  hasMore={true}
+  loader={<h4>Loading...</h4>}
+  endMessage={
+    <p style={{ textAlign: 'center' }}>
+      <b>Yay! You have seen it all</b>
+    </p>
+  }
+ 
+>
+
+
+  {list.map((data, index) => (
+              <VideoComponent title = {data.title} image = {data.thumbnail} 
+    publishDate = {data.postDate}     views  = {data.views} videoLink = {data.link} isPrivate = "false" videoId = {data.videoId} >
+
+
+    </VideoComponent>
+          ))}
+ 
+</InfiniteScroll>
+   
+     
     
-    <div  className="w-100 p-3" style={{ minHeight: "100vh" }}>
+   
+    
+   </Row>
  
+ 
+ 
+ 
+ 
+            </div>
 
- 
- 
-    </div>
+
+
+
+    </section>
+     
+    
     </>
-
   )
 }
+  

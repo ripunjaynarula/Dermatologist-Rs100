@@ -16,13 +16,14 @@ router.post('/', async (req, res) => {
         var blogs;
         if(await authStatus.checkAuthStatus(req))
         { 
+            
             blogs  = await blog.find({$and: [ {doctorId: req.body.uid}, {isPublished: true} ]});
         
         }else{
 
             blogs =  await blog.find({doctorId: req.body.uid} );
-        
-            }
+            
+        }
 
 
 

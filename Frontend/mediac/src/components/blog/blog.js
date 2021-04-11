@@ -31,6 +31,7 @@ export default function Home() {
   const { login, currentUser } = useAuth();
   const dataRef = useRef();
   const [error, setError] = useState("")
+  
   const [loading, setLoading] = useState(false)
   const handleShow = () => setShow(true);
   const [consultationData, setConsultationData] = useContext(DataContext);
@@ -43,6 +44,26 @@ var style = {};
 if(width > 870) style = {
   flex : "40"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
     <>
         <div className="Navb" ><Navbar  /></div>

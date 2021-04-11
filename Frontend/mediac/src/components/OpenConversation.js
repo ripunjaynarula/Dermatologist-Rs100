@@ -46,6 +46,7 @@ function OpenConversation() {
 
     
     <>
+    
     <div className="contacthead">
       
       {chatData['doctorEmail'] === currentUser.email?chatData['patientUsername']:chatData['doctorUsername']} 
@@ -56,28 +57,24 @@ function OpenConversation() {
 
 <br/>
 
-        <div className="d-flex flex-column align-items-start justify-content-end px-3 " style={{fontSize: "15px"}}>
-          <div className="my-1 d-flex flex-column align-self-end align-items-end">
-            <div className={`rounded px-2 py-1 bg-primary text-white`}>
-              <p>okay</p>
-            </div>
-            <div className={`text-muted small text-right `}>
-              <p>13:38</p>
-            </div>
-          </div>
-        </div>
+
+{chatData['messages'].map(message =>(<>
+          <div className={`my-1 d-flex flex-column ${currentUser.email===message['from'] ? "align-self-end align-items-end" : "align-items-start"
+                }`} >
+                <div
+                  className={`rounded px-2 py-1 ${ currentUser.email===message['from'] ? "bg-primary text-white" : "bg-light"}`} >
+                  {message['text']}
+                </div>
+                <div
+                  className={`text-muted small ${ currentUser.email===message['from'] ? "text-right" : ""}`} >
+                     {message['time']}
+                </div>
+              </div>
+              </>
+))}
 
 
-        <div className="d-flex flex-column align-items-start justify-content-end px-3">
-          <div className="my-1 d-flex flex-column align-items-start">
-            <div className={`rounded px-2 py-1 bg-light`}>
-              <p>okay</p>
-            </div>
-            <div className={`text-muted small text-right `}>
-              <p>13:38</p>
-            </div>
-          </div>
-        </div>
+        
 
 
 

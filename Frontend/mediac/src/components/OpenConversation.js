@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -16,6 +16,7 @@ function OpenConversation() {
   const { currentUser } = useAuth();
   const history = useHistory();
   const [socket, setSocket] = useState();
+  const [prevChat, setPrevChat] = useState('');
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
   function handleSubmit(e) {
@@ -44,16 +45,20 @@ function OpenConversation() {
     messageRef.current.value = "";
   }
 
+  const handleNewMessage = useCallback((msgData) => {
+    console.log(msgData)
+  }, []);
+
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {
         history.push("/login");
       }
       console.log(currentChat);
-      if (currentChat === "") {
+      if (currentChat === "" || currentChat === prevChat) {
         return;
       }
-      
+      setPrevChat(currentChat);
       const newSocket = io('http://localhost:5000/', { query: { currentChat } });
       setSocket(newSocket);
       const token = await app.auth().currentUser.getIdToken(true);
@@ -77,15 +82,10 @@ function OpenConversation() {
       return () => newSocket.close();
     }
     getChats();
-    // if(rendered){
-    //   getChats();
-    //   setRendered(false);
-    // }
-    // if (!socket) return;
-
-    // socket.on('new-message', handleNewMessage);
-    // return () => socket.off('new-message');
-  }, [currentChat]);
+    if(!socket) return;
+    socket.on('new-message', handleNewMessage);
+    return () => socket.off('new-message');
+  }, [currentChat, socket, handleNewMessage]);
 
   if (chatData["messages"]) {
     return (

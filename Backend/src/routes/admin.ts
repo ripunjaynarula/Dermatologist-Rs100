@@ -7,12 +7,13 @@ import consultations from '../models/consultation';
 import blogs from '../models/blog';
 import Videos from '../models/videos';
 import subscripitons from '../models/subscription';
+import chat from '../models/chat';
 
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro ({
-    resources: [patients, doctors, consultations,blogs, Videos, subscripitons ],
+    resources: [patients, doctors, consultations,blogs, Videos, subscripitons, chat],
     rootPath: '/admin',
 });
 

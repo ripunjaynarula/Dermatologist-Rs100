@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
                 return res.end();
             }
             consultation.accepted = true;
+            consultation.active = true;
             consultation.doctorEmail = doc.email;
         }
         try{

@@ -25,10 +25,11 @@ function Conversation() {
       let res = await fetch('http://localhost:5000/getChatData', requestOptions);
       res = await res.text();
       res = JSON.parse(res);
-      console.log(res);
+      setChats(res['chats']);
+      console.log(chats);
     }
     getChats();
-  })
+  }, [])
 
   return (
     <div>

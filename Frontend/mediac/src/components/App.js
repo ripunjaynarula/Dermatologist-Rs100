@@ -50,7 +50,7 @@ function App() {
   const [consultationData, setConsultationData] = useState("");
   const [docMail, setDocMail] = useState("");
   const [token, setToken] = useState("");
-  const [currentChat, setCurrentChat] = useSate('')
+  const [currentChat, setCurrentChat] = useState('')
   return (
     <Router>
       <AuthProvider>

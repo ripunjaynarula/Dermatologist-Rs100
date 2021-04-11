@@ -50,8 +50,9 @@ function Conversation() {
               <div
               className="bottom overflow-auto "
               style={{ height: "350px", fontSize: "13px" }}
+              onClick={handleChatOpen(chat.id)}
             >
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex justify-content-between align-items-center" >
                 <div className="d-flex flex-row align-items-center conv w-100">
                   <div className="image">
                     {" "}

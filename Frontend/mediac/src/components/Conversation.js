@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ListGroup } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
+import {CurrentChatContext} from './App';
 
 import "./styles.css";
 
@@ -10,6 +11,7 @@ function Conversation() {
   const [chats, setChats] = useState([]);
   const { currentUser } = useAuth();
   const history = useHistory();
+  const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
   useEffect(() => {
     async function getChats() {

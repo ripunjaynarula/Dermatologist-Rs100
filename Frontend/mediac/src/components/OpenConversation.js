@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext, useRef} from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from 'react-router-dom'
@@ -6,9 +6,27 @@ import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
 import app from "../firebase";
 import {CurrentChatContext} from './App';
+import loadimg from "./img/loading.webp";
 
 
 function OpenConversation() {
+  const messageRef = useRef()
+
+
+  function handleSubmit(e) {
+
+    e.preventDefault();
+
+    chatData['messages'].push({
+    from: currentUser.email,
+    time: Date.now(),
+    text: messageRef.current.value,
+    })
+      
+      
+
+    
+  }
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -75,11 +93,12 @@ function OpenConversation() {
                 </>
   ))}
         </div>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="m-2">
             <InputGroup style={{ height: "40px" }}>
               <Form.Control
                 as="textarea"
+                ref={messageRef}
                 required
                 placeholder="Type your message here..."
                 style={{ height: "40px", resize: "none" }}
@@ -98,7 +117,12 @@ function OpenConversation() {
   }else {
     return(
       <>
-        Nothing to show!
+      <div
+        className="d-flex justify-content-center align-items-center   p-5"
+        style={{ marginTop: "5%", backgroundColor: "white !important" }}
+      >
+        <img src={loadimg} />
+      </div>
       </>
     )
   }

@@ -28,6 +28,9 @@ function OpenConversation() {
       time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
       text: messageRef.current.value,
     }
+    if(socket){
+      socket.emit('send', msgData);
+    }
     chatData["messages"].push(msgData);
     //append child
     const chatDiv = document.getElementById('chatMessages');

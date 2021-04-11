@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { ListGroup } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from 'react-router-dom'
+import app from "../firebase";
+
 import "./styles.css";
 
 function Conversation() {
+  const [chats, setChats] = useState([]);
+  const { currentUser } = useAuth();
+  const history = useHistory();
+
+
+  useEffect(()=>{
+    async function getChats(){
+      if(!currentUser){
+        history.push('/login');
+      }
+      const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions={
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+      };
+      let res = await fetch('http://localhost:5000/getChatData', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res);
+    }
+    getChats();
+  })
+
   return (
     <div>
       <div className="container">

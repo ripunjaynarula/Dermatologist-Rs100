@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const chats = await chat.find({$or:[{pateintEmail: req.body.email}, {doctorEmail: req.body.email}]});
+    const chats = await chat.find({ $or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] });
     res.send({chats: chats});
 });
 

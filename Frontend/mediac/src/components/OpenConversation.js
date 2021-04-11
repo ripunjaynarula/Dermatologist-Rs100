@@ -25,17 +25,9 @@ function OpenConversation() {
     //append child
     const chatDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'my-1';
-    messageDiv.className = 'd-flex';
-    messageDiv.className = 'flex-column';
-    messageDiv.className = 'align-self-end';
-    messageDiv.className = 'align-items-end';
+    messageDiv.className = 'align-items-end my-1 align-self-end flex-column d-flex';
     const textDiv = document.createElement('div');
-    textDiv.className = 'rounded';
-    textDiv.className = 'px-2';
-    textDiv.className = 'py-1';
-    textDiv.className = 'bg-primary';
-    textDiv.className = 'text-white';
+    textDiv.className = 'text-white bg-primary py-1 px-2 rounded';
     textDiv.textContent = messageRef.current.value;
     messageDiv.appendChild(textDiv);
     chatDiv.appendChild(messageDiv);

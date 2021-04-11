@@ -85,9 +85,6 @@ function App() {
                 component={UpdateDoctorProfile}
               />
               <PrivateRoute path="/loading" component={Loading} />
-              <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
-                <PrivateRoute path="/chat" component={Chat} />
-              </CurrentChatContext.Provider>
 
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
@@ -108,11 +105,14 @@ function App() {
                 path="/doctordashboard"
                 component={DoctorDashboard}
               />
-
+              <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
+                <PrivateRoute path="/chat" component={Chat} />
+              </CurrentChatContext.Provider>
               <TokenContext.Provider value={[token, setToken]}>
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
               </TokenContext.Provider>
+              
             </Switch>
           </div>
         </DataContext.Provider>

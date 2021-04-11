@@ -20,7 +20,7 @@ function OpenConversation() {
       if(!currentUser){
         history.push('/login');
       }
-
+      console.log(currentChat)
       if(currentChat===""){
         return
       }
@@ -34,19 +34,21 @@ function OpenConversation() {
       res = await res.text();
       res = JSON.parse(res);
       console.log(res);
-      await setChatData(res['chats']);
+      setChatData(res['chats']);
+      // chatData['messages'].map(message =>{
+      //
+      // })
       console.log(chatData);
-
     }
     getChats();
-  }, [])
+  }, [currentChat])
   return (
 
     
     <>
     <div className="contacthead">
       
-      Shivansh
+      {chatData['doctorEmail'] === currentUser.email?chatData['patientUsername']:chatData['doctorUsername']} 
       <hr/>
     </div>
     <div className="d-flex flex-column flex-grow-1 chatbg " style={{maxHeight:"460px", marginTop:"-1.7%"}}>

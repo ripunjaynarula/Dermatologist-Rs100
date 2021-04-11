@@ -22,12 +22,12 @@ function OpenConversation() {
     
     e.preventDefault();
     var time = new Date();
-    
-    chatData["messages"].push({
+    let msgData = {
       from: currentUser.email,
       time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
       text: messageRef.current.value,
-    });
+    }
+    chatData["messages"].push(msgData);
     //append child
     const chatDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
@@ -42,7 +42,6 @@ function OpenConversation() {
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
-    console.log(chatData);
   }
 
   useEffect(() => {
@@ -78,6 +77,14 @@ function OpenConversation() {
       return () => newSocket.close();
     }
     getChats();
+    // if(rendered){
+    //   getChats();
+    //   setRendered(false);
+    // }
+    // if (!socket) return;
+
+    // socket.on('new-message', handleNewMessage);
+    // return () => socket.off('new-message');
   }, [currentChat]);
 
   if (chatData["messages"]) {

@@ -72,7 +72,11 @@ app.use(bodyParser.json());
 
 io.on('connection', (socket: any)=>{
     const id = socket.handshake.query.currentChat;
-    console.log(id);
+    socket.join(id);
+    console.log(id)
+    socket.on('send', (msgData: any) =>{
+        console.log(msgData)
+    });
 });
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;

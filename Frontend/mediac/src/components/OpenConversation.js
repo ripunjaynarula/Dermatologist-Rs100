@@ -7,10 +7,11 @@ function OpenConversation() {
   return (
     <>
     <div className="contacthead">
+      
       Shivansh
       <hr/>
     </div>
-    <div className="d-flex flex-column flex-grow-1 chatbg " style={{maxHeight:"450px"}}>
+    <div className="d-flex flex-column flex-grow-1 chatbg " style={{maxHeight:"460px", marginTop:"-1.7%"}}>
       <div className="flex-grow-1 overflow-auto">
 
 <br/>
@@ -54,7 +55,7 @@ function OpenConversation() {
             />
             <InputGroup.Append>
               <Button type="submit">
-                <AiOutlineSend />
+                <AiOutlineSend style={{marginTop:"-3px"}}/>
               </Button>
             </InputGroup.Append>
           </InputGroup>

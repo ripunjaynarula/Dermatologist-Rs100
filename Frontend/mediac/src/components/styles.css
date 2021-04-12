@@ -1002,3 +1002,16 @@ div.scrollmenu a {
     width:100%;
     display: flex;
 }
+
+.mine{
+
+    margin-right: 5px !important;
+}
+
+.their{
+    margin-left: 5px !important;
+}
+
+.date{
+    font-size: 11px !important;
+}

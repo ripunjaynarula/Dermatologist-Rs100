@@ -41,7 +41,7 @@ function OpenConversation() {
     textDiv.textContent = messageRef.current.value;
     messageDiv.appendChild(textDiv);
     const timeDiv=document.createElement('div');
-    timeDiv.className = 'text-muted small text-right';
+    timeDiv.className = 'text-muted small date text-right';
     timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
@@ -69,7 +69,7 @@ function OpenConversation() {
     textDiv.textContent = msgData['text'];
     messageDiv.appendChild(textDiv);
     const timeDiv=document.createElement('div');
-    timeDiv.className = 'text-muted small';
+    timeDiv.className = 'text-muted small date';
     timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
@@ -135,8 +135,8 @@ function OpenConversation() {
                 <div
                   className={`my-1 d-flex flex-column ${
                     currentUser.email === message["from"]
-                      ? "align-self-end align-items-end"
-                      : "align-items-start"
+                      ? "align-self-end align-items-end mine"
+                      : "align-items-start their"
                   }`}
                 >
                   <div
@@ -149,7 +149,7 @@ function OpenConversation() {
                     {message["text"]}
                   </div>
                   <div
-                    className={`text-muted small ${
+                    className={`text-muted small date ${
                       currentUser.email === message["from"] ? "text-right" : ""
                     }`}
                   >

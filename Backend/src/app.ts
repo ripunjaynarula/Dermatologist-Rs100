@@ -42,6 +42,7 @@ import razorpayRoute from './routes/razorpay';
 import acceptConsultations from './routes/acceptConsultation';
 import getChats from './routes/getChats';
 import getChatById from './routes/getChatById'
+import chat from './models/chat'
 
 const app = express();
 const server = http.createServer(app);
@@ -74,7 +75,18 @@ io.on('connection', (socket: any)=>{
     const id = socket.handshake.query.currentChat;
     socket.join(id);
     console.log(id)
-    socket.on('send', (msgData: any) =>{
+    socket.on('send', async (msgData: any) =>{
+        let chats: any = await chat.findOne({chatId: id});
+        if(chats){
+            let arr = chats.messages;
+            arr.push(msgData);
+            chats.messages = arr;
+            try{
+                chats = await chats.save()
+            }catch(e){
+                console.log('Error occurred');
+            }
+        }
         socket.to(id).emit('new-message',msgData);
     });
 });

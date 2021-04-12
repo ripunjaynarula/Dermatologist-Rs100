@@ -84,7 +84,7 @@ io.on('connection', (socket: any)=>{
     socket.on('disconnect', async () => {
         let chats: any = await chat.findOne({chatId: id});
         if(chats){
-            chats.messages = arr;
+            chats.messages.concat(arr);
             try{
                 chats = await chats.save()
             }catch(e){

@@ -142,7 +142,7 @@ function OpenConversation() {
               </>
             ))}
           </div>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} autocomplete="off">
             <Form.Group className="m-2">
               <InputGroup style={{ height: "40px" }}>
                 <input 

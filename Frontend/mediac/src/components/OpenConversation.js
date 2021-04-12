@@ -23,7 +23,13 @@ function OpenConversation() {
     
     e.preventDefault();
     var time = new Date();
+    var options = {
+      year: "numeric",
+      month: "2-digit",
+      day: "numeric"
+  };
     let msgData = {
+      date: time.toLocaleDateString("en", options),
       from: currentUser.email,
       time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
       text: messageRef.current.value,
@@ -102,9 +108,6 @@ function OpenConversation() {
       res = JSON.parse(res);
       console.log(res);
       setChatData(res["chats"]);
-      // chatData['messages'].map(message =>{
-      
-      // })
       console.log(chatData);
       return () => newSocket.close();
     }

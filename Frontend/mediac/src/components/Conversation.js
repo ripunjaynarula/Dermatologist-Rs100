@@ -87,7 +87,7 @@ function Conversation() {
                     <span className="d-flex flex-row align-items-center s-now">
                       <small className="live">
                         {chat.messages.length > 0
-                          ? chat.messages[chat.messages.length - 1].date
+                          ? chat.messages[chat.messages.length - 1].time + ", "+ chat.messages[chat.messages.length - 1].date
                           : ""}
                       </small>
                     </span>{" "}

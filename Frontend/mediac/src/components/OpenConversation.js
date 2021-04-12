@@ -174,7 +174,9 @@ function OpenConversation() {
                     }
                   }
                 }
-                  style={{ height: "40px", resize: "none", borderRadius:"4px", display: "flex", fontSize:"14px"}}
+
+                style={{ height: "40px", resize: "none", borderRadius:"4px", display: "flex", fontSize:"14px",paddingTop: "8px" }}
+
                 />
                 <InputGroup.Append>
                   <Button type="submit" onKeyPress={handleKeypress}>

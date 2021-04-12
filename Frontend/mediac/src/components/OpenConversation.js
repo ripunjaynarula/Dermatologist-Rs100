@@ -49,7 +49,24 @@ function OpenConversation() {
   }
 
   const handleNewMessage = useCallback((msgData) => {
-    console.log(msgData)
+    if(chatData['messages']){
+      chatData["messages"].push(msgData);
+    }
+    //append child
+    var time = new Date();
+    const chatDiv = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'align-items-start my-1 flex-column d-flex';
+    const textDiv = document.createElement('div');
+    textDiv.className = 'bg-light py-1 px-2 rounded';
+    textDiv.textContent = msgData['text'];
+    messageDiv.appendChild(textDiv);
+    const timeDiv=document.createElement('div');
+    timeDiv.className = 'text-muted small';
+    timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    messageDiv.appendChild(timeDiv);
+    chatDiv.appendChild(messageDiv);
+    messageRef.current.value = "";
   }, []);
 
   useEffect(() => {

@@ -75,7 +75,7 @@ io.on('connection', (socket: any)=>{
     socket.join(id);
     console.log(id)
     socket.on('send', (msgData: any) =>{
-        console.log(msgData)
+        socket.to(id).emit('new-message',msgData);
     });
 });
 

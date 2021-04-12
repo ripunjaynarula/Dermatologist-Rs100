@@ -1,16 +1,18 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext,useCallback } from "react";
 import { ListGroup } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
 import {CurrentChatContext} from './App';
-
+import io from 'socket.io-client';
 import "./styles.css";
 
 function Conversation() {
   const [chats, setChats] = useState([]);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
+  const [socket, setSocket] = useState();
+  const [lastMsg, setLastMsg] = useState({});
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
@@ -19,8 +21,15 @@ function Conversation() {
   setActive(email)
   
 }
+const handleNewMessage =useCallback((msgData) =>{
+// chats[0]["messages"].push(msgData);
+setLastMsg(msgData)
+})
+  
   useEffect(() => {
+
     async function getChats() {
+
       if (!currentUser) {
         history.push("/login");
       }
@@ -33,13 +42,21 @@ function Conversation() {
         "http://localhost:5000/getChatData",
         requestOptions
       );
+
       res = await res.text();
       res = JSON.parse(res);
       console.log(res);
       await setChats(res["chats"]);
+      const newSocket = io('http://localhost:5000/', { query: { currentChat:"HijMWYt9Rmoz"} });
+      setSocket(newSocket);
+      // console.log(socket)
       console.log(chats);
+      return () => newSocket.close();
     }
+
     getChats();
+    if(!socket) return
+    socket.on('new-message', handleNewMessage); 
   }, []);
 
   return (
@@ -80,14 +97,20 @@ function Conversation() {
                         : chat.doctorUsername}
                     </span>{" "}
                     <span>
-                      {chat.messages.length > 0
+                      {/* {chat.messages.length > 0
                         ? chat.messages[chat.messages.length - 1].text
+                        : "Start Conversation"} */}
+                      {lastMsg.text !=undefined
+                        ? lastMsg.text
                         : "Start Conversation"}
                     </span>{" "}
                     <span className="d-flex flex-row align-items-center s-now">
                       <small className="live">
-                        {chat.messages.length > 0
+                        {/* {chat.messages.length > 0
                           ? chat.messages[chat.messages.length - 1].time + ", "+ chat.messages[chat.messages.length - 1].date
+                          : ""} */}
+                          {lastMsg.text !=undefined
+                          ? lastMsg.time + ", "+ lastMsg.date
                           : ""}
                       </small>
                     </span>{" "}

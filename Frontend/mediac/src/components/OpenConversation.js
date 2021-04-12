@@ -142,16 +142,16 @@ function OpenConversation() {
               </>
             ))}
           </div>
-          <Form onSubmit={handleSubmit} autocomplete="off">
+          <Form onSubmit={handleSubmit} autocomplete="off" >
             <Form.Group className="m-2">
-              <InputGroup style={{ height: "40px" }}>
+              <InputGroup id="bottommsg" style={{ height: "40px" }}>
                 <input 
                 id="sendmsg"
                   as="textarea"
                   ref={messageRef}
                   required
                   placeholder="Type your message here..."
-                  style={{ height: "40px", resize: "none", width: "100vh", borderRadius:"4px", display: "flex", fontSize:"14px"}}
+                  style={{ height: "40px", resize: "none", borderRadius:"4px", display: "flex", fontSize:"14px"}}
                 />
                 <InputGroup.Append>
                   <Button type="submit" onKeyPress={handleKeypress}>

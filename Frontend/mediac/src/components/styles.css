@@ -981,7 +981,8 @@ div.scrollmenu a {
 }
 
 #sendmsg{
-    border: 2px !important;;
+    border: 2px !important;
+    
 }
 .conv:hover{
 
@@ -997,3 +998,7 @@ div.scrollmenu a {
     border-radius:5px;
     cursor: pointer;
   }
+#bottommsg{
+    width:100%;
+    display: flex;
+}

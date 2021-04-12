@@ -18,7 +18,6 @@ import UpdateProfile from "./Profile/UpdateProfile";
 import UpdateDoctorProfile from "./Profile/updateDoctorProfile";
 import AdminLogin from "./AdminLogin";
 import AddDoc from "./AddDoc";
-import Loading from "./Loading";
 import ChangePassword from "./Profile/changePassword";
 import Chat from "./Chat";
 import VerificationSent from "./VerificationSent";
@@ -84,7 +83,6 @@ function App() {
                 path="/update-doctor"
                 component={UpdateDoctorProfile}
               />
-              <PrivateRoute path="/loading" component={Loading} />
 
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />

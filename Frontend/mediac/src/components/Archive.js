@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Form, InputGroup, Button } from "react-bootstrap";
+import React, { useEffect, useState, useContext } from "react";
+import { ListGroup } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import { AiOutlineSend } from "react-icons/ai";
-import "./styles.css";
 import app from "../firebase";
+import {CurrentChatContext} from './App';
 import "./styles.css";
 
 function Archive() {
   const [chats, setChats] = useState([]);
+  const [active, setActive] = useState();
   const { currentUser } = useAuth();
   const history = useHistory();
+  const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
+  function handleOpenChat(id,email){
+  setCurrentChat(id);
+  setActive(email)
+  
+}
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {

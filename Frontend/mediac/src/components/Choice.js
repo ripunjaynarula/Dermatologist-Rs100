@@ -48,6 +48,7 @@ export default function Choice() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [consultationId, setConsultationId] = useState('');
 
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -112,6 +113,7 @@ export default function Choice() {
       res = JSON.parse(res);
       console.log(res);
       setLoading(false);
+      setConsultationId(res['id']);
       setLoadingScreen(true)
     }
   }
@@ -178,7 +180,7 @@ export default function Choice() {
   }
   return (
     <>
-    {loadingScreen?(Loading):(
+    {loadingScreen?(<><Loading id={consultationId}/></>):(
       <>
       <div className="Navb">
         <Navbar />

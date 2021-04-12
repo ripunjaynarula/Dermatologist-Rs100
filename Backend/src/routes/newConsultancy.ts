@@ -56,7 +56,7 @@ router.post('/', async (req:any, res: any) => {
                 console.log(e);
             }
         });
-        return res.send({success: true});
+        return res.send({success: true, id: consultation.uid});
     } catch (e) {
         res.send({success: false, message: 'Internal Error.'});
         return;

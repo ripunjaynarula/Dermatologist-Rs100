@@ -21,7 +21,7 @@ import getProfiles from './routes/getProfiles';
 import addBlog from '../src/routes/blogs/addBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
-
+import checkConsultationStatus from './routes/checkConsultationStatus';
 import blogs from './models/blog';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
 import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
@@ -129,7 +129,7 @@ app.use('/razorpay', checkAuth, razorpayRoute);
 app.use('/acceptConsultation', acceptConsultations);
 app.use('/getChatData', checkAuth, getChats);
 app.use('/getChatById', checkAuth,getChatById);
-
+app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
 
 
 // app.get('/', (req, res) => {

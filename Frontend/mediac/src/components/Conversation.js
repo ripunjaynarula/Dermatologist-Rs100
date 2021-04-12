@@ -9,11 +9,15 @@ import "./styles.css";
 
 function Conversation() {
   const [chats, setChats] = useState([]);
+  const [active, setActive] = useState();
   const { currentUser } = useAuth();
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
-function handleOpenChat(id){
+
+  function handleOpenChat(id,email){
   setCurrentChat(id);
+  setActive(email)
+  
 }
   useEffect(() => {
     async function getChats() {
@@ -53,10 +57,12 @@ function handleOpenChat(id){
               className="bottom overflow-auto "
               style={{ height: "350px", fontSize: "13px" }}
               onClick={() => {
-                handleOpenChat(chat.chatId);
+                let email= currentUser.email == chat.doctorEmail? chat.patientEmail: chat.doctorEmail
+                handleOpenChat(chat.chatId,email);
+                
               }}
             >
-              <div className="d-flex justify-content-between align-items-center" >
+              <div className={`d-flex justify-content-between align-items-center conv ${active===(currentUser.email == chat.doctorEmail? chat.patientEmail: chat.doctorEmail)? 'convactive':''}`} >
                 <div className="d-flex flex-row align-items-center conv w-100">
                   <div className="image">
                     {" "}
@@ -66,7 +72,7 @@ function handleOpenChat(id){
                     />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className="d-flex flex-column line-height ml-2">
+                  <div className={`d-flex flex-column line-height ml-2 `}>
                     {" "}
                     <span className="font-weight-bold">
                       {currentUser.email == chat.doctorEmail

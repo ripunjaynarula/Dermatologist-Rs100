@@ -47,7 +47,14 @@ function OpenConversation() {
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
   }
-
+  const handleKeypress = e => {
+    e.preventDefault();
+      if (e.keyCode === 13) {
+    handleSubmit();
+  }
+  
+  
+};
   const handleNewMessage = useCallback((msgData) => {
     if(chatData['messages']){
       chatData["messages"].push(msgData);
@@ -152,18 +159,19 @@ function OpenConversation() {
               </>
             ))}
           </div>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} autocomplete="off">
             <Form.Group className="m-2">
               <InputGroup style={{ height: "40px" }}>
-                <Form.Control
+                <input 
+                id="sendmsg"
                   as="textarea"
                   ref={messageRef}
                   required
                   placeholder="Type your message here..."
-                  style={{ height: "40px", resize: "none" }}
+                  style={{ height: "40px", resize: "none", width: "100vh", borderRadius:"4px", display: "flex", fontSize:"14px"}}
                 />
                 <InputGroup.Append>
-                  <Button type="submit">
+                  <Button type="submit" onKeyPress={handleKeypress}>
                     <AiOutlineSend style={{ marginTop: "-3px" }} />
                   </Button>
                 </InputGroup.Append>

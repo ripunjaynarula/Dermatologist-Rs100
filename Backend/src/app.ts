@@ -80,7 +80,7 @@ io.on('connection', (socket: any)=>{
         if(chats){
             chats.messages.push(msgData);
             try{
-                chats = await chats.save()
+                chats = await chats.save();
             }catch(e){
                 console.log('Error occurred');
             }

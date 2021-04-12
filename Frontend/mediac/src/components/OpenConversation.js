@@ -103,7 +103,7 @@ function OpenConversation() {
       console.log(res);
       setChatData(res["chats"]);
       // chatData['messages'].map(message =>{
-      //
+      
       // })
       console.log(chatData);
       return () => newSocket.close();
@@ -163,11 +163,17 @@ function OpenConversation() {
             <Form.Group className="m-2">
               <InputGroup id="bottommsg" style={{ height: "40px" }}>
                 <Form.Control 
-                id="sendmsg"
+                  id="sendmsg"
                   as="textarea"
                   ref={messageRef}
                   required
                   placeholder="Type your message here..."
+                  onKeyPress={event =>{
+                    if(event.key=="Enter"){
+                      handleSubmit(event);
+                    }
+                  }
+                }
                   style={{ height: "40px", resize: "none", borderRadius:"4px", display: "flex", fontSize:"14px"}}
                 />
                 <InputGroup.Append>

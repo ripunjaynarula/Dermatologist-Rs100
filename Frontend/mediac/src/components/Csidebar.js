@@ -133,9 +133,7 @@ const Csidebar = () => {
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="mr-auto">
-              <ReactBootStrap.Nav.Link className="navlink" href="/about">
-                About
-              </ReactBootStrap.Nav.Link>
+              
               <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">
                 Blog
               </ReactBootStrap.Nav.Link>
@@ -148,6 +146,10 @@ const Csidebar = () => {
               <ReactBootStrap.Nav.Link className="navlink" href="/videos">
                 Tube
               </ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link className="navlink" href="/chat">
+                Chat
+              </ReactBootStrap.Nav.Link>
+              
               {/* <ReactBootStrap.NavDropdown className="navlink" title="Dropdown" id="basic-nav-dropdown"   show={show}
    onMouseEnter={showDropdown}  
    onMouseLeave={hideDropdown}  >

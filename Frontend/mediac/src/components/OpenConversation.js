@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
+import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -18,6 +20,7 @@ function OpenConversation() {
   const [socket, setSocket] = useState();
   const [prevChat, setPrevChat] = useState('');
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+ 
 
   function handleSubmit(e) {
     
@@ -120,6 +123,7 @@ function OpenConversation() {
   if (chatData["messages"]) {
     return (
       <>
+      
         <div className="contacthead">
           {chatData["doctorEmail"] === currentUser.email
             ? chatData["patientUsername"]
@@ -131,10 +135,12 @@ function OpenConversation() {
           style={{ maxHeight: "460px", marginTop: "-1.7%" }}
         >
           <div className="flex-grow-1 overflow-auto" id="chatMessages">
+
             <br />
 
             {chatData["messages"].map((message) => (
               <>
+              
                 <div
                   className={`my-1 d-flex flex-column ${
                     currentUser.email === message["from"]
@@ -162,6 +168,7 @@ function OpenConversation() {
               </>
             ))}
           </div>
+          
           <Form onSubmit={handleSubmit} autocomplete="off" >
             <Form.Group className="m-2">
               <InputGroup id="bottommsg" style={{ height: "40px" }}>

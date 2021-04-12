@@ -980,3 +980,10 @@ div.scrollmenu a {
     font-weight: bold;
 }
 
+#sendmsg{
+    border: 2px !important;;
+}
+.convactive{
+    background-color:rgba(124, 192, 255, 0.356) !important;
+    border-radius: 4px;
+}

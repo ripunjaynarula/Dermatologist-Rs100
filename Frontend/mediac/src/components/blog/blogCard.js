@@ -60,7 +60,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
       <div className="preview" dangerouslySetInnerHTML={createMarkup(prop.content)}></div>
 
 
-   <Row style= {{paddingTop :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
+   <Row style= {{paddingTop :"30px",paddingLeft :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>
              
 <Row style = {{flexDirection: 'row', }}>
 

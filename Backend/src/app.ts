@@ -43,7 +43,8 @@ import likeVideo from './routes/videos/likeVideo';
 import subscribeNotif from './routes/subscribe';
 import razorpayRoute from './routes/razorpay';
 import acceptConsultations from './routes/acceptConsultation';
-
+import getChats from './routes/getChats';
+import getChatById from './routes/getChatById'
 
 const app = express();
 
@@ -77,12 +78,11 @@ const io = require('socket.io')(ioApp);
 
 const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
 const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
-const vapidKeys = webPush.generateVAPIDKeys();
 
 webPush.setVapidDetails(
   "mailto:cr7shivanshsharma@gmail.com",
-   vapidKeys.publicKey,
-  vapidKeys.privateKey
+   publicVapidKey,
+   privateVapidKey
 );
 
 app.use('/patientSignup', patientSignup);
@@ -119,6 +119,9 @@ app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
 app.use('/razorpay', checkAuth, razorpayRoute);
 app.use('/acceptConsultation', acceptConsultations);
+app.use('/getChatData', checkAuth, getChats);
+app.use('/getChatById', checkAuth,getChatById);
+
 
 
 // app.get('/', (req, res) => {

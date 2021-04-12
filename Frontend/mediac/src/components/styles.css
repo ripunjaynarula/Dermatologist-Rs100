@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
-    font-family: "Open Sans";
-    background-color: #ededf2;
+    font-family: "Open Sans" ;
+    background-color: white;
 }
 
 @media(min-width:870px) {
@@ -376,6 +376,12 @@
         padding-top: 10px;
         padding-left: 10px;
     }
+    .chatcard{
+        margin-top:35%;
+    }
+    .chatsideb{
+        width:100vh !important; 
+    }
 }
 
 @media(min-width:570px) {
@@ -416,6 +422,10 @@
         display: flex;
         text-align: left;
     }
+    .chatcard{
+        margin-top:9%;
+    }
+    
 }
 
 #oform {
@@ -882,6 +892,7 @@ div.scrollmenu a {
         min-width: 180px;
         max-width: 180px;
     }
+    
 }
 
 @media(max-width:575px) {
@@ -899,6 +910,7 @@ div.scrollmenu a {
     .icon-mbigger {
         margin-top: -6px;
     }
+    
 }
 
 #socmed {
@@ -956,3 +968,15 @@ div.scrollmenu a {
     width: 27px;
     cursor: pointer;
 }
+
+.chatbg{
+    /* background-image: url("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Background.max-2800x2800.jpg"); */
+    height:100%;
+    background-color:rgba(128, 128, 128, 0.219);
+}
+
+
+.contacthead{
+    font-weight: bold;
+}
+

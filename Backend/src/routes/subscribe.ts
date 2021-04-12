@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.post("/", async (req, res) => {
-    // Get pushSubscription object
+    //Get pushSubscription object
     const doc: any = await doctors.findOne({email: req.body.email});
     if(!doc){
         return res.send({'success': false, 'message':'invalid_creds'});
@@ -17,8 +17,8 @@ router.post("/", async (req, res) => {
     if(!check){
         return res.send({'success': false, 'message':'invalid_creds'});
     }
-    
     const subscription = req.body.sub;
+    //Pass object into sendNotification
     let sub: any = await subscripitons.findOne({id: subscription.keys.auth});
     if(!sub){
         sub = new subscripitons({

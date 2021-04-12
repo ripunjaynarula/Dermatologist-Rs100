@@ -115,3 +115,22 @@
     width: 2em !important;
     cursor: pointer;
   }
+.conv{
+
+  padding-left: 2px ;
+}
+
+  .conv:hover{
+
+    background-color:#3a97df;
+    color:white;
+    border-radius:5px;
+    cursor: pointer;
+  }
+  .conv:active{
+
+    background-color:#83c3f3;
+    color:white;
+    border-radius:5px;
+    cursor: pointer;
+  }

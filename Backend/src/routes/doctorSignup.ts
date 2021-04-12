@@ -64,7 +64,7 @@ fbUpdate.changeAccess("doctor", d.data.uid)
                 specialization: req.body.specialization,
                 uid: d.data.uid
             });
-
+                
             try {
                 doc = await doc.save();
 

@@ -7,14 +7,14 @@ import { uid } from 'rand-token';
 
 const router = express.Router();
 
-const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
-const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
+// const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
+// const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
 
-webpush.setVapidDetails(
-    `mailto:${process.env.MAIL}`,
-    publicVapidKey,
-    privateVapidKey
-  );
+// webpush.setVapidDetails(
+//     `mailto:${process.env.MAIL}`,
+//     publicVapidKey,
+//     privateVapidKey
+//   );
 
 router.post('/', async (req:any, res: any) => {
     const patient = await patients.findOne({email: req.body.email});

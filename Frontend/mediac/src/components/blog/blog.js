@@ -93,6 +93,21 @@ if(width > 870) style = {
  
  ></BlogCard>
 
+
+
+
+ 
+ <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
+  author = "XYZ" publishDate = "Jan 1, 2020" content = "<p> addsadd</p>" authouUsername = "" likes  = "32323" blogLink = ""
+ 
+ 
+ ></BlogCard>
+ 
+ <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
+  author = "XYZ" publishDate = "Jan 1, 2020" content = "<p> addsadd</p>" authouUsername = "" likes  = "32323" blogLink = ""
+ 
+ 
+ ></BlogCard>
            </div>
 
 

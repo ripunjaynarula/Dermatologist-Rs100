@@ -983,7 +983,17 @@ div.scrollmenu a {
 #sendmsg{
     border: 2px !important;;
 }
-.convactive{
-    background-color:rgba(124, 192, 255, 0.356) !important;
-    border-radius: 4px;
-}
+.conv:hover{
+
+    background-color:#3a97df;
+    color:white;
+    border-radius:5px;
+    cursor: pointer;
+  }
+  .convactive{
+
+    background-color:rgba(124, 192, 255, 0.356);
+    color:black;
+    border-radius:5px;
+    cursor: pointer;
+  }

@@ -162,7 +162,7 @@ function OpenConversation() {
           <Form onSubmit={handleSubmit} autocomplete="off" >
             <Form.Group className="m-2">
               <InputGroup id="bottommsg" style={{ height: "40px" }}>
-                <input 
+                <Form.Control 
                 id="sendmsg"
                   as="textarea"
                   ref={messageRef}

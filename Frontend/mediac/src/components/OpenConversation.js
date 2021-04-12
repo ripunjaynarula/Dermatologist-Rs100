@@ -41,7 +41,7 @@ function OpenConversation() {
     //append child
     const chatDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'align-items-end my-1 align-self-end flex-column d-flex';
+    messageDiv.className = 'align-items-end my-1 align-self-end flex-column d-flex mine';
     const textDiv = document.createElement('div');
     textDiv.className = 'text-white bg-primary py-1 px-2 rounded';
     textDiv.textContent = messageRef.current.value;

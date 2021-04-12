@@ -69,7 +69,7 @@ function OpenConversation() {
     var time = new Date();
     const chatDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'align-items-start my-1 flex-column d-flex';
+    messageDiv.className = 'align-items-start my-1 flex-column d-flex their';
     const textDiv = document.createElement('div');
     textDiv.className = 'bg-light py-1 px-2 rounded';
     textDiv.textContent = msgData['text'];

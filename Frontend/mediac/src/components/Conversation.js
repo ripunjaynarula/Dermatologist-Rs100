@@ -47,7 +47,8 @@ setLastMsg(msgData)
       res = JSON.parse(res);
       console.log(res);
       await setChats(res["chats"]);
-      const newSocket = io('http://localhost:5000/', { query: { currentChat:"HijMWYt9Rmoz"} });
+      if (currentChat === "") return;
+      const newSocket = io('http://localhost:5000/', { query: { currentChat } });
       setSocket(newSocket);
       // console.log(socket)
       console.log(chats);

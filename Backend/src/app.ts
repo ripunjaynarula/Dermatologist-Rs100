@@ -73,13 +73,17 @@ app.use(bodyParser.json());
 
 io.on('connection', (socket: any)=>{
     const id = socket.handshake.query.currentChat;
+    let arr: any = []
     socket.join(id);
     console.log(id)
     socket.on('send', async (msgData: any) =>{
+        arr.push(msgData);
+        socket.to(id).emit('new-message',msgData);
+    });
+
+    socket.on('disconnect', async () => {
         let chats: any = await chat.findOne({chatId: id});
         if(chats){
-            let arr = chats.messages;
-            arr.push(msgData);
             chats.messages = arr;
             try{
                 chats = await chats.save()
@@ -87,7 +91,6 @@ io.on('connection', (socket: any)=>{
                 console.log('Error occurred');
             }
         }
-        socket.to(id).emit('new-message',msgData);
     });
 });
 

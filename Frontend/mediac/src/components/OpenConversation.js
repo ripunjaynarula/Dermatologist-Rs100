@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+import usersvg from './img/user.svg';
+
 import {
   BrowserView,
   MobileView,
@@ -100,6 +102,10 @@ function OpenConversation() {
     console.log('Clicked');
     setCurrentChat("");
   }
+  const handleArchiveButton =() => {
+    
+
+  }
 
   useEffect(() => {
     async function getChats() {
@@ -147,13 +153,15 @@ function OpenConversation() {
               <Button onClick={handleBackButton}>
                 <AiOutlineArrowLeft/>
               </Button>&nbsp;&nbsp;</>):(<></>)}
+              <img id="userimg" style={{width:"13%"}} src={usersvg}/>&nbsp;&nbsp;
             {chatData["doctorEmail"] === currentUser.email
               ? chatData["patientUsername"]
               : chatData["doctorUsername"]}
           </div>
-          
+         
           
           <hr />
+          <div style={{float: "right"}}><Button id="cancelbtn" onClick={handleArchiveButton}>Archive</Button></div>
         </div>
         <div
           className="d-flex flex-column flex-grow-1 chatbg "

@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";

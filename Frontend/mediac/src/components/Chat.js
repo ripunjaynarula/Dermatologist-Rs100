@@ -5,6 +5,12 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import Sidebar from './Sidebar'
 import OpenConversation from './OpenConversation'
 import "./styles.css";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 import {
     CardBody,
@@ -12,7 +18,19 @@ import {
    Card,
    Container,
  } from "reactstrap"
+
+
 function Chat() {
+  const [phone, setPhone] = useState(false);
+
+
+  // useEffect(() => {
+
+  //   // if(){
+  //   //   setPhone(true);
+  //   //   return
+  //   // }
+  // }, [setPhone]);
     return (
         <div className="chat">
             <Csidebar/>

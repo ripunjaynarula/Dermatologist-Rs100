@@ -3,7 +3,12 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
 import {CurrentChatContext} from './App';
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 import "./styles.css";
 
 function Conversation() {

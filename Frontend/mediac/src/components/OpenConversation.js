@@ -120,6 +120,7 @@ function OpenConversation() {
       console.log(res);
       setChatData(res["chats"]);
       console.log(chatData);
+      messageEndRef.current.scrollIntoView({behavior: "smooth"});
       return () => newSocket.close();
     }
     getChats();

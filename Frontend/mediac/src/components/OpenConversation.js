@@ -25,6 +25,7 @@ function OpenConversation() {
   const [socket, setSocket] = useState();
   const [prevChat, setPrevChat] = useState('');
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+  const messageEndRef = useRef(null)
  
 
   function handleSubmit(e) {
@@ -60,6 +61,7 @@ function OpenConversation() {
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
+    messageEndRef.current.scrollIntoView({behavior: "smooth"});
   }
   const handleKeypress = e => {
     e.preventDefault();
@@ -88,6 +90,7 @@ function OpenConversation() {
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
+    messageEndRef.current.scrollIntoView({behavior: "smooth"});
   }, []);
 
   useEffect(() => {
@@ -172,6 +175,7 @@ function OpenConversation() {
                 </div>
               </>
             ))}
+            <div ref={messageEndRef}></div>
           </div>
           
           <Form onSubmit={handleSubmit} autocomplete="off" >

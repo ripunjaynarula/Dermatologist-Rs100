@@ -5,7 +5,10 @@ import {
   MobileView,
   isBrowser,
   isMobile
-} from "react-device-detect";
+} 
+from "react-device-detect";
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -140,17 +143,15 @@ function OpenConversation() {
       
         <div className="contacthead">
           <div style={{float: "left"}}>
+          {isMobile?(<>
+              <Button onClick={handleBackButton}>
+                <AiOutlineArrowLeft/>
+              </Button>&nbsp;&nbsp;</>):(<></>)}
             {chatData["doctorEmail"] === currentUser.email
               ? chatData["patientUsername"]
               : chatData["doctorUsername"]}
           </div>
-          {isMobile?(
-            <div style={{float: "right"}}>
-              <Button onClick={handleBackButton}>
-                Back
-              </Button>
-            </div>
-          ):(<></>)}
+          
           
           <hr />
         </div>

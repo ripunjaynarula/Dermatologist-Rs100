@@ -140,9 +140,10 @@ function OpenConversation() {
         </div>
         <div
           className="d-flex flex-column flex-grow-1 chatbg "
-          style={{ maxHeight: "460px", marginTop: "-1.7%" }}
+          style={{ marginTop: "-1.7%" }}
+          id="chatbox"
         >
-          <div className="flex-grow-1 overflow-auto" id="chatMessages">
+          <div className="flex-grow-1 overflow-auto" id="chatMessages" >
 
             <br />
 

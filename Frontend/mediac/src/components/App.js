@@ -28,10 +28,7 @@ import DoctorLogin from "./DoctorLogin";
 import AddVideo from "../components/videos/addVideos";
 import ViewVideos from "../components/videos/viewVideos";
 import Video from "../components/blog/singleVideoPage";
-
-
 import page404 from "../components/utility/page_404"
-
 import Header from './Header'
 import FormEditors from "../components/blog/addBlog"
 import bgimg from './img/image1.png';
@@ -83,7 +80,6 @@ function App() {
                 path="/update-doctor"
                 component={UpdateDoctorProfile}
               />
-
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route exact path="/blog" component={singleBlog} />

@@ -1016,10 +1016,17 @@ div.scrollmenu a {
     font-size: 11px !important;
 }
 @media only screen and (min-width: 200px){
+    #chatbox{
+        max-height: 400px;
+    }
     #doc{
         margin-top:10%;
     }}
 @media only screen and (min-width: 768px){
 #doc{
     margin-top:1%;
+    
+}
+#chatbox{
+    max-height: 460px;
 }}

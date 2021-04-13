@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 .everything {
-    font-family: "Open Sans" ;
-    background-color: white;
+    font-family: "Open Sans";
+    background-color: #ededf2;
 }
 
 @media(min-width:870px) {
@@ -376,11 +376,11 @@
         padding-top: 10px;
         padding-left: 10px;
     }
-    .chatcard{
-        margin-top:35%;
+    .chatcard {
+        margin-top: 35%;
     }
-    .chatsideb{
-        width:100vh !important; 
+    .chatsideb {
+        width: 100vh !important;
     }
 }
 
@@ -422,10 +422,9 @@
         display: flex;
         text-align: left;
     }
-    .chatcard{
-        margin-top:9%;
+    .chatcard {
+        margin-top: 9%;
     }
-    
 }
 
 #oform {
@@ -892,7 +891,6 @@ div.scrollmenu a {
         min-width: 180px;
         max-width: 180px;
     }
-    
 }
 
 @media(max-width:575px) {
@@ -910,7 +908,6 @@ div.scrollmenu a {
     .icon-mbigger {
         margin-top: -6px;
     }
-    
 }
 
 #socmed {
@@ -969,14 +966,59 @@ div.scrollmenu a {
     cursor: pointer;
 }
 
-.chatbg{
+.chatbg {
     /* background-image: url("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Background.max-2800x2800.jpg"); */
-    height:100%;
-    background-color:rgba(128, 128, 128, 0.219);
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.219);
 }
 
-
-.contacthead{
+.contacthead {
     font-weight: bold;
 }
 
+#sendmsg {
+    border: 2px !important;
+}
+
+.conv:hover {
+    background-color: #3a97df;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.convactive {
+    background-color: rgba(124, 192, 255, 0.356);
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#bottommsg {
+    width: 100%;
+    display: flex;
+}
+
+.mine {
+    margin-right: 5px !important;
+}
+
+.their {
+    margin-left: 5px !important;
+}
+
+.date {
+    font-size: 11px !important;
+}
+
+@media only screen and (min-width: 200px) {
+    #doc {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #doc {
+        margin-top: 1%;
+    }
+}

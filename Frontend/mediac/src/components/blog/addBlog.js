@@ -242,8 +242,8 @@ async function uploadFile(putURL) {
   return (
     <>
     <div className="Navb"><Navbar /></div>
-    <Container className="d-flex align-items-center justify-content-center">
-      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-30 , backgroundColor : "#ededf2"}}>
+    <Container className="d-flex align-items-center justify-content-center" style={{marginTop:"5%", backgroundColor:"white"}}>
+      <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-30 , backgroundColor : "white"}}>
       <React.Fragment>
       <div >
         <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>

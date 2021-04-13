@@ -2,26 +2,18 @@ import { Container, Card, CardBody, Row, Col } from "reactstrap";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import Header from "./Header";
-import DocNav from "./DocNav";
-import Navbar from "./Navbar";
 import docimg from "./img/doc.jpeg";
 import "./styles.css";
 import "./docdash.css";
 
-import usersvg from "./img/user.svg";
-
-import { DocMailContext } from "./App";
 
 export default function DoctorDashboard() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  const dbinfo = useRef();
   const history = useHistory();
-  const quest = useRef();
 
   useEffect(() => {
     async function checkLogin() {
@@ -55,8 +47,8 @@ export default function DoctorDashboard() {
       <Container
         id="doc"
         className="d-flex align-items-center justify-content-center"
-      >
-        <Card id="doccard">
+     >
+        <Card id="doccard"  style={{marginTop:"3%"}}>
           <CardBody>
             <img id="docimg" src={docimg} /> <br />
             <br />

@@ -206,21 +206,7 @@ const NavBar = (props) => {
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
           <ReactBootStrap.Nav className="mr-auto">
-            <ReactBootStrap.Nav.Link
-              className="navlink"
-              href="/#"
-              style={{
-                transition: "0.5s ease",
-                color:
-                  width < 1201
-                    ? "#62636a"
-                    : !navBackground
-                    ? "white"
-                    : "#62636a",
-              }}
-            >
-              About
-            </ReactBootStrap.Nav.Link>
+            
             <ReactBootStrap.Nav.Link
               className="navlink"
               href="/blog"
@@ -262,6 +248,21 @@ const NavBar = (props) => {
               title="Treatments"
               type={props.type}
             ></SelectBox>
+            <ReactBootStrap.Nav.Link
+              className="navlink"
+              href="/chat"
+              style={{
+                transition: "0.5s ease",
+                color:
+                  width < 1201
+                    ? "#62636a"
+                    : !navBackground
+                    ? "white"
+                    : "#62636a",
+              }}
+            >
+              Chat
+            </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
 
           {width > 1200 ? (
@@ -290,6 +291,7 @@ const NavBar = (props) => {
             <ReactBootStrap.Nav className="mr-auto">{right}</ReactBootStrap.Nav>
           )}
         </ReactBootStrap.Navbar.Collapse>
+        
       </ReactBootStrap.Navbar>
     </div>
   );

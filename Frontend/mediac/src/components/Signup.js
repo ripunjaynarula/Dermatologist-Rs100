@@ -84,7 +84,7 @@ console.log(e)
   return (
     <>
      <div className="Navb"><Navbar /></div>
-    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "100vh" }}>
+    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "100vh", marginTop: "1.5%"}}>
       <Card  style={{CardMain},{ maxWidth: "500px", padding:"15px"}} >
         <Card.Body>
           <br></br>

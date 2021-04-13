@@ -16,7 +16,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
   useEffect( () => {
-    // onlyOnce();
+     onlyOnce();
   }, [])
 
 function onlyOnce(){
@@ -49,7 +49,7 @@ function onlyOnce(){
         currentUser.role = 'patient';
         setError('');
         setLoading(false)
-       history.push('/');
+       history.push('/dashboard');
         return;
       }
       if (res['status'] === 'logged_in' && res['scope'] === 'doctor') {

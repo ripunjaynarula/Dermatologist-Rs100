@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
+import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -7,6 +9,7 @@ import "./styles.css";
 import app from "../firebase";
 import { CurrentChatContext } from "./App";
 import loadimg from "./img/loading.webp";
+import io from 'socket.io-client';
 
 function OpenConversation() {
   
@@ -14,34 +17,73 @@ function OpenConversation() {
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
+  const [socket, setSocket] = useState();
+  const [prevChat, setPrevChat] = useState('');
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+ 
 
   function handleSubmit(e) {
     
     e.preventDefault();
     var time = new Date();
-    
-    chatData["messages"].push({
+    var options = {
+      year: "numeric",
+      month: "2-digit",
+      day: "numeric"
+  };
+    let msgData = {
+      date: time.toLocaleDateString("en", options),
       from: currentUser.email,
       time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
       text: messageRef.current.value,
-    });
+    }
+    if(socket){
+      socket.emit('send', msgData);
+    }
+    chatData["messages"].push(msgData);
     //append child
     const chatDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'align-items-end my-1 align-self-end flex-column d-flex';
+    messageDiv.className = 'align-items-end my-1 align-self-end flex-column d-flex mine';
     const textDiv = document.createElement('div');
     textDiv.className = 'text-white bg-primary py-1 px-2 rounded';
     textDiv.textContent = messageRef.current.value;
     messageDiv.appendChild(textDiv);
     const timeDiv=document.createElement('div');
-    timeDiv.className = 'text-muted small text-right';
+    timeDiv.className = 'text-muted small date text-right';
     timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
-    console.log(chatData);
   }
+  const handleKeypress = e => {
+    e.preventDefault();
+      if (e.keyCode === 13) {
+    handleSubmit();
+  }
+  
+  
+};
+  const handleNewMessage = useCallback((msgData) => {
+    if(chatData['messages']){
+      chatData["messages"].push(msgData);
+    }
+    //append child
+    var time = new Date();
+    const chatDiv = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'align-items-start my-1 flex-column d-flex their';
+    const textDiv = document.createElement('div');
+    textDiv.className = 'bg-light py-1 px-2 rounded';
+    textDiv.textContent = msgData['text'];
+    messageDiv.appendChild(textDiv);
+    const timeDiv=document.createElement('div');
+    timeDiv.className = 'text-muted small date';
+    timeDiv.textContent=time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    messageDiv.appendChild(timeDiv);
+    chatDiv.appendChild(messageDiv);
+    messageRef.current.value = "";
+  }, []);
 
   useEffect(() => {
     async function getChats() {
@@ -49,9 +91,12 @@ function OpenConversation() {
         history.push("/login");
       }
       console.log(currentChat);
-      if (currentChat === "") {
+      if (currentChat === "" || currentChat === prevChat) {
         return;
       }
+      setPrevChat(currentChat);
+      const newSocket = io('http://localhost:5000/', { query: { currentChat } });
+      setSocket(newSocket);
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
@@ -66,17 +111,19 @@ function OpenConversation() {
       res = JSON.parse(res);
       console.log(res);
       setChatData(res["chats"]);
-      // chatData['messages'].map(message =>{
-      //
-      // })
       console.log(chatData);
+      return () => newSocket.close();
     }
     getChats();
-  }, [currentChat]);
+    if(!socket) return;
+    socket.on('new-message', handleNewMessage);
+    return () => socket.off('new-message');
+  }, [currentChat, socket, handleNewMessage]);
 
   if (chatData["messages"]) {
     return (
       <>
+      
         <div className="contacthead">
           {chatData["doctorEmail"] === currentUser.email
             ? chatData["patientUsername"]
@@ -88,15 +135,17 @@ function OpenConversation() {
           style={{ maxHeight: "460px", marginTop: "-1.7%" }}
         >
           <div className="flex-grow-1 overflow-auto" id="chatMessages">
+
             <br />
 
             {chatData["messages"].map((message) => (
               <>
+              
                 <div
                   className={`my-1 d-flex flex-column ${
                     currentUser.email === message["from"]
-                      ? "align-self-end align-items-end"
-                      : "align-items-start"
+                      ? "align-self-end align-items-end mine"
+                      : "align-items-start their"
                   }`}
                 >
                   <div
@@ -109,7 +158,7 @@ function OpenConversation() {
                     {message["text"]}
                   </div>
                   <div
-                    className={`text-muted small ${
+                    className={`text-muted small date ${
                       currentUser.email === message["from"] ? "text-right" : ""
                     }`}
                   >
@@ -119,18 +168,28 @@ function OpenConversation() {
               </>
             ))}
           </div>
-          <Form onSubmit={handleSubmit}>
+          
+          <Form onSubmit={handleSubmit} autocomplete="off" >
             <Form.Group className="m-2">
-              <InputGroup style={{ height: "40px" }}>
-                <Form.Control
+              <InputGroup id="bottommsg" style={{ height: "40px" }}>
+                <Form.Control 
+                  id="sendmsg"
                   as="textarea"
                   ref={messageRef}
                   required
                   placeholder="Type your message here..."
-                  style={{ height: "40px", resize: "none" }}
+                  onKeyPress={event =>{
+                    if(event.key=="Enter"){
+                      handleSubmit(event);
+                    }
+                  }
+                }
+
+                style={{ height: "40px", resize: "none", borderRadius:"4px", display: "flex", fontSize:"14px",paddingTop: "8px" }}
+
                 />
                 <InputGroup.Append>
-                  <Button type="submit">
+                  <Button type="submit" onKeyPress={handleKeypress}>
                     <AiOutlineSend style={{ marginTop: "-3px" }} />
                   </Button>
                 </InputGroup.Append>

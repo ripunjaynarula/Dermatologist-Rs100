@@ -22,12 +22,12 @@ function Sidebar() {
         <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
           <div className="justify-content-center">
             <Form.Group>
-              <Form.Control
+              {/* <Form.Control
                 type="text"
                 className="w-100"
                 placeholder="Search"
                 required
-              />
+              /> */}
             </Form.Group>
           </div>
           <Nav variant="tabs" className="justify-content-center">

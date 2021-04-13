@@ -8,12 +8,32 @@ import { CardMain } from "../css/Card";
 import loadimg from "./img/loading.webp";
 import "./styles.css";
 import Navbar from "./Navbar";
+import app from "../firebase";
 
-export default function Loading() {
+
+export default function Loading(props) {
   const [flag, setFlag] = useState(true);
+  const { currentUser } = useAuth();
+  const history = useHistory();
+
+  const checkStatus = async () => {
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+      body: JSON.stringify({id: props.id}),
+    };
+    let res = await fetch('http://localhost:5000/getConsultationStatus', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+    if(res['status']){
+      history.push('/chat')
+    }
+  }
 
   useEffect(() => {
     document.getElementById("cancelbtn").style.visibility = "hidden";
+    const check = setTimeout(checkStatus, 60000);
     const timer = setTimeout(() => {
       setFlag(false);
       document.getElementById("cancelbtn").style.visibility = "visible";

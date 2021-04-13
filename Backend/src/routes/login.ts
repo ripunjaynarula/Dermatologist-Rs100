@@ -17,9 +17,10 @@ router.post('/',checkAuth, async (req, res) => {
     let patient;
     console.log(req.body)
    var d :any = await patients.findOne({uid:req.body.uid});
+   console.log(d)
     if(d !=null)
    {
-       if(d.verified)
+       if(!d.verified)
        {
                     return res.send({status: 'verification_mail_sent', isError : false,   scope: 'patient'})
 
@@ -28,6 +29,7 @@ router.post('/',checkAuth, async (req, res) => {
    }
    
    d = await doctors.findOne({uid: req.body.uid})
+   console.log(d)
 
    if(d !=null){
     return res.send({isError : false, status : "logged_in", scope: 'doctor'});

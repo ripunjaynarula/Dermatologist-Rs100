@@ -144,11 +144,14 @@ function OpenConversation() {
               ? chatData["patientUsername"]
               : chatData["doctorUsername"]}
           </div>
-          <div style={{float: "right"}}>
-            <Button onClick={handleBackButton}>
-              Back
-            </Button>
-          </div>
+          {isMobile?(
+            <div style={{float: "right"}}>
+              <Button onClick={handleBackButton}>
+                Back
+              </Button>
+            </div>
+          ):(<></>)}
+          
           <hr />
         </div>
         <div

@@ -978,6 +978,7 @@ div.scrollmenu a {
 
 .contacthead{
     font-weight: bold;
+    display: flex;
 }
 
 #sendmsg{

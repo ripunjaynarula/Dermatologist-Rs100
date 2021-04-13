@@ -93,6 +93,11 @@ function OpenConversation() {
     messageEndRef.current.scrollIntoView({behavior: "smooth"});
   }, []);
 
+  const handleBackButton =() => {
+    console.log('Clicked');
+    setCurrentChat("");
+  }
+
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {
@@ -134,9 +139,16 @@ function OpenConversation() {
       <>
       
         <div className="contacthead">
-          {chatData["doctorEmail"] === currentUser.email
-            ? chatData["patientUsername"]
-            : chatData["doctorUsername"]}
+          <div style={{float: "left"}}>
+            {chatData["doctorEmail"] === currentUser.email
+              ? chatData["patientUsername"]
+              : chatData["doctorUsername"]}
+          </div>
+          <div style={{float: "right"}}>
+            <Button onClick={handleBackButton}>
+              Back
+            </Button>
+          </div>
           <hr />
         </div>
         <div

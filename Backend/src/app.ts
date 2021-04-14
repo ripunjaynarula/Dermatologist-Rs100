@@ -43,6 +43,7 @@ import acceptConsultations from './routes/acceptConsultation';
 import getChats from './routes/getChats';
 import getChatById from './routes/getChatById'
 import chat from './models/chat'
+import archive from './routes/archive';
 
 const app = express();
 const server = http.createServer(app);
@@ -130,6 +131,7 @@ app.use('/acceptConsultation', acceptConsultations);
 app.use('/getChatData', checkAuth, getChats);
 app.use('/getChatById', checkAuth,getChatById);
 app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
+app.use('/toggleArchive', checkAuth, archive);
 
 
 // app.get('/', (req, res) => {

@@ -103,8 +103,18 @@ function OpenConversation() {
     setCurrentChat("");
   }
   const handleArchiveButton =() => {
-    
-
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({ chatId: currentChat }),
+    };
+    let res = await fetch(
+        "http://localhost:5000/toggleArchive",
+        requestOptions
+    );
+    res = await res.text();
+    res = JSON.parse(res);
   }
 
   useEffect(() => {

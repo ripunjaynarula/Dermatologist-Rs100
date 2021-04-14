@@ -27,6 +27,7 @@ function Conversation() {
     async function getChats() {
       if (!currentUser) {
         history.push("/login");
+        
       }
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {

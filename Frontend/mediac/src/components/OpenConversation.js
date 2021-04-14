@@ -29,6 +29,7 @@ import app from "../firebase";
 import { CurrentChatContext, ChatDataContext } from "./App";
 import loadimg from "./img/loading.webp";
 import io from "socket.io-client";
+import Conversation from "./Conversation";
 
 function OpenConversation() {
   const messageRef = useRef();
@@ -41,6 +42,11 @@ function OpenConversation() {
   const [chats, setChats] = useContext(ChatDataContext);
   const messageEndRef = useRef(null);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function handleSubmit(e) {
     e.preventDefault();
     var time = new Date();
@@ -49,6 +55,7 @@ function OpenConversation() {
       month: "2-digit",
       day: "numeric",
     };
+    
     let msgData = {
       date: time.toLocaleDateString("en", options),
       from: currentUser.email,
@@ -122,6 +129,7 @@ function OpenConversation() {
   };
 
   const handleArchiveButton = async () => {
+   
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {
       method: "POST",
@@ -139,6 +147,7 @@ function OpenConversation() {
         chat.archieved = !chat.archieved;
       }
     });
+    window.location.reload(false);
   };
 
   useEffect(() => {
@@ -203,7 +212,7 @@ function OpenConversation() {
 
           <hr />
           <div style={{ float: "right" }}>
-            <Button id="cancelbtn" onClick={handleArchiveButton}>
+            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleArchiveButton}>
               <FiArchive/>
             </Button>
           </div>

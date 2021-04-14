@@ -26,7 +26,7 @@ import { useHistory } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
 import app from "../firebase";
-import { CurrentChatContext } from "./App";
+import { CurrentChatContext, ChatDataContext } from "./App";
 import loadimg from "./img/loading.webp";
 import io from "socket.io-client";
 
@@ -38,6 +38,7 @@ function OpenConversation() {
   const [socket, setSocket] = useState();
   const [prevChat, setPrevChat] = useState("");
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+  const [chats, setChats] = useContext(ChatDataContext);
   const messageEndRef = useRef(null);
 
   function handleSubmit(e) {
@@ -119,6 +120,7 @@ function OpenConversation() {
     console.log("Clicked");
     setCurrentChat("");
   };
+
   const handleArchiveButton = async () => {
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {
@@ -132,6 +134,11 @@ function OpenConversation() {
     );
     res = await res.text();
     res = JSON.parse(res);
+    chats.map(chat => {
+      if(chat.chatId === currentChat){
+        chat.archieved = !chat.archieved;
+      }
+    });
   };
 
   useEffect(() => {

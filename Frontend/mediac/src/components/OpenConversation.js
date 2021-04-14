@@ -126,7 +126,7 @@ function OpenConversation() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json", token: token },
-      body: JSON.stringify({ chatId: currentChat }),
+      body: JSON.stringify({ id: currentChat }),
     };
     let res = await fetch(
       "http://localhost:5000/toggleArchive",

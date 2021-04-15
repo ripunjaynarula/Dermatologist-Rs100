@@ -7,24 +7,33 @@ import firebase from 'firebase'
 import {CardMain} from "../css/Card";
 import Navbar from "./Navbar"
 import {Texts} from "../css/Texts";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
+    const [rol, setRole] = useState()
+
   const { login, currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
   useEffect( () => {
      onlyOnce();
-  }, [])
+  }, [rol] )
 
-function onlyOnce(){
-     if (currentUser) {
-      if (currentUser.role === "doctor")
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+      console.log( role, "kjhgfrdews")
+
+  if(role === undefined) role  = "";
+ 
+  
+  if (role === "doctor" )
       return history.push('/doctordashboard');
-    }
-    return history.push('/dashboard');
+      else if(role ==="patient")
+  return history.push('/dashboard');
 }
   async function handleSubmit(e) {
     e.preventDefault()
@@ -46,15 +55,17 @@ function onlyOnce(){
       console.log(res);
       setLoading(false)
       if (res['status'] === 'logged_in' && res['scope'] === 'patient') {
-        currentUser.role = 'patient';
-        setError('');
+        reactLocalStorage.set('role', "patient");
+
+         setError('');
         setLoading(false)
        history.push('/dashboard');
         return;
       }
       if (res['status'] === 'logged_in' && res['scope'] === 'doctor') {
-        currentUser.role = 'doctor';
-        console.log('changed: '+ currentUser);
+        reactLocalStorage.set('role', "doctor");
+
+         console.log('changed: '+ currentUser);
         setError('');
         setLoading(false)
         history.push('/doctordashboard');
@@ -70,6 +81,7 @@ function onlyOnce(){
       setLoading(false)
       //  history.push("/dashboard")
      } catch(e) {
+       console.log(e)
       if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
         setError("Incorrect email or password")
       }

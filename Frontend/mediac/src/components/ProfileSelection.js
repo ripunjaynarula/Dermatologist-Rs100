@@ -58,7 +58,7 @@ export default function ProfileSelection(props) {
      return (
         <div id="formbody">
           <br/>  <br/>
-           <h5 style ={{marginBottom : "22px",fontWeight:"bold"}}>Is this for you or someone else? </h5> 
+           <h5 style ={{marginBottom : "22px",fontWeight:"bold", marginTop : "32px"}}>Is this for you or someone else? </h5> 
           <Card id="cardbox">
             
             <Card.Body>
@@ -68,8 +68,12 @@ export default function ProfileSelection(props) {
                 <div id="sectionpf">
                   <div id="pf-card" className="scrollmenu">
                     <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
-                    {profiles.map(profile =>(<>
-                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}><img id="userimg" src={usersvg}/><br/>
+                    {profiles!==undefined && profiles.map(profile =>(<>
+                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}>
+                        
+                        <img id="userimg" src={usersvg}/>
+                        
+                        <br/>
                         {profile['name']}</a></>
                     ))}
 

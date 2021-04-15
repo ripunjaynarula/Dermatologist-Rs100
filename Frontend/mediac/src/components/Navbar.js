@@ -44,65 +44,7 @@ const NavBar = (props) => {
   const history = useHistory();
   const [name, setName] = useState("");
   const { height, width } = useWindowDimensions();
-  const right = flag ? (
-    <ReactBootStrap.NavDropdown style={{marginLeft:"-5%"}}
-      className="drop"
-      title={
-        currentUser == null
-          ? ""
-          : currentUser.displayName == null
-          ? ""
-          : currentUser.displayName
-      }
-      id="basic-nav-dropdown"
-    >
-      <ReactBootStrap.NavDropdown.Item
-        href="/update-profile"
-        style={{ fontFamily: "work sans" }}
-      >
-        Edit Profile
-      </ReactBootStrap.NavDropdown.Item>
-
-      <ReactBootStrap.NavDropdown.Item href="#action/3.1" className="tile">
-        My Consultations
-      </ReactBootStrap.NavDropdown.Item>
-      <ReactBootStrap.NavDropdown.Item href="#action/3.3" className="tile">
-        My Medical Records
-      </ReactBootStrap.NavDropdown.Item>
-      <ReactBootStrap.NavDropdown.Item href="#action/3.3" className="tile">
-        Need Help
-      </ReactBootStrap.NavDropdown.Item>
-      <ReactBootStrap.NavDropdown.Item href="/change-password" className="tile">
-        Change Password
-      </ReactBootStrap.NavDropdown.Item>
-
-      <ReactBootStrap.NavDropdown.Divider />
-      <ReactBootStrap.NavDropdown.Item
-        variant="link"
-        onClick={handleLogout}
-        className="tile"
-      >
-        Log Out
-      </ReactBootStrap.NavDropdown.Item>
-    </ReactBootStrap.NavDropdown>
-  ) : (
-    arr.map((elem) => (
-      <ReactBootStrap.Nav.Link
-        className="navlink"
-        href={elem.link}
-        style={{
-          transition: "0.5s ease",
-          color:
-            width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a",
-        }}
-        key={elem["link"]}
-      >
-        {elem["text"]}
-      </ReactBootStrap.Nav.Link>
-    ))
-  );
-
-  const conditions = (
+   const conditions = (
     <div
       aria-labelledby=""
       class="dropdown-menu show"
@@ -159,7 +101,72 @@ const NavBar = (props) => {
     </div>
   );
 
-  async function handleLogout() {
+
+
+   const log = (
+    <div
+      aria-labelledby=""
+      class="dropdown-menu show"
+      style={{ margin: "0px" }}
+    >
+      <a href="/update-profile" class="tile dropdown-item">
+        Edit Profile
+      </a>
+      <a href="#action/3.2" class="tile dropdown-item">
+        My Consultations
+      </a>
+      <a href="#action/3.3" class="tile dropdown-item">
+         My Medical Records
+      </a>
+        <a href="#action/3.3" class="tile dropdown-item">
+        Need Help
+      </a>
+       <a href="/change-password" class="tile dropdown-item">
+         Change Password
+      </a>
+      <hr></hr>
+        <a     href="#"    onClick={handleLogout}
+  class="tile dropdown-item">
+        Log Out
+      </a>
+    </div>
+  );
+ 
+  const right = flag ?  (
+
+        <SelectBox
+              data={log}
+ title = {
+     currentUser == null
+          ? ""
+          : currentUser.displayName == null
+          ? ""
+          : currentUser.displayName
+      }
+                    type={props.type}
+            ></SelectBox>
+     
+  ) : (
+    arr.map((elem) => (
+      <ReactBootStrap.Nav.Link
+        className="navlink"
+        href={elem.link}
+        style={{
+          transition: "0.5s ease",
+          color:
+            width < 1201 ? "#62636a" : !navBackground ? "white" : "#62636a",
+        }}
+        key={elem["link"]}
+      >
+        {elem["text"]}
+      </ReactBootStrap.Nav.Link>
+    ))
+  );
+
+ 
+
+  async function handleLogout(e) {
+    e.preventDefault()
     setError("");
 
     try {
@@ -268,8 +275,8 @@ const NavBar = (props) => {
           {width > 1200 ? (
             <ReactBootStrap.Nav
               style={{
-                marginLeft:
-                  width < 1250
+                marginLeft: width< 1200 ? "-5%":
+                   width < 1250
                     ? "80px"
                     : width < 1300
                     ? "110px"
@@ -282,13 +289,19 @@ const NavBar = (props) => {
                     : width < 1500
                     ? "300px"
                     : "350px",
+                    
               }}
               className="mr-auto"
             >
               {right}
             </ReactBootStrap.Nav>
           ) : (
-            <ReactBootStrap.Nav className="mr-auto">{right}</ReactBootStrap.Nav>
+            <ReactBootStrap.Nav className="mr-auto">
+              
+              
+              
+              
+              {right}</ReactBootStrap.Nav>
           )}
         </ReactBootStrap.Navbar.Collapse>
         

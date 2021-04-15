@@ -167,19 +167,6 @@ function nFormatter(num) {
 
    <Row>
 
-<InfiniteScroll
-  dataLength={list.length} //This is important field to render the next data
-  next={fetchData}
-  hasMore={true}
-  loader={<h4>Loading...</h4>}
-  endMessage={
-    <p style={{ textAlign: 'center' }}>
-      <b>Yay! You have seen it all</b>
-    </p>
-  }
- 
->
-
 
   {list.map((data, index) => (
               <VideoComponent title = {data.title} image = {data.thumbnail} 
@@ -188,10 +175,6 @@ function nFormatter(num) {
 
     </VideoComponent>
           ))}
- 
-</InfiniteScroll>
-   
-     
     
    
     

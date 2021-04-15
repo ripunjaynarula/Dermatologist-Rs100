@@ -3,8 +3,14 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
 import {CurrentChatContext} from './App';
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 import "./styles.css";
+import OpenConversation from "./OpenConversation";
 
 function Conversation() {
   const [chats, setChats] = useState([]);
@@ -16,7 +22,6 @@ function Conversation() {
   function handleOpenChat(id,email){
   setCurrentChat(id);
   setActive(email)
-  
 }
   useEffect(() => {
     async function getChats() {
@@ -43,6 +48,7 @@ function Conversation() {
 
   return (
     <div>
+    {isMobile && currentChat!==""?<><OpenConversation /></>:(
       <div className="container">
         <div>
           <div className="top w-100">
@@ -102,6 +108,7 @@ function Conversation() {
           ))}
         </div>
       </div>
+    )}
     </div>
   );
 }

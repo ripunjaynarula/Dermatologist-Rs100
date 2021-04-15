@@ -95,7 +95,7 @@
     }
    
   }
-  @media only screen and (min-width: 700px) {
+  @media only screen and (min-width: 900px) {
     #phonearrow{
       display:none !important ;
     }

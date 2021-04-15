@@ -1012,6 +1012,9 @@ div.scrollmenu a {
 }
 
 @media only screen and (min-width: 200px) {
+    #chatbox {
+        max-height: 400px;
+    }
     #doc {
         margin-top: 10%;
     }
@@ -1020,5 +1023,8 @@ div.scrollmenu a {
 @media only screen and (min-width: 768px) {
     #doc {
         margin-top: 1%;
+    }
+    #chatbox {
+        max-height: 460px;
     }
 }

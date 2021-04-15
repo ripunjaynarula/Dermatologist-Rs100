@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from "react";
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -20,6 +25,7 @@ function OpenConversation() {
   const [socket, setSocket] = useState();
   const [prevChat, setPrevChat] = useState('');
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+  const messageEndRef = useRef(null)
  
 
   function handleSubmit(e) {
@@ -55,6 +61,7 @@ function OpenConversation() {
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
+    messageEndRef.current.scrollIntoView({behavior: "smooth"});
   }
   const handleKeypress = e => {
     e.preventDefault();
@@ -83,6 +90,7 @@ function OpenConversation() {
     messageDiv.appendChild(timeDiv);
     chatDiv.appendChild(messageDiv);
     messageRef.current.value = "";
+    messageEndRef.current.scrollIntoView({behavior: "smooth"});
   }, []);
 
   useEffect(() => {
@@ -132,9 +140,10 @@ function OpenConversation() {
         </div>
         <div
           className="d-flex flex-column flex-grow-1 chatbg "
-          style={{ maxHeight: "460px", marginTop: "-1.7%" }}
+          style={{ marginTop: "-1.7%" }}
+          id="chatbox"
         >
-          <div className="flex-grow-1 overflow-auto" id="chatMessages">
+          <div className="flex-grow-1 overflow-auto" id="chatMessages" >
 
             <br />
 
@@ -167,6 +176,7 @@ function OpenConversation() {
                 </div>
               </>
             ))}
+            <div ref={messageEndRef}></div>
           </div>
           
           <Form onSubmit={handleSubmit} autocomplete="off" >

@@ -13,7 +13,7 @@ import {
   SidebarContent,
   
 } from "react-pro-sidebar";
-
+import heart from "./img/achievement.svg"
 //import icons from react icons
 import { FaList } from "react-icons/fa";
 import {  FiArrowLeftCircle, FiArrowRightCircle,FiArrowRight,FiArrowLeft, FiAlignJustify} from "react-icons/fi";
@@ -48,6 +48,7 @@ const hideDropdown = e => {
   async function handleLogout() {
     setError("")
 
+    
     try {
       await logout()
           setFlag(false);
@@ -96,13 +97,15 @@ const hideDropdown = e => {
             </div> */}
           <SidebarContent>
             <Menu iconShape="square">
-              <MenuItem icon={<FaList />}>
-              Category
-              </MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
+              <MenuItem active = {true}><a href= "/chats" style = {{color : "white"}}>Chats</a> 
+</MenuItem>
+              <MenuItem ><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
+</MenuItem>
+              <MenuItem ><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
+</MenuItem>
+              <MenuItem ><a href= "/edit-profile" style = {{color : "white"}}>Edit Profile</a> 
+</MenuItem>
+              <MenuItem ><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
             </Menu>
           </SidebarContent>
           
@@ -130,27 +133,12 @@ const hideDropdown = e => {
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="mr-auto"> 
     
-              <ReactBootStrap.Nav.Link className="navlink" href="/add-blog">Blog</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/conditions">Conditions</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/treatments">Treatments</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/videos">Tube</ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link  className="navlink" href="/chat">Chat</ReactBootStrap.Nav.Link>
 
-   {/* <ReactBootStrap.NavDropdown className="navlink" title="Dropdown" id="basic-nav-dropdown"   show={show}
-   onMouseEnter={showDropdown}  
-   onMouseLeave={hideDropdown}  >
-                    <ReactBootStrap.NavDropdown.Item href="#action/3.1">Action</ReactBootStrap.NavDropdown.Item>
-                    <ReactBootStrap.NavDropdown.Item href="#action/3.2">Another action</ReactBootStrap.NavDropdown.Item>
-                    <ReactBootStrap.NavDropdown.Item href="#action/3.3">Something</ReactBootStrap.NavDropdown.Item>
-                    <ReactBootStrap.NavDropdown.Divider />
-                    <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item>
-                </ReactBootStrap.NavDropdown> */}
+   
 
 
 
-              <ReactBootStrap.Nav.Link className="navlink"  href="/contact">Contact</ReactBootStrap.Nav.Link>
-{!flag ?               <ReactBootStrap.Nav.Link className="navlink"  href="/DoctorLogin">Doctor Login</ReactBootStrap.Nav.Link> : <div></div>}
-            </ReactBootStrap.Nav>
+              </ReactBootStrap.Nav>
             
               <ReactBootStrap.Nav className="form-inline">
               {flag?<div> 
@@ -169,10 +157,7 @@ const hideDropdown = e => {
              
                                <ReactBootStrap.Dropdown.Item   href="/update-profile" style = {{fontFamily : "work sans"}}>Edit Profile</ReactBootStrap.Dropdown.Item>
 
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Consultations</ReactBootStrap.Dropdown.Item>
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>My Medical Records</ReactBootStrap.Dropdown.Item>
-                  <ReactBootStrap.Dropdown.Item href="#/action-2" style = {{fontFamily : "work sans"}}>Need Help</ReactBootStrap.Dropdown.Item>
-
+              
                     <ReactBootStrap.Dropdown.Item   href="/change-password" style = {{fontFamily : "work sans"}}>Change Password</ReactBootStrap.Dropdown.Item>
 
                   <ReactBootStrap.Dropdown.Divider />

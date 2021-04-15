@@ -212,6 +212,8 @@ try{
 
           let res = await fetch('http://localhost:5000/update-patient-profile', requestOptions);
    res = await res.text();
+                   console.log(res)
+
           res = JSON.parse(res)
 
  
@@ -383,9 +385,9 @@ disabled = "true"
                      <option style={{display:"none"}}>  </option>
 
 
-{gender === "Male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+{gender === "male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
                        
-                       {gender === "Female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+                       {gender === "female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
 
  {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
 :

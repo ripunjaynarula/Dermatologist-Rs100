@@ -74,6 +74,8 @@ async function onlyOnce()  {
       if (res['status'] === 'verification_mail_sent') {
         setError('');
         setLoading(false)
+                reactLocalStorage.set('role', "patient");
+
         history.push('/verification-sent');
         return;
       }

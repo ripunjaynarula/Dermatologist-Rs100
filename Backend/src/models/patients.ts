@@ -30,7 +30,7 @@ const patients = mongoose.model('patients', new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['Male', 'Female','Others', 'Rather not say',""],
+        enum: ['male', 'female','others', 'rather not say',""],
         default: ""
     },
     verified: {

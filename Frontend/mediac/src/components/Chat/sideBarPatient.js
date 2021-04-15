@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Tab, Nav, Button, Modal, Form } from "react-bootstrap";
-import Conversation from "./Conversation";
+import Conversation from "../Conversation";
 import Archive from "./Archive";
 import { AiOutlineSearch } from 'react-icons/ai';
 
-import "./styles.css";
+import "../styles.css";
 const CONVERSATIONS_KEY = "conversations";
 const archive_KEY = "archive";
 function Sidebar() {
@@ -30,18 +30,8 @@ function Sidebar() {
               /> */}
             </Form.Group>
           </div>
-          <Nav variant="tabs" className="justify-content-center">
-            <Nav.Item>
-              <Nav.Link eventKey={CONVERSATIONS_KEY}>
-                <b>Conversations</b>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey={archive_KEY}>
-                <b>Archived</b>
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
+                           <h5 style = {{marginLeft : "5px", fontWeight: "bold"}}>Chats</h5>
+
           <Tab.Content className="border-right overflow-auto flex-grow-1">
             <Tab.Pane
               eventKey={CONVERSATIONS_KEY}
@@ -49,12 +39,7 @@ function Sidebar() {
             >
               <Conversation />
             </Tab.Pane>
-            <Tab.Pane
-              eventKey={archive_KEY}
-              style={{ backgroundColor: "white" }}
-            >
-              <Archive />
-            </Tab.Pane>
+            
           </Tab.Content>
         </Tab.Container>
       </div>

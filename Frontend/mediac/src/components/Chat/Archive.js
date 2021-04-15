@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ListGroup } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import app from "../firebase";
-import {CurrentChatContext, ChatDataContext} from './App';
-import "./styles.css";
+import app from "../../firebase";
+import {CurrentChatContext, ChatDataContext} from '../App';
+import "../styles.css";
 
 function Archive() {
   const [chats, setChats] = useContext(ChatDataContext);

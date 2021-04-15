@@ -12,6 +12,8 @@ import { CardMain } from "../css/Card";
 import { Texts } from "../css/Texts";
 import { DataContext } from "./App";
 import close from './img/close.svg'
+import {reactLocalStorage} from 'reactjs-localstorage';
+
 export default function LoginPopup(prop) {
   const history = useHistory();
   const emailRef = useRef();
@@ -30,9 +32,45 @@ export default function LoginPopup(prop) {
       setLoading(true);
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       var user = await login(emailRef.current.value, passwordRef.current.value);
-      console.log(consultationData);
-      history.push("/Choice/?ques=" + prop.question);
-    } catch (e) {
+       var d={ email: emailRef.current.value, name : user.user.displayName};
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', token : await user.user.getIdToken() },
+        body: JSON.stringify(d)
+      }; 
+      let res = await fetch('http://localhost:5000/login', requestOptions)
+      res = await res.text()
+      res = JSON.parse(res)
+      console.log(res);
+      setLoading(false)
+      if (res['status'] === 'logged_in' && res['scope'] === 'patient') {
+        reactLocalStorage.set('role', "patient");
+
+         setError('');
+        setLoading(false)
+              history.push("/Choice/?ques=" + prop.question);
+
+         return;
+      }
+      if (res['status'] === 'logged_in' && res['scope'] === 'doctor') {
+        reactLocalStorage.set('role', "doctor");
+
+         console.log('changed: '+ currentUser);
+        setError('');
+        setLoading(false)
+        history.push('/doctordashboard')
+        return;
+      }
+      if (res['status'] === 'verification_mail_sent') {
+        setError('');
+                reactLocalStorage.set('role', "patient");
+
+        setLoading(false)
+        history.push('/verification-sent');
+        return;
+      }
+
+     } catch (e) {
       console.log(e);
     }
   }

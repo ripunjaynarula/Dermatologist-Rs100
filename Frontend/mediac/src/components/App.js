@@ -19,7 +19,7 @@ import UpdateDoctorProfile from "./Profile/updateDoctorProfile";
 import AdminLogin from "./AdminLogin";
 import AddDoc from "./AddDoc";
 import ChangePassword from "./Profile/changePassword";
-import Chat from "./Chat";
+import Chat from "./Chat/Chat";
 import VerificationSent from "./VerificationSent";
 import ConsultancyForm from "./ConsultationForm";
 import Choice from "./Choice";

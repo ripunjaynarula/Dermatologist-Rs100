@@ -3,11 +3,11 @@ import { ListGroup } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
-import {CurrentChatContext} from './App';
+import {CurrentChatContext, ChatDataContext} from './App';
 import "./styles.css";
 
 function Archive() {
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -36,7 +36,6 @@ function Archive() {
       res = JSON.parse(res);
       console.log(res);
       await setChats(res["chats"]);
-      console.log(chats);
     }
     getChats();
   }, []);

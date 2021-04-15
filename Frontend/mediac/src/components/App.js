@@ -40,6 +40,7 @@ export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
 export const CurrentChatContext = React.createContext()
+export const ChatDataContext = React.createContext();
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
   const [docMail, setDocMail] = useState("");
   const [token, setToken] = useState("");
   const [currentChat, setCurrentChat] = useState('')
+  const [chats, setChats] = useState([]);
+
   return (
     <Router>
       <AuthProvider>
@@ -100,7 +103,9 @@ function App() {
                 component={DoctorDashboard}
               />
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
+              <ChatDataContext.Provider value={[chats, setChats]}>
                 <PrivateRoute path="/chat" component={Chat} />
+              </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
               <TokenContext.Provider value={[token, setToken]}>
                 <Route exact path="/adminlogin" component={AdminLogin} />

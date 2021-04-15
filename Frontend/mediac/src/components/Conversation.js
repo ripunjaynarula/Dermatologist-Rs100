@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
-import {CurrentChatContext} from './App';
+import {CurrentChatContext, ChatDataContext} from './App';
 import {
   BrowserView,
   MobileView,
@@ -13,7 +13,7 @@ import "./styles.css";
 import OpenConversation from "./OpenConversation";
 
 function Conversation() {
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -27,6 +27,7 @@ function Conversation() {
     async function getChats() {
       if (!currentUser) {
         history.push("/login");
+        
       }
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {

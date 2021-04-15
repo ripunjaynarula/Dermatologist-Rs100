@@ -974,6 +974,10 @@ div.scrollmenu a {
 
 .contacthead {
     font-weight: bold;
+    display: flex;
+    margin-bottom: 2.5% ;
+    margin-top:1%;
+
 }
 
 #sendmsg {
@@ -1005,6 +1009,7 @@ div.scrollmenu a {
 
 .their {
     margin-left: 5px !important;
+    border: 5px black;
 }
 
 .date {

@@ -5,11 +5,9 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import ScrollToBottom, {
-  useScrollToBottom,
-  useSticky,
-} from "react-scroll-to-bottom";
+
 import usersvg from "./img/user.svg";
+import Modal from 'react-bootstrap/Modal'
 
 import {
   BrowserView,
@@ -42,10 +40,14 @@ function OpenConversation() {
   const [chats, setChats] = useContext(ChatDataContext);
   const messageEndRef = useRef(null);
 
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    console.log("showing");
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -191,6 +193,7 @@ function OpenConversation() {
   if (chatData["messages"]) {
     return (
       <>
+      <div className="chat" style={{height:"100%", zIndex:"1"}}>
         <div className="contacthead">
           <div style={{ float: "left" }}>
             {isMobile ? (
@@ -212,7 +215,7 @@ function OpenConversation() {
 
           <hr />
           <div style={{ float: "right" }}>
-            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleArchiveButton}>
+            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleShow}>
               <FiArchive/>
             </Button>
           </div>
@@ -256,6 +259,12 @@ function OpenConversation() {
             <div ref={messageEndRef}></div>
           </div>
 
+
+
+         
+
+
+
           <Form onSubmit={handleSubmit} autocomplete="off">
             <Form.Group className="m-2">
               <InputGroup id="bottommsg" style={{ height: "40px" }}>
@@ -287,6 +296,20 @@ function OpenConversation() {
               </InputGroup>
             </Form.Group>
           </Form>
+        </div>
+
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete?</Modal.Body>
+        <Modal.Footer>
+          
+          <Button variant="primary" onClick={handleArchiveButton}>
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </div>
       </>
     );

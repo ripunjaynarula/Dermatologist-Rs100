@@ -97,7 +97,7 @@ const hideDropdown = e => {
             </div> */}
           <SidebarContent>
             <Menu iconShape="square">
-              <MenuItem active = {true}><a href= "/chats" style = {{color : "white"}}>Chats</a> 
+              <MenuItem active = {true}><a href= "/chat" style = {{color : "white"}}>Chats</a> 
 </MenuItem>
               <MenuItem ><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
 </MenuItem>

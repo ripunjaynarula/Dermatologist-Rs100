@@ -48,6 +48,7 @@ import getChats from './routes/getChats';
 import getChatById from './routes/getChatById'
 import chat from './models/chat'
 import archive from './routes/archive';
+import doctorSignup from './routes/doctorSignup';
 
 const app = express();
 const server = http.createServer(app);
@@ -125,7 +126,7 @@ app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
 app.use('/adminLogin', adminLogin);
 app.use('/verifyAdmin', verifyAdmin);
-//app.use('/doctorSignup', doctorSignup);
+app.use('/doctorSignup', doctorSignup);
 app.use('/get-sidebar', getRandomBlogsAndVideos);
 app.use('/blogs', viewBlogs);
 app.use('/blog', viewBlog);

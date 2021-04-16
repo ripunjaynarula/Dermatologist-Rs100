@@ -102,6 +102,7 @@ function App() {
                 path="/doctordashboard"
                 component={DoctorDashboard}
               />
+              
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>
                 <PrivateRoute path="/chat" component={Chat} />
@@ -111,7 +112,6 @@ function App() {
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
               </TokenContext.Provider>
-              
             </Switch>
           </div>
         </DataContext.Provider>

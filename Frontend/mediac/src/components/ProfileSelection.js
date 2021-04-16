@@ -75,7 +75,7 @@ export default function ProfileSelection(props) {
                 <div id="sectionpf">
                 <Carousel id="carouselitemprof" breakPoints={breakPoints}>
                   
-                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
 
                     {profiles!==undefined && profiles.map(profile =>(<>
                       <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}>

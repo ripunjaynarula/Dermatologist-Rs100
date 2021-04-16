@@ -4,6 +4,7 @@ import patients from '../models/patients';
 import webpush from 'web-push';
 import subscriptions from '../models/subscription';
 import { uid } from 'rand-token';
+import subscription from '../models/subscription';
 
 const router = express.Router();
 
@@ -52,6 +53,9 @@ router.post('/', async (req:any, res: any) => {
             const payload = JSON.stringify({ title:"New Mediac Consultation" , id: consultation.uid, description: consultation.description, email: client.email });
             try {
                 await webpush.sendNotification(client.subscripiton, payload)
+                console.log(client.subscription, "SUBS")
+                console.log(payload)
+                console.log("notification sent")
             }catch (e){
                 console.log(e);
             }

@@ -37,7 +37,7 @@ onlyOnce()
 async function onlyOnce()  {
   if(!currentUser) return;
   var role =  reactLocalStorage.get('role') 
- 
+ console.log(role)
   if(role === undefined) role  = "";
  
   
@@ -53,12 +53,12 @@ async function onlyOnce()  {
     <>
       <BrowserView>
         <div className="chat">
-          {navBar}
+          <Csidebar></Csidebar>
            <Container className="d-flex align-items-center justify-content-center" >
             <div class="card chatcard" >
               <div class="card-body row " >
                 <div className="col-3 chatsideb">
-                  {sidebar}
+                  <Sidebar></Sidebar>
                 </div>
                 <div className="col-9 " >
                   <OpenConversation  />
@@ -76,7 +76,7 @@ async function onlyOnce()  {
             <div class="card chatcard">
               <div class="card-body row ">
                 <div className="col-12 chatsideb">
-                  {sidebar}
+                  <Sidebar></Sidebar>
                 </div>
               </div>
             </div>

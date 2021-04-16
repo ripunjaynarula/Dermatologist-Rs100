@@ -1,121 +1,114 @@
 #header {
-    position:fixed;
+    position: fixed;
     width: 200px;
-    height:100vh !important;
+    height: 100vh !important;
     z-index: 1!important;
-    display:flex;
-    
-  }
-  
-  @media only screen and (min-width: 200px) {
-    
-    #header .pro-sidebar.collapsed {
-      width: 100%
-    }
-    #pcarrow{
-      display:none!important  ;
-      fill:white !important;
-    }
-
-    #phonearrow{
-      display:flex;
-      margin-left:-60%;
-      margin-right:20%;
-      fill: #000 !important;
-    }
-    
-  
-  
-  #header .pro-sidebar {
-    height: 100vh;
-  }
-  #header .closemenu {
-    margin-top: 90%;
-    position: relative;
-    display:flex;
-    z-index: 9999;
-    line-height: 20px;
-    border-radius: 50%;
-    font-weight: black;
-    font-size:25px;
-    top: 15px;
-    cursor: pointer;
-    margin-left: 38%;
-  }
-  #header .pro-sidebar {
-    width: 100%;
-    min-width: 100%;
-  }
-  #header .pro-sidebar.collapsed {
-    width: 80px;
-    min-width: 80px;
-    color: white;
-    margin-left:-50%;margin-left:-50%;
-  }
-  #header .pro-sidebar-inner {
-    background-color: #0062af;
-    box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
-    font-size: 20px;
-    padding: 0 20px;
-    color: #000;
-    font-weight: bold;
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout ul {
-    margin-top: 100%;
-    padding: 0 5px;
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
-    color: white;
-    margin: 10px 0px;
-    font-weight: 50px;
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
-    background-color: #0062af;
-    color: white;
-    border-radius: 3px;
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
-    color: #000;
-  }
-  #header .pro-sidebar-inner .pro-sidebar-layout .active {
-    background-image: linear-gradient(0deg, #3a97df 0%, #3a97df 100%);
-    font-weight: bold;
-    box-shadow:none;
-  }
-  #header .logo {
-    padding: 20px;
-  }
+    display: flex;
 }
-  @media only screen and (max-width: 720px) {
-    html {
-      overflow:hidden;
-      
+
+@media only screen and (min-width: 200px) {
+    #header .pro-sidebar.collapsed {
+        width: 100%
     }
-   
-  }
-  @media only screen and (min-width: 900px) {
-    #phonearrow{
-      display:none !important ;
+    #pcarrow {
+        display: none!important;
+        fill: white !important;
+    }
+    #phonearrow {
+        display: flex;
+        margin-left: -60%;
+        margin-right: 20%;
+        fill: #000 !important;
+    }
+    #header .pro-sidebar {
+        height: 100vh;
+    }
+    #header .closemenu {
+        margin-top: 90%;
+        position: relative;
+        display: flex;
+        z-index: 9999;
+        line-height: 20px;
+        border-radius: 50%;
+        font-weight: black;
+        font-size: 25px;
+        top: 15px;
+        cursor: pointer;
+        margin-left: 38%;
+    }
+    #header .pro-sidebar {
+        width: 100%;
+        min-width: 100%;
     }
     #header .pro-sidebar.collapsed {
-      margin-left:0%
+        width: 80px;
+        min-width: 80px;
+        color: white;
+        margin-left: -50%;
+        margin-left: -50%;
     }
-    #pcarrow{
-      display:block !important;
+    #header .pro-sidebar-inner {
+        background-color: #0062af;
+        box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
     }
-  }
+    #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
+        font-size: 20px;
+        padding: 0 20px;
+        color: #000;
+        font-weight: bold;
+    }
+    #header .pro-sidebar-inner .pro-sidebar-layout ul {
+        margin-top: 100%;
+        padding: 0 5px;
+    }
+    #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
+        color: white;
+        margin: 10px 0px;
+        font-weight: 50px;
+    }
+    #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
+        background-color: transparent;
+        color: white;
+        border-radius: 3px;
+    }
+    #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
+        color: #000;
+    }
+    #header .pro-sidebar-inner .pro-sidebar-layout .active {
+        background-image: linear-gradient(0deg, #3a97df 0%, #3a97df 100%);
+        font-weight: bold;
+        box-shadow: none;
+    }
+    #header .logo {
+        padding: 20px;
+    }
+}
 
-  #arrow{
+@media only screen and (max-width: 720px) {
+    html {
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #phonearrow {
+        display: none !important;
+    }
+    #header .pro-sidebar.collapsed {
+        margin-left: 0%
+    }
+    #pcarrow {
+        display: block !important;
+    }
+}
+
+#arrow {
     height: 2em !important;
-    margin-right:-20%;
+    margin-right: -20%;
     width: 2em !important;
     cursor: pointer;
-  }
-.conv{
-
-  padding-left: 2px ;
 }
 
-  
+.conv {
+    padding-left: 2px;
+}

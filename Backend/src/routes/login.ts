@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
 router.post('/',checkAuth, async (req, res) => {
 
     let patient;
-    console.log(req.body)
+  
+  try {
+         console.log(req.body)
    var d :any = await patients.findOne({uid:req.body.uid});
    console.log(d)
     if(d !=null)
@@ -36,7 +38,7 @@ router.post('/',checkAuth, async (req, res) => {
    }
 
  
-    try {
+   
            var newPatient = new patients({
         name: req.body.name ? req.body.name : "",
         email: req.body.email,

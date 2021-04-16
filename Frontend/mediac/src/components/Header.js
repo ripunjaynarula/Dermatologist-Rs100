@@ -13,7 +13,13 @@ import {
   SidebarContent,
   
 } from "react-pro-sidebar";
-import heart from "./img/achievement.svg"
+import logoutic from "./img/logout.svg"
+import blogic from "./img/blog.svg"
+import chatic from "./img/chat.svg"
+import editProf from "./img/proileEdit.svg"
+import addBlog from "./img/writing.svg"
+
+
 //import icons from react icons
 import { FaList } from "react-icons/fa";
 import {  FiArrowLeftCircle, FiArrowRightCircle,FiArrowRight,FiArrowLeft, FiAlignJustify} from "react-icons/fi";
@@ -24,7 +30,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "./Header.css";
 
 
-const Header = () => {
+const Header = (props) => {
   const arr = [{link: '/login', text: 'Login'}, {link: '/Signup', text: 'Signup'}];
   // const menuIconClick = () => {
   //   //condition checking to change state from true to false and vice versa
@@ -45,10 +51,11 @@ const hideDropdown = e => {
 }
 
 
-  async function handleLogout() {
+  async function handleLogout(e) {
     setError("")
 
-    
+        e.preventDefault();
+
     try {
       await logout()
           setFlag(false);
@@ -96,27 +103,21 @@ const hideDropdown = e => {
               )}
             </div> */}
           <SidebarContent>
-            <Menu iconShape="square">
-              <MenuItem active = {true}><a href= "/chats" style = {{color : "white"}}>Chats</a> 
+            <Menu iconShape="circle" style = {{iconBgColor : "white"}}  >
+              <MenuItem  active = {props.selected === "chat" ? true : false} icon = {<img src = {chatic} alt = "" height ="22px"></img>}><a href= "/chats" style = {{color : "white"}}>Chats</a> 
 </MenuItem>
-              <MenuItem ><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
+              <MenuItem  icon = {<img src = {addBlog} alt = "" height ="22px"></img>}><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
 </MenuItem>
-              <MenuItem ><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
+              <MenuItem  icon = {<img src = {blogic} alt = "" height ="22px"></img>}><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
 </MenuItem>
-              <MenuItem ><a href= "/edit-profile" style = {{color : "white"}}>Edit Profile</a> 
+              <MenuItem  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
 </MenuItem>
-              <MenuItem ><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
+              <MenuItem  icon = {<img src = {logoutic} alt = "" height ="22px"></img>}><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
             </Menu>
           </SidebarContent>
           
         </ProSidebar>
-        {/* <div className="closemenu" id="phonearrow" onClick={menuIconClick}>
-              {menuCollapse ? (
-                <FiArrowRightCircle/>
-              ) : (
-                <FiArrowLeftCircle/>
-              )}
-            </div> */}
+      
       </div>
       </div>
       <div className="Navbar" style={{position:"fixed", zIndex:"2", width:"100%"}}>
@@ -141,33 +142,18 @@ const hideDropdown = e => {
               </ReactBootStrap.Nav>
             
               <ReactBootStrap.Nav className="form-inline">
-              {flag?<div> 
-              <ReactBootStrap.Dropdown  >
-                <ReactBootStrap.Dropdown.Toggle variant="primary" style = {{backgroundColor: "white", color : "#737373", border : "none", borderInlineColor : "white"}}   >
-                {currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName}
-                </ReactBootStrap.Dropdown.Toggle >
 
-
-
-                
-
-                <ReactBootStrap.Dropdown.Menu style = {{ border : "none", boxShadow: "0px 0px 13px 1px #e2d9d9", 
-}}>
-                  
+{flag && <ReactBootStrap.Nav.Link
+              className="navlink"
+              href="/my-profile"
              
-                               <ReactBootStrap.Dropdown.Item   href="/update-profile" style = {{fontFamily : "work sans"}}>Edit Profile</ReactBootStrap.Dropdown.Item>
+            >
+              {currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName}
+            </ReactBootStrap.Nav.Link>
 
-              
-                    <ReactBootStrap.Dropdown.Item   href="/change-password" style = {{fontFamily : "work sans"}}>Change Password</ReactBootStrap.Dropdown.Item>
+}
 
-                  <ReactBootStrap.Dropdown.Divider />
-
-                  <ReactBootStrap.Dropdown.Item  variant="link" style = {{fontFamily : "work sans"}} onClick={handleLogout}>Log Out</ReactBootStrap.Dropdown.Item>
-                </ReactBootStrap.Dropdown.Menu>
-              </ReactBootStrap.Dropdown>
-              </div>:arr.map((elem) => (
-                <ReactBootStrap.Nav.Link className="navlink" href={elem.link} style = {{fontFamily : "work sans"}} key={elem['link']}>{elem['text']}</ReactBootStrap.Nav.Link>
-              ))}
+ 
             </ReactBootStrap.Nav>
            </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>

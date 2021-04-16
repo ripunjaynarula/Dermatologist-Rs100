@@ -44,7 +44,6 @@ if(await authStatus.checkAuthStatus(req))
 
              console.log(blogs._id)
 }
-Videos.updateOne({_id : blogs._id}, {views : blogs.views + 1})
 
 
          return res.send({ status: "valid", isError : false, video: blogs, liked : isLiked})

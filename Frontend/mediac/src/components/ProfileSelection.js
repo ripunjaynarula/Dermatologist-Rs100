@@ -7,13 +7,19 @@ import addusersvg from './img/add-group.svg';
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
+import Carousel from "react-elastic-carousel";
 
 export default function ProfileSelection(props) {
 
   
     const [error, setError] = useState("")
     const { currentUser } = useAuth()
-    
+    const breakPoints = [
+      { width: 1, itemsToShow: 1 },
+      { width: 100, itemsToShow: 2 },
+      { width: 368, itemsToShow: 3 },
+      { width: 1200, itemsToShow: 4 },
+    ];
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [show, setShow] = useState(false);
@@ -56,6 +62,7 @@ export default function ProfileSelection(props) {
   }
 
      return (
+      <>
         <div id="formbody">
           <br/>  <br/>
            <h5 style ={{marginBottom : "22px",fontWeight:"bold", marginTop : "32px"}}>Is this for you or someone else? </h5> 
@@ -66,23 +73,26 @@ export default function ProfileSelection(props) {
               
               <div id="pf-card">
                 <div id="sectionpf">
-                  <div id="pf-card" className="scrollmenu">
-                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
+                <Carousel id="carouselitemprof" breakPoints={breakPoints}>
+                  
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
+
                     {profiles!==undefined && profiles.map(profile =>(<>
                       <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}>
+                        
                         
                         <img id="userimg" src={usersvg}/>
                         
                         <br/>
-                        {profile['name']}</a></>
+                        {profile['name']}</a>
+                        </>
                     ))}
 
 
 
-                      <a  href="#" className='inactive'   id="profile" onClick={handleShow}><img id="usersvg" src={addusersvg}/><br/>Add Profile</a>
-
-                   </div>
- 
+                      <a  href="#" className='inactive'   id="profile" onClick={handleShow}><img id="addusersvg" src={addusersvg}/><br/>Add Profile</a>
+                      
+                   </Carousel>
                  </div>  
 
               <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>
@@ -98,10 +108,11 @@ export default function ProfileSelection(props) {
         </Modal.Footer>
       </Modal>
               </div>
+              
             </Card.Body>
           </Card>
         </div>
-        
+        </>
     )
  
 }

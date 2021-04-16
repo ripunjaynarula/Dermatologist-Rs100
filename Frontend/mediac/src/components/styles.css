@@ -441,7 +441,9 @@
     text-align: center;
     overflow: auto;
     border-radius: 7px;
-    ;
+    text-decoration: none !important;
+    cursor: pointer;
+    color:black;
 }
 
 #profile:hover {
@@ -462,14 +464,13 @@
 }
 
 div.scrollmenu {
-    overflow: auto;
     white-space: nowrap;
 }
 
 div.scrollmenu a {
     display: inline-block;
     text-align: center;
-    padding: 14px;
+    padding: 1px;
     text-decoration: none;
 }
 
@@ -1032,4 +1033,16 @@ div.scrollmenu a {
     #chatbox {
         max-height: 460px;
     }
+}
+
+#sectionpf{
+
+    border:0px !important;
+}
+
+#addusersvg{
+
+    width:62%;
+
+    
 }

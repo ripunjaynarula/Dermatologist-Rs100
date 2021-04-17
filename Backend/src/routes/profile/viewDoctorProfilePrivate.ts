@@ -29,13 +29,17 @@ var uid = req.body.uid;
 
     var blogs : any;
       
-            blogs =  await blog.find({doctorId: req.body.uid} );
+      if(req.body.showBlogs)
+      {
+
+        blogs =  await blog.find({doctorId: req.body.uid} );
             
         for(var i =0;i<blogs.length; i++)
-{
-            blogs[i].image = process.env.cdnUrl + blogs[i].image
-}
+        {
+           blogs[i].image = process.env.cdnUrl + blogs[i].image
+        }
 
+      }
 
     
     return res.send({status: "ok", isError : false, data : d, blogs : blogs})

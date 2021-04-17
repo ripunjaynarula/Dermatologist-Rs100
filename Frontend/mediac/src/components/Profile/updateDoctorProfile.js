@@ -67,11 +67,10 @@ const [file, setFile] = useState("");
           body : JSON.stringify({patientUid: currentUser.uid})
 
           };
-        let res = await fetch('http://localhost:5000/doctor-profile', requestOptions);
+        let res = await fetch('http://localhost:5000/my-profile', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
-console.log(res)
-        if(res.isError)
+         if(res.isError)
         {
           return
         }
@@ -341,7 +340,7 @@ try{
                 type="text"
                 ref={nameRef}
                 required
-                defaultValue={currentUser.name}
+                defaultValue={name}
               />
             </Form.Group>
 
@@ -375,6 +374,7 @@ disabled = "true"
               <Form.Control
                 type="text"
                 ref={phoneRef}
+                defaultValue={phone}
               />
             </Form.Group></Col>
 
@@ -389,13 +389,13 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Gender</Form.Label>
                   <select name="Gender" ref={genderRef} id="dropdown-basic">
                                          <option style={{display:"none"}}>  </option>
-{gender === "Male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+{gender === "male" ? <option value="male" selected >Male</option> :  <option value="male"  >Male</option>}
                        
-                       {gender === "Female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+                       {gender === "female" ?  <option value="female" selected>Female</option>:  <option value="female">Female</option>}
 
- {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
+ {gender === "rather not say" ?                                             <option value="rather not say" selected>Rather not say</option>
 :
-                                            <option value="Rather not say">Rather not say</option>
+                                            <option value="rather not say">Rather not say</option>
 }                       
   
                         
@@ -408,6 +408,8 @@ disabled = "true"
               <Form.Control
                 type="date"
                 ref={dobRef}
+                                defaultValue={dob}
+
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group></Col>
@@ -424,7 +426,9 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Degree</Form.Label>
                  <Form.Control
                 type="text"
-                ref={dobRef}
+                ref={degreeRef}
+                                defaultValue={degree}
+
                />
             </Form.Group></Col>
 
@@ -433,7 +437,9 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Education</Form.Label>
               <Form.Control
                 type="text"
-                ref={dobRef}
+                ref={eduRef}
+                                defaultValue={education}
+
                />
             </Form.Group></Col>
 
@@ -445,7 +451,7 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Graduation Year</Form.Label>
                  <Form.Control
                 type="text"
-                ref={dobRef}
+                ref={graduation}
                />
             </Form.Group></Col>
 
@@ -454,7 +460,7 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Specialisation</Form.Label>
               <Form.Control
                 type="text"
-                ref={dobRef}
+                ref={special}
                />
             </Form.Group></Col>
 
@@ -470,13 +476,27 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Username</Form.Label>
               <Form.Control
                 type="text"
-                ref={dobRef}
+                ref={username}
                />
             </Form.Group></Col>
 
  </Row>
 <hr></hr>
+ <Row>
 
+<Col sm>    <Form.Group id="about">
+              <Form.Label style = {Texts.FormLabel}>About Me</Form.Label>
+                 <textarea             className="form-control"
+ name="comments" style={{width: '100%', 
+  
+  }} rows="3"></textarea>
+
+            </Form.Group></Col>
+
+ 
+ 
+
+ </Row>
  <Row>
 
 <Col sm>    <Form.Group id="graduationYear">

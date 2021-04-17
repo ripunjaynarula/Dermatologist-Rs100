@@ -443,7 +443,7 @@
     border-radius: 7px;
     text-decoration: none !important;
     cursor: pointer;
-    color:black;
+    color: black;
 }
 
 #profile:hover {
@@ -456,6 +456,16 @@
 .inactive {
     text-decoration: none;
     color: black;
+    border: none;
+}
+
+@media (min-width: 200px) {
+    #profile {
+        padding-right: 0px;
+        margin-right: 2%;
+        border: 1px solid rgb(255, 255, 255);
+        text-align: center;
+    }
 }
 
 .active {
@@ -976,9 +986,8 @@ div.scrollmenu a {
 .contacthead {
     font-weight: bold;
     display: flex;
-    margin-bottom: 2.5% ;
-    margin-top:1%;
-
+    margin-bottom: 2.5%;
+    margin-top: 1%;
 }
 
 #sendmsg {
@@ -1035,14 +1044,57 @@ div.scrollmenu a {
     }
 }
 
-#sectionpf{
-
-    border:0px !important;
+#sectionpf {
+    border: 0px !important;
 }
 
-#addusersvg{
+#addusersvg {
+    width: 62%;
+}
 
-    width:62%;
+button.rec-dot {
+    background-color: rgb(235, 16, 16);
+    box-shadow: 0 0 1px 3px rgba(235, 16, 16, 0.5);
+    display: none
+}
 
-    
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+    display: none
+}
+
+.rec.rec-arrow {
+    background-color: white;
+    box-shadow: none;
+}
+
+
+/* round buttons on hover */
+
+.rec.rec-arrow:hover {
+    border-radius: 50%;
+    background-color: #0062af;
+    box-shadow: none;
+    color: #0062af;
+}
+
+.rec.rec-arrow:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #0062af;
+}
+
+.rec.rec-arrow:disabled {
+    outline: none;
+    box-shadow: none;
+}
+
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+
+.rec-carousel-item:focus {
+    outline: none;
+    box-shadow: none;
 }

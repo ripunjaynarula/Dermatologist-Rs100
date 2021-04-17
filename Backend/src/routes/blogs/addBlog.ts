@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
 
 
-  
+   
  
     var blogPost = new blog({
         title: req.body.title,
@@ -17,13 +17,15 @@ router.post('/', async (req, res) => {
         postData: req.body.postData,
         isPublished :false,
         keywords : req.body.keywords,
-        image : null
+        image : null,
+        url : new Date().getTime()
 
-    });
+     });
 
     console.log(req.body)
    try {
-
+  
+  
         if(req.body.fileName && !req.body.fileUploaded)
         {
             var p = await blogPost.save();
@@ -49,7 +51,7 @@ router.post('/', async (req, res) => {
                 isError : false,
                 cdnurl: process.env.cdnUrl + "blog/" + fileName,
                 status : "saved_draft",
-                blogId : p._id
+                blogId : p._id,
 
             })
         }
@@ -63,7 +65,7 @@ router.post('/', async (req, res) => {
         if(req.body.fileUploaded)
         {
                    var blo: any = await blog.updateOne({_id: req.body.blogId},  { $set: {isPublished :req.body.isPublished, image : req.body.image} });
-       return res.send({status: 'saved', isError : false})
+       return res.send({status: 'saved', isError : false, })
 
         }
 
@@ -73,7 +75,7 @@ router.post('/', async (req, res) => {
 
     } catch(e) {
         console.error(e);
-        return res.send({status: 'technical_error', isError : true});
+        return res.send({status: 'technical_error', isError : true, e : e});
     }
  
 });

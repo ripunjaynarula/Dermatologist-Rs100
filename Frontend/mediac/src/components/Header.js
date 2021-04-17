@@ -105,14 +105,14 @@ const hideDropdown = e => {
           <SidebarContent>
 
              <Menu iconShape="square">
-              <MenuItem active = {true}><a href= "/chat" style = {{color : "white"}}>Chats</a> 
+              <MenuItem active = {props.selected === "chat" ? true : false}  icon = {<img src = {chatic} alt = "" height ="22px"></img>}><a href= "/chat" style = {{color : "white"}}>Chats</a> 
 
           </MenuItem>
-              <MenuItem  icon = {<img src = {addBlog} alt = "" height ="22px"></img>}><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
+              <MenuItem active = {props.selected === "addBlog" ? true : false}  icon = {<img src = {addBlog} alt = "" height ="22px"></img>}><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 
 </MenuItem>
-              <MenuItem  icon = {<img src = {blogic} alt = "" height ="22px"></img>}><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
+              <MenuItem active = {props.selected === "myblog" ? true : false}  icon = {<img src = {blogic} alt = "" height ="22px"></img>}><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
 </MenuItem>
-              <MenuItem  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
+              <MenuItem active = {props.selected === "edit" ? true : false}  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
 </MenuItem>
               <MenuItem  icon = {<img src = {logoutic} alt = "" height ="22px"></img>}><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
             </Menu>

@@ -3,7 +3,7 @@ import Signup from "./Signup";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Faq from "./Faq";
-import DocProfile from "./DocProfile";
+import DocProfile from "./Profile/DocProfile";
 import BlogList from "./BlogList";
 import BlogListItem from "./BlogListItem";
 import { Container } from "react-bootstrap";
@@ -24,8 +24,7 @@ import VerificationSent from "./VerificationSent";
 import ConsultancyForm from "./ConsultationForm";
 import Choice from "./Choice";
 import OtherPersonDetails from "./OtherPersonDetails";
-import DoctorLogin from "./DoctorLogin";
-import AddVideo from "../components/videos/addVideos";
+ import AddVideo from "../components/videos/addVideos";
 import ViewVideos from "../components/videos/viewVideos";
 import Video from "../components/blog/singleVideoPage";
 import page404 from "../components/utility/page_404"
@@ -35,6 +34,8 @@ import bgimg from './img/image1.png';
 import pimplesAcnePage from './blog/Conditions/pimplesAcne';
 import viewBlogs from './blog/blog';
 import singleBlog from './blog/blogSingle';
+import myBlogs from './blog/my-blogs';
+import myProfile from './Profile/my-Profile';
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -79,6 +80,8 @@ function App() {
               />
               <PrivateRoute path="/add-blog" component={FormEditors} />
               <PrivateRoute path="/add-video" component={AddVideo} />
+                            <PrivateRoute path="/my-profile" component={myProfile} />
+
               <PrivateRoute
                 path="/update-doctor"
                 component={UpdateDoctorProfile}
@@ -86,6 +89,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route exact path="/blog" component={singleBlog} />
+                            <Route exact path="/my-blogs" component={myBlogs} />
+
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />

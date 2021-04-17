@@ -57,7 +57,7 @@ try{
  
               for(var i =0; i< res.videos.length ; i++)
               {
-                res.videos.views = nFormatter(res.videos.views) 
+                res.videos[i].views = nFormatter(res.videos[i].views) 
               }
 
               setList(res.videos)

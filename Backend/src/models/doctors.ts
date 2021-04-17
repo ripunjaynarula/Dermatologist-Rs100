@@ -76,8 +76,20 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         default: ['english']
     },
     profileImage: {
+        type : String,
+                default :''
+
+    },
+        videoLikes : {
+        type : Array
+    },
+      coverImage: {
+        type : String,
+        default :''
+    },
+     about: {
         type : String
-    }
+    },
 }));
 
 export default doctors;

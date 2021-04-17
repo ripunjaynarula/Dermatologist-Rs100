@@ -2,6 +2,7 @@ import React, {useRef,useEffect, useState, useContext, Component} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
  import DOMPurify from 'dompurify';
 import { useAuth } from "../../contexts/AuthContext"
+ import viewSvg from '../img/visibility.svg'
 
 import  "../styles.css";
  import  "./blog.css";
@@ -27,6 +28,7 @@ const [content, setContent] = useState("")
 const [link, setLink] = useState("")
   const history = useHistory();
 
+const [views, setViews] = useState(0)
 const [likes, setLikes] = useState(0)
 const [date, setDate] = useState("")
 const [liked, setLiked] = useState(false)
@@ -85,8 +87,9 @@ try{
         setPostId(res.video._id);
  setLink("/video/"+res.video.link)
         setLiked(res.liked)
+        setViews( nFormatter(res.video.views) )
         }else{
-history.push('/404')
+//history.push('/404')
 return;
         }
 
@@ -101,6 +104,19 @@ return;
 
   }
 
+
+function nFormatter(num) {
+     if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+     }
+     if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+     }
+     if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+     }
+     return num;
+}
 
 
 
@@ -223,6 +239,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
               <div className="entry-meta">
                     <ul>
+                  <li className="d-flex align-items-center"><img src = {viewSvg} className = "icon" alt=""></img><div className = "txt">{views}</div></li>
+
                    <li className="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a ><time dateTime="2020-01-01">{date}</time></a></li>
                   
                 </ul>

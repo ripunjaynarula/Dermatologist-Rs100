@@ -2,26 +2,26 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import * as ReactBootStrap from "react-bootstrap";
 import { Container, Card, CardBody,Row, Col } from "reactstrap"
 import { useHistory, Link } from "react-router-dom"
-import "../css/Navbar.css";
+import "../../css/Navbar.css";
 // import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext"
-import {CardMain} from "../css/Card"
-import docimgsq from './img/docsq.jpeg';
-import docimg from './img/doc.jpeg'
-import  "./styles.css";
-import Navbar from "./Navbar"
-import BlogList from "./BlogList"
+import { useAuth } from "../../contexts/AuthContext"
+import {CardMain} from "../../css/Card"
+import docimgsq from '../img/docsq.jpeg';
+import docimg from '../img/doc.jpeg'
+import  "../styles.css";
+import Navbar from "../Navbar"
+import BlogList from "../BlogList"
 import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons/bi";
-    import facebook from './img/facebook.svg'
-   import linkedin from './img/linkedin.svg'
-   import twitter from './img/twitter.svg'
-   import achievement from './img/achievement.svg'
-   import bcase from './img/case.svg'
-   import building from './img/building.svg'
-   import location from './img/location.svg'
-   import medal from './img/medal.svg'
+    import facebook from '../img/facebook.svg'
+   import linkedin from '../img/linkedin.svg'
+   import twitter from '../img/twitter.svg'
+   import achievement from '../img/achievement.svg'
+   import bcase from '../img/case.svg'
+   import building from '../img/building.svg'
+   import location from '../img/location.svg'
+   import medal from '../img/medal.svg'
 
-import useWindowDimensions from "../functions/windowDimensions"
+import useWindowDimensions from "../../functions/windowDimensions"
 
 export default function DocProfile() {
   

@@ -19,6 +19,7 @@ import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
 import addBlog from '../src/routes/blogs/addBlog'
+import delBlog from './routes/blogs/deleteBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
 import viewBlog from './routes/blogs/viewBlog'
@@ -34,6 +35,8 @@ import updatePatientProfile from './routes/profile/updatePatientProfile'
 import updateDoctorProfile from './routes/profile/updateDoctorProfile'
 import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
+import viewDocProfilePvt from './routes/profile/viewDoctorProfilePrivate'
+
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
 import docDetailsRouter from './routes/getDocDetails';
@@ -49,6 +52,7 @@ import getChatById from './routes/getChatById'
 import chat from './models/chat'
 import archive from './routes/archive';
 import doctorSignup from './routes/doctorSignup';
+import myBlogs from './routes/blogs/myBlogs';
 
 const app = express();
 const server = http.createServer(app);
@@ -121,6 +125,7 @@ app.use('/update-doctor-profile', checkAuth, updateDoctorProfile);
 app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
 app.use('/patient-profile', checkAuth, viewPatientProfile);
+app.use('/my-profile', checkAuth, viewDocProfilePvt);
 
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
@@ -132,6 +137,8 @@ app.use('/blogs', viewBlogs);
 app.use('/blog', viewBlog);
 app.use('/videos', allVideos);
 app.use('/my-videos',checkAuth, myVideos);
+app.use('/my-blogs',checkAuth, myBlogs);
+app.use('/delete-blog',checkAuth, delBlog);
 
 app.use('/video', viewSingleVideo);
 app.use('/subscribe', subscribeNotif);

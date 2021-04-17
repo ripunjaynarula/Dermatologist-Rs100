@@ -9,6 +9,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory, Link } from "react-router-dom"
 import {Texts} from "../css/Texts";
 
+import Slider from "react-slick";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -21,50 +22,25 @@ const breakPoints = [
 
 export default function BlogList(props) {
 
-  const dbinfo = useRef()
-  const history = useHistory()
-  const quest = useRef()
-  const [title, setTitle] = useState('');
-  const [doctorId, setDoctorId] = useState('');
-  const [blogimg, setBlogImg] = useState('');
-  const [postdata, setPostData] = useState('');
-  const [specialisation, setSpecialisation] = useState('');
-  const [city, setCity] = useState('');
-  const [blogs, setBlogs] = useState([])
  
-  useEffect(() =>{
-    async function checkLogin(){
-      const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({email: props.mail})
-      }
-  
-      let res = await fetch('http://localhost:5000/getDocDetails', requestOptions);
-      res = await res.text();
-      res = JSON.parse(res)
-      console.log(res);
-      if(!res['status']){
-        history.push('/login');
-      }
-      else{
-          setDoctorId(res['doctorId']);
-          setTitle(res['title']);
-          // setBlogImg(res['blogimg']);
-          setPostData(res['postdata']);
-          setBlogs(res['docBlogs']);
-          setCity(res['city'])
-      }
-    }
-    // checkLogin();
-  }, [history, setBlogs])
-
   return (
     <>
       <div className="BlogList">
-        {blogs.length>0?
+        
+        {props.blogs ? props.blogs.length>0?
+
+
+
+
+
+
+
+
+
+
+
         <Carousel breakPoints={breakPoints}>
-        {blogs.map(blog =>(<>
+        {props.blogs.map(blog =>(<>
           <BlogListItem className="BlogListItem" key={blog.title}>
             <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
               <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
@@ -79,6 +55,9 @@ export default function BlogList(props) {
           </BlogListItem>
           </>))}
         </Carousel>
+        :<>
+        <br></br>
+        <p style = {Texts.FormLabel}>No Blogs yet</p></>
         :<>
         <br></br>
         <p style = {Texts.FormLabel}>No Blogs yet</p></>

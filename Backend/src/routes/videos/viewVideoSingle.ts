@@ -23,27 +23,34 @@ router.post('/', async (req, res) => {
         return res.send({ status: "nothing_found", isError : false })
 
         }
+
+        var update = await Videos.updateOne(
+       {link: req.body.videoLink},
+         { $inc: { views: 1 } }
+   )
     
 var isLiked = false
 if(await authStatus.checkAuthStatus(req))
 {
             var user : any ; 
-            if(req.body.role =="doctor")
+            if(req.body.role ==="doctor")
             {
 
             user =  await doctors.findOne({uid: req.body.uid} );
 
             }else
             user =  await patients.findOne({uid: req.body.uid} );
-            if(user!=null)
+             if(user!=null)
             {
-                 if(user.videoLikes.includes(blogs._id)){
+                 if(user.videoLikes)
+                 {
+                     if(user.videoLikes.includes(blogs._id)){
                      isLiked = true;
+                 }
                  }
             }
 
-             console.log(blogs._id)
-}
+ }
 
 
          return res.send({ status: "valid", isError : false, video: blogs, liked : isLiked})

@@ -1,15 +1,29 @@
 import express from 'express'
 import patients from '../models/patients'
-
+import getAge from '../actions/getAge'
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const patient: any = await patients.findOne({uid: req.body.uid});
+try{
+        var patient: any = await patients.findOne({uid: req.body.uid} );
     if (patient) {
         let profiles = patient.profiles;
-        return res.send({status: 'success', profiles: profiles});
+
+        var age  : any  = ""
+        if(patient.dob)
+        {
+            age = getAge(patient.dob)
+        }
+        return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender });
     }
-    res.send({status: 'no_account_found'});
+ return   res.send({status: 'no_account_found'});
+}catch(e)
+{
+    
+    console.log(e)
+     return   res.send({status: 'no_account_found'});
+
+}
 });
 
 export default router;

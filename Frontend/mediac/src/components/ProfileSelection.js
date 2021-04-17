@@ -23,7 +23,8 @@ export default function ProfileSelection(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [show, setShow] = useState(false);
- 
+    const [currentGender, setCurrentGender] = useState("");
+  const [currentAge, setCurrentAge] = useState("");
   const [profiles, setProfiles] = useState([])
   
   const [togg, setTogg] = useState({showMenu:false});
@@ -48,6 +49,9 @@ export default function ProfileSelection(props) {
         res = JSON.parse(res)
         console.log(res)
         setProfiles(res['profiles']);
+        setCurrentAge(res.age)
+        setCurrentGender(res.gender)
+        props.onLoad("s",res.gender, res.age)
       }
     }
     getProfiles();
@@ -72,13 +76,16 @@ export default function ProfileSelection(props) {
               {error && <Alert variant="danger">{error}</Alert>}
               
               <div id="pf-card">
-                <div id="sectionpf">
-                <Carousel id="carouselitemprof" breakPoints={breakPoints}>
+                <div id="sectionpf"  style = {{paddingRight: "0px"}}>
+                <Carousel id="carouselitemprof" breakPoints={breakPoints} style = {{marginRight: "0px"}}>
                   
-                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", "");}}><img id="userimg" src={usersvg}/><br/>Me</a>
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
+                    onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
+                    
+                    ><img id="userimg" src={usersvg}/><br/>Me</a>
 
                     {profiles!==undefined && profiles.map(profile =>(<>
-                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'], profile['age']);}}>
+                      <a className={props.id===profile['id']?'active':'inactive'} id="profile" key={profile['id']} onClick={() => {props.handleSubmit(profile['id'], profile['name'], profile['relation'],profile['gender'].toLowerCase(), profile['age']);}}>
                         
                         
                         <img id="userimg" src={usersvg}/>

@@ -75,12 +75,23 @@ export default function Choice() {
 
   //console.log(URLSearchParams(quest))
   const handleProfileSelection = (id, name, relation, gender, age) => {
+            console.log(id)
+
     setCurrentProfile(id);
     setCurrentProfileName(name);
     setCurrentRelation(relation);
     setCurrentGender(gender);
     setCurrentAge(age);
   };
+
+
+    const refresh = ( id, gender, age) => {
+            console.log(id)
+
+     setCurrentGender(gender);
+    setCurrentAge(age);
+  };
+
 
   const addConsultation = async () => {
     console.log("handling");
@@ -194,6 +205,7 @@ export default function Choice() {
         <ProfileSelection
           handleSubmit={handleProfileSelection}
           id={currentProfile}
+          onLoad = {refresh}
         />
         <div id="formbody">
           {currentProfile < 0 ? (
@@ -249,23 +261,23 @@ export default function Choice() {
                     <select name="prev" ref={genderRef} id="dropdown-basic">
                       <option style={{ display: "none" }}> </option>
 
-                      {currentGender === "Rather not say" ? (
-                        <option value="Rather not say" selected>
+                      {currentGender === "rather not say" ? (
+                        <option value="rather not say" selected>
                           Rather not say
                         </option>
                       ) : (
-                        <option value="Rather not say">Rather not say</option>
+                        <option value="rather not say">Rather not say</option>
                       )}
-                      {currentGender === "Male" ? (
-                        <option value="Male" selected>
+                      {currentGender === "male" ? (
+                        <option value="male" selected>
                           Male
                         </option>
                       ) : (
                         <option value="male">Male</option>
                       )}
 
-                      {currentGender === "Female" ? (
-                        <option value="Female" selected>
+                      {currentGender === "female" ? (
+                        <option value="female" selected>
                           Female
                         </option>
                       ) : (

@@ -7,16 +7,21 @@ const router = express.Router();
 router.post('/', async (req, res) => {
 
 
-console.log(req.body)
- 
+  
 
     
 
    
    try {
-const MyModel = mongoose.model('ModelName');
+         var d :any = await blog.findOne({ _id: req.body.blogId })         
 
-         
+console.log(d)
+console.log(req.body)
+if(d.doctorId !== req.body.uid )
+{
+    return res.send({status : "403", isError : true})
+}
+        var r = await blog.deleteOne({ _id: req.body.blogId })         
 
         return res.send({status: 'deleted', isError : false})
 

@@ -1,4 +1,4 @@
-import Csidebar from "../Csidebar";
+import Csidebar from "../Header";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Row, Alert } from "react-bootstrap";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -53,7 +53,7 @@ async function onlyOnce()  {
     <>
       <BrowserView>
         <div className="chat">
-          <Csidebar></Csidebar>
+          <Csidebar selected = "chat"></Csidebar>
            <Container className="d-flex align-items-center justify-content-center" >
             <div class="card chatcard" >
               <div class="card-body row " >
@@ -71,7 +71,7 @@ async function onlyOnce()  {
       
       <MobileView>
         <div className="chat">
-          <Csidebar />
+          <Csidebar selected = "chat" />
           <Container className="d-flex align-items-center justify-content-center">
             <div class="card chatcard">
               <div class="card-body row ">

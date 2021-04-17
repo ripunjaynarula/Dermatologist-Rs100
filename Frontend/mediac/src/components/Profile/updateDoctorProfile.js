@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import {CardMain} from "../../css/Card";
 import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
+import Navbar from "../Header"
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -24,7 +25,7 @@ const specializatoinRef = useRef()
   const passwordConfirmRef = useRef()
   const { currentUser, updatePassword, updateEmail } = useAuth()
   const [error, setError] = useState("")
-    const [success, setSuccess] = useState("")
+    const [success, setSuccess] = useState("") 
 
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -49,6 +50,8 @@ const [file, setFile] = useState("");
   const [awards, setawards] = useState("") 
    useEffect( () => {
     
+        document.body.style.backgroundColor = "#ededf2";
+
     getProfiles();
   }, [ ]);
 
@@ -79,10 +82,10 @@ console.log(res)
           setDob(resp.dob.split("T")[0])
         }
         setName(resp.name)
-         setGender(resp.gender)
+        setGender(resp.gender)
         setPhone(resp.phone)
         setGraduation(resp.graduationYear)
-                setDegree(resp.degree)
+        setDegree(resp.degree)
         setEducation(resp.education)
         setPastExp(resp.pastExp)
         setawards(resp.awards)
@@ -284,7 +287,9 @@ try{
   };
   return (
     <>
-
+<Navbar selected = "edit" />
+<br></br>
+<br></br>
           <div>
 <br></br>
 

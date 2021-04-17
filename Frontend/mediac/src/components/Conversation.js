@@ -63,12 +63,12 @@ function Conversation() {
               className="bottom overflow-auto "
               style={{ height: "350px", fontSize: "13px" }}
               onClick={() => {
-                let email= currentUser.email == chat.doctorEmail? chat.patientEmail: chat.doctorEmail
+                let email= currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail
                 handleOpenChat(chat.chatId,email);
                 
               }}
             >
-              <div className={`d-flex justify-content-between align-items-center conv ${active===(currentUser.email == chat.doctorEmail? chat.patientEmail: chat.doctorEmail)? 'convactive':''}`} >
+              <div className={`d-flex justify-content-between align-items-center conv ${active===(currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail)? 'convactive':''}`} >
                 <div className="d-flex flex-row align-items-center conv w-100">
                   <div className="image">
                     {" "}

@@ -19,18 +19,27 @@ router.post('/', async (req, res) => {
 
         user= await patients.findOne({uid: req.body.uid});
     }
+    console.log(user)
 
     if (user){
  
        
         try {
    
+console.log(user.videoLikes)
+if(!user.videoLikes)
 
-    
+{
+    user.videoLikes = []
+}
+    console.log(user.videoLikes)
+
              if(!user.videoLikes.includes(req.body.videoId))
             {
+                console.log("lodalassun")
  user.videoLikes.push(req.body.videoId);
         var i=   await  user.save()
+        console.log(i)
    var update = await video.updateOne(
         { _id: req.body.videoId },
          { $inc: { likes: 1 } }

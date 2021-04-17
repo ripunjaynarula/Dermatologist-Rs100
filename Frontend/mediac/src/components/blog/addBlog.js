@@ -39,6 +39,7 @@ const [file, setFile] = useState("");
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+ 
   const { height, width } = useWindowDimensions();
  const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
@@ -81,8 +82,7 @@ return
 }
 
 
-
-
+ 
     try {
 
  
@@ -98,8 +98,8 @@ return
           isPublished : i ===0 ? false : true, 
           fileUploaded : false,
           blogId : null,
-          image : file["name"]
-           
+          image : file["name"],
+            
             };
 
  
@@ -113,10 +113,22 @@ return
           let res = await fetch('http://localhost:5000/add-blog', requestOptions);
    res = await res.text();
           res = JSON.parse(res)
+console.log(res)
+ if(res.isError){
+ 
+  setLoading(false)
+
+ 
+
+                 alert("Internal Error")
+  return;
+
+
+ }
+
  
           d.image = res.fileName
           d.blogId = res.blogId
-
 
 
 
@@ -152,6 +164,8 @@ return
             if(res.status === "saved")
             {
              var da = await alert("Post Published")
+
+             history.push("/my-blogs")
              console.log(da)
             }
 
@@ -183,7 +197,7 @@ return
       setLoading(false)
       } catch(e) {
         console.log(e)
-      setError("Internal error.");
+              alert("Connection Problem")
 
       setLoading(false)
     }
@@ -219,6 +233,7 @@ async function uploadFile(putURL) {
 
 
 
+    document.body.style.backgroundColor = "#ededf2";
 
 
 
@@ -241,16 +256,14 @@ async function uploadFile(putURL) {
   }
   return (
     <>
-<Navbar />
+<Navbar selected = "addBlog" />
 <br></br>
-    <Container className="d-flex align-items-center justify-content-center" style={{marginTop:"5%"}}>
-      <div id="blogdiv" style={{   borderRadius : "0", minWidth: width-30 , backgroundColor : "white"}}>
-      <React.Fragment>
-      <div >
-        <Container fluid={true} style = {{padding : width> 1400 ?   "50px 180px":  width <1000  ? "40px 10px" : "50px 80px" }}>
+<br></br>
+<br></br><br></br>
+     <Container fluid={true} style = {{  width :width < 600 ? "auto": width< 800 ? "85vw":width < 1200 ? "80vw" :"70vw"}}>
           <Row>
             <Col>
-              <h2><strong>Publish</strong></h2>
+              <h2><strong>Publish Blog</strong></h2>
               <br></br>
               <Card>
                 <CardBody>
@@ -261,7 +274,7 @@ async function uploadFile(putURL) {
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Title</Form.Label>
               <Form.Control type="email" ref={title} required />
             </Form.Group>
-
+ 
               <Form.Label style = {{fontSize: "18px", color: Styles.fontLabelColor }}>Content</Form.Label>
  
                     <Editor
@@ -290,8 +303,8 @@ async function uploadFile(putURL) {
           <Row style= {{paddingTop :"22px", paddingLeft : "18px", flexDirection: 'row', justifyContent: 'flex-end', paddingRight : "16px",  }}>
            
 
-<Button disabled={loading}  type="submit"  className = "secondaryButton" onClick= {() => handleSubmit(0)} >
-              Save as draft
+<Button disabled={loading}  type="submit"  className = "secondaryButton"   >
+              Cancel
             </Button>
 
 <div style = {{width : "10px", height : "10px"}}></div>
@@ -305,10 +318,10 @@ async function uploadFile(putURL) {
 
 
         </Container>
-      </div>
-    </React.Fragment>
-</div>
-</Container>
+     <br></br>
+          <br></br>
+     <br></br>
+
 </>
    )
 }

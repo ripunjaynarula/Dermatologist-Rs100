@@ -685,8 +685,8 @@ div.scrollmenu a {
 }
 
 .profile-header-section1 p {
-    color: #878787;
-}
+
+background-color: transparent;}
 
 .req-btn {
     height: 30px;
@@ -775,7 +775,7 @@ div.scrollmenu a {
 .profile-right-section {
     margin-top: -39px;
     padding: 0px 0px 10px 15px;
-    background-color: #FFFFFF;
+    background-color: transparent!important;
     margin-left: 29px;
 }
 

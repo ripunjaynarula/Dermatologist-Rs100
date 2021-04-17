@@ -2,7 +2,12 @@
     align-items: center;
   }
   .lgksPe{
-    background-color: rgba(11, 31, 148, 0.1)
+    box-shadow: 1px 1px 5px 0px #899599 !important;
+    background-color: white!important;
+    color: black !important;
+    font-weight: 100;
+    
+  
   }
   .hHtdyL{
     background-color:white!important;
@@ -14,8 +19,8 @@
     box-shadow: 0 0 1px 3px rgb(48, 46, 194)!important;
 
   }
-  .lgksPe:hover:enabled, .lgksPe:focus:enabled{
-    background-color: rgb(23, 21, 180) !important;
+  .lgksPe:hover:enabled{
+    background-color:#bab1ba !important;
   }
   #blogcardimg{
 
@@ -32,4 +37,20 @@
   }
   #blogbtn{
     min-width: 0px!important;
+  }
+
+  .rec-arrow-right{
+
+    transform: translate(-80%,-30%) !important;
+    z-index: 999;
+  }
+
+  .rec-arrow-left{
+
+    transform: translate(80%,-30%) !important;
+    z-index: 999;
+  }
+  button:not(:disabled){
+    color: black !important;
+    background-color:white !important;
   }

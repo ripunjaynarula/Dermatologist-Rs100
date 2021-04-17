@@ -42,16 +42,14 @@ export default function BlogList(props) {
         <Carousel breakPoints={breakPoints}>
         {props.blogs.map(blog =>(<>
           <BlogListItem className="BlogListItem" key={blog.title}>
-            <div class="card" style={{ justifyContent: 'center', padding: '25px'}} >
-              <img id="blogcardimg" src={docimg} style={{height:"50%", marginBottom:"15px"}}/>
-            <div>
-              <h5 style={{color:"black"}}>{blog.title}</h5>
-              <p style={{color:"black", fontSize:"15px"}}>{blog.postdata}</p>
+          <Link to="">
+            <div class="card" style={{ justifyContent: 'center', borderRadius:"8px",shadowRad:"8px"}} >
+              <img id="blogcardimg" src={docimg} style={{height:"100%",borderRadius:"8px"}}/>
             </div>
-            <Link to="">
-            <Button id="blogbtn" className = "primaryButton" > Go to the Blog </Button>
             </Link>
-            </div>
+            <div>
+            <h5 style={{color:"black", fontSize:"20px", marginTop:"5px", marginLeft:"15px"}}><b>{blog.title}</b></h5>
+              <p style={{color:"black", fontSize:"10px",marginTop:"5px", marginLeft:"15px"}}>{blog.postdata}</p></div>
           </BlogListItem>
           </>))}
         </Carousel>

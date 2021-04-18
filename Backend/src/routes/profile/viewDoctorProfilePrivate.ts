@@ -28,8 +28,7 @@ var uid = req.body.uid;
    
 
     var blogs : any;
-      
-      if(req.body.showBlogs)
+      // if(req.body.showBlogs)
       {
 
         blogs =  await blog.find({doctorId: req.body.uid} );

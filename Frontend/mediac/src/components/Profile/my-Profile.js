@@ -147,7 +147,7 @@ if(width<1200)
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
                         <div className="profile-header" >
                             <div className="row" style={{display: 'block'}}>
-                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{paddingLeft:"0px",paddingRight:"0px"}}>
+                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{marginLeft:"35px",paddingRight:"0px"}}>
                                     <h1 style = {{color : "black", fontSize : "24px",  }}>Dr. {name}</h1>
                                      <p style = {{marginBottom : mar, color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>{specialisation}</p>
                                     {width > 1200 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>10 years of experience</p>}  

@@ -18,15 +18,16 @@ var arr = []
         var blogs : any;
  
 
-         blogs =  await blog.find({isPublished: true}  ).skip(1).limit(5).sort('-postDate') ;
+         blogs =  await blog.find({isPublished: true}  ) ;
          for (var i =0; i< blogs.length; i++)
         {
-            arr.push(blogs[i].doctorId)
+           // arr.push(blogs[i].doctorId)
+            if(blogs[i].image)
             blogs[i].image = process.env.cdnUrl + blogs[i].image 
 
         }
   
-        return res.send({status: 'valid', isError : false, blogs})
+        return res.send({status: 'valid', isError : false,blogs: blogs})
 
     } catch(e) {
         console.error(e);

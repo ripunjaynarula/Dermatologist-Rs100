@@ -1,0 +1,84 @@
+ import React, { useRef, useState, useEffect } from "react";
+import { Form, Button, Row, Alert } from "react-bootstrap";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import Sidebar from "./patientSidebar";
+ 
+import OpenConversation from "../OpenConversation";
+import { useAuth } from "../../contexts/AuthContext"
+import Navbar from "../Navbar"
+import {reactLocalStorage} from 'reactjs-localstorage';
+
+import "../styles.css";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
+
+import { CardBody, Col, Card, Container } from "reactstrap";
+
+function Chat() {
+  const [phone, setPhone] = useState(false);
+  const {   currentUser } = useAuth()
+var navBar = <Navbar></Navbar>;
+ 
+  useEffect(() => {
+onlyOnce()
+    // if(){
+    //   setPhone(true);
+    //   return
+    // }
+  }, [setPhone]);
+
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ console.log(role)
+  if(role === undefined) role  = "";
+ 
+  
+   
+}
+
+    document.body.style.backgroundColor = "#ededf2";
+
+  return (
+    <>
+      <BrowserView>
+        <div className="chat">
+          <Navbar ></Navbar>
+           <Container className="d-flex align-items-center justify-content-center" >
+            <div class="card chatcard" >
+              <div class="card-body row " >
+                <div className="col-3 chatsideb">
+                  <Sidebar></Sidebar>
+                </div>
+                <div className="col-9 " >
+                  <OpenConversation  />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </BrowserView>
+      
+      <MobileView>
+        <div className="chat">
+          <Navbar selected = "chat" />
+          <Container className="d-flex align-items-center justify-content-center">
+            <div class="card chatcard">
+              <div class="card-body row ">
+                <div className="col-12 chatsideb">
+                  <Sidebar></Sidebar>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </MobileView>
+    </>
+  );
+}
+
+export default Chat;

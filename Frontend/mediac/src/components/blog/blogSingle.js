@@ -50,7 +50,7 @@ const [instagram, setInstagram] = useState("")
   useEffect(() => getData(), []);
 
  async function  getData() {
-
+console.log(queryString)
  
 if(queryString.split("/")[queryString.split("/").length - 1] === "blog")
 {
@@ -68,7 +68,7 @@ try{
   {
      token = await  currentUser.getIdToken(true)
   }
-   const requestOptions = {
+        const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json','token': token },
           body : JSON.stringify({url: queryString.split("/")[queryString.split("/").length - 1]})
@@ -80,25 +80,25 @@ try{
         console.log(res)
         if(res.status === "valid")
         {
-                 setImageLink(res.blog.image)
-        setTitle(res.blog.title)
-        setContent((res.blog.postData))
-        setDate(res.blog.postDate.split("T")[0])
-        setLikes(res.blog.likes)
-        setPostId(res.blog._id);
- setLink("/blog/" + res.blog.url)
- setProfileImage(res.profileImage)
- setUsername("/doctor/"+res.username)
- setTwitter(res.twitter)
- setFacebook(res.facebook)
- setLinkedin(res.linkedin)
-  setAbout(res.about)
+            setImageLink(res.blog.image)
+            setTitle(res.blog.title)
+            setContent((res.blog.postData))
+            setDate(res.blog.postDate.split("T")[0])
+            setLikes(res.blog.likes)
+            setPostId(res.blog._id);
+            setLink("/blog/" + res.blog.url)
+            setProfileImage(res.profileImage)
+            setUsername("/doctor/"+res.username)
+            setTwitter(res.twitter)
+            setFacebook(res.facebook)
+            setLinkedin(res.linkedin)
+            setAbout(res.about)
 
- setName(res.name)
-        setLiked(res.liked)
+            setName(res.name)
+            setLiked(res.liked)
         }else{
-history.push('/404')
-return;
+            history.push('/404')
+            return;
         }
 
 }
@@ -111,6 +111,11 @@ return;
 
 
   }
+
+
+
+
+  
 
 var text = "people found this helpful"
 if(likes === 0)
@@ -274,7 +279,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  width: "120px",
     marginRight: "20px"
 
-              }} src={profileImage} class="rounded-circle float-left" alt=""></img>
+              }} src={profileImage} class=" float-left" alt="" style = {{borderRadius : "80px", height : "120px", width : "120px", marginRight : "18px"}}></img>
               <div>
                 <h4>{name}</h4>
                 <div class="social-links">

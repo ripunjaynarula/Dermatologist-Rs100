@@ -58,6 +58,7 @@ try{
               for(var i =0; i< res.videos.length ; i++)
               {
                 res.videos[i].views = nFormatter(res.videos[i].views) 
+                res.videos[i].postDate =  res.videos[i].postDate.split("T")[0]
               }
 
               setList(res.videos)
@@ -130,6 +131,7 @@ catch(e){
 
 
 function nFormatter(num) {
+  if(!num) return 0;
      if (num >= 1000000000) {
         return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
      }
@@ -156,6 +158,8 @@ function nFormatter(num) {
           <li><a href="/">Home</a></li>
           <li>Videos</li>
         </ol>
+                <h2>Videos</h2>
+
  
       </div>
     </section>

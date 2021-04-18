@@ -42,6 +42,8 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     linkedin: {
         type: String,
+    },    twitter: {
+        type: String,
     },
     dob: {
         type: Date,
@@ -58,6 +60,7 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     },
     pastExperience: {
         type: String,
+        default: ""
     },
     awards: {
         type: String
@@ -78,9 +81,12 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
     profileImage: {
         type : String,
                 default :''
-
+ 
     },
         videoLikes : {
+        type : Array
+    },
+    blogLikes:{
         type : Array
     },
       coverImage: {

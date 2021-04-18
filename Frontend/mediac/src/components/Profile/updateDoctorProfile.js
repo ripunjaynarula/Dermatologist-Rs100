@@ -19,6 +19,11 @@ export default function UpdateProfile() {
   const graduationRef = useRef()
   const usernameRef = useRef()
   const awardsRef = useRef()
+  const aboutMeRef = useRef()
+  const facebookRef = useRef()
+  const linkedinRef = useRef()
+  const twitterRef = useRef()
+
 const pastExpRef = useRef()
 const specializatoinRef = useRef()
 
@@ -48,6 +53,12 @@ const [file, setFile] = useState("");
   const [username, setUsername] = useState("") 
   const [pastExp, setPastExp] = useState("") 
   const [awards, setawards] = useState("") 
+    const [about, setAbout] = useState("") 
+    const [facebook, setFacebook] = useState("") 
+    const [linkedin, setLinkedin] = useState("") 
+    const [twitter, setTwitter] = useState("") 
+    const [profile, setProfile] = useState("") 
+
    useEffect( () => {
     
         document.body.style.backgroundColor = "#ededf2";
@@ -86,10 +97,18 @@ const [file, setFile] = useState("");
         setGraduation(resp.graduationYear)
         setDegree(resp.degree)
         setEducation(resp.education)
-        setPastExp(resp.pastExp)
+        if(resp.pastExperience)
+        setPastExp(resp.pastExperience)
+        if(resp.awards)
         setawards(resp.awards)
+        setFacebook(resp.fb)
+        setLinkedin(resp.linkedin)
+        setTwitter(resp.twitter)
+setProfile(resp.profileImage)
         setSpecial(resp.specialisation)
         setUsername(resp.username)
+        if(resp.about)
+        setAbout(resp.about)
 
 
         console.log(resp)
@@ -119,7 +138,7 @@ try{
           setLoading(true)
           setError("")
           const token = await currentUser.getIdToken()
-
+console.log(file)
    
           var requestOptions = {
           method: 'POST',
@@ -215,12 +234,15 @@ try{
            awards : awardsRef.current.value,
            specialisation : specializatoinRef.current.value,
            username : usernameRef.current.value,
-           
+           about : aboutMeRef.current.value,
+           fb : facebookRef.current.value,
+           linkedin : linkedinRef.current.value,
+           twitter : twitterRef.current.value
 
 
             };
 
- 
+ console.log(d)
 
           var requestOptions = {
           method: 'POST',
@@ -318,7 +340,7 @@ try{
 
 <Col sm>
 <Row  style ={{paddingLeft : "22px" , flexDirection: 'row',  display: "flex", alignItems : "center",   }}>
-  <img  width="90" height="90" src={picture} alt="" style = {{borderRadius : "50%", objectFit : "cover" }} /> 
+  <img  width="90" height="90" src={picture == null ?  profile == null ? null : profile : picture  } alt="" style = {{borderRadius : "50%", objectFit : "cover" }} /> 
  
  <div style ={{width : "20px"}}></div>
  
@@ -451,7 +473,8 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Graduation Year</Form.Label>
                  <Form.Control
                 type="text"
-                ref={graduation}
+                ref={graduationRef}
+                defaultValue = {graduation}
                />
             </Form.Group></Col>
 
@@ -459,9 +482,10 @@ disabled = "true"
  <Form.Group id="username">
               <Form.Label style = {Texts.FormLabel}>Specialisation</Form.Label>
               <Form.Control
+                              ref={specializatoinRef}
+defaultValue = {special}
                 type="text"
-                ref={special}
-               />
+                />
             </Form.Group></Col>
 
  </Row>
@@ -476,17 +500,65 @@ disabled = "true"
               <Form.Label style = {Texts.FormLabel}>Username</Form.Label>
               <Form.Control
                 type="text"
-                ref={username}
-               />
+                defaultValue = {username}
+                                ref={usernameRef}
+
+                />
             </Form.Group></Col>
 
  </Row>
 <hr></hr>
+
+
+ <Row>
+
+<Col sm>    <Form.Group id="facebook">
+              <Form.Label style = {Texts.FormLabel}>Facebook Profile Link</Form.Label>
+                 <Form.Control
+                type="text"
+                ref={facebookRef}
+                defaultValue = {facebook}
+               />
+            </Form.Group></Col>
+
+<Col sm>   
+ <Form.Group id="linkedin">
+              <Form.Label style = {Texts.FormLabel}>Linkedin Profile Link</Form.Label>
+              <Form.Control
+                              ref={linkedinRef}
+defaultValue = {linkedin}
+                type="text"
+                />
+            </Form.Group></Col>
+
+ </Row>
+
+ <Row>
+<Col sm>   
+
+ 
+ <Form.Group id="username">
+              <Form.Label style = {Texts.FormLabel}>Twitter Profile Link</Form.Label>
+              <Form.Control
+                              ref={twitterRef}
+defaultValue = {twitter}
+                type="text"
+                />
+            </Form.Group></Col>
+
+ </Row>
+
+
+<hr></hr>
+
  <Row>
 
 <Col sm>    <Form.Group id="about">
               <Form.Label style = {Texts.FormLabel}>About Me</Form.Label>
-                 <textarea             className="form-control"
+                 <textarea   
+                 defaultValue = {about}  
+                 ref = {aboutMeRef}
+                         className="form-control"
  name="comments" style={{width: '100%', 
   
   }} rows="3"></textarea>
@@ -502,6 +574,8 @@ disabled = "true"
 <Col sm>    <Form.Group id="graduationYear">
               <Form.Label style = {Texts.FormLabel}>Past Experience</Form.Label>
                  <textarea             className="form-control"
+              defaultValue = {pastExp}
+                 ref = {pastExpRef}
  name="comments" style={{width: '100%', 
   
   }} rows="3"></textarea>
@@ -516,7 +590,10 @@ disabled = "true"
 
 <Col sm>    <Form.Group id="graduationYear">
               <Form.Label style = {Texts.FormLabel}>Awards</Form.Label>
-                 <textarea             className="form-control"
+                 <textarea   
+                 defaultValue = {awards}          
+                 ref = {awardsRef}
+                 className="form-control"
  name="comments" style={{width: '100%', 
  
   }} rows="3"></textarea>
@@ -539,7 +616,10 @@ disabled = "true"
 
 
           <br></br>
-        
+                {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+
+
           </Form>
         </Card.Body>
       </Card>

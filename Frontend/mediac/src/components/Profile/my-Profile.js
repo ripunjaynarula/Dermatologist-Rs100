@@ -76,8 +76,8 @@ if(width<1200)
         history.push('/404');
       }
       else{
-        //             res.blogs.push(res.blogs)
-        //   res.blogs.push(res.blogs)
+                     res.blogs.push(res.blogs)
+           res.blogs.push(res.blogs)
 
           res.blogs.push(res.blogs)
           setList(res.blogs)

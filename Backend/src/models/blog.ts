@@ -25,6 +25,7 @@ const blogs = mongoose.model('blogs', new mongoose.Schema({
     },
    views: {
        type: Number,
+       
         length: 6,
         default:0
     },

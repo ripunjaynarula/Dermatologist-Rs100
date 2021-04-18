@@ -7,8 +7,7 @@ import SidebarPatient from "./sideBarPatient";
 
 import OpenConversation from "../OpenConversation";
 import { useAuth } from "../../contexts/AuthContext"
-import Navbar from "../Navbar"
-import {reactLocalStorage} from 'reactjs-localstorage';
+ import {reactLocalStorage} from 'reactjs-localstorage';
 
 import "../styles.css";
 import {
@@ -23,8 +22,7 @@ import { CardBody, Col, Card, Container } from "reactstrap";
 function Chat() {
   const [phone, setPhone] = useState(false);
   const {   currentUser } = useAuth()
-var navBar = <Navbar></Navbar>;
-var sidebar = <SidebarPatient></SidebarPatient>
+ var sidebar = <SidebarPatient></SidebarPatient>
 
   useEffect(() => {
 onlyOnce()
@@ -41,10 +39,7 @@ async function onlyOnce()  {
   if(role === undefined) role  = "";
  
   
-  if (role === "doctor" )
-      navBar = <Csidebar></Csidebar>;
-      sidebar = <Sidebar></Sidebar>
- 
+   
 }
 
     document.body.style.backgroundColor = "#ededf2";

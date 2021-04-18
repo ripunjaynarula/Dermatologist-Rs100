@@ -50,6 +50,66 @@ if(width > 870) style = {
 
 
 
+    const [list, setList] = useState([])
+
+
+  
+
+  useEffect(() => getData(), []);
+ 
+
+
+
+ async function  getData() {
+
+ 
+ 
+   
+       setLoading(true)
+          setError("")
+try{
+
+      var token = null;
+      if(currentUser)
+      {
+        token = await  currentUser.getIdToken(true)
+      }
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','token': token },
+ 
+          };
+        let res = await fetch('http://localhost:5000/blogs', requestOptions);
+        res = await res.text();
+        res = JSON.parse(res)
+        console.log(res)
+        if(res.status === "valid")
+        {
+ 
+               for(var i =0; i< res.blogs.length ; i++)
+              {
+                 res.blogs[i].postDate =  res.blogs[i].postDate.split("T")[0]
+              }
+
+console.log("done")
+              setList(res.blogs)
+        }else{
+
+          console.log("anranrarnr")
+              history.push('/404')
+              return;
+        }
+
+}
+catch(e){
+        //history.push('/404')
+        return;
+}
+
+       setLoading(false)
+
+
+  }
 
 
 
@@ -73,9 +133,9 @@ if(width > 870) style = {
 
         <ol>
           <li><a href="/">Home</a></li>
-          <li>Blog</li>
+          <li>Blogs</li>
         </ol>
-        <h2>Blog</h2>
+        <h2>Blogs</h2>
 
       </div>
     </section>
@@ -87,27 +147,19 @@ if(width > 870) style = {
            <div className = "col-lg-8 entries">
 
  
- <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
-  author = "XYZ" publishDate = "Jan 1, 2020" content = "<p> addsadd</p>" authouUsername = "" likes  = "32323" blogLink = ""
+
+  {list.map((data, index) => (
+         
+ <BlogCard title = {data.title} image = {data.image} 
+  author = "XYZ" publishDate = {data.postDate} content = {data.postData} authouUsername = "username" likes  = {data.likes} blogLink = {"/blog/" + data.url}
  
  
  ></BlogCard>
+          ))}
 
 
-
-
- 
- <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
-  author = "XYZ" publishDate = "Jan 1, 2020" content = "<p> addsadd</p>" authouUsername = "" likes  = "32323" blogLink = ""
  
  
- ></BlogCard>
- 
- <BlogCard title = "adasdasdad" image = "https://assets.lybrate.com/q_auto,f_auto,w_200/imgs/product/icons/widget_icon.png" 
-  author = "XYZ" publishDate = "Jan 1, 2020" content = "<p> addsadd</p>" authouUsername = "" likes  = "32323" blogLink = ""
- 
- 
- ></BlogCard>
            </div>
 
 

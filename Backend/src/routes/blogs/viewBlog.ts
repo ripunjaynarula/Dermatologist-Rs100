@@ -57,7 +57,11 @@ if(await authStatus.checkAuthStatus(req))
             liked: isLiked,
             username : publishedBy.username,
             name : publishedBy.name,
-            profileImage : process.env.cdnUrl + publishedBy.profileImage
+            profileImage : publishedBy.profileImage ? process.env.cdnUrl + publishedBy.profileImage : "",
+            facebook : publishedBy.fb,
+            twitter : publishedBy.twitter,
+            linkedin : publishedBy.linkedin,
+            about : publishedBy.about
 
         })
 

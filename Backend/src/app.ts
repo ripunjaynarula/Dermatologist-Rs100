@@ -53,6 +53,7 @@ import chat from './models/chat'
 import archive from './routes/archive';
 import doctorSignup from './routes/doctorSignup';
 import myBlogs from './routes/blogs/myBlogs';
+import likeBlog from './routes/blogs/blogLike';
 
 const app = express();
 const server = http.createServer(app);
@@ -143,6 +144,8 @@ app.use('/delete-blog',checkAuth, delBlog);
 app.use('/video', viewSingleVideo);
 app.use('/subscribe', subscribeNotif);
 app.use('/like-video', checkAuth, likeVideo);
+app.use('/like-blog', checkAuth, likeBlog);
+
 app.use('/razorpay', checkAuth, razorpayRoute);
 app.use('/acceptConsultation', acceptConsultations);
 app.use('/getChatData', checkAuth, getChats);

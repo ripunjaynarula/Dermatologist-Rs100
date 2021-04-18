@@ -105,7 +105,7 @@ const hideDropdown = e => {
           <SidebarContent>
 
              <Menu iconShape="square">
-              <MenuItem active = {props.selected === "chat" ? true : false}  icon = {<img src = {chatic} alt = "" height ="22px"></img>}><a href= "/chat" style = {{color : "white"}}>Chats</a> 
+              <MenuItem active = {props.selected === "chat" ? true : false}  icon = {<img src = {chatic} alt = "" height ="22px"></img>}><a href= "/chat/d" style = {{color : "white"}}>Chats</a> 
 
           </MenuItem>
               <MenuItem active = {props.selected === "addBlog" ? true : false}  icon = {<img src = {addBlog} alt = "" height ="22px"></img>}><a href= "/add-blog" style = {{color : "white"}}>Add Blogs</a> 

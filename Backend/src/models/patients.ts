@@ -51,6 +51,10 @@ const patients = mongoose.model('patients', new mongoose.Schema({
     },
     videoLikes : {
         type : Array
+    },
+    blogLikes:{
+
+        type : Array
     }
 }));
 

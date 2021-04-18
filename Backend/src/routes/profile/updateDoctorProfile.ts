@@ -19,7 +19,10 @@ router.post('/', async (req, res) => {
         var state = "Delhi"
         var languages = ["english"]
         var username = req.body.username
-
+        var fb = req.body.fb
+        var linkedin = req.body.linkedin
+        var twitter = req.body.twitter
+        var about = req.body.about
 
         try {
     var d: any = await doctors.findOne({username});
@@ -35,7 +38,7 @@ if(d)
 
 
 
-    var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, education, pastExperience , awards, specialisation, city, state, graduationYear, degree, languages } });
+    var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, education, pastExperience , awards, specialisation, city, state, graduationYear, degree, languages, about , fb, twitter, linkedin} });
 fbUpdate.changeNameFirebaseAuth(req, name )
             return res.send({status: "updated", isError : false})
 

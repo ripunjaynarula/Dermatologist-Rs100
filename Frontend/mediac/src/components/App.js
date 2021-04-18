@@ -19,7 +19,9 @@ import UpdateDoctorProfile from "./Profile/updateDoctorProfile";
 import AdminLogin from "./AdminLogin";
 import AddDoc from "./AddDoc";
 import ChangePassword from "./Profile/changePassword";
-import Chat from "./Chat/Chat";
+import Chat from "./Chat/patientChat";
+import ChatDoctor from "./Chat/Chat";
+
 import VerificationSent from "./VerificationSent";
 import ConsultancyForm from "./ConsultationForm";
 import Choice from "./Choice";
@@ -88,7 +90,7 @@ function App() {
               />
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
-              <Route exact path="/blog" component={singleBlog} />
+              <Route  path="/blog" component={singleBlog} />
                             <Route exact path="/my-blogs" component={myBlogs} />
 
               <Route path="/login" component={Login} />
@@ -110,7 +112,9 @@ function App() {
               
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>
-                <PrivateRoute path="/chat" component={Chat} />
+                <PrivateRoute exact path="/chat" component={Chat} />
+                                <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
+
               </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
               <TokenContext.Provider value={[token, setToken]}>

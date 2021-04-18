@@ -467,7 +467,9 @@
         text-align: center;
     }
 }
-
+.profile-header-section1{
+    max-width: 150px;
+}
 .active {
     background-color: #0062af;
     border: 0px solid #0062af;
@@ -758,7 +760,7 @@ background-color: transparent;}
 .user-profil-part {
     padding-bottom: 0px;
     background-color: white;
-    margin-left: -60px
+    
 }
 
 .user-image {

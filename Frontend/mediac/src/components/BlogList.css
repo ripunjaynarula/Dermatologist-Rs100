@@ -1,5 +1,6 @@
 .BlogList {
     align-items: center;
+    
 }
 
 .lgksPe {
@@ -9,6 +10,10 @@
     width: 30px!important;
     height: 30px!important;
     color: transparent!important;
+    
+}
+.rec-swipable {
+flex-direction: nowrap!important;
 }
 .lgksPe:hover:enabled {
   background-color: #bab1ba !important;
@@ -25,7 +30,10 @@
     box-shadow: 0 0 1px 3px rgb(48, 46, 194)!important;
 }
 
-
+.card{
+    min-height: 100px;
+    min-width: 100px!important;
+}
 
 #blogcardimg {
     width: 100%;
@@ -35,7 +43,7 @@
 .BlogListItem {
     height: 20% !important;
     display: block !important;
-    max-width: 300px!important;
+    max-width: 350px!important;
 }
 
 .tXlBS {
@@ -47,21 +55,23 @@
 }
 
 .rec-arrow-right {
-    transform: translate(-130%, -50%) !important;
+    transform: translate(-130%, -50%) ;
     z-index: 999;
-    background-image: url(./img/arrow-right.png) !important;
-    background-size: cover !important;
+    background-image: url(./img/arrow-right.png) ;
+    background-size: cover ;
+    transition: none!important;
 }
 
 .rec-arrow-left {
-    transform: translate(130%, -50%) !important;
+    transform: translate(130%, -50%) ;
     z-index: 999;
-    background-image: url(./img/arrow-left.png) !important;
-    background-size: cover !important;
+    background-image: url(./img/arrow-left.png) ;
+    background-size: cover ;
+    transition: none!important;
 }
 
-button:not(:disabled) {
-    background-color: white !important;
+.button:not(:disabled) {
+    background-color: white ;
 }
 
 .abc {

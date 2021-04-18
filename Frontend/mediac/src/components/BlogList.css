@@ -5,8 +5,14 @@
 .lgksPe {
     box-shadow: 1px 1px 5px 0px #899599 !important;
     background-color: white!important;
-    color: black !important;
-    font-weight: 100;
+    min-width:30px!important;
+    width: 30px!important;
+    height: 30px!important;
+    color: transparent!important;
+}
+.lgksPe:hover:enabled {
+  background-color: #bab1ba !important;
+  color: transparent !important;
 }
 
 .hHtdyL {
@@ -19,9 +25,7 @@
     box-shadow: 0 0 1px 3px rgb(48, 46, 194)!important;
 }
 
-.lgksPe:hover:enabled {
-    background-color: #bab1ba !important;
-}
+
 
 #blogcardimg {
     width: 100%;
@@ -31,6 +35,7 @@
 .BlogListItem {
     height: 20% !important;
     display: block !important;
+    max-width: 300px!important;
 }
 
 .tXlBS {
@@ -42,17 +47,20 @@
 }
 
 .rec-arrow-right {
-    transform: translate(-80%, -30%) !important;
+    transform: translate(-130%, -50%) !important;
     z-index: 999;
+    background-image: url(./img/arrow-right.png) !important;
+    background-size: cover !important;
 }
 
 .rec-arrow-left {
-    transform: translate(80%, -30%) !important;
+    transform: translate(130%, -50%) !important;
     z-index: 999;
+    background-image: url(./img/arrow-left.png) !important;
+    background-size: cover !important;
 }
 
 button:not(:disabled) {
-    color: black !important;
     background-color: white !important;
 }
 

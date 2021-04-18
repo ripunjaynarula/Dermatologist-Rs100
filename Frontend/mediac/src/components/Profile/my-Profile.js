@@ -76,8 +76,8 @@ if(width<1200)
         history.push('/404');
       }
       else{
-                    res.blogs.push(res.blogs)
-          res.blogs.push(res.blogs)
+        //             res.blogs.push(res.blogs)
+        //   res.blogs.push(res.blogs)
 
           res.blogs.push(res.blogs)
           setList(res.blogs)
@@ -192,7 +192,7 @@ if(width<1200)
             <hr />
             <br/> 
             
-            <h5 style = {{fontWeight : 'bold'}}>Blogs by {name}</h5>
+            <h5 style = {{fontWeight : 'bold'}}>Blogs by Dr.{name}</h5>
                     <BlogList mail="mail" blogs = {list} />
                                         <br/>
 

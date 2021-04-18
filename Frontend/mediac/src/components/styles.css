@@ -338,6 +338,10 @@
 }
 
 @media(min-width:200px) {
+
+    .card{
+        width:100%;
+    }
     #onewconbtn {
         padding-left: 10px;
     }
@@ -385,6 +389,10 @@
 }
 
 @media(min-width:570px) {
+
+    .card{
+        width:100%;
+    }
     #onewconbtn {
         padding-left: 10px;
     }
@@ -1099,4 +1107,13 @@ button.rec-dot:focus {
 .rec-carousel-item:focus {
     outline: none;
     box-shadow: none;
+}
+
+.rec-arrow-right {
+    transform: translate(-100%, -20%) !important;
+   
+}
+
+.rec-arrow-left {
+    transform: translate(100%, -20%)!important ;
 }

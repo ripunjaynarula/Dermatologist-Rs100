@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
 import Carousel from "react-elastic-carousel";
-
+import "./styles.css"
 export default function ProfileSelection(props) {
 
   
@@ -78,6 +78,18 @@ export default function ProfileSelection(props) {
                 <div id="sectionpf"  style = {{paddingRight: "0px"}}>
                 <Carousel id="carouselitemprof" breakPoints={breakPoints} style = {{marginRight: "0px"}}>
                   
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
+                    onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
+                    
+                    ><img id="userimg" src={usersvg}/><br/>Me</a>
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
+                    onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
+                    
+                    ><img id="userimg" src={usersvg}/><br/>Me</a>
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
+                    onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
+                    
+                    ><img id="userimg" src={usersvg}/><br/>Me</a>
                     <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
                     onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
                     

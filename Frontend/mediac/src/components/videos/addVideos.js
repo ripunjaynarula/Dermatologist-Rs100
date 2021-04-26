@@ -10,7 +10,7 @@ import { convertToHTML } from 'draft-convert';
  import "../../css/buttons.css";
 import app from '../../firebase'
 import firebase from 'firebase'
-
+import Navbar from '../Header'
 import React, { useRef, useState, useEffect } from "react"
 import {   Form, Button,   Row, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
@@ -50,7 +50,8 @@ const FormEditors = () => {
       ()=> EditorState.createEmpty(),
   );
 
- 
+     document.body.style.backgroundColor = "#ededf2";
+
  
  
  
@@ -93,7 +94,7 @@ return
        alert("Page link is missing")
 return    
 }
-   if(link.includes("/")){
+   if(link.current.value.includes("/")){
        alert("Page link cannot contain '/'")
 return    
 }
@@ -238,6 +239,13 @@ history.push('/')
   }
   return (
 
+    <>
+    
+    
+<Navbar selected = "add-video" />
+<br></br>
+<br></br>
+
     <Container className="d-flex align-items-center justify-content-center">
       <div id="blogdiv" style={{ minHeight: "100vh", borderRadius : "0", minWidth: width-80 , backgroundColor : "#ededf2"}}>
       <React.Fragment>
@@ -327,6 +335,8 @@ history.push('/')
     </React.Fragment>
 </div>
 </Container>
+  
+    </>
    )
 }
 

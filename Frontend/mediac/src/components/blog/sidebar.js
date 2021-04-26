@@ -4,15 +4,14 @@ import { useHistory } from 'react-router-dom'
  
 import  "../styles.css";
  import  "./blog.css";
-
+import {conditions}  from "./Conditions/ConditionsList"
 import firebase from 'firebase'
 import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../LoginPopup"
-import useWindowDimensions from "../../functions/windowDimensions"
- import { DataContext } from '../App';
-export default function Home() {
+  import { DataContext } from '../App';
+export default function Home(prop) {
 
   const history = useHistory();
   const handleClose = () => setShow(false);
@@ -105,6 +104,40 @@ catch(e){}
     return (
     <>
  
+
+  {prop.condition && 
+  
+    <div class="sidebar">
+
+           
+         
+
+            
+              <h3 class="sidebar-title">Conditions</h3>
+              <div class="sidebar-item recent-posts">
+                
+            
+             
+                    {conditions.map(blog =>(<>
+                       <div class="post-item clearfix" style = {{paddingBottom : "7px"}}>
+                  <img src={blog.image} style = {{ height : "45px",  objectFit:"cover", width : "90px", }}   alt={blog.alt} title = {blog.title}></img>
+                  <h4 style = {{paddingLeft : "11px"}}><a base href={"/" +blog.url} >{blog.title}</a></h4>
+                 </div>
+                 
+                      </>
+                    ))}
+                
+   
+              </div> 
+
+              
+            </div> 
+
+  
+  
+  }
+
+
    <div class="sidebar">
 
                <h3 class="sidebar-title">Ask a question</h3>
@@ -157,7 +190,7 @@ catch(e){}
              
                     {videos.map(blog =>(<>
                        <div class="post-item clearfix">
-                  <img src={blog.thumbnail} style = {{objectFit : "cover"}} alt=""></img>
+                  <img src={blog.thumbnail} style = {{objectFit : "cover", maxHeight : "100px"}} alt=""></img>
                   <h4><a href={blog.link} >{blog.title}</a></h4>
                   <time datetime="2020-01-01">{blog.postDate.split("T")[0]}</time>
                 </div>
@@ -170,7 +203,39 @@ catch(e){}
               
             </div> 
 
-        
+
+
+  {!prop.condition && 
+  
+    <div class="sidebar">
+
+           
+         
+
+            
+              <h3 class="sidebar-title">Conditions</h3>
+              <div class="sidebar-item recent-posts">
+                
+            
+           
+                    {conditions.map(blog =>(<>
+                       <div class="post-item clearfix" style = {{paddingBottom : "7px"}}>
+                  <img src={blog.image} style = {{ height : "45px",  objectFit:"cover", width : "90px", }}   alt={blog.alt} title = {blog.title}></img>
+                  <h4 style = {{paddingLeft : "11px"}}><a  href={ "/" + blog.url} >{blog.title}</a></h4>
+                 </div>
+                 
+                      </>
+                    ))}
+              </div> 
+
+              
+            </div> 
+
+  
+  
+  }
+
+
         <Modal show={show} onHide={handleClose} id="nlogin">
        
        <LoginPopup onClick={handleClose} question = {quest.current == null ? "" :quest.current.value }/>

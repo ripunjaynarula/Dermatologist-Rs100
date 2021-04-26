@@ -8,7 +8,9 @@ import { useHistory } from 'react-router-dom'
    import clockSvg from '../img/clock.svg'
      import edit from '../img/edit.svg'
    import del from '../img/trash.svg'
-import ConfirmationModal from '../utility/confirmationModal'
+
+import ConfirmationModal from '../Prescription/AddPrescription'
+// import ConfirmationModal from '../utility/confirmationModal'
  import useWindowDimensions from "../../functions/windowDimensions"
 
  
@@ -42,11 +44,19 @@ const [show,setShow] = useState(false)
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json','token': token },
-                  body:JSON.stringify({blogId : prop.id})
+                  body:JSON.stringify({blogId :  prop.type === "blog"  && prop.id,
+                  videoId :  prop.type === "video"  && prop.id,
+                  
+                  })
 
           };
           console.log(requestOptions)
-        let res = await fetch('http://localhost:5000/delete-blog', requestOptions);
+        let res ;
+        if(prop.type === "blog")
+        res = await fetch('http://localhost:5000/delete-blog', requestOptions);
+        else
+          res = await fetch('http://localhost:5000/delete-video', requestOptions);
+
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)
@@ -83,7 +93,7 @@ catch(e){
   };
 
 function openVideo(){ 
-  history.push("/blog/" + prop.videoLink)
+  history.push(prop.videoLink)
  }
 
 
@@ -128,7 +138,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
           {prop.isPrivate ==="true" &&     <div className="entry-meta" style = {{marginTop : "19px", marginLeft : "-5px", marginBottom : "-2px"}}>
                 <ul>
-                  <li className="d-flex align-items-center"><img src = {edit} className = "icon" alt=""></img><a href = "#" onClick = {editVid}>Edit</a></li>
+                  {/* <li className="d-flex align-items-center"><img src = {edit} className = "icon" alt=""></img><a href = "#" onClick = {editVid}>Edit</a></li> */}
                   <li className="d-flex align-items-center"><img src = {del} className = "icon" alt=""></img><a href = "#" onClick = {deleteVid}>Delete</a></li>
                  </ul>
               </div>

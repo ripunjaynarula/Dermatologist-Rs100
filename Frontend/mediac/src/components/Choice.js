@@ -17,7 +17,7 @@ import { Link, useHistory } from "react-router-dom";
 import addusersvg from "./img/add-group.svg";
 import Navbar from "./Navbar";
 import { CardMain } from "../css/Card";
-
+import "./styles.css";
 import { DataContext } from "./App";
 import Loading from "./Loading";
 import app from "../firebase";
@@ -224,7 +224,7 @@ export default function Choice() {
               {currentProfileName}
             </h5>
           )}
-
+    
           <Card style={CardMain}>
             <Card.Body>
               <Row>

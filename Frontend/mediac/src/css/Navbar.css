@@ -56,6 +56,27 @@
          margin-right: 22%;
      }
      
+     .centre-big {
+         margin-left: 8vw;
+         margin-right: 8vw;
+     }
+     
+     .centre {
+         margin-left: 10vw;
+         margin-right: 10vw;
+     }
+     
+     .sec {
+         margin-top: 120px;
+     }
+     
+     @media(max-width:936px) {
+         .centre {
+             margin-left: 10px;
+             margin-right: 10px;
+         }
+     }
+     
      .tile {
          width: 200px;
          font-family: work sans;

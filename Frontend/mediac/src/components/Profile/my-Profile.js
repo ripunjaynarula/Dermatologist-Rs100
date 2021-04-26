@@ -68,7 +68,8 @@ if(width<1200)
         body: JSON.stringify({})
       }
 
-      let res = await fetch('http://localhost:5000/my-profile', requestOptions);
+     try{
+ let res = await fetch('http://localhost:5000/my-profile', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
       console.log(res);
@@ -76,26 +77,36 @@ if(width<1200)
         history.push('/404');
       }
       else{
-                     res.blogs.push(res.blogs)
-           res.blogs.push(res.blogs)
+        if(res.blogs)
+        {
+              for(var i =0; i<res.blogs.length  ; i++)
+          {
+              res.blogs[i].url = "/blog/" + res.blogs[i].url
+          } 
+        }
 
-          res.blogs.push(res.blogs)
+          console.log(res.blogs)     
+
           setList(res.blogs)
           res = res.data
 
           setDegree(res['degree']);
           setName(res['name']);
           setEducation(res['education']);
-          setExperience(res['experience']);
+          setExperience(res['pastExperience']);
           setSpecialisation(res['specialisation']);
           setFacebook(res["fb"])
           setLinkeding(res.linkedin)
           setCity(res.city)
           setTwitter(res.twitter)
           setCover(res.coverImage)
+          setAbout(res.about)
           setProfile(res.profileImage)
-        
+            setMembership(res.awards)
       }
+     }catch(e){
+
+     }
     }
     getData();
   }, [])
@@ -147,7 +158,7 @@ if(width<1200)
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
                         <div className="profile-header" >
                             <div className="row" style={{display: 'block'}}>
-                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{marginLeft:"35px",paddingRight:"0px"}}>
+                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{marginLeft:"-13px",paddingRight:"0px"}}>
                                     <h1 style = {{color : "black", fontSize : "24px",  }}>Dr. {name}</h1>
                                      <p style = {{marginBottom : mar, color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>{specialisation}</p>
                                     {width > 1200 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>10 years of experience</p>}  
@@ -192,15 +203,21 @@ if(width<1200)
             <hr />
             <br/> 
             
-            <h5 style = {{fontWeight : 'bold'}}>Blogs by Dr.{name}</h5>
-                    <BlogList mail="mail" blogs = {list} />
-                                        <br/>
+            <h5 style = {{fontWeight : 'bold'}}>Blogs by Dr. {name}</h5>
+              <br></br>
+                                  </Container>
+            <Container  className="align-items-center justify-content-center">
 
-                    <hr/>
-                    <br/>
-                    </Container>
+           <BlogList mail="mail" blogs = {list}  />
+           </Container>
+
+                   
                     
-            <Container id="adincon" className="align-items-center justify-content-center">                
+            <Container id="adincon"  className="align-items-center justify-content-center">                
+          
+                                                  <br/>
+ <hr/>
+                    <br/>
             <h5 style = {{fontWeight : 'bold'}} >Additional Information</h5><br/><br/>
 
             <Row style = {{ marginLeft : "0px"}}>
@@ -217,7 +234,7 @@ if(width<1200)
             <h6 id="adinf"> Past Experience</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}> {experience}</p>
+            <p style={{marginLeft: "31px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"}}> {experience}</p>
             <br/>
 
           
@@ -236,16 +253,18 @@ if(width<1200)
             <h6 id="adinf">Educational Details</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}>{education}</p>
+            <p style={{marginLeft: "31px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans" , whiteSpace: "pre-line",   lineHeight: "1.3"}}>{education}</p>
             <br/>
 
             
             <Row style = {{ marginLeft : "0px"}}>
   <img src = {achievement} className = "icon-small" alt=""></img>
-            <h6 id="adinf">Professional Memberships</h6>
+            <h6 id="adinf">Achievements</h6>
 
             </Row>
-            <p style={{marginLeft: "30px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans",}}>{membership}</p>
+            <p style={{marginLeft: "30px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"
+
+}}>{membership}</p>
               <br/>
      
             </Container>

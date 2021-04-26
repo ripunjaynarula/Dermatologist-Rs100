@@ -69,8 +69,8 @@ function Conversation() {
               }}
             >
               <div className={`d-flex justify-content-between align-items-center conv ${active===(currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail)? 'convactive':''}`} >
-                <div className="d-flex flex-row align-items-center conv w-100">
-                  <div className="image">
+                <div className="d-flex flex-row align-items-center conv w-100" style = {{paddingLeft : "5px", paddingRight : "5px"}}>
+                  <div className="image" >
                     {" "}
                     <img
                       src="https://i.imgur.com/jhsYqVT.png"
@@ -78,12 +78,12 @@ function Conversation() {
                     />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className={`d-flex flex-column line-height ml-2 `}>
+                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}}>
                     {" "}
                     <span className="font-weight-bold">
-                      {currentUser.email == chat.doctorEmail
-                        ? chat.patientUsername
-                        : chat.doctorUsername}
+                      {currentUser.email === chat.doctorEmail
+                        ? chat.doctorUsername
+                        : chat.patientUsername}
                     </span>{" "}
                     <span>
                       {chat.messages.length > 0

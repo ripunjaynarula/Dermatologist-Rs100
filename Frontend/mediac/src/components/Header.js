@@ -18,7 +18,9 @@ import blogic from "./img/blog.svg"
 import chatic from "./img/chat.svg"
 import editProf from "./img/proileEdit.svg"
 import addBlog from "./img/writing.svg"
+import addVideo from "./img/video-marketing.svg"
 
+import myVideo from "./img/youtube.svg"
 
 //import icons from react icons
 import { FaList } from "react-icons/fa";
@@ -112,8 +114,16 @@ const hideDropdown = e => {
 </MenuItem>
               <MenuItem active = {props.selected === "myblog" ? true : false}  icon = {<img src = {blogic} alt = "" height ="22px"></img>}><a href= "/my-blogs" style = {{color : "white"}}>My Blogs</a> 
 </MenuItem>
-              <MenuItem active = {props.selected === "edit" ? true : false}  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
+              <MenuItem active = {props.selected === "add-video" ? true : false}  icon = {<img src = {addVideo} alt = "" height ="22px"></img>}><a href= "/add-video" style = {{color : "white"}}>Add Video</a> 
 </MenuItem>
+              <MenuItem active = {props.selected === "my-videos" ? true : false}  icon = {<img src = {myVideo} alt = "" height ="22px"></img>}><a href= "/my-videos" style = {{color : "white"}}>My Videos</a> 
+</MenuItem>
+
+ 
+ <MenuItem active = {props.selected === "edit" ? true : false}  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
+</MenuItem>
+
+
               <MenuItem  icon = {<img src = {logoutic} alt = "" height ="22px"></img>}><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
             </Menu>
           </SidebarContent>

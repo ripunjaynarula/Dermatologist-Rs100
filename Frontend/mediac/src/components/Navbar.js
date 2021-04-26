@@ -7,14 +7,15 @@ import SelectBox from "./navDopdown";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import useWindowDimensions from "../functions/windowDimensions";
+import { conditions } from "./blog/Conditions/ConditionsList";
+import { TreatmentList } from "./blog/Treatments/treatmentList";
 
 const NavBar = (props) => {
   const [navBackground, setNavBackground] = useState(false);
   const navRef = useRef();
   navRef.current = navBackground;
-  useEffect(() => {
-    console.log(props.type);
-    if (props.type === "trans") {
+   useEffect(() => {
+     if (props.type === "trans") {
       const handleScroll = () => {
         const show = window.scrollY > 20;
         if (navRef.current !== show) {
@@ -28,7 +29,47 @@ const NavBar = (props) => {
     } else {
       setNavBackground(true);
     }
+
+
+
   }, []);
+  const conditionList = (
+    <div
+      aria-labelledby=""
+      class="dropdown-menu show"
+      style={{ margin: "0px" }}
+    >
+        {conditions.map((data, index) => (
+         
+ 
+      <a href={"/"+data.url} class="tile dropdown-item">
+        {data.title}
+      </a>
+          ))}
+
+
+    
+    </div>
+  );
+
+    const treatment = (
+    <div
+      aria-labelledby=""
+      class="dropdown-menu show"
+      style={{ margin: "0px" }}
+    >
+        {TreatmentList.map((data, index) => (
+         
+ 
+      <a href={"/"+data.url} class="tile dropdown-item">
+        {data.title}
+      </a>
+          ))}
+
+
+    
+    </div>
+  );
 
   const arr = [
     { link: "/login", text: "Login" },
@@ -44,62 +85,7 @@ const NavBar = (props) => {
   const history = useHistory();
   const [name, setName] = useState("");
   const { height, width } = useWindowDimensions();
-   const conditions = (
-    <div
-      aria-labelledby=""
-      class="dropdown-menu show"
-      style={{ margin: "0px" }}
-    >
-      <a href="/pimples-acne" class="tile dropdown-item">
-        Pimples or Acne
-      </a>
-      <a href="#action/3.2" class="tile dropdown-item">
-        Psoriasis
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Eczema
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Warts And Molluscumcontagiosum
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Vitiligo
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Hyper Pigmentation/ Malesma
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Fungal Infection
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Moles or Nevi or skin tags
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Keloid And Hypertrophic Scar
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Lichen planus
-      </a>
-      <a href="#action/3.3" class="tile dropdown-item">
-        Hair Loss
-      </a>
-      <tr>
-        <td>
-          <a href="#action/3.1" class="tile dropdown-item">
-            Pimples or Acne
-          </a>
-        </td>
-        <td>
-          <a href="#action/3.1" class="tile dropdown-item">
-            Warts And Molluscumcontagiosum
-          </a>
-        </td>
-      </tr>
-      <a href="#action/3.3" class="tile dropdown-item">
-        What Is Hirusitism?
-      </a>
-    </div>
-  );
+
 
 
 
@@ -117,6 +103,9 @@ const NavBar = (props) => {
       </a>
       <a href="#action/3.3" class="tile dropdown-item">
          My Medical Records
+      </a>
+          <a href="#action/3.3" class="tile dropdown-item">
+         Payment History
       </a>
         <a href="#action/3.3" class="tile dropdown-item">
         Need Help
@@ -198,6 +187,8 @@ const NavBar = (props) => {
           transition: "0.3s ease",
           backgroundColor:
             width < 1201 ? "white" : !navBackground ? "transparent" : "white",
+                     boxShadow: navBackground &&  "0px 0px 10px rgba(147, 149, 151, 0.25)"
+
         }}
       >
         <ReactBootStrap.Navbar.Brand
@@ -213,7 +204,22 @@ const NavBar = (props) => {
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
           <ReactBootStrap.Nav className="mr-auto">
-            
+             <ReactBootStrap.Nav.Link
+              className="navlink"
+              href="/about"
+              style={{
+                transition: "0.5s ease",
+                color:
+                  width < 1201
+                    ? "#62636a"
+                    : !navBackground
+                    ? "white"
+                    : "#62636a",
+              }}
+            >
+              About Us
+            </ReactBootStrap.Nav.Link>
+
             <ReactBootStrap.Nav.Link
               className="navlink"
               href="/blog"
@@ -246,12 +252,12 @@ const NavBar = (props) => {
             </ReactBootStrap.Nav.Link>
 
             <SelectBox
-              data={conditions}
+              data={conditionList}
               title="Conditions"
               type={props.type}
             ></SelectBox>
             <SelectBox
-              data={conditions}
+              data={treatment}
               title="Treatments"
               type={props.type}
             ></SelectBox>

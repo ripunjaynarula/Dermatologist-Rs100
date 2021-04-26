@@ -1,20 +1,22 @@
 import express from 'express'
-import Videos from '../../models/videos'
-import authStatus from '../../actions/checkLoginStatus'
-const router = express.Router();
+import blog from '../../models/videos'
+ const router = express.Router();
 
 router.post('/', async (req, res) => {
 
-    //to add pagination
  
-    var limit = req.body.limit
-    //show data randomly
  
    try {
- 
-           var videos =  await Videos.aggregate([{$sample: {size: 5}},  ]) ;
 
-           return res.send({status: 'valid', isError : false, videos})
+
+
+        var blogs : any;
+      
+            blogs =  await blog.find({doctorId: req.body.uid} );
+ 
+
+
+        return res.send({status: 'valid', isError : false, videos:blogs})
 
     } catch(e) {
         console.error(e);

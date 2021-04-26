@@ -12,6 +12,8 @@ import LoginPopup from "./LoginPopup"
 import { DataContext } from './App';
 import Navbar from "./Navbar"
 import bgImg from './img/b1.jpg'
+import HomeBottom  from "./AboutPage/HomeBottom"
+
 export default function Home() {
 
   const history = useHistory();
@@ -112,8 +114,12 @@ const [navBackground, setNavBackground] = useState(false)
  
       </Modal>
         </div>
+        
         </div>
         
+        
+<HomeBottom></HomeBottom>
+
     </>
   )
 }

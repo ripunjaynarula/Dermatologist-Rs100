@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
  
  import VideoComponent from "./videoComponent"
   import InfiniteScroll from 'react-infinite-scroll-component';
+ import Footer from "../footer"
+import Header from '../Header'
 
  
 import Navbar from '../Navbar'
@@ -21,12 +23,13 @@ import Navbar from '../Navbar'
  
     const [list, setList] = useState([])
 
-
+ 
   
 
   useEffect(() => getData(), []);
  
 
+const queryString = window.location.pathname;
 
 
  async function  getData() {
@@ -37,7 +40,8 @@ import Navbar from '../Navbar'
        setLoading(true)
           setError("")
 try{
-
+console.log(queryString)
+ 
       var token = null;
       if(currentUser)
       {
@@ -46,7 +50,9 @@ try{
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json','token': token },
- 
+          body : JSON.stringify({
+            type : ""
+          })
           };
         let res = await fetch('http://localhost:5000/videos', requestOptions);
         res = await res.text();
@@ -79,55 +85,7 @@ catch(e){
   }
 
 
-
- async function  fetchData() {
-
  
- 
-   
-       setLoading(true)
-          setError("")
-try{
-
-      var token = null;
-      if(currentUser)
-      {
-        token = await  currentUser.getIdToken(true)
-      }
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json','token': token },
- 
-          };
-        let res = await fetch('http://localhost:5000/videos', requestOptions);
-        res = await res.text();
-        res = JSON.parse(res)
-        console.log(res)
-        if(res.status === "valid")
-        {
- 
-              for(var i =0; i< res.videos.length ; i++)
-              {
-                res.videos.views = nFormatter(res.videos.views) 
-                list.push(res.videos[i])
-              }
-
-              setList(list)
-        }else{
-              history.push('/404')
-              return;
-        }
-
-}
-catch(e){
-        //history.push('/404')
-        return;
-}
-
-       setLoading(false)
-
-
-  }
 
 
 function nFormatter(num) {
@@ -174,7 +132,7 @@ function nFormatter(num) {
 
   {list.map((data, index) => (
               <VideoComponent title = {data.title} image = {data.thumbnail} 
-    publishDate = {data.postDate}     views  = {data.views} videoLink = {data.link} isPrivate = "false" videoId = {data.videoId} >
+    publishDate = {data.postDate}     views  = {data.views} videoLink = {"/video/"+data.link} isPrivate = "false" videoId = {data.videoId} >
 
 
     </VideoComponent>
@@ -195,7 +153,7 @@ function nFormatter(num) {
 
     </section>
      
-    
+    <Footer></Footer>
     </>
   )
 }

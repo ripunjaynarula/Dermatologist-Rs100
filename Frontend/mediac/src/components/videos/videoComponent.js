@@ -31,7 +31,7 @@ import { useHistory } from 'react-router-dom'
   };
 
 function openVideo(){ 
-  history.push("/video/" + prop.videoLink)
+  history.push(prop.videoLink)
  }
 
 
@@ -49,7 +49,7 @@ function openVideo(){
               <div className="entry-img" style = {{ height:  (width < 992 && width > 767) ? "200px" :    width > 1199 ?  "200px" : "250px", 
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                 <img src= {prop.image} alt="" style = {{  
-   height: width < 474 && "100%",
+   height: width < 474 ? "100%" : "200px",
    width : width > 472 && "100%",
  
   objectFit: "cover"}}
@@ -65,6 +65,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               </h6>
               </div>
 
+            {prop.hideBottom === "yes" ?  <div></div> :
+            
               <div className="entry-meta" style = {{marginTop : "6px", marginLeft : "-5px"}}>
                 <ul>
                   <li className="d-flex align-items-center"><img src = {viewSvg} className = "icon" alt=""></img><div className = "txt">{prop.views}</div></li>
@@ -72,11 +74,12 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                  </ul>
               </div>
 
+            }
              
 
           {prop.isPrivate ==="true" &&     <div className="entry-meta" style = {{marginTop : "19px", marginLeft : "-5px", marginBottom : "-2px"}}>
                 <ul>
-                  <li className="d-flex align-items-center"><img src = {edit} className = "icon" alt=""></img><a href = "#" onClick = {editVid}>Edit</a></li>
+                  {/* <li className="d-flex align-items-center"><img src = {edit} className = "icon" alt=""></img><a href = "#" onClick = {editVid}>Edit</a></li> */}
                   <li className="d-flex align-items-center"><img src = {del} className = "icon" alt=""></img><a href = "#" onClick = {deleteVid}>Delete</a></li>
                  </ul>
               </div>

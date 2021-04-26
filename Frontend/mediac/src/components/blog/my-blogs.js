@@ -93,8 +93,7 @@ function nFormatter(num) {
 
  
  const removeFromList = (e) => {
- console.log("REMOVING")
-         list.splice(e, 1);
+          list.splice(e, 1);
          console.log(list)
          setList(list)
 
@@ -119,7 +118,7 @@ function nFormatter(num) {
 
   {list.map((data, index) => (
               <VideoComponent title = {data.title} image = {data.image} 
-    publishDate = {data.postDate} removeFromList = {() => removeFromList(index)}    views  = {data.views} videoLink = {data.url} isPrivate = "true" id = {data._id} >
+    publishDate = {data.postDate} removeFromList = {() => removeFromList(index)}  type = "blog"  views  = {data.views} videoLink = {'/blog/'+ data.url} isPrivate = "true" id = {data._id} >
 
 
     </VideoComponent>

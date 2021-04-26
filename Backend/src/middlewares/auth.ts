@@ -5,6 +5,7 @@ import sendVerificationMails from "../actions/verificationMail";
 
 const checkAuth = async (req: any, res: any, next: any) => {
   if (req.headers.token) {
+    console.log("cjecking")
     admin
       .auth()
       .verifyIdToken(req.headers.token)
@@ -12,6 +13,7 @@ const checkAuth = async (req: any, res: any, next: any) => {
         req.body.uid = data.user_id;
         req.body.role = data.role;
         req.body.email = data.email;
+        console.log(req.body)
         if (data.role == "patient") {
           if (!data.emailVerified) {
           }

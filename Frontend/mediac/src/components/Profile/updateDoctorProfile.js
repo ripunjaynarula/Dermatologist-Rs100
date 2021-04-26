@@ -38,7 +38,9 @@ const [file, setFile] = useState("");
   const [picture, setPicture] = useState(null);
   const { height, width } = useWindowDimensions();
 
- 
+   const [coverPicture, setCoverPicture] = useState(null);
+
+const [coverFile, setCoverFile] = useState("");
 
  
  const [name, setName] = useState("")
@@ -58,6 +60,7 @@ const [file, setFile] = useState("");
     const [linkedin, setLinkedin] = useState("") 
     const [twitter, setTwitter] = useState("") 
     const [profile, setProfile] = useState("") 
+    const [coverUrl, setCoverUrl] = useState("") 
 
    useEffect( () => {
     
@@ -109,6 +112,7 @@ setProfile(resp.profileImage)
         setUsername(resp.username)
         if(resp.about)
         setAbout(resp.about)
+        setCoverUrl(resp.coverImage)
 
 
         console.log(resp)
@@ -127,8 +131,95 @@ updateProfileImage();
     }
   
     
-};
+};   const onChangeCoverPicture = e => {
+    if (e.target.files && e.target.files[0]){
+           setCoverPicture(URL.createObjectURL(e.target.files[0]) );
+      setCoverFile(e.target.files[0])
+updateCoverImage();
 
+     
+
+
+    }
+  
+    
+};
+async function updateCoverImage(){
+
+
+
+try{
+
+          setLoading(true)
+          setError("")
+          const token = await currentUser.getIdToken()
+console.log(coverFile)
+   
+          var requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'token': token },
+                body : JSON.stringify({
+
+fileName :   coverFile["name"],
+prefix : "cover",
+type : "cover"
+
+          })
+         };
+
+          let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
+         res = await res.text();
+           res = JSON.parse(res)
+  if(res.url == null )
+
+ {
+setLoading ( false)
+setError("Some error occured")
+   return ;
+ }
+ let r = await fetch(res.url, {
+    method: "PUT",
+    body: file,
+    headers: {
+      "Content-Type": "image/jpeg",
+      "x-amz-acl": "public",
+   
+     },
+  });
+
+if(r.status !== 200)
+{
+   setLoading ( false)
+setError("Some error occured")
+   return ;
+}
+ setLoading (false)
+requestOptions.body = JSON.stringify({profileImage: res.fileName, type : "cover"})
+
+          let resp = await fetch('http://localhost:5000/save-doctor-profile-image', requestOptions);
+
+if(resp.isError)
+{
+  setLoading ( false)
+setError("Some error occured")
+   return ;
+}
+setSuccess("Profile picture changed successfully")
+
+
+
+}catch(e){
+setLoading (false)
+setError("Some error occured")
+
+
+
+}
+
+
+
+
+}
 async function updateProfileImage(){
 
 
@@ -306,6 +397,13 @@ try{
          hiddenFileInput.current.click();
 
   };
+
+      const hiddenCoverFileInput = React.useRef(null);
+
+   const handleCoverClick = event => {
+         hiddenCoverFileInput.current.click();
+
+  };
   return (
     <>
 <Navbar selected = "edit" />
@@ -336,6 +434,19 @@ try{
 
           
           <Form onSubmit={handleSubmit}>
+
+            <Row  style ={{paddingLeft : "22px" , flexDirection: 'row',  display: "flex", alignItems : "center",   }}>
+  <img  width="400" height="140" src={coverPicture == null ?  profile == null ? null : profile : coverPicture  } alt="" style = {{objectFit : "cover" }} /> 
+ 
+ <div style ={{width : "20px"}}></div>
+ 
+          <Button disabled={loading} variant="link" style = {{padding: "0px", height : "30px"}} onClick={handleCoverClick}>Change Cover Image</Button>
+
+ <input type="file"  name="coverImg" style={{display:'none'}} ref={hiddenCoverFileInput} onChange={onChangeCoverPicture}/>
+
+</Row>
+ <br></br>
+
             <Row >
 
 <Col sm>

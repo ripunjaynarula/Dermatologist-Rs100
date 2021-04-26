@@ -3,12 +3,11 @@ import { Card, Alert, Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import usersvg from './img/user.svg';
 import addusersvg from './img/add-group.svg';
-
 import Modal from 'react-bootstrap/Modal'
 import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
 import Carousel from "react-elastic-carousel";
-
+import "./styles.css"
 export default function ProfileSelection(props) {
 
   

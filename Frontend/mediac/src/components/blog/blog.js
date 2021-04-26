@@ -18,6 +18,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../LoginPopup"
 import useWindowDimensions from "../../functions/windowDimensions"
+ import Footer from "../footer"
 
 import { DataContext } from '../App';
 export default function Home() {
@@ -180,7 +181,7 @@ catch(e){
    </div>
 
     </section>
-     
+     <Footer></Footer>
     
     </>
   )

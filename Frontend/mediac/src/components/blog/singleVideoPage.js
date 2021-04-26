@@ -10,6 +10,7 @@ import SideBar from "./sidebar"
    import heartSvg from '../img/heart.svg'
       import heartRed from '../img/heartRed.svg'
    import Navbar from '../Navbar'
+ import Footer from "../footer"
 
  import userSvg from '../img/person.svg'
    import clockSvg from '../img/clock.svg'
@@ -21,7 +22,6 @@ const [postId, setPostId] = useState('')
  const [error, setError] = useState(false)
    const [width, setWidth] = useState(false)
 const [loading, setLoading] = useState(false)
-   const ref = useRef(null);
 const [youtubeVideo, setyoutubeVideo] = useState("")
 const [title, setTitle] = useState("")
 const [content, setContent] = useState("")
@@ -34,6 +34,7 @@ const [date, setDate] = useState("")
 const [liked, setLiked] = useState(false)
 const queryString = window.location.pathname;
   
+   const ref = useRef(null);
 
  useEffect(() => {
      function handleResize() {
@@ -220,7 +221,7 @@ catch(e){}
               <div class="entry-img"  style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
               
-                <iframe  width = {width} height={width / 1.777} src={youtubeVideo} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+                <iframe  width = {width} height={width / 1.77} src={youtubeVideo} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
 
 
                 </iframe>
@@ -292,26 +293,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
  </section>
 </main>
 
- <footer id="footer" className="footer">
-
-    <div className="footer-newsletter">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-12 text-center">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div className="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email">
-                  </input>
-                  <input type="submit" value="Subscribe"></input>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    </footer>
+ <Footer></Footer>
   
 
 

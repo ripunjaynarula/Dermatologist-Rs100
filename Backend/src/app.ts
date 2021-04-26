@@ -25,7 +25,10 @@ import viewBlogs from './routes/blogs/viewBlogs'
 import viewBlog from './routes/blogs/viewBlog'
 import allVideos from './routes/videos/viewVideosPublic'
 import myVideos from './routes/videos/viewVideosPrivate'
+import delVideo from './routes/videos/deleteVideo'
 
+import addPrescription from './routes/medicinesRoute/add'
+import searchMed from './routes/medicinesRoute/search'
 
 import checkConsultationStatus from './routes/checkConsultationStatus';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
@@ -53,6 +56,8 @@ import chat from './models/chat'
 import archive from './routes/archive';
 import doctorSignup from './routes/doctorSignup';
 import myBlogs from './routes/blogs/myBlogs';
+import blogsLimit from './routes/blogs/limitBlogs';
+
 import likeBlog from './routes/blogs/blogLike';
 
 const app = express();
@@ -113,6 +118,10 @@ app.use('/patientSignup', patientSignup);
 app.use('/login', login);
 
 app.use('/verify', verifyRouter);
+
+
+app.use('/myvideos',checkAuth, myVideos);
+app.use('/delete-video',checkAuth, delVideo);
 app.use('/getActiveConsultation',checkAuth, getActiveConsultationRouter);
 app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
@@ -127,6 +136,9 @@ app.use('/add-blog', checkAuth, addBlog);
 app.use('/add-video', checkAuth, addYtVideo);
 app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/my-profile', checkAuth, viewDocProfilePvt);
+app.use('/search-med', checkAuth, searchMed);
+app.use('/add-prescription', checkAuth, addPrescription);
+
 
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
@@ -137,9 +149,13 @@ app.use('/get-sidebar', getRandomBlogsAndVideos);
 app.use('/blogs', viewBlogs);
 app.use('/blog', viewBlog);
 app.use('/videos', allVideos);
-app.use('/my-videos',checkAuth, myVideos);
+
 app.use('/my-blogs',checkAuth, myBlogs);
 app.use('/delete-blog',checkAuth, delBlog);
+
+app.use('/blogs-limit', blogsLimit);
+
+
 
 app.use('/video', viewSingleVideo);
 app.use('/subscribe', subscribeNotif);

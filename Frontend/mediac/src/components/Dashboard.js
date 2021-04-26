@@ -12,6 +12,7 @@ import ellipse from "./img/ellipse.png";
 import bgimg from "./img/image1.png";
 import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
+import HomeBottom  from "./AboutPage/HomeBottom"
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);
@@ -74,6 +75,8 @@ export default function Dashboard() {
         {/*<a href="/Choice" className="newconbtn"><img id="eellipsebtn" src={ellipse}/> New Consultation</a> <br/><br/>*/}
         {/*<a href="/OtherPersonDetails" id="onewconbtn"><img id="ellipsebtn" src={oellipse}/> New User</a>*/}
       </div>
+
+      <HomeBottom></HomeBottom>
     </>
   );
 }

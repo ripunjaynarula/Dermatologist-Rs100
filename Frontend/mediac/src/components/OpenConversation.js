@@ -242,7 +242,7 @@ function OpenConversation() {
                       currentUser.email === message["from"]
                         ? "bg-primary text-white"
                         : "bg-light"
-                    }`}
+                    }`} style = {{marginTop: "4px", marginLeft : "4px", marginRight : "4px", }}
                   >
                     {message["text"]}
                   </div>
@@ -250,6 +250,7 @@ function OpenConversation() {
                     className={`text-muted small date ${
                       currentUser.email === message["from"] ? "text-right" : ""
                     }`}
+                    style = {{marginLeft : "4px", marginRight : "4px"}}
                   >
                     {message["time"]}
                   </div>

@@ -12,6 +12,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
+import Consultations from "./Consultations";
+import MedicalRecords from "./MedicalRecords";
+import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
 
 import PrivateRoute from "./PrivateRoute";
@@ -72,6 +75,20 @@ function App() {
                 path="/change-password"
                 component={ChangePassword}
               />
+              
+              <PrivateRoute
+                path="/Consultations"
+                component={Consultations}
+              />
+              <PrivateRoute
+                path="/MedicalRecords"
+                component={MedicalRecords}
+              />
+              <PrivateRoute
+                path="/PaymentHistory"
+                component={PaymentHistory}
+              />
+
               <PrivateRoute
                 path="/verification-sent"
                 component={VerificationSent}
@@ -98,7 +115,6 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route  path="/blog" component={singleBlog} />
-                            <Route exact path="/details" component={Details} />
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />

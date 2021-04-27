@@ -11,7 +11,7 @@ import firebase from "firebase";
 import { CardMain } from "../css/Card";
 import { CardBody, Col, Card, Container } from "reactstrap";
 
-function Details() {
+function Consultations() {
   function callback(e) {
     console.log(e);
   }
@@ -81,4 +81,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default Consultations;

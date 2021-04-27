@@ -11,7 +11,7 @@ import firebase from "firebase";
 import { CardMain } from "../css/Card";
 import { CardBody, Col, Card, Container } from "reactstrap";
 
-function Details() {
+function PaymentHistory() {
   function callback(e) {
     console.log(e);
   }
@@ -38,7 +38,7 @@ function Details() {
                 <b>Your Drive</b>
               </h5>
             </div>
-            <Tabs defaultActiveKey="1" onChange={callback} tabPosition="left">
+            <Tabs defaultActiveKey="3" onChange={callback} tabPosition="left">
               <TabPane tab="Consultations" key="1">
                 <h2>Consultations</h2>
                 <div
@@ -81,4 +81,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default PaymentHistory;

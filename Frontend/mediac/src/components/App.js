@@ -12,6 +12,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
+import Details from "./Details";
+
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./Profile/UpdateProfile";
@@ -96,7 +98,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route  path="/blog" component={singleBlog} />
-                            <Route exact path="/my-blogs" component={myBlogs} />
+                            <Route exact path="/details" component={Details} />
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />
@@ -154,7 +156,8 @@ function App() {
                 component={DoctorDashboard}
               />
                 
-       
+                <Route exact path="/my-blogs" component={myBlogs} />
+
 
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>

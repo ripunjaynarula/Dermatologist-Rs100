@@ -16,6 +16,7 @@ import Consultations from "./Consultations";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
+import NeedHelp from "./NeedHelp";
 
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
@@ -87,6 +88,10 @@ function App() {
               <PrivateRoute
                 path="/PaymentHistory"
                 component={PaymentHistory}
+              />
+              <PrivateRoute
+                path="/NeedHelp"
+                component={NeedHelp}
               />
 
               <PrivateRoute

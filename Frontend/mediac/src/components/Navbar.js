@@ -107,7 +107,7 @@ const NavBar = (props) => {
           <a href="/PaymentHistory" class="tile dropdown-item">
          Payment History
       </a>
-        <a href="#action/3.3" class="tile dropdown-item">
+        <a href="/NeedHelp" class="tile dropdown-item">
         Need Help
       </a>
        <a href="/change-password" class="tile dropdown-item">

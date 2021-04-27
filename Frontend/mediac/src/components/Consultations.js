@@ -73,6 +73,14 @@ function Consultations() {
                   </div>
                 </div>
               </TabPane>
+              <TabPane tab="Need Help?" key="4">
+                <h2>Need Help?</h2>
+                <div class="card" id="detailcard">
+                  <div class="card-body" id="detailcard">
+                    
+                  </div>
+                </div>
+              </TabPane>
             </Tabs>
           </div>
         </div>

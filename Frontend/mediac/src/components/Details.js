@@ -24,7 +24,7 @@ function Details() {
         <div class="card " style={{backgroundColor:"#ececec"}} >
         <div className="App">
         <div class="card-body">
-        <div style={{backgroundColor:"white",marginTop: "57px", minHeight:"46px", paddingTop: "12px", paddingLeft:"10px", backgroundColor:"rgba(255, 255, 255, 0.5)"}}>
+        <div style={{backgroundColor:"white",marginTop: "57px", minHeight:"46px", paddingTop: "12px", paddingLeft:"15px", backgroundColor:"rgba(255, 255, 255, 0.5)"}}>
 
             <h5><b>Your Drive</b></h5>
 

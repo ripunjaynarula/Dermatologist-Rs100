@@ -25,6 +25,8 @@
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
     "firebase-admin": "^9.4.2",
+    "fs": "0.0.1-security",
+    "html-pdf": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "nanoid": "^3.1.20",

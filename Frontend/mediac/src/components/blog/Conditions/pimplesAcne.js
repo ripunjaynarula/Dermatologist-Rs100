@@ -1,6 +1,5 @@
- import React, {useRef,useEffect, useState, useContext} from "react";
-import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
-import { useHistory } from 'react-router-dom'
+ import React, {useEffect, useState,  } from "react";
+ import { useHistory } from 'react-router-dom'
  
 import  "../../styles.css";
  import  "../blog.css";
@@ -10,11 +9,12 @@ import Navbar from '../../Navbar'
 
  import DOMPurify from 'dompurify';
 
-  import { useAuth } from "../../../contexts/AuthContext"
-   import SideBar from "../sidebar"
+    import SideBar from "../sidebar"
 
    import {conditions} from "./ConditionsList"
- 
+import SEO from '../../utility/seo'
+import { Helmet } from "react-helmet";
+
 export default function Home() {
   const history = useHistory();
 
@@ -87,8 +87,21 @@ for(var i =0; i< conditions.length; i++)
   
  
     return (
+      
     <>
-         <div className="Navb" ><Navbar  /></div>
+
+            <Helmet>
+                <title>App Title</title>
+                <link rel="canonical" href="https://malikgabroun.com" />
+                            <meta name="description" content="Nested component" />
+ 
+            </Helmet>
+ 
+
+   <main>
+
+
+           <div className="Navb" ><Navbar  /></div>
 
      <section class="breadcrumbs">
       <div class="container">
@@ -159,6 +172,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 </main>
 
 <Footer></Footer>
+   </main>
 
  
 

@@ -38,7 +38,7 @@ export default function LoginPopup(prop) {
         headers: { 'Content-Type': 'application/json', token : await user.user.getIdToken() },
         body: JSON.stringify(d)
       }; 
-      let res = await fetch('http://localhost:5000/login', requestOptions)
+      let res = await fetch(process.env.REACT_APP_API_URL+'login', requestOptions)
       res = await res.text()
       res = JSON.parse(res)
       console.log(res);

@@ -33,7 +33,7 @@ export default function OtherPersonForm(props) {
           body: JSON.stringify({name: onameRef.current.value, gender: ogenRef.current.value, relation : relRef.current.value, age : odobRef.current.value })
         };
 
-        let res = await fetch('http://localhost:5000/addNewProfile', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'addNewProfile', requestOptions);
         res = await res.text()
         res = JSON.parse(res)
         if (res['status'] === 'saved_successfuly') {

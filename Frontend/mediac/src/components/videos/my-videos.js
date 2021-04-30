@@ -3,7 +3,8 @@ import {   Row,   } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
  
    import  "../blog/blog.css";
- 
+ import {reactLocalStorage} from 'reactjs-localstorage';
+
  import VideoComponent from "../blog/blogCardSmall"
   import InfiniteScroll from 'react-infinite-scroll-component';
  import Footer from "../footer"
@@ -26,7 +27,21 @@ import Navbar from '../Navbar'
   const [isMine, setMine] = useState(false);
 
   
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
 
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="patient"){
+       return history.replace('/dashboard');
+    }
+  }
   useEffect(() => getData(), []);
  
 
@@ -56,7 +71,7 @@ if(queryString === "my-videos")
           headers: { 'Content-Type': 'application/json','token': token },
          
           };
-        let res = await fetch('http://localhost:5000/myvideos', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'myvideos', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)

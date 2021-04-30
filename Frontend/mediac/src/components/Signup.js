@@ -53,7 +53,7 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
         body: JSON.stringify(d)
         }; 
 
-      let res = await fetch('http://localhost:5000/patientSignup', requestOptions)
+      let res = await fetch(process.env.REACT_APP_API_URL+'patientSignup', requestOptions)
  
 
       res = await res.text()

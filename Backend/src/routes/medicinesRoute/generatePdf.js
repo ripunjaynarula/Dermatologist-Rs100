@@ -1,8 +1,125 @@
-// import nodeHtmlToImage from 'node-html-to-image'
-var nodeHtmlToImage = require("node-html-to-image");
+const nodeHtmlToImage = require('node-html-to-image')
 
 
-var html = `<!DOCTYPE html>
+module.exports = {
+    genrateImg: async function f(doctorName, clinicName, date, patientName,
+        medicines, history, diagnosis, suggestion, signature,
+        gender, age, designation, medicalNumber, filePath, fileName) {
+
+
+
+        var meds = ``
+
+
+
+
+        for (var i = 0; i < medicines.length; i++) {
+
+            meds = meds + `<h4 style="margin-top: 32px; ">` + capitalizeFirstLetter(medicines[i].name) + `</h4>`;
+            meds = meds + `<div class="med ">`
+
+            if (medicines[i].isMorning || medicines[i].isAfternoon || medicines[i].isNight) {
+                if (medicines[i].isMorning)
+                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                else
+                    meds = meds + `<p>` + `0` + `</p>`
+
+                meds = meds + `<div class="dash "></div>`
+
+                if (medicines[i].isAfternoon)
+                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                else
+                    meds = meds + `<p>` + `0` + `</p>`
+
+                meds = meds + `<div class="dash "></div>`
+
+                if (medicines[i].isNight)
+                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                else
+                    meds = meds + `<p>` + `0` + `</p>`
+                meds = meds + `<p>,&nbsp;` + medicines[i].frequency + `</p></div> `
+
+            } else {
+                meds = meds + `<p>` + capitalizeFirstLetter(medicines[i].frequency) + `</p></div> `
+
+            }
+
+
+
+            meds = meds + `<div> <p style="margin-top: -6px; ">`
+
+            if (medicines[i].meal == 1) {
+                meds = meds + `Before food, ` + medicines[i].duration
+            }
+            if (medicines[i].meal == 2) {
+                meds = meds + `After food, ` + medicines[i].duration
+            }
+            meds = meds + ` ` + medicines[i].days
+            meds = meds + `</p>`
+
+            if (medicines[i].instructions) {
+                meds = meds + `<p > ` + capitalizeFirstLetter(medicines[i].instructions) + `</p>`
+            }
+
+            meds = meds + `</div>`
+
+        }
+
+
+        console.log("----------------------------------")
+
+        var advice = ``
+        if (suggestion) {
+            advice = `<div>
+                <h3>
+                    General Advice
+                </h3>
+                <p style="white-space: pre-line;">` + suggestion + `</p>
+
+            </div>`
+        }
+
+        var diag = ``
+        if (diagnosis) {
+            diag = `
+            <div>
+                <h3 style="margin-top: 28px;">
+                    Diagnosis
+                </h3>
+                <p style="white-space: pre-line;"> ` +
+                diagnosis +
+                `</p>
+
+
+                <br>
+            </div>`
+        }
+
+        var pH = ``
+        if (history) {
+            pH = ` <div>
+                <h3 style="margin-top: 28px;">
+                    History
+                </h3>
+                <p style="white-space: pre-line;"> ` + history + `</p>
+                <br>
+            </div>`
+
+        }
+
+
+        var ageGender = ``
+
+        if (age && gender) {
+            ageGender = `<p>` + age + ", " + gender + ` </p>`
+        } else if (age) {
+            ageGender = `<p>` + age + ` </p>`
+
+        } else if (gender) {
+            ageGender = `<p>` + gender + ` </p>`
+
+        }
+        var html = `<!DOCTYPE html>
 <html>
 
 <head>
@@ -37,6 +154,10 @@ var html = `<!DOCTYPE html>
             margin-right: 3px;
         }
         
+        h1 {
+            line-height: 0.4em;
+        }
+        
         h3 {
             line-height: 0.5em;
             color: #000000e5;
@@ -68,14 +189,15 @@ var html = `<!DOCTYPE html>
 </head>
 
 <body>
-<br/>
+    <br/>
     <div style="width: 85%; margin: 0 7.5%;">
 
         <div style="text-align: center;">
-            <h1>Doctor Name</h1>
-            <h3 class="des">Designation</h3>
-            <h3 class="des"> Medical number</h3>
-            <h3 class="des">Clinic Name</h3>
+            <h1>Dr. ` + doctorName + `</h1>
+
+            <h3 class="des">` + designation + `</h3>
+           ` + ` <h3 class="des">Medical Registeration Number: ` + medicalNumber + ` </h3>` + `
+            <h3 class="des">` + clinicName + `</h3>
         </div>
 
         <hr class="dark" />
@@ -84,13 +206,14 @@ var html = `<!DOCTYPE html>
         <div style="display: flex;  justify-content: space-between;">
             <div>
 
-                <h2>Paatient Name</h2>
-                <p>age, gender</p>
+                <h2>` + patientName + `</h2>
+                ` + ageGender +
+            `
             </div>
 
             <div>
-                <p>date</p>
-                <p>id</p>
+                <p>` + date + `</p>
+                <p>` + fileName + `</p>
             </div>
 
         </div>
@@ -99,53 +222,54 @@ var html = `<!DOCTYPE html>
 
             <hr class="dark" />
 
-            <h3 style="margin-top: 28px;">
-                Diagnosis
-            </h3>
-            <p style="white-space: pre-line;"> details</p>
+           ` +
+
+            pH +
+            `
 
 
-            <br>
 
 
-            <h3>
-                General Advice
-            </h3>
-            <p style="white-space: pre-line;">details</p>
+            ` +
+            diag
+
+            +
+            `
+
+
+
+
+            ` +
+
+            advice +
+            `
 
 
 
             <hr class="dark " />
 
+            ` +
 
-            <h3 style="margin-top: 34px; ">
-                Medicines
-            </h3>
+            `<div>
 
-            <h4 style="margin-top: 32px; ">Medicine Name</h4>
-            <div class="med ">
-                <p>1</p>
-                <div class="dash "></div>
-                <p> 0</p>
-                <div class="dash "></div>
-                <p> 0</p>
+                <h3 style="margin-top: 34px; ">
+                    Medicines
+                </h3>
 
-            </div>
-            <div>
-                <p style="margin-top: -6px; ">daily after food, 2 days</p>
-            </div>
-            <h4 style="margin-top: 32px; ">Medicine Name</h4>
-            <div class="med ">
-                <p>1</p>
-                <div class="dash "></div>
-                <p> 1</p>
-                <div class="dash "></div>
-                <p> 0</p>
 
-            </div>
-            <div>
-                <p style="margin-top: -6px; ">daily after food, 2 days</p>
-            </div>
+                ` +
+            meds +
+            `
+            </div>`
+
+
+        +
+        `
+
+
+
+
+
         </div>
 
 
@@ -153,7 +277,7 @@ var html = `<!DOCTYPE html>
         <div style="float: right;     ">
 
 
-            <img style="width: 300px;height: 200px;" src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"></img>
+            <img style="width: 300px;height: 200px;" src="` + signature + `"></img>
 
 
 
@@ -180,7 +304,7 @@ var html = `<!DOCTYPE html>
     </div>
 
 
-<br/>
+    <br/>
 
 
 
@@ -189,18 +313,25 @@ var html = `<!DOCTYPE html>
 
 
 </html>`
+        console.log(html)
 
+        try {
 
+            await nodeHtmlToImage({
+                output: filePath,
+                html: html
+            })
 
-async function f() {
-    try {
-        await nodeHtmlToImage({
-            output: './image.png',
-            html: html
-        })
-    } catch (e) {
-        console.log(e)
+            return true;
+        } catch (e) {
+            console.log(e)
+            return false
+        }
     }
 }
 
-f()
+
+function capitalizeFirstLetter(string) {
+    if (!string) return ""
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

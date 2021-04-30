@@ -6,8 +6,14 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try {
    
-            var m  : any=     med.find({$text: {$search: req.body.name, $language : "en"}}).limit(10)
-            return res.send({isError: false, meds : m});
+   console.log(req.body.name)
+ 
+                //    var result = await med.createIndexes([{ name: "text" }]);
+var m  : any=    await med.find() 
+            
+            // var m  : any=    await med.find({$text: {$search: "\"" + req.body.name +"\"",}}) 
+            console.log(m)
+             return res.send({isError: false, meds : m});
 
         } catch (e) {
    

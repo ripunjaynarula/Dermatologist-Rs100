@@ -7,21 +7,20 @@ import {Texts} from "../../css/Texts";
 import ChipInput from "material-ui-chip-input";
 import back from "../img/back.svg"
 import AsyncSelect from "react-select/async"
- 
+ import fetch from 'cross-fetch';
+ import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import CircularProgress from '@material-ui/core/CircularProgress';
  export default function BlogCard(prop) {
 
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState(false)
   const { currentUser,  } = useAuth()
 
-   const patientRef = useRef()
-  const passwordRef = useRef()
-  const examinationRef = useRef()
+ 
     const refQuantity = useRef()
 const refDosage = useRef()
-  const historyRef = useRef()
-  const suggestionRef = useRef()
-  const refDays = useRef()
+   const refDays = useRef()
   const refFrequency = useRef()
   const refDuration = useRef()
   const refInstructions = useRef()
@@ -36,22 +35,54 @@ const [isMorning, setMorning] = useState(false)
 const [medError, setMedError]  = useState("")
 const [meals, setMeals] = useState(0)
 const [medicineName, setMedicineName] = useState("")
+ const [open, setOpen] = React.useState(false);
+  const [options, setOptions] = React.useState([]);
+   const searchLoading = false ;
+    const [diagnosisi, setDiagnosis] = useState("")
+   const [suggestioni, setSuggestion] = useState("")
+
+   const [patientName, setPatientName] = useState("")
+   const [histori, setHistori] = useState("")
+   useEffect(() => {
+    if (!open) {
+      setOptions([]);
+    }
+  }, [open]);
+// useEffect(() => {
+//     let active = true;
+
+//     if (!searchLoading) {
+//       return undefined;
+//     }
+
+//     (async () => {
+//       const response = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
+//        const countries = await response.json();
+
+//       if (active) {
+//         setOptions(Object.keys(countries).map((key) => countries[key].item[0]));
+//       }
+//     })();
+
+//     return () => {
+//       active = false;
+//     };
+//   }, [searchLoading]);
 
   function openMed(){
     setIsMedOpen(true)
   }
  
   function hideMed(){
-    setIsMedOpen(false)
+     setIsMedOpen(false)
   }
 
-async function finalSubmit(e){
-  e.preventDefault()
+async function finalSubmit(){
   var message = ""
-  var name = patientRef.current.value
-  var history = historyRef.current.value
-  var diagnosis = examinationRef.current.value
-  var  suggestion = suggestionRef.current.value
+  var name = patientName
+  var history = histori
+  var diagnosis = diagnosisi
+  var  suggestion = suggestioni
 
   if(!name)     message = 'Patient name not set\n'
   if(!diagnosis) message = message +  "Patient diagnosis not set\n"
@@ -76,7 +107,7 @@ async function finalSubmit(e){
 
         })
       }; 
-      let res = await fetch('http://localhost:5000/add-prescription', requestOptions)
+      let res = await fetch(process.env.REACT_APP_API_URL+'add-prescription', requestOptions)
       res = await res.text()
       res = JSON.parse(res)
       console.log(res);
@@ -149,8 +180,9 @@ console.log(nodays)
       isAfternoon,
       isNight, 
       frequency : freq,
-      duration : durat + " " + nodays,
-       instructions,
+      duration : durat   ,
+      days : nodays,
+      instructions,
       meal : meals 
 
     }
@@ -168,8 +200,7 @@ console.log(nodays)
 
     
   }
-
-
+ 
 
  
 
@@ -177,21 +208,23 @@ console.log(nodays)
 const loadOptions = async (name) => {
 
     try{
-       const requestOptions = {
+
+        const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', token :  await currentUser.getIdToken() },
         body: JSON.stringify({
           name : name
         })
       }; 
-      let res = await fetch('http://localhost:5000/search-med', requestOptions)
+      let res = await fetch(process.env.REACT_APP_API_URL+'search-med', requestOptions)
+         res = await res.text()
+      res = JSON.parse(res)
+      console.log(res)
+ 
       if(!res['isError'])
       {
         var r = []
-        r.push({
-          label : name,
-          value : name
-        })
+        
         for(var i=0;i<res.meds.length; i++)
         {
           r.push({
@@ -199,16 +232,18 @@ const loadOptions = async (name) => {
             value : res.meds[i].name
           })
         }
+        setOptions(r)
         return r
+      }else{
+ 
+          setOptions([])
       }
 
     }catch(e)
-    {
-      return [{
-          label : name,
-          value : name
-        }]
-    }
+    { 
+
+      setOptions([ ])
+     }
 
  
  };
@@ -239,23 +274,31 @@ const handleDeleteChip = (chip, index) => {
               <Form >
             <Form.Group id="name" style={{paddingTop: 10 }}>
               <Form.Label style = {Texts.FormLabel}>Patient Name</Form.Label>
-              <Form.Control type="text" ref={patientRef} value = {prop.patientName} required />
+              <Form.Control type="text" onChange = {(e)=>{
+setPatientName(e.target.value)
+              }} value = { patientName ? patientName :  prop.patientName } required />
             </Form.Group>
 
             <Form.Group id="history"  style={{paddingBottom: 15, paddingTop: 10,}}>
               <Form.Label  style = {Texts.FormLabel}>Patient History</Form.Label>
-              <Form.Control type="text" ref={historyRef} required />
+              <Form.Control type="text" onChange = {(e)=>{
+                setHistori(e.target.value)
+              }} value = {histori} required />
             </Form.Group>
 
           
             <Form.Group id="findings"  style={{paddingBottom: 16}}>
               <Form.Label  style = {Texts.FormLabel}>Diagnosis/Lab Findings</Form.Label>
-              <Form.Control type="text" ref={examinationRef} required />
+              <Form.Control type="text" onChange = {(e)=>{
+                setDiagnosis(e.target.value)
+              }} value = {diagnosisi} required />
             </Form.Group>
     
             <Form.Group id="investigation"  style={{paddingBottom: 22}}>
               <Form.Label  style = {Texts.FormLabel}>Suggestion</Form.Label>
-              <Form.Control type="text" ref={suggestionRef} required />
+              <Form.Control type="text"  onChange = {(e)=>{
+setSuggestion(e.target.value)
+              }} value = {suggestioni} required />
             </Form.Group>
 
           
@@ -287,13 +330,37 @@ const handleDeleteChip = (chip, index) => {
                  <Form >
             <Form.Group id="medname" style={{paddingTop: 10}}>
               <Form.Label style = {Texts.FormLabel}>Medicine Name</Form.Label>
-                  <AsyncSelect
-        loadOptions={loadOptions}
-        onInputChange={(value) => setMedicineName(value)}
-        onChange={(value) => {setMedicineName(value); console.log(medicine)}}
-      > </AsyncSelect>
+           
               
+ <Autocomplete
+      id="asynchronous-demo"
+      style={{  }}
+      freeSolo
  
+      options={options.map((option) => {
+       return  option.label
+      })}
+       onChange={(event, newValue) => {
+          setMedicineName(newValue);
+      }}
+      onInputChange = {(obj, value, reason)=>{
+                  setMedicineName(value);
+
+       if(options.length===0)
+         loadOptions(value)
+      }}
+       renderInput={(params) => (
+        <TextField
+          {...params}
+          label=""
+          variant="outlined"
+          InputProps={{
+            ...params.InputProps,type: 'search',
+            endAdornment: null
+          }}
+        />
+      )}
+    />
               {/* <Form.Control type="text" ref={medNameRef}  required /> */}
             </Form.Group>
         

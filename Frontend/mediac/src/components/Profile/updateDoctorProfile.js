@@ -6,6 +6,7 @@ import {CardMain} from "../../css/Card";
 import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
 import Navbar from "../Header"
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -69,7 +70,22 @@ const [coverFile, setCoverFile] = useState("");
     getProfiles();
   }, [ ]);
 
+  useEffect( () => {
+     onlyOnce();
+  }, [] )
 
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+   if (role === "patient" )
+   { 
+    return history.replace('/update-profile')
+     }
+  
+  }
  async function getProfiles() {
 
 
@@ -81,7 +97,7 @@ const [coverFile, setCoverFile] = useState("");
           body : JSON.stringify({patientUid: currentUser.uid})
 
           };
-        let res = await fetch('http://localhost:5000/my-profile', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'my-profile', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
          if(res.isError)
@@ -167,7 +183,7 @@ type : "cover"
           })
          };
 
-          let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'get-profile-upload-url', requestOptions);
          res = await res.text();
            res = JSON.parse(res)
   if(res.url == null )
@@ -196,7 +212,7 @@ setError("Some error occured")
  setLoading (false)
 requestOptions.body = JSON.stringify({profileImage: res.fileName, type : "cover"})
 
-          let resp = await fetch('http://localhost:5000/save-doctor-profile-image', requestOptions);
+          let resp = await fetch(process.env.REACT_APP_API_URL+'save-doctor-profile-image', requestOptions);
 
 if(resp.isError)
 {
@@ -241,7 +257,7 @@ fileName :   file["name"]
           })
          };
 
-          let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'get-profile-upload-url', requestOptions);
          res = await res.text();
            res = JSON.parse(res)
   if(res.url == null )
@@ -270,7 +286,7 @@ setError("Some error occured")
  setLoading (false)
 requestOptions.body = JSON.stringify({profileImage: res.fileName})
 
-          let resp = await fetch('http://localhost:5000/save-doctor-profile-image', requestOptions);
+          let resp = await fetch(process.env.REACT_APP_API_URL+'save-doctor-profile-image', requestOptions);
 
 if(resp.isError)
 {
@@ -341,7 +357,7 @@ try{
           body:JSON.stringify(d)
         };
 
-          let res = await fetch('http://localhost:5000/update-doctor-profile', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'update-doctor-profile', requestOptions);
    res = await res.text();
           res = JSON.parse(res)
 

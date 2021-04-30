@@ -75,7 +75,7 @@ try{
           body : JSON.stringify({url: queryString.split("/")[queryString.split("/").length - 1]})
 
           };
-        let res = await fetch('http://localhost:5000/blog', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'blog', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)
@@ -167,7 +167,7 @@ try{
 
           };
            console.log(JSON.stringify({blogId: postId}))
-        let res = await fetch('http://localhost:5000/like-blog', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'like-blog', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
          if(res.status !== "saved_successfuly")

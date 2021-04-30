@@ -60,7 +60,7 @@ try{
           headers: { 'Content-Type': 'application/json'  },
           
           };
-        let res = await fetch('http://localhost:5000/get-sidebar', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'get-sidebar', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res, "==================")

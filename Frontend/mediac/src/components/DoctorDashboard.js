@@ -6,7 +6,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import Header from "./Header";
 import docimg from "./img/doc.jpeg";
 import "./styles.css";
-import "./docdash.css";
+  import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 export default function DoctorDashboard() {
@@ -14,7 +14,23 @@ export default function DoctorDashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
 
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="patient"){
+     await logout();
+      
+     return history.push("/login");
+     }
+  }
   useEffect(() => {
     async function checkLogin() {
       const token = await currentUser.getIdToken(true);
@@ -26,7 +42,7 @@ export default function DoctorDashboard() {
       };
 
       let res = await fetch(
-        "http://localhost:5000/getDocDetails",
+        process.env.REACT_APP_API_URL+'getDocDetails',
         requestOptions
       );
       res = await res.text();

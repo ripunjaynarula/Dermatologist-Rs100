@@ -8,7 +8,12 @@ router.post('/', async (req, res) => {
  
  
    try {
+if(req.body.role !== "doctor")
+  {
 
+      return res.send({isError : true, status : "wrong_access"})
+  }
+ 
 
 
         var blogs : any;

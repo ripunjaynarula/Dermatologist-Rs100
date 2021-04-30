@@ -6,6 +6,7 @@ import {
   Container,
 } from "reactstrap"
 import { convertToHTML } from 'draft-convert';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
  import "../../css/buttons.css";
 import app from '../../firebase'
@@ -53,7 +54,21 @@ const FormEditors = () => {
      document.body.style.backgroundColor = "#ededf2";
 
  
+    useEffect( () => {
+     onlyOnce();
+  }, [] )
+
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
  
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="patient"){
+       return history.replace('/dashboard');
+    }
+  }
  
  function matchYoutubeUrl(url) {
  var regExp= /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -143,7 +158,7 @@ return;
           body:JSON.stringify(d)
         };
 
-          let res = await fetch('http://localhost:5000/add-video', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'add-video', requestOptions);
    res = await res.text();
           res = JSON.parse(res)
  

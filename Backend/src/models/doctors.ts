@@ -6,6 +6,17 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
         required: true,
         trim: true
     },
+        clinicName: {
+        type: String,
+
+        default  :"ABCD clinic"
+    },
+    medicalNumber:{
+
+        type: String,
+        
+        default  :"ABCD clinic"
+    },
     username : {
         type : String,
         required : false,

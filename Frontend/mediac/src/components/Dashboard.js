@@ -13,6 +13,7 @@ import bgimg from "./img/image1.png";
 import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
 import HomeBottom  from "./AboutPage/HomeBottom"
+ import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);
@@ -21,17 +22,22 @@ export default function Dashboard() {
   const dbinfo = useRef();
   const history = useHistory();
   const quest = useRef();
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
 
-  async function handleLogout() {
-    setError("");
-
-    try {
-      await logout();
-      history.push("/login");
-    } catch {
-      setError("Failed to log out");
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="doctor"){
+       return history.replace('/doctordashboard');
     }
   }
+ 
 
   function onClick() {
     history.push("/Choice/?ques=" + quest.current.value);

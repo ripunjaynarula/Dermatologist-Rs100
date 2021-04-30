@@ -5,8 +5,10 @@ const consultations = mongoose.model('medicines', new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true
+        unique: true,
+        text : true
     },
+
  
    
 }));

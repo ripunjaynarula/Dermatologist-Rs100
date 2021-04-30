@@ -57,6 +57,7 @@ import archive from './routes/archive';
 import doctorSignup from './routes/doctorSignup';
 import myBlogs from './routes/blogs/myBlogs';
 import blogsLimit from './routes/blogs/limitBlogs';
+import getImageUploadUrl from './routes/getImageUploadUrl';
 
 import likeBlog from './routes/blogs/blogLike';
 
@@ -127,6 +128,9 @@ app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/verifyDoc', verifyDocLogin);
+
+app.use('/get-image-upload-url', checkAuth, getImageUploadUrl);
+
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);

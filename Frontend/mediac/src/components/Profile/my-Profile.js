@@ -69,7 +69,7 @@ if(width<1200)
       }
 
      try{
- let res = await fetch('http://localhost:5000/my-profile', requestOptions);
+ let res = await fetch(process.env.REACT_APP_API_URL+'my-profile', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
       console.log(res);

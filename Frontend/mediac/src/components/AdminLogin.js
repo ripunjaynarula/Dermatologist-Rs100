@@ -27,7 +27,7 @@ function AdminLogin() {
         body: JSON.stringify({email: emailRef.current.value, pass: passwordRef.current.value})
       }
 
-      let res = await fetch('http://localhost:5000/adminLogin', requestOptions);
+      let res = await fetch(process.env.REACT_APP_API_URL+'adminLogin', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
       if(!res['status']){

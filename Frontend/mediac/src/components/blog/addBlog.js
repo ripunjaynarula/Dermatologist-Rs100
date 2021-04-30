@@ -9,6 +9,7 @@ import { convertToHTML } from 'draft-convert';
 
  import "../../css/buttons.css";
 import app from '../../firebase'
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 import React, { useRef, useState, useEffect } from "react"
 import {   Form, Button,   Row, Alert } from "react-bootstrap"
@@ -45,7 +46,21 @@ const [file, setFile] = useState("");
     () => EditorState.createEmpty(),
   );
 
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
 
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="patient"){
+       return history.replace('/dashboard');
+    }
+  }
    const onChangePicture = e => {
     if (e.target.files && e.target.files[0]){
            setPicture(URL.createObjectURL(e.target.files[0]) );
@@ -145,7 +160,7 @@ console.log(res)
               headers: { 'Content-Type': 'application/json', 'token': token },
               body:JSON.stringify(d)
               };
-                        let res2 = await fetch('http://localhost:5000/add-blog', requestOptions);
+                        let res2 = await fetch(process.env.REACT_APP_API_URL+'add-blog', requestOptions);
 
               res2 = await res2.text();
               res= JSON.parse(res2)

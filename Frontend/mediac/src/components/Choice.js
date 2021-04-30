@@ -117,7 +117,7 @@ export default function Choice() {
         }),
       };
       let res = await fetch(
-        "http://localhost:5000/newConsultancy",
+        process.env.REACT_APP_API_URL+'newConsultancy',
         requestOptions
       );
       res = await res.text();
@@ -141,7 +141,7 @@ export default function Choice() {
       headers: { "Content-Type": "application/json", token: token },
     };
 
-    res = await fetch('http://localhost:5000/razorpay', requestOptions);
+    res = await fetch(process.env.REACT_APP_API_URL+'razorpay', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
 

@@ -5,6 +5,13 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
 try{
+
+    if(req.body.role !== "patient")
+    {
+        return res.send({url : "/login", redirected : true})
+    }
+ 
+
         var patient: any = await patients.findOne({uid: req.body.uid} );
     if (patient) {
         let profiles = patient.profiles;

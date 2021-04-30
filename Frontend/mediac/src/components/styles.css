@@ -342,6 +342,7 @@
 }
 
 @media(min-width:200px) {
+    
     .card {
         width: 100%;
     }
@@ -863,6 +864,7 @@ div.scrollmenu a {
 }
 
 @media(max-width:1147px) {
+    
     #coverimg {
         width: 100vw;
         object-fit: contain;
@@ -1065,10 +1067,17 @@ div.scrollmenu a {
     }
     #doc {
         margin-top: 10%;
+        
+    }
+    .rc-tabs-nav{
+        display: none;
     }
 }
 
 @media only screen and (min-width: 768px) {
+    .rc-tabs-nav{
+        display: flex ;
+    }
     #doc {
         margin-top: 1%;
     }
@@ -1139,3 +1148,34 @@ button.rec-dot:focus {
 .rec-arrow-left {
     transform: translate(100%, -20%)!important;
 }
+
+.rc-tabs {
+    border: none !important;
+    
+  }
+  .rc-tabs-tab {
+    padding: 15px;
+    text-transform: capitalize;
+    border: 0.1px solid #ececec!important;
+    background-color: white;
+  }
+  .rc-tabs-tab .rc-tabs-tab-btn {
+    font-size: 15px ;
+    
+  }
+  .rc-tabs-tab.rc-tabs-tab-active {
+    background: #cfcfcf;
+  }
+  .rc-tabs-ink-bar {
+    background: #59c7fd !important;
+  }
+  .rc-tabs-content-holder {
+    padding: 10px;
+    
+  }
+
+  #detailcard{
+      max-height:80px !important;
+      min-height:1px !important;
+      box-shadow:none !important;
+  }

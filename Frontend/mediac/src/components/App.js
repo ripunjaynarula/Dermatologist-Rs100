@@ -12,6 +12,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
+import Consultations from "./Consultations";
+import MedicalRecords from "./MedicalRecords";
+import PaymentHistory from "./PaymentHistory";
+import Details from "./Details";
+import NeedHelp from "./NeedHelp";
+
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./Profile/UpdateProfile";
@@ -138,7 +144,8 @@ function App() {
                 component={DoctorDashboard}
               />
                 
-       
+                <Route exact path="/my-blogs" component={myBlogs} />
+
 
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>

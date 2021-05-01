@@ -12,7 +12,15 @@ import ellipse from "./img/ellipse.png";
 import bgimg from "./img/image1.png";
 import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
-import HomeBottom  from "./AboutPage/HomeBottom"
+import HomeBottom  from "./AboutPage/HomeBottom";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
+const slideImages = [
+  './img/b1.jpg',
+  './img/b2.jpg',
+  './img/b3.jpg'
+];
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);
@@ -48,9 +56,9 @@ export default function Dashboard() {
      <div className = "home">
        <div className="Navb" ><Navbar type = "trans" /></div>
      </div>
-      <div id="wrapper" className="w-100 p-3" style={{   }}>
+      <div id="wrapper" className="w-100 p-3 slide-container" style={{   }}>
+        
         <div id="container">
-          {/* <img id="gloves" src={bgimg} alt="bg" /> */}
           <div id="hometxt">
             <h2 id="bigtxt">
               <br></br>Best Care &<br></br>Better Doctors.

@@ -33,9 +33,9 @@ async function onlyOnce()  {
   if(role === undefined) role  = "";
  
   
-  if(role ==="doctor"){
-       return history.replace('/doctordashboard');
-    }
+  // if(role ==="doctor"){
+  //      return history.replace('/doctordashboard');
+  //   }
   }
  
 

@@ -142,7 +142,7 @@ const hideDropdown = e => {
                 <FiAlignJustify id="arrow"/>
               )}
             </div>
-            <ReactBootStrap.Navbar.Brand id="brand" href="/">LOGO</ReactBootStrap.Navbar.Brand>
+            <ReactBootStrap.Navbar.Brand id="brand" style={{color: "black"}} href="/">LOGO</ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="mr-auto"> 
     

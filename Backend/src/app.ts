@@ -18,7 +18,7 @@ import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
-import addBlog from '../src/routes/blogs/addBlog'
+import addBlog from './routes/blogs/addBlog'
 import delBlog from './routes/blogs/deleteBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'

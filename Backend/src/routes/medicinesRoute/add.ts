@@ -2,7 +2,7 @@ import express from 'express';
 import med from '../../models/medicines';
 import prescription from '../../models/prescriptions';
  import generateUploadSignedUrl from '../../actions/awsUpload';
-const genrateImg = require('./generatePdf')
+import  genrateImg from './generatePdf'
 const router = express.Router();
 import Doctors from '../../models/doctors';
 import Patients from '../../models/patients';
@@ -61,7 +61,7 @@ for (var key in req.body.medicines) {
             age = getAge(patient.dob)
         }
 
-          var isSaved = await genrateImg.genrateImg(
+          var isSaved = await genrateImg(
             capitalizeFirstLetter(doctor.name), capitalizeFirstLetter(doctor.clinicName), new Date().toLocaleString().split(',')[0], capitalizeFirstLetter(req.body.patientName), medicines, capitalizeFirstLetter(req.body.history),
             capitalizeFirstLetter(req.body.diagnosis), capitalizeFirstLetter(req.body.suggestion), "https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg", capitalizeFirstLetter(patient.gender), age, capitalizeFirstLetter(doctor.degree), doctor.medicalNumber,
             localPath, id.toString() 

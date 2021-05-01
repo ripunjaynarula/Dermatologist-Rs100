@@ -1,10 +1,8 @@
-const nodeHtmlToImage = require('node-html-to-image')
+import nodeHtmlToImage from 'node-html-to-image'
 
-
-module.exports = {
-    genrateImg: async function f(doctorName, clinicName, date, patientName,
-        medicines, history, diagnosis, suggestion, signature,
-        gender, age, designation, medicalNumber, filePath, fileName) {
+      async function genrateImg(doctorName : string, clinicName : string, date : string, patientName : string,
+        medicines : any, history : string, diagnosis : string, suggestion : string, signature : string,
+        gender : string, age : string, designation : string, medicalNumber : string, filePath : string, fileName : string) {
 
 
 
@@ -328,10 +326,13 @@ module.exports = {
             return false
         }
     }
-}
 
 
-function capitalizeFirstLetter(string) {
+
+    export default genrateImg
+ 
+
+function capitalizeFirstLetter(string : string) {
     if (!string) return ""
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

@@ -45,7 +45,7 @@ export default function BlogList(props) {
         {props.blogs ?    
         
        
-             props.blogs.length>1?
+             props.blogs.length>0?
 
 
 

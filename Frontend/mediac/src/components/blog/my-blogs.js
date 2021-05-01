@@ -56,7 +56,7 @@ try{
  
               for(var i =0; i< res.blogs.length ; i++)
               {
-                                  res.blogs[i].views = nFormatter(res.blogs[i].views) 
+                                  res.blogs[i].views = nFormatter(res.blogs[i].likes) 
 res.blogs[i].postDate = res.blogs[i].postDate.split("T")[0]
             }
 

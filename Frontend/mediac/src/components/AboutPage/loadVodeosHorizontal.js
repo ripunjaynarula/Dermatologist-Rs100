@@ -68,7 +68,7 @@ try{
          })
 
           };
-        let res = await fetch('http://localhost:5000/videos', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'videos', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)

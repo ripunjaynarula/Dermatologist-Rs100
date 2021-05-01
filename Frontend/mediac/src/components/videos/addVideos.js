@@ -185,7 +185,7 @@ return;
             if(res.status === "saved")
             {
          await alert("Post Published")
-history.push('/')        
+history.push('/my-videos')        
 
     }
 

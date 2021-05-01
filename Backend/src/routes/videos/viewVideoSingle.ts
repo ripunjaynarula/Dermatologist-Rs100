@@ -13,6 +13,10 @@ router.post('/', async (req, res) => {
    
    try {
 
+if(req.body.videoLink.includes("%20"))
+{
+    req.body.videoLink = req.body.videoLink.replace("%20", " ")
+}
 
         var blogs : any;
                   

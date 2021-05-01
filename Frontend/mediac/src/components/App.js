@@ -117,7 +117,7 @@ function App() {
 
               <Route  path="/treatments" component={treatmentMain} />
               <Route  path="/acupulse-fractional-co2-laser-treatment" component={treatment} />
-              <Route  path="/trlaser-hair-removal-treatment-consultation" component={treatment} />
+              <Route  path="/laser-hair-removal-treatment-consultation" component={treatment} />
               <Route  path="/q-switch-tag-laser-tattoo-removal" component={treatment} />
               <Route  path="/conventional-co2-laser-treatment-consultation" component={treatment} />
               <Route  path="/microdermabrasion-treatment" component={treatment} />

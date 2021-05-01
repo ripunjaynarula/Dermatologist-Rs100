@@ -11,8 +11,7 @@ import webPush from 'web-push';
 import path from 'path';
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
-import checkVerificationRouter from './routes/checkVerification';
-import getActiveConsultationRouter from './routes/getActiveConsultation';
+ import getActiveConsultationRouter from './routes/getActiveConsultation';
 import cors from 'cors'
 import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';

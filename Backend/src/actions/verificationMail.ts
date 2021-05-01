@@ -19,7 +19,7 @@ const sendVerificationMails = (email: any, token: string) => {
         from: `"Hello" ${process.env.MAIL}`, 
         to: email,
         subject: 'Mediac Verification',
-        html: ` <p>Thank you for registering with Mediac. <a href="http://localhost:5000/verify?token=${token}">Click here to verify your account.</a></p>`
+        html: `<p>Thank you for registering with Mediac. <a href="${process.env.API_URL}verify?token=${token}">Click here to verify your account.</a></p>`
     };
  
     transporter.sendMail(mailOptions,(error,info)=>{

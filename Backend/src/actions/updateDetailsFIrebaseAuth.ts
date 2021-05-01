@@ -1,5 +1,5 @@
 import admin from '../middlewares/initFirebase'
-const serviceAccount = require('../config/fbServiceAccountKey.json')
+const serviceAccount = require('../../fbServiceAccountKey.json')
 
 
  

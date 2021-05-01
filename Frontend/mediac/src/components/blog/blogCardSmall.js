@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
      import edit from '../img/edit.svg'
    import del from '../img/trash.svg'
 
-import ConfirmationModal from '../Prescription/galleryOrCamera'
+import ConfirmationModal from '../utility/confirmationModal'
 // import ConfirmationModal from '../utility/confirmationModal'
  import useWindowDimensions from "../../functions/windowDimensions"
 

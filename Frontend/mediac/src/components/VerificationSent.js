@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React , {useState}from "react"
+import { Link ,  useHistory} from "react-router-dom"
 import { Card, CardBody, Col, Container, Row } from "reactstrap"
 import { useAuth } from "../contexts/AuthContext"
  import {CardMain} from "../css/Card";
@@ -8,11 +8,87 @@ import { useAuth } from "../contexts/AuthContext"
 import logodark from "./img/banner3.jpg"
 import logolight from "./img/banner3.jpg"
 import useWindowDimensions from "../functions/windowDimensions"
+import MessageModal from '../utility/confirmationModal'
+import { useEffect } from "react";
 
 
 const EmailVerification = () => {
     const { height, width } = useWindowDimensions();
  const { currentUser,   } = useAuth()
+const history = useHistory()
+
+
+const [show, setShow] = useState(false);
+const [message, setMessage] = useState("");
+
+const onClose = ()=>{
+  setShow(false)
+}
+const resendMail= async(e)=>{
+  e.preventDefault();
+try{
+  const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', token : await currentUser.getIdToken() },
+        body: JSON.stringify({
+          resend : true
+        })
+      }; 
+      let res = await fetch(process.env.REACT_APP_API_URL+'resend-verification', requestOptions)
+      res = await res.text()
+      res = JSON.parse(res)
+      console.log(res);
+    
+      if (res['status'] === 'already_verified') {
+       
+       history.push('/dashboard');
+        return;
+      }
+      if(res['status'] === 'verification_sent'){
+        setShow(true)
+        setMessage("Verification mail sent")
+      }
+}catch(e)
+{
+  setShow(true)
+  setMessage("Connection Error")
+}
+  
+
+}
+const onlyOnce= async()=>{
+ try{
+  const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', token : await currentUser.getIdToken() },
+        body: JSON.stringify({
+         })
+      }; 
+      let res = await fetch(process.env.REACT_APP_API_URL+'resend-verification', requestOptions)
+      res = await res.text()
+      res = JSON.parse(res)
+      console.log(res);
+    
+      if (res['status'] === 'already_verified') {
+       
+       history.push('/dashboard');
+        return;
+      }
+   
+}catch(e)
+{
+  setShow(true)
+  setMessage("Connection Error")
+}
+  
+
+}
+
+
+ useEffect( () => {
+    console.log(process.env.REACT_APP_API_URL)
+     onlyOnce();
+  }, [] )
   return (
 
 <div>
@@ -72,7 +148,7 @@ const EmailVerification = () => {
               <div className="mt-5 text-center">
                 <p>
                   Did't receive an email ?{" "}
-                  <a href="#" className="font-weight-medium text-primary">
+                  <a href="#" onClick = {resendMail} className="font-weight-medium text-primary">
                     {" "}
                     Resend{" "}
                   </a>{" "}
@@ -83,6 +159,8 @@ const EmailVerification = () => {
           </Row>
         </Container>
    
+
+   <MessageModal show = {show} onHide  = {onClose} message = {message}></MessageModal>
 
  
  

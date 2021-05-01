@@ -400,13 +400,13 @@ disabled = "true"
                      <option style={{display:"none"}}>  </option>
 
 
-{gender === "male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+{gender === "male" ? <option value="male" selected >Male</option> :  <option value="male"  >Male</option>}
                        
-                       {gender === "female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+                       {gender === "female" ?  <option value="female" selected>Female</option>:  <option value="female">Female</option>}
 
- {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
+ {gender === "rather not say" ?                                             <option value="rather not say" selected>Rather not say</option>
 :
-                                            <option value="Rather not say">Rather not say</option>
+                                            <option value="rather not say">Rather not say</option>
 }                       
                 </select>
             </Form.Group></Col>

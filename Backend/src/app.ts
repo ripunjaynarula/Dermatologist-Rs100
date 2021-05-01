@@ -38,6 +38,7 @@ import updateDoctorProfile from './routes/profile/updateDoctorProfile'
 import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDocProfilePvt from './routes/profile/viewDoctorProfilePrivate'
+import resendEmail from './routes/resendVerificationMail'
 
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
@@ -141,6 +142,7 @@ app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/my-profile', checkAuth, viewDocProfilePvt);
 app.use('/search-med', checkAuth, searchMed);
 app.use('/add-prescription', checkAuth, addPrescription);
+app.use('/resend-verification', checkAuth,resendEmail);
 
 
 app.use('/doctor-profile',  viewDoctorProfile);

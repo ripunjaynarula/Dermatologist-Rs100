@@ -125,7 +125,7 @@ return
           body:JSON.stringify(d)
         };
 
-          let res = await fetch('http://localhost:5000/add-blog', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'add-blog', requestOptions);
    res = await res.text();
           res = JSON.parse(res)
 console.log(res)

@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
      import edit from '../img/edit.svg'
    import del from '../img/trash.svg'
 
-import ConfirmationModal from '../Prescription/AddPrescription'
+import ConfirmationModal from '../utility/confirmationModal'
 // import ConfirmationModal from '../utility/confirmationModal'
  import useWindowDimensions from "../../functions/windowDimensions"
 
@@ -53,9 +53,9 @@ const [show,setShow] = useState(false)
           console.log(requestOptions)
         let res ;
         if(prop.type === "blog")
-        res = await fetch('http://localhost:5000/delete-blog', requestOptions);
+        res = await fetch(process.env.REACT_APP_API_URL+'delete-blog', requestOptions);
         else
-          res = await fetch('http://localhost:5000/delete-video', requestOptions);
+          res = await fetch(process.env.REACT_APP_API_URL+'delete-video', requestOptions);
 
         res = await res.text();
         res = JSON.parse(res)

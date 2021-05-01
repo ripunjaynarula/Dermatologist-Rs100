@@ -11,9 +11,12 @@ router.post('/', async (req, res) => {
         var phone = req.body.phone
         var gender = req.body.gender
         try {
+            if(gender)
+            {
+                gender =gender.toLowerCase()
+            }
 
-console.log(req.body)
-    var patient: any = await patients.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, phone  } });
+     var patient: any = await patients.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, phone  } });
 fbUpdate.changeNameFirebaseAuth(req, name )
 
             return res.send({status: "updated", isError : false})

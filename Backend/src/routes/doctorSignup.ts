@@ -5,7 +5,7 @@ import { uid } from 'rand-token';
 import hashPassword from '../actions/hash'
 import fbUpdate from '../actions/updateDetailsFIrebaseAuth';
  import generateUploadSignedUrl from '../actions/awsUpload';
-
+import capitalizeFirstLetter from '../actions/capitalizeFirstLetter'
 
 const router = express.Router();
 
@@ -47,7 +47,7 @@ router.post('/', async (req, res) =>{
 
 fbUpdate.changeAccess("doctor", d.data.uid)
             doc = new doctors({
-                name: req.body.name,
+                name: capitalizeFirstLetter(req.body.name),
                 password: hash,
                 email: req.body.email,
                 phone: req.body.phone,

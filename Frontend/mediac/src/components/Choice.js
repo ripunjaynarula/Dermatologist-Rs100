@@ -58,6 +58,8 @@ export default function Choice() {
   const urlParams = new URLSearchParams(queryString);
   var question = "";
 
+    document.body.style.backgroundColor = "#ededf2";
+
   if (urlParams.get("ques")) question = urlParams.get("ques");
   const loadRazorpay = () => {
     return new Promise((resolve) => {
@@ -80,7 +82,7 @@ export default function Choice() {
     setCurrentProfile(id);
     setCurrentProfileName(name);
     setCurrentRelation(relation);
-    setCurrentGender(gender);
+    setCurrentGender(gender.toLowerCase());
     setCurrentAge(age);
   };
 
@@ -88,7 +90,7 @@ export default function Choice() {
     const refresh = ( id, gender, age) => {
             console.log(id)
 
-     setCurrentGender(gender);
+     setCurrentGender(gender.toLowerCase());
     setCurrentAge(age);
   };
 
@@ -117,7 +119,7 @@ export default function Choice() {
         }),
       };
       let res = await fetch(
-        "http://localhost:5000/newConsultancy",
+        process.env.REACT_APP_API_URL+'newConsultancy',
         requestOptions
       );
       res = await res.text();
@@ -141,7 +143,7 @@ export default function Choice() {
       headers: { "Content-Type": "application/json", token: token },
     };
 
-    res = await fetch('http://localhost:5000/razorpay', requestOptions);
+    res = await fetch(process.env.REACT_APP_API_URL+'razorpay', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
 
@@ -170,13 +172,13 @@ export default function Choice() {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
     rzp1.on("payment.failed", function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      // alert(response.error.code);
+      // alert(response.error.description);
+      // alert(response.error.source);
+      // alert(response.error.step);
+      // alert(response.error.reason);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
     });
     // return true;
   };
@@ -268,7 +270,7 @@ export default function Choice() {
                       ) : (
                         <option value="rather not say">Rather not say</option>
                       )}
-                      {currentGender === "male" ? (
+                      {currentGender  === "male" ? (
                         <option value="male" selected>
                           Male
                         </option>
@@ -276,7 +278,7 @@ export default function Choice() {
                         <option value="male">Male</option>
                       )}
 
-                      {currentGender === "female" ? (
+                      {currentGender  === "female" ? (
                         <option value="female" selected>
                           Female
                         </option>

@@ -8,6 +8,8 @@ import OtherPersonDetails from "./OtherPersonDetails"
 import app from "../firebase"
 import Carousel from "react-elastic-carousel";
 import "./styles.css"
+import {  useHistory } from "react-router-dom"
+
 export default function ProfileSelection(props) {
 
   
@@ -25,7 +27,9 @@ export default function ProfileSelection(props) {
     const [currentGender, setCurrentGender] = useState("");
   const [currentAge, setCurrentAge] = useState("");
   const [profiles, setProfiles] = useState([])
-  
+    const history = useHistory()
+
+ 
   const [togg, setTogg] = useState({showMenu:false});
   /*const emailRef = useRef()
   const onameRef = useRef()
@@ -43,10 +47,19 @@ export default function ProfileSelection(props) {
           method: 'GET',
           headers: { 'Content-Type': 'application/json','token': token },
           };
-        let res = await fetch('http://localhost:5000/getProfiles', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'getProfiles', requestOptions);
+
+
+       
+        
         res = await res.text();
         res = JSON.parse(res)
-        console.log(res)
+         if(res.redirected)
+        {
+          history.push(res.url)
+          return 
+        }
+
         setProfiles(res['profiles']);
         setCurrentAge(res.age)
         setCurrentGender(res.gender)

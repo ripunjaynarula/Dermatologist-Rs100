@@ -18,7 +18,7 @@
 }
 
 #home1 {
-    width: 100%;
+    width: 100vh;
 }
 
 .card {
@@ -42,7 +42,6 @@
 .container {
     padding: 2px 16px;
     border-radius: 18px;
-    width: 100%;
     /* margin-left:0% !important;
     padding-left:0% !important; */
 }
@@ -303,7 +302,6 @@
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
-    background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
     font-family: Work sans;

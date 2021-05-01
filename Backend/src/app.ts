@@ -11,14 +11,13 @@ import webPush from 'web-push';
 import path from 'path';
 import adminRouter from './routes/admin';
 import verifyRouter from './routes/verify';
-import checkVerificationRouter from './routes/checkVerification';
-import getActiveConsultationRouter from './routes/getActiveConsultation';
+ import getActiveConsultationRouter from './routes/getActiveConsultation';
 import cors from 'cors'
 import checkAuth from './middlewares/auth'
 import newConsultancyRouter from './routes/newConsultancy';
 import newProfileRouter from './routes/addNewProfile';
 import getProfiles from './routes/getProfiles';
-import addBlog from '../src/routes/blogs/addBlog'
+import addBlog from './routes/blogs/addBlog'
 import delBlog from './routes/blogs/deleteBlog'
 import getRandomBlogsAndVideos from './routes/blogs/blogsAndVideos'
 import viewBlogs from './routes/blogs/viewBlogs'
@@ -39,6 +38,7 @@ import updateDoctorProfile from './routes/profile/updateDoctorProfile'
 import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDocProfilePvt from './routes/profile/viewDoctorProfilePrivate'
+import resendEmail from './routes/resendVerificationMail'
 
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
@@ -57,6 +57,7 @@ import archive from './routes/archive';
 import doctorSignup from './routes/doctorSignup';
 import myBlogs from './routes/blogs/myBlogs';
 import blogsLimit from './routes/blogs/limitBlogs';
+import getImageUploadUrl from './routes/getImageUploadUrl';
 
 import likeBlog from './routes/blogs/blogLike';
 
@@ -127,6 +128,9 @@ app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/verifyDoc', verifyDocLogin);
+
+app.use('/get-image-upload-url', checkAuth, getImageUploadUrl);
+
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
 app.use('/save-patient-profile-image', checkAuth, profilePicturePatientSave);
 app.use('/save-doctor-profile-image', checkAuth, profilePictureDoctorSave);
@@ -138,6 +142,7 @@ app.use('/patient-profile', checkAuth, viewPatientProfile);
 app.use('/my-profile', checkAuth, viewDocProfilePvt);
 app.use('/search-med', checkAuth, searchMed);
 app.use('/add-prescription', checkAuth, addPrescription);
+app.use('/resend-verification', checkAuth,resendEmail);
 
 
 app.use('/doctor-profile',  viewDoctorProfile);
@@ -170,9 +175,9 @@ app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
 app.use('/toggleArchive', checkAuth, archive);
 
 
-// app.get('/', (req, res) => {
-//     return res.send('Hello world!');
-// });
+app.get('/', (req, res) => {
+    return res.send('Hello world!');
+});
 server.listen(port, () => {
     console.log(`Express server listening on port ${port}`);
 });

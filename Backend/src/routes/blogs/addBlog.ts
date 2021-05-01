@@ -7,7 +7,12 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
 
+if(req.body.role === "patient")
+  {
 
+      return res.send({isError : true, status : "wrong_access"})
+  }
+ 
    
  
     var blogPost = new blog({

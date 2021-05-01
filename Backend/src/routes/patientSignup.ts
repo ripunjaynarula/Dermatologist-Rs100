@@ -26,13 +26,13 @@ router.post('/',checkAuth, async (req, res) => {
     try {
 
        patient = await newPatient.save();
-        if(req.body.phone)
-                  fbUpdate.changeNamePhoneAccessFirebaseAuth(req, req.body.name, req.body.phone, "patient");
-        else{
+        // if(req.body.phone)
+        //           fbUpdate.changeNamePhoneAccessFirebaseAuth(req, req.body.name, req.body.phone, "patient");
+        // else{
         
                     fbUpdate.changeNameAccessFirebaseAuth(req, req.body.name, "patient");
 
-        }       
+        // }       
         let jwtSecret: any = process.env.JWT_SECRET;
        let verificationToken: string = jwt.sign({_id : req.body.uid}, jwtSecret);
 

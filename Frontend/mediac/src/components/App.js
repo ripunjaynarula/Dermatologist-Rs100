@@ -69,57 +69,24 @@ function App() {
         <DataContext.Provider value={[consultationData, setConsultationData]}>
           {/* <div className="Navb"><Navbar /></div> */}
 
-          <div  >
-            <Switch>
+          <Switch>
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <PrivateRoute
-                path="/change-password"
-                component={ChangePassword}
-              />
-              
-              <PrivateRoute
-                path="/Consultations"
-                component={Consultations}
-              />
-              <PrivateRoute
-                path="/MedicalRecords"
-                component={MedicalRecords}
-              />
-              <PrivateRoute
-                path="/PaymentHistory"
-                component={PaymentHistory}
-              />
-              <PrivateRoute
-                path="/NeedHelp"
-                component={NeedHelp}
-              />
-
-              <PrivateRoute
-                path="/verification-sent"
-                component={VerificationSent}
-              />
+              <PrivateRoute path="/change-password" component={ChangePassword}/>
+              <PrivateRoute path="/verification-sent" component={VerificationSent}/>
               <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute
-                path="/ConsultationForm"
-                component={ConsultancyForm}
-              />
+              <PrivateRoute path="/ConsultationForm" component={ConsultancyForm}/>
               <PrivateRoute path="/Choice" component={Choice} />
-              <PrivateRoute
-                path="/OtherPersonDetails"
-                component={OtherPersonDetails}
-              />
+              <PrivateRoute path="/OtherPersonDetails" component={OtherPersonDetails}/>
               <PrivateRoute path="/add-blog" component={FormEditors} />
               <PrivateRoute path="/add-video" component={AddVideo} />
-                            <PrivateRoute path="/my-profile" component={myProfile} />
+              <PrivateRoute path="/my-profile" component={myProfile} />
               <PrivateRoute path="/my-videos" component={myVideos} />
 
-              <PrivateRoute
-                path="/update-doctor"
-                component={UpdateDoctorProfile}
-              />
+              <PrivateRoute path="/update-doctor" component={UpdateDoctorProfile}/>
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route  path="/blog" component={singleBlog} />
+              <Route exact path="/my-blogs" component={myBlogs} />
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />
@@ -150,7 +117,7 @@ function App() {
 
               <Route  path="/treatments" component={treatmentMain} />
               <Route  path="/acupulse-fractional-co2-laser-treatment" component={treatment} />
-              <Route  path="/trlaser-hair-removal-treatment-consultation" component={treatment} />
+              <Route  path="/laser-hair-removal-treatment-consultation" component={treatment} />
               <Route  path="/q-switch-tag-laser-tattoo-removal" component={treatment} />
               <Route  path="/conventional-co2-laser-treatment-consultation" component={treatment} />
               <Route  path="/microdermabrasion-treatment" component={treatment} />
@@ -188,24 +155,22 @@ function App() {
               </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
               <TokenContext.Provider value={[token, setToken]}>
-                      <Route exact path="/adminlogin" component={AdminLogin} />
+                <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
 
               </TokenContext.Provider>
             </Switch>
-          </div>
+      
         </DataContext.Provider>
 
         <TokenContext.Provider value={[token, setToken]}>
  
-          <div  >
-            <Switch>
+        <Switch>
         
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
        
             </Switch>
-          </div>
         </TokenContext.Provider>
   
       </AuthProvider>

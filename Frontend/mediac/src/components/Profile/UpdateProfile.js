@@ -6,6 +6,7 @@ import {CardMain} from "../../css/Card";
 import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
  import Navbar from "../Navbar"
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -39,7 +40,21 @@ const [fil, setFil] = useState(null);
   }, [ ]);
 
 
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
+
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
  
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="doctor"){
+       return history.replace('/update-doctor');
+    }
+  }
 
 async function getProfiles() {
 
@@ -53,7 +68,7 @@ async function getProfiles() {
           body : JSON.stringify({patientUid: currentUser.uid})
 
           };
-        let res = await fetch('http://localhost:5000/patient-profile', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'patient-profile', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
          if(res.isError)
@@ -113,7 +128,7 @@ fileName :   file["name"]
           })
          };
 
-          let res = await fetch('http://localhost:5000/get-profile-upload-url', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'get-profile-upload-url', requestOptions);
          res = await res.text();
            res = JSON.parse(res)
   if(res.url == null )
@@ -150,7 +165,7 @@ setError("Some error occured")
  setLoading (false)
 requestOptions.body = JSON.stringify({profileImage: res.fileName})
 
-          let resp = await fetch('http://localhost:5000/save-patient-profile-image', requestOptions);
+          let resp = await fetch(process.env.REACT_APP_API_URL+'save-patient-profile-image', requestOptions);
 
 if(resp.isError)
 {
@@ -210,7 +225,7 @@ try{
           body:JSON.stringify(d)
         };
 
-          let res = await fetch('http://localhost:5000/update-patient-profile', requestOptions);
+          let res = await fetch(process.env.REACT_APP_API_URL+'update-patient-profile', requestOptions);
    res = await res.text();
                    console.log(res)
 
@@ -385,13 +400,13 @@ disabled = "true"
                      <option style={{display:"none"}}>  </option>
 
 
-{gender === "male" ? <option value="Male" selected >Male</option> :  <option value="male"  >Male</option>}
+{gender === "male" ? <option value="male" selected >Male</option> :  <option value="male"  >Male</option>}
                        
-                       {gender === "female" ?  <option value="Female" selected>Female</option>:  <option value="female">Female</option>}
+                       {gender === "female" ?  <option value="female" selected>Female</option>:  <option value="female">Female</option>}
 
- {gender === "Rather not say" ?                                             <option value="Rather not say" selected>Rather not say</option>
+ {gender === "rather not say" ?                                             <option value="rather not say" selected>Rather not say</option>
 :
-                                            <option value="Rather not say">Rather not say</option>
+                                            <option value="rather not say">Rather not say</option>
 }                       
                 </select>
             </Form.Group></Col>

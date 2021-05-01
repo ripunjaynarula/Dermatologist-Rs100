@@ -53,7 +53,7 @@ export default function DocProfile() {
       };
 
       let res = await fetch(
-        "http://localhost:5000/getDocDetails",
+       process.env.REACT_APP_API_URL+'getDocDetails',
         requestOptions
       );
       res = await res.text();

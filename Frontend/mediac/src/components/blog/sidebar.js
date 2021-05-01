@@ -60,7 +60,7 @@ try{
           headers: { 'Content-Type': 'application/json'  },
           
           };
-        let res = await fetch('http://localhost:5000/get-sidebar', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'get-sidebar', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res, "==================")
@@ -163,7 +163,7 @@ catch(e){}
                     {blogs.map(blog =>(<>
                        <div class="post-item clearfix">
                   <img src={blog.image} alt=""></img>
-                  <h4><a href={"/blog/" + blog.url} >{blog.title}</a></h4>
+                  <h4><a href={"/blog/" + blog.url} >{blog.title.length > 45 ? blog.title.substring(0,40) + "..." : blog.title}</a></h4>
                   <time datetime="2020-01-01">{blog.postDate.split("T")[0]}</time>
                 </div>
                       </>

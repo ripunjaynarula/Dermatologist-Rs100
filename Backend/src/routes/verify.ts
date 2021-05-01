@@ -27,7 +27,7 @@ verify.get('/', (req, res) => {
                 return
             }
         } 
-        res.redirect('http://localhost:3000/login')
+        res.redirect(process.env.WEB_URL+"login")
     });
 
 });

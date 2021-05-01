@@ -13,28 +13,31 @@ export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
     const [rol, setRole] = useState()
+  const history = useHistory()
 
   const { login, currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
   useEffect( () => {
+    console.log(process.env.REACT_APP_API_URL)
      onlyOnce();
-  }, [rol] )
+  }, [] )
 
 async function onlyOnce()  {
   if(!currentUser) return;
   var role =  reactLocalStorage.get('role') 
-      console.log( role, "kjhgfrdews")
-
+ 
   if(role === undefined) role  = "";
  
   
   if (role === "doctor" )
-      return history.push('/doctordashboard');
-      else if(role ==="patient")
-  return history.push('/dashboard');
-}
+   { 
+       return history.push('/doctordashboard');}
+  else if(role ==="patient"){
+       return history.push('/dashboard');
+    }
+  }
+      
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -49,7 +52,7 @@ async function onlyOnce()  {
         headers: { 'Content-Type': 'application/json', token : await user.user.getIdToken() },
         body: JSON.stringify(d)
       }; 
-      let res = await fetch('http://localhost:5000/login', requestOptions)
+      let res = await fetch(process.env.REACT_APP_API_URL+'login', requestOptions)
       res = await res.text()
       res = JSON.parse(res)
       console.log(res);

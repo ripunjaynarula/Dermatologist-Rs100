@@ -35,7 +35,13 @@ const consultations = mongoose.model('prescriptions', new mongoose.Schema({
     },
     medicines :{
         type : Array
-    }
+    }, 
+    
+    referenceId: {
+         type: String,
+        //required: true,
+        trim: true
+    },
    
    
 }));

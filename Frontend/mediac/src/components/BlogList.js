@@ -48,14 +48,15 @@ export default function BlogList(props) {
 
         <>
       <BlogListItem className="BlogListItem" key={props.blogs[0].title}>
-<Link to="" >
+   <a className = "title"  href={props.blogs[0].url} >
             <div class="card" style={{ justifyContent: 'center', borderRadius:"8px", marginTop : "5px"}} >
-              <img id="blogcardimg" src={props.blogs[0].image} style={{height:"220px",borderRadius:"8px"}}/>
+              <img id="blogcardimg" src={props.blogs[0].image} title={props.blogs[0].title} alt= {props.blogs[0].title} style={{height:"220px",borderRadius:"8px"}}/>
             </div>
-            </Link>
             <div>
             <h5 style={{color:"black", fontSize:"20px",   marginLeft:"14px", marginTop: "16px"}}><b><a href ={ props.blogs[0].url} className = "title" >{props.blogs[0].title}</a></b></h5>
 </div>
+            </a>
+
            </BlogListItem>
         </>
            :
@@ -77,15 +78,16 @@ export default function BlogList(props) {
           
          {  props.blogs.map(blog =>(<>
           <BlogListItem className="BlogListItem" key={blog.title}>
-          <Link to="" >
+          <a className = "title"   href={ blog.url} >
             <div class="card" style={{ justifyContent: 'center', borderRadius:"8px", marginTop : "5px", border : "none"}}>
-              <img id="blogcardimg" src={blog.image} style={{height:"220px",borderRadius:"8px"}}  onClick={() => imageClick(blog.url)}/>
+              <img id="blogcardimg" src={blog.image} title = {blog.title} alt = {blog.title} style={{height:"220px",borderRadius:"8px"}}  onClick={() => imageClick(blog.url)}/>
             </div>
-            </Link>
-            <div>
-            <h5 style={{color:"black", fontSize:"20px",   marginLeft:"14px", marginTop: "16px"}}><b><a href ={ blog.url} className = "title" >{blog.title}</a></b></h5>
+               <div>
+            <h5   style={{  fontSize:"20px",   marginLeft:"14px", marginTop: "16px"}}><b> {blog.title} </b></h5>
                
             </div>
+            </a>
+         
           </BlogListItem>
           </>))} 
             

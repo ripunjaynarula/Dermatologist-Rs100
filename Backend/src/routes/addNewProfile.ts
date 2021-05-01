@@ -10,6 +10,10 @@ router.post('/', async (req, res) => {
    
     if (patient){
  
+ if(req.body.gender)
+ {
+     req.body.gender = req.body.gender.toLowerCase()
+ }
         let l = patient.profiles.length
         var info = {
             name: req.body.name,

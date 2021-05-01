@@ -87,7 +87,7 @@ function AddDoc() {
         })
       }
 
-      let res = await fetch('http://localhost:5000/doctorSignup', requestOptions);
+      let res = await fetch(process.env.REACT_APP_API_URL+'doctorSignup', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
       console.log('recieved');
@@ -147,7 +147,7 @@ function AddDoc() {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({token: token})
       }
-      let res = await fetch('http://localhost:5000/verifyAdmin', requestOptions);
+      let res = await fetch(process.env.REACT_APP_API_URL+'verifyAdmin', requestOptions);
       res = await res.text();
       res = JSON.parse(res)
       console.log(res)

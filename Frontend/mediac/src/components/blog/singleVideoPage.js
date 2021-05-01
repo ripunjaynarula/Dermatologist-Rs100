@@ -74,7 +74,7 @@ try{
           body : JSON.stringify({videoLink: queryString.split("/")[queryString.split("/").length - 1]})
 
           };
-        let res = await fetch('http://localhost:5000/video', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'video', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)
@@ -170,7 +170,7 @@ try{
 
           };
            console.log(JSON.stringify({videoId: postId}))
-        let res = await fetch('http://localhost:5000/like-video', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'like-video', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
          if(res.status !== "saved_successfuly")

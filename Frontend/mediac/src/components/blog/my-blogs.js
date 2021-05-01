@@ -47,7 +47,7 @@ try{
           headers: { 'Content-Type': 'application/json','token': token },
  
           };
-        let res = await fetch('http://localhost:5000/my-blogs', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'my-blogs', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)
@@ -56,7 +56,7 @@ try{
  
               for(var i =0; i< res.blogs.length ; i++)
               {
-                                  res.blogs[i].views = nFormatter(res.blogs[i].views) 
+                                  res.blogs[i].views = nFormatter(res.blogs[i].likes) 
 res.blogs[i].postDate = res.blogs[i].postDate.split("T")[0]
             }
 

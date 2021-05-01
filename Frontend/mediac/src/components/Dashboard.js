@@ -12,6 +12,7 @@ import ellipse from "./img/ellipse.png";
 import bgimg from "./img/image1.png";
 import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
+<<<<<<< HEAD
 import HomeBottom  from "./AboutPage/HomeBottom";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
@@ -21,6 +22,10 @@ const slideImages = [
   './img/b2.jpg',
   './img/b3.jpg'
 ];
+=======
+import HomeBottom  from "./AboutPage/HomeBottom"
+ import {reactLocalStorage} from 'reactjs-localstorage';
+>>>>>>> c0938ece880920abb7ca9a99f67ef568a591d124
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);
@@ -29,17 +34,22 @@ export default function Dashboard() {
   const dbinfo = useRef();
   const history = useHistory();
   const quest = useRef();
+   useEffect( () => {
+     onlyOnce();
+  }, [] )
 
-  async function handleLogout() {
-    setError("");
-
-    try {
-      await logout();
-      history.push("/login");
-    } catch {
-      setError("Failed to log out");
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if(role ==="doctor"){
+       return history.replace('/doctordashboard');
     }
   }
+ 
 
   function onClick() {
     history.push("/Choice/?ques=" + quest.current.value);

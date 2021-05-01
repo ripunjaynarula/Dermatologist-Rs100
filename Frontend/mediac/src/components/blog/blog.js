@@ -80,7 +80,7 @@ try{
           headers: { 'Content-Type': 'application/json','token': token },
  
           };
-        let res = await fetch('http://localhost:5000/blogs', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL+'blogs', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
         console.log(res)

@@ -31,7 +31,7 @@ export default function ConsultancyCard() {
           headers: { "Content-Type": "application/json", token: token },
         };
         let res = await fetch(
-          "http://localhost:5000/getActiveConsultation",
+          process.env.REACT_APP_API_URL+'getActiveConsultation',
           requestOptions
         );
         res = await res.text();

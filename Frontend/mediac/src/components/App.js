@@ -17,7 +17,7 @@ import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
 import NeedHelp from "./NeedHelp";
-
+import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./Profile/UpdateProfile";
@@ -86,7 +86,9 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route  path="/blog" component={singleBlog} />
+              
               <Route exact path="/my-blogs" component={myBlogs} />
+              <Route path="/Test" component={Test} />
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />

@@ -12,20 +12,8 @@ import ellipse from "./img/ellipse.png";
 import bgimg from "./img/image1.png";
 import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
-<<<<<<< HEAD
-import HomeBottom  from "./AboutPage/HomeBottom";
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
-
-const slideImages = [
-  './img/b1.jpg',
-  './img/b2.jpg',
-  './img/b3.jpg'
-];
-=======
 import HomeBottom  from "./AboutPage/HomeBottom"
  import {reactLocalStorage} from 'reactjs-localstorage';
->>>>>>> c0938ece880920abb7ca9a99f67ef568a591d124
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);

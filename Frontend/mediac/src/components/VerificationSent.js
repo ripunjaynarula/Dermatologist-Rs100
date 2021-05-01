@@ -8,7 +8,7 @@ import { useAuth } from "../contexts/AuthContext"
 import logodark from "./img/banner3.jpg"
 import logolight from "./img/banner3.jpg"
 import useWindowDimensions from "../functions/windowDimensions"
-import MessageModal from '../utility/confirmationModal'
+import MessageModal from './utility/confirmationModal'
 import { useEffect } from "react";
 
 

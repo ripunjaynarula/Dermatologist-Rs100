@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
-import {CurrentChatContext, ChatDataContext} from './App';
+import {CurrentChatContext, ChatDataContext, SocketContext} from './App';
 import {
   BrowserView,
   MobileView,
@@ -16,6 +16,7 @@ function Conversation() {
   const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
+  const [socket, setSocket] = useContext(SocketContext);
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
@@ -23,6 +24,10 @@ function Conversation() {
   setCurrentChat(id);
   setActive(email)
 }
+
+const handleNewMessage = useCallback((msgData) => {
+  console.log("New update event!");
+}, []);
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {
@@ -45,7 +50,10 @@ function Conversation() {
       console.log(chats);
     }
     getChats();
-  }, []);
+    if(!socket) return;
+    socket.on("update", handleNewMessage);
+    return () => socket.off("update");
+  }, [socket, handleNewMessage]);
 
   return (
     <div>

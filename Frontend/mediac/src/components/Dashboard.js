@@ -33,12 +33,18 @@ function Dashboard() {
     onlyOnce();
   }, []);
 
-  async function onlyOnce() {
-    if (!currentUser) return;
-    var role = reactLocalStorage.get("role");
-
-    if (role === undefined) role = "";
-  }
+  async function onlyOnce()  {
+    if(!currentUser) return;
+    var role =  reactLocalStorage.get('role') 
+   
+    if(role === undefined) role  = "";
+   
+    
+    if(role ==="doctor"){
+         return history.replace('/doctordashboard');
+      }
+    }
+  
 
   function onClick() {
     history.push("/Choice/?ques=" + quest.current.value);

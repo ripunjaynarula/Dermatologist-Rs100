@@ -85,7 +85,7 @@ function Consultations() {
                 
                 {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
                 {consultations?<>
-                  {consultations.map(consultation => {
+                  {consultations.map((consultation) => (
                     <>
                    <div
                    class="card"
@@ -102,7 +102,7 @@ function Consultations() {
                  </div>
                  <br/>
                  </>
-                  })}
+              ))}
                 </>:<>
                 <div
                   class="card"

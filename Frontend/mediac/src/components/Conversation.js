@@ -33,6 +33,8 @@ const handleNewMessage = useCallback((msgData) => {
   }
   const lastText = messageDiv.children[1];
   lastText.innerHTML = msgData.text;
+  const date = messageDiv.children[2];
+  date.innerHTML = `<small className="live">${msgData.time}, ${msgData.date}`
 }, []);
 
   useEffect(() => {
@@ -100,7 +102,7 @@ const handleNewMessage = useCallback((msgData) => {
                         ? chat.doctorUsername
                         : chat.patientUsername}
                     </span>{" "}
-                    <span id = { (currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail) + "lastmessage"}>
+                    <span>
                       {chat.messages.length > 0
                         ? chat.messages[chat.messages.length - 1].text
                         : "Start Conversation"}

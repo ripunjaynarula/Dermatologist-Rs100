@@ -61,6 +61,7 @@ function OpenConversation() {
     let msgData = {
       date: time.toLocaleDateString("en", options),
       from: currentUser.email,
+      to: (chatData["doctorEmail"]===currentUser.email?chatData["patientEmail"]:chatData["doctorEmail"]),
       time: time.toLocaleString("en-US", {
         hour: "numeric",
         minute: "numeric",

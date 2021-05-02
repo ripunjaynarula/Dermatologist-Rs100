@@ -25,9 +25,16 @@ function Conversation() {
   setActive(email)
 }
 
+
 const handleNewMessage = useCallback((msgData) => {
-  console.log("New update event!");
+  let messageDiv = document.getElementById(msgData.from);
+  if(!messageDiv) {
+    messageDiv = document.getElementById(msgData.to)
+  }
+  const lastText = messageDiv.children[1];
+  lastText.innerHTML = msgData.text;
 }, []);
+
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {
@@ -86,14 +93,14 @@ const handleNewMessage = useCallback((msgData) => {
                     />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}}>
+                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail }>
                     {" "}
                     <span className="font-weight-bold">
                       {currentUser.email === chat.doctorEmail
                         ? chat.doctorUsername
                         : chat.patientUsername}
                     </span>{" "}
-                    <span>
+                    <span id = { (currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail) + "lastmessage"}>
                       {chat.messages.length > 0
                         ? chat.messages[chat.messages.length - 1].text
                         : "Start Conversation"}

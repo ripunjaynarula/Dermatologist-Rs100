@@ -19,7 +19,7 @@ function Consultations() {
   }
 
   const { currentUser } = useAuth();
-  const [consultaions, setConsultations] =  useState([]);
+  const [consultations, setConsultations] =  useState([]);
   const history = useHistory();
   useEffect(() => {
     if(!currentUser){
@@ -82,61 +82,43 @@ function Consultations() {
                   
                 </div>
                 <br/>
+                
                 {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
-                {consultaions?<>
-                  {consultations.map(consultaion => {
-                    // put data here
+                {consultations?<>
+                  {consultations.map(consultation => {
+                    <>
+                   <div
+                   class="card"
+                   id="detailcard"
+                   style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                 >
+                   <div class="card-body" id="detailcard">
+                   <div className="float-left dmcal" style={{backgroundColor: "rgb(204, 200, 200)"}}>
+                       <p className="date">{consultation.startDate}</p>
+                       <p className="month">May</p>
+                     </div>
+                   </div>
+                   
+                 </div>
+                 <br/>
+                 </>
                   })}
                 </>:<>
+                <div
+                  class="card"
+                  id="detailcard"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                >
+                  <div class="card-body" id="detailcard">
+                    <p>No Data Yet</p>
+                  </div>
                   
+                </div>
+                <br/>
                 </>}
-                <div
-                  class="card"
-                  id="detailcard"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                >
-                  <div class="card-body" id="detailcard">
-                  <div className="float-left dmcal" style={{backgroundColor: "rgb(204, 200, 200)"}}>
-                      <p className="date">03</p>
-                      <p className="month">May</p>
-                    </div>
-                  </div>
-                  
-                </div>
-                <br/>
-                <div
-                  class="card"
-                  id="detailcard"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                >
-                  <div class="card-body" id="detailcard">
-                    
-                  </div>
-                  
-                </div>
-                <br/>
-                <div
-                  class="card"
-                  id="detailcard"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                >
-                  <div class="card-body" id="detailcard">
-                    
-                  </div>
-                  
-                </div>
-                <br/>
-                <div
-                  class="card"
-                  id="detailcard"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                >
-                  <div class="card-body" id="detailcard">
-                    
-                  </div>
-                  
-                </div>
-                <br/>
+                
+                
+                
               </TabPane>
               <TabPane tab="Medical Records" key="2">
                 <h2>Medical Records</h2>

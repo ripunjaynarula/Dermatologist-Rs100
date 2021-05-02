@@ -51,7 +51,57 @@ function Consultations() {
                       <Button className="submitbtn">Upload</Button>
                     </div>
                   </div>
+                  
                 </div>
+                <br/>
+                {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
+                <div
+                  class="card"
+                  id="detailcard"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                >
+                  <div class="card-body" id="detailcard">
+                  <div className="float-left dmcal" style={{backgroundColor: "rgb(204, 200, 200)"}}>
+                      <p className="date">03</p>
+                      <p className="month">May</p>
+                    </div>
+                  </div>
+                  
+                </div>
+                <br/>
+                <div
+                  class="card"
+                  id="detailcard"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                >
+                  <div class="card-body" id="detailcard">
+                    
+                  </div>
+                  
+                </div>
+                <br/>
+                <div
+                  class="card"
+                  id="detailcard"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                >
+                  <div class="card-body" id="detailcard">
+                    
+                  </div>
+                  
+                </div>
+                <br/>
+                <div
+                  class="card"
+                  id="detailcard"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+                >
+                  <div class="card-body" id="detailcard">
+                    
+                  </div>
+                  
+                </div>
+                <br/>
               </TabPane>
               <TabPane tab="Medical Records" key="2">
                 <h2>Medical Records</h2>

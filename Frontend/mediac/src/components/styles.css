@@ -1176,7 +1176,7 @@ button.rec-dot:focus {
   }
 
   #detailcard{
-      max-height:80px !important;
+      max-height:100px !important;
       min-height:1px !important;
       box-shadow:none !important;
   }
@@ -1210,3 +1210,7 @@ left: 40px;
   }
   
   
+.dmcal{
+    padding-left:5px;
+    padding-right:5px;
+}

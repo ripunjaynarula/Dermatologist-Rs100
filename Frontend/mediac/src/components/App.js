@@ -15,8 +15,8 @@ import Login from "./Login";
 import Consultations from "./Consultations";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
-// import Details from "./Details";
-// import NeedHelp from "./NeedHelp";
+import Details from "./Details";
+import NeedHelp from "./NeedHelp";
 import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
@@ -84,6 +84,17 @@ function App() {
               <PrivateRoute path="/add-video" component={AddVideo} />
               <PrivateRoute path="/my-profile" component={myProfile} />
               <PrivateRoute path="/my-videos" component={myVideos} />
+
+
+              <PrivateRoute path="/Details" component={Details} />
+              <PrivateRoute path="/Consultations" component={Consultations} />
+              <PrivateRoute path="/MedicalRecords" component={MedicalRecords} />
+              <PrivateRoute path="/PaymentHistory" component={PaymentHistory} />
+              <PrivateRoute path="/NeedHelp" component={NeedHelp} />
+
+
+
+
 
               <PrivateRoute path="/update-doctor" component={UpdateDoctorProfile}/>
               <Route exact path="/" component={Home} />

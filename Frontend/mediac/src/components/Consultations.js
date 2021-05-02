@@ -83,6 +83,13 @@ function Consultations() {
                 </div>
                 <br/>
                 {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
+                {consultaions?<>
+                  {consultations.map(consultaion => {
+                    // put data here
+                  })}
+                </>:<>
+                  
+                </>}
                 <div
                   class="card"
                   id="detailcard"

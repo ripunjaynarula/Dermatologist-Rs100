@@ -15,8 +15,8 @@ import Login from "./Login";
 import Consultations from "./Consultations";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
-import Details from "./Details";
-import NeedHelp from "./NeedHelp";
+// import Details from "./Details";
+// import NeedHelp from "./NeedHelp";
 import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
@@ -91,7 +91,7 @@ function App() {
               <Route  path="/blog" component={singleBlog} />
               
               <Route exact path="/my-blogs" component={myBlogs} />
-              <Route path="/Test" component={Test} />
+              {/* <Route path="/Test" component={Test} /> */}
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />

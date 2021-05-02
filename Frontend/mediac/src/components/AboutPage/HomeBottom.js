@@ -21,9 +21,9 @@ export default function BlogCard(prop) {
 
 
  
-    <div style = {{  backgroundColor: "#ededf2", marginTop: "56px"}}>
+    <div style = {{  backgroundColor: "#ededf2", marginTop: "-20px"}}>
 
-     <div class="section-title" style = {{paddingTop : "60px"}}>
+     <div class="section-title" style = {{paddingTop : "40px"}}>
                     <h4 id = "sec"  > How does it work?</h4>
                     
                 </div>

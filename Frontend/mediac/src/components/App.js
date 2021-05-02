@@ -54,6 +54,7 @@ export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
 export const CurrentChatContext = React.createContext()
 export const ChatDataContext = React.createContext();
+export const SocketContext = React.createContext();
 
 
 function App() {
@@ -62,11 +63,13 @@ function App() {
   const [token, setToken] = useState("");
   const [currentChat, setCurrentChat] = useState('')
   const [chats, setChats] = useState([]);
+  const [socket, setSocket] = useState();
 
   return (
     <Router>
       <AuthProvider>
         <DataContext.Provider value={[consultationData, setConsultationData]}>
+        <SocketContext.Provider value = {[socket, setSocket]}>
           {/* <div className="Navb"><Navbar /></div> */}
 
           <Switch>
@@ -152,7 +155,7 @@ function App() {
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>
                 <PrivateRoute exact path="/chat" component={Chat} />
-                                <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
+                <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
 
               </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
@@ -162,7 +165,7 @@ function App() {
 
               </TokenContext.Provider>
             </Switch>
-      
+            </SocketContext.Provider>
         </DataContext.Provider>
 
         <TokenContext.Provider value={[token, setToken]}>

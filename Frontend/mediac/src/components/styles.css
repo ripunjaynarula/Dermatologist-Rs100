@@ -617,6 +617,7 @@ div.scrollmenu a {
     min-height: 87vh;
     padding: 23px;
     margin: -3.5rem 0rem;
+    overflow: hidden;
 }
 
 #blogdiv {
@@ -1184,43 +1185,28 @@ button.rec-dot:focus {
 
   /* Slideshow */
 
-.slideshow {
-    margin: 0 auto;
-    overflow: hidden;
-    max-width: 500px;
-  }
-  
+
   .slideshowSlider {
     white-space: nowrap;
-    transition: ease 1000ms;
+    transition: ease-in-out 0ms;
+    position: relative;
+    z-index: 0;
   }
   
   .slide {
     display: inline-block;
-  
-    height: 400px;
+    min-height: 85vh;
     width: 100%;
-    border-radius: 40px;
+    background-size: cover;
+
+  }
+
+  .overlapping-text{
+
+    position: absolute;
+z-index: 1;
+top: 40px;
+left: 40px;
   }
   
-  /* Buttons */
   
-  .slideshowDots {
-    text-align: center;
-  }
-  
-  .slideshowDot {
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-  
-    cursor: pointer;
-    margin: 15px 7px 0px;
-  
-    background-color: #c4c4c4;
-  }
-  
-  .slideshowDot.active {
-    background-color: #6a0dad;
-  }

@@ -12,6 +12,13 @@ import { CardMain } from "../css/Card";
 import { CardBody, Col, Card, Container } from "reactstrap";
 import app from "../firebase";
 
+
+// var month_name = function(dt){
+  const mlist = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
+//     return mlist[dt.getMonth()];
+//   };
+var i;
+
 function Consultations() {
 
   function callback(e) {
@@ -43,6 +50,7 @@ function Consultations() {
     getConsultations();
     //get data from backend
   }, []);
+  
   return (
     <>
       <div className="home" style={{ display: "block" }}>
@@ -84,18 +92,36 @@ function Consultations() {
                 <br/>
                 
                 {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
+
                 {consultations?<>
                   {consultations.map((consultation) => (
+
                     <>
+                    
                    <div
                    class="card"
                    id="detailcard"
                    style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
                  >
                    <div class="card-body" id="detailcard">
-                   <div className="float-left dmcal" style={{backgroundColor: "rgb(204, 200, 200)"}}>
-                       <p className="date">{consultation.startDate}</p>
-                       <p className="month">May</p>
+                   <div className="float-left dmcal" >
+                   
+                   {/* {i=(consultation.startDate[5])*10+(consultation.startDate[6])} */}
+
+                       <p className="datecal" ><b>{consultation.startDate[8]+consultation.startDate[9]}</b></p>
+                       <p className="monthcal">{mlist[i]}</p>
+                     </div>
+                     <div className="float-left" >
+                   
+
+                       <p className="consuldoc" >&nbsp;&nbsp;&nbsp;&nbsp;<b>Consulted Dr. {consultation.doctorName}</b></p>
+                       <p className="consuldoc" >&nbsp;&nbsp;&nbsp;&nbsp;Record for {consultation.name}</p>
+
+                     </div>
+                     <div className="float-right" >
+                       <p></p>
+                     <p ><b>Description:</b> {consultation.description}</p>
+
                      </div>
                    </div>
                    

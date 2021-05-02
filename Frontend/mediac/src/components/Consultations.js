@@ -10,11 +10,39 @@ import { auth } from "../firebase";
 import firebase from "firebase";
 import { CardMain } from "../css/Card";
 import { CardBody, Col, Card, Container } from "reactstrap";
+import app from "../firebase";
 
 function Consultations() {
+
   function callback(e) {
     console.log(e);
   }
+
+  const { currentUser } = useAuth();
+  const [consultaions, setConsultations] =  useState([]);
+  const history = useHistory();
+  useEffect(() => {
+    if(!currentUser){
+      history.push('/login')
+    }
+    //get data from backend
+    async function getConsultations(){
+      const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({email: currentUser.email})
+      };
+
+      let res = await fetch('http://localhost:5000/getActiveConsultation', requestOptions);
+      res = await res.text();
+      res = JSON.parse(res);
+      setConsultations(res["consultation"]);
+      console.log(res);
+    }
+    getConsultations();
+    //get data from backend
+  }, []);
   return (
     <>
       <div className="home" style={{ display: "block" }}>

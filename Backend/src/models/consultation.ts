@@ -19,6 +19,9 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         type: String,
         trim: true
     },
+    doctorName: {
+        type: String,
+    },
     description: {
         type: String
     },

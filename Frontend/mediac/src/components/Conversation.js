@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
-import {CurrentChatContext, ChatDataContext} from './App';
+import {CurrentChatContext, ChatDataContext, SocketContext} from './App';
 import {
   BrowserView,
   MobileView,
@@ -16,6 +16,7 @@ function Conversation() {
   const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
+  const [socket, setSocket] = useContext(SocketContext);
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
@@ -23,6 +24,19 @@ function Conversation() {
   setCurrentChat(id);
   setActive(email)
 }
+
+
+const handleNewMessage = useCallback((msgData) => {
+  let messageDiv = document.getElementById(msgData.from);
+  if(!messageDiv) {
+    messageDiv = document.getElementById(msgData.to)
+  }
+  const lastText = messageDiv.children[1];
+  lastText.innerHTML = msgData.text;
+  const date = messageDiv.children[2];
+  date.innerHTML = `<small className="live">${msgData.time}, ${msgData.date}`
+}, []);
+
   useEffect(() => {
     async function getChats() {
       if (!currentUser) {
@@ -45,7 +59,10 @@ function Conversation() {
       console.log(chats);
     }
     getChats();
-  }, []);
+    if(!socket) return;
+    socket.on("update", handleNewMessage);
+    return () => socket.off("update");
+  }, [socket, handleNewMessage]);
 
   return (
     <div>
@@ -78,7 +95,7 @@ function Conversation() {
                     />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}}>
+                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail }>
                     {" "}
                     <span className="font-weight-bold">
                       {currentUser.email === chat.doctorEmail

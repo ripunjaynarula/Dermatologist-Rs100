@@ -103,6 +103,7 @@ io.on('connection', (socket: any)=>{
             }
         }
         socket.to(id).emit('new-message',msgData);
+        io.to(id).emit('update', msgData);
     });
 });
 

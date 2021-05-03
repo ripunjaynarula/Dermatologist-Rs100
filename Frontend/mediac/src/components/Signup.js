@@ -69,7 +69,7 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
       history.push("/verification-sent")
     } catch (e) {
 
-console.log(e)
+      console.log(e)
       if (e['code']==='auth/email-already-in-use') {
         setError('Email already in use.')
         setLoading(false)

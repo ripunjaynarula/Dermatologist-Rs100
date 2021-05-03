@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
             consultation.accepted = true;
             consultation.active = true;
             consultation.doctorEmail = doc.email;
+            consultation.doctorName = doc.name;
         }
         try{
             consultation = await consultation.save();

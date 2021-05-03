@@ -12,12 +12,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
-import Consultations from "./Consultations";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
 import NeedHelp from "./NeedHelp";
-
+import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./Profile/UpdateProfile";
@@ -54,6 +53,7 @@ export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
 export const CurrentChatContext = React.createContext()
 export const ChatDataContext = React.createContext();
+export const SocketContext = React.createContext();
 
 
 function App() {
@@ -62,11 +62,13 @@ function App() {
   const [token, setToken] = useState("");
   const [currentChat, setCurrentChat] = useState('')
   const [chats, setChats] = useState([]);
+  const [socket, setSocket] = useState();
 
   return (
     <Router>
       <AuthProvider>
         <DataContext.Provider value={[consultationData, setConsultationData]}>
+        <SocketContext.Provider value = {[socket, setSocket]}>
           {/* <div className="Navb"><Navbar /></div> */}
 
           <Switch>
@@ -82,11 +84,21 @@ function App() {
               <PrivateRoute path="/my-profile" component={myProfile} />
               <PrivateRoute path="/my-videos" component={myVideos} />
 
+
+              <PrivateRoute path="/Details" component={Details} />
+ 
+
+
+
+
+
               <PrivateRoute path="/update-doctor" component={UpdateDoctorProfile}/>
               <Route exact path="/" component={Home} />
               <Route exact path="/blogs" component={viewBlogs} />
               <Route  path="/blog" component={singleBlog} />
+              
               <Route exact path="/my-blogs" component={myBlogs} />
+              {/* <Route path="/Test" component={Test} /> */}
 
               <Route path="/login" component={Login} />
               <Route exact path="/faq" component={Faq} />
@@ -150,7 +162,7 @@ function App() {
               <CurrentChatContext.Provider value={[currentChat, setCurrentChat]}>
               <ChatDataContext.Provider value={[chats, setChats]}>
                 <PrivateRoute exact path="/chat" component={Chat} />
-                                <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
+                <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
 
               </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
@@ -160,7 +172,7 @@ function App() {
 
               </TokenContext.Provider>
             </Switch>
-      
+            </SocketContext.Provider>
         </DataContext.Provider>
 
         <TokenContext.Provider value={[token, setToken]}>

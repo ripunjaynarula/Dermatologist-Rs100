@@ -24,7 +24,7 @@ import { useHistory } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
 import app from "../firebase";
-import { CurrentChatContext, ChatDataContext } from "./App";
+import { CurrentChatContext, ChatDataContext, SocketContext } from "./App";
 import loadimg from "./img/loading.webp";
 import io from "socket.io-client";
 import Conversation from "./Conversation";
@@ -34,7 +34,7 @@ function OpenConversation() {
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
-  const [socket, setSocket] = useState();
+  const [socket, setSocket] = useContext(SocketContext)
   const [prevChat, setPrevChat] = useState("");
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
   const [chats, setChats] = useContext(ChatDataContext);
@@ -61,6 +61,7 @@ function OpenConversation() {
     let msgData = {
       date: time.toLocaleDateString("en", options),
       from: currentUser.email,
+      to: (chatData["doctorEmail"]===currentUser.email?chatData["patientEmail"]:chatData["doctorEmail"]),
       time: time.toLocaleString("en-US", {
         hour: "numeric",
         minute: "numeric",

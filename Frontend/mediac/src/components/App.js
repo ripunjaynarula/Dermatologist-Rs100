@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
-import Consultations from "./Consultations";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
@@ -87,10 +86,7 @@ function App() {
 
 
               <PrivateRoute path="/Details" component={Details} />
-              <PrivateRoute path="/Consultations" component={Consultations} />
-              <PrivateRoute path="/MedicalRecords" component={MedicalRecords} />
-              <PrivateRoute path="/PaymentHistory" component={PaymentHistory} />
-              <PrivateRoute path="/NeedHelp" component={NeedHelp} />
+ 
 
 
 

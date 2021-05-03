@@ -1071,7 +1071,8 @@ div.scrollmenu a {
         
     }
     .rc-tabs-nav{
-        display: none;
+        display: flex;
+        width: 115px;
     }
 }
 
@@ -1152,7 +1153,6 @@ button.rec-dot:focus {
 
 .rc-tabs {
     border: none !important;
-    
   }
   .rc-tabs-tab {
     padding: 15px;
@@ -1161,7 +1161,7 @@ button.rec-dot:focus {
     background-color: white;
   }
   .rc-tabs-tab .rc-tabs-tab-btn {
-    font-size: 15px ;
+    font-size: 12px ;
     
   }
   .rc-tabs-tab.rc-tabs-tab-active {
@@ -1217,4 +1217,8 @@ left: 40px;
 }
 .datecal{
     font-size:25px;
+}
+
+.consuldoc{
+    margin-left:50px;
 }

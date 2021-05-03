@@ -17,7 +17,7 @@ import app from "../firebase";
   const mlist = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
 //     return mlist[dt.getMonth()];
 //   };
-var i;
+var i,x,y,z;
 
 function Consultations() {
 
@@ -97,32 +97,28 @@ function Consultations() {
                   {consultations.map((consultation) => (
 
                     <>
-                    
-                   <div
-                   class="card"
-                   id="detailcard"
-                   style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                 >
-                   <div class="card-body" id="detailcard">
-                   <div className="float-left dmcal" >
-                   
-                   {/* {i=(consultation.startDate[5])*10+(consultation.startDate[6])} */}
+                    <div style={{fontSize:"0px"}}>
+                    { x=parseInt(consultation.startDate[5])*10,
+                   y=parseInt(consultation.startDate[6])}</div>
 
-                       <p className="datecal" ><b>{consultation.startDate[8]+consultation.startDate[9]}</b></p>
-                       <p className="monthcal">{mlist[i]}</p>
-                     </div>
-                     <div className="float-left" >
+
+                   <div className="card" id="detailcard" style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
+                   <div class="card-body" id="detailcard" >
+                   <div className="float-left dmcal" style={{paddingBottom:"-5px"}}>
+                   
                    
 
-                       <p className="consuldoc" >&nbsp;&nbsp;&nbsp;&nbsp;<b>Consulted Dr. {consultation.doctorName}</b></p>
-                       <p className="consuldoc" >&nbsp;&nbsp;&nbsp;&nbsp;Record for {consultation.name}</p>
-
+                       <p className="datecal" style={{marginBottom:"-5px"}} ><b>{consultation.startDate[8]+consultation.startDate[9]}</b></p>
+                       <p className="monthcal" style={{marginBottom:"2px"}}>{mlist[(x+y)-1]}</p>
                      </div>
-                     <div className="float-right" >
-                       <p></p>
-                     <p ><b>Description:</b> {consultation.description}</p>
-
+                     <div >
+                   
+                        <div className="consuldoc"  style={{display:"flex",marginleft:"50px"}}>
+                       <p ><b>Consulted Dr. {consultation.doctorName}</b><br/>
+                       Record for {consultation.name}</p>
+                       </div>
                      </div>
+                     
                    </div>
                    
                  </div>

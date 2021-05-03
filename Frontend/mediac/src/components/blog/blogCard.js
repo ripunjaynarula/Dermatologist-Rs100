@@ -51,13 +51,16 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
               <div className="entry-meta">
                 <ul>
-                  <li className="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">{prop.author}</a></li>
+
+{prop.author &&                   <li className="d-flex align-items-center"><img src = {userSvg} className = "icon" alt=""></img><a href="blog-single.html">{prop.author}</a></li>
+}
+
                   <li className="d-flex align-items-center"><img src = {clockSvg} className = "icon" alt=""></img><a href="blog-single.html"><time dateTime="2020-01-01">{prop.publishDate}</time></a></li>
                  </ul>
               </div>
 
               <div className="entry-content">
-      <div className="preview" dangerouslySetInnerHTML={createMarkup(prop.content)}></div>
+      <div className="preview-small" dangerouslySetInnerHTML={createMarkup(prop.content)}></div>
 
 
    <Row style= {{paddingTop :"30px",paddingLeft :"30px", flexDirection: 'row', justifyContent: 'space-between', }}>

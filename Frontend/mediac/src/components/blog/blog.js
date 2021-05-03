@@ -152,7 +152,7 @@ catch(e){
   {list.map((data, index) => (
          
  <BlogCard title = {data.title} image = {data.image} 
-  author = "XYZ" publishDate = {data.postDate} content = {data.postData} authouUsername = "username" likes  = {data.likes} blogLink = {"/blog/" + data.url}
+  author = "" publishDate = {data.postDate} content = {data.postData} authouUsername = "username" likes  = {data.likes} blogLink = {"/blog/" + data.url}
  
  
  ></BlogCard>

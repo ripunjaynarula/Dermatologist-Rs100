@@ -90,7 +90,6 @@ function Dashboard() {
       >
         {colors.map((bg) => (
           <div className="slide" style={{ backgroundImage: `${bg}` }}>
-            {console.log(bg)}
           </div>
         ))}
       </div>

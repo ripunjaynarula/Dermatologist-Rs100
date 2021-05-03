@@ -116,7 +116,7 @@ function Details() {
                   <>
                     {consultationYears.map((year) => (
                       <>
-                        <h4>{year}</h4>
+                        <p>{year}</p>
                         {consultations.map((consultation) =>
                           consultation.startDate.substring(0, 4) == year ? (
                             <>

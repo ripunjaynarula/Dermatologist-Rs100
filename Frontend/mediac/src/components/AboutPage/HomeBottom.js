@@ -37,7 +37,7 @@ export default function BlogCard(prop) {
 
 
     </div> */}
- <div class="section-title" style = {{paddingTop : "100px"}}>
+ <div class="section-title" style = {{paddingTop : "60px"}}>
                     <h4 id = "sec"  > Common Skin Conditions</h4>
                     
                 </div>
@@ -186,10 +186,7 @@ export default function BlogCard(prop) {
 
 
 
- <br></br>
- <br></br>
- <br></br>
-<Footer></Footer>
+  <Footer></Footer>
  
         </>
     )

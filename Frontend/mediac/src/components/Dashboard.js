@@ -86,10 +86,10 @@ function Dashboard() {
     <div className="wrapper" style={{overflow: 'hidden'}}>
       <div
         className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        style={{ transform: `translate3d(${-index * 100}%, 0, 0)`}}
       >
         {colors.map((bg) => (
-          <div className="slide" style={{ backgroundImage: `${bg}` }}>
+          <div className="slide" style={{ backgroundImage: `${bg}`  ,  animationDuration:"1s"}}>
           </div>
         ))}
       </div>

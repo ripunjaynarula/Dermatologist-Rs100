@@ -13,7 +13,7 @@ import app from "../firebase";
 
 export default function Loading(props) {
   const [flag, setFlag] = useState(true);
-  const [disp, setDisp] = useState(true);
+  const [disp, setDisp] = useState(false);
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -43,8 +43,8 @@ export default function Loading(props) {
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){
-     flag=false;
-     disp=false;
+     setFlag(false);
+     setDisp(true);
     }
   }
 

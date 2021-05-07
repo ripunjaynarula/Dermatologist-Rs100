@@ -8,14 +8,6 @@ import subscription from '../models/subscription';
 
 const router = express.Router();
 
-// const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
-// const privateVapidKey: any = process.env.WEB_PUSH_PRIVATE;
-
-// webpush.setVapidDetails(
-//     `mailto:${process.env.MAIL}`,
-//     publicVapidKey,
-//     privateVapidKey
-//   );
 
 router.post('/', async (req:any, res: any) => {
     const patient = await patients.findOne({email: req.body.email});
@@ -42,7 +34,8 @@ router.post('/', async (req:any, res: any) => {
         medication: req.body.medication,
         allergies: req.body.allergies,
         previousCondition: req.body.previousCondition,
-        uid: id
+        uid: id,
+        time: Date.now(),
     });
 
     try{

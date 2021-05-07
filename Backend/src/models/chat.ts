@@ -29,6 +29,9 @@ const chat = mongoose.model('chats',new mongoose.Schema({
     archieved: {
         type: Boolean,
         default: false
+    },
+    consultationId: {
+        type: String
     }
 }));
 

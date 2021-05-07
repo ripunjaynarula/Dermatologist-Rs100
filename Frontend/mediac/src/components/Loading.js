@@ -31,6 +31,10 @@ export default function Loading(props) {
     }
   }
 
+  const handleCancelation = () => {
+    
+  }
+
   useEffect(() => {
     document.getElementById("cancelbtn").style.visibility = "hidden";
     const check = setTimeout(checkStatus, 60000);
@@ -63,7 +67,7 @@ export default function Loading(props) {
         class="d-flex align-items-center justify-content-center  "
         style={{ marginTop: "12%", backgroundColor: "white !important" }}
       >
-        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }}>
+        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }} onClick={}>
           <b>Cancel Consultation</b>
         </Button>
       </div>

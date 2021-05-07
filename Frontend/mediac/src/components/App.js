@@ -47,6 +47,7 @@ import myProfile from "./Profile/my-Profile";
 import about from "./AboutPage/about";
 import treatmentMain from "./blog/Treatments/treatmentPageMain";
 import treatment from "./blog/Treatments/treatment";
+import testimonials from "./AboutPage/Testimonials/testimonialsPage";
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -94,6 +95,7 @@ function App() {
               <PrivateRoute path="/add-video" component={AddVideo} />
               <PrivateRoute path="/my-profile" component={myProfile} />
               <PrivateRoute path="/my-videos" component={myVideos} />
+              <Route path="/testimonials" component={testimonials} />
 
               <PrivateRoute path="/Details" component={Details} />
 

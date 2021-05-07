@@ -6,8 +6,7 @@ import  "../styles.css";
  import  "./blog.css";
 import {conditions}  from "./Conditions/ConditionsList"
 import firebase from 'firebase'
-import { auth } from '../../firebase'
-import { useAuth } from "../../contexts/AuthContext"
+ import { useAuth } from "../../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../LoginPopup"
   import { DataContext } from '../App';

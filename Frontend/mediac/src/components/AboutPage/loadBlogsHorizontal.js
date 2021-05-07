@@ -24,7 +24,28 @@ import useWindowDimensions from "../../functions/windowDimensions"
 if(width > 870) style = {
   flex : "40"
 }
+ 
+const [limit, setLimit] = useState(0)
+const [showMore, setShowMore] = useState(false)
+ 
+   useEffect( () => {
 
+    var items = 3;
+
+    
+    if(width> 1199) {
+      
+      items = 4
+      setLimit(7)
+    }else{
+      setLimit(5)
+    } 
+  }, [width] )
+  
+  const handleClick =(e)=>{
+    e.preventDefault()
+      setShowMore(!showMore)
+}
 
 
 
@@ -61,7 +82,8 @@ try{
         console.log(res)
         if(res.status === "valid")
         {
- 
+           
+
                for(var i =0; i< res.blogs.length ; i++)
               {
                  res.blogs[i].postDate =  res.blogs[i].postDate.split("T")[0]
@@ -111,13 +133,71 @@ catch(e){
                 </div>
   <div className = "centre" style = {{marginTop : "-19px"}}>
      
-                    <BlogList mail="mail" blogs = {list} />
+       <Row>
 
+
+                      { getBlog()
+          
+          }
+               </Row>
+  <div class="text-center" style = {{marginTop: "-12px"}}>
+            <a href="#" onClick = {handleClick} class="view-more">{showMore ?`Show Less`: `Show More`}</a>
+                            </div>
     </div>
     </div>
         }
 
     </>
   )
+
+
+
+
+
+
+
+  
+  function getBlog(){
+
+ 
+    return  list.map((blog, i) =>{
+
+if(!showMore)
+if(i>limit)
+  return <></> ;
+
+return (<>
+       
+     <Col xs={6} md={width > 1199 ? 3 : 4} >
+
+      <a className= "title" href = {blog.url}>
+
+ <div className="videocard"  >
+           <img src= {blog.image} alt="" style = {{  
+ height :    "100%", 
+  objectFit: "cover"}}
+  
+        
+
+   ></img>
+              </div>
+               <div  style = {{marginTop: "-13px", marginBottom: "28px", marginLeft: width> 790 ? "11px":"4px"}}  >
+<h5 style={{color:"black", fontSize: width> 790? "16px" : "14px"}}><b>              <a className ="title" href = {blog.url}>  {blog.title}</a>
+              </b>
+              </h5>
+              </div>
+
+      </a>
+
+           
+             
+ 
+
+          </Col >
+
+          </>)
+
+    })
+  }
 }
   

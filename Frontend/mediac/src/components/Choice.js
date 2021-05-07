@@ -11,8 +11,7 @@ import {
 } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import ProfileSelection from "./ProfileSelection";
-import OtherPersonDetails from "./OtherPersonDetails";
-import { Texts } from "../css/Texts";
+ import { Texts } from "../css/Texts";
 import { Link, useHistory } from "react-router-dom";
 import addusersvg from "./img/add-group.svg";
 import Navbar from "./Navbar";
@@ -30,10 +29,12 @@ export default function Choice() {
   const [currentGender, setCurrentGender] = useState("");
   const [currentAge, setCurrentAge] = useState("");
   const [loadingScreen, setLoadingScreen] = useState(false);
+  const [currentPhoneNumber, setCurrentPhoneNumber] = useState("");
 
   const nameRef = useRef();
   const ageRef = useRef();
   const genderRef = useRef();
+  const phoneRef = useRef();
 
   const heightRef = useRef();
   const weightRef = useRef();
@@ -52,8 +53,7 @@ export default function Choice() {
 
   const { currentUser } = useAuth();
   const history = useHistory();
-  const [consultationData, setConsultationData] = useContext(DataContext); // for users who add it before logging in
-
+ 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   var question = "";
@@ -82,26 +82,22 @@ export default function Choice() {
     setCurrentProfile(id);
     setCurrentProfileName(name);
     setCurrentRelation(relation);
-    setCurrentGender(gender.toLowerCase());
+    setCurrentGender(gender ? gender.toLowerCase() : gender);
     setCurrentAge(age);
   };
 
 
-    const refresh = ( id, gender, age) => {
+    const refresh = ( id, gender, age, phone) => {
             console.log(id)
+    setCurrentPhoneNumber(phone)
 
-     setCurrentGender(gender.toLowerCase());
+     setCurrentGender(gender ? gender.toLowerCase() : gender);
     setCurrentAge(age);
   };
 
 
   const addConsultation = async () => {
-    console.log("handling");
-    if (currentProfile === 0) {
-      setError("Please select a profile.");
-      setLoading(false);
-    } else {
-      setError("");
+     setError("");
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
@@ -128,13 +124,12 @@ export default function Choice() {
       setLoading(false);
       setConsultationId(res['id']);
       setLoadingScreen(true)
-    }
   }
 
   const displayRazorpay = async () => {
     let res = await loadRazorpay();
     if (!res) {
-      alert("Unable to load Razropay SDK. Are you online?");
+      alert("Unable to load Razropay. Are you online?");
       return;
     }
     const token = await app.auth().currentUser.getIdToken(true);
@@ -159,7 +154,7 @@ export default function Choice() {
       description: "Payment for consultation",
       order_id: res.id,
       handler: function (response) {
-        addConsultation();
+         addConsultation();
         if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature){
           return true;
         }
@@ -167,29 +162,69 @@ export default function Choice() {
       prefill: {
         name: nameRef.current.value,
         email: currentUser.email,
+        contact: "8077781807"
+
       },
     };
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
     rzp1.on("payment.failed", function (response) {
-      // alert(response.error.code);
-      // alert(response.error.description);
-      // alert(response.error.source);
-      // alert(response.error.step);
-      // alert(response.error.reason);
-      // alert(response.error.metadata.order_id);
-      // alert(response.error.metadata.payment_id);
+ 
     });
-    // return true;
-  };
+   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const pay = await displayRazorpay();
-    if(!pay){
-      console.log("Error occurred");
+    setError("")
+    console.log(nameRef.current.value)
+    if(!nameRef.current)
+    {
+      setError("Please set name")
+      return;
     }
+    if(!nameRef.current.value)
+    {
+      setError("Please set name")
+      return;
+    }
+    if(!phoneRef.current.value)
+    {
+      setError("Please set phone number on which we can contact you regarding consultation")   
+         return;
+
+    }
+    if(!phoneRef.current.value)
+    {
+      setError("Please set phone number on which we can contact you regarding consultation") 
+      return;
+
+    }
+  var phoneno = /^\d/;
+if(!phoneRef.current.value.match(phoneno))
+{
+        setError("Please set correct phone number")
+      return;
+
+}
+if(phoneRef.current.value.length >13  )
+{
+        setError("Please set correct phone number ")
+      return;
+
+}if(phoneRef.current.value.length <10  )
+{
+        setError("Please set correct phone number ")
+      return;
+
+}
+       
+        setLoading(true);
+
+    console.log()
+   await displayRazorpay();
+         setLoading(false);
+
+    
   }
   return (
     <>
@@ -198,7 +233,6 @@ export default function Choice() {
       <div className="Navb">
         <Navbar />
       </div>
-      {error && <Alert variant="danger">{error}</Alert>}
 
       <Container
         className="align-items-center justify-content-center"
@@ -237,6 +271,17 @@ export default function Choice() {
                       type="text"
                       ref={nameRef}
                       defaultValue={currentProfileName}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                 <Col sm>
+                  <Form.Group id="docType">
+                    <Form.Label style={Texts.FormLabel}>Phone Number</Form.Label>
+                    <Form.Control
+                      type="number"
+                      ref={phoneRef}
+                      defaultValue={currentPhoneNumber}
                       required
                     />
                   </Form.Group>
@@ -411,7 +456,13 @@ export default function Choice() {
                 </Form.Group>
               </Form>
             </Card.Body>
-          </Card>
+          </Card>       
+              
+
+           {error && <>
+           <div style= {{height: "30px"}}></div> 
+           <Alert variant="danger">{error}</Alert>
+           </>}
 
           <Row
             style={{
@@ -421,7 +472,7 @@ export default function Choice() {
               paddingRight: "14px",
             }}
           >
-            <Button
+       <Button
               disabled={loading}
               style={{ height: "45px", width: "250px" }}
               type="submit"

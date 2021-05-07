@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import bgimg from "./img/image1.png";
-import ellipse from "./img/ellipse2.png";
+ import ellipse from "./img/ellipse2.png";
 import "./styles.css";
 import firebase from "firebase";
 import { auth } from "../firebase";
@@ -11,8 +10,15 @@ import Modal from "react-bootstrap/Modal";
 import LoginPopup from "./LoginPopup";
 import { DataContext } from "./App";
 import Navbar from "./Navbar";
-import bgImg from "./img/b1.jpg";
+import bg1 from "./img/b1.jpg";
+import bg2 from "./img/b2.jpg";
+import bg3 from "./img/b3.jpg";
 import HomeBottom from './AboutPage/HomeBottom'
+import useWindowDimensions from "../functions/windowDimensions";
+
+const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
+const delay = 2000;
+
 export default function Home() {
   const history = useHistory();
   const [flag, setFlag] = useState(false);
@@ -25,7 +31,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
+  const { height, width } = useWindowDimensions();
+//505-o
   const [consultationData, setConsultationData] = useContext(DataContext);
 
   const [navBackground, setNavBackground] = useState(false);
@@ -52,6 +59,30 @@ export default function Home() {
     }
     setFlag(false);
   }, [currentUser, history, setFlag]);
+
+  const [index, setIndex] = React.useState(0);
+  const timeoutRef = React.useRef(null);
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  React.useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -83,24 +114,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="home">
-        <div className="Navb">
+     <div className="Navb">
           <Navbar type="trans" />
         </div>
+      <div className="wrapper"  style={{overflow: 'hidden'}}>
+          <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)`}}>
+        {colors.map((bg) => (
+          <div className="slide" style={{ backgroundImage: `${bg}`  }}>
+          </div>
+        ))}
       </div>
-      <div
-        id="wrapper"
-        className="w-100 p-3"
-        style={{
-          backgroundImage: "url(" + bgImg + ")",
-          backgroundSize: "cover",
-          display: "flex",
-          padding: "23px",
-          margin: "-3.5rem 0rem",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div id="container">
+
+
+
+
+
+        <div className="overlapping-text">
           <div id="hometxt">
             <h2 id="bigtxt">
               <br></br>Best Care & <br />
@@ -124,18 +153,18 @@ export default function Home() {
             <img id="ellipsebtn" src={ellipse}/> Start Consultation</Button>
       
       
-        <Modal show={show} onHide={handleClose} id="nlogin">
-       
-       <LoginPopup onClick={handleClose}/>
  
-      </Modal>
         </div>
         
         </div>
         
         
 <HomeBottom></HomeBottom>
-
+       <Modal show={show} onHide={handleClose} id="nlogin">
+       
+       <LoginPopup onClick={handleClose}/>
+ 
+      </Modal>
     </>
   );
 }

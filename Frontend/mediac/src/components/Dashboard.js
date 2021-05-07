@@ -23,11 +23,9 @@ const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
 const delay = 2500;
 // const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 function Dashboard() {
-  const [show, setShow] = useState(false);
-  const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
-  const dbinfo = useRef();
-  const history = useHistory();
+ 
+  const { currentUser } = useAuth();
+   const history = useHistory();
   const quest = useRef();
   useEffect(() => {
     onlyOnce();
@@ -84,9 +82,7 @@ function Dashboard() {
           <Navbar type="trans" />
         </div>
     <div className="wrapper" style={{overflow: 'hidden'}}>
-      <div
-        className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)`}}
+      <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)`}}
       >
         {colors.map((bg) => (
           <div className="slide" style={{ backgroundImage: `${bg}`  ,  animationDuration:"1s"}}>

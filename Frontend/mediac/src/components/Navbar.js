@@ -213,7 +213,7 @@ const NavBar = (props) => {
 
             <ReactBootStrap.Nav.Link
               className="navlink"
-              href="/blog"
+              href="/blogs"
               style={{
                 transition: "0.5s ease",
                 color:
@@ -224,7 +224,7 @@ const NavBar = (props) => {
                     : "#62636a",
               }}
             >
-              Blog
+              Articles
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.Nav.Link
               className="navlink"
@@ -241,7 +241,21 @@ const NavBar = (props) => {
             >
               Videos
             </ReactBootStrap.Nav.Link>
-
+  <ReactBootStrap.Nav.Link
+              className="navlink"
+              href="/testimonials"
+              style={{
+                transition: "0.5s ease",
+                color:
+                  width < 1201
+                    ? "#62636a"
+                    : !navBackground
+                    ? "white"
+                    : "#62636a",
+              }}
+            >
+              Testimonials
+            </ReactBootStrap.Nav.Link>
             <SelectBox
               data={conditionList}
               title="Conditions"
@@ -251,7 +265,8 @@ const NavBar = (props) => {
               data={treatment}
               title="Treatments"
               type={props.type}
-            ></SelectBox>
+            ></SelectBox>  
+               
             <ReactBootStrap.Nav.Link
               className="navlink"
               href="/chat"

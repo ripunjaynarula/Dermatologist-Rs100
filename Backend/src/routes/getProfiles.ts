@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 try{
 
+console.log(req.body)
     if(req.body.role !== "patient")
     {
         return res.send({url : "/login", redirected : true})
@@ -21,7 +22,7 @@ try{
         {
             age = getAge(patient.dob)
         }
-        return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender });
+        return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone });
     }
  return   res.send({status: 'no_account_found'});
 }catch(e)

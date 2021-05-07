@@ -29,7 +29,8 @@ export default function ProfileSelection(props) {
   const [profiles, setProfiles] = useState([])
     const history = useHistory()
 
- 
+     const [phoneNumber,setPhoneNumber] = useState("");
+
   const [togg, setTogg] = useState({showMenu:false});
   /*const emailRef = useRef()
   const onameRef = useRef()
@@ -41,7 +42,8 @@ export default function ProfileSelection(props) {
   
   useEffect( () => {
     async function getProfiles() {
-      if (currentUser) {
+     try{
+        if (currentUser) {
         const token = await app.auth().currentUser.getIdToken(true)
         const requestOptions = {
           method: 'GET',
@@ -49,22 +51,29 @@ export default function ProfileSelection(props) {
           };
         let res = await fetch(process.env.REACT_APP_API_URL+'getProfiles', requestOptions);
 
-
-       
-        
+ 
         res = await res.text();
         res = JSON.parse(res)
+           
          if(res.redirected)
         {
-          history.push(res.url)
-          return 
+           history.push(res.url)
+           return 
         }
+        console.log(res)
+        setPhoneNumber(res.phoneNumber)
 
         setProfiles(res['profiles']);
         setCurrentAge(res.age)
         setCurrentGender(res.gender)
-        props.onLoad("s",res.gender, res.age)
+        props.onLoad("s",res.gender, res.age, res.phoneNumber)
       }
+     }catch(e)
+     {
+       console.log(e)
+     }
+
+
     }
     getProfiles();
   }, [currentUser, setProfiles]);
@@ -91,7 +100,7 @@ export default function ProfileSelection(props) {
                 <div id="sectionpf"  style = {{paddingRight: "0px"}}>
                 <Carousel id="carouselitemprof" breakPoints={breakPoints} style = {{marginRight: "0px"}}>
                   
-                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}} 
+                    <a className={props.id===-1?'active':'inactive'} key={-1} id="profile" onLoad={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge,phoneNumber);}} 
                     onClick={() => {props.handleSubmit(-1, currentUser.displayName, "none", currentGender,currentAge);}}
                     
                     ><img id="userimg" src={usersvg}/><br/>Me</a>
@@ -114,7 +123,7 @@ export default function ProfileSelection(props) {
                    </Carousel>
                  </div>  
 
-              <Modal show={show} onHide={handleClose} size="lg"aria-labelledby="contained-modal-title-vcenter"centered>
+              <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter"centered>
        <div>
         <OtherPersonDetails setProfile={props.handleSubmit} addNewProfile={addNewProfile} close={handleClose}/>
         <br/>

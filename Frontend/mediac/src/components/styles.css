@@ -342,7 +342,6 @@
 }
 
 @media(min-width:200px) {
-    
     .card {
         width: 100%;
     }
@@ -865,7 +864,6 @@ div.scrollmenu a {
 }
 
 @media(max-width:1147px) {
-    
     #coverimg {
         width: 100vw;
         object-fit: contain;
@@ -1068,17 +1066,16 @@ div.scrollmenu a {
     }
     #doc {
         margin-top: 10%;
-        
     }
-    .rc-tabs-nav{
+    .rc-tabs-nav {
         display: flex;
         width: 120px;
     }
 }
 
 @media only screen and (min-width: 768px) {
-    .rc-tabs-nav{
-        display: flex ;
+    .rc-tabs-nav {
+        display: flex;
     }
     #doc {
         margin-top: 1%;
@@ -1153,72 +1150,91 @@ button.rec-dot:focus {
 
 .rc-tabs {
     border: none !important;
-  }
-  .rc-tabs-tab {
+}
+
+.rc-tabs-tab {
     padding: 15px;
     text-transform: capitalize;
     border: 0.1px solid #ececec!important;
     background-color: white;
-  }
-  .rc-tabs-tab .rc-tabs-tab-btn {
-    font-size: 12px ;
-    
-  }
-  .rc-tabs-tab.rc-tabs-tab-active {
+}
+
+.rc-tabs-tab .rc-tabs-tab-btn {
+    font-size: 12px;
+}
+
+.rc-tabs-tab.rc-tabs-tab-active {
     background: #cfcfcf;
-  }
-  .rc-tabs-ink-bar {
+}
+
+.rc-tabs-ink-bar {
     background: #59c7fd !important;
-  }
-  .rc-tabs-content-holder {
+}
+
+.rc-tabs-content-holder {
     padding: 10px;
-    
-  }
+}
 
-  #detailcard{
-      max-height:100px !important;
-      min-height:1px !important;
-      box-shadow:none !important;
-  }
-
+#detailcard {
+    max-height: 100px !important;
+    min-height: 1px !important;
+    box-shadow: none !important;
+}
 
 
-  /* Slideshow */
+/* Slideshow */
 
-
-  .slideshowSlider {
+.slideshowSlider {
     white-space: nowrap;
     transition: ease-in-out 0ms;
     position: relative;
     z-index: 0;
-  }
-  
-  .slide {
+}
+
+.slide {
     display: inline-block;
     min-height: 85vh;
     width: 100%;
     background-size: cover;
+}
 
-  }
+.view-more {
+    font-family: open sans;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: #1977cc;
+    background: #ffffff;
+    font-weight: 600;
+}
 
-  .overlapping-text{
+.point {
+    font-family: open sans;
+    font-size: 15px;
+    display: inline-block;
+    color: #000;
+}
 
+.overlapping-text {
     position: absolute;
-z-index: 1;
-top: 40px;
-left: 40px;
-  }
-  
-  
-.dmcal{
-    padding-left:5px;
-    padding-right:5px;
+    z-index: 1;
+    top: 0px;
+    left: 20px;
+}
+
+.dmcal {
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: rgb(204, 200, 200);
 }
-.datecal{
-    font-size:25px;
+
+.datecal {
+    font-size: 25px;
 }
 
-.consuldoc{
-    margin-left:50px;
+.consuldoc {
+    margin-left: 50px;
 }

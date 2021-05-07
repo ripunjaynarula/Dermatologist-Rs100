@@ -61,6 +61,26 @@
          margin-right: 8vw;
      }
      
+     .centre-bigger {
+         margin-left: 8vw;
+         margin-right: 8vw;
+     }
+     
+     .conditions-nav {
+         display: flex;
+         width: auto;
+         margin-bottom: 24px;
+         padding-left: 5px;
+         padding-right: 5px;
+     }
+     
+     .conditions-nav img {
+         height: 200px !important;
+         width: 100%;
+         border-radius: 10px;
+         object-fit: cover;
+     }
+     
      .centre {
          margin-left: 10vw;
          margin-right: 10vw;
@@ -70,10 +90,62 @@
          margin-top: 120px;
      }
      
+     @media(max-width:790px) {
+         .conditions-nav img {
+             height: 150px !important;
+             width: 100%;
+             border-radius: 10px;
+         }
+         .conditions-nav {
+             display: flex;
+             width: auto;
+             margin-bottom: 24px;
+             padding-left: 0px;
+             padding-right: 0px;
+         }
+     }
+     
+     @media(max-width:622px) {
+         .conditions-nav img {
+             height: 100px !important;
+             width: 100%;
+             border-radius: 10px;
+         }
+     }
+     
+     @media(max-width:1500px) {
+         .centre-bigger {
+             margin-left: 3vw;
+             margin-right: 3vw;
+         }
+     }
+     
+     @media(max-width:1250px) {
+         .centre-bigger {
+             margin-left: 1vw;
+             margin-right: 1vw;
+         }
+     }
+     
+     @media(max-width:900px) {
+         .centre-bigger {
+             margin-left: 0px;
+             margin-right: 0px;
+         }
+     }
+     
      @media(max-width:936px) {
          .centre {
              margin-left: 10px;
              margin-right: 10px;
+         }
+         .centre-big {
+             margin-left: 14px;
+             margin-right: 14px;
+         }
+         .centre-bigger {
+             margin-left: 0px;
+             margin-right: 0px;
          }
      }
      
@@ -157,4 +229,23 @@
      .drop {
          margin-left: 25px;
          border-radius: 4px;
+     }
+     
+     .btn-get-started {
+         font-family: "Raleway", sans-serif;
+         font-weight: 500;
+         font-size: 14px;
+         letter-spacing: 1px;
+         display: inline-block;
+         padding: 12px 35px;
+         margin-top: 30px;
+         border-radius: 50px;
+         transition: 0.5s;
+         color: #fff;
+         background: #1977cc;
+     }
+     
+     .btn-get-started:hover {
+         background: #3291e6;
+         color: #fff;
      }

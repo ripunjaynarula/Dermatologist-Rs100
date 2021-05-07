@@ -105,7 +105,7 @@ catch(e){
         {list.length !== 0 &&
         
             <div>
-        <div class="section-title" style = {{paddingTop : "70px"}}>
+        <div class="section-title" style = {{paddingTop : "40px"}}>
                     <h4 id = "sec"  > Articles</h4>
                     
                 </div>

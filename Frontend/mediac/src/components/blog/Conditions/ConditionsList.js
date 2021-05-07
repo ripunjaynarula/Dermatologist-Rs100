@@ -1,8 +1,7 @@
-export const conditions = [
-    {
-        title : "Pimples or Acne",
-        url : "pimples-acne-treatment",
-        image : "https://www.drsandeshgupta.com/images/pimples-or-acne.jpg",
+export const conditions = [{
+        title: "Pimples or Acne",
+        url: "pimples-acne-treatment",
+        image: "https://www.drsandeshgupta.com/images/pimples-or-acne.jpg",
         body: ` <h3>What is acne?</h3>
       <p>Acne  is a skin condition commonly known as pimples. It is the inflammation of sebaceous gland (oil glands) and characterized by whiteheads, blackheads, and red, inflamed patches of skin. </p>
       <h3>What causes acne?</h3>
@@ -49,16 +48,16 @@ export const conditions = [
       <p><strong>Laser</strong> - <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional C02 laser">fractional C02 laser</a>- This is the most advanced laser for acne scars. This helps in formation of collagen therefore effects can be seen from the first sitting onwards.</p>
 `,
 
-           alt : " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms, Pimples Acne ",
-        imgTitle : " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms,  Pimples Acne  surgery",
+        alt: " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms, Pimples Acne ",
+        imgTitle: " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms,  Pimples Acne  surgery",
 
 
     },
     {
-        title : "Psoriasis",
-        url : "psoriasis-treatment",
-        image : "https://www.drsandeshgupta.com/images/psoriasis.jpg",
-        body : `<h2>Psoriasis</h2>
+        title: "Psoriasis",
+        url: "psoriasis-treatment",
+        image: "https://www.drsandeshgupta.com/images/psoriasis.jpg",
+        body: `<h2>Psoriasis</h2>
       <p> <span class='st_facebook_hcount' displayText='Facebook'></span> <span class='st_googleplus_hcount' displayText='Google +'></span> <span class='st_twitter_hcount' displayText='Tweet'></span> <span class='st_fblike_hcount' displayText='Facebook Like'></span> <span class='st_pinterest_hcount' displayText='Pinterest'></span> </p>
       <h3>What is Psoriasis?</h3>
       <p>Psoriasis is a chronic, non-contagious, skin condition in which there is disturbance in the skin growing cell cycle and immune cells. Usually the skin cells grow gradually and old skin sheds in about every 4 weeks. As this occurs, the new skin cells come to replace as the old one fall. But in psoriasis, the skin cells grow too quickly and shed very frequently, in days rather than weeks, forming thick, white or red patches on skin. This gives the appearance of the thick skin patches, or "plaques." Plaques range in size, and most often appear on the knees, elbows, scalp, hands, feet, and lower back. </p>
@@ -92,17 +91,17 @@ export const conditions = [
       <p><strong>Phototherapy :</strong> This is very effective and safe therapy for this chronic disease and can be taken for a very long period without any side effects. In this a special ultraviolet light (NB-UVB) is given to the lesions and prevents the further spread.</p>
        `,
 
-           alt : "Psoriasis treatment in delhi, Psoriasis Symptoms, Psoriasis surgery",
-        imgTitle : "Psoriasis treatment in delhi, Psoriasis Symptoms, Psoriasis surgery",
+        alt: "Psoriasis treatment in delhi, Psoriasis Symptoms, Psoriasis surgery",
+        imgTitle: "Psoriasis treatment in delhi, Psoriasis Symptoms, Psoriasis surgery",
 
-    },{
-        title : "Eczema",
-        url : "eczema-treatment",
-        
-        image : "https://www.drsandeshgupta.com/images/eczema.jpg",
-           alt : "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
-        imgTitle : "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
-        body : `<h3>What is eczema?</h3>
+    }, {
+        title: "Eczema",
+        url: "eczema-treatment",
+
+        image: "https://www.drsandeshgupta.com/images/eczema.jpg",
+        alt: "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
+        imgTitle: "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
+        body: `<h3>What is eczema?</h3>
       <p>Eczema refers to the inflammation or irritation of the outer layer of the skin (epidermis). It causes skin dryness or recurring skin rashes. It is a way of skin’s reaction to a source of allergy or infection.</p>
       <h3>What are the symptoms?</h3>
       <p>Symptoms may range from redness, swelling, itching, crusting, cracks to the bleeding of the skin. Eczema is non-contagious and particularly common among housewives and young children.</p>
@@ -119,42 +118,13 @@ export const conditions = [
       <p>Though there is no permanent cure for eczema, but proper treatment from dermatologist generally controls the disease. <strong><em>Treatment for eczema</em></strong> aims to relieve and prevent itching, which can lead to infection. Because dry skin often makes skin itchy, applying moisturizer after bathing when skin is damp is recommended. Other treatment options include:</p>
       <p><strong>Medication:</strong> For mild <em>eczema</em> creams and ointments are often prescribed to reduce inflammation. When the affected area becomes infected, antibiotics may be necessary to kill the infection-causing bacteria. For severe cases, oral medication is necessary to reduce the symptoms and spread of the disease.</p>
    `
-    },{
-        title : "Warts And Molluscumcontagiosum",
-        url : "warts-molluscumcontagiosum-treatment",
-        image : "https://www.drsandeshgupta.com/images/warts.jpg",
-        alt : "Warts, Molluscumcontagiosum, dermatologist In Delhi",
-        imgTitle : "Warts, Molluscumcontagiosum, dermatologist In Delhi",
-        body : ` <h3>What are warts?</h3>
-      <p>Warts are viral infection caused by the Human Papillomavirus (HPV), which stimulates the growth of cells of outer layer of skin which forms a wart. They are contagious and spread from one place to other with the direct touch.</p>
-      <h3>What are the different types of warts?</h3>
-      <ul>
-        <li><strong>Common Warts:</strong> It is most common type of wart and are characterized by raised itchy lesion with rough surface and can occur anywhere on the body, but mostly found on the hands.</li>
-        <li><strong>Flat:</strong> Flat warts are smoother, flatter, and smaller than common warts, and generally occur on the face. This type of wart is more common in children than adults.</li>
-        <li><strong>Plantar:</strong> Plantar warts usually appear as flesh-colored or light brown growth usually occur on feet and are painful.</li>
-        <li><strong>Genital:</strong> Genital warts can appear in the pubic region, on the genitals, in or around the anus, and in the vagina. They look like small pink or red skin growth and can spread and grow rapidly. Mild pain, itching and bleeding can occur.</li>
-      </ul>
-      <h3>What is molluscumcontagiosum?</h3>
-      <p>Mollluscum is a viral infection which is caused by pox virus, characterized by raised pearly white skin growth. They are more common in children and sometimes may resolve themselves without any treatment. However if they increase in number and size they require treatment from a dermatologist.</p>
-      <h3>What are the Symptoms?</h3>
-      <p>Molluscum or warts are viral infections. They are usually harmless but spread very easily. There can be mild itching and warts on tips of fingers and feet can be painful. In case of infection, sometimes there  can be bleeding or pus discharge. They are infectious. One can catch wart or molluscum by touching an infected object - such as towel, clothes, or plates - touched by an infected person. </p>
-      <h3>Warts and Molluscumcontagiosum Treatment at skin n laser centre In Delhi</h3>
-      <p>There are many treatment options for warts, although reoccurrence after the treatment can be seen.But complications can be prevented if a proper treatment from the <em><strong>dermatologists</strong></em> is taken. Some options include:</p>
-      <ul>
-        <li><strong>Medications:</strong> Some medications can be applied to reduce the  size but they  are not effective for permanent removal.</li>
-        <li><strong>Extraction:</strong> Molluscum can be extracted by the expert with the best technology </li>
-        <li><strong>Laser therapy:</strong> This procedure uses an intense beam of light (the laser) to burn and destroy wart or molluscumtissue completely by an expert.</li>
-        <li>All these procedures are done by experts at <strong>skin n laser centre</strong>.</li>
-      </ul>
-  `
-
-    },{
-        title : "Vitiligo",
-        url : "vitiligo-treatment",
-        image : "https://www.drsandeshgupta.com/images/vitiligo.jpg",
-        imgTitle : "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
-        alt : "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
-        body : ` <h3>What is vitiligo?</h3>
+    }, {
+        title: "Vitiligo",
+        url: "vitiligo-treatment",
+        image: "https://www.drsandeshgupta.com/images/vitiligo.jpg",
+        imgTitle: "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
+        alt: "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
+        body: ` <h3>What is vitiligo?</h3>
       <p> Vitiligo is pigment disorder in which the pigment producing skin cells (melanocytes) are destroyed resulting in a white patch. It can occur in any body part.</p>
       <h3>What are the Symptoms of Vitiligo?</h3>
       <p>People having <strong>vitiligo</strong> usually notice white patches on their skin. These patches are more commonly found on areas where body is exposed to the sun, including hands, feet, arms, face, and lips. These patches are usually symptom less. However, mild itching or redness in sun exposure are very common symptoms. </p>
@@ -183,12 +153,12 @@ export const conditions = [
       <p><strong>Light Therapy</strong> - Light therapy consists of exposing the skin to ultraviolet (UV) light. UV radiation is known to suppress the immune system and reduce inflammatory responses. This is usually given in the extreme cases, which do not heal with oral medication. </p>
 `
 
-    },{
-        title : "Hyper Pigmentation/ Malesma",
-        url : "hyper-pigmentation-malesma-teratment",
-        image : "https://www.drsandeshgupta.com/images/hyper-pigmentation-malesma.jpg",
-        imageTitle : "Hyper pigmentation, malesma, dermatologist In Delhi",
-        alt : "Hyper pigmentation, malesma, dermatologist In Delhi",
+    }, {
+        title: "Hyper Pigmentation/ Malesma",
+        url: "hyper-pigmentation-malesma-teratment",
+        image: "https://www.drsandeshgupta.com/images/hyper-pigmentation-malesma.jpg",
+        imageTitle: "Hyper pigmentation, malesma, dermatologist In Delhi",
+        alt: "Hyper pigmentation, malesma, dermatologist In Delhi",
         body: ` <h3>What is hyper pigmentation and melasma?</h3>
       <p><em>Hyper pigmentation</em> is a common but a harmless condition in which the skin starts becoming darker than the normal skin colour and becomes patchy. This darkening occurs because of excess of melanin which deposits in the skin making it dark.</p>
       <p>Brown patches on face is known as  <em>malesma</em>. These days <em><strong>malesma</strong></em> is common in both men and women. </p>
@@ -219,12 +189,12 @@ export const conditions = [
       <p><strong>Lasers</strong> - In this a laser beam is given to the dark area, which penetrates the skin and destroys the pigment in a painless manner. In laser treatment superficial (epidermal) as well as deep (dermal) pigment is targeted. We are equipped with  <a href="tattoo+removal+in+delhi+birthmark+removal+in+delhi+dermatologist+in+delhi.html" title="Q-Switched Nd-yag laser">Q-Switched Nd-yag laser</a>, which is the best laser for melasma, freckles and hyper pigmentation</p>
 `
 
-    },{
-        title : "Moles or Nevi or Skin Tags",
-        url : "moles-or-nevi-skin-tags-treatment",
-        image : "https://www.drsandeshgupta.com/images/moles.jpg",
-                imageTitle : "Moles, Nevi, skin tags, dermatologist In Delhi",
-        alt : "Moles, Nevi, skin tags, dermatologist In Delhi",
+    }, {
+        title: "Moles or Nevi or Skin Tags",
+        url: "moles-or-nevi-skin-tags-treatment",
+        image: "https://www.drsandeshgupta.com/images/moles.jpg",
+        imageTitle: "Moles, Nevi, skin tags, dermatologist In Delhi",
+        alt: "Moles, Nevi, skin tags, dermatologist In Delhi",
         body: ` <h3>What are moles or nevi?</h3>
       <p>Moles, medically known as melanocytic nevus (the plural form being nevi) are natural and most common growth in human beings. They are formed due to the alteration in the skin pigmentation cells called melanocytes. These are either present by birth or appear later in life.</p>
       <h3>What are skin tags?</h3>
@@ -240,12 +210,12 @@ export const conditions = [
       <h3>How does CO2 (Carbon dioxide) Laser work?</h3>
       <p>It is a painless procedure in which a numbing cream is applied 20 mins prior to the procedure and then laser beam is given to the mole which penetrates the skin painlessly and disrupts the pigment cells and causes skin resurfacing and removes mole with very less scarring.</p>
   `
-    },{
-        title : "Fungal Infections",
-        url : "fungal-infections-treatment",
-        image : "https://www.drsandeshgupta.com/images/fungal-infections.jpg",
-                imageTitle : "Fungal infections treatment in delhi, Fungal infections Symptoms",
-        alt : "Fungal infections treatment in delhi, Fungal infections Symptoms",
+    }, {
+        title: "Fungal Infections",
+        url: "fungal-infections-treatment",
+        image: "https://www.drsandeshgupta.com/images/fungal-infections.jpg",
+        imageTitle: "Fungal infections treatment in delhi, Fungal infections Symptoms",
+        alt: "Fungal infections treatment in delhi, Fungal infections Symptoms",
         body: ` <p>Fungal infections are single or multi-cellular organisms that cause skin infections known as fungal infections(tinea). Yeast is the most common type of fungus and is already present in the human body, but increase in its level can result in infection. Dermatophytes are fungal organisms that grow on the human body and infect the top layer of skin as well as nails or hair. There are different types of fungal infections and each can appear in different areas of the body but usually it is more common on the areas with excessive sweating i.e. body folds, in between the toes etc.</p>
       <h3>What are the symptoms?</h3>
       <p>Symptoms may vary, ranging from redness, rash, itching, skin irritation, bad odour, oozing or flaking or blackish discoloration. On scalp there can be whitish scales. If nails are involved there can be discoloration or destruction.</p>
@@ -271,12 +241,12 @@ export const conditions = [
       <h3>Fungal Infection Treatment at skin n laser centre in Delhi</h3>
       <p>At <strong>skin n laser centre</strong> the detailed history and proper examination of the patients are done by expert team of dermatologist and a proper diagnosis is made. Various treatments are given according to the type and location of infection. For more information, <a href="dermatologist+in+delhi+skin+specialist+in+delhi+east+delhi+shahdara+laxmi+nagar+seelampur+krishna+nagar+preet+vihar.html" title="contact">contact</a> <strong>skin n laser centre</strong>.</p>
   `
-    },{
-        title : "Keloid And Hypertrophic Scar",
-        url : "keloid-hypertrophic-scar",
-        image : "https://www.drsandeshgupta.com/images/keloid.jpg",
-        imageTitle : "Keloid, Hypertrophic scar, skin tags, dermatologist ",
-        alt : "Keloid, Hypertrophic scar, skin tags, dermatologist",
+    }, {
+        title: "Keloid And Hypertrophic Scar",
+        url: "keloid-hypertrophic-scar",
+        image: "https://www.drsandeshgupta.com/images/keloid.jpg",
+        imageTitle: "Keloid, Hypertrophic scar, skin tags, dermatologist ",
+        alt: "Keloid, Hypertrophic scar, skin tags, dermatologist",
         body: `<h3>What is Keloids and hypertrophic scar?</h3>
       <p><span style="font-style: italic">Keloid And Hypertrophic Scar</span> is a kind of skin growth that appears usually at the site of skin damage. After this trauma the skin heals by the growth of a fibrous tissue resulting in a skin growth or scar. Keloid mostly occurs on the exposed site like earlobe, chest or face. <em><strong>Hyperthrophic scars</strong></em> usually formed after the trauma or injury. They can increase in size and number and may   interfere with routine activities of the patient.</p>
       <h3>What are the symptoms of this condition?</h3>
@@ -297,11 +267,11 @@ export const conditions = [
       <h3>How does fractional Co2 laser works?</h3>
       <p>The <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional CO2 laser">fractional CO2 laser</a> takes the CO2 laser beam and fractionates, or pixellates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen. - See more at: <a href="https://www.drsandeshgupta.com/acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html">Click here</a></p>`
     }, {
-        title : "Hair Loss",
-        url : "hair-loss-treatment",
-        image : "https://www.drsandeshgupta.com/images/hair-loss.jpg",
-        imageTitle : "Hair Loss Treatment ",
-        alt : "Hair Loss Treatment ",
+        title: "Hair Loss",
+        url: "hair-loss-treatment",
+        image: "https://www.drsandeshgupta.com/images/hair-loss.jpg",
+        imageTitle: "Hair Loss Treatment ",
+        alt: "Hair Loss Treatment ",
         body: ` <p>Hair plays a very important role in enhancing appearance and personality. <em>Loss of hair</em> or baldness results in low self-esteem of the concerned person. While 'hair loss' implies loss of hair from any part of the body, the term baldness is used to refer to loss of hair from scalp. It results due to progressive hair fall or thinning of hair. <strong>Hair loss</strong> is very common these days and may be a reason of stress and effect their quality of life. </p>
       <h3>What are the causes of hair loss?</h3>
       <p>Hair loss can be temporary or permanent. Common causes are lack of nutrition, stress, crash dieting, frequent ironing, curling, colouring or straitening.</p>
@@ -346,12 +316,12 @@ export const conditions = [
       <p>Stem cell is a type of blast cell, which can differentiate to various adult cell including skin cell and hair cell. Stem cells nourish and stimulate the hair follicles and increase the blood circulation in the scalp and by this helps in stopping hair loss and increasing hair growth.</p>
 `
     },
-     {
-        title : "Lichen Planus",
-        url : "lichen-planus-treatment",
-        image : "https://www.drsandeshgupta.com/images/lichen-planus.jpg",
-        imageTitle : "Lichen planus, dermatologist In Delhi",
-        alt : "Lichen planus, dermatologist In Delhi",
+    {
+        title: "Lichen Planus",
+        url: "lichen-planus-treatment",
+        image: "https://www.drsandeshgupta.com/images/lichen-planus.jpg",
+        imageTitle: "Lichen planus, dermatologist In Delhi",
+        alt: "Lichen planus, dermatologist In Delhi",
         body: `  <h3>What is lichen planus?</h3>
       <p>Lichen planus is a skin condition which is non-infectious, itchy and can affect any part of the body eg. arms, legs, mouth.</p>
       <p>It is associated with immune system.</p>
@@ -384,13 +354,42 @@ export const conditions = [
         <li><a href="conventional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="Co2 laser">Co2 laser</a></li>
         <li><a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="Fractional co2 laser">Fractional co2 laser</a></li>
       </ul>`
+    }, {
+        title: "Warts And Molluscumcontagiosum",
+        url: "warts-molluscumcontagiosum-treatment",
+        image: "https://www.drsandeshgupta.com/images/warts.jpg",
+        alt: "Warts, Molluscumcontagiosum, dermatologist In Delhi",
+        imgTitle: "Warts, Molluscumcontagiosum, dermatologist In Delhi",
+        body: ` <h3>What are warts?</h3>
+      <p>Warts are viral infection caused by the Human Papillomavirus (HPV), which stimulates the growth of cells of outer layer of skin which forms a wart. They are contagious and spread from one place to other with the direct touch.</p>
+      <h3>What are the different types of warts?</h3>
+      <ul>
+        <li><strong>Common Warts:</strong> It is most common type of wart and are characterized by raised itchy lesion with rough surface and can occur anywhere on the body, but mostly found on the hands.</li>
+        <li><strong>Flat:</strong> Flat warts are smoother, flatter, and smaller than common warts, and generally occur on the face. This type of wart is more common in children than adults.</li>
+        <li><strong>Plantar:</strong> Plantar warts usually appear as flesh-colored or light brown growth usually occur on feet and are painful.</li>
+        <li><strong>Genital:</strong> Genital warts can appear in the pubic region, on the genitals, in or around the anus, and in the vagina. They look like small pink or red skin growth and can spread and grow rapidly. Mild pain, itching and bleeding can occur.</li>
+      </ul>
+      <h3>What is molluscumcontagiosum?</h3>
+      <p>Mollluscum is a viral infection which is caused by pox virus, characterized by raised pearly white skin growth. They are more common in children and sometimes may resolve themselves without any treatment. However if they increase in number and size they require treatment from a dermatologist.</p>
+      <h3>What are the Symptoms?</h3>
+      <p>Molluscum or warts are viral infections. They are usually harmless but spread very easily. There can be mild itching and warts on tips of fingers and feet can be painful. In case of infection, sometimes there  can be bleeding or pus discharge. They are infectious. One can catch wart or molluscum by touching an infected object - such as towel, clothes, or plates - touched by an infected person. </p>
+      <h3>Warts and Molluscumcontagiosum Treatment at skin n laser centre In Delhi</h3>
+      <p>There are many treatment options for warts, although reoccurrence after the treatment can be seen.But complications can be prevented if a proper treatment from the <em><strong>dermatologists</strong></em> is taken. Some options include:</p>
+      <ul>
+        <li><strong>Medications:</strong> Some medications can be applied to reduce the  size but they  are not effective for permanent removal.</li>
+        <li><strong>Extraction:</strong> Molluscum can be extracted by the expert with the best technology </li>
+        <li><strong>Laser therapy:</strong> This procedure uses an intense beam of light (the laser) to burn and destroy wart or molluscumtissue completely by an expert.</li>
+        <li>All these procedures are done by experts at <strong>skin n laser centre</strong>.</li>
+      </ul>
+  `
+
     },
     {
-        title : "Hirsutism",
-        url : "hirsutism-treatment",
-        image : "https://www.drsandeshgupta.com/images/hirsutism.jpg",
-        imageTitle : "hirusitism, dermatologist ",
-        alt : "hirusitism, dermatologist ",
+        title: "Hirsutism",
+        url: "hirsutism-treatment",
+        image: "https://www.drsandeshgupta.com/images/hirsutism.jpg",
+        imageTitle: "hirusitism, dermatologist ",
+        alt: "hirusitism, dermatologist ",
         body: `<h2>What Is Hirsutism?</h2>
       <p> <span class='st_facebook_hcount' displayText='Facebook'></span> <span class='st_googleplus_hcount' displayText='Google +'></span> <span class='st_twitter_hcount' displayText='Tweet'></span> <span class='st_fblike_hcount' displayText='Facebook Like'></span> <span class='st_pinterest_hcount' displayText='Pinterest'></span> </p>
       <p>Hirsutism is the appearance of dark coarse unwanted hair specially in females on the areas like face, chin, cheek, upper lips, forehead, neck or chest. Some of these hair is very light in colour and not noticeable. But the dark hard hair specially on face are embarrassing and need to be managed effectively.</p>
@@ -404,5 +403,5 @@ export const conditions = [
       <h3>How does diode laser work?</h3>
       <p>A laser produces a beam of highly concentrated light. The light emitted is well absorbed by the pigment located in hair follicles. The laser pulses for a fraction of a second, just long enough to vaporize the pigment, disabling numerous follicles at a time to eliminate or significantly impede the hair growth. Treatment from this laser gives very effective results from the first sitting itself.  <strong>For more information from the experts, <a href="dermatologist+in+delhi+skin+specialist+in+delhi+east+delhi+shahdara+laxmi+nagar+seelampur+krishna+nagar+preet+vihar.html" title="book an appointment">book an appointment</a> at Skin N Laser centre East Delhi</strong>.</p>
    `
-    }, 
+    }
 ]

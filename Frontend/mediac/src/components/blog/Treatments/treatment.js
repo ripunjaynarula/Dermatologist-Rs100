@@ -127,9 +127,9 @@ const [videos, setVideos] = useState([])
 
               <div class="entry-img" style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-               {imageLink &&  <img src= {imageLink} alt={alt} title = {imgTitle}  style = {{  
+               {/* {imageLink &&  <img src= {imageLink} alt={alt} title = {imgTitle}  style = {{  
    width: "100vh",
-  objectFit: "cover"}}></img>}
+  objectFit: "cover"}}></img>} */}
               </div>
 
               <h2 class="entry-title">

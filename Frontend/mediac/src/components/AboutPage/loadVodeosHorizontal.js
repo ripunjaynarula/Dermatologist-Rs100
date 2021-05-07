@@ -1,32 +1,38 @@
-import React, {useRef,useEffect, useState, useContext} from "react";
-import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
+import React, { useEffect, useState,  } from "react";
+import {   Row, Col } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
  
   import  "../blog/blog.css";
-   import BlogCard from '../blog/blogCard'
+ 
+ 
+  import VideoModal from '../utility/VideoModal'
 
- import DOMPurify from 'dompurify';
-
-  import BlogList from './VideoCarousel';
- import VideoModal from '../utility/VideoModal'
-
- import viewSvg from '../img/visibility.svg'
-
+ 
 import useWindowDimensions from "../../functions/windowDimensions"
  
  export default function Home() {
 
   const history = useHistory();
     const [error, setError] = useState("")
-        const { height, width } = useWindowDimensions();
+const [limit, setLimit] = useState(0)
+const [showMore, setShowMore] = useState(false)
+       const { height, width } = useWindowDimensions();
+  const [videoLink, setLink] = useState ("")
 
+    const [show, setShow] = useState(false);
 
-const breakPoints = [
-  { width: 1, itemsToShow: 1, itemsToScroll: 1 },
-  { width: 550, itemsToShow: 2, itemsToScroll: 1 },
-  { width: 768, itemsToShow: 3, itemsToScroll: 1 },
-  { width: 1200, itemsToShow: 4 , itemsToScroll: 1}
-];
+   const openVideo = (e) => {
+     console.log(e)
+    setLink(e + "?autoplay=1")
+    setShow(true)
+ 
+  };
+  const closeVideo = () => {
+    
+    setShow(false)
+ 
+  };
+
 
 
   const [loading, setLoading] = useState(false)
@@ -64,7 +70,7 @@ try{
           method: 'POST',
           headers: { 'Content-Type': 'application/json', },
          body: JSON.stringify({
-             limit : 15
+             limit : 16
          })
 
           };
@@ -75,9 +81,7 @@ try{
         if(res.status === "valid")
         {
  
-
- console.log("ABABSBS")
-               for(var i =0; i< res.videos.length ; i++)
+                 for(var i =0; i< res.videos.length ; i++)
               {
                                  res.videos[i].views = nFormatter(res.videos[i].views) 
 
@@ -85,8 +89,7 @@ try{
               setList(res.videos)
         }else{
 
-          console.log("anranrarnr")
-               return;
+                return;
         }
 
 }
@@ -122,6 +125,27 @@ function nFormatter(num) {
 
 
 
+   useEffect( () => {
+
+    var items = 3;
+
+    
+    if(width> 1199) {
+      
+      items = 4
+      setLimit(7)
+    }else if(width < 768){
+      items = 2
+      setLimit(3)
+    }else{
+      setLimit(5)
+    } 
+  }, [width] )
+  
+  const handleClick =(e)=>{
+    e.preventDefault()
+      setShowMore(!showMore)
+}
  
 
 
@@ -138,18 +162,81 @@ function nFormatter(num) {
                     <h4 id = "sec"  >From Our Doctors</h4>
                     
                 </div>
-  <div className = "centre-big" style = {{marginTop : "-19px"}}>
+  <div className = "centre-big"  >
      
-                    <BlogList mail="mail" blogs = {list} />
+   <Row>
 
+
+                      { getBlog()
+          
+          }
+               </Row>
+  <div class="text-center" >
+            <a href="#" onClick = {handleClick} class="view-more">{showMore ?`Show Less`: `Show More`}</a>
+                            </div>
     </div>
     <br></br>
-<br></br>
-<br></br>
+ <br></br>
     </div>
+    
      }
-      
+            <VideoModal show = {show} onHide = {closeVideo} videoId = {videoLink}></VideoModal>
+
     </>
   );
+
+
+  function getBlog(){
+
+ 
+    return  list.map((blog, i) =>{
+
+if(!showMore)
+if(i>limit)
+  return <></> ;
+
+return (<>
+       
+     <Col xs={6} md={width > 1199 ? 3 : 4} >
+
+      <a className= "title" href ="#"   onClick  = {(e) => {
+                            e.preventDefault()
+                            openVideo(blog.videoLink)
+                        }}>
+
+ <div className="videocard"  >
+           <img  src= {blog.thumbnail} alt="" style = {{  
+ height :    "100%", 
+  objectFit: "cover"}}
+  
+           
+
+   ></img>
+   <a href="#" class="play-btn mb-4" onClick  = {(e) => {
+                            e.preventDefault()
+                            openVideo(blog.videoLink)
+                        }} ></a>
+
+
+              </div>
+               <div  style = {{marginTop: "-13px", marginBottom: "28px", marginLeft: width> 790 ? "11px":"4px"}}  >
+<h5 style={{color:"black", fontSize:"18px"}} ><b>                {blog.title}
+              </b>
+              </h5>
+              </div>
+
+      </a>
+
+           
+             
+ 
+
+          </Col >
+
+          </>)
+
+    })
+  }
+  
 }
   

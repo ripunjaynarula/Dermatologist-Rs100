@@ -193,25 +193,6 @@ h6 {
     font-size: 24px;
 }
 
-#hero .btn-get-started {
-    font-family: "Raleway", sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 12px 35px;
-    margin-top: 30px;
-    border-radius: 50px;
-    transition: 0.5s;
-    color: #fff;
-    background: #1977cc;
-}
-
-#hero .btn-get-started:hover {
-    background: #3291e6;
-}
-
 @media (min-width: 1024px) {
     #hero {
         background-attachment: fixed;
@@ -350,30 +331,12 @@ section {
     margin-bottom: 30px;
 }
 
-.why-us .content .more-btn {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 6px 30px 8px 30px;
-    color: #fff;
-    border-radius: 50px;
-    transition: all ease-in-out 0.4s;
-}
-
-.why-us .content .more-btn i {
-    font-size: 14px;
-}
-
-.why-us .content .more-btn:hover {
-    color: #1977cc;
-    background: #fff;
-}
-
 .why-us .icon-boxes .icon-box {
     text-align: center;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-    padding: 40px 30px;
+    padding: 30px;
     width: 100%;
 }
 
@@ -386,12 +349,13 @@ section {
 .why-us .icon-boxes .icon-box h4 {
     font-size: 20px;
     font-weight: 700;
-    margin: 0 0 30px 0;
+    margin: 16px 0px 14px 0;
 }
 
 .why-us .icon-boxes .icon-box p {
     font-size: 15px;
-    color: #848484;
+    color: #5c5c5c;
+    text-align: left;
 }
 
 
@@ -401,8 +365,10 @@ section {
 
 .about .icon-boxes h4 {
     font-size: 18px;
-    color: #4b7dab;
+    color: #525252;
+    font-weight: 600;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .about .icon-boxes h3 {
@@ -468,6 +434,16 @@ section {
     background: url("../img/about.jpg") center center no-repeat;
     background-size: cover;
     min-height: 500px;
+}
+
+.about .image-box {
+    background-size: cover;
+    min-height: 500px;
+}
+
+.about .image-box-small {
+    background-size: cover;
+    min-height: 250px;
 }
 
 .about .play-btn {

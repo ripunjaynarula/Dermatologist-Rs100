@@ -178,7 +178,7 @@ const NavBar = (props) => {
           transition: "0.3s ease",
           backgroundColor:
             width < 1201 ? "white" : !navBackground ? "transparent" : "white",
-                     boxShadow: navBackground &&  "0px 0px 10px rgba(147, 149, 151, 0.25)"
+                     boxShadow: navBackground ?  "0px 0px 10px rgba(147, 149, 151, 0.25)" :"0px 0px 0px rgba(147, 149, 151, 0)"
 
         }}
       >

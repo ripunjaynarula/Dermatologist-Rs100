@@ -4,7 +4,7 @@ export const TreatmentList = [
         title: "Acupulse Fractional Co2 Laser Treatment",
         url: "acupulse-fractional-co2-laser-treatment",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/acupulse-co2-lasermain_2.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/yUxpk2eWAAU?rel=0", ""],
         body: [`<p><img src="https://www.drsandeshgupta.com/images/acupulse-co2-lasermain_2.jpg" alt="Acupulse Fractional Co2 Laser Treatment" title="Acupulse Fractional Co2 Laser Treatment In Delhi"  style="border:0;"/><br/>Acupulse Fractional Carbon dioxide (CO2) lasers are one of the latest advances in non-surgical skin rejuvenation treatments. This Resurfacing laser removes layers of skin in a fractionated method (columns of skin are removed, leaving the skin surrounding each column intact to aid in healing). This laser excels at treating deeper wrinkles, more severe textural changes from sun damage, wrinkles, blotchiness, acne scars, and surgical or traumatic scars. </p>
@@ -53,7 +53,7 @@ export const TreatmentList = [
         title: "Laser Hair Removal",
         url: "laser-hair-removal-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/light-sheer-diod-main.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/Wswx8pvhKH8", "https://www.youtube.com/embed/057LpNWOKNc"],
         body: [`<h3>How does the diode system remove hair?</h3>
@@ -78,7 +78,7 @@ export const TreatmentList = [
         title: "Q Switch ND Yag Laser (Tattoo Removal)",
         url: "q-switch-tag-laser-tattoo-removal",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/yag-aser.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Q-switched Nd: YAG laser, provides a new paradigm for treatment of </h3>
@@ -98,7 +98,7 @@ export const TreatmentList = [
         title: "Conventional Co2 Laser",
         url: "conventional-co2-laser-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/co2-laser1.jpg",
         imgTitle: "",
         videos: [],
         body: [` <p><img src="https://www.drsandeshgupta.com/images/co2-laser1.jpg" alt="Conventional Co2 Laser Center In Delhi" style="border:0;"  title="Conventional Co2 Laser Center In Delhi" class="imgleft"/><br/></p>
@@ -131,7 +131,7 @@ export const TreatmentList = [
         title: "Microdermabrasion",
         url: "microdermabrasion-treatment",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/microdermabrasion-main_2.jpg",
         imgTitle: "",
         videos: [],
         body: [`  <p><img src="https://www.drsandeshgupta.com/images/microdermabrasion-main_2.jpg" style="border:0;" alt="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi" title="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi"/><br/>Microdermabrasion is a procedure to exfoliate or gently remove the outermost layer of dead skin cells from the epidermis. It is a fairly simple, easy, painless, non-invasive, skin rejuvenation procedure using a combination of a fine abrasive tip or crystals along with vacuum suction applied to the skin. The pressure and speed are adjusted depending on the sensitivity and tolerance of the skin.</p>
@@ -172,7 +172,7 @@ export const TreatmentList = [
         title: "Lavatron (RF) Diathermy Therapy",
         url: "lavatron-diathermy-therapy-treatment",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/lavatron.jpg",
         imgTitle: "",
         videos: [],
         body: [`  <h3><img src="https://www.drsandeshgupta.com/images/lavatron.jpg" style="border:0;" alt="Lavatron (RF) Diathermy Therapy In Delhi" title="Lavatron (RF) Diathermy Therapy In Delhi" class="imgleft"/><br/></h3>
@@ -192,7 +192,7 @@ export const TreatmentList = [
         title: "Chemical Peel",
         url: "chemical-skin-peel-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/chemical-peel.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/JlU16QR00ec"],
         body: [`<p><img src="https://www.drsandeshgupta.com/images/chemical-peel.jpg" alt="Chemical skin peel treatment centre of best  skin doctor In Delhi." title="Chemical skin peel treatment centre of best  skin doctor In Delhi." style="border:0;" class="imgright"/><br/>Chemical peel is a way to exfoliate the skin with the help of a chemical (made of natural products egg. sugarcane, milk) in a controlled way so that old dead skin peels off and that new skin comes in its place. </p>
@@ -220,7 +220,7 @@ export const TreatmentList = [
         title: "Dermaroller & Mesotherapy",
         url: "dermaroller-and-mesotherapy-treatmen-consultaion",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/dermaroller.jpg",
         imgTitle: "",
         videos: [],
         body: [`  <h3><img src="https://www.drsandeshgupta.com/images/dermaroller.jpg" alt="Dermaroller And Mesotherapy In Delhi" title="Dermaroller And Mesotherapy In Delhi" style="border:0;"  class="imgleft"/><br/>What is Derma roller?</h3>
@@ -264,7 +264,7 @@ export const TreatmentList = [
         title: "Botox & Fillers",
         url: "botox-and-fillers-treatment-consultaion",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/botox.jpg",
         imgTitle: "",
         videos: [],
         body: [`<p><img src="https://www.drsandeshgupta.com/images/botox.jpg" alt="Botox And Fillers In Delhi, Botox Treatment In Delhi" title="Botox And Fillers In Delhi, Botox Treatment In Delhi" class="imgleft" style="border:0;" /><br/><strong>BOTOX</strong> is a purified protein produced by the Clostridium botulinum bacterium. It relaxes the muscles which are responsible for lines of ageing e.g. frown lines, crow’s feet and wrinkles which form over time.</p>
@@ -279,7 +279,7 @@ export const TreatmentList = [
         title: "Vitiligo Treatments",
         url: "vitiligo-treatments-consulation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/melanocyte-transplant.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/CAhASKGFXdo"],
         body: [` <h3>Narrowband UVB Light Therapy (NB-UVB)</h3>
@@ -310,7 +310,7 @@ export const TreatmentList = [
         title: "Hair Transplant",
         url: "hair-transplant-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/hair-transplant.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/liXDZL_VD2E"],
         body: [` <p><img src="https://www.drsandeshgupta.com/images/hair-transplant.jpg" alt="Best Hair Transplant Clinic In Delhi" title="Best Hair Transplant Clinic In Delhi" class="imgleft" style="border:0;" /><br/><a href="hair+loss+treatment+in+delhi+dermatologist+in+delhi.html" title="Hair fall">Hair fall</a> and baldness are very common problem. If properly treated, falling of hair can be stopped and we can regain hair up to 20-30% only. But if hairs are already gone then <a href="https://www.drsandeshgupta.com/blog/best-dermatologist-in-east-delhi-giving-impetus-to-high-quality-hair-transplants/" title="Hair Transplant Clinic In Delhi">hair transplant</a> is the only effective & safe medical way to restore hair.</p>
@@ -324,7 +324,7 @@ export const TreatmentList = [
         title: "Viora Reaction",
         url: "viora-reaction-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/viora-reaction.jpg",
         imgTitle: "",
         videos: [],
         body: [`<p> <strong>The new generation technique in body contouring & skin tightening treatments</strong></p>
@@ -346,7 +346,7 @@ export const TreatmentList = [
         title: "Cosmetic Surgery",
         url: "cosmetic-surgery-treatment-consultaion",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/facelift.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Facelift</h3>
@@ -414,7 +414,7 @@ export const TreatmentList = [
         title: "Melasma or Pigmentation",
         url: "melasma-pigmentation-treatment",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/melasma.jpg",
         imgTitle: "",
         videos: [],
         body: [`  <p><img src="https://www.drsandeshgupta.com/images/melasma.jpg" alt="Melasma or Pigmentation Treatment In Delhi" title="Melasma or Pigmentation Treatment In Delhi" style="border:0;"/><br/>Melasma is a chronic skin disorder that results in symmetrical, blotchy, brownish facial pigmentation. It can lead to considerable embarrassment and distress.</p>
@@ -493,7 +493,7 @@ export const TreatmentList = [
         title: "Hair Treatment",
         url: "hair-treatment-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/prp.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/YXTsOllRLuQ"],
         body: [`     <p>Hair plays a very important role in enhancing one’s personality. Loss of hair or baldness results in low self confidence in the sufferer.</p>
@@ -564,7 +564,7 @@ export const TreatmentList = [
         title: "Tattoo Removal",
         url: "tattoo-removal-consultation",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/tatoo3.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/3vSTFBvCwgQ"],
         body: [`  <p>Laser tattoo removal usually refers to those non-invasive removal of tattoo pigments using  <a href="tattoo+removal+in+delhi+birthmark+removal+in+delhi+dermatologist+in+delhi.html" title="Q Switch ND Yag Laser In Delhi">Q-switch NdYAG</a> (Neodymium Doped Yttrium Aluminium Garnet). Typically, black and darker-colored inks can be removed more completely.</p>
@@ -606,7 +606,7 @@ export const TreatmentList = [
         title: "Glutathione Fairness Injections",
         url: "glutathione-fairness-injections",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/glutathione.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Glutathione the Wonder Injection</h3>
@@ -629,7 +629,7 @@ export const TreatmentList = [
         title: "Hydra Facial",
         url: "hydra-facial",
         alt: "",
-        image: "",
+        image: "https://www.drsandeshgupta.com/images/hydra-facial1.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Hydra Facial- A Step towards Radiant, Healthy & Youthful skin</h3><img src="https://www.drsandeshgupta.com/images/hydra-facial1.jpg" alt="Hydra Facial" title="Hydra Facial" class="imgright" style="border:0;"><br/>

@@ -37,15 +37,83 @@
 }
 
 .videocard {
-    min-height: 100px;
-    min-width: 200px!important;
-    box-shadow: none;
+    height: 178px;
+    width: auto!important;
     position: relative;
+    margin-bottom: 24px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+@media(max-width:1400px) {
+    .videocard {
+        height: 160px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:1200px) {
+    .videocard {
+        height: 180px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:767px) {
+    .videocard {
+        height: 180px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:680px) {
+    .videocard {
+        height: 160px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:622px) {
+    .videocard {
+        height: 140px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:515px) {
+    .videocard {
+        height: 120px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:460px) {
+    .videocard {
+        height: 100px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media(max-width:390px) {
+    .videocard {
+        height: 85px !important;
+        width: 100%;
+        border-radius: 10px;
+    }
 }
 
 .videocard img {
     width: 100%;
+    border-radius: 10px;
     object-fit: cover;
+    box-shadow: 0px 2px 5px 0px #0000003f !important;
 }
 
 .videocard a {
@@ -144,4 +212,22 @@
 .title:hover {
     color: #0062af;
     text-decoration: none;
+}
+
+.more-btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 30px 8px 30px;
+    color: #fff;
+    border-radius: 50px;
+    transition: all ease-in-out 0.4s;
+}
+
+.more-btn i {
+    font-size: 14px;
+}
+
+.more-btn:hover {
+    color: #1977cc;
+    background: #fff;
 }

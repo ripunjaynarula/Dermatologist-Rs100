@@ -176,9 +176,7 @@ app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
 app.use('/toggleArchive', checkAuth, archive);
 app.use('/cancelConsultation', checkAuth, cancelConsultationRouter);
 
-app.get('/', (req, res) => {
-    return res.send('Hello world!');
-});
+
 server.listen(port, () => {
     console.log(`Express server listening on port ${port}`);
 });

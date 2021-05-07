@@ -27,5 +27,6 @@ router.post('/', async (req: Request, res: Response) => {
     }catch (e) {
         return res.send({status: false, message: "Internal Error"})
     }
+});
 
-})
+export default router;

@@ -58,7 +58,7 @@ import doctorSignup from './routes/doctorSignup';
 import myBlogs from './routes/blogs/myBlogs';
 import blogsLimit from './routes/blogs/limitBlogs';
 import getImageUploadUrl from './routes/getImageUploadUrl';
-
+import cancelConsultationRouter from './routes/cancelConsultation';
 import likeBlog from './routes/blogs/blogLike';
 
 const app = express();
@@ -174,7 +174,7 @@ app.use('/getChatData', checkAuth, getChats);
 app.use('/getChatById', checkAuth,getChatById);
 app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
 app.use('/toggleArchive', checkAuth, archive);
-
+app.use('/cancelConsultation', checkAuth, cancelConsultationRouter);
 
 app.get('/', (req, res) => {
     return res.send('Hello world!');

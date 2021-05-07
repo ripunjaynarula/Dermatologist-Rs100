@@ -32,7 +32,18 @@ export default function Loading(props) {
   }
 
   const handleCancelation = () => {
-    
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+      body: JSON.stringify({consultatioId: props.id, paymentId: props.paymentId}),
+    };
+    let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+    if(res['status']){
+      // display message
+    }
   }
 
   useEffect(() => {

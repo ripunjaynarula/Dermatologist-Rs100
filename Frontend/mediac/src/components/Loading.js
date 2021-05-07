@@ -13,6 +13,7 @@ import app from "../firebase";
 
 export default function Loading(props) {
   const [flag, setFlag] = useState(true);
+  const [disp, setDisp] = useState(true);
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -31,7 +32,7 @@ export default function Loading(props) {
     }
   }
 
-  const handleCancelation = () => {
+  const handleCancelation = async() => {
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {
       method: "POST",
@@ -42,7 +43,8 @@ export default function Loading(props) {
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){
-      // display message
+     flag=false;
+     disp=false;
     }
   }
 
@@ -78,10 +80,19 @@ export default function Loading(props) {
         class="d-flex align-items-center justify-content-center  "
         style={{ marginTop: "12%", backgroundColor: "white !important" }}
       >
-        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }} onClick={}>
+        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }} onClick={handleCancelation}>
           <b>Cancel Consultation</b>
         </Button>
+
       </div>
+
+      <div disabled={disp}
+        class="d-flex align-items-center justify-content-center  "
+        style={{ marginTop: "12%", backgroundColor: "white !important" }}
+      >
+      <div class="alert alert-success" role="alert">
+          Consultation Cancelled successfully
+        </div></div>
     </>
   );
 }

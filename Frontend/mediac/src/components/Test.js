@@ -1,118 +1,95 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Card, Form, Button, Container, Alert } from "react-bootstrap";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import * as ReactBootStrap from "react-bootstrap";
+import { Container, Card, CardBody, Row, Col, Button } from "reactstrap";
+import { useHistory, Link } from "react-router-dom";
+import "../css/Navbar.css";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
-import Accordion from "./Accordion";
-// import ReactDOM from "react-dom";
-// import bgimg from './img/image1.png';
+import { CardMain } from "../css/Card";
+import loadimg from "./img/loading.webp";
 import "./styles.css";
-import ConsultancyCard from "./ConsultancyCard";
-// import ScriptTag from 'react-script-tag';
-import ellipse from "./img/ellipse.png";
-import bgimg from "./img/image1.png";
-import { Texts } from "../css/Texts";
 import Navbar from "./Navbar";
-import HomeBottom from "./AboutPage/HomeBottom";
-import bg1 from "./img/b1.jpg";
-import bg2 from "./img/b2.jpg";
-import bg3 from "./img/b3.jpg";
+import app from "../firebase";
 
-import { reactLocalStorage } from "reactjs-localstorage";
 
-const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
-const delay = 2500;
-// const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-function Dashboard() {
-  const [show, setShow] = useState(false);
-  const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
-  const dbinfo = useRef();
+export default function Loading(props) {
+  const [flag, setFlag] = useState(true);
+  const { currentUser } = useAuth();
   const history = useHistory();
-  const quest = useRef();
-  useEffect(() => {
-    onlyOnce();
-  }, []);
 
-  async function onlyOnce() {
-    if (!currentUser) return;
-    var role = reactLocalStorage.get("role");
-
-    if (role === undefined) role = "";
-  }
-
-  function onClick() {
-    history.push("/Choice/?ques=" + quest.current.value);
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  const [index, setIndex] = React.useState(0);
-  const timeoutRef = React.useRef(null);
-
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+  const checkStatus = async () => {
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+      body: JSON.stringify({id: props.id}),
+    };
+    let res = await fetch('http://localhost:5000/getConsultationStatus', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+    if(res['status']){
+      history.push('/chat')
     }
   }
 
-  React.useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
-        ),
-      delay
-    );
-
-    return () => {
-      resetTimeout();
+  const handleCancelation = async() => {
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+      body: JSON.stringify({consultatioId: props.id, paymentId: props.paymentId}),
     };
-  }, [index]);
+    let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+    if(res['status']){
+      // display message
+    }
+  }
+
+  useEffect(() => {
+    document.getElementById("cancelbtn").style.visibility = "hidden";
+    const check = setTimeout(checkStatus, 60000);
+    const timer = setTimeout(() => {
+      setFlag(false);
+      document.getElementById("cancelbtn").style.visibility = "visible";
+    }, 12);
+  }, []);
 
   return (
     <>
-    <div className="Navb">
-          <Navbar type="trans" />
-        </div>
-    <div className="wrapper" style={{overflow: 'hidden'}}>
-      <div
-        className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-      >
-        {colors.map((bg) => (
-          <div className="slide" style={{ backgroundImage: `${bg}` }}>
-            {console.log(bg)}
-          </div>
-        ))}
+      <div className="Navb">
+        <Navbar />
       </div>
-      <div className="overlapping-text">
-        <div id="hometxt">
-          <h2 id="bigtxt">
-            <br></br>Best Care &<br></br>Better Doctors.
-          </h2>
-          <p id="smalltxt">Ask us a question </p>
-        </div>
-        <Form autocomplete="off" onSubmit={handleSubmit}>
-          <Form.Group id="ocity">
-            <input
-              type="text"
-              ref={quest}
-              id="dbques"
-              style={{ borderRadius: "8px" }}
-              placeholder="Tell us your symptoms or health problem"
-            />
-          </Form.Group>
-        </Form>
-        <Button onClick={onClick} id="bookbtn">
-          <img id="ellipsebtn" src={ellipse} /> Start Consultaion
+      <div
+        className="d-flex justify-content-center align-items-center   p-5"
+        style={{ marginTop: "5%", backgroundColor: "white !important" }}
+      >
+        <img src={loadimg} />
+      </div>
+      <div
+        className="d-flex justify-content-center  "
+        style={{ marginTop: "10%", backgroundColor: "white !important" }}
+      >
+        <p style={{ marginTop: "-10%" }}>
+          <b>Please wait till we connect you to a doctor...</b>
+        </p>
+      </div>
+      <div
+        class="d-flex align-items-center justify-content-center  "
+        style={{ marginTop: "12%", backgroundColor: "white !important" }}
+      >
+        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }} onClick={handleCancelation}>
+          <b>Cancel Consultation</b>
         </Button>
       </div>
-    </div>
-    <HomeBottom />
-  </>);
+      <div
+        class="d-flex align-items-center justify-content-center  "
+        style={{ marginTop: "12%", backgroundColor: "white !important" }}
+      >
+      <div class="alert alert-success" role="alert">
+          Consultation Cancelled successfully
+        </div></div>
+    </>
+    
+  );
 }
-
-export default Dashboard;

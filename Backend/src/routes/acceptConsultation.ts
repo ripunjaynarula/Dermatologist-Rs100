@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
                 patientUsername: p.name,
                 doctorEmail: consultation.doctorEmail,
                 patientEmail: consultation.patientEmail,
+                consultationId: consultation.uid,
             });
             newChat = await newChat.save();
         }catch(e){

@@ -13,6 +13,7 @@ import app from "../firebase";
 
 export default function Loading(props) {
   const [flag, setFlag] = useState(true);
+  const [disp, setDisp] = useState(false);
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -28,6 +29,22 @@ export default function Loading(props) {
     res = JSON.parse(res);
     if(res['status']){
       history.push('/chat')
+    }
+  }
+
+  const handleCancelation = async() => {
+    const token = await app.auth().currentUser.getIdToken(true);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: token },
+      body: JSON.stringify({consultatioId: props.id, paymentId: props.paymentId}),
+    };
+    let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
+    res = await res.text();
+    res = JSON.parse(res);
+    if(res['status']){
+     setFlag(false);
+     setDisp(true);
     }
   }
 
@@ -63,10 +80,19 @@ export default function Loading(props) {
         class="d-flex align-items-center justify-content-center  "
         style={{ marginTop: "12%", backgroundColor: "white !important" }}
       >
-        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }}>
+        <Button disabled={flag} id="cancelbtn" style={{ marginTop: "-20%" }} onClick={handleCancelation}>
           <b>Cancel Consultation</b>
         </Button>
+
       </div>
+
+      <div disabled={disp}
+        class="d-flex align-items-center justify-content-center  "
+        style={{ marginTop: "12%", backgroundColor: "white !important" }}
+      >
+      <div class="alert alert-success" role="alert">
+          Consultation Cancelled successfully
+        </div></div>
     </>
   );
 }

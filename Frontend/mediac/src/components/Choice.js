@@ -50,6 +50,7 @@ export default function Choice() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [consultationId, setConsultationId] = useState('');
+  const [paymentId, setPaymentId] = useState('');
 
   const { currentUser } = useAuth();
   const history = useHistory();
@@ -155,7 +156,8 @@ export default function Choice() {
       description: "Payment for consultation",
       order_id: res.id,
       handler: function (response) {
-         addConsultation();
+        setPaymentId(response.razorpay_payment_id)
+        addConsultation();
         if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature){
           return true;
         }
@@ -229,7 +231,7 @@ if(phoneRef.current.value.length >13  )
   }
   return (
     <>
-    {loadingScreen?(<><Loading id={consultationId}/></>):(
+    {loadingScreen?(<><Loading id={consultationId} paymentId={paymentId}/></>):(
       <>
       <div className="Navb">
         <Navbar />

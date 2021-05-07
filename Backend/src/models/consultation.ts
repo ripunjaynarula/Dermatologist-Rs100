@@ -11,6 +11,9 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
         required: true,
         trim: true,
     },
+    time: {
+        type: Number,
+    },
     startDate: {
         type: Date,
         required: true,

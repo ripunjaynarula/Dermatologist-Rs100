@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import Tabs, { TabPane } from "rc-tabs";
-import "../../node_modules/rc-tabs/assets/index.css";
 import "./styles.css";
 import Navbar from "./Navbar";
 import { Form, Button } from "react-bootstrap";
@@ -34,13 +33,60 @@ var i, x, y, z;
 function Details() {
   function callback(e) {
     console.log(e);
+    if(e ==="3")
+    {
+      window.history.replaceState(null, "Payment History", "/payments")
+
+    }
+    if(e === "1")
+    {
+      window.history.replaceState(null, "Consultation History", "/consultations")
+
+    }  if(e ==="4")
+    {
+      window.history.replaceState(null, "Help", "/help")
+
+    }  if(e ==="2")
+    {
+      window.history.replaceState(null, "Medical Records", "/records")
+
+    }
   }
 
+
+ 
   const { currentUser } = useAuth();
   const [consultations, setConsultations] = useState([]);
   const [consultationYears, setConsultationYears] = useState([]);
   const history = useHistory();
-  useEffect(() => {
+
+
+  
+    var queryString = window.location.pathname;
+
+  var key = "1"
+
+    var path = queryString.split("/")[queryString.split("/").length - 1]
+   console.log(path)
+   if(path === "consultations")
+   {
+     key = "1"
+   }
+   if(path === "help")
+   {
+     key = "4"
+   }
+    if(path ==="payments")
+    {
+      key = "3"  
+   }
+    if(path ==="records")
+    {
+      key = "2"
+    }
+   useEffect(() => {
+    document.body.style.backgroundColor = "#ededf2";
+
     if (!currentUser) {
       history.push("/login");
     }
@@ -78,39 +124,43 @@ function Details() {
           <Navbar />
         </div>
       </div>
-      <div class="card " style={{ backgroundColor: "#ececec" }}>
+ 
+
+ <div className = "centre" style = {{maxHeight :"80vh",   paddingTop: "12vh"}}>
+
+     <div class="card " style={{ backgroundColor: "white" }}>
         <div className="App">
           <div class="card-body">
             <div
               style={{
-                marginTop: "57px",
-                minHeight: "46px",
+                marginTop: "5px",
+                minHeight: "50px",
                 paddingTop: "12px",
                 paddingLeft: "15px",
-                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                backgroundColor: "white",
+                                paddingRight: "1px",
+
               }}
             >
               <h5>
                 <b>Your Drive</b>
               </h5>
             </div>
-            <Tabs defaultActiveKey="1" onChange={callback} tabPosition="left">
-              <TabPane tab="Consultations" key="1">
-                <h2>Consultations</h2>
+            <hr></hr>
+            <Tabs defaultActiveKey={key} onChange={callback} tabPosition="left" style= {{_paddingTop:"100px"}} >
+               <TabPane tab="Consultations"  key="1" style = {{marginTop:"-10px", marginLeft:"-10px"}}>
+           <div style = {{backgroundColor:"#f1eff5", padding:"30px"}}>
+                  <h2>Consultations</h2>
                 <div
                   class="card"
                   id="detailcard"
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
                 >
-                  <div class="card-body" id="detailcard">
-                    <div className="float-right">
-                      <Button className="submitbtn">Upload</Button>
-                    </div>
-                  </div>
+                 
                 </div>
                 <br />
 
-                {/* <p style={{color: "rgb(58, 57, 57)", fontWeight: "900", fontSize:"20px"}}>&nbsp;2021</p> */}
+                <div style = {{height:"60vh", overflow:"auto"}}>
 
                 {consultations ? (
                   <>
@@ -118,7 +168,7 @@ function Details() {
                       <>
                         <p>{year}</p>
                         {consultations.map((consultation) =>
-                          consultation.startDate.substring(0, 4) == year ? (
+                          consultation.startDate.substring(0, 4) === year ? (
                             <>
                               <div style={{ fontSize: "0px" }}>
                                 {
@@ -132,13 +182,13 @@ function Details() {
                                 className="card"
                                 id="detailcard"
                                 style={{
-                                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                                  backgroundColor: "white",
                                 }}
                               >
                                 <div class="card-body" id="detailcard">
                                   <div
                                     className="float-left dmcal"
-                                    style={{ paddingBottom: "-5px" }}
+                                    style={{ paddingBottom: "-2px" }}
                                   >
                                     <p
                                       className="datecal"
@@ -161,13 +211,12 @@ function Details() {
                                       className="consuldoc"
                                       style={{
                                         display: "flex",
-                                        marginleft: "50px",
+                                         marginleft: "140px",
                                       }}
                                     >
                                       <p>
                                         <b>
-                                          Consulted Dr.{" "}
-                                          {consultation.doctorName}
+                                          Consultation Ended
                                         </b>
                                         <br />
                                         Record for {consultation.name}
@@ -183,6 +232,8 @@ function Details() {
                           )
                         )}
                       </>
+              
+              
                     ))}
                   </>
                 ) : (
@@ -199,6 +250,13 @@ function Details() {
                     <br />
                   </>
                 )}
+
+                </div>
+ 
+
+           </div>
+
+
               </TabPane>
               <TabPane tab="Medical Records" key="2">
                 <h2>Medical Records</h2>
@@ -230,7 +288,11 @@ function Details() {
           </div>
         </div>
       </div>
-    </>
+
+ </div>
+ 
+ 
+     </>
   );
 }
 

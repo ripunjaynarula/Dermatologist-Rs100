@@ -45,7 +45,7 @@ function Dashboard() {
   
 
   function onClick() {
-    history.push("/Choice/?ques=" + quest.current.value);
+    history.push("/consult/?ques=" + quest.current.value);
   }
 
   async function handleSubmit(e) {

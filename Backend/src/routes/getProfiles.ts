@@ -6,8 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 try{
 
-console.log(req.body)
-    if(req.body.role !== "patient")
+     if(req.body.role !== "patient")
     {
         return res.send({url : "/login", redirected : true})
     }

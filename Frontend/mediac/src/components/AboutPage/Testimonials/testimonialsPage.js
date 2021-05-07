@@ -29,7 +29,7 @@ import Navbar from '../../Navbar'
    if(!currentUser)
 setShow(true)
 else
- history.push('/Choice/?ques='  ) 
+ history.push('/consult/?ques='  ) 
  }
 
 

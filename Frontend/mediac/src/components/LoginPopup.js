@@ -48,7 +48,7 @@ export default function LoginPopup(prop) {
 
          setError('');
         setLoading(false)
-              history.push("/Choice/?ques=" + prop.question);
+              history.push("/consult/?ques=" + prop.question);
 
          return;
       }

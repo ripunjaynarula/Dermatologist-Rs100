@@ -55,6 +55,9 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
     medication: {
         type: String
+    },
+    phone: {
+        type: String
     }
 }));
 

@@ -4,8 +4,7 @@ import patients from '../models/patients';
 import webpush from 'web-push';
 import subscriptions from '../models/subscription';
 import { uid } from 'rand-token';
-import subscription from '../models/subscription';
-
+ 
 const router = express.Router();
 
 // const publicVapidKey: any = process.env.WEB_PUSH_PUBLIC;
@@ -42,7 +41,9 @@ router.post('/', async (req:any, res: any) => {
         medication: req.body.medication,
         allergies: req.body.allergies,
         previousCondition: req.body.previousCondition,
-        uid: id
+        uid: id,
+                phone: req.body.phone,
+
     });
 
     try{

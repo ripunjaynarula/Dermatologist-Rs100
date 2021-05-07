@@ -112,6 +112,7 @@ export default function Choice() {
           allergies: allergiesRef.current.value,
           previousConditions: previousRef.current.value,
           question: quest.current.value,
+          phone:phoneRef.current.value
         }),
       };
       let res = await fetch(
@@ -162,7 +163,7 @@ export default function Choice() {
       prefill: {
         name: nameRef.current.value,
         email: currentUser.email,
-        contact: "8077781807"
+        contact: phoneRef.current.value
 
       },
     };

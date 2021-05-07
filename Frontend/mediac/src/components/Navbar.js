@@ -98,10 +98,19 @@ const NavBar = (props) => {
       <a href="/update-profile" class="tile dropdown-item">
         Edit Profile
       </a>
-      <a href="/Details" class="tile dropdown-item">
+      <a href="/consultations" class="tile dropdown-item">
         My Consultations
       </a>
-       <a href="/change-password" class="tile dropdown-item">
+         <a href="/records" class="tile dropdown-item">
+        My Records
+      </a>
+         <a href="/payments" class="tile dropdown-item">
+        Payment History
+      </a>
+       <a href="/help" class="tile dropdown-item">
+         Need Help?
+      </a>
+         <a href="/change-password" class="tile dropdown-item">
          Change Password
       </a>
       <hr></hr>

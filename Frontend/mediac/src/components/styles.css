@@ -1120,6 +1120,10 @@ button.rec-dot:focus {
     color: #0062af;
 }
 
+.rc-tabs-left .rc-tabs-ink-bar {
+    left: 0;
+}
+
 .rec.rec-arrow:focus {
     outline: none;
     box-shadow: none;
@@ -1155,7 +1159,7 @@ button.rec-dot:focus {
 .rc-tabs-tab {
     padding: 15px;
     text-transform: capitalize;
-    border: 0.1px solid #ececec!important;
+    border: none!important;
     background-color: white;
 }
 
@@ -1164,7 +1168,7 @@ button.rec-dot:focus {
 }
 
 .rc-tabs-tab.rc-tabs-tab-active {
-    background: #cfcfcf;
+    background: #f1eff5;
 }
 
 .rc-tabs-ink-bar {
@@ -1226,8 +1230,8 @@ button.rec-dot:focus {
 }
 
 .dmcal {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 11px;
+    padding-right: 11px;
     background-color: rgb(204, 200, 200);
 }
 
@@ -1236,7 +1240,7 @@ button.rec-dot:focus {
 }
 
 .consuldoc {
-    margin-left: 50px;
+    margin-left: 70px;
 }
 
 @media(max-height:622px) {

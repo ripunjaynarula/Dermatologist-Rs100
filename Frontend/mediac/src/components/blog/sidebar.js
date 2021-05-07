@@ -25,14 +25,14 @@ export default function Home(prop) {
  const[blogs, setBlogs] = useState([])
    const handleChange = () => {
     setConsultationData(dataRef.current.value)
-    // history.push('/Choice/?ques=' + quest.current.value ) 
+    // history.push('/consult/?ques=' + quest.current.value ) 
 
   } 
  async function handleShow(){
    if(!currentUser)
 setShow(true)
 else
- history.push('/Choice/?ques=' + quest.current.value ) 
+ history.push('/consult/?ques=' + quest.current.value ) 
  }
 
 

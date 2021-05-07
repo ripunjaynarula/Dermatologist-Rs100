@@ -80,7 +80,7 @@ e.preventDefault()
        return history.replace('/doctordashboard');
     }
   
-      history.push("/Choice/" );
+      history.push("/consult/" );
 
       
   }

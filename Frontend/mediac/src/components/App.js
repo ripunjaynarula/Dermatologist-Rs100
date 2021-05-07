@@ -86,7 +86,7 @@ function App() {
                 path="/ConsultationForm"
                 component={ConsultancyForm}
               />
-              <PrivateRoute path="/Choice" component={Choice} />
+              <PrivateRoute path="/consult" component={Choice} />
               <PrivateRoute
                 path="/OtherPersonDetails"
                 component={OtherPersonDetails}
@@ -97,7 +97,10 @@ function App() {
               <PrivateRoute path="/my-videos" component={myVideos} />
               <Route path="/testimonials" component={testimonials} />
 
-              <PrivateRoute path="/Details" component={Details} />
+              <PrivateRoute path="/consultations" component={Details} />
+              <PrivateRoute path="/help" component={Details} />
+              <PrivateRoute path="/payments" component={Details} />
+              <PrivateRoute path="/records" component={Details} />
 
               <PrivateRoute
                 path="/update-doctor"

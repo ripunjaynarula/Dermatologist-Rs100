@@ -20,9 +20,9 @@ function Conversation() {
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
 
-  function handleOpenChat(id,email){
+  function handleOpenChat(id){
   setCurrentChat(id);
-  setActive(email)
+  setActive(id)
 }
 
 
@@ -81,11 +81,11 @@ const handleNewMessage = useCallback((msgData) => {
               style={{ fontSize: "13px" }}
               onClick={() => {
                 let email= currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail
-                handleOpenChat(chat.chatId,email);
+                handleOpenChat(chat.chatId);
                 
               }}
             >
-              <div className={`d-flex justify-content-between align-items-center conv ${active===(currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail)? 'convactive':''}`} >
+              <div className={`d-flex justify-content-between align-items-center conv ${active===chat.chatId? 'convactive':''}`} >
                 <div className="d-flex flex-row align-items-center conv w-100" style = {{paddingLeft : "5px", paddingRight : "5px"}}>
                   <div className="image" >
                     {" "}

@@ -77,8 +77,8 @@ const handleNewMessage = useCallback((msgData) => {
             <>
             {chat.archieved?(<></>):(
               <div
-              className="bottom overflow-auto "
-              style={{ height: "350px", fontSize: "13px" }}
+              className=" overflow-auto "
+              style={{ fontSize: "13px" }}
               onClick={() => {
                 let email= currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail
                 handleOpenChat(chat.chatId,email);
@@ -119,7 +119,6 @@ const handleNewMessage = useCallback((msgData) => {
                 <span className="dots"> </span>
               </div>
               <hr />
-              <br />
             </div>
             )}
             </>

@@ -4,26 +4,26 @@ import { useHistory } from 'react-router-dom'
    import { useAuth } from "../../../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../../LoginPopup"
- 
+      import Footer from "../../footer"
+
   import useWindowDimensions from "../../../functions/windowDimensions"
  import {BeforeAfter} from "./beforeAfter";
   import {Testimonials} from "./testimonialsList";
 
 import Navbar from '../../Navbar'
-     import Footer from "../../footer"
 
  export default function Home() {
    const history = useHistory();
  
     const {  currentUser } = useAuth();
   const handleClose = () => setShow(false);
-   const [show, setShow] = useState(false);
   
        const { height, width } = useWindowDimensions();
 
   useEffect(() => getData(), []);
  
 
+   const [show, setShow] = useState(false);
 
  async function handleShow(){
    if(!currentUser)

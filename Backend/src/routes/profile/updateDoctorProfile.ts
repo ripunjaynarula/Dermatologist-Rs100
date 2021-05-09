@@ -5,7 +5,7 @@ import fbUpdate from '../../actions/updateDetailsFIrebaseAuth';
 
 router.post('/', async (req, res) => {
 
-
+console.log(req.body)
         var name = req.body.name;
         var dob = req.body.dob;
         var gender = req.body.gender
@@ -23,6 +23,11 @@ router.post('/', async (req, res) => {
         var linkedin = req.body.linkedin
         var twitter = req.body.twitter
         var about = req.body.about
+                var expertise = req.body.expertise
+        var research = req.body.research
+        var clinicName = req.body.clinicName
+        var medicalNumber = req.body.medicalNumber
+
 
         try {
     var d: any = await doctors.findOne({username});
@@ -38,7 +43,8 @@ if(d)
 
 
 
-    var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, education, pastExperience , awards, specialisation, city, state, graduationYear, degree, languages, about , fb, twitter, linkedin} });
+    var doctor: any = await doctors.updateOne({uid: req.body.uid},  { $set: { name, dob, gender, education, pastExperience ,
+     awards, specialisation, city, state, graduationYear, degree, languages, about , fb, twitter, linkedin, clinicName,research ,expertise, medicalNumber} });
 fbUpdate.changeNameFirebaseAuth(req, name )
             return res.send({status: "updated", isError : false})
 

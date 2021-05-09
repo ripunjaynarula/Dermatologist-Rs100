@@ -3,6 +3,8 @@ import * as ReactBootStrap from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext"
 import  { useEffect } from 'react';
 import { useHistory, Link } from "react-router-dom"
+import SelectBox from "./navDopdown";
+import useWindowDimensions from "../functions/windowDimensions";
 
 import {
   ProSidebar,
@@ -52,6 +54,7 @@ const hideDropdown = e => {
     setShow(false);
 }
 
+  const { height, width } = useWindowDimensions();
 
   async function handleLogout(e) {
     setError("")
@@ -69,6 +72,76 @@ const hideDropdown = e => {
   }
 
 
+  const doctorDrop = (
+    <div
+      aria-labelledby=""
+      class="dropdown-menu show"
+      style={{ margin: "0px" }}
+    >
+          <a href="/doctordashboard" class="tile dropdown-item">
+        Dashboard
+      </a>
+          <a href="/my-profile" class="tile dropdown-item">
+        My Profile
+      </a>
+      <a href="/update-doctor" class="tile dropdown-item">
+        Edit Profile
+      </a>
+      <a href="/chat/d" class="tile dropdown-item">
+        Chats
+      </a>
+     
+   
+       <a href="/my-blogs" class="tile dropdown-item">
+         My Blogs
+      </a>
+        <a href="/my-videos" class="tile dropdown-item">
+         My Videos
+      </a>
+         <a href="/change-password" class="tile dropdown-item">
+         Change Password
+      </a>
+      <hr></hr>
+        <a     href="#"    onClick={handleLogout}
+  class="tile dropdown-item">
+        Log Out
+      </a>
+    </div>
+  );
+  
+  
+ 
+ 
+  const right = flag ?  (
+
+        <SelectBox
+              data={ doctorDrop}
+ title = {
+     currentUser == null
+          ? ""
+          : currentUser.displayName == null
+          ? ""
+          : currentUser.displayName
+      }
+                    type={props.type}
+            ></SelectBox>
+     
+  ) : (
+    arr.map((elem) => (
+      <ReactBootStrap.Nav.Link
+        className="navlink"
+        href={elem.link}
+        style={{
+          transition: "0.5s ease",
+          color:
+             "#62636a",
+        }}
+        key={elem["link"]}
+      >
+        {elem["text"]}
+      </ReactBootStrap.Nav.Link>
+    ))
+  );
   useEffect( () => {
  
  console.log(currentUser)
@@ -144,7 +217,7 @@ const hideDropdown = e => {
                 <FiAlignJustify id="arrow"/>
               )}
             </div>
-            <ReactBootStrap.Navbar.Brand id="brand" style={{color: "black"}} href="/">LOGO</ReactBootStrap.Navbar.Brand>
+            <ReactBootStrap.Navbar.Brand id="brand2" style={{color: "black",marginLeft:"30px"}} href="/">LOGO</ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="mr-auto"> 
     
@@ -153,22 +226,34 @@ const hideDropdown = e => {
 
 
 
-              </ReactBootStrap.Nav>
+              </ReactBootStrap.Nav >
+                   <ReactBootStrap.Nav className="mr-auto"> 
+    
+
+   
+
+
+
+              </ReactBootStrap.Nav ><ReactBootStrap.Nav className="mr-auto"> 
+    
+
+   
+
+
+
+              </ReactBootStrap.Nav >
             
-              <ReactBootStrap.Nav className="form-inline">
-
-{flag && <ReactBootStrap.Nav.Link
-              className="navlink"
-              href="/my-profile"
-             
+              { (
+            <ReactBootStrap.Nav className="form-inline"
+              style={{
+                marginLeft:   "350px",
+                    
+              }}
+              className="mr-auto"
             >
-              {currentUser == null ? "" : currentUser.displayName==null ?"": currentUser.displayName}
-            </ReactBootStrap.Nav.Link>
-
-}
-
- 
+              {right}
             </ReactBootStrap.Nav>
+          ) }
            </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>
         </div>

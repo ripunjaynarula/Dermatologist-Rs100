@@ -24,9 +24,17 @@ export default function UpdateProfile() {
   const facebookRef = useRef()
   const linkedinRef = useRef()
   const twitterRef = useRef()
+  const medicalNumberRef = useRef()
+  const clinicNameRef = useRef()
+  const expertiseRef = useRef()
+  const researchRef = useRef()
 
 const pastExpRef = useRef()
 const specializatoinRef = useRef()
+  const [medicalNumber, setMedicalNumber] = useState("") 
+  const [clinicName, setClinicName] = useState("") 
+  const [expertise, setExpertise] = useState("") 
+  const [research, setResearch] = useState("") 
 
   const passwordConfirmRef = useRef()
   const { currentUser, updatePassword, updateEmail } = useAuth()
@@ -61,7 +69,6 @@ const [coverFile, setCoverFile] = useState("");
     const [linkedin, setLinkedin] = useState("") 
     const [twitter, setTwitter] = useState("") 
     const [profile, setProfile] = useState("") 
-    const [coverUrl, setCoverUrl] = useState("") 
 
    useEffect( () => {
     
@@ -128,8 +135,11 @@ setProfile(resp.profileImage)
         setUsername(resp.username)
         if(resp.about)
         setAbout(resp.about)
-        setCoverUrl(resp.coverImage)
-
+        setCoverPicture(resp.coverImage)
+        setMedicalNumber(resp.medicalNumber)
+        setClinicName(resp.clinicName)
+        setExpertise(resp.expertise)
+        setResearch(resp.research)
 
         console.log(resp)
        }
@@ -139,7 +149,7 @@ setProfile(resp.profileImage)
     if (e.target.files && e.target.files[0]){
            setPicture(URL.createObjectURL(e.target.files[0]) );
       setFile(e.target.files[0])
-updateProfileImage();
+updateProfileImage(e.target.files[0]);
 
      
 
@@ -151,7 +161,7 @@ updateProfileImage();
     if (e.target.files && e.target.files[0]){
            setCoverPicture(URL.createObjectURL(e.target.files[0]) );
       setCoverFile(e.target.files[0])
-updateCoverImage();
+updateCoverImage(e.target.files[0]);
 
      
 
@@ -160,7 +170,7 @@ updateCoverImage();
   
     
 };
-async function updateCoverImage(){
+async function updateCoverImage(target){
 
 
 
@@ -168,15 +178,16 @@ try{
 
           setLoading(true)
           setError("")
+          setSuccess("")
           const token = await currentUser.getIdToken()
-console.log(coverFile)
+console.log("----",target, "FILE 173")
    
           var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
                 body : JSON.stringify({
 
-fileName :   coverFile["name"],
+fileName :   target["name"],
 prefix : "cover",
 type : "cover"
 
@@ -195,7 +206,7 @@ setError("Some error occured")
  }
  let r = await fetch(res.url, {
     method: "PUT",
-    body: file,
+    body: target,
     headers: {
       "Content-Type": "image/jpeg",
       "x-amz-acl": "public",
@@ -236,7 +247,7 @@ setError("Some error occured")
 
 
 }
-async function updateProfileImage(){
+async function updateProfileImage(target){
 
 
 
@@ -245,14 +256,14 @@ try{
           setLoading(true)
           setError("")
           const token = await currentUser.getIdToken()
-console.log(file)
+console.log(target)
    
           var requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
                 body : JSON.stringify({
 
-fileName :   file["name"]
+fileName :   target["name"]
 
           })
          };
@@ -269,7 +280,7 @@ setError("Some error occured")
  }
  let r = await fetch(res.url, {
     method: "PUT",
-    body: file,
+    body: target,
     headers: {
       "Content-Type": "image/jpeg",
       "x-amz-acl": "public",
@@ -314,7 +325,7 @@ setError("Some error occured")
  async function handleSubmit(e) {
     e.preventDefault()
    setError("")
- 
+ setSuccess("")
 
 
      setLoading(true)
@@ -344,7 +355,11 @@ try{
            about : aboutMeRef.current.value,
            fb : facebookRef.current.value,
            linkedin : linkedinRef.current.value,
-           twitter : twitterRef.current.value
+           twitter : twitterRef.current.value,
+           clinicName : clinicNameRef.current.value,
+           medicalNumber:medicalNumberRef.current.value,
+           expertise:expertiseRef.current.value,
+           research:researchRef.current.value
 
 
             };
@@ -452,7 +467,7 @@ try{
           <Form onSubmit={handleSubmit}>
 
             <Row  style ={{paddingLeft : "22px" , flexDirection: 'row',  display: "flex", alignItems : "center",   }}>
-  <img  width="400" height="140" src={coverPicture == null ?  profile == null ? null : profile : coverPicture  } alt="" style = {{objectFit : "cover" }} /> 
+  <img  width="400" height="140" src={coverPicture == null ?  coverFile == null ? null : coverFile : coverPicture  } alt="" style = {{objectFit : "cover" }} /> 
  
  <div style ={{width : "20px"}}></div>
  
@@ -597,7 +612,7 @@ disabled = "true"
  <Row>
 
 <Col sm>    <Form.Group id="graduationYear">
-              <Form.Label style = {Texts.FormLabel}>Graduation Year</Form.Label>
+              <Form.Label style = {Texts.FormLabel}>Years of experience</Form.Label>
                  <Form.Control
                 type="text"
                 ref={graduationRef}
@@ -611,6 +626,29 @@ disabled = "true"
               <Form.Control
                               ref={specializatoinRef}
 defaultValue = {special}
+                type="text"
+                />
+            </Form.Group></Col>
+
+ </Row>
+
+ <Row>
+
+<Col sm>    <Form.Group id="clinicName">
+              <Form.Label style = {Texts.FormLabel}>Clinic Name</Form.Label>
+                 <Form.Control
+                type="text"
+                ref={clinicNameRef}
+                defaultValue = {clinicName}
+               />
+            </Form.Group></Col>
+
+<Col sm>   
+ <Form.Group id="medicalNo">
+              <Form.Label style = {Texts.FormLabel}>Mdedical Licence Number</Form.Label>
+              <Form.Control
+                              ref={medicalNumberRef}
+defaultValue = {medicalNumber}
                 type="text"
                 />
             </Form.Group></Col>
@@ -698,7 +736,7 @@ defaultValue = {twitter}
  </Row>
  <Row>
 
-<Col sm>    <Form.Group id="graduationYear">
+<Col sm>    <Form.Group id="expp">
               <Form.Label style = {Texts.FormLabel}>Past Experience</Form.Label>
                  <textarea             className="form-control"
               defaultValue = {pastExp}
@@ -732,10 +770,44 @@ defaultValue = {twitter}
 
  </Row>
 
+ <Row>
+
+<Col sm>    <Form.Group id="expertise">
+              <Form.Label style = {Texts.FormLabel}>Expertise</Form.Label>
+                 <textarea   
+                 defaultValue = {expertise}  
+                 ref = {expertiseRef}
+                         className="form-control"
+ name="comments" style={{width: '100%', 
+  
+  }} rows="3"></textarea>
+
+            </Form.Group></Col>
+
+ 
+ 
+
+ </Row>
 
 
+ <Row>
 
+<Col sm>    <Form.Group id="research">
+              <Form.Label style = {Texts.FormLabel}>Research</Form.Label>
+                 <textarea   
+                 defaultValue = {research}  
+                 ref = {researchRef}
+                         className="form-control"
+ name="comments" style={{width: '100%', 
+  
+  }} rows="3"></textarea>
 
+            </Form.Group></Col>
+
+ 
+ 
+
+ </Row>
 
 
 

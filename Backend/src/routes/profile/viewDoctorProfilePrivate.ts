@@ -3,6 +3,7 @@ const router = express.Router();
 import doctors from '../../models/doctors';
 import fbUpdate from '../../actions/updateDetailsFIrebaseAuth';
 import blog from '../../models/blog'
+import Video from '../../models/videos'
 
 router.post('/', async (req, res) => {
 
@@ -30,7 +31,7 @@ var uid = req.body.uid;
     var blogs : any;
        {
 
-        blogs =  await blog.find({doctorId: req.body.uid} );
+        blogs =  await blog.find({doctorId: req.body.uid} ).limit(12);
             
         for(var i =0;i<blogs.length; i++)
         {
@@ -39,8 +40,17 @@ var uid = req.body.uid;
 
       }
 
+         var videos : any;
+       {
+
+        videos =  await Video.find({doctorId: req.body.uid} ).limit(12);
+            
+   
+
+      }
+
     
-    return res.send({status: "ok", isError : false, data : d, blogs : blogs})
+    return res.send({status: "ok", isError : false, data : d, blogs : blogs, videos:videos})
 
 
         } catch (e) {

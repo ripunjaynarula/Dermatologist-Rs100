@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
  
 import useWindowDimensions from "../../functions/windowDimensions"
  
- export default function Home() {
+ export default function Home(props) {
 
   const history = useHistory();
     const [error, setError] = useState("")
@@ -51,7 +51,14 @@ if(width > 870) style = {
 
   
 
-  useEffect(() => getData(), []);
+  useEffect(() => {
+console.log(props.videos, "_______")
+if(!props.videos)
+getData()
+else
+setList(props.videos)
+
+  }, []);
  
 
 
@@ -159,7 +166,7 @@ function nFormatter(num) {
         
     <div style = {{  backgroundColor: "#ededf2", marginTop: "56px"}}>
         <div class="section-title" style = {{paddingTop : "50px"}}>
-                    <h4 id = "sec"  >From Our Doctors</h4>
+                    <h4 id = "sec"  >{props.videos ? "Videos by Dr. " + props.name:"From Our Doctors"}</h4>
                     
                 </div>
   <div className = "centre-big"  >

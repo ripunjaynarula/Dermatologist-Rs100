@@ -3,106 +3,128 @@ import ReactDOM from "react-dom";
 import Carousel from "react-elastic-carousel";
 import BlogListItem from "./BlogListItem";
 import "./BlogList.css";
-import { Card, Button, Alert } from "react-bootstrap"
+import { Card, Button, Alert , Row, Col} from "react-bootstrap"
 import docimg from './img/doc.jpeg'
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory, Link } from "react-router-dom"
 import {Texts} from "../css/Texts";
 
-
-const breakPoints = [
-  { width: 1, itemsToShow: 2, itemsToScroll: 1 },
-  { width: 550, itemsToShow: 2, itemsToScroll: 1 },
-  { width: 768, itemsToShow: 3, itemsToScroll: 1 },
-  { width: 1200, itemsToShow: 4 , itemsToScroll: 1}
-];
+ import useWindowDimensions from "../functions/windowDimensions"
 
 
 
 export default function BlogList(props) {
   const history = useHistory()
-
+  const { height, width } = useWindowDimensions();
  
 //props - blogs 
 // blogs - title, url, image
-  const imageClick = (url) => {
-      try{
-                history.push('/404');
-
-      }
-      catch(e)
-      {
-        console.log(e)
-      }
-
-        } 
-
-  const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
-  return (
-    <>
-      <div style = {{  paddingTop : "5px", }}>
-      <div className="carousel-wrapper"> 
-        {props.blogs ?    
-        
-        props.blogs.length ===1 ?
-
-        <>
-      <BlogListItem className="BlogListItem" key={props.blogs[0].title}>
-   <a className = "title"  href={props.blogs[0].url} >
-            <div class="card" style={{ justifyContent: 'center', borderRadius:"8px", marginTop : "5px"}} >
-              <img id="blogcardimg" src={props.blogs[0].image} title={props.blogs[0].title} alt= {props.blogs[0].title} style={{height:"220px",borderRadius:"8px"}}/>
-            </div>
-            <div>
-            <h5 style={{color:"black", fontSize:"20px",   marginLeft:"14px", marginTop: "16px"}}><b><a href ={ props.blogs[0].url} className = "title" >{props.blogs[0].title}</a></b></h5>
-</div>
-            </a>
-
-           </BlogListItem>
-        </>
-           :
-        
-        
-        props.blogs.length>1?
-
-
-
-
-
-
-
-
-
-
-          
-        <Carousel className="blogcarousel" breakPoints={breakPoints}>
-          
-         {  props.blogs.map(blog =>(<>
-          <BlogListItem className="BlogListItem" key={blog.title}>
-          <a className = "title"   href={ blog.url} >
-            <div class="card" style={{ justifyContent: 'center', borderRadius:"8px", marginTop : "5px", border : "none"}}>
-              <img id="blogcardimg" src={blog.image} title = {blog.title} alt = {blog.title} style={{height:"220px",borderRadius:"8px"}}  onClick={() => imageClick(blog.url)}/>
-            </div>
-               <div>
-            <h5   style={{  fontSize:"20px",   marginLeft:"14px", marginTop: "16px"}}><b> {blog.title} </b></h5>
-               
-            </div>
-            </a>
-         
-          </BlogListItem>
-          </>))} 
-            
-        </Carousel>
-        :<>
-        <br></br>
-        <p style = {Texts.FormLabel}>No Blogs yet</p></>
-        :<>
-        </>
-}</div>
-      </div>
-      
-    </>
-  );
+ 
+const [limit, setLimit] = useState(0)
+const [showMore, setShowMore] = useState(false)
+   const handleClick =(e)=>{
+    e.preventDefault()
+      setShowMore(!showMore)
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<BlogList />, rootElement);
+   useEffect( () => {
+
+    var items = 3;
+
+    
+    if(width> 1199) {
+      
+      items = 4
+      setLimit(7)
+    }else{
+      setLimit(5)
+    } 
+  }, [width] )
+   return (
+    <>
+      {  
+        
+        props.blogs ?
+
+        <>
+        
+           <div style = {{ backgroundColor: "#ededf2",}}>
+        <div class="section-title" style = {{paddingTop : "0px"}}>
+                    <h4 id = "sec"  > { props.name ? "Blogs by Dr. "+props.name : "Our Articles"} </h4>
+                    
+                </div>
+  <div className = "centre" style = {{marginTop : "-19px"}}>
+     
+       <Row>
+
+
+                      { getBlog()
+          
+          }
+               </Row>
+  <div class="text-center" style = {{marginTop: "-12px"}}>
+            <a href="#" onClick = {handleClick} class="view-more">{showMore ?`Show Less`: `Show More`}</a>
+                            </div>
+    </div>
+    </div>
+        
+        
+        
+        
+        
+        </>:
+    <>
+        <br></br>
+        <p style = {Texts.FormLabel}>No Blogs yet</p></>
+       
+}
+    </>
+  );
+
+
+
+    
+  function getBlog(){
+
+     return  props.blogs.map((blog, i) =>{
+
+if(!showMore)
+if(i>limit)
+  return <></> ;
+
+return (<>
+       
+     <Col xs={6} md={width > 1199 ? 3 : 4} >
+
+      <a className= "title" href = {blog.url}>
+
+ <div className="videocard"  >
+           <img src= {blog.image} alt="" style = {{  
+ height :    "100%", 
+  objectFit: "cover"}}
+  
+        
+
+   ></img>
+              </div>
+               <div  style = {{marginTop: "-13px", marginBottom: "28px", marginLeft: width> 790 ? "11px":"4px"}}  >
+<h5 style={{color:"black", fontSize: width> 790? "16px" : "14px"}}><b>              <a className ="title" href = {blog.url}>  {blog.title}</a>
+              </b>
+              </h5>
+              </div>
+
+      </a>
+
+           
+             
+ 
+
+          </Col >
+
+          </>)
+
+    })
+  }
+}
+
+ 

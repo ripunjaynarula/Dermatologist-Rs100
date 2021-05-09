@@ -493,6 +493,7 @@
 
 .profile-header-section1 {
     max-width: 150px;
+    margin-left: -13px;
 }
 
 .active {
@@ -781,7 +782,7 @@ div.scrollmenu a {
 }
 
 .user-image {
-    margin-top: -80px !important;
+    margin-top: -60px !important;
 }
 
 .icon-mbigger {
@@ -792,10 +793,10 @@ div.scrollmenu a {
 }
 
 .profile-right-section {
-    margin-top: -39px;
-    padding: 0px 0px 10px 15px;
+    margin-top: -20px;
+    padding: 0px 0px 0px 12px;
     background-color: transparent!important;
-    margin-left: 29px;
+    margin-left: 25px;
 }
 
 #coverimg {
@@ -806,14 +807,14 @@ div.scrollmenu a {
 #profcover {
     z-index: 0;
     text-align: center;
-    height: 35vh !important;
+    height: 300px !important;
     overflow: hidden;
     width: 100%;
     align-items: center;
 }
 
 #round {
-    height: 35vh !important;
+    height: 300px !important;
     width: 80%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -824,8 +825,8 @@ div.scrollmenu a {
 }
 
 .dp {
-    width: 220px !important;
-    height: 220px !important;
+    width: 230px !important;
+    height: 230px !important;
     padding: 6px;
     border-radius: 50%;
     background-color: white;
@@ -837,7 +838,7 @@ div.scrollmenu a {
         object-fit: contain;
     }
     #round {
-        height: 35vh !important;
+        height: 300px !important;
         width: 90%;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
@@ -853,7 +854,7 @@ div.scrollmenu a {
         object-fit: contain;
     }
     #round {
-        height: 35vh !important;
+        height: 300px !important;
         width: 95%;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
@@ -869,7 +870,7 @@ div.scrollmenu a {
         object-fit: contain;
     }
     #round {
-        height: 35vh !important;
+        height: 300px !important;
         width: 100%;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -881,10 +882,10 @@ div.scrollmenu a {
 
 @media(max-width:1199px) {
     .profile-right-section {
-        margin-top: -28px;
+        margin-top: -10px;
         padding: 0px 0px 10px 15px;
         background-color: #FFFFFF;
-        margin-left: 20px;
+        margin-left: 55px;
     }
     .icon-mbigger {
         margin-top: -15px;
@@ -893,8 +894,8 @@ div.scrollmenu a {
         margin-left: -55px
     }
     .dp {
-        width: 180px !important;
-        height: 180px !important;
+        width: 220px !important;
+        height: 220px !important;
         padding: 6px;
         border-radius: 50%;
         background-color: white;
@@ -917,10 +918,10 @@ div.scrollmenu a {
         margin-top: -13px;
     }
     .profile-right-section {
-        margin-top: -30px;
+        margin-top: -15px;
         padding: 0px 0px 10px 15px;
         background-color: #FFFFFF;
-        margin-left: 29px;
+        margin-left: 90px;
     }
 }
 
@@ -935,6 +936,29 @@ div.scrollmenu a {
         margin-top: -50px !important;
         min-width: 180px;
         max-width: 180px;
+    }
+}
+
+@media(max-width:680px) {
+    .user-profil-part {
+        padding-bottom: 0px;
+        background-color: white;
+        margin-left: -33px;
+        margin-right: -70px;
+    }
+    .dp {
+        width: 220px !important;
+        height: 220px !important;
+        padding: 7px;
+        border-radius: 50%;
+        display: block;
+        background-color: white;
+        margin-top: -60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .icon-mbigger {
+        margin-top: -6px;
     }
 }
 

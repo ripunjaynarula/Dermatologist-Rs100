@@ -6,7 +6,7 @@ import "../../css/Navbar.css";
 // import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext"
 import {CardMain} from "../../css/Card"
-import docimgsq from '../img/docsq.jpeg';
+import docimgsq from '../img/docsq.svg';
 import docimg from '../img/doc.jpeg'
 import  "../styles.css";
 import Navbar from "../Navbar"
@@ -20,6 +20,7 @@ import { BiNotepad, BiBriefcaseAlt,BiLocationPlus,BiBuilding } from "react-icons
    import building from '../img/building.svg'
    import location from '../img/location.svg'
    import medal from '../img/medal.svg'
+import Videos from "../AboutPage/loadVodeosHorizontal"
 
 import useWindowDimensions from "../../functions/windowDimensions"
 
@@ -43,25 +44,34 @@ export default function DocProfile() {
     const [membership, setMembership] = useState('');
     const [facebookc, setFacebook] = useState('');
     const [linkedinc, setLinkeding] = useState('');
-    
+        const [isLoading, setIsLoaing] = useState(true);
+
     const [twitterc, setTwitter] = useState('');
    const [profile, setProfile] = useState('');
    const [cover, setCover] = useState('');
    const [list, setList] = useState([]);
+    const [yearsOfExp, setYearsOfExp] = useState([]);
+  const [medicalNumber, setMedicalNumber] = useState("") 
+  const [clinicName, setClinicName] = useState("") 
+  const [expertise, setExpertise] = useState("") 
+  const [research, setResearch] = useState("") 
+  const [videoList, setVideoList] = useState("") 
 
-  console.log(width)
+ 
 
-var mar = "0px";
-if(width<1200)
-{
-    mar = "15px"
-}
    useEffect(() =>{
  
  
-    async function getData(){
-          const token = await currentUser.getIdToken(true)
+  
+    getData();
+  }, [])
+  async function getData(){
     
+    if(!currentUser)
+        return history.replace("/login")
+
+           const token = await currentUser.getIdToken(true)
+
       const requestOptions = {
         method: 'POST',
           headers: { 'Content-Type': 'application/json', 'token': token },
@@ -86,6 +96,7 @@ if(width<1200)
         }
 
           console.log(res.blogs)     
+        setVideoList(res.videos)
 
           setList(res.blogs)
           res = res.data
@@ -102,19 +113,29 @@ if(width<1200)
           setCover(res.coverImage)
           setAbout(res.about)
           setProfile(res.profileImage)
+          setYearsOfExp(res.graduationYear)
             setMembership(res.awards)
+                 setIsLoaing(false)
+                       setMedicalNumber(res.medicalNumber)
+        setClinicName(res.clinicName)
+        setExpertise(res.expertise)
+        setResearch(res.research)
+
       }
      }catch(e){
+     return   history.push('/404');
 
      }
-    }
-    getData();
-  }, [])
 
+     setIsLoaing(false)
+    }
   return (
     <>
     <div className="Navb"><Navbar /></div>
-    <div style={{backgroundColor:"white"}}>
+    {!isLoading&& <>
+    
+    
+       <div style={{backgroundColor:"white"}}>
         <div style={{backgroundColor:"white"}}>
             <div  id="profcover">
                <div id = "round" >
@@ -122,6 +143,9 @@ if(width<1200)
                </div>
             </div>
 
+            {width> 680 ? <>
+            
+            
             <Container className="d-flex align-items-center justify-content-center">
                 <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" >
                     <div className="row" style = {{marginLeft : "0px", marginRight: "0px" }}>
@@ -132,36 +156,18 @@ if(width<1200)
                             
                             }
                         </div>
-                        <div className="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
- 
-                        </div>
-                        <div className="row user-detail-row">
-                            <div className="col-md-12 col-sm-12 user-detail-section2 pull-left">
-                            {/* <div className="border"></div> */}
-                                {/* <p>FOLLOWER</p>
-                                <span>320</span> */}
-                            </div>
-                            <div className="col-md-12 col-sm-12 user-detail-section2 pull-right">
-                                {/* <div className="border"></div> */}
-                                {/* <p>FOLLOWING</p>
-                                <span>147</span> */}
-                            </div>
-                        </div>
-                        <div className="col-md-12 user-detail-section2">
-                            {/* <div className="border"></div> */}
-                            {/* <p>PERFORMANCE</p>
-                            <span>56 <small>and 42 review</small></span> */}
-                        </div>
+                     
+                     
                     </div>
                 </div>
                 <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section"  >
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
                         <div className="profile-header" >
                             <div className="row" style={{display: 'block'}}>
-                                <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left" style={{marginLeft:"-13px",paddingRight:"0px"}}>
-                                    <h1 style = {{color : "black", fontSize : "24px",  }}>Dr. {name}</h1>
-                                     <p style = {{marginBottom : mar, color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>{specialisation}</p>
-                                    {width > 1200 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>10 years of experience</p>}  
+                                <div className="col-md-10 col-sm-11 col-xs-6 profile-header-section1 pull-left" style={{paddingRight:"0px"}}>
+                                    <h1 style = {{color : "black", fontSize : "24px", fontWeight:"600"  }}>Dr. {name}</h1>
+                                     <p style = {{marginBottom : "0px", color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>{specialisation}</p>
+                                    {width > 680 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>{yearsOfExp && yearsOfExp!==0 &&yearsOfExp + " years of experience" }</p>}  
 
 {facebookc &&  <a href={facebookc} target="_blank" rel="noreferrer noopener" >
                     <img src = {facebook} className = "icon-mbigger" alt=""></img>
@@ -192,40 +198,95 @@ if(width<1200)
                 
             </Container>
 
+            </> : <>
+            
+            
+            
+                 <div className="centre">
+                <div className="col-md-1" style={{marginLeft:"-3px", textAlign: "center", marginBottom:"8px"}}>
+                            {profile ? <img className="dp" src={profile}/>
+                            :
+                            <img className="dp" src={docimgsq}/>
                             
+                            }
+
+                        </div>
+
+                <h1 style = {{color : "black", fontSize : "24px", fontWeight:"600" , margin:"auto", textAlign:"center" }}>Dr. {name}</h1>
+
+
+             <p style = {{marginBottom : "5px" , marginTop :  '2px', textAlign:"center"}}>{specialisation}</p>
+
+   { <p style = {{fontSize: "16px", fontFamily : "work sans", color : "#0000009b",  textAlign:"center"}}>{yearsOfExp && yearsOfExp!==0 &&yearsOfExp + " years of experience" }</p>}  
+
+                <div className="col-md-1" style={{  textAlign: "center", marginBottom:"16px"}}>
+
+<div className="col-md-1" style = {{  display:"inline-block",     }}>
+
+
+    {facebookc &&  <a href={facebookc} target="_blank" rel="noreferrer noopener" >
+                    <img src = {facebook} className = "icon-mbigger" alt=""></img>
+                    </a>       }                    
+                    
+                    {
+                        linkedinc &&  <a href={linkedinc} target="_blank" rel = "noreferrer">
+                    <img src = {linkedin} className = "icon-mbigger" alt=""></img>
+                    </a> 
+                    }
+                    
+                    {
+                        twitterc &&
+                        <a href={twitterc} target="_blank" rel = "noreferrer">
+                    <img src = {twitter} className = "icon-mbigger" alt=""></img>
+                    </a>
+                    }
+</div>
+
+</div>
+
+            </div>
+
+            
+            
+            </>}                            
 
             <Container  className="align-items-center justify-content-center">
-          <h5 style = {{fontWeight : 'bold'}}>About</h5>
-<p style = {{color: "#000000ab", fontFamily:"work sans"}}>
+     <div class="section-title" style = {{paddingTop : "10px"}}>
+                    <h4 id = "sec"  > About </h4>
+                    
+                </div><p style = {{color: "#000000ab", fontFamily:"work sans"}}>
     {about}
 </p>
 <br></br>
-            <hr />
-            <br/> 
-            
-            <h5 style = {{fontWeight : 'bold'}}>Blogs by Dr. {name}</h5>
-              <br></br>
+  
+               <br></br>
                                   </Container>
-            <Container  className="align-items-center justify-content-center">
 
-           <BlogList mail="mail" blogs = {list}  />
-           </Container>
+                                             <div style = {{ backgroundColor: "#ededf2", paddingTop: "25px", paddingBottom:"50px", marginBottom:"20px"}}>
+<br></br>
+                   <BlogList mail="mail" blogs = {list} name = {name} />
+</div>
 
                    
                     
             <Container id="adincon"  className="align-items-center justify-content-center">                
           
                                                   <br/>
- <hr/>
-                    <br/>
-            <h5 style = {{fontWeight : 'bold'}} >Additional Information</h5><br/><br/>
+                 
+               <div class="section-title" style = {{paddingTop : "10px"}}>
+                    <h4 id = "sec"  > Additional Information </h4>
+                    
+                </div>
+            
+            
+            <br/><br/>
 
             <Row style = {{ marginLeft : "0px"}}>
   <img src = {medal} className = "icon-small" alt=""></img>
             <h6 id="adinf">Speciality</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab", fontFamily:"work sans"}}> {specialisation}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab",    lineHeight: "1.3", fontFamily:"work sans"}}> {specialisation}</p>
             <br/>
 
 
@@ -248,13 +309,17 @@ if(width<1200)
 
 
 
-  <Row style = {{ marginLeft : "0px"}}>
+{education && <>
+
+<Row style = {{ marginLeft : "0px"}}>
   <img src = {building} className = "icon-small" alt=""></img>
             <h6 id="adinf">Educational Details</h6>
 
             </Row>
             <p style={{marginLeft: "31px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans" , whiteSpace: "pre-line",   lineHeight: "1.3"}}>{education}</p>
             <br/>
+</>}
+
 
             
             <Row style = {{ marginLeft : "0px"}}>
@@ -267,13 +332,54 @@ if(width<1200)
 }}>{membership}</p>
               <br/>
      
+
+
+{expertise && <>
+
+          <Row style = {{ marginLeft : "0px", marginTop:"-21px"}}>
+  <img src = {achievement} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Expertise</h6>
+
+            </Row>
+            <p style={{marginLeft: "30px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"
+
+}}>{expertise}</p>
+              <br/>
+
+</>}
+{research && <>
+
+          <Row style = {{ marginLeft : "0px" }}>
+  <img src = {achievement} className = "icon-small" alt=""></img>
+            <h6 id="adinf">Research</h6>
+
+            </Row>
+            <p style={{marginLeft: "30px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"
+
+}}>{research}</p>
+              <br/>
+
+</>}
             </Container>
             <br/>
             <br/>
 
 
                    
-        </div></div>
-       </>
+        </div>
+        
+        
+        <Videos videos = {videoList} name = {name}></Videos>
+        
+        </div>
+
+    
+    
+    </>}
+
+
+
+
+        </>
   )
 }

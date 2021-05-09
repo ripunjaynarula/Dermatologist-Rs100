@@ -48,6 +48,7 @@ import treatmentMain from "./blog/Treatments/treatmentPageMain";
 import treatment from "./blog/Treatments/treatment";
 import testimonials from "./AboutPage/Testimonials/testimonialsPage";
 import notification from "./registerPush/client";
+import publicProfile from "./Profile/DocProfile";
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -121,7 +122,9 @@ function App() {
               <Route path="/video" component={Video} />
               <Route path="/404" component={page404} />
               <Route path="/about" component={about} />
+                            <Route path="/profile" component={publicProfile} />
 
+publicProfile
               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
 

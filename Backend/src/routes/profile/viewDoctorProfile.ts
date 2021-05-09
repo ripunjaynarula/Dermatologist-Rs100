@@ -2,8 +2,11 @@ import express from 'express'
 const router = express.Router();
 import doctors from '../../models/doctors';
 import fbUpdate from '../../actions/updateDetailsFIrebaseAuth';
+import blog from '../../models/blog'
+import Video from '../../models/videos'
 
 router.post('/', async (req, res) => {
+
 
 
  
@@ -13,35 +16,44 @@ router.post('/', async (req, res) => {
 
 var d : any;
 
-if(req.body.username)
- {
- 
- var username = req.body.username;
-   d = await doctors.findOne({username});
-    console.log(d)
+var username = req.body.username;
+   d = await doctors.findOne({username: username});
+   if(!d)
+   {
+        return res.send({status:"404", isError: true})
+   }
+     if(d.profileImage)
+   d.profileImage = process.env.cdnUrl + d.profileImage
+    
+    if(d.coverImage)
+   d.coverImage = process.env.cdnUrl + d.coverImage
 
- }else{
- var uid = req.body.uid;
-   d = await doctors.findOne({uid});
-    console.log(d)
+   d.password = ""
+   
 
- }
-if(d)
-{
+    var blogs : any;
+       {
 
-    if(req.body.uid === d.uid)
+        blogs =  await blog.find({doctorId: d.uid} ).limit(12);
+            
+        for(var i =0;i<blogs.length; i++)
+        {
+           blogs[i].image = process.env.cdnUrl + blogs[i].image
+        }
 
+      }
 
-            return res.send({status: "private_access", isError : false, data : d})
-else
-               return res.send({status: "public_access", isError : false, data : d})
+         var videos : any;
+       {
 
+        videos =  await Video.find({doctorId: d.uid} ).limit(16);
+            
+   
 
-}else{
+      }
 
- return res.send({status: "no_data", isError : true})
-
-}
+    
+    return res.send({status: "ok", isError : false, data : d, blogs : blogs , videos:videos})
 
 
         } catch (e) {

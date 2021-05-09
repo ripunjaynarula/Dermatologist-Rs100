@@ -110,6 +110,10 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
       notificationEmail: {
         type : Array,
         default : []
+    },   expertise: {
+        type: String
+    },   research: {
+        type: String
     },
 }));
 

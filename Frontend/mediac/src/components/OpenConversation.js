@@ -16,6 +16,10 @@ import {
   isMobile,
 } from "react-device-detect";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+
+import { GrAttachment } from "react-icons/gr";
+
+
 import { FiArchive } from "react-icons/fi";
 
 import { Form, InputGroup, Button } from "react-bootstrap";
@@ -266,9 +270,12 @@ function OpenConversation() {
          
 
 
-
+                    <div>
+                    
           <Form onSubmit={handleSubmit} autocomplete="off">
+            
             <Form.Group className="m-2">
+              
               <InputGroup id="bottommsg" style={{ height: "40px" }}>
                 <Form.Control
                   id="sendmsg"
@@ -284,20 +291,26 @@ function OpenConversation() {
                   style={{
                     height: "40px",
                     resize: "none",
-                    borderRadius: "4px",
+
                     display: "flex",
                     fontSize: "14px",
                     paddingTop: "8px",
                   }}
-                />
+                >
+                  
+                </Form.Control>
                 <InputGroup.Append>
+                <Button className="attach" style={{backgroundColor: "white"}}><GrAttachment/></Button>
                   <Button type="submit" onKeyPress={handleKeypress}>
                     <AiOutlineSend style={{ marginTop: "-3px" }} />
                   </Button>
+
                 </InputGroup.Append>
               </InputGroup>
             </Form.Group>
+            
           </Form>
+          </div>
         </div>
 
         <Modal show={show} onHide={handleClose}>

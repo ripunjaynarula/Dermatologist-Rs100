@@ -1049,7 +1049,7 @@ div.scrollmenu a {
 }
 
 #sendmsg {
-    border: 2px !important;
+    display: flex;
 }
 
 .conv:hover {
@@ -1316,4 +1316,14 @@ button.rec-dot:focus {
         width: 100%;
         background-size: cover;
     }
+}
+
+.attach{
+    border-top:1px solid #ced4da !important;
+    border-bottom: 1px solid #ced4da!important;
+    border-left: 0px solid !important;
+    /* border-right: 0px solid !important; */
+}
+.attach:hover{
+    background-color:rgb(202, 202, 202) !important;
 }

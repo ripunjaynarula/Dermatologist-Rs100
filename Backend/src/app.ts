@@ -25,6 +25,7 @@ import viewBlog from './routes/blogs/viewBlog'
 import allVideos from './routes/videos/viewVideosPublic'
 import myVideos from './routes/videos/viewVideosPrivate'
 import delVideo from './routes/videos/deleteVideo'
+import service from './routes/sendServiceWorker'
 
 import addPrescription from './routes/medicinesRoute/add'
 import searchMed from './routes/medicinesRoute/search'
@@ -164,7 +165,9 @@ app.use('/blogs-limit', blogsLimit);
 
 
 app.use('/video', viewSingleVideo);
-app.use('/subscribe', subscribeNotif);
+app.use('/subscribe',checkAuth, subscribeNotif);
+app.use('/service', service);
+
 app.use('/like-video', checkAuth, likeVideo);
 app.use('/like-blog', checkAuth, likeBlog);
 

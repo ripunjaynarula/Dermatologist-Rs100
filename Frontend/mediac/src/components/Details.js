@@ -96,7 +96,7 @@ function Details() {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
-        body: JSON.stringify({ email: currentUser.email }),
+        body: JSON.stringify({   }),
       };
 
       let res = await fetch(
@@ -105,13 +105,24 @@ function Details() {
       );
       res = await res.text();
       res = JSON.parse(res);
-      setConsultations(res["consultation"]);
-      let years = [];
+      let years = {};
       res["consultation"].forEach((consultation) => {
         let year = consultation.startDate.substring(0, 4);
-        years.push(year);
+        if(!years[year])
+        {
+          years[year] = [consultation]
+        }else{
+           years[year].push(consultation);
+
+        }
       });
-      setConsultationYears(years);
+
+ 
+       setConsultations(years);
+
+      console.log(y , "kkkkk")
+      console.log(res.consultation)
+      setConsultationYears(Object.keys(years));
     }
     getConsultations();
     //get data from backend
@@ -147,8 +158,8 @@ function Details() {
               </h5>
             </div>
             <hr></hr>
-            <Tabs defaultActiveKey={key} onChange={callback} tabPosition="left" style= {{_paddingTop:"100px"}} >
-               <TabPane tab="Consultations"  key="1" style = {{marginTop:"-10px", marginLeft:"-10px"}}>
+            <Tabs defaultActiveKey={key}  onChange={callback} tabPosition="left" tabBarStyle= {{_paddingTop:"100px", outline : "none"}} >
+               <TabPane tab="Consultations"  key="1" style = {{marginTop:"-10px", marginLeft:"-10px", }}>
            <div style = {{backgroundColor:"#f1eff5", padding:"30px"}}>
                   <h2>Consultations</h2>
                 <div
@@ -167,7 +178,7 @@ function Details() {
                     {consultationYears.map((year) => (
                       <>
                         <p>{year}</p>
-                        {consultations.map((consultation) =>
+                        {consultations[year].map((consultation) =>
                           consultation.startDate.substring(0, 4) === year ? (
                             <>
                               <div style={{ fontSize: "0px" }}>
@@ -216,13 +227,32 @@ function Details() {
                                     >
                                       <p>
                                         <b>
-                                          Consultation Ended
+                                          {consultation.accepted ? consultation.active ? "Consultation Ongoing" : "Consultation Ended" : "Consultation Cancelled" }
                                         </b>
                                         <br />
                                         Record for {consultation.name}
                                       </p>
                                     </div>
                                   </div>
+                                  {
+                                    (consultation.accepted && !consultation.active) && <>
+                                    
+                                      <div
+                                    className="float-right viewBill"
+                                   >
+                                   <div>
+                                      <p
+                                      className=""
+                                    >
+                                      View Bill
+                                    </p>
+                                   </div>
+                                   
+                                  </div>
+                                    
+                                    </> 
+                                  }
+                                
                                 </div>
                               </div>
                               <br />
@@ -268,17 +298,7 @@ function Details() {
                   </div>
                 </div>
               </TabPane>
-              <TabPane tab="Payment History" key="3">
-                <h2>Payment History</h2>
-                <div class="card" id="detailcard">
-                  <div class="card-body" id="detailcard">
-                    <div className="float-right">
-                      <Button className="submitbtn">Upload</Button>
-                    </div>
-                  </div>
-                </div>
-              </TabPane>
-              <TabPane tab="Need Help?" key="4">
+               <TabPane tab="Need Help?" key="4">
                 <h2>Need Help?</h2>
                 <div class="card" id="detailcard">
                   <div class="card-body" id="detailcard"></div>

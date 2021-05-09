@@ -32,7 +32,17 @@ const chat = mongoose.model('chats',new mongoose.Schema({
     },
     consultationId: {
         type: String
+    }, 
+    lastChatStartDate: {
+        type: Date,
+        required: true,
+        default: Date.now
     }
+      , updated_at    : {  
+        type: Date,
+        required: true,
+        default: Date.now
+         }
 }));
 
 export default chat;

@@ -7,13 +7,14 @@ import patients from '../models/patients';
 
 const router = express.Router()
 
-router.post('/', async (req, res) => {
-    const doc: any = await doctors.findOne({email: req.body.email});
+router.get('/', async (req, res) => {
+    const doc: any = await doctors.findOne({email: req.query.email});
     if(doc){
-        let consultation: any = await consultations.findOne({uid: req.body.cid});
+        let consultation: any = await consultations.findOne({uid: req.query.cid});
         if(consultation){
             if(consultation.accepted){
-                return res.end();
+                let u = process.env.WEB_URL || ""
+                return res.redirect(u + "chat/d");
             }
             consultation.accepted = true;
             consultation.active = true;
@@ -23,30 +24,49 @@ router.post('/', async (req, res) => {
         try{
             consultation = await consultation.save();
             let id='';
-            while(true){
-                id = uid(12);
-                let ch = await chat.findOne({chatId: id});
-                if(!ch){
-                    break
-                }
-            }
+
+            
+
+           
             const p: any = await patients.findOne({email: consultation.patientEmail});
-            let newChat = new chat({
-                chatId: id,
-                doctorUsername: doc.username,
-                patientUsername: p.name,
-                doctorEmail: consultation.doctorEmail,
-                patientEmail: consultation.patientEmail,
-                consultationId: consultation.uid,
+              var n = doc.uid.localeCompare(p.uid);
+              id = doc.uid + "-"+p.uid
+
+              let ch :any= await chat.findOne({chatId: id});
+                if(ch){
+                    ch.lastChatStartDate = new Date();
+                    ch.messages.push({
+                        timestamp : Date.now(),
+                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        type: "label"
+                    })
+                    await ch.save()
+                }else{
+                    let newChat = new chat({
+                    chatId: id,
+                    doctorUsername: doc.username,
+                    patientUsername: p.name,
+                    doctorEmail: consultation.doctorEmail,
+                    patientEmail: consultation.patientEmail,
+                    consultationId: consultation.uid,
+                    messages : [{
+                        timestamp : Date.now(),
+                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        type: "label"
+                    }]
             });
             newChat = await newChat.save();
+                
+                }
+
+          
         }catch(e){
             console.log("Error occured!");
         }
     }
     
-
-    return res.end();
-});
+ let u = process.env.WEB_URL || ""
+                return res.redirect(u + "chat/d");
+ });
 
 export default router;

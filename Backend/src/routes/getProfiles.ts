@@ -21,7 +21,7 @@ try{
         {
             age = getAge(patient.dob)
         }
-        return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone });
+         return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone });
     }
  return   res.send({status: 'no_account_found'});
 }catch(e)

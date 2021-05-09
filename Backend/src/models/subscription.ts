@@ -12,6 +12,14 @@ const subscription = mongoose.model('subscriptions', new mongoose.Schema({
     email: {
         type: String,
         required: true,
+    },
+    regEmails:{
+        type : Array,
+        default:[]
+    },
+    regSubscriptions:{
+        type : Array,
+        
     }
 }));
 

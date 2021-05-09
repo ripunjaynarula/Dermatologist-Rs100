@@ -42,6 +42,7 @@ export default function Loading(props) {
     let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
+    console.log(res)
     if(res['status']){
      setFlag(false);
      setDisp(true);
@@ -50,11 +51,11 @@ export default function Loading(props) {
 
   useEffect(() => {
     document.getElementById("cancelbtn").style.visibility = "hidden";
-    const check = setTimeout(checkStatus, 60000);
+    //const check = setTimeout(checkStatus, 10000);
     const timer = setTimeout(() => {
       setFlag(false);
       document.getElementById("cancelbtn").style.visibility = "visible";
-    }, 120000);
+    }, 120);
   }, []);
 
   return (
@@ -86,13 +87,9 @@ export default function Loading(props) {
 
       </div>
 
-      <div disabled={disp}
-        class="d-flex align-items-center justify-content-center  "
-        style={{ marginTop: "12%", backgroundColor: "white !important" }}
-      >
-      <div class="alert alert-success" role="alert">
+     {disp && <div class="alert alert-success" role="alert">
           Consultation Cancelled successfully
-        </div></div>
+        </div>}
     </>
   );
 }

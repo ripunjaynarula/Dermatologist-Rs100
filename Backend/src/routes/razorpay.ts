@@ -10,10 +10,10 @@ const razorpay = new Razorpay({
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const payment_capture = 1;
-  const amount = "10000";
-  const currency = "INR";
-  const options = {
+  var payment_capture = 1;
+  var amount = "10000";
+  var currency = "INR";
+  var options = {
     amount,
     currency,
     receipt: uid(12),
@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
   };
 
   try {
-    const response = await razorpay.orders.create(options);
+    var response = await razorpay.orders.create(options);
     res.send({
       success: true,
       id: response.id,

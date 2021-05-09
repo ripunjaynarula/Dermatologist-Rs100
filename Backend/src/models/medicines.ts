@@ -14,3 +14,4 @@ const consultations = mongoose.model('medicines', new mongoose.Schema({
 }));
 
 export default consultations;
+ 

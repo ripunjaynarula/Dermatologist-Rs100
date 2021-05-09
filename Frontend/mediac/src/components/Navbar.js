@@ -104,9 +104,7 @@ const NavBar = (props) => {
          <a href="/records" class="tile dropdown-item">
         My Records
       </a>
-         <a href="/payments" class="tile dropdown-item">
-        Payment History
-      </a>
+   
        <a href="/help" class="tile dropdown-item">
          Need Help?
       </a>

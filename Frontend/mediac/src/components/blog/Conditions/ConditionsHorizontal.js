@@ -17,8 +17,7 @@ const [showMore, setShowMore] = useState(false)
    useEffect( () => {
 
     var items = 3;
-
-    
+ 
     if(width> 1199) {
       
       items = 4

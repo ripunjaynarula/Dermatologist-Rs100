@@ -1164,15 +1164,23 @@ button.rec-dot:focus {
 }
 
 .rc-tabs-tab .rc-tabs-tab-btn {
-    font-size: 12px;
+    font-size: 14px;
+    outline: none;
 }
 
 .rc-tabs-tab.rc-tabs-tab-active {
     background: #f1eff5;
+    outline: none;
 }
 
 .rc-tabs-ink-bar {
     background: #59c7fd !important;
+}
+
+.rc-tabs-tabpane {
+    width: 100%;
+    flex: none;
+    outline: none;
 }
 
 .rc-tabs-content-holder {
@@ -1183,6 +1191,12 @@ button.rec-dot:focus {
     max-height: 100px !important;
     min-height: 1px !important;
     box-shadow: none !important;
+}
+
+.rc-tabs-left .rc-tabs-nav,
+.rc-tabs-right .rc-tabs-nav {
+    flex-direction: column;
+    min-width: 150px !important;
 }
 
 
@@ -1233,6 +1247,25 @@ button.rec-dot:focus {
     padding-left: 11px;
     padding-right: 11px;
     background-color: rgb(204, 200, 200);
+}
+
+.vieBill {
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.viewBill div {
+    margin-top: -40px;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 4px;
+}
+
+.viewBill div:hover {
+    cursor: pointer;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 4px;
 }
 
 .datecal {

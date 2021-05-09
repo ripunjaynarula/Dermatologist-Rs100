@@ -12,19 +12,21 @@ const razorpay = new Razorpay({
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-    const consultation: any = await consultations.findOne({uid: req.body.consultationId});
-    if ( Date.now() - consultation.time > 4000 ){
+    const consultation: any = await consultations.findOne({uid: req.body.consultatioId});
+    console.log(consultation.accepted)
+    if (consultation.accepted){
         return res.send({success: false, message: 'time limit exceeded'});
     }
 
     try {
         const response = await razorpay.payments.refund(req.body.paymentId);
         if(response["status"] === "processed"){
-            await chats.findOneAndDelete({consultationId: consultation.uid});
+        //    await chats.findOneAndDelete({consultationId: consultation.uid});
             await consultations.findOneAndDelete({uid: req.body.consultationId});
             return res.send({status: true, message: "Payment will be refunded soon."})
         }
     }catch (e) {
+        console.log(e)
         return res.send({status: false, message: "Internal Error"})
     }
 });

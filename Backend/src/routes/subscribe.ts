@@ -12,12 +12,33 @@ router.post("/", async (req, res) => {
     if(!doc){
         return res.send({'success': false, 'message':'invalid_creds'});
     }
+ 
+   
+   if(req.body.type === "mail")
+   {
 
-    const check = await bcrypt.compare(req.body.password, doc.password);
-    if(!check){
+
+        if (!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(req.body.addemail)))
+  {
         return res.send({'success': false, 'message':'invalid_creds'});
-    }
-    const subscription = req.body.sub;
+  }
+       var l = doc.notificationEmail;
+       if (l === null) l = [] 
+       if(!l.includes(req.body.addemail))
+       {
+             try{
+  doc.notificationEmail.push(req.body.addemail)
+  await doc.save()
+            return res.send({'success': true})
+
+            }catch(r)
+            {
+return ({success: false, message:"Internal Server Error"})
+            }
+           
+       }
+   }else{
+        const subscription = req.body.sub;
     //Pass object into sendNotification
     let sub: any = await subscripitons.findOne({id: subscription.keys.auth});
     if(!sub){
@@ -30,11 +51,18 @@ router.post("/", async (req, res) => {
         try{
             sub = await sub.save();
             console.log(sub.id);
+            return res.send({'success': true})
+
         } catch(e){
             return res.send({'success': false})
         }
 
     }
+   }
+
+
+
+
     res.send({'success':true});
 });
 

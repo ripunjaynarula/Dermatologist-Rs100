@@ -18,10 +18,6 @@ export default function Loading(props) {
   const quest = useRef();
  
 
-  function onClick() {
-    history.push("/consult/?ques=" + quest.current.value);
-  }
-
   const checkStatus = async () => {
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {

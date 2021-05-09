@@ -122,9 +122,11 @@ const hideDropdown = e => {
  
  <MenuItem active = {props.selected === "edit" ? true : false}  icon = {<img src = {editProf} alt = "" height ="22px"></img>}><a href= "/update-doctor" style = {{color : "white"}}>Edit Profile</a> 
 </MenuItem>
-
-
               <MenuItem  icon = {<img src = {logoutic} alt = "" height ="22px"></img>}><a href= "#" style = {{color : "white"}} onClick = {handleLogout}>Log Out</a> </MenuItem>
+
+ <MenuItem active = {props.selected === "noti" ? true : false}  ><a href= "/notification" style = {{color : "white", fontSize:"14.4px"}}>Notification Register</a> 
+</MenuItem>
+
             </Menu>
           </SidebarContent>
           

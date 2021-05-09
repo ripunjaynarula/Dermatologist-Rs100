@@ -97,7 +97,7 @@ export default function Choice() {
   };
 
 
-  const addConsultation = async () => {
+  const addConsultation = async (orderId, paymentId, signature) => {
      setError("");
       const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
@@ -113,7 +113,11 @@ export default function Choice() {
           allergies: allergiesRef.current.value,
           previousConditions: previousRef.current.value,
           question: quest.current.value,
-          phone:phoneRef.current.value
+          phone: phoneRef.current.value,
+          razorpayOrderId: orderId,
+          razorpayPaymentId: paymentId,
+          razorpaySignature: signature,
+
         }),
       };
       let res = await fetch(
@@ -156,9 +160,11 @@ export default function Choice() {
       description: "Payment for consultation",
       order_id: res.id,
       handler: function (response) {
-        setPaymentId(response.razorpay_payment_id)
-        addConsultation();
+         setPaymentId(response.razorpay_payment_id)
+        
         if (response.razorpay_order_id && response.razorpay_payment_id && response.razorpay_signature){
+                  addConsultation(response.razorpay_order_id,response.razorpay_payment_id, response.razorpay_signature);
+
           return true;
         }
       },

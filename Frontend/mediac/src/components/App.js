@@ -15,8 +15,7 @@ import Login from "./Login";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
 import Details from "./Details";
-import NeedHelp from "./NeedHelp";
-import Test from "./Test";
+ import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./Profile/UpdateProfile";
@@ -48,6 +47,7 @@ import about from "./AboutPage/about";
 import treatmentMain from "./blog/Treatments/treatmentPageMain";
 import treatment from "./blog/Treatments/treatment";
 import testimonials from "./AboutPage/Testimonials/testimonialsPage";
+import notification from "./registerPush/client";
 
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
@@ -101,6 +101,7 @@ function App() {
               <PrivateRoute path="/help" component={Details} />
               <PrivateRoute path="/payments" component={Details} />
               <PrivateRoute path="/records" component={Details} />
+              <PrivateRoute path="/notification" component={notification} />
 
               <PrivateRoute
                 path="/update-doctor"
@@ -114,7 +115,7 @@ function App() {
               {/* <Route path="/Test" component={Test} /> */}
 
               <Route path="/login" component={Login} />
-              <Route exact path="/faq" component={Faq} />
+              <Route   path="/faq" component={Faq} />
               <Route path="/signup" component={Signup} />
               <Route path="/videos" component={ViewVideos} />
               <Route path="/video" component={Video} />

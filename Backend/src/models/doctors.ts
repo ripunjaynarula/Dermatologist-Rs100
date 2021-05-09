@@ -107,6 +107,10 @@ const doctors = mongoose.model('doctors', new mongoose.Schema({
      about: {
         type : String
     },
+      notificationEmail: {
+        type : Array,
+        default : []
+    },
 }));
 
 export default doctors;

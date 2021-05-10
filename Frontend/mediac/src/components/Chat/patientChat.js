@@ -2,8 +2,7 @@
 import { Form, Button, Row, Alert } from "react-bootstrap";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Sidebar from "./patientSidebar";
-import mobileSidebar from "./patientSidebarMobile";
-
+ 
 import OpenConversation from "../OpenConversation";
 import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../Navbar"

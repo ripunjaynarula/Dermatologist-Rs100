@@ -8,7 +8,7 @@ import React, {
 
 import usersvg from "./img/user.svg";
 import Modal from 'react-bootstrap/Modal'
-
+import ConfirmationModal from './utility/confirmationModal'
 import {
   BrowserView,
   MobileView,
@@ -338,14 +338,8 @@ setisLoading(false)
           </Form>
           </div>
         </div>
-
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete?</Modal.Body>
-       
-      </Modal>
+<ConfirmationModal show = {show} onHide = {handleClose} onYes = {handleArchiveButton} ></ConfirmationModal>
+     
         </div>
       </>
     );

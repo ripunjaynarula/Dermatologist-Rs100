@@ -39,10 +39,12 @@ const chat = mongoose.model('chats',new mongoose.Schema({
         default: Date.now
     }
       , updated_at    : {  
-        type: Date,
-        required: true,
-        default: Date.now
-         }
+        type: Number,
+          
+         },
+          lastMessage: {
+        type: String
+    }, 
 }));
 
 export default chat;

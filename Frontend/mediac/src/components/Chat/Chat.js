@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Row, Alert } from "react-bootstrap";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Sidebar from "./Sidebar";
-import SidebarPatient from "./sideBarPatient";
+import SidebarPatient from "./patientSidebar";
 
 import OpenConversation from "../OpenConversation";
 import { useAuth } from "../../contexts/AuthContext"

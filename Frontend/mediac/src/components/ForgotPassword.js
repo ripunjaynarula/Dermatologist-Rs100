@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Container, Card, Alert } from "react-bootstrap";
+import { Form, Button, Container, Card, Alert, } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { CardMain } from "../css/Card";
@@ -14,7 +14,7 @@ export default function ForgotPassword() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+ 
     try {
       setMessage("");
       setError("");

@@ -286,7 +286,7 @@ export default function DocProfile() {
             <h6 id="adinf">Speciality</h6>
 
             </Row>
-            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab",    lineHeight: "1.3", fontFamily:"work sans"}}> {specialisation}</p>
+            <p style={{marginLeft: "31px", marginTop: "2px",color: "#000000ab",    lineHeight: "1.3", fontFamily:"work sans", }}> {specialisation}</p>
             <br/>
 
 
@@ -357,15 +357,10 @@ export default function DocProfile() {
             <p style={{marginLeft: "30px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"
 
 }}>{research}</p>
-              <br/>
-
+     
 </>}
             </Container>
-            <br/>
-            <br/>
-
-
-                   
+          
         </div>
         
         

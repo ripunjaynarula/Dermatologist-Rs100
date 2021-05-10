@@ -3,6 +3,7 @@ import { Tab, Nav, Button, Modal, Form } from "react-bootstrap";
 import Conversation from "../Conversation";
 import Archive from "./Archive";
 import { AiOutlineSearch } from 'react-icons/ai';
+import useWindowDimensions from "../../functions/windowDimensions";
 
 import "../styles.css";
 const CONVERSATIONS_KEY = "conversations";
@@ -21,6 +22,8 @@ function Sidebar() {
       <div className="d-flex flex-column" style={{ minHeight: "500px" }}>
         <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
           <div className="justify-content-center">
+                          <h4 style = {{  fontFamily: "roboto", marginLeft : "8px", fontSize: "20px", marginTop : "5px" }}>Chat</h4>
+
             <Form.Group>
               {/* <Form.Control
                 type="text"
@@ -30,15 +33,12 @@ function Sidebar() {
               /> */}
             </Form.Group>
           </div>
-                           <h5 style = {{marginLeft : "5px", fontWeight: "bold"}}>Chats</h5>
 
-          <Tab.Content className="border-right overflow-auto flex-grow-1">
-            <Tab.Pane
-              eventKey={CONVERSATIONS_KEY}
-              style={{ backgroundColor: "white" }}
-            >
-              <Conversation />
-            </Tab.Pane>
+
+ 
+          <Tab.Content className="overflow-hidden flex-grow-1">
+                         <Conversation />
+
             
           </Tab.Content>
         </Tab.Container>

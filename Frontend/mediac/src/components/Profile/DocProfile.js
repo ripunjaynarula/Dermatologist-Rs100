@@ -370,13 +370,11 @@ else
             <p style={{marginLeft: "30px", marginTop: "-1.6px",color: "#000000ab", fontFamily:"work sans", whiteSpace: "pre-line",   lineHeight: "1.3"
 
 }}>{research}</p>
-              <br/>
+            
 
 </>}
             </Container>
-            <br/>
-            <br/>
-
+       
 
                    
         </div>

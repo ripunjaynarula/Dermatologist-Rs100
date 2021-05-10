@@ -35,6 +35,7 @@ router.get('/', async (req, res) => {
               let ch :any= await chat.findOne({chatId: id});
                 if(ch){
                     ch.lastChatStartDate = new Date();
+                    ch.consultationId = consultation.uid;
                     ch.messages.push({
                         timestamp : Date.now(),
                         text: 'Hi '+ consultation.name +', your consultaion has started',

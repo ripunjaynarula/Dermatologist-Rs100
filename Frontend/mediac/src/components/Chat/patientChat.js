@@ -2,11 +2,13 @@
 import { Form, Button, Row, Alert } from "react-bootstrap";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Sidebar from "./patientSidebar";
- 
+import mobileSidebar from "./patientSidebarMobile";
+
 import OpenConversation from "../OpenConversation";
 import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../Navbar"
 import {reactLocalStorage} from 'reactjs-localstorage';
+import useWindowDimensions from "../../functions/windowDimensions";
 
 import "../styles.css";
 import {
@@ -22,7 +24,8 @@ function Chat() {
   const [phone, setPhone] = useState(false);
   const {   currentUser } = useAuth()
 var navBar = <Navbar></Navbar>;
- 
+   const { height, width } = useWindowDimensions();
+
   useEffect(() => {
 onlyOnce()
     // if(){
@@ -45,11 +48,13 @@ async function onlyOnce()  {
 
   return (
     <>
-      <BrowserView>
-        <div className="chat">
+
+    
+       {width > 600 ?        
+       <div className="chat">
           <Navbar ></Navbar>
-           <Container className="d-flex align-items-center justify-content-center" >
-            <div class="card chatcard" >
+           <div className={width>1138 ? "centre" : "centre-bigger"} >
+            <div class="card chatcard" style = {{marginTop:"100px"}}>
               <div class="card-body row " >
                 <div className="col-3 chatsideb">
                   <Sidebar></Sidebar>
@@ -59,24 +64,30 @@ async function onlyOnce()  {
                 </div>
               </div>
             </div>
-          </Container>
-        </div>
-      </BrowserView>
-      
-      <MobileView>
-        <div className="chat">
-          <Navbar selected = "chat" />
-          <Container className="d-flex align-items-center justify-content-center">
-            <div class="card chatcard">
+          </div>
+        </div> :  
+             <>
+             
+             <div style = {{overflowX: "hidden",}}>
+
+                  <Navbar  />
+
+              <div style = {{width : "100%",    overflowX: "hidden", backgroundColor:"white" }}>
+
+                   <div class="chatcard" >
               <div class="card-body row ">
                 <div className="col-12 chatsideb">
                   <Sidebar></Sidebar>
                 </div>
               </div>
             </div>
-          </Container>
-        </div>
-      </MobileView>
+              </div>
+             </div>
+    
+             </>
+ }
+      
+     
     </>
   );
 }

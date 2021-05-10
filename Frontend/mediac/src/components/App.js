@@ -70,8 +70,7 @@ function App() {
       <AuthProvider>
         <DataContext.Provider value={[consultationData, setConsultationData]}>
           <SocketContext.Provider value={[socket, setSocket]}>
-            {/* <div className="Navb"><Navbar /></div> */}
-
+ 
             <Switch>
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute

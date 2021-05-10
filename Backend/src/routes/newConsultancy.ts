@@ -74,14 +74,7 @@ router.post('/', async (req:any, res: any) => {
         var notifs = await subscriptions.find({});
         notifs.map(async (client: any) => {
             var payload = JSON.stringify({ title:"New Consultation" , id: consultation.uid, description: consultation.description, email: client.email });
-            try {
-                await webpush.sendNotification(client.subscripiton, payload)
-                console.log(client.subscription, "SUBS")
-                console.log(payload)
-                console.log("notification sent")
-            }catch (e){
-                console.log(e);
-            }
+          sendNotification(client.subscripiton, payload, client._id)
         });
         console.log("d2")
         var docs : any = await doctors.find({})
@@ -116,4 +109,18 @@ router.post('/', async (req:any, res: any) => {
 
 });
 
+
+async function sendNotification(subscripiton :any,  payload:any, id:any){
+      try {
+                await webpush.sendNotification(subscripiton, payload)
+                 console.log(payload)
+                console.log("notification sent")
+            }catch (e){
+                console.log("FAILED-," , id)
+                console.log(e);
+                        var r = await subscriptions.deleteOne({ _id: id })         
+
+                console.log("--------", r)
+            }
+}
 export default router;

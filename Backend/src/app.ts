@@ -93,14 +93,17 @@ io.on('connection', (socket: any)=>{
     const id = socket.handshake.query.currentChat;
     socket.join(id);
     console.log(id)
-    socket.on('send', async (msgData: any) =>{
+    socket.on('send', async (msgData: any, ) =>{
         let chats: any = await chat.findOne({chatId: id});
         if(chats){
-            chats.messages.push(msgData);
+            msgData.timestamp = Date.now()
+            chats.updated_at = Date.now()
+            chats.lastMessage =  msgData.text
+             chats.messages.push(msgData);
             try{
-                chats = await chats.save();
-            }catch(e){
-                console.log('Error occurred');
+                 await chats.save();
+             }catch(e){
+                console.log(e);
             }
         }
         socket.to(id).emit('new-message',msgData);

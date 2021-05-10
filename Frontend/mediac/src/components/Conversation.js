@@ -3,6 +3,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
 import {CurrentChatContext, ChatDataContext, SocketContext} from './App';
+import useWindowDimensions from "../functions/windowDimensions";
+
 import {
   BrowserView,
   MobileView,
@@ -19,10 +21,13 @@ function Conversation() {
   const [socket, setSocket] = useContext(SocketContext);
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+   const { height, width } = useWindowDimensions();
 
   function handleOpenChat(id){
   setCurrentChat(id);
+  width > 600 &&
   setActive(id)
+  
 }
 
 
@@ -31,10 +36,13 @@ const handleNewMessage = useCallback((msgData) => {
   if(!messageDiv) {
     messageDiv = document.getElementById(msgData.to)
   }
-  const lastText = messageDiv.children[1];
+  if(messageDiv)
+  {
+     var lastText = messageDiv.children[1];
   lastText.innerHTML = msgData.text;
   const date = messageDiv.children[2];
   date.innerHTML = `<small className="live">${msgData.time}, ${msgData.date}`
+  }
 }, []);
 
   useEffect(() => {
@@ -62,22 +70,25 @@ const handleNewMessage = useCallback((msgData) => {
     if(!socket) return;
     socket.on("update", handleNewMessage);
     return () => socket.off("update");
-  }, [socket, handleNewMessage]);
+  }, []);
 
   return (
     <div>
-    {isMobile && currentChat!==""?<><OpenConversation /></>:(
+    {width < 601 && currentChat!==""?<><OpenConversation /></>:(
       <div className="container">
         <div>
-          <div className="top w-100">
+          {width > 600 && <div className="top w-100">
             <br />
-          </div>
+          </div>}
 
-          {chats.map((chat) => (
+            <div style = {{height: width < 601 ? height - "56" : "500px", overflowY:"scroll"}}>
+
+
+   {chats.map((chat) => (
             <>
             {chat.archieved?(<></>):(
               <div
-              className=" overflow-auto "
+              className="overflow-auto"
               style={{ fontSize: "13px" }}
               onClick={() => {
                 let email= currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail
@@ -89,10 +100,7 @@ const handleNewMessage = useCallback((msgData) => {
                 <div className="d-flex flex-row align-items-center conv w-100" style = {{paddingLeft : "5px", paddingRight : "5px"}}>
                   <div className="image" >
                     {" "}
-                    <img
-                      src="https://i.imgur.com/jhsYqVT.png"
-                      width="50"
-                    />{" "}
+                    <img src="https://i.imgur.com/jhsYqVT.png" width="50" />{" "}
                     <span className="type"></span>{" "}
                   </div>
                   <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail }>
@@ -103,15 +111,14 @@ const handleNewMessage = useCallback((msgData) => {
                         : chat.patientUsername}
                     </span>{" "}
                     <span>
-                      {chat.messages.length > 0
-                        ? chat.messages[chat.messages.length - 1].text
+                      {chat.lastMessage 
+                        ? chat.lastMessage
                         : "Start Conversation"}
                     </span>{" "}
                     <span className="d-flex flex-row align-items-center s-now">
                       <small className="live">
-                        {chat.messages.length > 0
-                          ? chat.messages[chat.messages.length - 1].time + ", "+ chat.messages[chat.messages.length - 1].date
-                          : ""}
+                        {  chat.updated_at && dateAndTime(chat.updated_at)
+                           }
                       </small>
                     </span>{" "}
                   </div>
@@ -123,11 +130,20 @@ const handleNewMessage = useCallback((msgData) => {
             )}
             </>
           ))}
+
+
+
+            </div> 
+        
         </div>
       </div>
     )}
     </div>
   );
 }
+function dateAndTime(unixtime) {
+var d = (new Date(unixtime)).toLocaleString().split(":")
 
+      return  d[0] + ":"+d[1]
+    };
 export default Conversation;

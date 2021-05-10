@@ -242,7 +242,28 @@ const hideDropdown = e => {
 
 
               </ReactBootStrap.Nav >
-            
+            <ReactBootStrap.Nav className="mr-auto"> 
+    
+
+   
+
+
+
+              </ReactBootStrap.Nav ><ReactBootStrap.Nav className="mr-auto"> 
+    
+
+   
+
+
+
+              </ReactBootStrap.Nav ><ReactBootStrap.Nav className="mr-auto"> 
+    
+
+   
+
+
+
+              </ReactBootStrap.Nav >
               { (
             <ReactBootStrap.Nav className="form-inline"
               style={{

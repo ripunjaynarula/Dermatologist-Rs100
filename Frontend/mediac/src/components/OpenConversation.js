@@ -19,10 +19,11 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { GrAttachment } from "react-icons/gr";
 
+import useWindowDimensions from "../functions/windowDimensions";
 
-import { FiArchive } from "react-icons/fi";
+import { GrArchive } from "react-icons/gr";
 
-import { Form, InputGroup, Button } from "react-bootstrap";
+import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
@@ -43,10 +44,12 @@ function OpenConversation() {
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
   const [chats, setChats] = useContext(ChatDataContext);
   const messageEndRef = useRef(null);
+   const { height, width } = useWindowDimensions();
 
 
   const [show, setShow] = useState(false);
-
+  const [isLoading, setisLoading] = useState(false);
+const[error, setError] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
@@ -55,6 +58,9 @@ function OpenConversation() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if(!messageRef) return
+    if(!messageRef.current) return
+    if(!messageRef.current.value.trim()) return
     var time = new Date();
     var options = {
       year: "numeric",
@@ -133,6 +139,7 @@ function OpenConversation() {
   const handleBackButton = () => {
     console.log("Clicked");
     setCurrentChat("");
+    
   };
 
   const handleArchiveButton = async () => {
@@ -159,6 +166,7 @@ function OpenConversation() {
 
   useEffect(() => {
     async function getChats() {
+      setError(false)
       if (!currentUser) {
         history.push("/login");
       }
@@ -171,7 +179,10 @@ function OpenConversation() {
         query: { currentChat },
       });
       setSocket(newSocket);
-      const token = await app.auth().currentUser.getIdToken(true);
+      setisLoading(true)
+   try{
+
+   const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
@@ -185,8 +196,18 @@ function OpenConversation() {
       res = JSON.parse(res);
       console.log(res);
       setChatData(res["chats"]);
+      
+
+   }catch(e){
+setError(true)
+   }
+
+setisLoading(false)
+
       console.log(chatData);
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+      if(messageEndRef)
+        if(messageEndRef.current)
+          messageEndRef.current.scrollIntoView({ behavior: "smooth" });
       return () => newSocket.close();
     }
     getChats();
@@ -198,15 +219,18 @@ function OpenConversation() {
   if (chatData["messages"]) {
     return (
       <>
-      <div className="chat" style={{height:"100%", zIndex:"1"}}>
+      <div className="chat" style={{ zIndex:"1", overflowX:"hidden"}}>
         <div className="contacthead">
           <div style={{ float: "left" }}>
-            {isMobile ? (
+            {width <601 ? (
               <>
-                <Button onClick={handleBackButton}>
-                  <AiOutlineArrowLeft />
+                <div style = {{display:"inline-block", marginLeft:"-10px",position:"absolute",  }}   >
+                  <Button onClick={handleBackButton} id="cancelbtn" >
+                  <AiOutlineArrowLeft color="black" />
                 </Button>
-                &nbsp;&nbsp;
+                </div>
+                &nbsp;&nbsp;                &nbsp;
+   &nbsp;&nbsp;   &nbsp;&nbsp;
               </>
             ) : (
               <></>
@@ -220,17 +244,19 @@ function OpenConversation() {
 
           <hr />
           <div style={{ float: "right" }}>
-            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleShow}>
-              <FiArchive/>
+            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleShow}  >
+              <GrArchive/>
             </Button>
           </div>
         </div>
         <div
-          className="d-flex flex-column flex-grow-1 chatbg "
-          style={{ marginTop: "-1.7%" }}
+          className="d-flex flex-column flex-grow-1 chatbg  "
+          style={{ marginTop: "-1.7%",height: width < 601 ? height - "175" : "550px", overflowX:"hidden" }}
           id="chatbox"
         >
-          <div className="flex-grow-1 overflow-auto" id="chatMessages">
+          <div className="flex-grow-1 overflow-auto" id="chatMessages" 
+           
+          >
             <br />
 
             {chatData["messages"].map((message) => (
@@ -247,7 +273,7 @@ function OpenConversation() {
                       currentUser.email === message["from"]
                         ? "bg-primary text-white"
                         : "bg-light"
-                    }`} style = {{marginTop: "4px", marginLeft : "4px", marginRight : "4px", }}
+                    }`} style = {{marginTop: "4px", marginLeft : currentUser.email === message["from"] ?"35px" :"4px", marginRight :   currentUser.email === message["from"] ?"4px" :"35px", }}
                   >
                     {message["text"]}
                   </div>
@@ -318,17 +344,34 @@ function OpenConversation() {
           <Modal.Title>Confirmation</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete?</Modal.Body>
-        <Modal.Footer>
-          
-          <Button variant="primary" onClick={handleArchiveButton}>
-            Confirm
-          </Button>
-        </Modal.Footer>
+       
       </Modal>
         </div>
       </>
     );
-  } else {
+  } else if(isLoading){
+    return (
+      <>
+        <div
+          className="d-flex justify-content-center align-items-center   p-5"
+          style={{ marginTop: "10%", }}
+        >
+  <Spinner animation="border" variant="primary" />
+        </div>
+      </>
+    );
+  }else if(error){
+    return (
+      <>
+        <div
+          className="d-flex justify-content-center align-items-center   p-5"
+          style={{ marginTop: "5%", backgroundColor: "white !important" }}
+        >
+          <p>Connection Error</p>
+        </div>
+      </>
+    );
+  }else {
     return (
       <>
         <div

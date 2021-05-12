@@ -83,8 +83,8 @@ const[error, setError] = useState(false)
       socket.emit("send", msgData);
     }
     chatData["messages"].push(msgData);
-    //append child
-    const chatDiv = document.getElementById("chatMessages");
+    // append child
+    const chatDiv = document.getElementById(chatData.chatId);
     const messageDiv = document.createElement("div");
     messageDiv.className =
       "align-items-end my-1 align-self-end flex-column d-flex mine";
@@ -116,7 +116,7 @@ const[error, setError] = useState(false)
     }
     //append child
     var time = new Date();
-    const chatDiv = document.getElementById("chatMessages");
+    const chatDiv = document.getElementById(chatData.chatId);
     const messageDiv = document.createElement("div");
     messageDiv.className = "align-items-start my-1 flex-column d-flex their";
     const textDiv = document.createElement("div");
@@ -254,7 +254,7 @@ setisLoading(false)
           style={{ marginTop: "-1.7%",height: width < 601 ? height - "175" : "550px", overflowX:"hidden" }}
           id="chatbox"
         >
-          <div className="flex-grow-1 overflow-auto" id="chatMessages" 
+          <div className="flex-grow-1 overflow-auto" id={chatData.chatId} 
            
           >
             <br />

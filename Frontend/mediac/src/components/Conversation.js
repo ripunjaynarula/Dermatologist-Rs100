@@ -81,7 +81,7 @@ const handleNewMessage = useCallback((msgData) => {
             <br />
           </div>}
 
-            <div style = {{height: width < 601 ? height - "56" : "500px", overflowY:"scroll"}}>
+            <div style = {{height: width < 601 ? height - "56" : "400px", overflowY:"auto"}}>
 
 
    {chats.map((chat) => (

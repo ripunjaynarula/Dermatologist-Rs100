@@ -51,7 +51,7 @@ async function onlyOnce()  {
           <Csidebar selected = "chat"></Csidebar>
            <Container className="d-flex align-items-center justify-content-center" >
             <div class="card chatcard" >
-              <div class="card-body row " >
+              <div class="card-body row chatwindow" >
                 <div className="col-3 chatsideb">
                   <Sidebar></Sidebar>
                 </div>

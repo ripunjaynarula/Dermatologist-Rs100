@@ -1041,7 +1041,6 @@ div.scrollmenu a {
 
 .chatbg {
     /* background-image: url("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Background.max-2800x2800.jpg"); */
-    height: 500px;
     background-color: rgba(128, 128, 128, 0.219);
 }
 
@@ -1106,7 +1105,7 @@ div.scrollmenu a {
         margin-top: 1%;
     }
     #chatbox {
-        max-height: 500px;
+        max-height: 450px;
     }
 }
 

@@ -7,8 +7,8 @@ import React, {
 } from "react";
 
 import usersvg from "./img/user.svg";
-import Modal from 'react-bootstrap/Modal'
-import ConfirmationModal from './utility/confirmationModal'
+import Modal from "react-bootstrap/Modal";
+import ConfirmationModal from "./utility/confirmationModal";
 import {
   BrowserView,
   MobileView,
@@ -39,39 +39,41 @@ function OpenConversation() {
   const [chatData, setChatData] = useState({});
   const { currentUser } = useAuth();
   const history = useHistory();
-  const [socket, setSocket] = useContext(SocketContext)
+  const [socket, setSocket] = useContext(SocketContext);
   const [prevChat, setPrevChat] = useState("");
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
   const [chats, setChats] = useContext(ChatDataContext);
   const messageEndRef = useRef(null);
-   const { height, width } = useWindowDimensions();
-
+  const { height, width } = useWindowDimensions();
 
   const [show, setShow] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-const[error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
     console.log("showing");
-  }
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(!messageRef) return
-    if(!messageRef.current) return
-    if(!messageRef.current.value.trim()) return
+    if (!messageRef) return;
+    if (!messageRef.current) return;
+    if (!messageRef.current.value.trim()) return;
     var time = new Date();
     var options = {
       year: "numeric",
       month: "2-digit",
       day: "numeric",
     };
-    
+
     let msgData = {
       date: time.toLocaleDateString("en", options),
       from: currentUser.email,
-      to: (chatData["doctorEmail"]===currentUser.email?chatData["patientEmail"]:chatData["doctorEmail"]),
+      to:
+        chatData["doctorEmail"] === currentUser.email
+          ? chatData["patientEmail"]
+          : chatData["doctorEmail"],
       time: time.toLocaleString("en-US", {
         hour: "numeric",
         minute: "numeric",
@@ -139,11 +141,9 @@ const[error, setError] = useState(false)
   const handleBackButton = () => {
     console.log("Clicked");
     setCurrentChat("");
-    
   };
 
   const handleArchiveButton = async () => {
-   
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {
       method: "POST",
@@ -156,8 +156,8 @@ const[error, setError] = useState(false)
     );
     res = await res.text();
     res = JSON.parse(res);
-    chats.map(chat => {
-      if(chat.chatId === currentChat){
+    chats.map((chat) => {
+      if (chat.chatId === currentChat) {
         chat.archieved = !chat.archieved;
       }
     });
@@ -166,7 +166,7 @@ const[error, setError] = useState(false)
 
   useEffect(() => {
     async function getChats() {
-      setError(false)
+      setError(false);
       if (!currentUser) {
         history.push("/login");
       }
@@ -179,34 +179,31 @@ const[error, setError] = useState(false)
         query: { currentChat },
       });
       setSocket(newSocket);
-      setisLoading(true)
-   try{
+      setisLoading(true);
+      try {
+        const token = await app.auth().currentUser.getIdToken(true);
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json", token: token },
+          body: JSON.stringify({ chatId: currentChat }),
+        };
+        let res = await fetch(
+          "http://localhost:5000/getChatById",
+          requestOptions
+        );
+        res = await res.text();
+        res = JSON.parse(res);
+        console.log(res);
+        setChatData(res["chats"]);
+      } catch (e) {
+        setError(true);
+      }
 
-   const token = await app.auth().currentUser.getIdToken(true);
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json", token: token },
-        body: JSON.stringify({ chatId: currentChat }),
-      };
-      let res = await fetch(
-        "http://localhost:5000/getChatById",
-        requestOptions
-      );
-      res = await res.text();
-      res = JSON.parse(res);
-      console.log(res);
-      setChatData(res["chats"]);
-      
-
-   }catch(e){
-setError(true)
-   }
-
-setisLoading(false)
+      setisLoading(false);
 
       console.log(chatData);
-      if(messageEndRef)
-        if(messageEndRef.current)
+      if (messageEndRef)
+        if (messageEndRef.current)
           messageEndRef.current.scrollIntoView({ behavior: "smooth" });
       return () => newSocket.close();
     }
@@ -219,142 +216,162 @@ setisLoading(false)
   if (chatData["messages"]) {
     return (
       <>
-      <div className="chat" style={{ zIndex:"1", overflowX:"hidden"}}>
-        <div className="contacthead">
-          <div style={{ float: "left" }}>
-            {width <601 ? (
-              <>
-                <div style = {{display:"inline-block", marginLeft:"-10px",position:"absolute",  }}   >
-                  <Button onClick={handleBackButton} id="cancelbtn" >
-                  <AiOutlineArrowLeft color="black" />
-                </Button>
-                </div>
-                &nbsp;&nbsp;                &nbsp;
-   &nbsp;&nbsp;   &nbsp;&nbsp;
-              </>
-            ) : (
-              <></>
-            )}
-            <img id="userimg" style={{ width: "13%" }} src={usersvg} />
-            &nbsp;&nbsp;
-            {chatData["doctorEmail"] === currentUser.email
-              ? chatData["patientUsername"]
-              : chatData["doctorUsername"]}
-          </div>
+        <div className="chat" style={{ zIndex: "1", overflowX: "hidden" }}>
+          <div className="contacthead">
+            <div style={{ float: "left" }}>
+              {width < 601 ? (
+                <>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      marginLeft: "-10px",
+                      position: "absolute",
+                    }}
+                  >
+                    <Button onClick={handleBackButton} id="cancelbtn">
+                      <AiOutlineArrowLeft color="black" />
+                    </Button>
+                  </div>
+                  &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                </>
+              ) : (
+                <></>
+              )}
+              <img id="userimg" style={{ width: "13%" }} src={usersvg} />
+              &nbsp;&nbsp;
+              {chatData["doctorEmail"] === currentUser.email
+                ? chatData["patientUsername"]
+                : chatData["doctorUsername"]}
+            </div>
 
-          <hr />
-          <div style={{ float: "right" }}>
-            <Button alt="Archive/Unarchive" id="cancelbtn" onClick={handleShow}  >
-              <GrArchive/>
-            </Button>
+            <hr />
+            <div style={{ float: "right" }}>
+              <Button
+                alt="Archive/Unarchive"
+                id="cancelbtn"
+                onClick={handleShow}
+              >
+                <GrArchive />
+              </Button>
+            </div>
           </div>
-        </div>
-        <div
-          className="d-flex flex-column flex-grow-1 chatbg  "
-          style={{ marginTop: "-1.7%",height: width < 601 ? height - "175" : "550px", overflowX:"hidden" }}
-          id="chatbox"
-        >
-          <div className="flex-grow-1 overflow-auto" id={chatData.chatId} 
-           
+          <div
+            className="d-flex flex-column flex-grow-1 chatbg  "
+            style={{
+              marginTop: "-1.7%",
+              height: width < 601 ? height - "175" : "550px",
+              overflowX: "hidden",
+            }}
+            id="chatbox"
           >
-            <br />
+            <div className="flex-grow-1 overflow-auto" id={chatData.chatId}>
+              <br />
 
-            {chatData["messages"].map((message) => (
-              <>
-                <div
-                  className={`my-1 d-flex flex-column ${
-                    currentUser.email === message["from"]
-                      ? "align-self-end align-items-end mine"
-                      : "align-items-start their"
-                  }`}
-                >
+              {chatData["messages"].map((message) => (
+                <>
                   <div
-                    className={`rounded px-2 py-1 ${
+                    className={`my-1 d-flex flex-column ${
                       currentUser.email === message["from"]
-                        ? "bg-primary text-white"
-                        : "bg-light"
-                    }`} style = {{marginTop: "4px", marginLeft : currentUser.email === message["from"] ?"35px" :"4px", marginRight :   currentUser.email === message["from"] ?"4px" :"35px", }}
-                  >
-                    {message["text"]}
-                  </div>
-                  <div
-                    className={`text-muted small date ${
-                      currentUser.email === message["from"] ? "text-right" : ""
+                        ? "align-self-end align-items-end mine"
+                        : "align-items-start their"
                     }`}
-                    style = {{marginLeft : "4px", marginRight : "4px"}}
                   >
-                    {message["time"]}
+                    <div
+                      className={`rounded px-2 py-1 ${
+                        currentUser.email === message["from"]
+                          ? "bg-primary text-white"
+                          : "bg-light"
+                      }`}
+                      style={{
+                        marginTop: "4px",
+                        marginLeft:
+                          currentUser.email === message["from"]
+                            ? "35px"
+                            : "4px",
+                        marginRight:
+                          currentUser.email === message["from"]
+                            ? "4px"
+                            : "35px",
+                      }}
+                    >
+                      {message["text"]}
+                    </div>
+                    <div
+                      className={`text-muted small date ${
+                        currentUser.email === message["from"]
+                          ? "text-right"
+                          : ""
+                      }`}
+                      style={{ marginLeft: "4px", marginRight: "4px" }}
+                    >
+                      {message["time"]}
+                    </div>
                   </div>
-                </div>
-              </>
-            ))}
-            <div ref={messageEndRef}></div>
+                </>
+              ))}
+              <div ref={messageEndRef}></div>
+            </div>
+
+            <div>
+              <Form onSubmit={handleSubmit} autocomplete="off">
+                <Form.Group className="m-2">
+                  <InputGroup id="bottommsg" style={{ height: "40px" }}>
+                    <Form.Control
+                      id="sendmsg"
+                      as="textarea"
+                      ref={messageRef}
+                      required
+                      placeholder="Type your message here..."
+                      onKeyPress={(event) => {
+                        if (event.key == "Enter") {
+                          handleSubmit(event);
+                        }
+                      }}
+                      style={{
+                        height: "40px",
+                        resize: "none",
+
+                        display: "flex",
+                        fontSize: "14px",
+                        paddingTop: "8px",
+                      }}
+                    ></Form.Control>
+                    <InputGroup.Append>
+                      <Button
+                        className="attach"
+                        style={{ backgroundColor: "white" }}
+                      >
+                        <GrAttachment />
+                      </Button>
+                      <Button type="submit" onKeyPress={handleKeypress}>
+                        <AiOutlineSend style={{ marginTop: "-3px" }} />
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Form.Group>
+              </Form>
+            </div>
           </div>
-
-
-
-         
-
-
-                    <div>
-                    
-          <Form onSubmit={handleSubmit} autocomplete="off">
-            
-            <Form.Group className="m-2">
-              
-              <InputGroup id="bottommsg" style={{ height: "40px" }}>
-                <Form.Control
-                  id="sendmsg"
-                  as="textarea"
-                  ref={messageRef}
-                  required
-                  placeholder="Type your message here..."
-                  onKeyPress={(event) => {
-                    if (event.key == "Enter") {
-                      handleSubmit(event);
-                    }
-                  }}
-                  style={{
-                    height: "40px",
-                    resize: "none",
-
-                    display: "flex",
-                    fontSize: "14px",
-                    paddingTop: "8px",
-                  }}
-                >
-                  
-                </Form.Control>
-                <InputGroup.Append>
-                <Button className="attach" style={{backgroundColor: "white"}}><GrAttachment/></Button>
-                  <Button type="submit" onKeyPress={handleKeypress}>
-                    <AiOutlineSend style={{ marginTop: "-3px" }} />
-                  </Button>
-
-                </InputGroup.Append>
-              </InputGroup>
-            </Form.Group>
-            
-          </Form>
-          </div>
-        </div>
-<ConfirmationModal show = {show} onHide = {handleClose} onYes = {handleArchiveButton} ></ConfirmationModal>
-     
+          <ConfirmationModal
+            show={show}
+            onHide={handleClose}
+            onYes={handleArchiveButton}
+          ></ConfirmationModal>
         </div>
       </>
     );
-  } else if(isLoading){
+  } else if (isLoading) {
     return (
       <>
         <div
           className="d-flex justify-content-center align-items-center   p-5"
-          style={{ marginTop: "10%", }}
+          style={{ marginTop: "10%" }}
         >
-  <Spinner animation="border" variant="primary" />
+          <Spinner animation="border" variant="primary" />
         </div>
       </>
     );
-  }else if(error){
+  } else if (error) {
     return (
       <>
         <div
@@ -365,7 +382,7 @@ setisLoading(false)
         </div>
       </>
     );
-  }else {
+  } else {
     return (
       <>
         <div

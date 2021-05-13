@@ -32,7 +32,6 @@ function Conversation() {
 
 
 const handleNewMessage = useCallback((msgData) => {
-  console.log("Dynamic update.");
   let messageDiv = document.getElementById(msgData.chatId);
   if(messageDiv)
   {
@@ -68,7 +67,7 @@ const handleNewMessage = useCallback((msgData) => {
     if(!socket) return;
     socket.on("update", handleNewMessage);
     return () => socket.off("update");
-  }, []);
+  }, [socket, handleNewMessage]);
 
   return (
     <div>

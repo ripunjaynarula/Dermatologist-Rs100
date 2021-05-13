@@ -69,6 +69,7 @@ function OpenConversation() {
 
     let msgData = {
       date: time.toLocaleDateString("en", options),
+      chatId: currentChat,
       from: currentUser.email,
       to:
         chatData["doctorEmail"] === currentUser.email
@@ -86,7 +87,7 @@ function OpenConversation() {
     }
     chatData["messages"].push(msgData);
     // append child
-    const chatDiv = document.getElementById(chatData.chatId);
+    const chatDiv = document.getElementById("chatMessages");
     const messageDiv = document.createElement("div");
     messageDiv.className =
       "align-items-end my-1 align-self-end flex-column d-flex mine";
@@ -118,7 +119,7 @@ function OpenConversation() {
     }
     //append child
     var time = new Date();
-    const chatDiv = document.getElementById(chatData.chatId);
+    const chatDiv = document.getElementById("chatMessages");
     const messageDiv = document.createElement("div");
     messageDiv.className = "align-items-start my-1 flex-column d-flex their";
     const textDiv = document.createElement("div");
@@ -265,7 +266,7 @@ function OpenConversation() {
             }}
             id="chatbox"
           >
-            <div className="flex-grow-1 overflow-auto" id={chatData.chatId}>
+            <div className="flex-grow-1 overflow-auto" id="chatMessages">
               <br />
 
               {chatData["messages"].map((message) => (

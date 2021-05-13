@@ -32,10 +32,8 @@ function Conversation() {
 
 
 const handleNewMessage = useCallback((msgData) => {
-  let messageDiv = document.getElementById(msgData.from);
-  if(!messageDiv) {
-    messageDiv = document.getElementById(msgData.to)
-  }
+  console.log("Dynamic update.");
+  let messageDiv = document.getElementById(msgData.chatId);
   if(messageDiv)
   {
      var lastText = messageDiv.children[1];
@@ -103,7 +101,7 @@ const handleNewMessage = useCallback((msgData) => {
                     <img src="https://i.imgur.com/jhsYqVT.png" width="50" />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail }>
+                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ chat.chatId }>
                     {" "}
                     <span className="font-weight-bold">
                       {currentUser.email === chat.doctorEmail

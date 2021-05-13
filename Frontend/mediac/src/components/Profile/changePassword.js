@@ -6,7 +6,8 @@ import {CardMain} from "../../css/Card";
  import {Texts} from "../../css/Texts";
 import useWindowDimensions from "../../functions/windowDimensions"
 import Navbar from "../Navbar"
- 
+ import firebase from 'firebase'
+
 export default function ChangePassword() {
   const newPasswordRef = useRef()
   const passwordRef = useRef()
@@ -41,25 +42,27 @@ if(passwordRef.current.value === newPasswordRef.current.value ){
 
 
 try{
- 
-      var user =  await login(currentUser.email, passwordRef.current.value)
-
- 
-if(user)
+var cuser = firebase.auth().currentUser;
+var credential = firebase.auth.EmailAuthProvider.credential(
+    cuser.email, 
+    passwordRef.current.value
+);
+   var user =  await cuser.reauthenticateWithCredential( credential)
+       
+ if(user)
 {
- var res = await updatePassword(passwordRef.current.value)
+   await  updatePassword(passwordConfirmRef.current.value)
 setSuccess("Password updated successfully")
-      //  history.push("/dashboard")
-
- console.log(res);
+ 
 }
 
 }catch(e)
 {
   if(e["code"] === "auth/wrong-password")
         setError("Wrong password entered")
-  
-
+  else if(e["code"] === "auth/weak-password")
+        setError(e.message)
+else
 setError("Cannot update password")
 
   console.log(e)
@@ -102,18 +105,17 @@ setError("Cannot update password")
 <Container style = {{maxWidth : "500px"}}>
 
 
-      <Card  style={{CardMain}, { paddingLeft:"15px", paddingRight : "15px", paddingTop : "25px", paddingBotton : "25px"}}  >
+      <Card  style={{CardMain}  }  >
 
-  <Card.Body>
+  <Card.Body style = {{ padding: "36px"}}>
 
  <br></br>
 
 
-          <h4 className="text-left mb-4" style={Texts.Heading,{letterSpacing : "0"}}>Change Password</h4>
+          <h2 className="text-left " style = {Texts.Heading}>Change Password</h2>
 
  
-          <hr></hr>
-          {error && <Alert variant="danger">{error}</Alert>}
+<br></br>          {error && <Alert variant="danger">{error}</Alert>}
                     {success && <Alert variant="success">{success}</Alert>}
 
           <Form onSubmit={handleSubmit}>

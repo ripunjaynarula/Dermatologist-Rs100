@@ -14,7 +14,7 @@ import DoctorDashboard from "./DoctorDashboard";
 import Login from "./Login";
 import MedicalRecords from "./MedicalRecords";
 import PaymentHistory from "./PaymentHistory";
-import Details from "./Details";
+import Details from "./Details/Details";
  import Test from "./Test";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
@@ -162,7 +162,7 @@ publicProfile
                 component={pimplesAcnePage}
               />
               <Route path="/hirsutism-treatment" component={pimplesAcnePage} />
-
+ 
               <Route path="/treatments" component={treatmentMain} />
               <Route
                 path="/acupulse-fractional-co2-laser-treatment"
@@ -255,18 +255,17 @@ publicProfile
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
               </TokenContext.Provider>
+              
+              <Route path='*' exact={true} component={page404} />
+
             </Switch>
           </SocketContext.Provider>
         </DataContext.Provider>
+ 
 
-        <TokenContext.Provider value={[token, setToken]}>
-          <Switch>
-            <Route exact path="/adminlogin" component={AdminLogin} />
-            <Route exact path="/AddDoc" component={AddDoc} />
-          </Switch>
-        </TokenContext.Provider>
+
       </AuthProvider>
-    </Router>
+    </Router> 
   );
 }
 

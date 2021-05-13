@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import express from 'express';
 import consultations from '../models/consultation';
 import chats from '../models/chat';
+import pays from '../models/payments';
+
 import Razorpay from 'razorpay';
 
 const razorpay = new Razorpay({
@@ -12,14 +14,16 @@ const razorpay = new Razorpay({
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-    const consultation: any = await consultations.findOne({uid: req.body.consultatioId});
+    
+    try {
+        var consultation: any = await consultations.findOne({uid: req.body.consultatioId});
     console.log(consultation.accepted)
     if (consultation.accepted){
         return res.send({success: false, message: 'time limit exceeded'});
     }
 
-    try {
-        const response = await razorpay.payments.refund(req.body.paymentId);
+   var payment : any =await pays.findOne({orderId: consultation.orderId})
+        var response = await razorpay.payments.refund(payment.paymentId);
         if(response["status"] === "processed"){
         //    await chats.findOneAndDelete({consultationId: consultation.uid});
             await consultations.findOneAndDelete({uid: req.body.consultationId});

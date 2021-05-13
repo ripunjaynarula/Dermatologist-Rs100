@@ -1,5 +1,5 @@
 
-import React, {useRef,useEffect, useState, useContext} from "react";
+import React, {useRef,useEffect, useState, useContext,useLayoutEffect} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
  import Footer from "../footer"
@@ -48,6 +48,10 @@ export default function Home() {
   };
 
 
+ 
+ useLayoutEffect(() => {
+    window.scrollTo(0, 0, {duration:0})
+});
 
 
 
@@ -123,7 +127,7 @@ e.preventDefault()
                                 We work on a single goal of giving the best to our patients. With this view, our constant effort is to make people look good and feel happy by enhancing their skin and make them free from the burden of skin diseases and that too at an affordable price.
                             </p>
                             <div class="text-center">
-                                <a href="#about" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                                <a href="#about" class="more-btn">Learn More </a>
                             </div>
                         </div>
                     </div>

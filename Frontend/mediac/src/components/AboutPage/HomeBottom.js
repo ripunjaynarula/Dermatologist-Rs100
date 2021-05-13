@@ -4,6 +4,7 @@ import Gallery from "./gallery";
 import TimeLine from "./timeline";
 
 import { Container, } from "reactstrap"
+import { Link } from "react-router-dom";
 
 import "./timeline"
  import ConditionHor from "../blog/Conditions/ConditionsHorizontal"
@@ -87,7 +88,7 @@ export default function BlogCard(prop) {
 
                            </li>
                        </ul>
-<div>            <a href="#"  class="view-more" style = {{marginTop:"-20px"  }}>Read More</a>
+<div>            <Link to="/profile/dr-sandesh-gupta"  class="view-more" style = {{marginTop:"-20px"  }}>Read More</Link>
 </div>
                      
 
@@ -125,7 +126,7 @@ export default function BlogCard(prop) {
 
                     
 <div>
-                <a href="about"  class="view-more" style = {{paddingLeft: "0px", paddingRight:"0px", marginTop:"-20px", }}>Read More</a>
+             <Link to="/about"  class="view-more" style = {{paddingLeft: "0px", paddingRight:"0px", marginTop:"-20px", }}>Read More</Link>
 
 </div>
                      

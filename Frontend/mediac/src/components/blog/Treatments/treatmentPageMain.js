@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import  "../../styles.css";
  import  "../blog.css";
       import Footer from "../../footer"
+import { Link } from "react-router-dom";
 
 import Navbar from '../../Navbar'
 
@@ -95,8 +96,8 @@ const [imgTitle, setImgTitle] = useState("")
       <div class="container">
 
        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/treatments">Treatments</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><a href="#">Treatments</a></li>
           <li>{title}</li>
         </ol>
         <h2>{title}</h2>

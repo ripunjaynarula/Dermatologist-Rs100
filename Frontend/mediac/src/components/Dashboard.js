@@ -16,7 +16,7 @@ import HomeBottom from "./AboutPage/HomeBottom";
 import bg1 from "./img/b1.jpg";
 import bg2 from "./img/b2.jpg";
 import bg3 from "./img/b3.jpg";
-
+import plus from './img/plus.svg'
 import { reactLocalStorage } from "reactjs-localstorage";
 
 const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
@@ -78,10 +78,11 @@ function Dashboard() {
 
   return (
     <>
-    <div className="Navb">
+    <div style = {{backgroundColor:"white"}}>
+      <div className="Navb">
           <Navbar type="trans" />
         </div>
-    <div className="wrapper" style={{overflow: 'hidden'}}>
+    <div className="wrapper" style={{overflow: 'hidden', }}>
       <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)`}}
       >
         {colors.map((bg) => (
@@ -108,11 +109,15 @@ function Dashboard() {
           </Form.Group>
         </Form>
         <Button onClick={onClick} id="bookbtn">
-          <img id="ellipsebtn" src={ellipse} /> Start Consultaion
+                                      <img  id="ellipsebtn" src = {plus} height="55px" ></img>
+
+   &nbsp; Start Consultaion
         </Button>
       </div>
     </div>
+   
     <HomeBottom />
+    </div>
   </>);
 }
 

@@ -218,6 +218,7 @@ const [isDoctor, setIsDoctor] = useState(false)
     try {
       await logout();
       setFlag(false);
+        reactLocalStorage.set('role', "");
 
       history.push("/login");
     } catch {

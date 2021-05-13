@@ -1,17 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
-import Tabs, { TabPane } from "rc-tabs";
-import "./styles.css";
-import Navbar from "./Navbar";
-import { Form, Button } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
+import React, { useRef,useEffect, useState } from "react";
+import { Form, Button, Container, Card, Alert, } from "react-bootstrap";
+import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../firebase";
-import firebase from "firebase";
-import { CardMain } from "../css/Card";
-import { CardBody, Col, Card, Container } from "reactstrap";
-import app from "../firebase";
-
-// var month_name = function(dt){
 const mlist = [
   "Jan",
   "Feb",
@@ -29,76 +19,29 @@ const mlist = [
 //     return mlist[dt.getMonth()];
 //   };
 var i, x, y, z;
-
-function Details() {
-  function callback(e) {
-    console.log(e);
-    if(e ==="3")
-    {
-      window.history.replaceState(null, "Payment History", "/payments")
-
-    }
-    if(e === "1")
-    {
-      window.history.replaceState(null, "Consultation History", "/consultations")
-
-    }  if(e ==="4")
-    {
-      window.history.replaceState(null, "Help", "/help")
-
-    }  if(e ==="2")
-    {
-      window.history.replaceState(null, "Medical Records", "/records")
-
-    }
-  }
-
-
- 
+   export default function Help(props) {
+  
   const { currentUser } = useAuth();
   const [consultations, setConsultations] = useState([]);
   const [consultationYears, setConsultationYears] = useState([]);
   const history = useHistory();
 
 
-  
-    var queryString = window.location.pathname;
-
-  var key = "1"
-
-    var path = queryString.split("/")[queryString.split("/").length - 1]
-   console.log(path)
-   if(path === "consultations")
-   {
-     key = "1"
-   }
-   if(path === "help")
-   {
-     key = "4"
-   }
-    if(path ==="payments")
-    {
-      key = "3"  
-   }
-    if(path ==="records")
-    {
-      key = "2"
-    }
    useEffect(() => {
-    document.body.style.backgroundColor = "#ededf2";
 
     if (!currentUser) {
-      history.push("/login");
+      history.push("/login"); 
     }
     //get data from backend
     async function getConsultations() {
-      const token = await app.auth().currentUser.getIdToken(true);
+      try{
+             const token = await  currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
         body: JSON.stringify({   }),
       };
-
+//prescriptions
       let res = await fetch(
         `${process.env.REACT_APP_API_URL}getActiveConsultation`,
         requestOptions
@@ -123,55 +66,24 @@ function Details() {
       console.log(y , "kkkkk")
       console.log(res.consultation)
       setConsultationYears(Object.keys(years));
+      }catch(e)
+      {
+        
+      }
     }
     getConsultations();
     //get data from backend
   }, []);
 
+
   return (
     <>
-      <div className="home" style={{ display: "block" }}>
-        <div className="Navb">
-          <Navbar />
-        </div>
-      </div>
- 
-
- <div className = "centre" style = {{maxHeight :"80vh",   paddingTop: "12vh"}}>
-
-     <div class="card " style={{ backgroundColor: "white" }}>
-        <div className="App">
-          <div class="card-body">
-            <div
-              style={{
-                marginTop: "5px",
-                minHeight: "50px",
-                paddingTop: "12px",
-                paddingLeft: "15px",
-                backgroundColor: "white",
-                                paddingRight: "1px",
-
-              }}
-            >
-              <h5>
-                <b>Your Drive</b>
-              </h5>
-            </div>
-            <hr></hr>
-            <Tabs defaultActiveKey={key}  onChange={callback} tabPosition="left" tabBarStyle= {{_paddingTop:"100px", outline : "none"}} >
-               <TabPane tab="Consultations"  key="1" style = {{marginTop:"-10px", marginLeft:"-10px", }}>
-           <div style = {{backgroundColor:"#f1eff5", padding:"30px"}}>
-                  <h2>Consultations</h2>
-                <div
-                  class="card"
-                  id="detailcard"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-                >
-                 
-                </div>
+             <div className = "pane">
+                  <h2>Prescriptions</h2>
+              
                 <br />
 
-                <div style = {{height:"60vh", overflow:"auto"}}>
+                <div className = "pane-inner"  style = {{height : props.isMobile && "auto"}}>
 
                 {consultations ? (
                   <>
@@ -227,26 +139,31 @@ function Details() {
                                     >
                                       <p>
                                         <b>
-                                          {consultation.accepted ? consultation.active ? "Consultation Ongoing" : "Consultation Ended" : "Consultation Cancelled" }
+                                          Prescription for {consultation.name}
                                         </b>
                                         <br />
-                                        Record for {consultation.name}
+                                     &nbsp;
+
                                       </p>
                                     </div>
                                   </div>
                                   {
-                                    (consultation.accepted && !consultation.active) && <>
+                                    <>
                                     
-                                      <div
+                                      <div 
                                     className="float-right viewBill"
+                                    
                                    >
-                                   <div>
+                                   <a href = {consultation.url} download={  consultation.name+" prescription.png"} target="_blank" rel="noreferrer">
+
+                                       <div  >
                                       <p
                                       className=""
                                     >
-                                      View Bill
+                                      Open
                                     </p>
                                    </div>
+                                   </a>
                                    
                                   </div>
                                     
@@ -287,33 +204,7 @@ function Details() {
            </div>
 
 
-              </TabPane>
-              <TabPane tab="Medical Records" key="2">
-                <h2>Medical Records</h2>
-                <div class="card" id="detailcard">
-                  <div class="card-body" id="detailcard">
-                    <div className="float-right">
-                      <Button className="submitbtn">Upload</Button>
-                    </div>
-                  </div>
-                </div>
-              </TabPane>
-               <TabPane tab="Need Help?" key="4">
-                <h2>Need Help?</h2>
-                <div class="card" id="detailcard">
-                  <div class="card-body" id="detailcard"></div>
-                </div>
-              </TabPane>
-            </Tabs>
-          </div>
-        </div>
-      </div>
-
- </div>
- 
- 
-     </>
+    
+      </>
   );
 }
-
-export default Details;

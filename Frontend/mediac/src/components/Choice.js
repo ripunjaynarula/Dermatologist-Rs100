@@ -61,7 +61,11 @@ export default function Choice() {
 
     document.body.style.backgroundColor = "#ededf2";
 
-  if (urlParams.get("ques")) question = urlParams.get("ques");
+  if (urlParams.get("ques")){
+     
+     question = urlParams.get("ques");
+    if(question === "undefined") question = ""
+  }
   const loadRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -76,8 +80,7 @@ export default function Choice() {
     });
   };
 
-  //console.log(URLSearchParams(quest))
-  const handleProfileSelection = (id, name, relation, gender, age) => {
+   const handleProfileSelection = (id, name, relation, gender, age) => {
             console.log(id)
 
     setCurrentProfile(id);
@@ -88,12 +91,17 @@ export default function Choice() {
   };
 
 
-    const refresh = ( id, gender, age, phone) => {
+    const refresh = ( id, gender, age, phone, consultationId) => {
             console.log(id)
     setCurrentPhoneNumber(phone)
 
      setCurrentGender(gender ? gender.toLowerCase() : gender);
     setCurrentAge(age);
+    if(consultationId)
+    {
+          setConsultationId(consultationId);
+      setLoadingScreen(true)
+    }
   };
 
 

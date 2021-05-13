@@ -89,8 +89,12 @@ async function onlyOnce()  {
        console.log(e)
       if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
         setError("Incorrect email or password")
+      } else if(e['code'] ==="auth/too-many-requests")
+      {
+                setError("Login temporarily disabled due to too many failed requests. Try resetting the password or wait for sometime.")
+
       }
-      else {
+      else  {
         setError("Internal error.");
       }
       setLoading(false)

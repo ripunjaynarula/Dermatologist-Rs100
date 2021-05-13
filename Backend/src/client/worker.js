@@ -14,7 +14,7 @@ self.addEventListener("push", e => {
     });
 });
 self.addEventListener('notificationclick', function(event) {
-    let url = 'https://example.com/some-path/';
+    let url = "http://localhost:5000/" + 'acceptConsultation?cid=' + id + '&email=' + email;
     event.notification.close(); // Android needs explicit close.
     event.waitUntil(
         clients.matchAll({ type: 'window' }).then(windowClients => {
@@ -42,7 +42,7 @@ self.onnotificationclick = async function(event) {
 
     switch (event.action) {
         case 'open_url':
-            let res = await fetch(process.env.API_URL + '/acceptConsultation?cid=' + cid + '&email=' + email, requestOptions);
+            let res = await fetch(process.env.API_URL + '/acceptConsultation?cid=' + id + '&email=' + email, requestOptions);
             break
         case 'decline':
             return event.notification.close();

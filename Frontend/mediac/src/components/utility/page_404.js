@@ -21,7 +21,7 @@ const Pages404 = () => {
                 <h1 style = {{color : "#494f57", fontStyle: "work sans"}}>
                   404
                 </h1>
-                <h4 style = {{color : "#494f57", fontStyle: "work sans"}} >Sorry, page not found</h4>
+                <h4 style = {{color : "#494f57", fontStyle: "work sans"}} >Oops..! page not found</h4>
                 <div className="mt-5 text-center">
                   <Link
                     className="btn btn-primary"

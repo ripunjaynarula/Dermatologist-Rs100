@@ -14,7 +14,7 @@ const router = express.Router();
 
 
 router.post('/', async (req:any, res: any) => {
-    const patient = await patients.findOne({email: req.body.email});
+    var patient = await patients.findOne({email: req.body.email});
     if(!patient){
         return res.send({success: false, message: "Invalid Attempt."})
     }

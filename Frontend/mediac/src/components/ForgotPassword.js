@@ -31,19 +31,21 @@ export default function ForgotPassword() {
 
   return (
     <>
+
+         <div className="Navb"><Navbar /></div>
+
       <Container
         className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "90vh" }}
       >
         <Card style={({ CardMain }, { maxWidth: "400px" })}>
           <Card.Title></Card.Title>
-          <Card.Body>
-            <h4 className="text-center mb-4" style={Texts.Heading}>
-              Password Reset
-            </h4>
+          <Card.Body  style = {{ padding: "36px"}}> 
+          <br></br>
+             <h2 className="text-left " style = {Texts.Heading}>Reset Password</h2>
 
-            <hr></hr>
-            {error && <Alert variant="danger">{error}</Alert>}
+
+<br></br>            {error && <Alert variant="danger">{error}</Alert>}
             {message && <Alert variant="success">{message}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
@@ -62,6 +64,7 @@ export default function ForgotPassword() {
           <div className="w-100 text-center mt-2">
             Need an account? <Link to="/signup">Sign Up</Link>
           </div>
+          <br></br>
           <br />
         </Card>
       </Container>

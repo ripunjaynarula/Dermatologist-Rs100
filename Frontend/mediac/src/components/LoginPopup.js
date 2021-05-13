@@ -24,7 +24,8 @@ export default function LoginPopup(prop) {
   const [consultationData, setConsultationData] = useContext(DataContext);
 
   async function handleSubmit(e) {
-    console.log(prop.question);
+         console.log(prop.question);
+
     e.preventDefault();
     console.log("Submitting");
     try {
@@ -32,7 +33,8 @@ export default function LoginPopup(prop) {
       setLoading(true);
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       var user = await login(emailRef.current.value, passwordRef.current.value);
-       var d={ email: emailRef.current.value, name : user.user.displayName};
+        
+       var d={ email: user.user.email, name : user.user.displayName};
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', token : await user.user.getIdToken() },
@@ -42,13 +44,13 @@ export default function LoginPopup(prop) {
       res = await res.text()
       res = JSON.parse(res)
       console.log(res);
-      setLoading(false)
+       setLoading(false)
       if (res['status'] === 'logged_in' && res['scope'] === 'patient') {
         reactLocalStorage.set('role', "patient");
 
          setError('');
         setLoading(false)
-              history.push("/consult/?ques=" + prop.question);
+              history.push("/consult/?ques=" + prop.question );
 
          return;
       }
@@ -71,8 +73,14 @@ export default function LoginPopup(prop) {
       }
 
      } catch (e) {
-      console.log(e);
-    }
+      console.log(e)
+      if (e['code'] === 'auth/user-not-found' || e['code'] === "auth/wrong-password") {
+        setError("Incorrect email or password")
+      }
+      else {
+        setError("Internal error.");
+      }
+      setLoading(false)    }
   }
 
   return (

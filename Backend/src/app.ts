@@ -29,7 +29,7 @@ import service from './routes/sendServiceWorker'
 
 import addPrescription from './routes/medicinesRoute/add'
 import searchMed from './routes/medicinesRoute/search'
-
+import prescriptions from './routes/medicinesRoute/getPrescriptions'
 import checkConsultationStatus from './routes/checkConsultationStatus';
 import profilePictureUpload from './routes/profile/getProfilePictureUploadUrl'
 import profilePictureDoctorSave from './routes/profile/saveDoctorProfileImage'
@@ -40,6 +40,7 @@ import addYtVideo from './routes/videos/addVideo'
 import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDocProfilePvt from './routes/profile/viewDoctorProfilePrivate'
 import resendEmail from './routes/resendVerificationMail'
+import help from './routes/utility/help';
 
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
@@ -164,8 +165,10 @@ app.use('/my-blogs',checkAuth, myBlogs);
 app.use('/delete-blog',checkAuth, delBlog);
 
 app.use('/blogs-limit', blogsLimit);
+app.use('/prescriptions',checkAuth, prescriptions);
 
 
+app.use('/help', checkAuth,help);
 
 app.use('/video', viewSingleVideo);
 app.use('/subscribe',checkAuth, subscribeNotif);

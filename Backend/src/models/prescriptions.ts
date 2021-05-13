@@ -42,6 +42,11 @@ const consultations = mongoose.model('prescriptions', new mongoose.Schema({
         //required: true,
         trim: true
     },
+    startDate: {
+        type: Date,
+        required: true,
+        default : Date.now
+    },
    
    
 }));

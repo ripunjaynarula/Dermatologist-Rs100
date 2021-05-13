@@ -1,4 +1,4 @@
-import React, {  useState, useEffect  } from "react";
+import React, {  useLayoutEffect,useState, useEffect  } from "react";
 import {   Row,   } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
   
@@ -12,11 +12,15 @@ import Navbar from '../../Navbar'
  export default function Home() {
     document.body.style.backgroundColor = "#ededf2";
   const history = useHistory();
- 
+ useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
 
   
-
-  useEffect(() => getData(), []);
+  useEffect(() =>{ 
+ 
+    getData()
+    }, []);
  
 
 

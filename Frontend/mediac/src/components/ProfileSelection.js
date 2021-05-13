@@ -32,12 +32,7 @@ export default function ProfileSelection(props) {
      const [phoneNumber,setPhoneNumber] = useState("");
 
   const [togg, setTogg] = useState({showMenu:false});
-  /*const emailRef = useRef()
-  const onameRef = useRef()
-  const ogenRef = useRef()
-  const odobRef = useRef()
-  const ocityRef = useRef()
-  const relRef = useRef()*/
+ 
   const MenuVis = togg.showMenu ? 'active' : 'inactive';
   
   useEffect( () => {
@@ -66,7 +61,8 @@ export default function ProfileSelection(props) {
         setProfiles(res['profiles']);
         setCurrentAge(res.age)
         setCurrentGender(res.gender)
-        props.onLoad("s",res.gender, res.age, res.phoneNumber)
+        
+        props.onLoad("s",res.gender, res.age, res.phoneNumber, res.consultationId)
       }
      }catch(e)
      {

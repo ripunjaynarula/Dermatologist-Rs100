@@ -1,4 +1,4 @@
-import React, {useRef,useEffect, useState, useContext} from "react";
+import React, {useRef,useEffect, useState, useContext,useLayoutEffect} from "react";
 import { Form,Container, Card,Button, Alert, Row, Col } from "react-bootstrap"
 import { useHistory } from 'react-router-dom'
  
@@ -46,6 +46,10 @@ const [htwitter, setTwitter] = useState('')
 const [hfacebook, setFacebook] = useState('')
 const [hlinkedin, setLinkedin] = useState('')
 const [instagram, setInstagram] = useState("")
+
+ useLayoutEffect(() => {
+    window.scrollTo(0, 0, {duration:0})
+});
 
 
   useEffect(() => getData(), []);

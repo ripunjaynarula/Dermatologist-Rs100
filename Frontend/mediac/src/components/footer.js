@@ -34,10 +34,10 @@ import React, { } from "react";
                   <div style = {{marginTop : "20px"  }}>
 
                              <div class="social-links   me-md-auto text-start text-md-start">
-                <a href="https://www.facebook.com/SkinNLaserCentre" class="twitter"><img src = {facebook} width = "16px" ></img></a>
-                <a href="#" class="facebook"><img src = {insta} width = "16px" ></img></a>
-                <a href="#" class="instagram"><img src = {linkedin} width = "16px" ></img></a>
-                 <a href="https://twitter.com/drsandeshgupta" class="linkedin"><img src = {twitter} width = "16px" ></img></a>
+                <a href="https://www.facebook.com/SkinNLaserCentre" class="twitter" target="_blank" rel="noreferrer"><img src = {facebook} width = "16px" ></img></a>
+                <a href="#"   target="_blank" rel="noreferrer"><img src = {insta} width = "16px"  ></img></a>
+                <a href="#"   target="_blank" rel="noreferrer"><img src = {linkedin} width = "16px" ></img></a>
+                 <a href="https://twitter.com/drsandeshgupta"  target="_blank" rel="noreferrer" class="linkedin"><img src = {twitter} width = "16px" ></img></a>
             </div>
                   </div>
                         

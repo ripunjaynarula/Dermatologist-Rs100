@@ -15,6 +15,7 @@ import bg2 from "./img/b2.jpg";
 import bg3 from "./img/b3.jpg";
 import HomeBottom from './AboutPage/HomeBottom'
 import useWindowDimensions from "../functions/windowDimensions";
+import plus from './img/plus.svg'
 
 const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
 const delay = 2000;
@@ -149,9 +150,11 @@ export default function Home() {
               />
             </Form.Group>
           </Form>
-          <Button onClick={handleShow} id="bookbtn">
-            <img id="ellipsebtn" src={ellipse}/> Start Consultation</Button>
-      
+   <Button onClick={handleShow} id="bookbtn">
+                                      <img  id="ellipsebtn" src = {plus} height="55px" ></img>
+
+   &nbsp; Start Consultaion
+        </Button>
       
  
         </div>

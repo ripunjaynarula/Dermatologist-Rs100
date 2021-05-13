@@ -30,7 +30,7 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
     active: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     age: {
         type: Number,

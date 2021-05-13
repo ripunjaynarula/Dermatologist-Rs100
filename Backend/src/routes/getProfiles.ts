@@ -1,6 +1,7 @@
 import express from 'express'
 import patients from '../models/patients'
 import getAge from '../actions/getAge'
+import consultations from '../models/consultation'
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -21,7 +22,21 @@ try{
         {
             age = getAge(patient.dob)
         }
-         return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone });
+
+
+
+              var consultation: any = await consultations.find({patientEmail: req.body.email});
+  var consultationId = ''
+   for(var i=0;i<consultation.length; i++)
+   {
+       if(consultation[i].active && !consultation[i].accepted)
+       {
+           consultationId = consultation[i].uid
+           break
+       }
+   }
+ 
+         return res.send({status: 'success', profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone , consultationId: consultationId });
     }
  return   res.send({status: 'no_account_found'});
 }catch(e)

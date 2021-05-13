@@ -1,4 +1,4 @@
- import React, {useEffect, useState,  } from "react";
+ import React, {useEffect, useState,  useLayoutEffect} from "react";
  import { useHistory } from 'react-router-dom'
  
 import  "../../styles.css";
@@ -28,6 +28,9 @@ const [imgTitle, setImgTitle] = useState("")
 
   const queryString = window.location.pathname;
  
+ useLayoutEffect(() => {
+    window.scrollTo(0, 0, {duration:0})
+});
 
 
   useEffect(() => getData(), []);

@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
 
   if(req.body.role === "patient")
-{       var docs : any = await doctors.find({},{uid :1, name : 1, profileImage : 1})  
+{       var docs : any = await doctors.find({},{uid :1, name : 1, profileImage : 1, email : 1})  
 
         for(var i =0;i<docs.length;i++)
         {
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
    return      res.send({chats: chats, role : req.body.role, docs : docs, error:false});
 
 }
-     res.send({chats: chats, role : req.body.role, error: false});
+   return  res.send({chats: chats, role : req.body.role, error: false,});
     }
     catch(e)
     {

@@ -3,6 +3,7 @@ import { Tab, Nav, Button, Modal, Form } from "react-bootstrap";
 import Conversation from "../Conversation";
 import Archive from "./Archive";
 import { AiOutlineSearch } from 'react-icons/ai';
+import useWindowDimensions from "../../functions/windowDimensions";
 
 import "../styles.css";
 const CONVERSATIONS_KEY = "conversations";
@@ -11,6 +12,7 @@ function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
   const conversationsOpen = activeKey === CONVERSATIONS_KEY;
+   const { height, width } = useWindowDimensions();
 
   function closeModal() {
     setModalOpen(false);

@@ -22,7 +22,7 @@ import {   Button } from "react-bootstrap";
 }}>
           <Modal.Title>Confirmation</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete?</Modal.Body>
+        <Modal.Body>{prop.message || "Are you sure you want to delete?"}</Modal.Body>
         <Modal.Footer>
           
           <Button variant="primary" onClick={prop.onYes}>

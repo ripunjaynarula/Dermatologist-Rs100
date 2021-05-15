@@ -64,7 +64,6 @@ import nodeHtmlToImage from 'node-html-to-image'
         }
 
 
-        console.log("----------------------------------")
 
         var advice = ``
         if (suggestion) {
@@ -311,8 +310,7 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 
 </html>`
-        console.log(html)
-
+ 
         try {
 
             await nodeHtmlToImage({

@@ -1014,6 +1014,7 @@ div.scrollmenu a {
     border-radius: 90px;
     width: 40px;
     height: 40px;
+    padding-top: 3px;
 }
 
 #cancelbtn:hover {
@@ -1043,7 +1044,6 @@ div.scrollmenu a {
 
 .chatbg {
     /* background-image: url("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Background.max-2800x2800.jpg"); */
-    height: 500px;
     background-color: rgba(128, 128, 128, 0.219);
 }
 
@@ -1108,7 +1108,7 @@ div.scrollmenu a {
         margin-top: 1%;
     }
     #chatbox {
-        max-height: 500px;
+        max-height: 450px;
     }
 }
 
@@ -1340,4 +1340,60 @@ button.rec-dot:focus {
     height: 65vh;
     overflow: auto;
     padding: "10px";
+}
+
+.pf-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 60px;
+}
+
+.pf-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 60px;
+}
+
+.chat-image:hover {
+    cursor: pointer
+}
+
+.chat-image img {
+    height: 260px;
+    width: 260px;
+    object-fit: cover;
+}
+
+.pan-container {
+    background-color: rgba(0, 0, 0, 0);
+    border: none !important;
+}
+
+.modal-content-img {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    margin-top: -30px !important;
+}
+
+.modal-content-img .modal-content {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+}
+
+#transparent-modal-im {
+    max-width: 65vw;
+    margin-left: auto;
+    box-shadow: none!important;
+    margin-right: auto;
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+.overlay {
+    padding: 6px;
+}
+
+.overlay a {
+    padding: 15px;
+    color: white
 }

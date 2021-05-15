@@ -60,10 +60,11 @@ router.post('/', async (req:any, res: any) => {
         weight: req.body.weight,
         medication: req.body.medication,
         allergies: req.body.allergies,
-        previousCondition: req.body.previousCondition,
+        previousCondition: req.body.previousConditions,
         uid: id,
         phone: req.body.phone,
         orderId : razorpayOrderId,
+        gender : req.body.gender,
         time: Date.now(),
     });
 

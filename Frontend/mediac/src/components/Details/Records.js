@@ -43,12 +43,13 @@ var i, x, y, z;
       };
 //prescriptions
       let res = await fetch(
-        `${process.env.REACT_APP_API_URL}getActiveConsultation`,
+        `${process.env.REACT_APP_API_URL}prescriptions`,
         requestOptions
       );
       res = await res.text();
       res = JSON.parse(res);
       let years = {};
+console.log(res.consultation)
       res["consultation"].forEach((consultation) => {
         let year = consultation.startDate.substring(0, 4);
         if(!years[year])
@@ -139,7 +140,7 @@ var i, x, y, z;
                                     >
                                       <p>
                                         <b>
-                                          Prescription for {consultation.name}
+                                          Prescription for {consultation.patientName}
                                         </b>
                                         <br />
                                      &nbsp;
@@ -154,13 +155,13 @@ var i, x, y, z;
                                     className="float-right viewBill"
                                     
                                    >
-                                   <a href = {consultation.url} download={  consultation.name+" prescription.png"} target="_blank" rel="noreferrer">
+                                   <a href = {consultation.url} download={  consultation.patientName+" prescription.png"}  rel="noreferrer">
 
                                        <div  >
                                       <p
                                       className=""
                                     >
-                                      Open
+                                      Download
                                     </p>
                                    </div>
                                    </a>

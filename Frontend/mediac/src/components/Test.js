@@ -25,7 +25,7 @@ export default function Loading(props) {
       headers: { "Content-Type": "application/json", token: token },
       body: JSON.stringify({id: props.id}),
     };
-    let res = await fetch('http://localhost:5000/getConsultationStatus', requestOptions);
+    let res = await fetch(process.env.REACT_APP_API_URL + 'getConsultationStatus', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){
@@ -40,7 +40,7 @@ export default function Loading(props) {
       headers: { "Content-Type": "application/json", token: token },
       body: JSON.stringify({consultatioId: props.id, paymentId: props.paymentId}),
     };
-    let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
+    let res = await fetch(process.env.REACT_APP_API_URL + 'cancelConsultation', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){

@@ -35,7 +35,7 @@ console.log("CHECKING")
       headers: { "Content-Type": "application/json", token: token },
       body: JSON.stringify({id: props.id}),
     };
-        let res = await fetch('http://localhost:5000/getConsultationStatus', requestOptions);
+        let res = await fetch(process.env.REACT_APP_API_URL + 'getConsultationStatus', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
     console.log(res)
@@ -68,7 +68,7 @@ else{
       headers: { "Content-Type": "application/json", token: token },
       body: JSON.stringify({consultatioId: props.id,  }),
     };
-    let res = await fetch('http://localhost:5000/cancelConsultation', requestOptions);
+    let res = await fetch(process.env.REACT_APP_API_URL + 'cancelConsultation', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){

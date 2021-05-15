@@ -8,7 +8,7 @@ import { useAuth } from "../contexts/AuthContext"
 import logodark from "./img/banner3.jpg"
 import logolight from "./img/banner3.jpg"
 import useWindowDimensions from "../functions/windowDimensions"
-import MessageModal from './utility/confirmationModal'
+import MessageModal from './utility/messageModal'
 import { useEffect } from "react";
 
 
@@ -24,6 +24,7 @@ const [message, setMessage] = useState("");
 const onClose = ()=>{
   setShow(false)
 }
+
 const resendMail= async(e)=>{
   e.preventDefault();
 try{
@@ -46,8 +47,16 @@ try{
       }
       if(res['status'] === 'verification_sent'){
         setShow(true)
-        setMessage("Verification mail sent")
-      }
+  setTimeout(function(){
+        
+        setShow(false)
+
+      return true;
+      },30000);
+
+
+
+       }
 }catch(e)
 {
   setShow(true)
@@ -56,13 +65,22 @@ try{
   
 
 }
+
+
+  useEffect(() => {
+
+      setInterval(()=>{
+        onlyOnce()
+      }, 15000);
+     document.body.style.backgroundColor = "#ededf2";
+
+   }, []);
 const onlyOnce= async()=>{
  try{
   const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', token : await currentUser.getIdToken() },
-        body: JSON.stringify({
-         })
+        body: JSON.stringify({})
       }; 
       let res = await fetch(process.env.REACT_APP_API_URL+'resend-verification', requestOptions)
       res = await res.text()
@@ -147,11 +165,11 @@ const onlyOnce= async()=>{
               </Card>
               <div className="mt-5 text-center">
                 <p>
-                  Did't receive an email ?{" "}
-                  <a href="#" onClick = {resendMail} className="font-weight-medium text-primary">
+                  Did't receive an email?{" "}
+                 {!show ?  <a href="#" onClick = {resendMail} className="font-weight-medium text-primary">
                     {" "}
                     Resend{" "}
-                  </a>{" "}
+                  </a> :"Sent"}{" "}
                 </p>
 
               </div>
@@ -160,11 +178,7 @@ const onlyOnce= async()=>{
         </Container>
    
 
-   <MessageModal show = {show} onHide  = {onClose} message = {message}></MessageModal>
-
- 
- 
-
+  
 
 </div>
 

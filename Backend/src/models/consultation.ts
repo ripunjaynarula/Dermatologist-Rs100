@@ -14,6 +14,10 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     time: {
         type: Number,
     },
+    gender : {
+        type : String, 
+        default : "Not Set"
+    },
     startDate: {
         type: Date,
         required: true,

@@ -1,20 +1,29 @@
 import express from 'express';
 import chat from '../models/chat';
+import consultations from '../models/consultation';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    let chats: any = await chat.findOne({chatId: req.body.id});
-    if(chats){
-        chats.archieved = !chats.archieved;
-        try {
-            chats = await chats.save();
-            return res.send({success: true});
-        }catch (e) {
-            return res.send({success: false});
+
+
+
+        try{
+         if(req.body.type==="delete")
+            var chs: any = await chat.deleteOne({chatId: req.body.id});
+        else{
+             let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false}});
+    
+  
         }
-    }
+   
+
+
+    return res.send({success: true});
+    }catch(e){
+
     return res.send({success: false});
+    }
 });
 
 export default router;

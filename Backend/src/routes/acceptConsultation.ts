@@ -25,8 +25,24 @@ router.get('/', async (req, res) => {
             consultation = await consultation.save();
             let id='';
 
-            
+            var obj1 = {
+                type : "doctor",
+                text : `"Age- ${consultation.age}, Gender- ${consultation.gender}"`
+            }
 
+             var obj2 = {
+                type : "doctor",
+                text : `"Height- ${consultation.height}, Weight- ${consultation.weight}"`
+            }
+             var obj3 = {
+                type : "doctor",
+                text : `"Query- ${consultation.description} "`
+            }
+
+             var obj4 = {
+                type : "doctor",
+                text : `"Current Medications- ${consultation.medication}, Allergies- ${consultation.allergies}, History- ${consultation.previousCondition} "`
+            }
            
             const p: any = await patients.findOne({email: consultation.patientEmail});
               var n = doc.uid.localeCompare(p.uid);
@@ -39,8 +55,8 @@ router.get('/', async (req, res) => {
                     ch.messages.push({
                         timestamp : Date.now(),
                         text: 'Hi '+ consultation.name +', your consultaion has started',
-                        type: "label"
-                    })
+                        type: "patient"
+                    }, obj1, obj2, obj3, obj4)
                     await ch.save()
                 }else{
                     let newChat = new chat({
@@ -53,8 +69,8 @@ router.get('/', async (req, res) => {
                     messages : [{
                         timestamp : Date.now(),
                         text: 'Hi '+ consultation.name +', your consultaion has started',
-                        type: "label"
-                    }]
+                        type: "patient"
+                    }, obj1, obj2, obj3, obj4]
             });
             newChat = await newChat.save();
                 

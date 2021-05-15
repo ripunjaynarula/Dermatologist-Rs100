@@ -1,8 +1,7 @@
 import express from 'express';
 import med from '../../models/medicines';
 import prescription from '../../models/prescriptions';
- import generateUploadSignedUrl from '../../actions/awsUpload';
-import  genrateImg from './generatePdf'
+ import  genrateImg from './generatePdf'
 const router = express.Router();
 import Doctors from '../../models/doctors';
 import Patients from '../../models/patients';
@@ -12,23 +11,45 @@ import Patients from '../../models/patients';
 router.post('/', async (req, res) => {
     try {
     
-if(req.body.role === "patient")
-  {
 
-      return res.send({isError : true, status : "wrong_access"})
-  }
+    if(req.body.type === "image"){
+         var doctor: any = await Doctors.findOne({uid : req.body.uid});
+        var patient: any = await Patients.findOne({email : req.body.patientEmail});
+        var pr = new prescription ({
+            patientName : req.body.patientName,
+            history : req.body.history,
+            referenceId : "",
+            diagnosis : req.body.diagnosis,
+            suggestion  : req.body.suggestion,
+            medicines : req.body.medicines,
+            doctorUid : req.body.uid,
+            patientUid : patient.uid,
+            url : req.body.url
+
+    }
+   )
+    var savePres = await pr.save()
+    console.log("SAVED")
+           return     res.send({status: 'saved_successfuly', error : false});
+
+
+    }
+ 
  
    for(var i =0; i < req.body.names.length; i++)
    {
         var m: any = await med.findOne({name : req.body.names[i]});
-        var result = await med.createIndexes([{ name: "text" }]);
 
-
-        if (!m){
-             var me = new med({
-                    name : req.body.names[i]
+        if (m===null){
+            try{
+                
+                 var me = new med({
+                    name : req.body.names[i].trim()
                   })  
-             var re=   await  me.save()       
+             var re=   await  me.save()  
+            }     catch(e){
+                console.log(e)
+            }
             }
    }
 
@@ -44,10 +65,10 @@ if(req.body.role === "patient")
 
         var localPath = './temp/' + id + ".png";
 
-req.body.patientUid = "OfPKGTR9FPhIdvrsb8cfaaURu7I2"
-        var doctor: any = await Doctors.findOne({uid : req.body.uid});
-        var patient: any = await Patients.findOne({uid : req.body.patientUid});
-
+         var doctor: any = await Doctors.findOne({uid : req.body.uid});
+         console.log(req.body.patientEmail)
+        var patient: any = await Patients.findOne({email : req.body.patientEmail});
+console.log(patient)
 
 var medicines = []
 
@@ -83,7 +104,7 @@ for (var key in req.body.medicines) {
         suggestion  : req.body.suggestion,
         medicines : req.body.medicines,
         doctorUid : req.body.uid,
-        patientUid : req.body.patientUid,
+        patientUid : patient.uid,
         url : awsPath
 
     }
@@ -91,14 +112,14 @@ for (var key in req.body.medicines) {
 
    var savePres = await pr.save()
 
-               res.send({status: 'saved_successfuly'});
+               res.send({status: 'saved_successfuly', url : awsPath});
 
 
 
 return
         } catch (e) {
             console.log(e)
-            return res.send({status: 'technical_error'});
+            return res.send({status: 'technical_error', error:true});
         }
    
 

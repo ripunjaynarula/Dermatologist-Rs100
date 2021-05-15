@@ -62,13 +62,13 @@ import blogsLimit from './routes/blogs/limitBlogs';
 import getImageUploadUrl from './routes/getImageUploadUrl';
 import cancelConsultationRouter from './routes/cancelConsultation';
 import likeBlog from './routes/blogs/blogLike';
-
+import uploadChatFile from './routes/chat/getFileUploadUrl'
 const app = express();
 const server = http.createServer(app);
 
 const io = require('socket.io')(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: process.env.WEB_URL,
       methods: ["GET", "POST"]
     }
   });
@@ -150,6 +150,7 @@ app.use('/search-med', checkAuth, searchMed);
 app.use('/add-prescription', checkAuth, addPrescription);
 app.use('/resend-verification', checkAuth,resendEmail);
 
+app.use('/get-upload-chatfile', checkAuth,uploadChatFile);
 
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);

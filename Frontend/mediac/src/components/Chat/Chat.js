@@ -8,6 +8,8 @@ import SidebarPatient from "./patientSidebar";
 import OpenConversation from "../OpenConversation";
 import { useAuth } from "../../contexts/AuthContext"
  import {reactLocalStorage} from 'reactjs-localstorage';
+import useWindowDimensions from "../../functions/windowDimensions";
+
 
 import "../styles.css";
 import {
@@ -23,6 +25,7 @@ function Chat() {
   const [phone, setPhone] = useState(false);
   const {   currentUser } = useAuth()
  var sidebar = <SidebarPatient></SidebarPatient>
+   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
 onlyOnce()
@@ -46,12 +49,13 @@ async function onlyOnce()  {
 
   return (
     <>
-      <BrowserView>
+     {
+       width>600 ?
         <div className="chat">
           <Csidebar selected = "chat"></Csidebar>
            <Container className="d-flex align-items-center justify-content-center" >
             <div class="card chatcard" >
-              <div class="card-body row " >
+              <div class="card-body row chatwindow" >
                 <div className="col-3 chatsideb">
                   <Sidebar></Sidebar>
                 </div>
@@ -62,12 +66,10 @@ async function onlyOnce()  {
             </div>
           </Container>
         </div>
-      </BrowserView>
-      
-      <MobileView>
-        <div className="chat">
+        :
+             <div className="chat" style = {{overflowX: "hidden",}}>
           <Csidebar selected = "chat" />
-          <Container className="d-flex align-items-center justify-content-center">
+              <div style = {{width : "100%",    overflowX: "hidden", backgroundColor:"white" }}>
             <div class="card chatcard">
               <div class="card-body row ">
                 <div className="col-12 chatsideb">
@@ -75,9 +77,10 @@ async function onlyOnce()  {
                 </div>
               </div>
             </div>
-          </Container>
+          </div>
         </div>
-      </MobileView>
+     }
+     
     </>
   );
 }

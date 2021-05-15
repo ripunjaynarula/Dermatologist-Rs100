@@ -48,26 +48,13 @@ const [medicineName, setMedicineName] = useState("")
       setOptions([]);
     }
   }, [open]);
-// useEffect(() => {
-//     let active = true;
 
-//     if (!searchLoading) {
-//       return undefined;
-//     }
+   useEffect(() => {
+                    setPatientName(prop.name)
 
-//     (async () => {
-//       const response = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
-//        const countries = await response.json();
+  }, []);
 
-//       if (active) {
-//         setOptions(Object.keys(countries).map((key) => countries[key].item[0]));
-//       }
-//     })();
 
-//     return () => {
-//       active = false;
-//     };
-//   }, [searchLoading]);
 
   function openMed(){
     setIsMedOpen(true)
@@ -103,7 +90,7 @@ async function finalSubmit(){
         method: 'POST',
         headers: { 'Content-Type': 'application/json', token :  await currentUser.getIdToken() },
         body: JSON.stringify({
-         patientName: name, history, diagnosis, suggestion, medicines : medicine, names : Object.keys(medicine)
+         patientName: name, history, diagnosis, suggestion, medicines : medicine, names : Object.keys(medicine), patientEmail: prop.email, type : "digital"
 
         })
       }; 
@@ -113,6 +100,9 @@ async function finalSubmit(){
       console.log(res);
       setLoading(false)
       if (res['status'] === 'saved_successfuly') { 
+        prop.callback(res.url);
+        hideMed()
+          prop.onHide();
         return;
       }else{
 
@@ -125,6 +115,7 @@ async function finalSubmit(){
       
       } catch(e) {
     
+    console.log(e)
         alert("Prescription Not sent")
 
         setLoading(false)
@@ -258,7 +249,7 @@ const handleDeleteChip = (chip, index) => {
       return (
     <>
  
-        <Modal show={prop.show} onHide={() => {
+        <Modal style = {{zIndex:"100000"}} show={prop.show} onHide={() => {
           hideMed()
           prop.onHide();
         }} style = {{padding : "10px", }}>
@@ -274,9 +265,9 @@ const handleDeleteChip = (chip, index) => {
               <Form >
             <Form.Group id="name" style={{paddingTop: 10 }}>
               <Form.Label style = {Texts.FormLabel}>Patient Name</Form.Label>
-              <Form.Control type="text" onChange = {(e)=>{
+              <Form.Control type="text"  onChange = {(e)=>{
 setPatientName(e.target.value)
-              }} value = { patientName ? patientName :  prop.patientName } required />
+              }} value = { patientName ? patientName :  prop.name } required  />
             </Form.Group>
 
             <Form.Group id="history"  style={{paddingBottom: 15, paddingTop: 10,}}>

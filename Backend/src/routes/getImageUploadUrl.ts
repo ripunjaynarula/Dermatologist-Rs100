@@ -49,7 +49,7 @@ if(s.split(".").length < 2)
 
         })
 
- 
+  
 });
 
-export default router;
+export default router;  

@@ -56,7 +56,7 @@ export const TokenContext = React.createContext();
 export const CurrentChatContext = React.createContext();
 export const ChatDataContext = React.createContext();
 export const SocketContext = React.createContext();
-
+export const AdditionalChatContext = React.createContext()
 function App() {
   const [consultationData, setConsultationData] = useState("");
   const [docMail, setDocMail] = useState("");
@@ -64,7 +64,7 @@ function App() {
   const [currentChat, setCurrentChat] = useState("");
   const [chats, setChats] = useState([]);
   const [socket, setSocket] = useState();
-
+  const [data, setData] = useState({})
   return (
     <Router>
       <AuthProvider>
@@ -247,8 +247,10 @@ publicProfile
                 value={[currentChat, setCurrentChat]}
               >
                 <ChatDataContext.Provider value={[chats, setChats]}>
-                  <PrivateRoute exact path="/chat" component={Chat} />
-                  <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
+                  <AdditionalChatContext.Provider value = {[data, setData]}> 
+                    <PrivateRoute exact path="/chat" component={Chat} />
+                    <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
+                  </AdditionalChatContext.Provider>
                 </ChatDataContext.Provider>
               </CurrentChatContext.Provider>
               <TokenContext.Provider value={[token, setToken]}>

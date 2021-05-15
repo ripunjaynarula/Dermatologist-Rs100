@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import app from "../firebase";
-import {CurrentChatContext, ChatDataContext, SocketContext} from './App';
+import {CurrentChatContext, ChatDataContext, SocketContext,AdditionalChatContext} from './App';
 import useWindowDimensions from "../functions/windowDimensions";
 
 import {
@@ -21,32 +21,40 @@ function Conversation() {
   const [socket, setSocket] = useContext(SocketContext);
   const history = useHistory();
   const [currentChat, setCurrentChat] = useContext(CurrentChatContext);
+  const [data, setData] = useContext(AdditionalChatContext)
    const { height, width } = useWindowDimensions();
-
-  function handleOpenChat(id){
-  setCurrentChat(id);
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [name, setCurrentName] = useState("")
+  const [image, setCurrentImage] = useState("")
+  function handleOpenChat(id, name, image){
+  setCurrentImage(image)
+  setCurrentName(name)
+  setData({
+    image: image,
+    name: name
+  })
   width > 600 &&
-  setActive(id)
-  
-}
+   setActive(id)
+      setCurrentChat(id);
+
+} 
 
 
 const handleNewMessage = useCallback((msgData) => {
-  let messageDiv = document.getElementById(msgData.from);
-  if(!messageDiv) {
-    messageDiv = document.getElementById(msgData.to)
-  }
+  console.log(msgData)
+  let messageDiv = document.getElementById(msgData.chatId);
   if(messageDiv)
   {
      var lastText = messageDiv.children[1];
   lastText.innerHTML = msgData.text;
   const date = messageDiv.children[2];
-  date.innerHTML = `<small className="live">${msgData.time}, ${msgData.date}`
+  date.innerHTML = `<small className="live">${dateAndTime(msgData.timestamp)}`
   }
 }, []);
 
   useEffect(() => {
     async function getChats() {
+      if(isLoaded) return
       if (!currentUser) {
         history.push("/login");
         
@@ -57,12 +65,26 @@ const handleNewMessage = useCallback((msgData) => {
         headers: { "Content-Type": "application/json", token: token },
       };
       let res = await fetch(
-        "http://localhost:5000/getChatData",
+        process.env.REACT_APP_API_URL + 'getChatData',
         requestOptions
       );
       res = await res.text();
       res = JSON.parse(res);
-      console.log(res);
+      if(res.docs)
+      for(var i=0; i<res.docs.length; i++)
+      {
+        for(var j=0; j<res.chats.length; j++ )
+        {
+          if(res.docs[i].email === res.chats[j].doctorEmail)
+          {
+                      console.log(res.docs[i].email, res.chats[j].doctorEmail)
+
+            res.chats[j].profileImage = res.docs[i].profileImage
+            res.chats[j].doctorName = "Dr. "+res.docs[i].name
+          }
+        }
+      }
+      setIsLoaded(true)
       await setChats(res["chats"]);
       console.log(chats);
     }
@@ -70,18 +92,18 @@ const handleNewMessage = useCallback((msgData) => {
     if(!socket) return;
     socket.on("update", handleNewMessage);
     return () => socket.off("update");
-  }, []);
+  }, [socket, handleNewMessage]);
 
   return (
     <div>
-    {width < 601 && currentChat!==""?<><OpenConversation /></>:(
+    {width < 601 && currentChat!==""?<><OpenConversation image = {image} name = {"name"} /></>:(
       <div className="container">
         <div>
           {width > 600 && <div className="top w-100">
             <br />
           </div>}
 
-            <div style = {{height: width < 601 ? height - "56" : "500px", overflowY:"scroll"}}>
+            <div style = {{height: width < 601 ? height - "56" : "400px", overflowY:"auto"}}>
 
 
    {chats.map((chat) => (
@@ -91,23 +113,24 @@ const handleNewMessage = useCallback((msgData) => {
               className="overflow-auto"
               style={{ fontSize: "13px" }}
               onClick={() => {
-                let email= currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail
-                handleOpenChat(chat.chatId);
+                 handleOpenChat(chat.chatId, currentUser.email !== chat.doctorEmail
+                        ? chat.doctorName ? chat.doctorName: chat.doctorUsername 
+                        : chat.patientUsername, chat.profileImage ? chat.profileImage : "https://i.imgur.com/jhsYqVT.png");
                 
               }}
             >
               <div className={`d-flex justify-content-between align-items-center conv ${active===chat.chatId? 'convactive':''}`} >
                 <div className="d-flex flex-row align-items-center conv w-100" style = {{paddingLeft : "5px", paddingRight : "5px"}}>
-                  <div className="image" >
+                  <div  >
                     {" "}
-                    <img src="https://i.imgur.com/jhsYqVT.png" width="50" />{" "}
+                    <img className="pf-image" src={chat.profileImage ? chat.profileImage : "https://i.imgur.com/jhsYqVT.png"} alt = "" width="50" />{" "}
                     <span className="type"></span>{" "}
                   </div>
-                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ currentUser.email === chat.doctorEmail? chat.patientEmail: chat.doctorEmail }>
+                  <div className={`d-flex flex-column line-height ml-2 `} style = {{paddingTop: "10px", paddingBottom : "10px",}} id ={ chat.chatId }>
                     {" "}
                     <span className="font-weight-bold">
-                      {currentUser.email === chat.doctorEmail
-                        ? chat.doctorUsername
+                      {currentUser.email !== chat.doctorEmail
+                        ? chat.doctorName ? chat.doctorName: chat.doctorUsername 
                         : chat.patientUsername}
                     </span>{" "}
                     <span>
@@ -145,5 +168,16 @@ function dateAndTime(unixtime) {
 var d = (new Date(unixtime)).toLocaleString().split(":")
 
       return  d[0] + ":"+d[1]
+    };
+
+  function time(unixtime) {
+  var t = new Date(unixtime) 
+var d = t.getHours()
+var am = "AM"
+if(d>12) {
+  am = "PM"
+  d = d-12
+}
+      return  d + ":"+ t.getMinutes() + " " + am
     };
 export default Conversation;

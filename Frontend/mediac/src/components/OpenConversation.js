@@ -19,13 +19,14 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { GrAttachment,GrDocument,GrPhone,GrArchive, GrClose } from "react-icons/gr";
  import {uploadFile} from './utility/functionUploadImage'
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 import useWindowDimensions from "../functions/windowDimensions";
 
  
 import { Form, InputGroup, Button, Spinner,Tooltip ,OverlayTrigger,Popover} from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./styles.css";
 import app from "../firebase";
@@ -64,7 +65,23 @@ function OpenConversation() {
   const [showOverlay, setShowOverlay] = useState(false)
      const [confirmMessage, setConfirmMessage] = useState(()=>{})
      const [prescLoad, setPrescLoad] = useState(()=>{})
+     const [doc, setDoc] = useState(false)
+  useEffect( () => {
+    console.log(process.env.REACT_APP_API_URL)
+     onlyOnce();
+  }, [] )
 
+async function onlyOnce()  {
+  if(!currentUser) return;
+  var role =  reactLocalStorage.get('role') 
+ 
+  if(role === undefined) role  = "";
+ 
+  
+  if (role === "doctor" )
+   { 
+setDoc(true)
+   }}
   const togglePresc = (e) => {
     if(e)
     e.preventDefault()
@@ -433,8 +450,8 @@ function callback(url){
       setChatData({});
       setPrevChat(currentChat);
       const newSocket = io(process.env.REACT_APP_API_URL, {
-        query: { currentChat },
-      });
+        query: { currentChat }
+      }, {transports: ['websocket']});
       setSocket(newSocket);
       setisLoading(true);
       try {
@@ -845,9 +862,12 @@ function callback(url){
           className="d-flex justify-content-center align-items-center   p-5"
           style={{  backgroundColor: "pink !important", height : "100%" }}
         >
-{!isDoctor &&   <Button >
-Start a new conversation
-           </Button> }
+{!doc && !isDoctor &&    <Link
+                    className="btn btn-primary"
+                    to="/consult"
+                  >
+                    Start a new consultation
+                  </Link>}
         </div>
       </>
     );

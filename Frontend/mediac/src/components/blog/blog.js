@@ -21,7 +21,10 @@ import useWindowDimensions from "../../functions/windowDimensions"
  import Footer from "../footer"
 
 import { DataContext } from '../App';
+ var loading = false;
+
 export default function Home() {
+  const messageEndRef = useRef(null);
 
   const history = useHistory();
   const handleClose = () => setShow(false);
@@ -33,40 +36,80 @@ export default function Home() {
   const dataRef = useRef();
   const [error, setError] = useState("")
   
-  const [loading, setLoading] = useState(false)
-  const handleShow = () => setShow(true);
+   const handleShow = () => setShow(true);
   const [consultationData, setConsultationData] = useContext(DataContext);
   const { height, width } = useWindowDimensions();
-
+  const [ start, setStart ] = useState(0);
+  const [ limit, setLimit ] = useState(5);
+const [ended, setEnded] = useState(false)
 const title = "Better Doctors.";
 var style = {};
- console.log(width)
- 
+
 if(width > 870) style = {
   flex : "40"
 }
 
 
 
-
-
-
     const [list, setList] = useState([])
+
+    const [hasListiner, setHasListiner] = useState(false)
+
+   useEffect(() => {
+var lastScrollTop = 0;
+ var sum = 800
+
+       const handleScroll = () => {
+         if(width < 998){
+  sum = 22000
+}
+          setHasListiner(true)
+         var st = window.pageYOffset || document.documentElement.scrollTop; 
+
+         if (window.innerHeight + document.documentElement.scrollTop + sum >= document.scrollingElement.scrollHeight) {
+        // Do load more content here!
+          if (st > lastScrollTop){
+      if(!loading)
+     {
+       getData()
+       var elmnt = document.getElementById("myDiv");
+ 
+      if(elmnt.offsetTop< window.innerHeight + document.documentElement.scrollTop ){
+  
+        setEnded(true)
+      }
+     }
+   } else { 
+      // upscroll code
+   }
+   lastScrollTop = st <= 0 ? 0 : st;
+    }
+      };
+       document.addEventListener("scroll", handleScroll);
+      return () => {
+        document.removeEventListener("scroll", handleScroll);
+      };
+
+
+  }, [list]);
+
+
 
 
   
 
-  useEffect(() => getData(), []);
+  useEffect(() => getData(), [  ]);
+  useEffect(() => {}, [ list ]);
  
+
 
 
 
  async function  getData() {
+  if(ended  || loading) return
 
- 
- 
-   
-       setLoading(true)
+    
+       loading = true
           setError("")
 try{
 
@@ -78,26 +121,35 @@ try{
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json','token': token },
+          body : JSON.stringify({
+            start: start,
+            limit : limit
+          }) 
  
           };
         let res = await fetch(process.env.REACT_APP_API_URL+'blogs', requestOptions);
         res = await res.text();
         res = JSON.parse(res)
-        console.log(res)
+        if(res.blogs.length < limit)
+        {
+            setEnded(true)
+        }
+        setStart(start + res.blogs.length)
         if(res.status === "valid")
         {
- 
+  
                for(var i =0; i< res.blogs.length ; i++)
               {
                  res.blogs[i].postDate =  res.blogs[i].postDate.split("T")[0]
               }
 
-console.log("done")
-              setList(res.blogs)
+
+ var l = list.concat(res.blogs)
+              setList(l)
+ 
         }else{
 
-          console.log("anranrarnr")
-              history.push('/404')
+               history.push('/404')
               return;
         }
 
@@ -107,7 +159,7 @@ catch(e){
         return;
 }
 
-       setLoading(false)
+        loading = false
 
 
   }
@@ -145,19 +197,23 @@ catch(e){
    
    <div className = "container" >
        <div className = "row">
-           <div className = "col-lg-8 entries">
+           <div className = "col-lg-8 entries" id = "blogs_id">
 
  
 
-  {list.map((data, index) => (
+  {list.map((data, index) => {
+
+    return (
          
  <BlogCard title = {data.title} image = {data.image} 
   author = "" publishDate = {data.postDate} content = {data.postData} authouUsername = "username" likes  = {data.likes} blogLink = {"/blog/" + data.url}
  
  
  ></BlogCard>
-          ))}
+          )
+  })}
 
+<div id = "myDiv"  ref={messageEndRef}></div>
 
  
  

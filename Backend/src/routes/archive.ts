@@ -12,7 +12,10 @@ router.post('/', async (req, res) => {
          if(req.body.type==="delete")
             var chs: any = await chat.deleteOne({chatId: req.body.id});
         else{
-             let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false}});
+
+
+
+             let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false, endTime : Date.now()}});
     
   
         }

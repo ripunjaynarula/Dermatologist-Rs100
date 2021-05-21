@@ -45,6 +45,12 @@ const chat = mongoose.model('chats',new mongoose.Schema({
           lastMessage: {
         type: String
     }, 
+    patientRead :{
+        type : Boolean
+    },
+    doctorRead :{
+        type : Boolean
+    }
 }));
 
 export default chat;

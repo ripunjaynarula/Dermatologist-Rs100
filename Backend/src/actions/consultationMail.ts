@@ -7,7 +7,7 @@ const sendConsultationMail = (email: any, url:any, patientName: any, question : 
         port:587,
         secure:false,
         auth:{
-            user: process.env.MAIL,
+            user: process.env.MAIL_ID,
             pass: process.env.MAIL_PASS
         },
         tls:{
@@ -16,7 +16,7 @@ const sendConsultationMail = (email: any, url:any, patientName: any, question : 
     });
 
     let mailOptions = {
-        from: `"Hello" ${process.env.MAIL}`, 
+        from: `"Hello" ${process.env.MAIL_ID}`, 
         to: email,
         subject: 'New Consultation',
         html: `<p>New consultaion request.</p>

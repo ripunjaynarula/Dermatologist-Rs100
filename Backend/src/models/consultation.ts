@@ -68,6 +68,9 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
      orderId: {
         type: String
+    },
+    endTime :{
+        type : Number
     }
 }));
 

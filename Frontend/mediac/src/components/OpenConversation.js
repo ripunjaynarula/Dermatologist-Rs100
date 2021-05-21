@@ -36,8 +36,7 @@ import io from "socket.io-client";
 import Conversation from "./Conversation";
 import ImageModal from './utility/imageModal'
 import Prescription from './Prescription/AddPrescription'
-
-var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+import {stopfile} from './utility/alertUploadFile'
 
 function OpenConversation() {
   const messageRef = useRef();
@@ -66,6 +65,9 @@ function OpenConversation() {
      const [confirmMessage, setConfirmMessage] = useState(()=>{})
      const [prescLoad, setPrescLoad] = useState(()=>{})
      const [doc, setDoc] = useState(false)
+       const [isEnded, setIsEnded] = useState(false)
+  const [isDead, setIsDead] = useState(false)
+const [daysLeft, setDaysLeft] = useState(5)
   useEffect( () => {
     console.log(process.env.REACT_APP_API_URL)
      onlyOnce();
@@ -105,14 +107,19 @@ setDoc(true)
 
   };
 
+
+
     const hiddenFileInputPresc = React.useRef(null);
    const onChangePicture = async (e) => {
       if (e.target.files && e.target.files[0]){
-       setFile(e.target.files[0])
+      if(stopfile(e.target.files[0])){
+        return
+      }
       setIsFileUploading(true)
+ 
   var r = await uploadFile(e.target.files[0], 'get-upload-chatfile', currentUser, socket,    chatData["doctorEmail"] === currentUser.email
           ? chatData["patientEmail"]
-          : chatData["doctorEmail"], currentChat, 'image',chatAdditional.name)
+          : chatData["doctorEmail"], currentChat, 'image',chatAdditional.name, chatData)
 
 
      setIsFileUploading(false)
@@ -132,11 +139,12 @@ setDoc(true)
 
       const onSendPresc = async (e) => {
       if (e.target.files && e.target.files[0]){
-        console.log(e.target.files[0].name)
-       setPrescLoad(true)
+     if(stopfile(e.target.files[0])){
+        return
+      }       setPrescLoad(true)
   var r = await uploadFile(e.target.files[0], 'get-upload-chatfile', currentUser, socket,    chatData["doctorEmail"] === currentUser.email
           ? chatData["patientEmail"]
-          : chatData["doctorEmail"], currentChat, "pres",chatAdditional.name)
+          : chatData["doctorEmail"], currentChat, "pres",chatAdditional.name, chatData)
 
 
      setPrescLoad(false)
@@ -228,8 +236,13 @@ const endTooltip = (props) => (
       text: messageRef.current.value,
     };
     msgData.timestamp = Date.now()
+        var data = {
+       patientRead : chatData["doctorEmail"] === currentUser.email ? false : true,
+            doctorRead :chatData["doctorEmail"] === currentUser.email ? true : false,
+            msgData
+    }
     if (socket) {
-      socket.emit("send", msgData);
+      socket.emit("send", data);
     }
     chatData["messages"].push(msgData);
     // append child
@@ -252,7 +265,7 @@ const endTooltip = (props) => (
     {
     
       textDiv = document.createElement("div");
-      textDiv.className = "text-white bg-primary py-1 px-2 rounded chat-image";
+      textDiv.className = "text-white bg-primary py-1 px-2 rounded";
        textDiv.textContent = messageRef.current.value;
         messageRef.current.value = "";
  
@@ -302,7 +315,34 @@ const endTooltip = (props) => (
       handleSubmit();
     }
   };
+  const readMessage = ()=>{
+    var msg = {
+      
+    }
+    console.log(chatData)
+    console.log(currentUser.email)
+    if (chatData["doctorEmail"] === currentUser.email)
+    {
+      msg = {
+        doctorRead : true
+      }
+    }else{
+        msg = {
+          patientRead : true
+      }  
+    }
+    
+    var data = {
+      chatId: currentChat,
+      msg
+    }
+    console.log(data, "------------")
+       if (socket) {
+            socket.emit("read", data);
+        }
+  }
   const handleNewMessage = useCallback((msgData) => {
+    readMessage()
     if (chatData["messages"]) {
       chatData["messages"].push(msgData);
     }
@@ -310,14 +350,15 @@ const endTooltip = (props) => (
     var time = new Date();
     const chatDiv = document.getElementById("chatMessages");
     const messageDiv = document.createElement("div");
-    messageDiv.className = "align-items-start my-1 flex-column d-flex their";
+    console.log(currentUser.email, msgData.from)
+     messageDiv.className = currentUser.email === msgData.from ? "align-items-end my-1 align-self-end flex-column d-flex mine" :"align-items-start my-1 flex-column d-flex their";
     var textDiv;
     if(msgData.type ==="image" || msgData.type ==="pres")
     {
-
+ 
 
          textDiv  = document.createElement("div");
-    textDiv.className = "bg-light py-1 px-2 rounded chat-image" ;
+    textDiv.className =   currentUser.email === msgData.from ? "text-white bg-primary py-1 px-2 rounded chat-image" : "bg-light py-1 px-2 rounded chat-image" ;
  textDiv.onclick = function clickHandler(){
       changeShowImage(process.env.REACT_APP_CDN_URL+msgData.url)
       };
@@ -338,14 +379,14 @@ const endTooltip = (props) => (
     }else{
    
      textDiv  = document.createElement("div");
-    textDiv.className = "bg-light py-1 px-2 rounded";
+    textDiv.className = currentUser.email === msgData.from ? "text-white bg-primary py-1 px-2 rounded" :"bg-light py-1 px-2 rounded";
     textDiv.textContent = msgData["text"];
        
         }
         messageDiv.appendChild(textDiv);
-
+//
     const timeDiv = document.createElement("div");
-    timeDiv.className = "text-muted small date";
+    timeDiv.className =  currentUser.email === msgData.from ? "text-muted small date text-right": "text-muted small date";
     timeDiv.textContent = time.toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
@@ -371,12 +412,17 @@ function callback(url){
           : chatData["doctorEmail"],
             type: "pres",
             text: "Prescription",
-            url: url
+            url: url,
+           
         };
-   
+    var data = {
+       patientRead : chatData["doctorEmail"] === currentUser.email ? false : true,
+            doctorRead :chatData["doctorEmail"] === currentUser.email ? true : false,
+            msgData
+    }
      setTimeout(function(){
         if (socket) {
-            socket.emit("send", msgData);
+            socket.emit("send", data);
         }
        appendChild("pres", process.env.REACT_APP_CDN_URL+ url)
        console.log("end")
@@ -449,13 +495,12 @@ function callback(url){
       }
       setChatData({});
       setPrevChat(currentChat);
-      const newSocket = io(process.env.REACT_APP_API_URL, {
-        query: { currentChat }
-      }, {transports: ['websocket']});
-      setSocket(newSocket);
-      setisLoading(true);
       try {
+
         const token = await app.auth().currentUser.getIdToken(true);
+        const newSocket = io(process.env.REACT_APP_API_URL, {query: { currentChat , }}, {transports: ['websocket']});
+        setSocket(newSocket);
+        setisLoading(true);
         const requestOptions = {
           method: "POST",
           headers: { "Content-Type": "application/json", token: token },
@@ -468,20 +513,26 @@ function callback(url){
         res = await res.text();
         res = JSON.parse(res);
         console.log(res);
-        if(res.role === "doctor") setIsDoctor(true)
+        if(res.role === "doctor"){ setIsDoctor(true)}
+        else{
+          setIsEnded(res.isEnded)
+          setIsDead(res.isBlocked)
+          setDaysLeft(res.daysLeft)
+        }
         setChatData(res["chats"]);
         setConsultatinData(res.data)
-      } catch (e) {
-        setError(true);
-      }
-
-      setisLoading(false);
+           setisLoading(false);
  
       console.log(chatData);
       if (messageEndRef)
         if (messageEndRef.current)
           messageEndRef.current.scrollIntoView({ behavior: "auto" });
       return () => newSocket.close();
+      } catch (e) {
+        setError(true);
+      }
+
+   
     }
     getChats();
     if (!socket) return;
@@ -719,22 +770,40 @@ function callback(url){
 
                     }
                   </div>
+             
+             
+
+             
                 </>
               ))}
              
              
              
+         
             </div>
              
-             
-             
-             
-
+               
                            <div ref={messageEndRef}></div>
 
             </div>
+           {  isEnded &&<div
+                      className="rounded px-2 py-1 bg-light"
+                      style={{
+                         marginLeft: "14px",
+                        marginRight: "14px",
+                        textAlign:"center",
+                        marginTop:"6px"
+                      }}
+                    >
+                      {isDead ? <div>Consultation Ended, you don't have any follow up left</div> : <div>
 
-            <div>
+
+                        Consultation Ended, you have a free follow up for {daysLeft} days
+                      </div> }
+                    </div> } 
+               
+
+           { !isDead ? <div>
               <Form onSubmit={handleSubmit} autocomplete="off">
                 <Form.Group className="m-2">
                   <InputGroup id="bottommsg" style={{ height: "40px" }}>
@@ -802,6 +871,17 @@ function callback(url){
                 </Form.Group>
               </Form>
             </div>
+
+            :
+             <Link
+                    className="btn btn-primary"
+                    to="/consult" style = {{borderTopLeftRadius:"0px", borderTopRightRadius:"0px"}}
+                  >
+                    Start a new consultation
+                  </Link>
+         }
+         
+         
           </div>
           <ConfirmationModal
             show={show}
@@ -860,7 +940,7 @@ function callback(url){
       <>
         <div
           className="d-flex justify-content-center align-items-center   p-5"
-          style={{  backgroundColor: "pink !important", height : "100%" }}
+          style={{   height : "100%" }}
         >
 {!doc && !isDoctor &&    <Link
                     className="btn btn-primary"

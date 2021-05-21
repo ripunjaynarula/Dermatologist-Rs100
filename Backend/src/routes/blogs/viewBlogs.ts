@@ -7,18 +7,17 @@ router.post('/', async (req, res) => {
 
     //to add pagination
  
-    var limit = req.body.limit
+    var limit = req.body.limit || 10
     //show data randomly
- 
+    var start = req.body.start || 0;
    try {
-
-var arr = []
+        var arr = []
 
 
         var blogs : any;
  
 
-         blogs =  await blog.find({isPublished: true}  ) ;
+         blogs =  await blog.find({isPublished: true}  ).skip(start).limit(limit) ;
          for (var i =0; i< blogs.length; i++)
         {
            // arr.push(blogs[i].doctorId)
@@ -27,6 +26,8 @@ var arr = []
 
         }
   
+        
+
         return res.send({status: 'valid', isError : false,blogs: blogs})
 
     } catch(e) {

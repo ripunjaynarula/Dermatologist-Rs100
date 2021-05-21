@@ -7,7 +7,7 @@ const sendVerificationMails = (email: any, token: string) => {
         port:587,
         secure:false,
         auth:{
-            user: process.env.MAIL,
+            user: process.env.MAIL_ID,
             pass: process.env.MAIL_PASS
         },
         tls:{
@@ -16,7 +16,7 @@ const sendVerificationMails = (email: any, token: string) => {
     });
 
     let mailOptions = {
-        from: `"Hello" ${process.env.MAIL}`, 
+        from: `"Hello" ${process.env.MAIL_ID}`, 
         to: email,
         subject: 'Mediac Verification',
         html: `<p>Thank you for registering with Mediac. <a href="${process.env.API_URL}verify?token=${token}">Click here to verify your account.</a></p>`

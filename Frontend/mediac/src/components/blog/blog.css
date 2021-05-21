@@ -575,6 +575,7 @@ section {
     margin-bottom: 5px;
     margin-top: 4px;
     margin-left: 2px;
+    object-fit: cover;
 }
 
 .blog .blog-author h4 {

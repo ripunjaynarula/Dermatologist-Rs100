@@ -93,7 +93,7 @@ try{
             setPostId(res.blog._id);
             setLink("/blog/" + res.blog.url)
             setProfileImage(res.profileImage)
-            setUsername("/doctor/"+res.username)
+            setUsername("/profile/"+res.username)
             setTwitter(res.twitter)
             setFacebook(res.facebook)
             setLinkedin(res.linkedin)
@@ -286,7 +286,7 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
 
               }} src={profileImage} class=" float-left" alt="" style = {{borderRadius : "80px", height : "120px", width : "120px", marginRight : "18px"}}></img>
               <div>
-                <h4>{name}</h4>
+                <a href = {username}> <h4>{name}</h4></a>
                 <div class="social-links">
                   {hlinkedin && <a href={hlinkedin} target="_blank" rel = "noreferrer">
                     <img src = {linkedin} className = "icon-bigger" alt=""></img>

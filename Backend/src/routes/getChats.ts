@@ -6,10 +6,26 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try{
-          var chats:any = await chat.find({ $or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] }, {messages:0}).sort({"updated_at": -1});
-     console.log("+============00")
-  console.log(chats)
 
+      var timestamp : any = (new Date).setDate((new  Date).getDate() - 5)
+console.log(timestamp)
+           var chats:any ;
+           if(req.body.role === "doctor")
+          {
+              if(req.body.type === "archive")
+                       {  
+                         console.log(req.body, "___________________________-")
+                         chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+                       }
+                       else{
+                                    chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$gt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+
+                       }
+
+          }         
+           else
+           chats= await chat.find({$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] } , {messages:0}).sort({"updated_at": -1});
+          
 
   if(req.body.role === "patient")
 {       var docs : any = await doctors.find({},{uid :1, name : 1, profileImage : 1, email : 1})  

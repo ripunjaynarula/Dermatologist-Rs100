@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import app from "../firebase";
 import {CurrentChatContext, ChatDataContext, SocketContext,AdditionalChatContext} from './App';
 import useWindowDimensions from "../functions/windowDimensions";
+import io from "socket.io-client";
 
 import {
   BrowserView,
@@ -14,7 +15,7 @@ import {
 import "./styles.css";
 import OpenConversation from "./OpenConversation";
 
-function Conversation() {
+function Conversation(props) {
   const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
@@ -26,22 +27,61 @@ function Conversation() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [name, setCurrentName] = useState("")
   const [image, setCurrentImage] = useState("")
-  function handleOpenChat(id, name, image){
+  function handleOpenChat(id, name, image, doctorEmail){
   setCurrentImage(image)
   setCurrentName(name)
   setData({
     image: image,
     name: name
   })
-  width > 600 &&
-   setActive(id)
-      setCurrentChat(id);
+  for(var i=0;i<chats.length; i++)
+  {
+    if(chats[i].chatId === id)
+    {
+      if(currentUser.email === chats[i].doctorEmail && !chats[i].doctorRead){
+      chats[i].doctorRead = true
+    }else if(currentUser.email === chats[i].patientEmail && !chats[i].patientRead)
+    {
+      chats[i].patientRead = true
+    }
+    }
+  }
+
+  setChats(chats)
+  
+  width > 600 && setActive(id)
+  setCurrentChat(id);
+  readMessage(doctorEmail,id)
 
 } 
-
+  const readMessage = (doctorEmail, id)=>{
+    var msg = {
+      
+    }
+ 
+    if (doctorEmail === currentUser.email)
+    {
+      msg = {
+        doctorRead : true
+      }
+    }else{
+        msg = {
+          patientRead : true
+      }  
+    }
+    
+    var data = {
+      chatId: id,
+      msg
+    }
+ 
+        if (socket) {
+            socket.emit("read", data);
+        }
+  }
 
 const handleNewMessage = useCallback((msgData) => {
-  console.log(msgData)
+  console.log(msgData, "===========")
   let messageDiv = document.getElementById(msgData.chatId);
   if(messageDiv)
   {
@@ -52,6 +92,15 @@ const handleNewMessage = useCallback((msgData) => {
   }
 }, []);
 
+
+useEffect(()=>{
+  if(!socket) return;
+    socket.on("update", handleNewMessage);
+    return () => socket.off("update");
+ }, [socket,  handleNewMessage])
+
+
+
   useEffect(() => {
     async function getChats() {
       if(isLoaded) return
@@ -59,10 +108,15 @@ const handleNewMessage = useCallback((msgData) => {
         history.push("/login");
         
       }
-      const token = await app.auth().currentUser.getIdToken(true);
+      
+      console.log("LADKADADAKDOKADOKA", props.type)
+    const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
+        body :JSON.stringify({
+          type : props.type
+        })
       };
       let res = await fetch(
         process.env.REACT_APP_API_URL + 'getChatData',
@@ -89,10 +143,14 @@ const handleNewMessage = useCallback((msgData) => {
       console.log(chats);
     }
     getChats();
-    if(!socket) return;
-    socket.on("update", handleNewMessage);
-    return () => socket.off("update");
-  }, [socket, handleNewMessage]);
+    
+  }, []);
+
+
+
+
+
+
 
   return (
     <div>
@@ -115,11 +173,11 @@ const handleNewMessage = useCallback((msgData) => {
               onClick={() => {
                  handleOpenChat(chat.chatId, currentUser.email !== chat.doctorEmail
                         ? chat.doctorName ? chat.doctorName: chat.doctorUsername 
-                        : chat.patientUsername, chat.profileImage ? chat.profileImage : "https://i.imgur.com/jhsYqVT.png");
+                        : chat.patientUsername, chat.profileImage ? chat.profileImage : "https://i.imgur.com/jhsYqVT.png", chat.doctorEmail);
                 
               }}
             >
-              <div className={`d-flex justify-content-between align-items-center conv ${active===chat.chatId? 'convactive':''}`} >
+              <div id ={"th"+ chat.chatId } className={`d-flex justify-content-between align-items-center conv ${active===chat.chatId? 'convactive': (currentUser.email === chat.doctorEmail && !chat.doctorRead) ? 'unread' : (currentUser.email === chat.patientEmail && !chat.patientRead) && "unread"}`} >
                 <div className="d-flex flex-row align-items-center conv w-100" style = {{paddingLeft : "5px", paddingRight : "5px"}}>
                   <div  >
                     {" "}
@@ -164,6 +222,26 @@ const handleNewMessage = useCallback((msgData) => {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function dateAndTime(unixtime) {
 var d = (new Date(unixtime)).toLocaleString().split(":")
 

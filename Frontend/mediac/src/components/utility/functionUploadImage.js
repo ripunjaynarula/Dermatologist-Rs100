@@ -1,4 +1,4 @@
-export async function uploadFile(target, url, currentUser, socket, to, chatId, type, pname) {
+export async function uploadFile(target, url, currentUser, socket, to, chatId, type, pname, chatData) {
 
     try {
 
@@ -94,12 +94,17 @@ export async function uploadFile(target, url, currentUser, socket, to, chatId, t
             text: type === "image" ? "Image" : "Prescription",
             url: res.fileName
         };
+        var data = {
+            patientRead: chatData["doctorEmail"] === currentUser.email ? false : true,
+            doctorRead: chatData["doctorEmail"] === currentUser.email ? true : false,
+            msgData
+        }
         console.log(msgData)
         console.log(socket)
         if (socket) {
             console.log("________________________")
 
-            socket.emit("send", msgData);
+            socket.emit("send", data);
             console.log("done")
 
         }

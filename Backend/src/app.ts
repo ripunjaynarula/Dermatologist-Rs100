@@ -68,7 +68,7 @@ const server = http.createServer(app);
 
 const io = require('socket.io')(server, {
     cors: {
-      origin: process.env.WEB_URL,
+      origin: "http://localhost:3000",
       methods: ["GET", "POST"]
     }
   });
@@ -89,26 +89,44 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+const activeUsers = new Set();
 
-io.on('connection', (socket: any)=>{
-    const id = socket.handshake.query.currentChat;
-    socket.join(id);
-    console.log(id)
-    socket.on('send', async (msgData: any, ) =>{
-        let chats: any = await chat.findOne({chatId: id});
+io.on('connection',async (socket: any)=>{
+    var id = socket.handshake.query.currentChat;
+    var id = socket.handshake.query.currentChat;
+   socket.join(id);
+    console.log(id, "ID")
+
+ 
+ 
+    socket.on('send', async (data: any, ) =>{
+        var msgData = data.msgData
+         let chats: any = await chat.findOne({chatId: msgData.chatId});
         if(chats){
             msgData.timestamp = Date.now()
-            chats.updated_at = Date.now()
+            chats.updated_at = Date.now() 
             chats.lastMessage =  msgData.text
-             chats.messages.push(msgData);
+            chats.messages.push(msgData);
+            chats.doctorRead = data.doctorRead
+            chats.patientRead = data.patientRead
             try{
-                 await chats.save();
-             }catch(e){
+                await chats.save();
+            }catch(e){
                 console.log(e);
             }
         }
         socket.to(id).emit('new-message',msgData);
-        io.to(id).emit('update', msgData);
+         io.to(id).emit('update', msgData);
+    });
+
+        socket.on('read', async (data: any, ) =>{
+         try{
+            console.log(data,'SSSSSSSSSSSSSSSSSSSSSS')
+            let chats: any = await chat.updateOne({chatId: data.chatId},{$set : data.msg});
+          }catch(e){
+                console.log(e);
+            }
+     
     });
 });
 

@@ -17,7 +17,7 @@ if(!p)        res.send({isError: true, message: 'Internal Error.'});
 
 
 
-      var isSent =   await sendMail(process.env.MAIL_EMAIL, "Help request from " + p.name, `<p>  ${ req.body.query !== "Other" ? "Query - " + req.body.query : ""} </p> <p> Description - ${req.body.desc} <br>Patient name- ${p.name} <br> Patient id - ${req.body.uid} <br> Patient email - ${p.email} <br>  Patient Contact - ${p.phone} </p>`, `"helpdesk ${process.env.MAIL}"` )
+      var isSent =   await sendMail(process.env.MAIL_EMAIL, "Help request from " + p.name, `<p>  ${ req.body.query !== "Other" ? "Query - " + req.body.query : ""} </p> <p> Description - ${req.body.desc} <br>Patient name- ${p.name} <br> Patient id - ${req.body.uid} <br> Patient email - ${p.email} <br>  Patient Contact - ${p.phone} </p>`, `"helpdesk ${process.env.MAIL_ID}"` )
 
         return res.send({isError: !isSent, });
     } catch (e) {

@@ -21,7 +21,8 @@ export default function Loading(props) {
     document.body.style.backgroundColor = "#ededf2";
  var loading = false;
 
-  const checkStatus = async () => {
+
+   const checkStatus = async () => {
     i++
     console.log(i, loading)
     if(loading) return;

@@ -1072,6 +1072,13 @@ div.scrollmenu a {
     cursor: pointer;
 }
 
+.unread {
+    background-color: rgba(255, 124, 124, 0.267);
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #bottommsg {
     width: 100%;
     display: flex;
@@ -1079,11 +1086,30 @@ div.scrollmenu a {
 
 .mine {
     margin-right: 5px !important;
+    word-wrap: break-word;
+}
+
+.mine .rounded {
+    max-width: 350px;
 }
 
 .their {
     margin-left: 5px !important;
     border: 5px black;
+    word-wrap: break-word;
+}
+
+.their .rounded {
+    max-width: 350px;
+}
+
+@media(min-width:355px) {
+    .their .rounded {
+        max-width: 278px;
+    }
+    .mine .rounded {
+        max-width: 278px;
+    }
 }
 
 .date {

@@ -7,7 +7,7 @@ const sendMail = async  (to: any, subject:any, html: any, from : any) => {
         port:587,
         secure:false,
         auth:{
-            user: process.env.MAIL,
+            user: process.env.MAIL_ID,
             pass: process.env.MAIL_PASS
         },
         tls:{

@@ -8,6 +8,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../Navbar"
 import {reactLocalStorage} from 'reactjs-localstorage';
 import useWindowDimensions from "../../functions/windowDimensions";
+import { Link, useHistory } from "react-router-dom"
 
 import "../styles.css";
 import {
@@ -23,6 +24,7 @@ function Chat() {
   const [phone, setPhone] = useState(false);
   const {   currentUser } = useAuth()
 var navBar = <Navbar></Navbar>;
+const history = useHistory()
    const { height, width } = useWindowDimensions();
 
   useEffect(() => {
@@ -39,7 +41,10 @@ async function onlyOnce()  {
  console.log(role)
   if(role === undefined) role  = "";
  
-  
+  if(role === 'doctor')
+  {
+    history.replace('/chat/d')
+  }
    
 }
 

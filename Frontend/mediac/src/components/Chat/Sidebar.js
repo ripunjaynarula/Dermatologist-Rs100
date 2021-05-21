@@ -4,7 +4,7 @@ import Conversation from "../Conversation";
 import Archive from "./Archive";
 import { AiOutlineSearch } from 'react-icons/ai';
 import useWindowDimensions from "../../functions/windowDimensions";
-
+ 
 import "../styles.css";
 const CONVERSATIONS_KEY = "conversations";
 const archive_KEY = "archive";
@@ -21,7 +21,7 @@ function Sidebar() {
   return (
     <div>
       <div className="d-flex flex-column" style={{ minHeight: "500px" }}>
-        <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
+        <Tab.Container activeKey={activeKey} onSelect={(k) => {setActiveKey(k)}}>
           <div className="justify-content-center">
             <Form.Group>
               {/* <Form.Control
@@ -49,13 +49,13 @@ function Sidebar() {
               eventKey={CONVERSATIONS_KEY}
               style={{ backgroundColor: "white" }}
             >
-              <Conversation />
+              <Conversation type = "conver" key = "r" />
             </Tab.Pane>
             <Tab.Pane
               eventKey={archive_KEY}
               style={{ backgroundColor: "white" }}
             >
-              <Archive />
+               <Archive type = "archive" key = "ss" />
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>

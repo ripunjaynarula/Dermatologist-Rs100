@@ -14,6 +14,8 @@ import { useAuth } from "../../contexts/AuthContext"
    import DOMPurify from 'dompurify';
 
 import { DataContext } from '../App';
+require('fetch-everywhere');
+
 export default function BlogCard(prop) {
 
     const [flag, setFlag] = useState(false);

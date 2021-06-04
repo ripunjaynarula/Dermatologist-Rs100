@@ -9,7 +9,8 @@ import { useHistory } from 'react-router-dom'
  
 import Navbar from '../Header'
  import { useAuth } from "../../contexts/AuthContext"
-   
+   require('fetch-everywhere');
+
  export default function Home() {
   const history = useHistory();
     const { login, currentUser } = useAuth();

@@ -16,6 +16,7 @@ import SideBar from "./sidebar"
    import clockSvg from '../img/clock.svg'
 import { useHistory } from 'react-router-dom'
 import page404 from '../utility/page_404'
+require('fetch-everywhere');
 export default function Video () {
     const { currentUser,  } = useAuth()
 const [postId, setPostId] = useState('')

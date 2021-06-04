@@ -22,6 +22,8 @@ import {Styles} from "../../css/Styles"
 import { Editor } from "react-draft-wysiwyg"
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import useWindowDimensions from "../../functions/windowDimensions"
+require('fetch-everywhere');
+
 //Import Breadcrumb
  function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;

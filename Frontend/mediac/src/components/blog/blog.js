@@ -22,6 +22,7 @@ import useWindowDimensions from "../../functions/windowDimensions"
 
 import { DataContext } from '../App';
  var loading = false;
+require('fetch-everywhere');
 
 export default function Home() {
   const messageEndRef = useRef(null);

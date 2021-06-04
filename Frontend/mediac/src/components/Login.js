@@ -8,6 +8,7 @@ import {CardMain} from "../css/Card";
 import Navbar from "./Navbar"
 import {Texts} from "../css/Texts";
 import {reactLocalStorage} from 'reactjs-localstorage';
+require('fetch-everywhere');
 
 export default function Login() {
   const emailRef = useRef()

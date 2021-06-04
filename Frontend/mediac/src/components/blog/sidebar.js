@@ -10,6 +10,7 @@ import firebase from 'firebase'
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../LoginPopup"
   import { DataContext } from '../App';
+require('fetch-everywhere');
 export default function Home(prop) {
 
   const history = useHistory();

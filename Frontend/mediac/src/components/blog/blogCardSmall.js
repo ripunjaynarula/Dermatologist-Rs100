@@ -14,6 +14,7 @@ import ConfirmationModal from '../utility/confirmationModal'
  import useWindowDimensions from "../../functions/windowDimensions"
 
  
+require('fetch-everywhere');
 
  export default function BlogCard(prop) {
 

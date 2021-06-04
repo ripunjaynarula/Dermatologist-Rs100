@@ -20,7 +20,8 @@ import firebase from 'firebase'
 import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
    import SideBar from "./sidebar"
- 
+ require('fetch-everywhere');
+
 export default function Home() {
 
         const { login, currentUser } = useAuth();

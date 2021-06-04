@@ -22,7 +22,15 @@ import Loading from "./Loading";
 import app from "../firebase";
 import Book from './utility/bookAppointment'
 import useWindowDimensions from "../functions/windowDimensions"
-
+const dayMap = {
+  "0" : "Sunday",
+  "1" : "Monday",
+  "2" : "Tuesday",
+  "3" : "Wednesday",
+  "4" : "Thursday",
+  "5" : "Friday",
+  "6" : "Saturday"
+}
 export default function Choice() {
   const [currentProfile, setCurrentProfile] = useState(-1);
   const [currentProfileName, setCurrentProfileName] = useState("");
@@ -296,7 +304,8 @@ function buildForm({ action,  params }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("")
+var rightNow = false;
+  setError("")
     console.log(nameRef.current.value)
     if(!nameRef.current)
     {
@@ -338,6 +347,54 @@ if(phoneRef.current.value.length >13  )
       return;
 
 }
+if(clinicDetails.openDays)
+  if(!clinicDetails.openDays.includes(dayMap[new Date().getDay()]))
+  {
+    rightNow = true
+  }else{
+      if(clinicDetails.openTime)
+      {
+          var now  = new Date()
+          var j =0;
+          for(var i=0; i<clinicDetails.openTime.length; i++)
+          {
+            var time = new Date(now.toDateString() + " " + clinicDetails.openTime[i])
+
+            if(    time > now)
+            {
+              j++
+            }
+          }
+          if(j===0)
+          {
+            rightNow = true;
+           }
+      } 
+  } 
+
+if(rightNow)
+{
+    var data = {
+                    name: nameRef.current.value,
+          gender: genderRef.current.value,
+          height: heightRef.current.value,
+          age: ageRef.current.value,
+          weight: weightRef.current.value,
+          medication: medicationRef.current.value,
+          allergies: allergiesRef.current.value,
+          previousConditions: previousRef.current.value,
+          question: quest.current.value,
+          phone: phoneRef.current.value,
+          through : "payment"
+                }
+
+                setData(data)
+                setOpenBook(true)
+                return;
+    
+}
+         
+  
        
         setLoading(true);
 
@@ -600,7 +657,48 @@ if(phoneRef.current.value.length >13  )
               type="submit"
               className="secondaryButton"
               onClick={()=>{
+  setError("")
+    console.log(nameRef.current.value)
+    if(!nameRef.current)
+    {
+      setError("Please set name")
+      return;
+    }
+    if(!nameRef.current.value)
+    {
+      setError("Please set name")
+      return;
+    }
+    if(!phoneRef.current.value)
+    {
+      setError("Please set phone number on which we can contact you regarding consultation")   
+         return;
 
+    }
+    if(!phoneRef.current.value)
+    {
+      setError("Please set phone number on which we can contact you regarding consultation") 
+      return;
+
+    }
+  var phoneno = /^\d/;
+if(!phoneRef.current.value.match(phoneno))
+{
+        setError("Please set correct phone number")
+      return;
+
+}
+if(phoneRef.current.value.length >13  )
+{
+        setError("Please set correct phone number ")
+      return;
+
+}if(phoneRef.current.value.length <10  )
+{
+        setError("Please set correct phone number ")
+      return;
+
+}
                 var data = {
                     name: nameRef.current.value,
           gender: genderRef.current.value,
@@ -612,6 +710,7 @@ if(phoneRef.current.value.length >13  )
           previousConditions: previousRef.current.value,
           question: quest.current.value,
           phone: phoneRef.current.value,
+          through : ""
                 }
 
                 setData(data)

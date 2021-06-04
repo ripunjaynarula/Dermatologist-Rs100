@@ -39,8 +39,7 @@ const [loading, setLoading] = useState(false)
  const [success, setSuccess] = useState("") 
   const {  currentUser } = useAuth()
 
-
-
+ 
   const handleSubmit = async () => {
     if(error) return
     
@@ -147,7 +146,7 @@ if(prop.days)
          <div>
                   <h3>Schedule Consultation</h3>
                 
-                <p className = "description">We will call you at your prefered time</p>
+                <p className = "description">{prop.data.through === "payment" ? "We are not available right now, so we will call you when you are free" : "We will call you at your prefered time"}</p>
 
             
      <Form.Group id="email" style={{ marginTop: "28px" }}>

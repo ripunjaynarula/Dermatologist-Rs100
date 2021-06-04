@@ -9,6 +9,7 @@ import subscriptions from '../models/subscription';
 import razorpay  from '../actions/initRazorpay' 
 import doctors from '../models/doctors';
 import sendConsultationMail from '../actions/consultationMail';
+import sendMail from '../actions/sendMail';
 
 const router = express.Router();
 
@@ -72,6 +73,7 @@ router.post('/', async (req:any, res: any) => {
             sendConsultationMail(docs[i].notificationEmail,'',req.body.name,req.body.question , dateAndTime(startDate.getTime()) )
 
         }
+      var isSent =   await sendMail(req.body.email, "Your consultation has been scheduled" , `<p>Hey,</p><p> Your consultation has been scheduled with us on ${startDate.toDateString()} at ${startDate.toTimeString().split(" ")[0]} </p>`, `"SkinNLaser ${process.env.MAIL_ID}"` )
 
 
 

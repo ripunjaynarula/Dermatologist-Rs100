@@ -308,10 +308,10 @@
  div.navlink.dropdown.nav-item {
      content: none;
  }
- 
- .dropdown-toggle:after {
+ /* .dropdown-toggle:after {
      content: none
  }
+  */
  
  .caret {
      display: none !important;

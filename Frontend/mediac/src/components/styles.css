@@ -1270,6 +1270,10 @@ button.rec-dot:focus {
     font-weight: 600;
 }
 
+.view-more:hover {
+    text-decoration: underline;
+}
+
 .point {
     font-family: open sans;
     font-size: 15px;

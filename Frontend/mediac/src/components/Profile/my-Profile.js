@@ -147,7 +147,7 @@ export default function DocProfile() {
             
             
             <Container className="d-flex align-items-center justify-content-center">
-                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left" >
+                <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part" >
                     <div className="row" style = {{marginLeft : "0px", marginRight: "0px" }}>
                         <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center" style={{marginLeft:"0px",paddingRight:"0px"}}>
                             {profile ? <img className="dp" src={profile}/>
@@ -162,9 +162,9 @@ export default function DocProfile() {
                 </div>
                 <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section"  >
                     <div className="row profile-right-section-row" style={{display: 'block'}}>
-                        <div className="profile-header" >
+                        <div className="" >
                             <div className="row" style={{display: 'block'}}>
-                                <div className="col-md-10 col-sm-11 col-xs-6 profile-header-section1 pull-left" style={{paddingRight:"0px"}}>
+                                <div className="col-md-10 col-sm-11 col-xs-6 profile-header-section1" style={{paddingRight:"0px"}}>
                                     <h1 style = {{color : "black", fontSize : "24px", fontWeight:"600"  }}>Dr. {name}</h1>
                                      <p style = {{marginBottom : "0px", color : width>=1200 && 'black', marginTop : width>=1200 && '2px'}}>{specialisation}</p>
                                     {width > 680 && <p style = {{fontSize: "14px", fontFamily : "work sans", color : "#0000009b"}}>{yearsOfExp && yearsOfExp!==0 &&yearsOfExp + " years of experience" }</p>}  

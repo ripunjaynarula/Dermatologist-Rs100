@@ -118,8 +118,8 @@ catch(e){}
                 
             
              
-                    {conditions.map(blog =>(<>
-                       <div class="post-item clearfix" style = {{paddingBottom : "7px"}}>
+                    {conditions.map(blog =>(
+                      <><div class="post-item clearfix" style = {{paddingBottom : "7px"}}>
                   <img src={process.env.REACT_APP_CDN_URL + blog.small} style = {{ height : "45px",  objectFit:"cover", width : "90px", }}   alt={blog.alt} title = {blog.title}></img>
                   <h4 style = {{paddingLeft : "11px"}}><a base href={"/" +blog.url} >{blog.title}</a></h4>
                  </div>
@@ -218,14 +218,17 @@ catch(e){}
                 
             
            
-                    {conditions.map(blog =>(<>
+                    {conditions.map(blog =>{
+
+
+                       return <>
                        <div class="post-item clearfix" style = {{paddingBottom : "7px"}}>
-                  <img src={process.env.CDN_URL + blog.small} style = {{ height : "45px",  objectFit:"cover", width : "90px", }}   alt={blog.alt} title = {blog.title}></img>
+                  <img src={process.env.REACT_APP_CDN_URL + blog.small} style = {{ height : "45px",  objectFit:"cover", width : "90px", }}   alt={blog.alt} title = {blog.title}></img>
                   <h4 style = {{paddingLeft : "11px"}}><a  href={ "/" + blog.url} >{blog.title}</a></h4>
                  </div>
                  
                       </>
-                    ))}
+                    })}
               </div> 
 
               

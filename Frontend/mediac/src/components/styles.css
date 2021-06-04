@@ -253,10 +253,6 @@
     }
 }
 
-.btn {
-    background-color: #0062af;
-}
-
 .submitbtn {
     display: inline-block !important;
     font-weight: 400 !important;
@@ -496,7 +492,6 @@
 }
 
 .profile-header-section1 {
-    max-width: 150px;
     margin-left: -13px;
 }
 
@@ -671,7 +666,6 @@ div.scrollmenu a {
 }
 
 .user-image {
-    position: absolute;
     margin-top: -50px;
 }
 

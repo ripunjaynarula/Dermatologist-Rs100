@@ -11,13 +11,15 @@ router.post('/', async (req, res) => {
         try{
          if(req.body.type==="delete")
             var chs: any = await chat.deleteOne({chatId: req.body.id});
-        else{
-
-
-
-             let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false, endTime : Date.now()}});
-    
+        else if(req.body.type==="end-scheduled"){
+            
+            let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false, accepted : true,endTime : Date.now(), scheduled :false,status: "Scheduled consultation, prescription sent"}});
   
+        }
+        else{
+ 
+             let chats: any = await consultations.updateOne({uid: req.body.id}, {$set: {active :false, endTime : Date.now(), status : "Consultation paid, chat ended"}});
+     
         }
    
 

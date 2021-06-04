@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
     if(doc){
         let consultation: any = await consultations.findOne({uid: req.query.cid});
         if(consultation){
+            if(!consultation.accepted && !consultation.active){return res.send({error : true, message:"Consultation Ended"})} 
             if(consultation.accepted){
                 let u = process.env.WEB_URL || ""
                 return res.redirect(u + "chat/d");
@@ -27,31 +28,33 @@ router.get('/', async (req, res) => {
 
             var obj1 = {
                 type : "doctor",
-                text : `"Age- ${consultation.age}, Gender- ${consultation.gender}"`
+                text : `Age- ${consultation.age}, Gender- ${consultation.gender}`
             }
 
              var obj2 = {
                 type : "doctor",
-                text : `"Height- ${consultation.height}, Weight- ${consultation.weight}"`
+                text : `Height- ${consultation.height}, Weight- ${consultation.weight}`
             }
              var obj3 = {
                 type : "doctor",
-                text : `"Query- ${consultation.description} "`
+                text : `Query- ${consultation.description} `
             }
 
              var obj4 = {
                 type : "doctor",
-                text : `"Current Medications- ${consultation.medication}, Allergies- ${consultation.allergies}, History- ${consultation.previousCondition} "`
+                text : `Current Medications- ${consultation.medication}, Allergies- ${consultation.allergies}, History- ${consultation.previousCondition} `
             }
            
             const p: any = await patients.findOne({email: consultation.patientEmail});
               var n = doc.uid.localeCompare(p.uid);
               id = doc.uid + "-"+p.uid
 
+ 
               let ch :any= await chat.findOne({chatId: id});
                 if(ch){
                     ch.lastChatStartDate = new Date();
                     ch.consultationId = consultation.uid;
+                    ch.updated_at = Date.now()
                     ch.messages.push({
                         timestamp : Date.now(),
                         text: 'Hi '+ consultation.name +', your consultaion has started',
@@ -66,6 +69,8 @@ router.get('/', async (req, res) => {
                     doctorEmail: consultation.doctorEmail,
                     patientEmail: consultation.patientEmail,
                     consultationId: consultation.uid,
+                                            updated_at : Date.now(),
+
                     messages : [{
                         timestamp : Date.now(),
                         text: 'Hi '+ consultation.name +', your consultaion has started',
@@ -78,7 +83,7 @@ router.get('/', async (req, res) => {
 
           
         }catch(e){
-            console.log("Error occured!");
+            console.log("Error occured!", e);
         }
     }
     

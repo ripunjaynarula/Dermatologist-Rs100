@@ -14,8 +14,7 @@ console.log(timestamp)
           {
               if(req.body.type === "archive")
                        {  
-                         console.log(req.body, "___________________________-")
-                         chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+                          chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
                        }
                        else{
                                     chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$gt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
@@ -37,6 +36,7 @@ console.log(timestamp)
    return      res.send({chats: chats, role : req.body.role, docs : docs, error:false});
 
 }
+console.log(chats)
    return  res.send({chats: chats, role : req.body.role, error: false,});
     }
     catch(e)

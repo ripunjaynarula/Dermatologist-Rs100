@@ -27,6 +27,8 @@ function Conversation(props) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [name, setCurrentName] = useState("")
   const [image, setCurrentImage] = useState("")
+  const [error, setError] = useState(false)
+  
   function handleOpenChat(id, name, image, doctorEmail){
   setCurrentImage(image)
   setCurrentName(name)
@@ -109,7 +111,8 @@ useEffect(()=>{
         
       }
       
-      console.log("LADKADADAKDOKADOKA", props.type)
+      try{
+  console.log("LADKADADAKDOKADOKA", props.type)
     const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
@@ -141,7 +144,10 @@ useEffect(()=>{
       setIsLoaded(true)
       await setChats(res["chats"]);
       console.log(chats);
-    }
+      }catch(e){
+setError(true)
+      setIsLoaded(true)
+      }    }
     getChats();
     
   }, []);
@@ -153,7 +159,11 @@ useEffect(()=>{
 
 
   return (
-    <div>
+ 
+  
+   !isLoaded ? <div></div>
+   : error ? <div>Connection Error</div>:
+      <div>
     {width < 601 && currentChat!==""?<><OpenConversation image = {image} name = {"name"} /></>:(
       <div className="container">
         <div>
@@ -220,6 +230,7 @@ useEffect(()=>{
       </div>
     )}
     </div>
+  
   );
 }
 

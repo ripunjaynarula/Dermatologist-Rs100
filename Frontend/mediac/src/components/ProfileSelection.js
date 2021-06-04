@@ -18,8 +18,8 @@ export default function ProfileSelection(props) {
     const breakPoints = [
       { width: 1, itemsToShow: 1 },
       { width: 100, itemsToShow: 2 },
-      { width: 368, itemsToShow: 3 },
-      { width: 1200, itemsToShow: 4 },
+      { width: 368, itemsToShow: 4 },
+      { width: 1200, itemsToShow: 5 },
     ];
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -55,14 +55,35 @@ export default function ProfileSelection(props) {
            history.push(res.url)
            return 
         }
-        console.log(res)
-        setPhoneNumber(res.phoneNumber)
+         setPhoneNumber(res.phoneNumber)
 
         setProfiles(res['profiles']);
         setCurrentAge(res.age)
         setCurrentGender(res.gender)
-        
-        props.onLoad("s",res.gender, res.age, res.phoneNumber, res.consultationId)
+        res.data.openTime = []
+        var _list = res.data.time.split(",");
+        for(var i =0 ; i< _list.length;i++)
+        {
+          var tt = _list[i].split("-")
+          var start = new Date("January 1, 1970 " + tt[0])
+          var end = new Date("January 1, 1970 " + tt[1])
+           while(start <= end)
+          {
+             
+            var hours = start.getHours()
+            var amPm = "AM"
+            if(hours > 12) {
+              amPm = "PM"
+              hours= hours -12
+            }
+            var minutes = start.getMinutes()
+            if(minutes < 10) minutes = "0" + minutes 
+            res.data.openTime.push(hours + ":" + minutes + " " + amPm)
+             start.setTime(start.getTime() + (30 * 60 * 1000));
+           }
+
+        }
+        props.onLoad("s",res.gender, res.age, res.phoneNumber, res.consultationId, res.data)
       }
      }catch(e)
      {
@@ -78,16 +99,15 @@ export default function ProfileSelection(props) {
     console.log(id);
     let tempProfs = profiles;
     tempProfs.push({id: id, name: name, age: age, gender: gender, relation});
-    console.log(tempProfs);
-    setProfiles(tempProfs);
+     setProfiles(tempProfs);
   }
 
      return (
       <>
-        <div id="formbody">
+        <div id=" ">
           <br/>  <br/>
            <h5 style ={{marginBottom : "22px",fontWeight:"bold", marginTop : "32px"}}>Is this for you or someone else? </h5> 
-          <Card id="cardbox">
+          <Card  >
             
             <Card.Body>
               {error && <Alert variant="danger">{error}</Alert>}
@@ -120,16 +140,9 @@ export default function ProfileSelection(props) {
                  </div>  
 
               <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter"centered>
-       <div>
-        <OtherPersonDetails setProfile={props.handleSubmit} addNewProfile={addNewProfile} close={handleClose}/>
-        <br/>
-        </div>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          
-        </Modal.Footer>
+               <OtherPersonDetails setProfile={props.handleSubmit} addNewProfile={addNewProfile} close={handleClose}/>
+
+      
       </Modal>
               </div>
               

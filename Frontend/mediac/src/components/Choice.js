@@ -20,7 +20,8 @@ import "./styles.css";
 import { DataContext } from "./App";
 import Loading from "./Loading";
 import app from "../firebase";
-
+import Book from './utility/bookAppointment'
+import useWindowDimensions from "../functions/windowDimensions"
 
 export default function Choice() {
   const [currentProfile, setCurrentProfile] = useState(-1);
@@ -30,7 +31,8 @@ export default function Choice() {
   const [currentAge, setCurrentAge] = useState("");
   const [loadingScreen, setLoadingScreen] = useState(false);
   const [currentPhoneNumber, setCurrentPhoneNumber] = useState("");
-
+  const { height, width } = useWindowDimensions();
+  const [data, setData] = useState({})
   const nameRef = useRef();
   const ageRef = useRef();
   const genderRef = useRef();
@@ -51,15 +53,16 @@ export default function Choice() {
   const [loading, setLoading] = useState(false);
   const [consultationId, setConsultationId] = useState('');
   const [paymentId, setPaymentId] = useState('');
-
+  const [openBook, setOpenBook] = useState(false)
   const { currentUser } = useAuth();
   const history = useHistory();
  
+  const [clinicDetails, setClinicDetails] = useState({})
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   var question = "";
-
-    document.body.style.backgroundColor = "#ededf2";
+ 
+  document.body.style.backgroundColor = "#ededf2";
 
   if (urlParams.get("ques")){
      
@@ -91,10 +94,10 @@ export default function Choice() {
   };
 
 
-    const refresh = ( id, gender, age, phone, consultationId) => {
+    const refresh = ( id, gender, age, phone, consultationId, data) => {
             console.log(id)
     setCurrentPhoneNumber(phone)
-
+setClinicDetails(data)
      setCurrentGender(gender ? gender.toLowerCase() : gender);
     setCurrentAge(age);
     if(consultationId)
@@ -107,7 +110,8 @@ export default function Choice() {
 
   const addConsultation = async (orderId, paymentId, signature) => {
      setError("");
-      const token = await app.auth().currentUser.getIdToken(true);
+     try{
+        const token = await app.auth().currentUser.getIdToken(true);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json", token: token },
@@ -138,7 +142,54 @@ export default function Choice() {
       setLoading(false);
       setConsultationId(res['id']);
       setLoadingScreen(true)
+     }catch(e){
+       setError("Connection Error")
+     }
   }
+
+
+
+
+function isDate(val) {
+  // Cross realm comptatible
+  return Object.prototype.toString.call(val) === '[object Date]'
+}
+
+function isObj(val) {
+  return typeof val === 'object'
+}
+
+  function stringifyValue(val) {
+  if (isObj(val) && !isDate(val)) {
+    return JSON.stringify(val)
+  } else {
+    return val
+  }
+}
+
+function buildForm({ action,  params }) {
+  const form = document.createElement('form')
+  form.setAttribute('method', 'post')
+  form.setAttribute('action', action)
+ 
+  Object.keys(params).forEach(key => {
+    const input = document.createElement('input')
+    input.setAttribute('type', 'hidden')
+    input.setAttribute('name', key)
+    input.setAttribute('value', stringifyValue(params[key]))
+    form.appendChild(input)
+  })
+
+  return form
+}
+
+    function post(details) {
+  const form = buildForm(details)
+   document.body.appendChild(form)
+  form.submit()
+  form.remove()
+}
+
 
   const displayRazorpay = async () => {
     let res = await loadRazorpay();
@@ -182,10 +233,63 @@ export default function Choice() {
         contact: phoneRef.current.value
 
       },
+      external: {
+  wallets: ['paytm'],
+  handler: async function (data) {
+ setError("");
+     try{
+        const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({
+          name: nameRef.current.value,
+         
+          phone: phoneRef.current.value,
+      
+        }),
+      };
+      let res = await fetch(
+        process.env.REACT_APP_API_URL+'paytm-payment',
+        requestOptions
+      );
+      res = await res.text();
+      res = JSON.parse(res);
+      var details = {
+         action : "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid="+ res.MID+ "&orderId=" + res.ORDER_ID,
+         params : {
+          "requestType"   : "Payment",
+          websiteName   : "WEBSTAGING",
+          callbackUrl   : "https://merchant.com/callback",
+          txnAmount     : {
+              value     : "100.00",
+              currency  : "INR",
+          },
+          userInfo      : {
+            "custId"    : "CUST_001",
+          },
+          mid : res.MID,
+          signature : res.checksum,
+          orderId : res.ORDER_ID
+
+        }
+      }
+       console.log(res);
+
+      post(details)
+      console.log("PSOTED");
+
+   // res = await fetch("https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=" + res.MID +"&orderId=" + res.ORDER_ID, opt);      
+     }catch(e){
+       setError("Connection Error")
+     } 
+ 
+   }
+}
     };
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
-    rzp1.on("payment.failed", function (response) {
+     rzp1.on("payment.failed", function (response) {
  
     });
    };
@@ -251,16 +355,16 @@ if(phoneRef.current.value.length >13  )
         <Navbar />
       </div>
 
-      <Container
-        className="align-items-center justify-content-center"
-        style={{ maxWidth: "50vh" }}
-      >
+      <div
+        className="container"
+       >
+         <br/>
         <ProfileSelection
           handleSubmit={handleProfileSelection}
           id={currentProfile}
           onLoad = {refresh}
         />
-        <div id="formbody">
+        <div id=" ">
           {currentProfile < 0 ? (
             <h5
               style={{ fontWeight: "bold", marginTop: "35px" }}
@@ -483,15 +587,45 @@ if(phoneRef.current.value.length >13  )
 
           <Row
             style={{
-              paddingTop: "22px",
+              paddingTop: "12px",
               flexDirection: "row",
               justifyContent: "flex-end",
               paddingRight: "14px",
             }}
           >
+
+   <Button
+              disabled={loading}
+              style={{ height: "45px", width: "250px", marginTop:"10px" }}
+              type="submit"
+              className="secondaryButton"
+              onClick={()=>{
+
+                var data = {
+                    name: nameRef.current.value,
+          gender: genderRef.current.value,
+          height: heightRef.current.value,
+          age: ageRef.current.value,
+          weight: weightRef.current.value,
+          medication: medicationRef.current.value,
+          allergies: allergiesRef.current.value,
+          previousConditions: previousRef.current.value,
+          question: quest.current.value,
+          phone: phoneRef.current.value,
+                }
+
+                setData(data)
+                setOpenBook(true)
+              }}
+            >
+              Schedule for later
+            </Button>
+
+{width> 538 ? <div style = {{width : "10px"}}/> : <br/>}
+ 
        <Button
               disabled={loading}
-              style={{ height: "45px", width: "250px" }}
+              style={{ height: "45px", width: "250px", marginTop : "10px" }}
               type="submit"
               className="primaryButton"
               onClick={handleSubmit}
@@ -502,9 +636,11 @@ if(phoneRef.current.value.length >13  )
         </div>
         <br></br>
         <br></br>{" "}
-      </Container>
+      </div>
       </>
     )}
+
+    <Book days = {clinicDetails.openDays} data = {data} isClinicOpen = {clinicDetails.isClinicOpen} time = {clinicDetails.openTime && clinicDetails.openTime} show = {openBook} onHide = {()=>{setOpenBook(false)}}></Book>
     </>
   );
 }

@@ -12,21 +12,21 @@ router.post('/', async (req, res) => {
         var isEnded = !c.active;
         var isBlocked = false;
         var da :any;
-        var d = 5
+        var left = 5
         var time = c.endTime;
         if(time)
         {
            var t : Number = time
            da = new Date(time)
-            d =  Date.now() - da
+          var  d =  Math.floor((Math.abs(Date.now() - time)) / (1000 * 60 * 60 * 24))
+            console.log(d, "--")
           if(d>5 && isEnded)
           {
              isBlocked = true
           }
-          d = d - Math.floor(d)
+          left = left - d
         }
-        console.log(d, isEnded)
-     return res.send({chats: chats, role : req.body.role, data : c, isEnded, isBlocked, daysLeft : d});
+     return res.send({chats: chats, role : req.body.role, data : c, isEnded, isBlocked, daysLeft : left});
  }catch(e){
     return res.send({error  : true});
 

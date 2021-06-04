@@ -79,7 +79,7 @@ catch(e){
 
 
   {conditions.map((data, index) => (
-              <VideoComponent title = {data.title} image = {data.image} 
+              <VideoComponent title = {data.title} image = {process.env.REACT_APP_CDN_URL +data.image} 
     publishDate = {""}     views  = {""} videoLink = {"/" + data.url} isPrivate = "false" videoId = {""} hideBottom = "yes" >
 
 

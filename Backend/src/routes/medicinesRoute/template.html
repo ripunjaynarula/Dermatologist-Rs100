@@ -15,6 +15,12 @@
             color: #000000b7;
         }
         
+        .desc {
+            font-weight: 400;
+            line-height: 1.6em;
+            color: #000000b7;
+        }
+        
         h2 {
             line-height: 0.4em;
             color: #000000e7;
@@ -60,10 +66,25 @@
         }
         
         table,
-        th,
-        td {
-            border: 1px solid black;
+        th {
+            padding: 10px;
         }
+        
+        td {
+            padding: 9px;
+        }
+        
+        tr {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .head td {
+            font-weight: 600;
+        }
+        
+        ​
     </style>
 </head>
 
@@ -72,11 +93,11 @@
     <div style="width: 85%; margin: 0 7.5%;">
 
         <div style="text-align: center;">
-            <h1>Doctor Name</h1>
+            <h1>Dr. Sandesh Gupta</h1>
 
-            <h3 class="des">Designation</h3>
-            <h3 class="des"> Medical number</h3>
-            <h3 class="des">Clinic Name</h3>
+            <h3 class="des">MBBS, Diploma in Venerology & Dermatology (DVD), MCSI (Cosmetology)</h3>
+            <h3 class="des">Medical Registeration Number: 2847 </h3>
+            <h3 class="des">Skin & Care</h3>
         </div>
 
         <hr class="dark" />
@@ -85,13 +106,13 @@
         <div style="display: flex;  justify-content: space-between;">
             <div>
 
-                <h2>Paatient Name</h2>
-                <p>age, gender</p>
+                <h2>Sam</h2>
+
             </div>
 
             <div>
-                <p>date</p>
-                <p>id</p>
+                <p>5/29/2021</p>
+                <p>1622230701</p>
             </div>
 
         </div>
@@ -101,10 +122,10 @@
             <hr class="dark" />
 
             <div>
-                <h3 style="margin-top: 28px;">
-                    History
+                <h3 style="margin-top: 26px;">
+                    Lab Tests
                 </h3>
-                <p style="white-space: pre-line;"> details</p>
+                <p style="white-space: pre-line;"> Lab findings</p>
                 <br>
             </div>
 
@@ -113,14 +134,15 @@
 
 
             <div>
-                <h3 style="margin-top: 28px;">
+                <h3 style="margin-top: 26px;">
                     Diagnosis
                 </h3>
-                <p style="white-space: pre-line;"> details</p>
+                <p style="white-space: pre-line;"> Diagnosis</p>
 
 
                 <br>
             </div>
+
 
 
 
@@ -129,36 +151,49 @@
                 <h3>
                     General Advice
                 </h3>
-                <p style="white-space: pre-line;">details</p>
+                <p style="white-space: pre-line;">Suggestion</p>
 
             </div>
 
 
 
-            <hr class="dark " />
 
             <div>
 
-                <h3 style="margin-top: 34px; ">
-                    Medicines
-                </h3>
 
+                <br><br>
 
-                <h4 style="margin-top: 32px; ">Medicine Name</h4>
-                <div class="med ">
-                    <p>1</p>
-                    <div class="dash "></div>
-                    <p> 0</p>
-                    <div class="dash "></div>
-                    <p> 0</p>
-
-                </div>
-                <div>
-                    <p style="margin-top: -6px; ">daily after food, 2 days</p>
-                </div>
             </div>
 
+            <table style="width:100%">
+                <tr class="head">
+                    <th>
+                    </th>
+                    <td>Medicine </td>
+                    <td>Dose</td>
+                    <td>Frequency</td>
+                    <td>Duration</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Medicine Name <br> 50mg <br>
+                        <div class="desc">Additional Instruction</div>
+                    </td>
+                    <td>
+                        <div class="med ">
+                            <p>0</p>
+                            <div class="dash "></div>
+                            <p>1</p>
+                            <div class="dash "></div>
+                            <p>0</p>
+                            <p>,&nbsp;</p>
+                        </div>
+                    </td>
+                    <td>After Meal</td>
+                    <td>50 days</td>
+                </tr>
 
+            </table>
 
 
 
@@ -169,11 +204,11 @@
         <div style="float: right;     ">
 
 
-            <img style="width: 300px;height: 200px;" src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"></img>
+            <img style="width: 180px;" src="https://d3pxd5vsj7zayf.cloudfront.net/images/sign.png"></img>
 
 
 
-            <h3>
+            <h3 style="margin-top: -30px;">
                 Doctor's signature
             </h3>
         </div>

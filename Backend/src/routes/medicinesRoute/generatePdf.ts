@@ -2,67 +2,119 @@ import nodeHtmlToImage from 'node-html-to-image'
 
       async function genrateImg(doctorName : string, clinicName : string, date : string, patientName : string,
         medicines : any, history : string, diagnosis : string, suggestion : string, signature : string,
-        gender : string, age : string, designation : string, medicalNumber : string, filePath : string, fileName : string) {
+        gender : string, age : string, designation : string, medicalNumber : string, filePath : string, fileName : string, labTest: string) {
 
 
 
         var meds = ``
+        if(medicines.length ===0)
+        {
+              meds = `<div>
+                <h3>
+                    Medicines
+                </h3>
+                <p style="white-space: pre-line;">None</p>
+
+            </div>`
+        }else{
+            meds = `            <table style="width:100%">`
+            meds = meds +`<tr class="head">
+                    <th>
+                    </th>
+                    <td>Medicine </td>
+                    <td>Dose</td>
+                    <td>Frequency</td>
+                    <td>Duration</td>
+                </tr>`
+
+   for (var i = 0; i < medicines.length; i++) {
 
 
 
 
-        for (var i = 0; i < medicines.length; i++) {
+       meds = meds + `
+       
+       <tr>
+                    <td>` + (i +1)+ `</td>
+                    <td>`+    capitalizeFirstLetter(medicines[i].name)
+               
+                if(medicines[i].dosage && medicines[i].dosage!='none')    
+                meds = meds   +   ` <br>` + medicines[i].dosage
+               
+                if(medicines[i].instructions)
+                  meds = meds + ` <br><div class="desc">`+capitalizeFirstLetter(medicines[i].instructions)+`</div>`
 
-            meds = meds + `<h4 style="margin-top: 32px; ">` + capitalizeFirstLetter(medicines[i].name) + `</h4>`;
-            meds = meds + `<div class="med ">`
 
-            if (medicines[i].isMorning || medicines[i].isAfternoon || medicines[i].isNight) {
+                meds = meds +   ` </td><td><div class="med ">`
+
+ if (medicines[i].isMorning || medicines[i].isAfternoon || medicines[i].isNight) {
                 if (medicines[i].isMorning)
-                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                    meds = meds + `<p>1</p>`
                 else
                     meds = meds + `<p>` + `0` + `</p>`
 
                 meds = meds + `<div class="dash "></div>`
 
                 if (medicines[i].isAfternoon)
-                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                    meds = meds + `<p>1</p>`
                 else
                     meds = meds + `<p>` + `0` + `</p>`
 
                 meds = meds + `<div class="dash "></div>`
 
                 if (medicines[i].isNight)
-                    meds = meds + `<p>` + medicines[i].dosage + `</p>`
+                    meds = meds + `<p>1</p>`
                 else
                     meds = meds + `<p>` + `0` + `</p>`
+              
+              if(medicines[i].frequency)
                 meds = meds + `<p>,&nbsp;` + medicines[i].frequency + `</p></div> `
 
             } else {
+               if(medicines[i].frequency)
+
                 meds = meds + `<p>` + capitalizeFirstLetter(medicines[i].frequency) + `</p></div> `
 
             }
 
 
 
-            meds = meds + `<div> <p style="margin-top: -6px; ">`
 
-            if (medicines[i].meal == 1) {
-                meds = meds + `Before food, ` + medicines[i].duration
+
+            meds = meds+`</div></td>
+                    <td>`
+             if (medicines[i].meal == 1) {
+                meds = meds + `Before food`
+            } else if (medicines[i].meal == 2) {
+                meds = meds + `After food`
             }
-            if (medicines[i].meal == 2) {
-                meds = meds + `After food, ` + medicines[i].duration
+            else{
+                meds = meds + "__"
             }
-            meds = meds + ` ` + medicines[i].days
-            meds = meds + `</p>`
+            meds = meds + `</td> <td>`
 
-            if (medicines[i].instructions) {
-                meds = meds + `<p > ` + capitalizeFirstLetter(medicines[i].instructions) + `</p>`
-            }
+            meds = meds + medicines[i].duration + " " + medicines[i].days
+                   meds = meds + `</td>
+                </tr>
+       `
+        
+           
 
-            meds = meds + `</div>`
-
+ 
         }
 
+
+
+
+
+
+
+            meds = meds +`</table>`
+        }
+
+
+
+     
 
 
         var advice = ``
@@ -80,7 +132,7 @@ import nodeHtmlToImage from 'node-html-to-image'
         if (diagnosis) {
             diag = `
             <div>
-                <h3 style="margin-top: 28px;">
+                <h3 style="margin-top: 26px;">
                     Diagnosis
                 </h3>
                 <p style="white-space: pre-line;"> ` +
@@ -95,7 +147,7 @@ import nodeHtmlToImage from 'node-html-to-image'
         var pH = ``
         if (history) {
             pH = ` <div>
-                <h3 style="margin-top: 28px;">
+                <h3 style="margin-top: 26px;">
                     History
                 </h3>
                 <p style="white-space: pre-line;"> ` + history + `</p>
@@ -103,6 +155,22 @@ import nodeHtmlToImage from 'node-html-to-image'
             </div>`
 
         }
+
+
+   var lab = ``
+        if (labTest) {
+            lab = ` <div>
+                <h3 style="margin-top: 26px;">
+                    Lab Tests
+                </h3>
+                <p style="white-space: pre-line;"> ` + labTest + `</p>
+                <br>
+            </div>`
+
+        }
+
+
+
 
 
         var ageGender = ``
@@ -130,6 +198,11 @@ import nodeHtmlToImage from 'node-html-to-image'
         .des {
             font-weight: 400;
             line-height: 0.5em;
+            color: #000000b7;
+        }
+        .desc {
+            font-weight: 400;
+            line-height: 1.6em;
             color: #000000b7;
         }
         
@@ -177,11 +250,25 @@ import nodeHtmlToImage from 'node-html-to-image'
             align-items: center;
         }
         
-        table,
-        th,
-        td {
-            border: 1px solid black;
+         table,
+        th {
+            padding: 10px;
         }
+        
+        td {
+            padding: 9px;
+        }
+        
+        tr {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .head td {
+            font-weight: 600;
+        }
+        
     </style>
 </head>
 
@@ -232,6 +319,11 @@ import nodeHtmlToImage from 'node-html-to-image'
 
             +
             `
+  ` +
+            lab
+
+            +
+            `
 
 
 
@@ -243,24 +335,16 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 
 
-            <hr class="dark " />
-
+     
             ` +
 
             `<div>
-
-                <h3 style="margin-top: 34px; ">
-                    Medicines
-                </h3>
-
-
-                ` +
-            meds +
-            `
+ <br><br>
             </div>`
 
 
         +
+        meds+
         `
 
 
@@ -274,11 +358,11 @@ import nodeHtmlToImage from 'node-html-to-image'
         <div style="float: right;     ">
 
 
-            <img style="width: 300px;height: 200px;" src="` + signature + `"></img>
+            <img style="width: 180px;" src="` + signature + `"></img>
 
 
 
-            <h3>
+            <h3 style="margin-top: -30px;">
                 Doctor's signature
             </h3>
         </div>
@@ -311,7 +395,9 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 </html>`
  
-        try {
+
+
+         try {
 
             await nodeHtmlToImage({
                 output: filePath,
@@ -331,6 +417,5 @@ import nodeHtmlToImage from 'node-html-to-image'
  
 
 function capitalizeFirstLetter(string : string) {
-    if (!string) return ""
-    return string.charAt(0).toUpperCase() + string.slice(1);
+     return string.charAt(0).toUpperCase() + string.slice(1);
 }

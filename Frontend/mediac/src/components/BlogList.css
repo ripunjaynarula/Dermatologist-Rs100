@@ -188,7 +188,6 @@
 .rec-arrow-right {
     transform: translate(-130%, -50%);
     z-index: 1;
-    background-image: url(./img/arrow-right.png);
     background-size: cover;
     transition: none!important;
 }
@@ -196,7 +195,6 @@
 .rec-arrow-left {
     transform: translate(130%, -50%);
     z-index: 1;
-    background-image: url(./img/arrow-left.png);
     background-size: cover;
     transition: none!important;
 }

@@ -17,11 +17,12 @@ import {
 } from "react-device-detect";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-import { GrAttachment,GrDocument,GrPhone,GrArchive, GrClose } from "react-icons/gr";
+import { GrAttachment,GrDocument,GrPhone, GrClose , } from "react-icons/gr";
  import {uploadFile} from './utility/functionUploadImage'
 import {reactLocalStorage} from 'reactjs-localstorage';
 
 import useWindowDimensions from "../functions/windowDimensions";
+import { AiOutlineDelete } from "react-icons/ai";
 
  
 import { Form, InputGroup, Button, Spinner,Tooltip ,OverlayTrigger,Popover} from "react-bootstrap";
@@ -435,10 +436,11 @@ function callback(url){
   const handleArchiveButton = async () => {
   try{
   const token = await app.auth().currentUser.getIdToken(true);
+  console.log(consultationData.uid)
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json", token: token },
-      body: JSON.stringify({ id: currentChat, type : "end" }),
+      body: JSON.stringify({ id: consultationData.uid, type : "end",  }),
     };
       let res = await fetch(
           process.env.REACT_APP_API_URL + 'toggleArchive',
@@ -448,8 +450,10 @@ function callback(url){
         res = JSON.parse(res);
         if(res.success)
         {
-            window.location.reload(false);
 
+          setIsEnded(true)
+          setDaysLeft(5)
+          setShow(false)
         }
   
   }catch(e){
@@ -514,11 +518,9 @@ function callback(url){
         res = JSON.parse(res);
         console.log(res);
         if(res.role === "doctor"){ setIsDoctor(true)}
-        else{
           setIsEnded(res.isEnded)
           setIsDead(res.isBlocked)
           setDaysLeft(res.daysLeft)
-        }
         setChatData(res["chats"]);
         setConsultatinData(res.data)
            setisLoading(false);
@@ -595,7 +597,7 @@ function callback(url){
  </OverlayTrigger> : isDoctor && <p style = {{display : "inline-block", fontWeight: "400"}}>Phone number not given</p> }
 
          
-                        {isDoctor &&    <OverlayTrigger
+                        {(isDoctor &&  !isEnded )&&  <OverlayTrigger
     placement="bottom"
     delay={{ show: 300, hide: 0 }}
     overlay={endTooltip}
@@ -629,7 +631,7 @@ function callback(url){
                   handleShow()
                 }}
               >
-                <GrArchive />
+                <AiOutlineDelete color = "black" />
               </Button>
  </OverlayTrigger>}
        
@@ -677,9 +679,10 @@ function callback(url){
                       {message["text"]}
                     </div>                      :
 
-                                          (message["type"] === "patient" && !isDoctor) ?
 
-                      <div
+                                          (message["type"] === "patient"  ) ?
+
+                   isDoctor? <div/> :   <div
                       className="rounded px-2 py-1 bg-light"
                       style={{
                         marginTop: "4px",
@@ -687,7 +690,7 @@ function callback(url){
                         marginRight: "auto"
                       }}
                     >
-                      {message["text"]}
+                      {message["text"] }
                     </div>                      :
                       message["type"] ==="image" || message["type"] ==="pres"  ?
                       
@@ -795,15 +798,30 @@ function callback(url){
                         marginTop:"6px"
                       }}
                     >
-                      {isDead ? <div>Consultation Ended, you don't have any follow up left</div> : <div>
+                      {isDead ? isDoctor? <div>Consultation Ended, Follow up ended</div>: <div>Consultation Ended, you don't have any follow up left</div> : 
+                      
 
-
+isDoctor? <div>
+                        Consultation Ended, {daysLeft} days of follow up left
+                      </div>:
+                      <div>
                         Consultation Ended, you have a free follow up for {daysLeft} days
-                      </div> }
+                      </div>
+
+                       }
                     </div> } 
                
 
-           { !isDead ? <div>
+           { isDead && !isDoctor ? 
+          <Link
+                    className="btn btn-primary"
+                    to="/consult" style = {{borderTopLeftRadius:"0px", borderTopRightRadius:"0px"}}
+                  >
+                    Start a new consultation
+                  </Link>
+            :
+
+            <div>
               <Form onSubmit={handleSubmit} autocomplete="off">
                 <Form.Group className="m-2">
                   <InputGroup id="bottommsg" style={{ height: "40px" }}>
@@ -871,14 +889,7 @@ function callback(url){
                 </Form.Group>
               </Form>
             </div>
-
-            :
-             <Link
-                    className="btn btn-primary"
-                    to="/consult" style = {{borderTopLeftRadius:"0px", borderTopRightRadius:"0px"}}
-                  >
-                    Start a new consultation
-                  </Link>
+   
          }
          
          
@@ -903,6 +914,7 @@ function callback(url){
           onHide = {togglePresc}
           name = {chatAdditional.name}
           chatId = {currentChat}
+          type = "registered"
           callback = {callback}
           email = {chatData["doctorEmail"] === currentUser.email
           ? chatData["patientEmail"]

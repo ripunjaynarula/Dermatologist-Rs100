@@ -1,7 +1,8 @@
 export const conditions = [{
         title: "Pimples or Acne",
         url: "pimples-acne-treatment",
-        image: "https://www.drsandeshgupta.com/images/pimples-or-acne.jpg",
+        image: "images/pimples-or-acne.jpg",
+        small: "images/s_acne.jpeg",
         body: ` <h3>What is acne?</h3>
       <p>Acne  is a skin condition commonly known as pimples. It is the inflammation of sebaceous gland (oil glands) and characterized by whiteheads, blackheads, and red, inflamed patches of skin. </p>
       <h3>What causes acne?</h3>
@@ -44,8 +45,8 @@ export const conditions = [{
       <div class="clearfix"></div>
       <p><strong>Treatment modalities available:</strong></p>
       <p><strong>Medicine</strong>- to control new eruptions by curing the infection</p>
-      <p><a href="chemical+skin+peel+treatment+in+delhi+dermatologist+in+delhi.html" title="Chemical peels">Chemical peels</a> and <a href="microdermabrasion+treatment+in+delhi+dermatologist+in+delhi.html" title="microdermaabration">microdermaabration</a>- to exfoliate the dead layer of the skin and superficial acne to reduce the post inflammatory hyperpigmentation</p>
-      <p><strong>Laser</strong> - <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional C02 laser">fractional C02 laser</a>- This is the most advanced laser for acne scars. This helps in formation of collagen therefore effects can be seen from the first sitting onwards.</p>
+      <p><a href="chemical-skin-peel-treatment-consultation" title="Chemical peels">Chemical peels</a> and <a href="/microdermabrasion-treatment" title="microdermaabration">microdermaabration</a>- to exfoliate the dead layer of the skin and superficial acne to reduce the post inflammatory hyperpigmentation</p>
+      <p><strong>Laser</strong> - <a href="/acupulse-fractional-co2-laser-treatment" title="fractional C02 laser">fractional C02 laser</a>- This is the most advanced laser for acne scars. This helps in formation of collagen therefore effects can be seen from the first sitting onwards.</p>
 `,
 
         alt: " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms, Pimples Acne ",
@@ -56,7 +57,8 @@ export const conditions = [{
     {
         title: "Psoriasis",
         url: "psoriasis-treatment",
-        image: "https://www.drsandeshgupta.com/images/psoriasis.jpg",
+        small: "images/s_psoriasis.jpg",
+        image: "images/psoriasis.jpg",
         body: `<h2>Psoriasis</h2>
       <p> <span class='st_facebook_hcount' displayText='Facebook'></span> <span class='st_googleplus_hcount' displayText='Google +'></span> <span class='st_twitter_hcount' displayText='Tweet'></span> <span class='st_fblike_hcount' displayText='Facebook Like'></span> <span class='st_pinterest_hcount' displayText='Pinterest'></span> </p>
       <h3>What is Psoriasis?</h3>
@@ -97,8 +99,8 @@ export const conditions = [{
     }, {
         title: "Eczema",
         url: "eczema-treatment",
-
-        image: "https://www.drsandeshgupta.com/images/eczema.jpg",
+        small: "images/s_eczema.jpg",
+        image: "images/eczema.jpg",
         alt: "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
         imgTitle: "Eczema treatment in delhi, Eczema Symptoms, Eczema surgery",
         body: `<h3>What is eczema?</h3>
@@ -121,7 +123,9 @@ export const conditions = [{
     }, {
         title: "Vitiligo",
         url: "vitiligo-treatment",
-        image: "https://www.drsandeshgupta.com/images/vitiligo.jpg",
+        small: "images/s_vitiligo.jpeg",
+
+        image: "images/vitiligo.jpg",
         imgTitle: "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
         alt: "Vitiligo treatment in delhi, Vitiligo Symptoms, Vitiligo surgery",
         body: ` <h3>What is vitiligo?</h3>
@@ -156,7 +160,8 @@ export const conditions = [{
     }, {
         title: "Hyper Pigmentation/ Malesma",
         url: "hyper-pigmentation-malesma-teratment",
-        image: "https://www.drsandeshgupta.com/images/hyper-pigmentation-malesma.jpg",
+        small: "images/s_malesma.png",
+        image: "images/hyper-pigmentation-malesma.jpg",
         imageTitle: "Hyper pigmentation, malesma, dermatologist In Delhi",
         alt: "Hyper pigmentation, malesma, dermatologist In Delhi",
         body: ` <h3>What is hyper pigmentation and melasma?</h3>
@@ -192,7 +197,9 @@ export const conditions = [{
     }, {
         title: "Moles or Nevi or Skin Tags",
         url: "moles-or-nevi-skin-tags-treatment",
-        image: "https://www.drsandeshgupta.com/images/moles.jpg",
+        small: "images/s_mole.jpg",
+
+        image: "images/moles.jpg",
         imageTitle: "Moles, Nevi, skin tags, dermatologist In Delhi",
         alt: "Moles, Nevi, skin tags, dermatologist In Delhi",
         body: ` <h3>What are moles or nevi?</h3>
@@ -213,7 +220,9 @@ export const conditions = [{
     }, {
         title: "Fungal Infections",
         url: "fungal-infections-treatment",
-        image: "https://www.drsandeshgupta.com/images/fungal-infections.jpg",
+        small: "images/s_fungal_infection.jpg",
+
+        image: "images/fungal-infections.jpg",
         imageTitle: "Fungal infections treatment in delhi, Fungal infections Symptoms",
         alt: "Fungal infections treatment in delhi, Fungal infections Symptoms",
         body: ` <p>Fungal infections are single or multi-cellular organisms that cause skin infections known as fungal infections(tinea). Yeast is the most common type of fungus and is already present in the human body, but increase in its level can result in infection. Dermatophytes are fungal organisms that grow on the human body and infect the top layer of skin as well as nails or hair. There are different types of fungal infections and each can appear in different areas of the body but usually it is more common on the areas with excessive sweating i.e. body folds, in between the toes etc.</p>
@@ -244,7 +253,8 @@ export const conditions = [{
     }, {
         title: "Keloid And Hypertrophic Scar",
         url: "keloid-hypertrophic-scar",
-        image: "https://www.drsandeshgupta.com/images/keloid.jpg",
+        small: "images/s_keloid.jpg",
+        image: "images/keloid.jpg",
         imageTitle: "Keloid, Hypertrophic scar, skin tags, dermatologist ",
         alt: "Keloid, Hypertrophic scar, skin tags, dermatologist",
         body: `<h3>What is Keloids and hypertrophic scar?</h3>
@@ -265,12 +275,14 @@ export const conditions = [{
       <h3>Fractional Co2 laser </h3>
       <p>Fractional carbon dioxide (CO2) lasers are one of the latest advances in non-surgical skin  resurfacing  treatments. </p>
       <h3>How does fractional Co2 laser works?</h3>
-      <p>The <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional CO2 laser">fractional CO2 laser</a> takes the CO2 laser beam and fractionates, or pixellates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen. - See more at: <a href="https://www.drsandeshgupta.com/acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html">Click here</a></p>`
+      <p>The <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional CO2 laser">fractional CO2 laser</a> takes the CO2 laser beam and fractionates, or pixellates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen. - See more at: <a href="/acupulse-fractional-co2-laser-treatment">Click here</a></p>`
     }, {
         title: "Hair Loss",
         url: "hair-loss-treatment",
-        image: "https://www.drsandeshgupta.com/images/hair-loss.jpg",
+        image: "images/hair-loss.jpg",
         imageTitle: "Hair Loss Treatment ",
+        small: "images/s_hair_loss.jpg",
+
         alt: "Hair Loss Treatment ",
         body: ` <p>Hair plays a very important role in enhancing appearance and personality. <em>Loss of hair</em> or baldness results in low self-esteem of the concerned person. While 'hair loss' implies loss of hair from any part of the body, the term baldness is used to refer to loss of hair from scalp. It results due to progressive hair fall or thinning of hair. <strong>Hair loss</strong> is very common these days and may be a reason of stress and effect their quality of life. </p>
       <h3>What are the causes of hair loss?</h3>
@@ -319,7 +331,9 @@ export const conditions = [{
     {
         title: "Lichen Planus",
         url: "lichen-planus-treatment",
-        image: "https://www.drsandeshgupta.com/images/lichen-planus.jpg",
+        small: "images/s_lichen_planus.jpg",
+
+        image: "images/lichen-planus.jpg",
         imageTitle: "Lichen planus, dermatologist In Delhi",
         alt: "Lichen planus, dermatologist In Delhi",
         body: `  <h3>What is lichen planus?</h3>
@@ -357,8 +371,10 @@ export const conditions = [{
     }, {
         title: "Warts And Molluscumcontagiosum",
         url: "warts-molluscumcontagiosum-treatment",
-        image: "https://www.drsandeshgupta.com/images/warts.jpg",
+        image: "images/warts.jpg",
         alt: "Warts, Molluscumcontagiosum, dermatologist In Delhi",
+        small: "images/s_warts.png",
+
         imgTitle: "Warts, Molluscumcontagiosum, dermatologist In Delhi",
         body: ` <h3>What are warts?</h3>
       <p>Warts are viral infection caused by the Human Papillomavirus (HPV), which stimulates the growth of cells of outer layer of skin which forms a wart. They are contagious and spread from one place to other with the direct touch.</p>
@@ -387,8 +403,10 @@ export const conditions = [{
     {
         title: "Hirsutism",
         url: "hirsutism-treatment",
-        image: "https://www.drsandeshgupta.com/images/hirsutism.jpg",
+        image: "images/hirsutism.jpg",
         imageTitle: "hirusitism, dermatologist ",
+        small: "images/s_hirsuitism.jpg",
+
         alt: "hirusitism, dermatologist ",
         body: `<h2>What Is Hirsutism?</h2>
       <p> <span class='st_facebook_hcount' displayText='Facebook'></span> <span class='st_googleplus_hcount' displayText='Google +'></span> <span class='st_twitter_hcount' displayText='Tweet'></span> <span class='st_fblike_hcount' displayText='Facebook Like'></span> <span class='st_pinterest_hcount' displayText='Pinterest'></span> </p>

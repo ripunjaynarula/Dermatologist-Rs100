@@ -14,32 +14,12 @@ const router = express.Router();
 
 
 router.post('/', async (req:any, res: any) => {
-    var patient = await patients.findOne({email: req.body.email});
+    var patient : any= await patients.findOne({email: req.body.email});
     if(!patient){
         return res.send({success: false, message: "Invalid Attempt."})
     }
 
-
-    let { razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body;
-
-    var isVerified = await verifyRazorpayPayment(razorpayOrderId, razorpayPaymentId,razorpaySignature)
-
-    if(!isVerified)
-    {
-        return res.send({success:false, message:"Invalid Attempt"})
-    }
-
-    var o = await razorpay.payments.fetch(razorpayPaymentId);
-    var amount = parseInt(o["amount"]) / 100;
-    let payment : any = new payments({
-        userId : req.body.uid,
-        paymentId: razorpayPaymentId, 
-        orderId: razorpayOrderId,
-        signature: razorpaySignature,
-        amount : amount,
-        pType:"razorpay",
-    })
-
+ 
 
     let id = '';
     while (true){
@@ -50,9 +30,11 @@ router.post('/', async (req:any, res: any) => {
         }
     }
 
+    var startDate = new Date(req.body.startDate)
+    console.log(startDate)
     let consultation: any = new consultations({
         patientEmail: req.body.email,
-        startDate: Date.now(),
+        startDate: startDate,
         description: req.body.question,
         age: req.body.age,
         name: req.body.name,
@@ -63,21 +45,15 @@ router.post('/', async (req:any, res: any) => {
         previousCondition: req.body.previousConditions,
         uid: id,
         phone: req.body.phone,
-        orderId : razorpayOrderId,
+        scheduled:true,
+        orderId : 'unpaid',
         gender : req.body.gender,
+        patientUid : patient.uid,
         time: Date.now(),
     });
 
     try{
-        await payment.save();
         consultation = await consultation.save();
-        //send notification
-        var notifs = await subscriptions.find({});
-        notifs.map(async (client: any) => {
-            var payload = JSON.stringify({ title:"New Consultation" , id: consultation.uid, description: consultation.description, email: client.email });
-          sendNotification(client.subscripiton, payload, client._id)
-        });
-        console.log("d2")
         var docs : any = await doctors.find({})
         console.log(docs)
         for(var i=0; i<docs.length; i++)
@@ -93,7 +69,7 @@ router.post('/', async (req:any, res: any) => {
                     mail = mail + "," + docs[i].notificationEmail[j]
             }
             console.log(mail)
-            sendConsultationMail(docs[i].notificationEmail,process.env.API_URL + 'acceptConsultation?cid=' + consultation.uid + '&email=' + docs[i].email,req.body.name,req.body.question , dateAndTime((new Date()).getTime()) )
+            sendConsultationMail(docs[i].notificationEmail,'',req.body.name,req.body.question , dateAndTime(startDate.getTime()) )
 
         }
 
@@ -104,6 +80,7 @@ router.post('/', async (req:any, res: any) => {
 
         return res.send({success: true, id: consultation.uid});
     } catch (e) {
+        console.log(e)
         res.send({success: false, message: 'Internal Error.'});
         return;
     }
@@ -129,4 +106,5 @@ var d = (new Date(unixtime)).toLocaleString().split(":")
 
       return  d[0] + ":"+d[1]
     };
+
 export default router;

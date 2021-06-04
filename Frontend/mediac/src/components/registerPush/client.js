@@ -6,13 +6,14 @@ import {CardMain} from "../../css/Card";
  import {Texts} from "../../css/Texts";
 import useWindowDimensions from "../../functions/windowDimensions"
 import Navbar from "../Header"
- 
+ import Settings from './settings'
 export default function ChangePassword() {
   const phoneRef = useRef()
   const emailRef = useRef()
    const { currentUser, updatePassword, login } = useAuth()
   const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+  const [isSaving, setIsSaving] = useState(false)
 
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -107,7 +108,32 @@ var params = "?token=" + token;
     document.body.style.backgroundColor = "#ededf2";
 
 
+ async function saveDetails(e){
+ setIsSaving(true)
+ try{
 
+    const token = await currentUser.getIdToken(true)
+  const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'token': token },
+          body: JSON.stringify({ fetch : false})
+        };
+    let res = await fetch(process.env.REACT_APP_API_URL+'settings', requestOptions);
+        res = await res.text()
+        res = JSON.parse(res)
+        if(!res.isError)
+        {
+          setSuccess("Email Added")
+        }else{
+          setError("Internal Error")
+        }
+ }catch(e)
+ {
+          setError("Network Error")
+
+ }
+ setIsSaving(false)
+ }
   
   
  
@@ -201,10 +227,18 @@ Add            </Button>
 
 
       </Card>
-      
+
+
+
+
+ <div style = {{height: "40px"}}></div>  
+ 
+    <Settings></Settings>
    
 </div>
 
+ <div style = {{height: "40px"}}></div>  
+ 
           </div>
             </div>
 

@@ -134,7 +134,7 @@ for(var i =0; i< conditions.length; i++)
 
               <div class="entry-img" style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-                <img src= {imageLink} alt={alt} title = {imgTitle}  style = {{  
+                <img src= {process.env.REACT_APP_CDN_URL +imageLink} alt={alt} title = {imgTitle}  style = {{  
    width: "100vh",
   objectFit: "cover"}}></img>
               </div>

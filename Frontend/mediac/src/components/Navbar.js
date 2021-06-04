@@ -9,7 +9,7 @@ import { useAuth } from "../contexts/AuthContext";
 import useWindowDimensions from "../functions/windowDimensions";
 import { conditions } from "./blog/Conditions/ConditionsList";
 import { TreatmentList } from "./blog/Treatments/treatmentList";
-
+import logo from "./img/logo.svg"
 import { reactLocalStorage } from "reactjs-localstorage";
 
 const NavBar = (props) => {
@@ -257,7 +257,7 @@ const [isDoctor, setIsDoctor] = useState(false)
           }}
           href="/"
         >
-          LOGO
+          <img src = {logo} height = "40px"></img>
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

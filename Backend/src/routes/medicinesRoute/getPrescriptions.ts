@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
 
     try{
-        var consultation: any = await prescriptions.find({patientUid: req.body.uid});
+        var consultation: any = await prescriptions.find({patientUid: req.body.uid}).sort({"startDate": -1});
         for(var i =0;i<consultation.length ; i++)
         {
            consultation[i]['url'] = process.env.cdnUrl + consultation[i].url         

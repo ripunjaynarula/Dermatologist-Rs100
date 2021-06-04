@@ -152,13 +152,13 @@ var i, x, y, z;
                                       <div
                                     className="float-right viewBill"
                                    >
-                                   <div>
+                                   {/* <div>
                                       <p
                                       className=""
                                     >
                                       View Bill
                                     </p>
-                                   </div>
+                                   </div> */}
                                    
                                   </div>
                                     

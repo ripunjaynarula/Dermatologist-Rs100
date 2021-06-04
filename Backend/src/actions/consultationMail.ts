@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-const sendConsultationMail = (email: any, url:any, patientName: any, question : any) => {
+const sendConsultationMail = (email: any, url:any, patientName: any, question : any , time : any) => {
 
     let transporter=nodemailer.createTransport({
         host:'smtp.hostinger.com',
@@ -24,6 +24,7 @@ const sendConsultationMail = (email: any, url:any, patientName: any, question : 
         <p>Issue - ${question}</p>
         <br/>
         <p>Name - ${patientName} </p><br/>
+        <p>Time - ${time}</p>
 <p> 
          <a href="${url}">Click here to accept and start this consultaion.</a></p>`
     };

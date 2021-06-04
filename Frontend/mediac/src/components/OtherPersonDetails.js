@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react"
-import { Form, Alert, Button, Container } from "react-bootstrap"
+import { Form, Alert, Button, Container,  Card } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import {Texts} from "../css/Texts";
 import  "./styles.css";
 import app from '../firebase'
 
+import close from './img/close.svg'
 
 
 export default function OtherPersonForm(props) {
@@ -22,7 +23,8 @@ export default function OtherPersonForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
- 
+ try{
+
     if (currentUser) {
         setLoading(true);
         setError('')
@@ -46,14 +48,28 @@ export default function OtherPersonForm(props) {
         }
         setLoading(false);
     }
+ }catch(e){
+   setError("Connection Error")
+ }
   }
 
     return (
         <>
-        <Container className=" align-items-center justify-content-center" style={{ minWidth: "100%" }}>
-          <div id="oform">
-          <br/>
-          <h5 style={Texts.Heading} >Consult for someone else</h5>
+<Card id="loginpopup">
+        <Card.Title>
+
+ <div style = {{float: "right", marginLeft : "auto", marginRight : "20px", marginTop : "30px"}}>
+        <img src = {close} className = "icon-button" alt="" onClick = {props.close}></img>
+
+
+ </div>
+
+        </Card.Title>
+
+<Card.Body>
+
+ <div id="">
+           <h3 style={Texts.Heading} >Consult for someone else</h3>
  <br></br>
                {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
@@ -105,13 +121,21 @@ export default function OtherPersonForm(props) {
                 <Button disabled={loading} className="submitbtn" type="submit">
                   Add Profile
                 </Button>
+
+<div style = {{height : "30px"}}></div>
+
                 {/*<h2 className  style={Texts.Heading} >Details about Consultation</h2>
                 <Form.Group id="odetails">
                   <Form.Label style={Texts.FormLabel}>Other Details (Additional Information):</Form.Label>
                   <Form.Control type="text" ref={odetailsRef} required /> </Form.Group>*/}
               </Form>
               </div>
-              </Container>
+         
+
+</Card.Body>
+
+
+        </Card>
         </>
       )
 

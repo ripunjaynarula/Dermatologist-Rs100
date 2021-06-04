@@ -15,7 +15,7 @@ import {
 import "../styles.css";
 import OpenConversation from "../OpenConversation";
 
-function Conversation(props) {
+function Archive(props) {
   const [chats, setChats] = useContext(ChatDataContext);
   const [active, setActive] = useState();
   const { currentUser } = useAuth();
@@ -258,4 +258,4 @@ if(d>12) {
 }
       return  d + ":"+ t.getMinutes() + " " + am
     };
-export default Conversation;
+export default Archive;

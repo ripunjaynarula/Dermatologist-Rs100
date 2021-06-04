@@ -7,6 +7,7 @@ import useWindowDimensions from "../../functions/windowDimensions"
  import {Texts} from "../../css/Texts";
  import Navbar from "../Navbar"
 import {reactLocalStorage} from 'reactjs-localstorage';
+import {stopfile} from '../utility/alertUploadFile'
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -92,6 +93,10 @@ async function getProfiles() {
  
    const onChangePicture = e => {
     if (e.target.files && e.target.files[0]){
+if(stopfile(e.target.files[0])){
+        return
+      }
+      
            setPicture(URL.createObjectURL(e.target.files[0]) );
       setFil(e.target.files[0])
       console.log(e.target.files[0])

@@ -65,7 +65,7 @@ return (<>
       <a className= "title" href = {blog.url}>
 
  <div className="conditions-nav"  >
-           <img src= {blog.image} alt="" style = {{  
+           <img src= {process.env.REACT_APP_CDN_URL +blog.image} alt="" style = {{  
  height :    "100%", 
   objectFit: "cover"}}
   

@@ -4,10 +4,13 @@ import Conversation from "../Conversation";
 import Archive from "./Archive";
 import { AiOutlineSearch } from 'react-icons/ai';
 import useWindowDimensions from "../../functions/windowDimensions";
- 
+ import Tabs, { TabPane } from "rc-tabs";
+
 import "../styles.css";
 const CONVERSATIONS_KEY = "conversations";
 const archive_KEY = "archive";
+  var key = CONVERSATIONS_KEY
+
 function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
@@ -21,17 +24,25 @@ function Sidebar() {
   return (
     <div>
       <div className="d-flex flex-column" style={{ minHeight: "500px" }}>
-        <Tab.Container activeKey={activeKey} onSelect={(k) => {setActiveKey(k)}}>
-          <div className="justify-content-center">
-            <Form.Group>
-              {/* <Form.Control
-                type="text"
-                className="w-100"
-                placeholder="Search"
-                required
-              /> */}
-            </Form.Group>
-          </div>
+                    {/* <Tabs defaultActiveKey={key}  tabPosition="top" tabBarStyle= {{  outline : "none"}} >
+
+     <TabPane tab="Conversations"  key="conversations" style = {{marginTop:"-10px", marginLeft:"-10px"}}>
+              <Conversation type = "conver" key = "r" />
+              </TabPane>
+        
+
+
+           <TabPane tab="Archives"  key="archive" style = {{marginTop:"-10px", marginLeft:"-10px"}}>
+               <Archive type = "archive" key = "ss" />
+              </TabPane>
+        
+
+
+</Tabs> */}
+
+
+        <Tab.Container activeKey={activeKey} unmountOnExit = {true} variant = {"pills"} mountOnEnter={true} onSelect={(k) => {setActiveKey(k)}}>
+         
           <Nav variant="tabs" className="justify-content-center">
             <Nav.Item>
               <Nav.Link eventKey={CONVERSATIONS_KEY}>
@@ -55,10 +66,15 @@ function Sidebar() {
               eventKey={archive_KEY}
               style={{ backgroundColor: "white" }}
             >
-               <Archive type = "archive" key = "ss" />
+            <div>
+              <Conversation type = "archive" key = "archiveLEy" />
+            </div>
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>
+    
+    
+    
       </div>
     </div>
   );

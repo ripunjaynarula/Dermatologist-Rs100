@@ -63,6 +63,10 @@ import getImageUploadUrl from './routes/getImageUploadUrl';
 import cancelConsultationRouter from './routes/cancelConsultation';
 import likeBlog from './routes/blogs/blogLike';
 import uploadChatFile from './routes/chat/getFileUploadUrl'
+import search from './routes/utility/search'
+import settings from './routes/utility/settings'
+import addAppointment from './routes/addAppointment'
+import paytmPayment from './routes/paytm/payment'
 const app = express();
 const server = http.createServer(app);
 
@@ -169,6 +173,8 @@ app.use('/add-prescription', checkAuth, addPrescription);
 app.use('/resend-verification', checkAuth,resendEmail);
 
 app.use('/get-upload-chatfile', checkAuth,uploadChatFile);
+app.use('/search', checkAuth,search);
+app.use('/add-appointment', checkAuth,addAppointment);
 
 app.use('/doctor-profile',  viewDoctorProfile);
 app.use('/getDocDetails', docDetailsRouter);
@@ -186,6 +192,9 @@ app.use('/delete-blog',checkAuth, delBlog);
 app.use('/blogs-limit', blogsLimit);
 app.use('/prescriptions',checkAuth, prescriptions);
 
+app.use('/settings',checkAuth, settings);
+
+app.use('/paytm-payment',checkAuth, paytmPayment);
 
 app.use('/help', checkAuth,help);
 

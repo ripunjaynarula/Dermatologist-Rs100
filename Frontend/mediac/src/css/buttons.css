@@ -141,3 +141,33 @@
     top: 1px;
     border: none
 }
+
+.outlineButtonSmall {
+    display: inline-block !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: 6px !important;
+    color: #0062af !important;
+    background-color: transparent !important;
+    min-width: 120px !important;
+    border-color: #0062af;
+    height: 40px;
+}
+
+.outlineButtonSmall:hover {
+    color: #1c87da !important;
+    border-color: #1c87da;
+    cursor: pointer;
+}
+
+.outlineButtonSmall:active {
+    position: relative;
+    top: 1px;
+    border: none
+}

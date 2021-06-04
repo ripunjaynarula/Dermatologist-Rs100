@@ -2,18 +2,24 @@ import doctors from '../models/doctors';
 import blogs from '../models/blog'
 import express from 'express';
 import checkAuth from '../middlewares/auth';
+import consultaions from '../models/consultation'
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
  
-    var doc: any = await doctors.findOne({email: req.body.email});
+    try{
+           var doc: any = await doctors.findOne({email: req.body.email});
     if (doc){
-        var blog: any = await blogs.find({doctorId: doc.uid});
-        res.send({status: true, name: doc.name, education: doc.education, degree: doc.degree, experience: doc.pastExperience, specialisation: doc.specialisation, docBlogs:blog});
-        return;
+       var  consultaion : any= await consultaions.find({ $or: [ {active: true}, {scheduled: true} ]  },{}).sort({"startDate": -1});
+       return res.send({status: true, data: consultaion})
     }
     return res.send({status:false});
+
+
+    }catch(e)
+
+    {return res.send({status:false});}
 });
 
 export default router;

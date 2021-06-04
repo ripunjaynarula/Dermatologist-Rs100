@@ -71,7 +71,15 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
     },
     endTime :{
         type : Number
-    }
+    },
+    scheduled:{
+        type : Boolean,
+        default:false
+    },
+     patientUid:{
+        type : String,
+     },
+
 }));
 
 export default consultations;

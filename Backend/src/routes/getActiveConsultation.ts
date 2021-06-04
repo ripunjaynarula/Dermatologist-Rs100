@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try{
-         var consultation: any = await consultations.find({patientEmail: req.body.email});
+         var consultation: any = await consultations.find({patientEmail: req.body.email}).sort({"startDate": -1});
     if (consultation.length != 0){
         return res.send({status: true, consultation});
     }

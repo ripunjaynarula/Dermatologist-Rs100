@@ -41,7 +41,7 @@
 
 .container {
     padding: 2px 16px;
-    border-radius: 18px;
+    border-radius: 10px;
     /* margin-left:0% !important;
     padding-left:0% !important; */
 }
@@ -1422,4 +1422,60 @@ button.rec-dot:focus {
 .overlay a {
     padding: 15px;
     color: white
+}
+
+.new-consultations {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chip {
+    border-radius: 50px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.green {
+    background-color: green;
+}
+
+.pink {
+    background-color: rgb(197, 11, 11);
+}
+
+.yellow {
+    background-color: rgb(207, 117, 32);
+}
+
+.ebkzbP {
+    min-height: 0px !important;
+}
+
+.description {
+    color: #0000009a;
+    font-family: work sans
+}
+
+.formLabel {
+    color: "#000000ab";
+    font-family: work sans
+}
+
+.input {
+    width: 100% !important;
+    display: block !important;
+    border-radius: 4px !important;
+}
+
+.react-datepicker-wrapper {
+    width: auto !important;
+    display: block !important;
+}
+
+.react-datepicker__input-container {
+    width: auto !important;
+    display: block !important;
 }

@@ -24,7 +24,7 @@ const refDosage = useRef()
   const refFrequency = useRef()
   const refDuration = useRef()
   const refInstructions = useRef()
- 
+ const genderRef = useRef()
 const [isAfternoon, setAfternoon] = useState(false)
 const [isNight, setNight] = useState(false)
 
@@ -40,7 +40,12 @@ const [medicineName, setMedicineName] = useState("")
    const searchLoading = false ;
     const [diagnosisi, setDiagnosis] = useState("")
    const [suggestioni, setSuggestion] = useState("")
+   const [labTesti, setLabTest] = useState("")
+const [phone, setPhone] = useState('')
+   const [isChanged, setIsChanged] = useState(false)
 
+const [age, setAge] = useState('')
+const [gender, setGender] = useState('')
    const [patientName, setPatientName] = useState("")
    const [histori, setHistori] = useState("")
    useEffect(() => {
@@ -50,9 +55,18 @@ const [medicineName, setMedicineName] = useState("")
   }, [open]);
 
    useEffect(() => {
-                    setPatientName(prop.name)
+                  if(!isChanged)
+                  {
 
-  }, []);
+                    setIsChanged(true)
+                    setPatientName(prop.name)
+                    setPhone(prop.phone)
+                    setGender(prop.gender)
+                    setAge(prop.age)
+                    console.log(prop)
+                  
+                  }
+  }, [ prop]);
 
 
 
@@ -64,14 +78,42 @@ const [medicineName, setMedicineName] = useState("")
      setIsMedOpen(false)
   }
 
-async function finalSubmit(){
+async function finalSubmit(isEnd){
   var message = ""
-  var name = patientName
-  var history = histori
+
+  
+ 
+   var name ; 
+  var _age;
+  var _gender;
+  var _phone;
+   if(!patientName) name = prop.name
+  else name = patientName
+  
+   var history = histori
   var diagnosis = diagnosisi
   var  suggestion = suggestioni
+  var labTest = labTesti
+  if(prop.type === "unregistered")
+  {
+      if(!phone) _phone = prop.phone 
+      else _phone = phone
+     var phoneno = /^\d{10}$/;
+    if(!_phone){
+      message = "Phone number not set\n"
+    }else if((!_phone.match(phoneno)))
+    {
+            message = "Invalid Phone number\n"
 
-  if(!name)     message = 'Patient name not set\n'
+    }
+    if(!age) _age = prop.age
+    else _age = age
+    console.log(prop.gender)
+    console.log(gender)
+    if(!gender) _gender = prop.gender
+    else _gender = gender
+  }
+  if(!name)     message =message+  'Patient name not set\n'
   if(!diagnosis) message = message +  "Patient diagnosis not set\n"
   if(!suggestion) message = message + "Suggestion to patient not set"
   
@@ -85,14 +127,16 @@ async function finalSubmit(){
     try {
       setError("")
       setLoading(true)
- 
+ console.log(JSON.stringify(prop), "-----")
+ var _data = {
+         patientName: name, history, diagnosis, suggestion, labTest, medicines : medicine, names : Object.keys(medicine), patientEmail: prop.email, type : "digital", age : _age, gender : _gender, phone : _phone, registered : prop.type, puid : prop.uid, isAddNew : prop.isAddNew , isConsultation : isEnd, consultationId : prop.consultationId
+
+        }
+        console.log(JSON.stringify(_data), "SENDING")
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', token :  await currentUser.getIdToken() },
-        body: JSON.stringify({
-         patientName: name, history, diagnosis, suggestion, medicines : medicine, names : Object.keys(medicine), patientEmail: prop.email, type : "digital"
-
-        })
+        body: JSON.stringify(_data)
       }; 
       let res = await fetch(process.env.REACT_APP_API_URL+'add-prescription', requestOptions)
       res = await res.text()
@@ -102,7 +146,18 @@ async function finalSubmit(){
       if (res['status'] === 'saved_successfuly') { 
         prop.callback(res.url);
         hideMed()
+
           prop.onHide();
+                  prop = {}
+        setHistori('')
+        setPatientName('')
+        setLabTest('')
+        setSuggestion('')
+        setDiagnosis('')
+        setAge('')
+        setGender('')
+        setMedicine({})
+        setMedicineName('')
         return;
       }else{
 
@@ -122,6 +177,7 @@ async function finalSubmit(){
     }
 } 
 
+console.log(prop, "HEREE")
 
  const resetMedForm = () =>{
 
@@ -233,7 +289,7 @@ const loadOptions = async (name) => {
     }catch(e)
     { 
 
-      setOptions([ ])
+      setOptions([])
      }
 
  
@@ -249,10 +305,10 @@ const handleDeleteChip = (chip, index) => {
       return (
     <>
  
-        <Modal style = {{zIndex:"100000"}} show={prop.show} onHide={() => {
+        <Modal style = {{ padding : "0px"}} show={prop.show} onHide={() => {
           hideMed()
           prop.onHide();
-        }} style = {{padding : "10px", }}>
+        }} >
         <Modal.Header  closeButton style = {{  borderBottom: "none"
 }}>
           <Modal.Title>    
@@ -263,14 +319,70 @@ const handleDeleteChip = (chip, index) => {
              {!isMedOpen ? 
              <>
               <Form >
-            <Form.Group id="name" style={{paddingTop: 10 }}>
+            <Form.Group id="name" style={{paddingTop: 0 }}>
               <Form.Label style = {Texts.FormLabel}>Patient Name</Form.Label>
               <Form.Control type="text"  onChange = {(e)=>{
-setPatientName(e.target.value)
-              }} value = { patientName ? patientName :  prop.name } required  />
+              setPatientName(e.target.value)
+               }} value = { patientName ? patientName :  prop.name } required  />
             </Form.Group>
 
-            <Form.Group id="history"  style={{paddingBottom: 15, paddingTop: 10,}}>
+{prop.type === "unregistered" && <>
+
+<Form.Group id="name" style={{paddingTop: 6 }}>
+              <Form.Label style = {Texts.FormLabel}>Phone Number</Form.Label>
+              <Form.Control type="tel"  onChange = {(e)=>{
+              setPhone(e.target.value)
+ 
+              }} value = { phone ? phone :  prop.phone } required  />
+            </Form.Group>
+           <Row>
+<Col sm> <Form.Group id="age" style={{paddingTop: 6 }}>
+              <Form.Label style = {Texts.FormLabel}>Age</Form.Label>
+              <Form.Control type="number"  onChange = {(e)=>{
+              setAge(e.target.value)
+              }} value = { age ? age :  prop.age } required  />
+            </Form.Group></Col>
+            <Col>
+            
+                    <Form.Group id="age" style={{paddingTop: 6 }}>
+              <Form.Label style = {Texts.FormLabel}>Gender</Form.Label>
+
+            <select name="prev"    onChange = {(e)=>{
+          setGender(e.target.value)
+              console.log(e.target.value)
+               }}   id="dropdown-basic">
+                      <option style={{ display: "none" }}> </option>
+
+                      {(gender ? gender :  prop.gender) === "rather not say" ? (
+                        <option value="rather not say" selected>
+                          Rather not say
+                        </option>
+                      ) : (
+                        <option value="rather not say">Rather not say</option>
+                      )}
+                      {(gender ? gender :  prop.gender)  === "male" ? (
+                        <option value="male" selected>
+                          Male
+                        </option>
+                      ) : (
+                        <option value="male">Male</option>
+                      )}
+
+                      {(gender ? gender :  prop.gender ) === "female" ? (
+                        <option value="female" selected>
+                          Female
+                        </option>
+                      ) : (
+                        <option value="female">Female</option>
+                      )}
+                    </select>
+      
+            </Form.Group>          </Col>
+             
+           </Row>
+
+</>}
+            <Form.Group id="history"  style={{paddingBottom: 15, paddingTop: 6,}}>
               <Form.Label  style = {Texts.FormLabel}>Patient History</Form.Label>
               <Form.Control type="text" onChange = {(e)=>{
                 setHistori(e.target.value)
@@ -279,10 +391,16 @@ setPatientName(e.target.value)
 
           
             <Form.Group id="findings"  style={{paddingBottom: 16}}>
-              <Form.Label  style = {Texts.FormLabel}>Diagnosis/Lab Findings</Form.Label>
+              <Form.Label  style = {Texts.FormLabel}>Diagnosis</Form.Label>
               <Form.Control type="text" onChange = {(e)=>{
                 setDiagnosis(e.target.value)
               }} value = {diagnosisi} required />
+            </Form.Group>
+         <Form.Group id="lab"  style={{paddingBottom: 16}}>
+              <Form.Label  style = {Texts.FormLabel}>Lab Findings</Form.Label>
+              <Form.Control type="text" onChange = {(e)=>{
+                setLabTest(e.target.value)
+              }} value = {labTesti} required />
             </Form.Group>
     
             <Form.Group id="investigation"  style={{paddingBottom: 22}}>
@@ -482,12 +600,19 @@ setSuggestion(e.target.value)
    {isMedOpen ? <br></br> 
    
    :     <Modal.Footer>
-          
-          <Button variant="primary" onClick = {()=>{
-            finalSubmit()
+        
+         {prop.isConsultation && <Button variant="primary" onClick = {()=>{
+            finalSubmit(true)
           }} disabled = {isMedOpen || loading}  >
-            Submit
-          </Button>
+            { "Submit and End Consultation"}
+          </Button>}
+
+          <Button variant="primary" onClick = {()=>{
+            finalSubmit(false)
+          }} disabled = {isMedOpen || loading}  >
+Submit          </Button>
+
+         
         </Modal.Footer>
    
    }

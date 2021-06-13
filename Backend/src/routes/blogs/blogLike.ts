@@ -2,15 +2,26 @@ import express from 'express';
 import patients from '../../models/patients';
 import doctors from '../../models/doctors';
 import blog from '../../models/blog';
-
+import checkAuthStatus from '../../actions/checkLoginStatus'
 const router = express.Router();
 
 router.post('/', async (req, res) => {
 
 
+try{
+       var user: any ; 
 
-    var user: any ; 
+    console.log(await checkAuthStatus.checkAuthStatus(req))
+    if(!await checkAuthStatus.checkAuthStatus(req))
+    {
+           var update = await blog.updateOne(
+        { _id: req.body.blogId },
+         { $inc: { likes: 1 } }
 
+   )
+             return res.send({status: 'saved_successfuly', });
+
+    }
     
     if(req.body.role == "doctor")
     {
@@ -55,6 +66,12 @@ if(!user.blogLikes)
     }
 
     return res.send({status: 'patient_not_found'});
+}catch(e){
+
+    return res.send({status: 'error'});
+}
+
+ 
 });
 
 export default router;

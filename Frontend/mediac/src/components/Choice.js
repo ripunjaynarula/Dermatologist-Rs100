@@ -388,9 +388,9 @@ if(rightNow)
           through : "payment"
                 }
 
-                setData(data)
-                setOpenBook(true)
-                return;
+                // setData(data)
+                // setOpenBook(true)
+                // return;
     
 }
          

@@ -202,8 +202,8 @@ app.use('/video', viewSingleVideo);
 app.use('/subscribe',checkAuth, subscribeNotif);
 app.use('/service', service);
 
-app.use('/like-video', checkAuth, likeVideo);
-app.use('/like-blog', checkAuth, likeBlog);
+app.use('/like-video',  likeVideo);
+app.use('/like-blog',  likeBlog);
 
 app.use('/razorpay', checkAuth, razorpayRoute);
 app.use('/acceptConsultation', acceptConsultations);
@@ -212,7 +212,6 @@ app.use('/getChatById', checkAuth,getChatById);
 app.use('/getConsultationStatus',checkAuth, checkConsultationStatus);
 app.use('/toggleArchive', checkAuth, archive);
 app.use('/cancelConsultation', checkAuth, cancelConsultationRouter);
-
 
 server.listen(port, () => {
     console.log(`Express server listening on port ${port}`);

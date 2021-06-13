@@ -2,6 +2,7 @@ import express from 'express';
 import patients from '../../models/patients';
 import doctors from '../../models/doctors';
 import video from '../../models/videos';
+import checkAuthStatus from '../../actions/checkLoginStatus'
 
 const router = express.Router();
 
@@ -9,8 +10,15 @@ router.post('/', async (req, res) => {
 
 
 
-    var user: any ; 
-
+    try{
+            var user: any ; 
+    if(!await checkAuthStatus.checkAuthStatus(req))
+    {
+            var update = await video.updateOne(
+        { _id: req.body.videoId },
+         { $inc: { likes: 1 } }
+   )
+    }
     
     if(req.body.role == "doctor")
     {
@@ -44,6 +52,8 @@ if(!user.videoLikes)
         { _id: req.body.videoId },
          { $inc: { likes: 1 } }
    )
+                return res.send({status: 'saved_successfuly', });
+
             }
                     
              return res.send({status: 'saved_successfuly', });
@@ -55,6 +65,12 @@ if(!user.videoLikes)
     }
 
     return res.send({status: 'patient_not_found'});
+    }catch(e){
+    return res.send({status: 'error'});
+
+    }
+
+
 });
 
 export default router;

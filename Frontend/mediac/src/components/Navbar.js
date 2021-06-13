@@ -386,6 +386,9 @@ const [isDoctor, setIsDoctor] = useState(false)
         
       </ReactBootStrap.Navbar>
     </div>
+  
+  
+  
   );
 };
 

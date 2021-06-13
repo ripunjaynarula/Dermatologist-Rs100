@@ -2,6 +2,7 @@ const publicVapidKey = "BJpjlvIqaOuxYlJlQhpaBdOE3r8lqbad_efST0Nu_owHRA-kt5agl4bD
 // Check for service worker
 
 const checkForSW = (token, email) => {
+    console.log("DADADADADA")
     if ("serviceWorker" in navigator) {
         send(token, email).catch(err => console.error(err));
     }
@@ -12,6 +13,9 @@ async function send(token, email) {
     try {
         // Register Service Worker
         console.log("Registering service worker...");
+
+
+
         const register = await navigator.serviceWorker.register("/worker.js", {
             scope: "/"
         });
@@ -42,14 +46,14 @@ async function send(token, email) {
         res = JSON.parse(res)
         console.log(res)
         m = res.message || ""
-            // alert(res.success + " " + m)
+            //  alert(res.success + " " + m)
         if (res.success) {
             window.close();
 
         }
 
     } catch (e) {
-        alert(r)
+        alert(e)
     }
 }
 
@@ -88,7 +92,7 @@ window.onload = function exampleFunction() {
 
     // const email = document.getElementById("email").value;
     //const password = document.getElementById("pass").value;
-    checkForSW(token, email);
+    //checkForSW(token, email);
 }
 
 function getParameterByName(name, url = window.location.href) {

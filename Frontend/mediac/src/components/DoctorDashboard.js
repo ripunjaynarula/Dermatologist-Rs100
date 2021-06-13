@@ -407,14 +407,14 @@ setText(e.target.value)
         onHide = {()=>{
           setShowDetails(false)
         }}
+        
         onSubmit = {onShowDetailsSend}
         data = {consultationDetails}
         onPrimary = {()=>{
           
                 setSelected(consultationDetails)
               setShowPrescription(true)
-              console.log(selectedRow, "))))((((", consultationDetails)
- 
+  
         }}
         
 
@@ -432,6 +432,9 @@ setText(e.target.value)
           email = {getDetails().email}
           isConsultation = {getDetails().isConsultation}
           consultationId = {getDetails().consultationId}
+          refresh = {() =>{
+          checkLogin()
+        }}
           callback = {(url)=>{
               var r = window.confirm("Prescription sent. View??");
   if (r === true) {

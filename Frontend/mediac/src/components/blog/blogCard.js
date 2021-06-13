@@ -42,9 +42,7 @@ export default function BlogCard(prop) {
 
               <div className="entry-img" style = {{ height: "300px", 
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-                <img src= {prop.image} alt="" style = {{  
-   width: "100vh",
-  objectFit: "cover"}} ></img>
+                <img src= {prop.image} alt="" ></img>
               </div>
 
               <h2 className="entry-title">
@@ -72,9 +70,8 @@ borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
       <img src = {heartSvg} className = "icon-big" alt=""></img><p style = {{fontSize : "14px", color : "#777777"}}> {prop.likes} people found this helpful </p>
 </Row>
 
-              <div className="primaryButtonSmall" >
-                  <a style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href={prop.blogLink}>Read More</a>
-                </div>
+                            <a className="primaryButtonSmall" style = {{color : "white", fontSize : "14px",     textDecoration: "none"}} href={prop.blogLink}>Read More</a>
+
            </Row>
              
               </div>

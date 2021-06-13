@@ -79,30 +79,34 @@ const Seo = ({ meta, image, title, description, pathSlug, keywords }) => {
                     rel: 'canonical',
                     href: url,
                 },
-                {
-                    rel: 'icon',
-                    type: 'image/png',
-                    href: icon16,
-                    sizes: '16x16',
-                },
-                {
-                    rel: 'icon',
-                    type: 'image/png',
-                    href: icon32,
-                    sizes: '32x32',
-                },
-                {
-                    rel: 'apple-touch-icon',
-                    type: 'image/png',
-                    href: icon192,
-                    sizes: '192x192',
-                },
-                {
-                    rel: 'apple-touch-startup-image',
-                    type: 'image/png',
-                    href: icon512,
-                    sizes: '512x512',
-                },
+
+
+
+
+                // {
+                //     rel: 'icon',
+                //     type: 'image/png',
+                //     href: icon16,
+                //     sizes: '16x16',
+                // },
+                // {
+                //     rel: 'icon',
+                //     type: 'image/png',
+                //     href: icon32,
+                //     sizes: '32x32',
+                // },
+                // {
+                //     rel: 'apple-touch-icon',
+                //     type: 'image/png',
+                //     href: icon192,
+                //     sizes: '192x192',
+                // },
+                // {
+                //     rel: 'apple-touch-startup-image',
+                //     type: 'image/png',
+                //     href: icon512,
+                //     sizes: '512x512',
+                // },
             ]
         }
         />

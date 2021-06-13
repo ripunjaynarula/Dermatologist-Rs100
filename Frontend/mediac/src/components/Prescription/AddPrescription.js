@@ -147,6 +147,9 @@ async function finalSubmit(isEnd){
         prop.callback(res.url);
         hideMed()
 
+if(isEnd){
+  prop.refresh()
+}
           prop.onHide();
                   prop = {}
         setHistori('')
@@ -177,8 +180,7 @@ async function finalSubmit(isEnd){
     }
 } 
 
-console.log(prop, "HEREE")
-
+ 
  const resetMedForm = () =>{
 
 setMedicineName("")

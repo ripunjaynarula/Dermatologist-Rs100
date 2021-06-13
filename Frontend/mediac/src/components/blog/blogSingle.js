@@ -21,7 +21,7 @@ import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
    import SideBar from "./sidebar"
  require('fetch-everywhere');
-
+var firs = false
 export default function Home() {
 
         const { login, currentUser } = useAuth();
@@ -49,6 +49,8 @@ const [hlinkedin, setLinkedin] = useState('')
 const [instagram, setInstagram] = useState("")
 
  useLayoutEffect(() => {
+   if(firs) return
+   firs = true
     window.scrollTo(0, 0, {duration:0})
 });
 
@@ -144,6 +146,7 @@ if(likes === 1)
 
 
  async function handleClick(e) {
+   
         e.preventDefault();
 
      if(liked) return
@@ -237,9 +240,8 @@ catch(e){}
 
               <div class="entry-img" style = {{  
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
-                <img src= {imageLink} alt=""  style = {{  
-   width: "100vh",
-  objectFit: "cover"}}></img>
+                
+                <img src= {imageLink} alt=""   ></img>
               </div>
 
               <h2 class="entry-title">

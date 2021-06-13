@@ -16,7 +16,7 @@ import bg3 from "./img/b3.jpg";
 import HomeBottom from './AboutPage/HomeBottom'
 import useWindowDimensions from "../functions/windowDimensions";
 import plus from './img/plus.svg'
-
+import SEO from './utility/seo'
 const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
 const delay = 2000;
 
@@ -115,6 +115,7 @@ export default function Home() {
 
   return (
     <>
+    <SEO  title="Home" keywords  = "dermatologist, skin care, skin doctor"></SEO>
      <div className="Navb">
           <Navbar type="trans" />
         </div>

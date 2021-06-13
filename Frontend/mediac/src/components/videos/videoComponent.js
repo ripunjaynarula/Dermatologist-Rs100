@@ -49,8 +49,8 @@ function openVideo(){
               <div className="entry-img" style = {{ height:  (width < 992 && width > 767) ? "200px" :    width > 1199 ?  "200px" : "250px", 
 borderTopLeftRadius : "3px", borderTopRightRadius: "3px"}}>
                 <img src= {prop.image} alt="" style = {{  
-   height: width < 474 ? "100%" : "200px",
-   width : width > 472 && "100%",
+   height:   "100%",
+   width :   "100%",
  
   objectFit: "cover"}}
   

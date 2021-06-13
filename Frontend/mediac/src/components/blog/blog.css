@@ -390,6 +390,11 @@ section {
     overflow: hidden;
 }
 
+.blog .entry .entry-img img {
+    object-fit: cover;
+    width: 100% !important;
+}
+
 .blog .limit {
     word-break: break-word;
     overflow: hidden;

@@ -67,9 +67,8 @@ async function handleEmail(e){
     setSuccess("")
      var key = e.charCode || e.keyCode || 0;  
      console.log(e)   
-  if (key == 13) {
-    alert("I told you not to, why did you do it?");
-return;
+  if (key === 13) {
+ return;
   }
  setLoading(true)
 

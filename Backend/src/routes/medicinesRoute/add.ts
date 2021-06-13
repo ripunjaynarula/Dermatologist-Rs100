@@ -12,6 +12,7 @@ import Unreistered from '../../models/unregistered';
 import {ObjectID} from 'mongodb';
 import consultations from '../../models/consultation'
 import sendWhatsapp from '../../actions/whatsappMessage'
+import sendSMS from '../../actions/sms';
  const signature = "https://d3pxd5vsj7zayf.cloudfront.net/images/sign.png"
 router.post('/', async (req, res) => {
     try {
@@ -207,16 +208,18 @@ return
 function doAll(phone : any, message : any){
 
     sendWhatsAppMessage("918077781807", "message")
-
+_sendSMS(phone, message)
 }
 
-function sendSMS(){
+function _sendSMS(phone : any, message : any){
 
+sendSMS(phone, message)
 }
 function sendWhatsAppMessage(phone : any, message : any){
 
 
-    sendWhatsapp(phone, message)
+ //   sendWhatsapp(phone, message)
+
 
 
 }

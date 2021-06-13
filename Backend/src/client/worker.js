@@ -14,7 +14,7 @@ self.addEventListener("push", e => {
     });
 });
 self.addEventListener('notificationclick', function(event) {
-    let url = "http://localhost:5000/" + 'acceptConsultation?cid=' + id + '&email=' + email;
+    let url = "https://dermatologistin100rs.com/" + 'acceptConsultation?cid=' + id + '&email=' + email;
     event.notification.close(); // Android needs explicit close.
     event.waitUntil(
         clients.matchAll({ type: 'window' }).then(windowClients => {

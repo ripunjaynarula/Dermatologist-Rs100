@@ -4,7 +4,7 @@ import App from "./components/App"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { render } from 'react-snapshot'
 
- render(
+ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

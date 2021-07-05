@@ -61,6 +61,8 @@ async function handleEmail(e){
 
 
 }
+
+
   async function handleSubmit(e)  {
     e.preventDefault()
         setError("")
@@ -87,7 +89,7 @@ var params = "?token=" + token;
   var timer = setInterval(function() {
         if (win.closed) {
             clearInterval(timer);
-            alert("'Notification registered");
+            alert("Notification registered");
             //window.reload()
         }
     }, 500);

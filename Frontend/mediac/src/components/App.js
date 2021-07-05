@@ -49,7 +49,8 @@ import treatment from "./blog/Treatments/treatment";
 import testimonials from "./AboutPage/Testimonials/testimonialsPage";
 import notification from "./registerPush/client";
 import publicProfile from "./Profile/DocProfile";
-
+import privacyPolicy from './utility/privacyPolicy'
+import termsAndConditions from './utility/termsAndConditions'
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
@@ -240,6 +241,8 @@ publicProfile
                 path="/doctordashboard"
                 component={DoctorDashboard}
               />
+              <Route path="/privacy-policy" component={privacyPolicy} />
+              <Route path="/terms-and-conditions" component={termsAndConditions} />
 
               <Route exact path="/my-blogs" component={myBlogs} />
 
@@ -247,23 +250,45 @@ publicProfile
                 value={[currentChat, setCurrentChat]}
               >
                 <ChatDataContext.Provider value={[chats, setChats]}>
-                  <AdditionalChatContext.Provider value = {[data, setData]}> 
+               
+
+   <AdditionalChatContext.Provider value = {[data, setData]}> 
+                             <Switch>
+
                     <PrivateRoute exact path="/chat" component={Chat} />
                     <PrivateRoute exact path="/chat/d" component={ChatDoctor} />
-                  </AdditionalChatContext.Provider>
-                </ChatDataContext.Provider>
-              </CurrentChatContext.Provider>
-              <TokenContext.Provider value={[token, setToken]}>
+
+                 <TokenContext.Provider value={[token, setToken]}>
                 <Route exact path="/adminlogin" component={AdminLogin} />
                 <Route exact path="/AddDoc" component={AddDoc} />
-              </TokenContext.Provider>
-              
-              <Route path='*' exact={true} component={page404} />
+                                              <Route    component={page404} />
 
+              </TokenContext.Provider>
+
+
+               
+                   </Switch>
+
+               
+                  </AdditionalChatContext.Provider>
+
+
+
+
+           
+              
+
+
+                </ChatDataContext.Provider>
+
+              </CurrentChatContext.Provider>
+
+
+            
             </Switch>
           </SocketContext.Provider>
         </DataContext.Provider>
- 
+
 
 
       </AuthProvider>

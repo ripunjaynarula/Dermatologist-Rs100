@@ -107,7 +107,7 @@ e.preventDefault()
 
  <section id="hero" class="d-flex align-items-center">
         <div class="container">
-            <h1>Welcome to Medilab</h1>
+            <h1>Skin & Laser Center</h1>
             <h2>Expert consultation at ₹100 only</h2>
             <a href="#about" class="btn-get-started scrollto" onClick = {handleShow}>Consult Now</a>
         </div>

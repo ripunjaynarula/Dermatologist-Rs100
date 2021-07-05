@@ -83,6 +83,7 @@ export default function ProfileSelection(props) {
            }
 
         }
+        console.log(res, "DETAIal")
         props.onLoad("s",res.gender, res.age, res.phoneNumber, res.consultationId, res.data)
       }
      }catch(e)

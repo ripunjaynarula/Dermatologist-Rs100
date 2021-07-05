@@ -91,6 +91,56 @@ export default function Choice() {
     });
   };
 
+
+    const loadPaytm = (orderId, token, amount) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/UlYyJJ68894954901885.js";
+      script.onload = () => {
+        console.log("LOADED")
+        onScriptLoad(orderId, token, amount);
+      };
+      script.onerror = () => {
+        console.log("ERROR");
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+function onScriptLoad(orderId, token, amount){
+      var config = {
+        "root": "",
+        "flow": "DEFAULT",
+        "data": {
+        "orderId": orderId, /* update order id */
+         "token" : token,
+         "tokenType": "TXN_TOKEN",
+         
+        "amount": amount /* update amount */
+        },
+        "handler": {
+          "notifyMerchant": function(eventName,data){
+            console.log("notifyMerchant handler function called");
+            console.log("eventName => ",eventName);
+            console.log("data => ",data);
+          } 
+        }
+      };
+
+      if(window.Paytm && window.Paytm.CheckoutJS){
+          window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+              // initialze configuration using init method 
+              window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                  // after successfully updating configuration, invoke JS Checkout
+                  window.Paytm.CheckoutJS.invoke();
+              }).catch(function onError(error){
+                  console.log("error => ",error);
+              });
+          });
+      } 
+  }
+
+
    const handleProfileSelection = (id, name, relation, gender, age) => {
             console.log(id)
 
@@ -242,7 +292,7 @@ function buildForm({ action,  params }) {
 
       },
       external: {
-  wallets: ['paytm'],
+ // wallets: ['paytm'],
   handler: async function (data) {
  setError("");
      try{
@@ -284,8 +334,10 @@ function buildForm({ action,  params }) {
       }
        console.log(res);
 
-      post(details)
-      console.log("PSOTED");
+loadPaytm(res.ORDER_ID, token, res.TXN_AMOUNT)
+
+ //     post(details)
+   //   console.log("PSOTED");
 
    // res = await fetch("https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=" + res.MID +"&orderId=" + res.ORDER_ID, opt);      
      }catch(e){
@@ -350,21 +402,29 @@ if(phoneRef.current.value.length >13  )
 if(clinicDetails.openDays)
   if(!clinicDetails.openDays.includes(dayMap[new Date().getDay()]))
   {
-    rightNow = true
+     rightNow = true
   }else{
       if(clinicDetails.openTime)
       {
+
+    console.log("LINE 411")
           var now  = new Date()
           var j =0;
           for(var i=0; i<clinicDetails.openTime.length; i++)
           {
+
             var time = new Date(now.toDateString() + " " + clinicDetails.openTime[i])
 
             if(    time > now)
             {
-              j++
+              
+               j++
             }
           }
+          if(new Date(now.toDateString() + " " + clinicDetails.openTime[0]) > now){
+            j =0
+          }
+
           if(j===0)
           {
             rightNow = true;
@@ -388,9 +448,9 @@ if(rightNow)
           through : "payment"
                 }
 
-                // setData(data)
-                // setOpenBook(true)
-                // return;
+                setData(data)
+                setOpenBook(true)
+                return;
     
 }
          

@@ -38,7 +38,7 @@ import useWindowDimensions from "../../functions/windowDimensions"
  Issue - {prop.data.description} <br/>
 
 <br/>
- Previous Conditions - {prop.data.email} <br/>
+ Previous Conditions - {prop.data.previousCondition} <br/>
  Allergies - {prop.data.allergies} <br/>
  Previous Medications - {prop.data.medication} <br/>
 

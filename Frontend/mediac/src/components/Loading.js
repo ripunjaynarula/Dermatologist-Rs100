@@ -16,6 +16,8 @@ export default function Loading(props) {
   const [disp, setDisp] = useState(false);
   const [ completed, setCompleted] = useState(.1)
   const { currentUser } = useAuth();
+ const [successText, setSuccess] = useState(false)
+
  const [errorText, setError] = useState(false)
   const history = useHistory();
     document.body.style.backgroundColor = "#ededf2";
@@ -63,16 +65,18 @@ else{
   }
 
   const handleCancelation = async() => {
+    setSuccess('')
     const token = await app.auth().currentUser.getIdToken(true);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json", token: token },
-      body: JSON.stringify({consultatioId: props.id,  }),
+      body: JSON.stringify({consultationId: props.id,  }),
     };
     let res = await fetch(process.env.REACT_APP_API_URL + 'cancelConsultation', requestOptions);
     res = await res.text();
     res = JSON.parse(res);
     if(res['status']){
+      setSuccess("Amount will be reunded in 7 days")
      setFlag(false);
      setDisp(true);
     }
@@ -120,10 +124,9 @@ if(i/6 >=100) i=0
                   
 
                    {errorText ?  <Alert variant="danger" style= {{marginTop : "20px", marginBottom : "0px"}}>Connection Error</Alert> : disp ? <div class="alert alert-success" role="alert">
-          Consultation Cancelled successfully
+          Consultation Cancelled successfully.  <br/> Amount will be refunded in 7 days
         </div>  :  <ProgressBar animated now={completed} />}
-
-
+ 
 
                   <br></br><br></br>
                   <Button disabled={flag} onClick={handleCancelation}

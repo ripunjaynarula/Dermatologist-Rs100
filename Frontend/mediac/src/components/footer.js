@@ -24,11 +24,9 @@ import React, { } from "react";
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Medilab</h3>
+                        <h3>Skin & Laser Center</h3>
                         <p>
-                             <strong>Phone:</strong> +1 5589 55488 55<br/>
-                            <strong>Email:</strong> drsandeshg@rediffmail.com
-<br/>
+ <br/>
                         </p>
 
                   <div style = {{marginTop : "20px"  }}>
@@ -50,8 +48,8 @@ import React, { } from "react";
                             <li><i class="bx bx-chevron-right"></i> <a href="/about">About us</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="/videos">Videos</a></li>
                                                         <li><i class="bx bx-chevron-right"></i> <a href="/blogs">Blogs</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/terms-and-conditions">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/privacy-policy">Privacy policy</a></li>
                         </ul>
                     </div>
 
@@ -72,7 +70,7 @@ import React, { } from "react";
 
                 </div>
                 <div class="copyright">
-                    &copy; Copyright <strong><span>XYZ</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>Skin & Laser Center</span></strong>. All Rights Reserved
                 </div>
                
             </div>

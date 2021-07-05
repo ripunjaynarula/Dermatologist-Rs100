@@ -38,7 +38,7 @@ export default function Loading(props) {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json", token: token },
-      body: JSON.stringify({consultatioId: props.id, paymentId: props.paymentId}),
+      body: JSON.stringify({consultationId: props.id, paymentId: props.paymentId}),
     };
     let res = await fetch(process.env.REACT_APP_API_URL + 'cancelConsultation', requestOptions);
     res = await res.text();

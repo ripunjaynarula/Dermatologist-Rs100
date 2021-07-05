@@ -61,9 +61,12 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
 
       console.log(res);
       setLoading(false)
+      if (res['status'] === 'logged_in'){
+        history.push("/dashboard")
+        return
 
-      if (res['status'] !== 'verification_mail_sent') {
-        setError('Technical Error');
+      }else if (res['status'] !== 'verification_mail_sent') {
+         setError('Technical Error');
         return;
       }
       history.push("/verification-sent")

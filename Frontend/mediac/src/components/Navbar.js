@@ -257,7 +257,7 @@ const [isDoctor, setIsDoctor] = useState(false)
           }}
           href="/"
         >
-          <img src = {logo} height = "40px"></img>
+          <img src = {logo} height = "45px"></img>
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

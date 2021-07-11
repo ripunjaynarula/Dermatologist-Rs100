@@ -27,7 +27,10 @@ import React, { } from "react";
                         <h3>Skin & Laser Center</h3>
                         <p>
  <br/>
-                        </p>
+
+Address : F-10/9 Krishna Nagar, East Delhi, 110051
+<br/>
+Contact : +91-9312630800                        </p>
 
                   <div style = {{marginTop : "20px"  }}>
 
@@ -48,8 +51,7 @@ import React, { } from "react";
                             <li><i class="bx bx-chevron-right"></i> <a href="/about">About us</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="/videos">Videos</a></li>
                                                         <li><i class="bx bx-chevron-right"></i> <a href="/blogs">Blogs</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="/terms-and-conditions">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="/privacy-policy">Privacy policy</a></li>
+                        
                         </ul>
                     </div>
 
@@ -66,6 +68,17 @@ import React, { } from "react";
                         </ul>
                     </div>
  
+                    <div class="col-lg-4 col-md-6 footer-links">
+                        <h4>Others</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/terms-and-conditions">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/privacy-policy">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/cancelation-policy">Cancelation policy</a></li>
+
+                        </ul>
+                    </div>
+ 
+                    
                     
 
                 </div>

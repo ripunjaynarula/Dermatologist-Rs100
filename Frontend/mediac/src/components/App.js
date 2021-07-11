@@ -51,6 +51,8 @@ import notification from "./registerPush/client";
 import publicProfile from "./Profile/DocProfile";
 import privacyPolicy from './utility/privacyPolicy'
 import termsAndConditions from './utility/termsAndConditions'
+import cancelationPolicy from './utility/cancelationPolicy'
+
 export const DataContext = React.createContext();
 export const DocMailContext = React.createContext();
 export const TokenContext = React.createContext();
@@ -243,6 +245,8 @@ publicProfile
               />
               <Route path="/privacy-policy" component={privacyPolicy} />
               <Route path="/terms-and-conditions" component={termsAndConditions} />
+                            <Route path="/cancelation-policy" component={cancelationPolicy} />
+
 
               <Route exact path="/my-blogs" component={myBlogs} />
 

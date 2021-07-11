@@ -180,8 +180,11 @@ e.preventDefault()
                     </div>
 
                     <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                        <h3>Skin N Laser Centre</h3>
-                        <p>Skin N Laser Centre is an answer for all your skin, hair and nail problems. It was established in 2003 and currently it's a super speciality cosmetology & Laser clinic, which offers a comprehensive range of world class diagnostic, therapeutic and aesthetic dermatological services.</p>
+                        <h3>Sanstuti Pharmaceuticals</h3>
+                        <p>
+                            Sanstuti Pharmaceuticals is a quality derma care initiative which has been made with a vision of providing the best of derma care products. The company believes in providing the best yet affordable products. The company gains its confidence from its innovative production lines, continuous Research & Development, strict quality control and strong marketing support.
+ 
+                        </p>
 
                          <h4 class="title">How we are economical?</h4>
                             <p class="description">

@@ -87,7 +87,7 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
   return (
     <>
      <div className="Navb"><Navbar /></div>
-    <Container className="d-flex align-items-center justify-content-center " style={{ minHeight: "100vh", marginTop: "1.5%"}}>
+    <Container className="d-flex align-items-center justify-content-center topSpace" style={{ minHeight: "100vh", }}>
       <Card  style={{CardMain},{ maxWidth: "500px", padding:"15px"}} >
         <Card.Body>
           <br></br>

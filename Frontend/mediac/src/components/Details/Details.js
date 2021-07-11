@@ -110,7 +110,7 @@ function getMain(){
     }
   }
 
-  return       <div className = "centre" style = {{maxHeight :"80vh",   paddingTop: "12vh"}}>
+  return       <div className = "centre topSpace" style = {{maxHeight :"80vh",   paddingTop: "12vh"}}>
 
      <div class="card " style={{ backgroundColor: "white" }}>
         <div className="App">

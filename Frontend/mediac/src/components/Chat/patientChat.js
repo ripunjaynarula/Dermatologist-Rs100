@@ -57,7 +57,8 @@ async function onlyOnce()  {
        {width > 600 ?        
        <div className="chat">
           <Navbar ></Navbar>
-           <div className={width>1138 ? "centre" : "centre-bigger"} >
+          <div style = {{height:"70px"}}></div>
+           <div className={ width>1138 ? "centre" : "centre-bigger"} >
             <div class="card chatcard" style = {{marginTop:"100px"}}>
               <div class="card-body row " >
                 <div className="col-3 chatsideb">

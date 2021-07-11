@@ -16,7 +16,7 @@ const Pages404 = () => {
   <br/>
   <br/>
 
-    <div class = "container">
+    <div class = "container topSpace">
 
 
 

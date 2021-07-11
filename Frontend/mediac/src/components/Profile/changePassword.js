@@ -98,7 +98,7 @@ setError("Cannot update password")
 
  <div  >
 
-<Container  className="d-flex align-items-center justify-content-center "  style={{   }}>
+<Container  className="d-flex align-items-center justify-content-center topSpace"  style={{   }}>
 
 
 

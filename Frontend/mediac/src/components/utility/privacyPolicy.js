@@ -12,7 +12,7 @@ const Pages404 = () => {
     <React.Fragment>
             <div className="Navb" ><Navbar  /></div>
  <br/>
-    <div class = "container">
+    <div class = "container topSpace">
 
 
 

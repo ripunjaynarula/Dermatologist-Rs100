@@ -41,7 +41,7 @@ import viewPatientProfile from './routes/profile/viewPatientProfile'
 import viewDocProfilePvt from './routes/profile/viewDoctorProfilePrivate'
 import resendEmail from './routes/resendVerificationMail'
 import help from './routes/utility/help';
-
+import consultancyNoGateway from './routes/newConsultationNoGateway';
 import viewDoctorProfile from './routes/profile/viewDoctorProfile'
 import verifyDocLogin from './routes/verifyDocLogin';
 import docDetailsRouter from './routes/getDocDetails';
@@ -52,6 +52,7 @@ import likeVideo from './routes/videos/likeVideo';
 import subscribeNotif from './routes/subscribe';
 import razorpayRoute from './routes/razorpay';
 import acceptConsultations from './routes/acceptConsultation';
+import acceptConsultationUserEnd from './routes/acceptConsultationUserEnd'
 import getChats from './routes/getChats';
 import getChatById from './routes/getChatById'
 import chat from './models/chat'
@@ -156,7 +157,7 @@ app.use('/newConsultancy', checkAuth, newConsultancyRouter);
 app.use('/addNewProfile', checkAuth, newProfileRouter);
 app.use('/getProfiles',checkAuth, getProfiles);
 app.use('/verifyDoc', verifyDocLogin);
-
+app.use('/consultancy-no-gateway', checkAuth,consultancyNoGateway)
 app.use('/get-image-upload-url', checkAuth, getImageUploadUrl);
 
 app.use('/get-profile-upload-url', checkAuth, profilePictureUpload);
@@ -188,7 +189,7 @@ app.use('/videos', allVideos);
 
 app.use('/my-blogs',checkAuth, myBlogs);
 app.use('/delete-blog',checkAuth, delBlog);
-
+app.use('/accept-consultation-user', checkAuth, acceptConsultationUserEnd)
 app.use('/blogs-limit', blogsLimit);
 app.use('/prescriptions',checkAuth, prescriptions);
 

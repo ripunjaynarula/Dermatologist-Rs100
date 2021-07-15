@@ -18,7 +18,7 @@ if(!isLoggedIn)     return res.send({isError: true, message: "Internal Server Er
 if(req.body.role !== "doctor")     return res.send({isError: true, message: "Internal Server Error"})
 
 
-     res.sendFile(path.join(__dirname, "../../src/client", "index.html"))
+     res.sendFile(path.join(__dirname, "../client", "index.html"))
 
 });
 

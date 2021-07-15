@@ -14,32 +14,14 @@ const router = express.Router();
 
 
 router.post('/', async (req:any, res: any) => {
+    console.log("aaaaaaaaaa===================")
+
     var patient = await patients.findOne({email: req.body.email});
     if(!patient){
         return res.send({success: false, message: "Invalid Attempt."})
     }
-
-
-    let { razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body;
-
-    var isVerified = await verifyRazorpayPayment(razorpayOrderId, razorpayPaymentId,razorpaySignature)
-
-    if(!isVerified)
-    {
-        return res.send({success:false, message:"Invalid Attempt"})
-    }
-
-    var o = await razorpay.payments.fetch(razorpayPaymentId);
-    var amount = parseInt(o["amount"]) / 100;
-    let payment : any = new payments({
-        userId : req.body.uid,
-        paymentId: razorpayPaymentId, 
-        orderId: razorpayOrderId,
-        signature: razorpaySignature,
-        amount : amount,
-        pType:"razorpay",
-    })
-
+ 
+    console.log("bbbbbbbbb===================")
 
     let id = '';
     while (true){
@@ -48,7 +30,8 @@ router.post('/', async (req:any, res: any) => {
         if (!d){
             break
         }
-    }
+    }    console.log("cccccccc===================")
+
 
     let consultation: any = new consultations({
         patientEmail: req.body.email,
@@ -62,15 +45,19 @@ router.post('/', async (req:any, res: any) => {
         allergies: req.body.allergies,
         previousCondition: req.body.previousConditions,
         uid: id,
-        phone: req.body.phone,
-        orderId : razorpayOrderId,
+        phone: req.body.phone, 
         gender : req.body.gender,
         time: Date.now(),
+isWithoutPayment : true,
+scheduled : false,
+state : req.body.state,
+orderId : "not-set"
     });
+    console.log("ddddddddd===================")
 
     try{
-        await payment.save();
-        consultation = await consultation.save();
+         consultation = await consultation.save();
+         console.log(consultation, "------------------")
         //send notification
         var notifs = await subscriptions.find({});
         notifs.map(async (client: any) => {
@@ -104,6 +91,7 @@ router.post('/', async (req:any, res: any) => {
 
         return res.send({success: true, id: consultation.uid});
     } catch (e) {
+        console.log(e)
         res.send({success: false, message: 'Internal Error.'});
         return;
     }

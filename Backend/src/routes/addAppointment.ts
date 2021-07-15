@@ -73,7 +73,7 @@ router.post('/', async (req:any, res: any) => {
             sendConsultationMail(docs[i].notificationEmail,'',req.body.name,req.body.question , dateAndTime(startDate.getTime()) )
 
         }
-      var isSent =   await sendMail(req.body.email, "Your consultation has been scheduled" , `<p>Hey,</p><p> Your consultation has been scheduled with us on ${startDate.toDateString()} at ${startDate.toTimeString().split(" ")[0]} </p>`, `"SkinNLaser ${process.env.MAIL_ID}"` )
+        var isSent =   await sendMail(req.body.email, "Your consultation has been scheduled" , `<p>Hey,</p><p> Your consultation has been scheduled with us on ${startDate.toDateString()} at ${startDate.toTimeString().split(" ")[0]} </p>`, `"SkinNLaser ${process.env.MAIL_ID}"` )
 
 
 
@@ -87,7 +87,7 @@ router.post('/', async (req:any, res: any) => {
         return;
     }
 
-});
+}); 
 
 
 async function sendNotification(subscripiton :any,  payload:any, id:any){

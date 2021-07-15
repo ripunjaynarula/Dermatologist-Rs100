@@ -24,7 +24,7 @@ router.post('/',checkAuth, async (req, res) => {
    {
        if(!d.verified)
        {
-                    return res.send({status: 'verification_mail_sent', isError : false,   scope: 'patient'})
+                  //  return res.send({status: 'verification_mail_sent', isError : false,   scope: 'patient'})
 
        }
          return res.send({isError : false, status : "logged_in", scope: 'patient'})
@@ -51,7 +51,9 @@ router.post('/',checkAuth, async (req, res) => {
         let jwtSecret: any = process.env.JWT_SECRET;
         let verificationToken: string = jwt.sign({_id : req.body.uid}, jwtSecret);
         sendVerificationMails(req.body.email, verificationToken);
-        return res.send({status: 'verification_mail_sent', isError : false, scope: 'patient'});
+                 return res.send({isError : false, status : "logged_in", scope: 'patient'})
+
+       // return res.send({status: 'verification_mail_sent', isError : false, scope: 'patient'});
     } catch(e) {
         console.error(e);
         return res.send({status: 'technical_error', isError : true});

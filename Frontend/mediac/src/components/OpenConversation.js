@@ -737,7 +737,7 @@ function callback(url){
                       :
                       <>
                       
-                      <div
+                  {  message['type'] !="doctor" &&  <div
                       className={`rounded px-2 py-1 ${
                         currentUser.email === message["from"]
                           ? "bg-primary text-white"
@@ -755,8 +755,22 @@ function callback(url){
                             : "35px",
                       }}
                     >
-                      {message["text"]}
+                      { message["text"]  }
                     </div>
+                 }
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
                   { message["timestamp"] &&  <div
                       className={`text-muted small date ${
                         currentUser.email === message["from"]

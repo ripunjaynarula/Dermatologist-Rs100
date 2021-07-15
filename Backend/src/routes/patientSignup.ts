@@ -38,7 +38,8 @@ router.post('/',checkAuth, async (req, res) => {
 
         sendVerificationMails(req.body.email, verificationToken);
 
-        return res.send({status: 'verification_mail_sent'});
+        return res.send({status : "logged_in"})
+        // return res.send({status: 'verification_mail_sent'});
 
     } catch(e) {
         console.error(e);

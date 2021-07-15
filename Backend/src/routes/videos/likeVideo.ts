@@ -18,6 +18,8 @@ router.post('/', async (req, res) => {
         { _id: req.body.videoId },
          { $inc: { likes: 1 } }
    )
+                return res.send({status: 'saved_successfuly', });
+
     }
     
     if(req.body.role == "doctor")

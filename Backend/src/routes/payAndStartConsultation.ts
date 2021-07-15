@@ -1,4 +1,4 @@
-import express, { query } from 'express';
+import express from 'express';
 import consultations from '../models/consultation';
 import doctors from '../models/doctors';
 import chat from '../models/chat';
@@ -8,82 +8,12 @@ import patients from '../models/patients';
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-//accepted, active
-//true      true       patient chating with doctor
-//true      false      Consultation Ended successfully after chat and all
-//false     true       
-//false     false      Consultation closed  Either by user or by doctor just set that in status variable in db
-    console.log(req.query, "____________ -------------  ------------- _____________")
- 
-
-    if(req.query.isPaid === "notpaid"){
-
-
-            const doc: any = await doctors.findOne({email: req.query.email});
-       if(req.query.status==='on' || req.query.status === 'cancel')
-
-  if(doc){
-        let consultation: any = await consultations.findOne({uid: req.query.cid});
-        if(consultation){
-            if(!consultation.accepted && !consultation.active){
-                return res.send({error : true, message:"Consultation Ended"})
-            } 
-
-            
-            if(consultation.byDoctorStatus === "on")
-            {
-                return res.send({error: true, message : "Consultation already started"})
-            }  if(consultation.byDoctorStatus === "cancel")
-            {
-                return res.send({error: true, message : "Consultation already cancelled"})
-            }
-            if(consultation.accepted){
-                let u = process.env.WEB_URL || ""
-                return res.redirect(u + "chat/d");
-            }
-            consultation.accepted = true;
-            consultation.active = true;
-            consultation.doctorEmail = doc.email;
-            consultation.doctorName = doc.name;
-            consultation.byDoctorStatus = req.query.status
-            if(req.query.status === 'cancel')
-            {
-                  consultation.accepted = false;
-                  consultation.active = false;
-                  consultation.status = "Consultation cancelled by doctor, not paid"
-            }
-        }
-        try{
-
-            consultation = await consultation.save();
-            let id='';
- 
- 
-                          return res.send({error : true, message: req.query.status === "on" ? "Consultation Started" : "Consultation Cancelled"})
-
-
-  
-          
-        }catch(e){
-            console.log("Error occured!", e);
-        }
-    }
-
-    else{
-        console.log(req.query,"000000000")
-    }
-
-
-
-
-    } else{
-            const doc: any = await doctors.findOne({email: req.query.email});
+    console.log(req.query, "_________________")
+    const doc: any = await doctors.findOne({email: req.query.email});
     if(doc){
         let consultation: any = await consultations.findOne({uid: req.query.cid});
         if(consultation){
-            if(!consultation.accepted && !consultation.active){
-                return res.send({error : true, message:"Consultation Ended"})
-            } 
+            if(!consultation.accepted && !consultation.active){return res.send({error : true, message:"Consultation Ended"})} 
             if(consultation.accepted){
                 let u = process.env.WEB_URL || ""
                 return res.redirect(u + "chat/d");
@@ -94,7 +24,6 @@ router.get('/', async (req, res) => {
             consultation.doctorName = doc.name;
         }
         try{
-
             consultation = await consultation.save();
             let id='';
 
@@ -166,11 +95,6 @@ router.get('/', async (req, res) => {
     
  let u = process.env.WEB_URL || ""
                 return res.redirect(u + "chat/d");
-    }
-
-
-
-
  });
 
 export default router;

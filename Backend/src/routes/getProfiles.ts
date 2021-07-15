@@ -4,6 +4,7 @@ import getAge from '../actions/getAge'
 import consultations from '../models/consultation'
 const router = express.Router();
 import Settings from '../models/settings';
+import chat from '../models/chat'
 
 router.get('/', async (req, res) => {
 try{
@@ -28,21 +29,39 @@ try{
 
 
 
-              var consultation: any = await consultations.find({patientEmail: req.body.email});
+        var consultation: any = await consultations.find({patientEmail: req.body.email});
   var consultationId = ''
+  var chatId = "";
    for(var i=0;i<consultation.length; i++)
    {
        if(consultation[i].scheduled === false)
        {
-           if(consultation[i].active && !consultation[i].accepted)
+
+//for paid uncomment this immidieate below one and comment far below onw
+//if(consultation[i].active && !consultation[i].accepted)
+           
+           //for not paid
+           if(consultation[i].active && consultation[i].accepted && consultation[i].byDoctorStatus === 'on')
             {
+                              console.log(consultation[i])
+
                 consultationId = consultation[i].uid
+
+                 let ch :any= await chat.findOne({consultationId: consultationId});
+console.log(ch,"CHAT================================")
+                if(ch){
+                    
+                    chatId = ch.chatId
+                    }
                 break
             }
        }
    }
+
+var data = {status: 'success', data: details.length >0 ? details[0] : {} ,profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone , consultationId: consultationId , chatId :chatId}
+   console.log(data)
  
-         return res.send({status: 'success', data: details.length >0 ? details[0] : {} ,profiles: profiles, age : age, gender : patient.gender, phoneNumber : patient.phone , consultationId: consultationId });
+         return res.send(data);
     }
  return   res.send({status: 'no_account_found'});
 }catch(e)

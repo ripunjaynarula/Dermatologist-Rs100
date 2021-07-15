@@ -84,6 +84,11 @@ export default function ProfileSelection(props) {
 
         }
         console.log(res, "DETAIal")
+        if(res.chatId)
+        {
+                          history.push("/chat")
+
+        }
         props.onLoad("s",res.gender, res.age, res.phoneNumber, res.consultationId, res.data)
       }
      }catch(e)

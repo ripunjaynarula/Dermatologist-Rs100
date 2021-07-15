@@ -14,10 +14,10 @@ console.log(timestamp)
           {
               if(req.body.type === "archive")
                        {  
-                          chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+                          chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}},{active:false} ] }, {messages:0}).sort({"updated_at": -1});
                        }
                        else{
-                                    chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$gt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+                                    chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{$or : [{updated_at:{$gt:timestamp}}, {active:true} ]} ] }, {messages:0}).sort({"updated_at": -1});
 
                        }
 

@@ -111,7 +111,7 @@ if(i/6 >=100) i=0
 
                <div className="Navb" ><Navbar  /></div>
 
-      <div className="d-flex align-items-center justify-content-center" style = {{paddingTop: "100px",}}>
+      <div className="d-flex align-items-center justify-content-center topSpace" style = {{paddingTop: "100px",}}>
         <Container>
           <Row>
             <Col lg="12">

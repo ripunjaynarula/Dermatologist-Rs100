@@ -18,7 +18,8 @@ import Navbar from "./Navbar";
 import { CardMain } from "../css/Card";
 import "./styles.css";
 import { DataContext } from "./App";
-import Loading from "./Loading";
+//import Loading from "./Loading";
+import Loading from './loading_no_pay'
 import app from "../firebase";
 import Book from './utility/bookAppointment'
 import useWindowDimensions from "../functions/windowDimensions"
@@ -45,7 +46,7 @@ export default function Choice() {
   const ageRef = useRef();
   const genderRef = useRef();
   const phoneRef = useRef();
-
+  const stateRef = useRef();
   const heightRef = useRef();
   const weightRef = useRef();
   const medicationRef = useRef();
@@ -187,6 +188,7 @@ setClinicDetails(data)
           razorpayOrderId: orderId,
           razorpayPaymentId: paymentId,
           razorpaySignature: signature,
+          state : stateRef.current.value
 
         }),
       };
@@ -205,6 +207,47 @@ setClinicDetails(data)
      }
   }
 
+  const addConsultationWithoutRazorpay = async () => {
+     setError("");
+     try{
+        const token = await app.auth().currentUser.getIdToken(true);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json", token: token },
+        body: JSON.stringify({
+          name: nameRef.current.value,
+          gender: genderRef.current.value,
+          height: heightRef.current.value,
+          age: ageRef.current.value,
+          weight: weightRef.current.value,
+          medication: medicationRef.current.value,
+          allergies: allergiesRef.current.value,
+          previousConditions: previousRef.current.value,
+          question: quest.current.value,
+          phone: phoneRef.current.value,
+            state : stateRef.current.value
+
+        }),
+      };
+      let res = await fetch(
+        process.env.REACT_APP_API_URL+'consultancy-no-gateway',
+        requestOptions
+      );
+      res = await res.text();
+      res = JSON.parse(res);
+      console.log(res);
+      setLoading(false);
+      setConsultationId(res['id']);
+      if(res.chatId)
+      {
+                history.push("/chat")
+
+      }
+      setLoadingScreen(true)
+     }catch(e){
+       setError("Connection Error")
+     }
+  }
 
 
 
@@ -356,8 +399,8 @@ loadPaytm(res.ORDER_ID, token, res.TXN_AMOUNT)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-var rightNow = false;
-  setError("")
+    var rightNow = false;
+    setError("")
     console.log(nameRef.current.value)
     if(!nameRef.current)
     {
@@ -369,7 +412,7 @@ var rightNow = false;
       setError("Please set name")
       return;
     }
-    if(!phoneRef.current.value)
+    if(!phoneRef.current)
     {
       setError("Please set phone number on which we can contact you regarding consultation")   
          return;
@@ -380,34 +423,45 @@ var rightNow = false;
       setError("Please set phone number on which we can contact you regarding consultation") 
       return;
 
+    }    
+    if(!stateRef.current)
+    {
+      setError("Please set the state your are located in")   
+         return;
+
     }
-  var phoneno = /^\d/;
-if(!phoneRef.current.value.match(phoneno))
-{
-        setError("Please set correct phone number")
+    if(!stateRef.current.value)
+    {
+      setError("Please set the state your are located in") 
       return;
 
-}
-if(phoneRef.current.value.length >13  )
-{
-        setError("Please set correct phone number ")
-      return;
+    }
+    var phoneno = /^\d/;
+    if(!phoneRef.current.value.match(phoneno))
+    {
+            setError("Please set correct phone number")
+          return;
 
-}if(phoneRef.current.value.length <10  )
-{
-        setError("Please set correct phone number ")
-      return;
+    }
+    if(phoneRef.current.value.length >13  )
+    {
+            setError("Please set correct phone number ")
+          return;
 
-}
-if(clinicDetails.openDays)
-  if(!clinicDetails.openDays.includes(dayMap[new Date().getDay()]))
-  {
-     rightNow = true
-  }else{
+    }if(phoneRef.current.value.length <10  )
+    {
+            setError("Please set correct phone number ")
+          return;
+
+    }
+    if(clinicDetails.openDays)
+    if(!clinicDetails.openDays.includes(dayMap[new Date().getDay()]))
+    {
+      rightNow = true
+    }else{
       if(clinicDetails.openTime)
       {
 
-    console.log("LINE 411")
           var now  = new Date()
           var j =0;
           for(var i=0; i<clinicDetails.openTime.length; i++)
@@ -435,7 +489,8 @@ if(clinicDetails.openDays)
 if(rightNow)
 {
     var data = {
-                    name: nameRef.current.value,
+          
+          name: nameRef.current.value,
           gender: genderRef.current.value,
           height: heightRef.current.value,
           age: ageRef.current.value,
@@ -446,11 +501,12 @@ if(rightNow)
           question: quest.current.value,
           phone: phoneRef.current.value,
           through : "payment"
-                }
+      
+          }
 
-                setData(data)
-                setOpenBook(true)
-                return;
+                // setData(data)
+                // setOpenBook(true)
+                // return;
     
 }
          
@@ -459,14 +515,21 @@ if(rightNow)
         setLoading(true);
 
     console.log()
-   await displayRazorpay();
+
+
+
+
+    //here
+addConsultationWithoutRazorpay(); //for payment first, comment this
+
+ //  await displayRazorpay(); //uncomment this for payment first
          setLoading(false);
 
     
   }
   return (
     <>
-    {loadingScreen?(<><Loading id={consultationId} paymentId={paymentId}/></>):(
+    {loadingScreen?(<><Loading id ={consultationId} paymentId={paymentId} name = {nameRef == null ? "" : nameRef.current == null ? "": nameRef.current.value } contact ={phoneRef == null ? "" : phoneRef.current == null ? "": phoneRef.current.value }/></>):(
       <>
       <div className="Navb">
         <Navbar />
@@ -504,7 +567,7 @@ if(rightNow)
               <Row>
                 <Col sm>
                   <Form.Group id="docType">
-                    <Form.Label style={Texts.FormLabel}>Name</Form.Label>
+                    <Form.Label style={Texts.FormLabel}>Name *</Form.Label>
                     <Form.Control
                       type="text"
                       ref={nameRef}
@@ -515,7 +578,7 @@ if(rightNow)
                 </Col>
                  <Col sm>
                   <Form.Group id="docType">
-                    <Form.Label style={Texts.FormLabel}>Phone Number</Form.Label>
+                    <Form.Label style={Texts.FormLabel}>Phone Number *</Form.Label>
                     <Form.Control
                       type="number"
                       ref={phoneRef}
@@ -525,7 +588,54 @@ if(rightNow)
                   </Form.Group>
                 </Col>
               </Row>
+         <Row>
+                <Col sm>
+                  <Form.Group id="docType">
+                    <Form.Label style={Texts.FormLabel}>State *</Form.Label>
+                    <select name="state" id="state" ref={stateRef} class="form-control">
+                                                      <option style={{display:"none"}}>  </option>
 
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Puducherry">Puducherry</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+                  </Form.Group>
+                </Col>
+              </Row>
+      
               <Row>
                 <Col sm>
                   {" "}
@@ -631,7 +741,7 @@ if(rightNow)
                     {" "}
                     <Form.Group id="docType">
                       <Form.Label style={Texts.FormLabel}>
-                        Height (Optional)
+                        Height 
                       </Form.Label>
                       <Form.Control
                         id="height"
@@ -645,7 +755,7 @@ if(rightNow)
                   <Col sm>
                     <Form.Group id="city">
                       <Form.Label style={Texts.FormLabel}>
-                        Weight (Optional)
+                        Weight 
                       </Form.Label>
                       <Form.Control
                         id="weight"

@@ -97,6 +97,15 @@ const columns = [{
          cell:(row) =>   <div className = {row.scheduled ? "chip yellow" : row.accepted ? "chip green" : "chip pink"}> {row.scheduled ? "Scheduled" : row.accepted ? "Active" : "Pending"} </div>
 
   }, 
+  {
+    name: 'Place',
+    selector: 'state',
+     sortable: true,
+
+  },
+
+
+
    {
     name: 'Time',
     selector: 'startDate',
@@ -119,8 +128,9 @@ const columns = [{
   }, 
   {
     cell:(row) =>       <div>
-
 <button onClick = {()=>{
+
+console.log(row,"llll")
       if(row.scheduled)
       {
 
@@ -135,7 +145,10 @@ const columns = [{
         history.push("/chat/d")
       }else{
 
-window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.consultaitonId + '&email=' + currentUser.email)
+
+console.log(row.consultationId)
+
+window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.consultationId + '&email=' + currentUser.email + "&status=on&isPaid=notpaid")
 
 
       }
@@ -145,7 +158,23 @@ window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.cons
 
 
 
+{!row.scheduled && !row.accepted &&
+<button onClick = { async ()=>{
 
+
+ 
+console.log(row.consultationId)
+window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.consultationId + '&email=' + currentUser.email + "&status=cancel&isPaid=notpaid")
+
+
+    
+      
+          }} id={row.uid}>{"Cancel"}</button>
+
+
+
+
+}
 
 
 {row.scheduled && <button onClick = {async ()=>{
@@ -238,7 +267,6 @@ async function onlyOnce()  {
           res.data[i].isRegistered = true
           res.data[i].email = res.data[i].patientEmail
           res.data[i].isConsultation = true
-
           res.data[i].consultationId = res.data[i].uid
           res.data[i].uid = res.data[i].patientUid
           res.data[i].isAddNew = false

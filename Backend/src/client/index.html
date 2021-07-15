@@ -342,12 +342,43 @@
         const publicVapidKey = "BJpjlvIqaOuxYlJlQhpaBdOE3r8lqbad_efST0Nu_owHRA-kt5agl4bDd5dHx2iEYYqDfBw0Mj2pJtcWmqO-VF0";
         // Check for service worker
 
-        const checkForSW = (token, email) => {
+        const checkForSW = async(token, email) => {
+
+            var r = await Notification.requestPermission()
+            if (r === "denied") {
+
+                await alert("Enable notifications from settings")
+                return
+            }
+
+            await alert(r)
+
+            if (!("PushManager" in window)) {
+                await alert("Push notificaiton not supported")
+            }
+            await ("push supported")
+
             if ("serviceWorker" in navigator) {
                 send(token, email).catch(err => console.error(err));
             }
         }
 
+        function askPermission() {
+            return new Promise(function(resolve, reject) {
+                    const permissionResult = Notification.requestPermission(function(result) {
+                        resolve(result);
+                    });
+
+                    if (permissionResult) {
+                        permissionResult.then(resolve, reject);
+                    }
+                })
+                .then(function(permissionResult) {
+                    if (permissionResult !== 'granted') {
+                        throw new Error('We weren\'t granted permission.');
+                    }
+                });
+        }
         // Register SW, Register Push, Send Push
         async function send(token, email) {
             try {
@@ -445,5 +476,7 @@
         }
     </script>
 </body>
+
+</html>
 
 </html>

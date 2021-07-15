@@ -79,6 +79,20 @@ const consultations = mongoose.model('consultations', new mongoose.Schema({
      patientUid:{
         type : String,
      },
+     status : {
+         type : String
+     },
+     isWithoutPayment : {
+         type : Boolean,
+         default : false
+     },
+     state : {
+         type : String,
+ 
+     }, byDoctorStatus:{
+         type : String,
+         default : "no"
+     }
 
 }));
 

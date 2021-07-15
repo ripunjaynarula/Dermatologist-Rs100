@@ -26,11 +26,13 @@ router.get('/', async (req, res) => {
         let consultation: any = await consultations.findOne({uid: req.query.cid});
         if(consultation){
             if(!consultation.accepted && !consultation.active){
-                return res.send({error : true, message:"Consultation Ended"})
+                return res.send({error : true, message:"Consultation already Ended"})
             } 
-
             
-            if(consultation.byDoctorStatus === "on")
+            
+           if(req.query.cancel !== "force")
+           {
+                if(consultation.byDoctorStatus === "on")
             {
                 return res.send({error: true, message : "Consultation already started"})
             }  if(consultation.byDoctorStatus === "cancel")
@@ -41,6 +43,7 @@ router.get('/', async (req, res) => {
                 let u = process.env.WEB_URL || ""
                 return res.redirect(u + "chat/d");
             }
+           }
             consultation.accepted = true;
             consultation.active = true;
             consultation.doctorEmail = doc.email;
@@ -129,7 +132,7 @@ router.get('/', async (req, res) => {
                     ch.updated_at = Date.now()
                     ch.messages.push({
                         timestamp : Date.now(),
-                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        text: 'Hi '+ consultation.name +', your consultaion is started',
                         type: "patient"
                     }, obj1, obj2, obj3, obj4)
                     await ch.save()
@@ -145,7 +148,7 @@ router.get('/', async (req, res) => {
 
                     messages : [{
                         timestamp : Date.now(),
-                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        text: 'Hi '+ consultation.name +', your consultaion is started',
                         type: "patient"
                     }, obj1, obj2, obj3, obj4]
             });

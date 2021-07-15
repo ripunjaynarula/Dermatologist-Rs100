@@ -107,7 +107,7 @@ console.log("CPNSILTATION SAVED")
                     ch.updated_at = Date.now()
                     ch.messages.push({
                         timestamp : Date.now(),
-                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        text: 'Hi '+ consultation.name +', your consultaion is started',
                         type: "patient"
                     }, obj1, obj2, obj3, obj4)
                     await ch.save()
@@ -123,7 +123,7 @@ console.log("CPNSILTATION SAVED")
 
                     messages : [{
                         timestamp : Date.now(),
-                        text: 'Hi '+ consultation.name +', your consultaion has started',
+                        text: 'Hi '+ consultation.name +', your consultaion is started',
                         type: "patient"
                     }, obj1, obj2, obj3, obj4]
             });

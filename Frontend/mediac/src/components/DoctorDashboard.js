@@ -94,7 +94,8 @@ const columns = [{
   {
     name: 'Status',
     selector: 'status',
-         cell:(row) =>   <div className = {row.scheduled ? "chip yellow" : row.accepted ? "chip green" : "chip pink"}> {row.scheduled ? "Scheduled" : row.accepted ? "Active" : "Pending"} </div>
+         cell:(row) =>   <div className = {row.scheduled ? "chip yellow" : row.accepted ? "chip green" : "chip pink"}>
+            {row.scheduled ? "Scheduled" : row.accepted ? row.orderId === "not-set" ?"Await Payment": "Active" : "Pending"} </div>
 
   }, 
   {
@@ -142,6 +143,13 @@ console.log(row,"llll")
       }
       if(row.accepted)
       {
+
+        if(row.orderId === "not-set")
+        {
+
+window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.consultationId + '&email=' + currentUser.email + "&status=cancel&isPaid=notpaid&cancel=force")
+return
+        }
         history.push("/chat/d")
       }else{
 
@@ -153,7 +161,7 @@ window.open(process.env.REACT_APP_API_URL + 'acceptConsultation?cid=' + row.cons
 
       }
       
-          }} id={row.uid}>{row.scheduled ? "View" : row.accepted ? "End" : "Accept"}</button>
+          }} id={row.uid}>{row.scheduled ? "View" : row.accepted ?  "End" : "Accept"}</button>
 
 
 

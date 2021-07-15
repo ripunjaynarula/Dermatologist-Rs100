@@ -42,7 +42,7 @@ self.onnotificationclick = async function(event) {
 
     switch (event.action) {
         case 'open_url':
-            let res = await fetch(process.env.API_URL + '/acceptConsultation?cid=' + id + '&email=' + email, requestOptions);
+            let res = await fetch('https://app.dermatologistin100rs.com/acceptConsultation?cid=' + id + '&email=' + email + "&status=on&isPaid=notpaid", requestOptions);
             break
         case 'decline':
             return event.notification.close();

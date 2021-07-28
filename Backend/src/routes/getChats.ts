@@ -17,7 +17,12 @@ console.log(timestamp)
                           chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$lt:timestamp}},{active:false} ] }, {messages:0}).sort({"updated_at": -1});
                        }
                        else{
-                                    chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{$or : [{updated_at:{$gt:timestamp}}, {active:true} ]} ] }, {messages:0}).sort({"updated_at": -1});
+
+                         console.log("0000000000000000000000000000")
+
+                                                            //  chats= await chat.find({$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ]}, {messages:0}).sort({"updated_at": -1});
+                                    chats= await chat.find({ $and : [{$or: [ {patientEmail: req.body.email}, {doctorEmail: req.body.email} ] },{updated_at:{$gt:timestamp}} ] }, {messages:0}).sort({"updated_at": -1});
+console.log(chats,"000000000000000")
 
                        }
 

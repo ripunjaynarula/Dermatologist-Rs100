@@ -33,7 +33,7 @@ router.post('/', async (req, res) =>{
             }
 
 
-            var d = await fbUpdate.createDoctor(req.body.name, req.body.password, req.body.email, req.body.imageUrl);
+            var d :any = await fbUpdate.createDoctor(req.body.name, req.body.password, req.body.email, req.body.imageUrl);
 
             if(d.error)
             {

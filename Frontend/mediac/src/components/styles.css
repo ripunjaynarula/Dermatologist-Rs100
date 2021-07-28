@@ -159,6 +159,34 @@
     display: inline;
 }
 
+#bookbtn2 {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    margin-left: 0.1rem;
+    font-family: Work Sans;
+    font-size: 18px;
+    padding: 6px 20px;
+    text-decoration: none;
+    transition: all ease-in-out 0.2s;
+}
+
+#bookbtn2:hover {
+    background-color: #1977cc;
+    border: none;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+#bookbtn2:active {
+    position: relative;
+    top: 1px;
+    border: none;
+}
+
 #bookbtn:hover {
     background-color: #1977cc;
     border: none;
@@ -198,12 +226,21 @@
     #bookbtn {
         margin-left: 10vw
     }
+    #bookbtn2 {
+        margin-left: 8px
+    }
     #hometxt {
         margin-left: 10vw;
     }
     .newcontbn {
         /*margin-left: 10%;*/
         text-align: center;
+    }
+}
+
+@media(max-width:560px) {
+    #bookbtn2 {
+        margin-top: 5px;
     }
 }
 
@@ -277,6 +314,7 @@
 .submitbtn:hover {
     background-color: #1c87da !important;
     border: none;
+    text-decoration: none;
 }
 
 .submitbtn:active {

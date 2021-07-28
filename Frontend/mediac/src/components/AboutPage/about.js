@@ -180,10 +180,14 @@ e.preventDefault()
                     </div>
 
                     <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                        <h3>Sanstuti Pharmaceuticals</h3>
+                        <h3>
+{/* Sanstuti Pharmaceuticals */}
+Skin N Laser Center
+                        </h3>
                         <p>
-                            Sanstuti Pharmaceuticals is a quality derma care initiative which has been made with a vision of providing the best of derma care products. The company believes in providing the best yet affordable products. The company gains its confidence from its innovative production lines, continuous Research & Development, strict quality control and strong marketing support.
- 
+                            {/* Sanstuti Pharmaceuticals is a quality derma care initiative which has been made with a vision of providing the best of derma care products. The company believes in providing the best yet affordable products. The company gains its confidence from its innovative production lines, continuous Research & Development, strict quality control and strong marketing support. */}
+
+Welcome to our Skin & Laser Centre, a specialized cosmetology & Laser centre committed to provide a standard quality of services at very affordable price. Skin & Laser Centre is one of the most well equipped cosmetology and Laser centre in Delhi. Established in 2003, our Centre has been providing highest quality of Dermatology services and laser treatments 
                         </p>
 
                          <h4 class="title">How we are economical?</h4>

@@ -119,6 +119,11 @@ var d={ email: emailRef.current.value, name: nameRef.current.value,   phone: pho
             <Button disabled={loading} className="submitbtn" type="submit">
               Sign Up
             </Button>
+
+
+            <a  className="submitbtn"  style={{marginTop: 16}} href="tel:+917827556162" >
+              Call us
+            </a>
             <br/>
           </Form>
           </div>

@@ -12,6 +12,8 @@ import { DataContext } from "./App";
 import Navbar from "./Navbar";
 import bg1 from "./img/b1.jpg";
 import bg2 from "./img/b2.jpg";
+import telephone from './img/telephone.png'
+
 import bg3 from "./img/b3.jpg";
 import HomeBottom from './AboutPage/HomeBottom'
 import useWindowDimensions from "../functions/windowDimensions";
@@ -157,7 +159,14 @@ export default function Home() {
    &nbsp; Start Consultaion
         </Button>
       
- 
+     <Button onClick={()=>{
+window.open('tel:900300400');
+
+    }} id="bookbtn2">
+                                                 <img  id="ellipsebtn" src = {telephone} height="55px" ></img>
+       &nbsp; Call (7827556162)
+        </Button>
+
         </div>
         
         </div>

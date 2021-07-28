@@ -17,6 +17,9 @@ import bg1 from "./img/b1.jpg";
 import bg2 from "./img/b2.jpg";
 import bg3 from "./img/b3.jpg";
 import plus from './img/plus.svg'
+import call from './img/call.svg'
+import telephone from './img/telephone.png'
+
 import { reactLocalStorage } from "reactjs-localstorage";
 
 const colors = [`url(${bg1})`, `url(${bg2})`, `url(${bg3})`];
@@ -113,6 +116,15 @@ function Dashboard() {
 
    &nbsp; Start Consultaion
         </Button>
+ 
+    <Button onClick={()=>{
+window.open('tel:900300400');
+
+    }} id="bookbtn2">
+                                                 <img  id="ellipsebtn" src = {telephone} height="55px" ></img>
+       &nbsp;    Call (7827556162)
+        </Button>
+
       </div>
     </div>
    

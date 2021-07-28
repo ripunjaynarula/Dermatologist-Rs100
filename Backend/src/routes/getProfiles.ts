@@ -32,6 +32,7 @@ try{
         var consultation: any = await consultations.find({patientEmail: req.body.email});
   var consultationId = ''
   var chatId = "";
+  console.log(consultation, "ALL")
    for(var i=0;i<consultation.length; i++)
    {
        if(consultation[i].scheduled === false)
@@ -41,15 +42,17 @@ try{
 //if(consultation[i].active && !consultation[i].accepted)
            
            //for not paid
-           if(consultation[i].active && consultation[i].accepted && consultation[i].byDoctorStatus === 'on')
+           if(consultation[i].active && consultation[i].accepted && (consultation[i].byDoctorStatus === 'on' || consultation[i].byDoctorStatus === 'no'))
             {
+                           console.log(consultation[i].byDoctorStatus === 'on' || consultation[i].byDoctorStatus === 'no')
+
+                console.log("LASSUN")
                               console.log(consultation[i])
 
                 consultationId = consultation[i].uid
 
                  let ch :any= await chat.findOne({consultationId: consultationId});
-console.log(ch,"CHAT================================")
-                if(ch){
+                 if(ch){
                     
                     chatId = ch.chatId
                     }

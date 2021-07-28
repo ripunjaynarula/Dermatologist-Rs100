@@ -154,7 +154,7 @@ function onScriptLoad(orderId, token, amount){
 
 
     const refresh = ( id, gender, age, phone, consultationId, data) => {
-            console.log(id)
+            console.log(consultationId)
     setCurrentPhoneNumber(phone)
 setClinicDetails(data)
      setCurrentGender(gender ? gender.toLowerCase() : gender);
@@ -504,9 +504,9 @@ if(rightNow)
       
           }
 
-                // setData(data)
-                // setOpenBook(true)
-                // return;
+                setData(data)
+                setOpenBook(true)
+                return;
     
 }
          

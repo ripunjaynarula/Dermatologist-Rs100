@@ -218,8 +218,17 @@
     font-family: Lora;
     font-style: normal;
     font-weight: 500;
-    font-size: 65px;
+    font-size: 60px;
     line-height: 64px;
+}
+
+#bigtxt #smt {
+    color: #ffffff;
+    font-family: Lora;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 60px;
 }
 
 @media(min-width:935px) {
@@ -241,6 +250,10 @@
 @media(max-width:560px) {
     #bookbtn2 {
         margin-top: 5px;
+    }
+    #bigtxt #smt {
+        font-size: 43px;
+        line-height: 50px;
     }
 }
 

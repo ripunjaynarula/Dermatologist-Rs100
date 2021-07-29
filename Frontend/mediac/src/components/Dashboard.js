@@ -96,7 +96,9 @@ function Dashboard() {
       <div className="overlapping-text">
         <div id="hometxt">
           <h2 id="bigtxt">
-            <br></br>Best Care &<br></br>Better Doctors.
+            
+                 <br></br>Call Now <br />
+              +91 782 7556 162
           </h2>
           <p id="smalltxt">Ask us a question </p>
         </div>

@@ -4,14 +4,14 @@ export const TreatmentList = [
         title: "Acupulse Fractional Co2 Laser Treatment",
         url: "acupulse-fractional-co2-laser-treatment",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/acupulse-co2-lasermain_2.jpg",
+        image: process.env.REACT_APP_CDN_URL + "images/acupulse-co2-lasermain_2.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/yUxpk2eWAAU?rel=0", ""],
-        body: [`<p><img src="https://www.drsandeshgupta.com/images/acupulse-co2-lasermain_2.jpg" alt="Acupulse Fractional Co2 Laser Treatment" title="Acupulse Fractional Co2 Laser Treatment In Delhi"  style="border:0;"/><br/>Acupulse Fractional Carbon dioxide (CO2) lasers are one of the latest advances in non-surgical skin rejuvenation treatments. This Resurfacing laser removes layers of skin in a fractionated method (columns of skin are removed, leaving the skin surrounding each column intact to aid in healing). This laser excels at treating deeper wrinkles, more severe textural changes from sun damage, wrinkles, blotchiness, acne scars, and surgical or traumatic scars. </p>
+        body: [`<p><img src="https://assets.dermatologistin100rs.com/images/acupulse-co2-lasermain_2.jpg" alt="Acupulse Fractional Co2 Laser Treatment" title="Acupulse Fractional Co2 Laser Treatment In Delhi"  style="border:0;"/><br/>Acupulse Fractional Carbon dioxide (CO2) lasers are one of the latest advances in non-surgical skin rejuvenation treatments. This Resurfacing laser removes layers of skin in a fractionated method (columns of skin are removed, leaving the skin surrounding each column intact to aid in healing). This laser excels at treating deeper wrinkles, more severe textural changes from sun damage, wrinkles, blotchiness, acne scars, and surgical or traumatic scars. </p>
       <div class="clearfix"></div>
       <h3>How does CO2 skin causes resurface of skin?</h3>
       <p>This laser is designed to offer the versatility of treating both superficial and deep scars along with skin resurfacing. The wavelength of light emitted by a CO2 laser is very well absorbed by water in the skin. "Ultra-pulses" of the laser vaporizes lines, wrinkles, scars, dark spots and other irregularities, layer by layer. This process also stimulates the formation of new collagen, thereby providing better elasticity and support to the skin.</p>
-      <h3>How does the fractional CO2 laser work?<br/><img src="https://www.drsandeshgupta.com/images/skin-resurfacing.jpg" width="240" style="border:0; padding-top:13px; padding-right:30px; " alt="Acupulse Fractional Co2 Laser" title="Acupulse Fractional Co2 Laser"/><br/></h3>
+      <h3>How does the fractional CO2 laser work?<br/><img src="https://assets.dermatologistin100rs.com/images/skin-resurfacing.jpg" width="240" style="border:0; padding-top:13px; padding-right:30px; " alt="Acupulse Fractional Co2 Laser" title="Acupulse Fractional Co2 Laser"/><br/></h3>
       <p>The fractional CO2 laser takes the CO2 laser beam and fractionates or pixelates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen.</p>
       <h3>What are the indications of Fractional Co2 Laser?</h3>
       <div class="left35">
@@ -53,13 +53,13 @@ export const TreatmentList = [
         title: "Laser Hair Removal",
         url: "laser-hair-removal-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/light-sheer-diod-main.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/light-sheer-diod-main.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/Wswx8pvhKH8", "https://www.youtube.com/embed/057LpNWOKNc"],
         body: [`<h3>How does the diode system remove hair?</h3>
       <p>A laser produces a beam of highly concentrated light. The light emitted is well absorbed by the pigment located in hair follicles. The laser pulses for a fraction of a second, just long enough to vaporize the pigment, disabling numerous follicles at a time to eliminate or significantly impede the hair growth. <strong>Skin n laser centre</strong>, uses the highest technology from Lumenis U.S.A., a Gold standard Light Sheer Diode laser with incomparable treatment efficacies in <em>hair removal</em>.</p>
       <h3>Is it painful?</h3>
-      <p><img src="https://www.drsandeshgupta.com/images/light-sheer-diod-main.jpg" alt="Laser Hair Removal In Delhi" title="Laser Hair Removal In Delhi" class="imgright"  style="border:0;"/><br/>Laser has a cooling tip where temp goes to 0 degree centigrade which allows significant cooling of skin before any shot of laser comes, making the procedure almost painless. During the treatment, there will be a tingling or stinging sensation, which can be tolerated. But, if you want the process to be completely painless, topical aesthetic creams are also available.</p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/light-sheer-diod-main.jpg" alt="Laser Hair Removal In Delhi" title="Laser Hair Removal In Delhi" class="imgright"  style="border:0;"/><br/>Laser has a cooling tip where temp goes to 0 degree centigrade which allows significant cooling of skin before any shot of laser comes, making the procedure almost painless. During the treatment, there will be a tingling or stinging sensation, which can be tolerated. But, if you want the process to be completely painless, topical aesthetic creams are also available.</p>
       <h3>How many sessions do I need?</h3>
       <p>Number of sessions varies depending on patient's hair thickness, density and area to be treated. Eight to ten sessions are generally recommended, but few cases with patchy growth or fine hair even after ten sessions, may require treatment for longer period for maintenance.</p>
       <h3>Does it work on Gary hair?</h3>
@@ -78,11 +78,11 @@ export const TreatmentList = [
         title: "Q Switch ND Yag Laser (Tattoo Removal)",
         url: "q-switch-tag-laser-tattoo-removal",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/yag-aser.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/yag-aser.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Q-switched Nd: YAG laser, provides a new paradigm for treatment of </h3>
-      <img src="https://www.drsandeshgupta.com/images/yag-aser.jpg" alt="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" title="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" class="imgright" style="border:0;" /><br/>
+      <img src="https://assets.dermatologistin100rs.com/images/yag-aser.jpg" alt="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" title="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" class="imgright" style="border:0;" /><br/>
       <ul>
         <li>Tattoo</li>
         <li>Sun-damaged skin and age spots</li>
@@ -91,17 +91,17 @@ export const TreatmentList = [
         <li>Birthmarks e.g. Naevus of ota, Cafe au lait, Mongolian spots</li>
       </ul>
       <p>The laser is very effective for epidermal (superficial) and dermal (deep) pigmentation. The specific laser wavelength that is sensitive to specific color is chosen to target the lesion while sparing the surrounding normal tissue. The lesion can be treated precisely and accurately with no complication. There is fast and complete improvement.</p>
-      <p><img src="https://www.drsandeshgupta.com/images/nd-yag-laser.jpg" alt="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" title="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" class="imgleft" style="border:0;" /><br/>For deeper pigments, the nanosecond pulse will penetrate the skin without damaging it and break down the deep pigments into small particles which is absorbed by the white blood cells and removed</p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/nd-yag-laser.jpg" alt="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" title="Q Switch ND Yag Laser, Tattoo, Freckles, Lentigines Removal Clinic In Delhi" class="imgleft" style="border:0;" /><br/>For deeper pigments, the nanosecond pulse will penetrate the skin without damaging it and break down the deep pigments into small particles which is absorbed by the white blood cells and removed</p>
       <p>Repeated laser treatments are necessary at an interval of one month or longer to get the desired results. </p>`]
     },
     {
         title: "Conventional Co2 Laser",
         url: "conventional-co2-laser-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/co2-laser1.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/co2-laser1.jpg",
         imgTitle: "",
         videos: [],
-        body: [` <p><img src="https://www.drsandeshgupta.com/images/co2-laser1.jpg" alt="Conventional Co2 Laser Center In Delhi" style="border:0;"  title="Conventional Co2 Laser Center In Delhi" class="imgleft"/><br/></p>
+        body: [` <p><img src="https://assets.dermatologistin100rs.com/images/co2-laser1.jpg" alt="Conventional Co2 Laser Center In Delhi" style="border:0;"  title="Conventional Co2 Laser Center In Delhi" class="imgleft"/><br/></p>
       <p>CO2 laser (carbon dioxide laser) is an ablative laser which is used for skin resurfacing and treatment of scars and other skin conditions such as</p>
       <div class="left48">
         <ul>
@@ -131,10 +131,10 @@ export const TreatmentList = [
         title: "Microdermabrasion",
         url: "microdermabrasion-treatment",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/microdermabrasion-main_2.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/microdermabrasion-main_2.jpg",
         imgTitle: "",
         videos: [],
-        body: [`  <p><img src="https://www.drsandeshgupta.com/images/microdermabrasion-main_2.jpg" style="border:0;" alt="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi" title="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi"/><br/>Microdermabrasion is a procedure to exfoliate or gently remove the outermost layer of dead skin cells from the epidermis. It is a fairly simple, easy, painless, non-invasive, skin rejuvenation procedure using a combination of a fine abrasive tip or crystals along with vacuum suction applied to the skin. The pressure and speed are adjusted depending on the sensitivity and tolerance of the skin.</p>
+        body: [`  <p><img src="https://assets.dermatologistin100rs.com/images/microdermabrasion-main_2.jpg" style="border:0;" alt="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi" title="Microdermabrasion Treatment In Delhi, Skin Specialist In Delhi, Skin Doctor In Delhi"/><br/>Microdermabrasion is a procedure to exfoliate or gently remove the outermost layer of dead skin cells from the epidermis. It is a fairly simple, easy, painless, non-invasive, skin rejuvenation procedure using a combination of a fine abrasive tip or crystals along with vacuum suction applied to the skin. The pressure and speed are adjusted depending on the sensitivity and tolerance of the skin.</p>
       <p><strong>The advantages of this procedure are-</strong></p>
       <ul>
 <li> It is completely painless, hence no needles or anesthesia required.</li>
@@ -172,17 +172,17 @@ export const TreatmentList = [
         title: "Lavatron (RF) Diathermy Therapy",
         url: "lavatron-diathermy-therapy-treatment",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/lavatron.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/lavatron.jpg",
         imgTitle: "",
         videos: [],
-        body: [`  <h3><img src="https://www.drsandeshgupta.com/images/lavatron.jpg" style="border:0;" alt="Lavatron (RF) Diathermy Therapy In Delhi" title="Lavatron (RF) Diathermy Therapy In Delhi" class="imgleft"/><br/></h3>
+        body: [`  <h3><img src="https://assets.dermatologistin100rs.com/images/lavatron.jpg" style="border:0;" alt="Lavatron (RF) Diathermy Therapy In Delhi" title="Lavatron (RF) Diathermy Therapy In Delhi" class="imgleft"/><br/></h3>
     <p>Lavatron works by increasing the temperature of deep dermis & hypo dermis at a depth of 3-5 mm, improves cellular function, blood circulation, relieves pain, and enhances the regeneration of collagen tissues in a non-invasive manner. Due to this, it has a precise lifting effect to improve the skin elasticity, body shape & removing wrinkles. In addition, the heat melts the cellulite and helps in reducing the fat, resulting in significant inch loss and skin tightening. Six to eight sessions are usually recommended at an interval of 10 days for effective results.</p>
     <div class="clearfix">&nbsp;</div>
     <p>Listed below are the conditions which are effectively treated with this therapy-</p>
     <p><strong>a) Face Lifting</strong></p>
     <p><strong>b) Dark Circles</strong>- It is an effective treatment for dark circles as well. Dark circles can be caused due to genetic reasons, excess sun exposure, disturbed function of lacrimal glands and deficient sleep. This procedure works by the generation of new cells by increasing the blood flow and improving the lymphatic circulation of the eyelids, thereby reducing the pigments and puffiness and gives you the enchanting eyes.</p>
     <p>c) Instant Inch Loss of any part of body e.g. ABDOMEN, THIGHS, BUTTOCKS, ARMS, BREAST SHAPING</p>
-<p><strong>d)</strong> <a href="hair+loss+treatment+in+delhi+dermatologist+in+delhi.html" title="Hair Loss Treatment In Delhi"><strong>Hair Loss</strong></a></p>
+<p><strong>d)</strong> <a href="hair-transplant-treatment-consultation" title="Hair Loss Treatment In Delhi"><strong>Hair Loss</strong></a></p>
 <p><strong>e) Wrinkle Removal</strong></p>
 <p><strong>f) Fat Removal</strong></p>
 <p><strong> g) Enhancing scalp health</strong>- Deep heating technology of Laverton RF also helps in enhancing scalp health by improving blood circulation and supplying lots of oxygen and nutrients. This sprouts new hair and prevents them from falling by stimulating the roots via thermal effect.</p>
@@ -192,10 +192,10 @@ export const TreatmentList = [
         title: "Chemical Peel",
         url: "chemical-skin-peel-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/chemical-peel.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/chemical-peel.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/JlU16QR00ec"],
-        body: [`<p><img src="https://www.drsandeshgupta.com/images/chemical-peel.jpg" alt="Chemical skin peel treatment centre of best  skin doctor In Delhi." title="Chemical skin peel treatment centre of best  skin doctor In Delhi." style="border:0;" class="imgright"/><br/>Chemical peel is a way to exfoliate the skin with the help of a chemical (made of natural products egg. sugarcane, milk) in a controlled way so that old dead skin peels off and that new skin comes in its place. </p>
+        body: [`<p><img src="https://assets.dermatologistin100rs.com/images/chemical-peel.jpg" alt="Chemical skin peel treatment centre of best  skin doctor In Delhi." title="Chemical skin peel treatment centre of best  skin doctor In Delhi." style="border:0;" class="imgright"/><br/>Chemical peel is a way to exfoliate the skin with the help of a chemical (made of natural products egg. sugarcane, milk) in a controlled way so that old dead skin peels off and that new skin comes in its place. </p>
       <p><strong>There are three basic types of peels:</strong></p>
       <ul>
         <li><strong>Superficial peels</strong> are the mildest type and can be used for all skin types.Egg. glycolic acid.</li>
@@ -209,9 +209,9 @@ export const TreatmentList = [
         <li>Sun protection is a must by using a proper sunscreen as recommended by the doctor since the new skin is more susceptible to sun damage.</li>
         <li>Avoid vigorous pricking, self-peeling, scrubbing or using exfoliating agents (e.g. retinoid) one week before and after the peeling.</li>
       </ul>
-      <p><a href="https://www.drsandeshgupta.com/blog/chemical-peels-by-best-dermatologist-in-east-delhi-for-fairer-looks/" title="Chemical Skin Peel Treatment Clinic In Delhi">Chemical peels</a> are very good and effective and will give you the desired results, provided you approach an experienced dermatologist.</p>
-      <div class="left48"><img src="https://www.drsandeshgupta.com/images/chemical-peel-2_1.jpg" style="border:0;" alt="Chemical Peel, Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi" title="Chemical Peel, Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi"/><br/></div>
-      <div class="left36"><img src="https://www.drsandeshgupta.com/images/chemical-peel_1.jpg" style="border:0;" alt="Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi" title="Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi"/><br/></div>
+      <p><a href="chemical-skin-peel-treatment-consultation" title="Chemical Skin Peel Treatment Clinic In Delhi">Chemical peels</a> are very good and effective and will give you the desired results, provided you approach an experienced dermatologist.</p>
+      <div class="left48"><img src="https://assets.dermatologistin100rs.com/images/chemical-peel-2_1.jpg" style="border:0;" alt="Chemical Peel, Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi" title="Chemical Peel, Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi"/><br/></div>
+      <div class="left36"><img src="https://assets.dermatologistin100rs.com/images/chemical-peel_1.jpg" style="border:0;" alt="Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi" title="Chemical Skin Peel Treatment Clinic In Delhi, Best Skin Doctor In Delhi"/><br/></div>
       <div class="clearfix">&nbsp;</div>
   
 `]
@@ -220,10 +220,10 @@ export const TreatmentList = [
         title: "Dermaroller & Mesotherapy",
         url: "dermaroller-and-mesotherapy-treatmen-consultaion",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/dermaroller.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/dermaroller.jpg",
         imgTitle: "",
         videos: [],
-        body: [`  <h3><img src="https://www.drsandeshgupta.com/images/dermaroller.jpg" alt="Dermaroller And Mesotherapy In Delhi" title="Dermaroller And Mesotherapy In Delhi" style="border:0;"  class="imgleft"/><br/>What is Derma roller?</h3>
+        body: [`  <h3><img src="https://assets.dermatologistin100rs.com/images/dermaroller.jpg" alt="Dermaroller And Mesotherapy In Delhi" title="Dermaroller And Mesotherapy In Delhi" style="border:0;"  class="imgleft"/><br/>What is Derma roller?</h3>
       <p>The derma roller is a micro needling technique which is used to break down the old scar tissue and stimulate formation of new collagen and blood vessels.</p>
       <h3>How is the treatment performed?</h3>
       <p>The area to be treated is cleaned first and then topical aesthetic cream may be applied to numb the skin which makes the procedure relatively painless. After this, derma roller is rolled over the affected area till a uniform redness is visible. The dermatologist can also suggest addition of some agents with Derma roller like platelet rich plasma to improve its efficacy and obtain better results.</p>
@@ -264,12 +264,12 @@ export const TreatmentList = [
         title: "Botox & Fillers",
         url: "botox-and-fillers-treatment-consultaion",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/botox.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/botox.jpg",
         imgTitle: "",
         videos: [],
-        body: [`<p><img src="https://www.drsandeshgupta.com/images/botox.jpg" alt="Botox And Fillers In Delhi, Botox Treatment In Delhi" title="Botox And Fillers In Delhi, Botox Treatment In Delhi" class="imgleft" style="border:0;" /><br/><strong>BOTOX</strong> is a purified protein produced by the Clostridium botulinum bacterium. It relaxes the muscles which are responsible for lines of ageing e.g. frown lines, crow’s feet and wrinkles which form over time.</p>
+        body: [`<p><img src="https://assets.dermatologistin100rs.com/images/botox.jpg" alt="Botox And Fillers In Delhi, Botox Treatment In Delhi" title="Botox And Fillers In Delhi, Botox Treatment In Delhi" class="imgleft" style="border:0;" /><br/><strong>BOTOX</strong> is a purified protein produced by the Clostridium botulinum bacterium. It relaxes the muscles which are responsible for lines of ageing e.g. frown lines, crow’s feet and wrinkles which form over time.</p>
       <p>It is a non-surgical treatment in which pre-filled injections of the protein are given in the facial muscles which decreases their contraction and thereby reduces the appearance of wrinkles, crow's feet and forehead lines.</p>
-      <p><a href="https://www.drsandeshgupta.com/blog/cosmetic-botox-therapy-with-skin-doctor-in-east-delhi-options-alluring/" title="Botox Treatment In Delhi"><br/>Botox</a> is a quick and painless procedure.The area to be treated is cleansed first and then a numbing cream is applied. After you numb for about an hour, the area to be treated is marked and the protein is injected. There is no pain, redness or swelling but a minor bruise may appear in few cases which heals quickly within few days. No special post treatment care is required. The effects are immediate and remain for a period of four to six months.</p>
+      <p><a href="botox-and-fillers-treatment-consultaion" title="Botox Treatment In Delhi"><br/>Botox</a> is a quick and painless procedure.The area to be treated is cleansed first and then a numbing cream is applied. After you numb for about an hour, the area to be treated is marked and the protein is injected. There is no pain, redness or swelling but a minor bruise may appear in few cases which heals quickly within few days. No special post treatment care is required. The effects are immediate and remain for a period of four to six months.</p>
       <h2>Fillers</h2>
       <p>Dermal fillers are non-surgical cosmetic treatment which brings a more youthful appearance by restoring volume or fullness to the face and lips. Dermal Fillers contain a purified form of Hyaluronic acid, a natural component of our skin which we loose with ageing. Fillers have been called "liquid face lifts" because they offer benefits of a surgical facelift with no downtime. They fill and increase the volume of the cheeks, chin and lips which is usually lost with ageing. Areas that can be treated include the laughter folds, the glabella lines (deep frown), smoker’s lines (area above the upper lip), lip volume, shape and size (body of lips, lip line, philtrum, cupids bow), reshape nose and jawline and to correct under eye hollowness.</p>
       <p>It is a very easy and quick procedure. The area to be treated is cleansed first and then a numbing cream is applied. After you numb for about an hour, the area to be treated is marked and the filler is injected. There is no pain, redness or swelling but a minor bruise may appear in few cases which heals quickly within few days. No special post treatment care is required. The effects are immediate and remain for a period of six to eight months.</p>
@@ -279,27 +279,27 @@ export const TreatmentList = [
         title: "Vitiligo Treatments",
         url: "vitiligo-treatments-consulation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/melanocyte-transplant.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/melanocyte-transplant.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/CAhASKGFXdo"],
         body: [` <h3>Narrowband UVB Light Therapy (NB-UVB)</h3>
-      <p><img class="imgright" title="Vitiligo Treatments, Vitiligo Treatments In Delhi" alt="Vitiligo Treatments, Vitiligo Treatments In Delhi" style="border:0;" src="https://www.drsandeshgupta.com/images/vitiligo-treatments.jpg"><br/>A narrowband UVB lamp emits light in a therapeutic range.</p>
+      <p><img class="imgright" title="Vitiligo Treatments, Vitiligo Treatments In Delhi" alt="Vitiligo Treatments, Vitiligo Treatments In Delhi" style="border:0;" src="https://assets.dermatologistin100rs.com/images/vitiligo-treatments.jpg"><br/>A narrowband UVB lamp emits light in a therapeutic range.</p>
       <p>Narrowband UVB lights (NB-UVB) comprise a subset of the UVB spectrum which is centred at roughly 311 nm. This is less than 1% of the total range of wavelengths from sunlight.</p>
 
       <p>Studies have shown that narrow band UVB light treatment uses the optimal part of the UVB light spectrum which helps in re-pigmentation of the natural skin colour.</p>
       <p>Exposure time of narrowband UVB lamp is longer than traditional broadband UVB thereby yielding more effective and safe results.</p>
       <p>There are no risks and side effects of narrowband UVB light therapy as compared to the other treatment modalities e.g. systemic drugs.</p>
       <h3>NB-UVB therapeutic advantages for your skin condition</h3>
-      <p>Narrowband UVB light therapy is very useful in the treatment of  <a href="vitiligo+treatment+in+delhi+vitiligo+surgery+in+delhi+dermatologist+in+delhi.html" title="vitiligo">vitiligo</a> and replacing traditional PUVA phototherapy treatment.</p>
+      <p>Narrowband UVB light therapy is very useful in the treatment of  <a href="vitiligo-treatment" title="vitiligo">vitiligo</a> and replacing traditional PUVA phototherapy treatment.</p>
       <h2 style="color:#01a1dd;"> Skin Grafting</h2>
       <p>With the help of UVB, the progression of disease can be stopped and sufficient pigmentation from live melanocytes is achieved but still some lesions fail to form colour even after prolonged phototherapy. In these conditions skin grafting is done. In this procedure, the skin from normal and hidden part of the body (Donor area) is taken and grafted over the vitiligo patch (Recipient area). It can be performed in many ways by the Skin surgeons. </p>
       <p><strong>The three main types are:</strong></p>
       <h3>Melanocyte Transplant (scar less transplant)</h3>
-      <p><img src="https://www.drsandeshgupta.com/images/melanocyte-transplant.jpg"  style="border:0;" alt="" title="" class="imgleft"/><br/></p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/melanocyte-transplant.jpg"  style="border:0;" alt="" title="" class="imgleft"/><br/></p>
       <p>Melanocyte transplantation is the latest surgical method for the treatment of stable vitiligo / leukoderma and loss of pigmentation. This treatment involves transferring of patients own melanocytes from an area of healthy skin (with pigment) to the vitiligo patch which has no melanocytes.</p>
       <p> This treatment has become a treatment of choice these days as it provides perfect pigmentation without leaving any scars. It is a highly specialized technique in which even the sensitive areas like eyelids, lips, fingers and joints can be treated without any scars with remarkable cosmetic results. Re-pigmentation is achieved within 1-3 months.</p>
       <h3>Punch Grafting</h3>
-      <p><img src="https://www.drsandeshgupta.com/images/punch-grafting.jpg" alt="" title="" style="border:0;"  class="imgleft"/><br/></p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/punch-grafting.jpg" alt="" title="" style="border:0;"  class="imgleft"/><br/></p>
       <p>Punch Grafting is the treatment of choice in those vitiligo cases where lesions are located on legs, hands or involves bigger areas. This surgery is economical and very easy to perform. In this technique we take out very small punches of normal skin and place it over vitiligo skin by creating the small craters. After few days, these small skin grafts become fixed in vitiligo skin and these new skin grafts start producing pigment. It has a high success rate of 80 to 90 percent in most of the patients.</p>
       <div class="clearfix"></div>
       <h3>Blister Grafting</h3>
@@ -310,10 +310,10 @@ export const TreatmentList = [
         title: "Hair Transplant",
         url: "hair-transplant-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/hair-transplant.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/hair-transplant.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/liXDZL_VD2E"],
-        body: [` <p><img src="https://www.drsandeshgupta.com/images/hair-transplant.jpg" alt="Best Hair Transplant Clinic In Delhi" title="Best Hair Transplant Clinic In Delhi" class="imgleft" style="border:0;" /><br/><a href="hair+loss+treatment+in+delhi+dermatologist+in+delhi.html" title="Hair fall">Hair fall</a> and baldness are very common problem. If properly treated, falling of hair can be stopped and we can regain hair up to 20-30% only. But if hairs are already gone then <a href="https://www.drsandeshgupta.com/blog/best-dermatologist-in-east-delhi-giving-impetus-to-high-quality-hair-transplants/" title="Hair Transplant Clinic In Delhi">hair transplant</a> is the only effective & safe medical way to restore hair.</p>
+        body: [` <p><img src="https://assets.dermatologistin100rs.com/images/hair-transplant.jpg" alt="Best Hair Transplant Clinic In Delhi" title="Best Hair Transplant Clinic In Delhi" class="imgleft" style="border:0;" /><br/><a href="hair-loss-treatment" title="Hair fall">Hair fall</a> and baldness are very common problem. If properly treated, falling of hair can be stopped and we can regain hair up to 20-30% only. But if hairs are already gone then <a href="https://www.drsandeshgupta.com/blog/best-dermatologist-in-east-delhi-giving-impetus-to-high-quality-hair-transplants/" title="Hair Transplant Clinic In Delhi">hair transplant</a> is the only effective & safe medical way to restore hair.</p>
       <p><strong>Permanent:</strong> The hair growth is natural and permanent. We take hair follicles from back of scalp (occipital region) and these hairs usually don't shed as these are not affected by hormone which causes falling of hair.</p>
       <p><strong>Safe:</strong> It's a few hours’ surgery done under local anaesthesia. After transplant patient can do normal activities and can wash the head after 3 days.</p>
       <p><strong>Hair re- grow time:</strong> After transplant roots take 4 months to start growing and actual hair appear after 6 to 8 months, and then we can have desired growth.</p>
@@ -324,12 +324,12 @@ export const TreatmentList = [
         title: "Viora Reaction",
         url: "viora-reaction-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/viora-reaction.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/viora-reaction.jpg",
         imgTitle: "",
         videos: [],
         body: [`<p> <strong>The new generation technique in body contouring & skin tightening treatments</strong></p>
       <p></p>
-      <p><img src="https://www.drsandeshgupta.com/images/viora-reaction.jpg" alt="Viora Reaction, Viora Reaction In Delhi" title="Viora Reaction, Viora Reaction In Delhi" style="border:0;" class="imgright"/><br/>Viora Reaction offers multiple applications for the most wanted aesthetic treatments-</p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/viora-reaction.jpg" alt="Viora Reaction, Viora Reaction In Delhi" title="Viora Reaction, Viora Reaction In Delhi" style="border:0;" class="imgright"/><br/>Viora Reaction offers multiple applications for the most wanted aesthetic treatments-</p>
       <ul>
 <li>Cellulite treatment</li>
 <li>Circumferential reduction</li>
@@ -346,30 +346,30 @@ export const TreatmentList = [
         title: "Cosmetic Surgery",
         url: "cosmetic-surgery-treatment-consultaion",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/facelift.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/facelift.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Facelift</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/facelift.jpg" alt="Facelift treatment In Delhi" title="Facelift treatment In Delhi" style="border:0;"/><br/>As we grow old, signs of ageing start to appear especially in the facial area. These include heavy face, fine lines, wrinkles, deep creases, a jowly jaw line, and others. A facelift can correct these problems. It restores a more youthful appearance and reduces the signs of aging. </p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/facelift.jpg" alt="Facelift treatment In Delhi" title="Facelift treatment In Delhi" style="border:0;"/><br/>As we grow old, signs of ageing start to appear especially in the facial area. These include heavy face, fine lines, wrinkles, deep creases, a jowly jaw line, and others. A facelift can correct these problems. It restores a more youthful appearance and reduces the signs of aging. </p>
         <p>During the facelift procedure, excess fat is removed from the skin and underlying muscles are tightened.For this either thread is placed to tighten the muscles or surgery is done to fix the muscles. </p>
       </article>
       <div class="clear" style="height:15px;"></div>
       <h3>Liposuction</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/liposuction.jpg" alt="Liposuction treatment In Delhi" title="Liposuction treatment In Delhi" style="border:0;"/><br/>Liposuction is a procedure that can remove the fat deposits which are diet and exercise resistant and give a dream-shape body.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/liposuction.jpg" alt="Liposuction treatment In Delhi" title="Liposuction treatment In Delhi" style="border:0;"/><br/>Liposuction is a procedure that can remove the fat deposits which are diet and exercise resistant and give a dream-shape body.</p>
         <p>It is a body contouring procedure in which extra fat from unwanted areas is removed. It is helpful for those who are near their normal body weight, but still possess fat bulges in specific areas, such as the neck, arms, abdomen and thighs.</p>
         <p>This procedure is very safe and easy and can be done in general anaesthesia. In thisfew litre of fat is removed with the help of a special vacuum machine and suction of the fat is done in one session only. Patients are advised to wear tight clothes for few days along with a healthy life style. Here, at skin n laser centre with the help of liposuction you can easily get rid of those extra bulges and improve your quality of life.</p>
       </article>
       <div class="clear" style="height:15px;"></div>
       <h3>Rhinoplasty</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/rhinoplasty.jpg" alt="Rhinoplasty treatment In Delhi" title="Rhinoplasty treatment In Delhi" style="border:0;"/><br/>Rhinoplasty is a procedure in which nose is reshaped to improve its appearancehere are many ways in which a nose can be altered through rhinoplasty, including reducing or increasing the size of the nose, changing the shape of the tip or the bridge, narrowing the span of the nostrils, or changing the angle between the nose and the upper lip. At skin n laser centre, this is done by an expert team of plastic surgeons, so you can get a beautiful desired nose.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/rhinoplasty.jpg" alt="Rhinoplasty treatment In Delhi" title="Rhinoplasty treatment In Delhi" style="border:0;"/><br/>Rhinoplasty is a procedure in which nose is reshaped to improve its appearancehere are many ways in which a nose can be altered through rhinoplasty, including reducing or increasing the size of the nose, changing the shape of the tip or the bridge, narrowing the span of the nostrils, or changing the angle between the nose and the upper lip. At skin n laser centre, this is done by an expert team of plastic surgeons, so you can get a beautiful desired nose.</p>
       </article>
       <div class="clear" style="height:15px;"></div>
       <h3>Fat Injections</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/injections.jpg" alt="Fat Injections treatment In Delhi" title="Fat Injections treatment In Delhi" style="border:0;"/><br/>As we grow old, the underlying muscles become more prominent and fat cells in skin decreases which results in sagging.This is further aggravated by our routine actions like smiling, squinting, and frowning. So, those who want to improve their facial appearance without surgery, fat injections are the answer.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/injections.jpg" alt="Fat Injections treatment In Delhi" title="Fat Injections treatment In Delhi" style="border:0;"/><br/>As we grow old, the underlying muscles become more prominent and fat cells in skin decreases which results in sagging.This is further aggravated by our routine actions like smiling, squinting, and frowning. So, those who want to improve their facial appearance without surgery, fat injections are the answer.</p>
         <p>In this procedure surgeon removes the extra fat cells from your own body (abdomen, thighs) and then this fat is injected into the area to be treated.</p>
         <p>Fat injections can improve various conditions associated with ageing, including laugh lines, forehead wrinkles, sunken cheeks and others.</p>
         <p>This can be done to enhance your lips and can be injected in the sagging areas of your face to give you a smooth and young appearance. Removal of the scars and rejuvenation of the hands can also be done. This procedure is very safe and unlike collagen injections; they do not require a skin test. In addition to this, there are no side effects or allergic reactions since the fat is harvested from your own body and not from an external source. </p>
@@ -378,13 +378,13 @@ export const TreatmentList = [
       <div class="clear" style="height:15px;"></div>
       <h3>Eyelid Surgery</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/eyelid.jpg" alt="Eyelid Surgery In Delhi" title="Eyelid Surgery In Delhi" style="border:0;"/><br/>Eyelid surgery is a surgical procedure that can enhance the appearance of the eyelids. With aging, excess skin and fat begin to accumulate around our eyelids and give puffiness to the eyes. The eyes then appear to have 'bags' surrounding them giving a tired, sad or angry appearance.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/eyelid.jpg" alt="Eyelid Surgery In Delhi" title="Eyelid Surgery In Delhi" style="border:0;"/><br/>Eyelid surgery is a surgical procedure that can enhance the appearance of the eyelids. With aging, excess skin and fat begin to accumulate around our eyelids and give puffiness to the eyes. The eyes then appear to have 'bags' surrounding them giving a tired, sad or angry appearance.</p>
         <p> Both upper and lower eyelid surgery can be done to correct puffiness and drooping with removal of fat along with excess skin and muscle, giving you a more natural & younger appearance.</p>
       </article>
       <div class="clear" style="height:15px;"></div>
       <h3>Breast Augmentation</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/breast-augmentation.jpg" alt="Breast Augmentation Clinic In Delhi" title="Breast Augmentation Clinic In Delhi" style="border:0;"/><br/>Breasts are the assets of a woman and their beauty can be enhanced through a procedure known as breast augmentation, or mammoplasty. It is a surgical procedure in which the size and shape of the breast can be altered and can easily be increased by one or more bra cup size. This procedure can help those women who have lost the shape of their breasts as a result of ageing, pregnancy or nursing. However, the individual must have realistic goals and expectations for the procedure.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/breast-augmentation.jpg" alt="Breast Augmentation Clinic In Delhi" title="Breast Augmentation Clinic In Delhi" style="border:0;"/><br/>Breasts are the assets of a woman and their beauty can be enhanced through a procedure known as breast augmentation, or mammoplasty. It is a surgical procedure in which the size and shape of the breast can be altered and can easily be increased by one or more bra cup size. This procedure can help those women who have lost the shape of their breasts as a result of ageing, pregnancy or nursing. However, the individual must have realistic goals and expectations for the procedure.</p>
         <p>This can be done in two ways, in first type, excess fat is injected from your body and is implanted in breast tissue. It gives a natural look and does not leave any scar. In other type, artificial material like saline-filled and silicone gel-filled implants are placed under the skin by given a small incision. They are more durable but there may be chances of allergic reaction as they are artificial and not natural.</p>
       </article>
       <div class="clear" style="height:15px;"></div>
@@ -396,7 +396,7 @@ export const TreatmentList = [
       <div class="clear" style="height:15px;"></div>
       <h3>Lip Augmentation</h3>
       <article>
-        <p><img src="https://www.drsandeshgupta.com/images/lip.jpg" alt="Lip Augmentation In Delhi" title="Lip Augmentation In Delhi" style="border:0;"/><br/>Lip augmentation is a procedure in which a filler is injected in the lips in order to enhance their size and shape. This is done for those who desire to have a more sensual look or for those who want to restore fuller lips and have lost volume and shape of their lips as a result of ageing and other factors. Lip augmentation can enhance the beauty of your lips. To maintain the desired look, multiple sessions are recommended as the body eventually absorbs the injected material.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/lip.jpg" alt="Lip Augmentation In Delhi" title="Lip Augmentation In Delhi" style="border:0;"/><br/>Lip augmentation is a procedure in which a filler is injected in the lips in order to enhance their size and shape. This is done for those who desire to have a more sensual look or for those who want to restore fuller lips and have lost volume and shape of their lips as a result of ageing and other factors. Lip augmentation can enhance the beauty of your lips. To maintain the desired look, multiple sessions are recommended as the body eventually absorbs the injected material.</p>
         <p>There are various fillers used for lip augmentation. The commonly used are natural e.g. fat, collagen, and artificial Restylane.</p>
         <ul>
         <li>Fat injections involve fat taken from the patient's body.</li>
@@ -406,7 +406,7 @@ export const TreatmentList = [
       <div class="clear" style="height:15px;"></div>
       <h3>Body Contouring</h3>
       <article style=" border-bottom:0;">
-        <p><img src="https://www.drsandeshgupta.com/images/body-contouring.jpg" alt="Body Contouring clinic In Delhi" title="Body Contouring clinic In Delhi" style="border:0;"/><br/>This is done for those individuals who have lost a lot of weight by any means but now have loose hanging skin on their body. Body contouring, also called as body lift is the solution for this. It is a surgical procedure in which excess skin is removed throughout the body. Various procedure such as tummy tuck (abdominoplasty), breast lift, arm tightening can be combined with other body contouring procedures in order to achieve a total body lift. The procedure is carried out in multiple sessions and the results are remarkable. To know more take an appointment today.</p>
+        <p><img src="https://assets.dermatologistin100rs.com/images/body-contouring.jpg" alt="Body Contouring clinic In Delhi" title="Body Contouring clinic In Delhi" style="border:0;"/><br/>This is done for those individuals who have lost a lot of weight by any means but now have loose hanging skin on their body. Body contouring, also called as body lift is the solution for this. It is a surgical procedure in which excess skin is removed throughout the body. Various procedure such as tummy tuck (abdominoplasty), breast lift, arm tightening can be combined with other body contouring procedures in order to achieve a total body lift. The procedure is carried out in multiple sessions and the results are remarkable. To know more take an appointment today.</p>
       </article>
 `]
     },
@@ -414,10 +414,10 @@ export const TreatmentList = [
         title: "Melasma or Pigmentation",
         url: "melasma-pigmentation-treatment",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/melasma.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/melasma.jpg",
         imgTitle: "",
         videos: [],
-        body: [`  <p><img src="https://www.drsandeshgupta.com/images/melasma.jpg" alt="Melasma or Pigmentation Treatment In Delhi" title="Melasma or Pigmentation Treatment In Delhi" style="border:0;"/><br/>Melasma is a chronic skin disorder that results in symmetrical, blotchy, brownish facial pigmentation. It can lead to considerable embarrassment and distress.</p>
+        body: [`  <p><img src="https://assets.dermatologistin100rs.com/images/melasma.jpg" alt="Melasma or Pigmentation Treatment In Delhi" title="Melasma or Pigmentation Treatment In Delhi" style="border:0;"/><br/>Melasma is a chronic skin disorder that results in symmetrical, blotchy, brownish facial pigmentation. It can lead to considerable embarrassment and distress.</p>
       <p> The cause of melasma is complex. The pigmentation is due to overproduction of melanin by the pigment cells- melanocytes; which is taken up by the keratinocytes (epidermal melanosis) or deposited in the dermis (dermal melanosis, melanophages). There is a genetic predisposition to melasma. In most people melasma is a chronic disorder.</p>
       <p><strong>Known triggers for melasma include:</strong></p>
     <ul>
@@ -493,7 +493,7 @@ export const TreatmentList = [
         title: "Hair Treatment",
         url: "hair-treatment-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/prp.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/prp.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/YXTsOllRLuQ"],
         body: [`     <p>Hair plays a very important role in enhancing one’s personality. Loss of hair or baldness results in low self confidence in the sufferer.</p>
@@ -509,7 +509,7 @@ export const TreatmentList = [
       <h3 style="color:#01a1dd ;">Conventional Medicines</h3>
       <p>By a thorough examination underlying cause of the hair fall is diagnosed and accordingly conventional medicines are given which has to be taken for a particular period. This will help in arresting the hair fall along with some growth of new hair.</p>
       <h3 style="color:#01a1dd ;">PRP or Platelet Rich Plasma</h3>
-      <p><img src="https://www.drsandeshgupta.com/images/prp.jpg" class="imgright" alt="PRP" style="border:0;" title="PRP"/><br/>PRP is a new approach in  <strong>hair treatment</strong>, in which various growth factors which are essential for hair growth are supplied to the scalp with the help of <strong>Platelet Rich Plasma (PRP)</strong>. As it is derived from the patient’s own blood, therefore has no potential for causing an immune reaction. With this we increase the amount of platelets at the site which releases various growth factors thereby recovers, repairs and augments hair health and growth.</p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/prp.jpg" class="imgright" alt="PRP" style="border:0;" title="PRP"/><br/>PRP is a new approach in  <strong>hair treatment</strong>, in which various growth factors which are essential for hair growth are supplied to the scalp with the help of <strong>Platelet Rich Plasma (PRP)</strong>. As it is derived from the patient’s own blood, therefore has no potential for causing an immune reaction. With this we increase the amount of platelets at the site which releases various growth factors thereby recovers, repairs and augments hair health and growth.</p>
       <h3>How PRP is prepared?</h3>
       <p>In order to prepare PRP, blood is withdrawn and centrifuged by specialized machines/techniques so that concentrated platelets rich plasma is obtained which contains 5-8 times more platelets per cc as compared to normal plasma. This PRP can be injected directly on the scalp with very thin needle or can be applied with the help of derma roller.</p>
       <h3>The role of PRP in Hair Growth</h3>
@@ -518,7 +518,7 @@ export const TreatmentList = [
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/748xPvSErZI" frameborder="0" allowfullscreen></iframe>
       </p>
       <h3 style="color:#01a1dd ;">Lavatron RF therapy</h3>
-      <p><img src="https://www.drsandeshgupta.com/images/lavatron1.jpg" class="imgright" alt="Lavatron RF therapy" style="border:0;" title="Lavatron RF therapy"/><br/>Lavatron RF is a therapy which helps in enhancing health of the scalp. In this therapy, a device produces deep radiofrequency (RF) which generates heat at hair follicles.</p>
+      <p><img src="https://assets.dermatologistin100rs.com/images/lavatron1.jpg" class="imgright" alt="Lavatron RF therapy" style="border:0;" title="Lavatron RF therapy"/><br/>Lavatron RF is a therapy which helps in enhancing health of the scalp. In this therapy, a device produces deep radiofrequency (RF) which generates heat at hair follicles.</p>
       <p>Deep heating improves blood circulation and supply lot of oxygen and nutrients to the scalp. This sprouts hair and prevents them from falling through stimulation to their roots via thermal effect. It is useful in:</p>
       <div class="left48">
         <ul>
@@ -534,7 +534,7 @@ export const TreatmentList = [
       </div>
       <div class="clearfix"></div>
       <h3 style="color:#01a1dd ;">Stem cells therapy</h3>
-      <p>Stem cell is a type of blast cell, which can differentiate to various adult cell including skin cell and hair cell. Stem cells nourish and stimulate the hair follicles and increase the blood circulation in the scalp and by this helps in stopping  <a href="hair+loss+treatment+in+delhi+dermatologist+in+delhi.html" title="hair loss">hair loss</a> and increasing hair growth.</p>
+      <p>Stem cell is a type of blast cell, which can differentiate to various adult cell including skin cell and hair cell. Stem cells nourish and stimulate the hair follicles and increase the blood circulation in the scalp and by this helps in stopping  <a href="hair-transplant-treatment-consultation" title="hair loss">hair loss</a> and increasing hair growth.</p>
       <h3>The main ingredients of stem cells are-</h3>
       <div class="left48">
         <ul>
@@ -564,13 +564,13 @@ export const TreatmentList = [
         title: "Tattoo Removal",
         url: "tattoo-removal-consultation",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/tatoo3.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/tatoo3.jpg",
         imgTitle: "",
         videos: ["https://www.youtube.com/embed/3vSTFBvCwgQ"],
-        body: [`  <p>Laser tattoo removal usually refers to those non-invasive removal of tattoo pigments using  <a href="tattoo+removal+in+delhi+birthmark+removal+in+delhi+dermatologist+in+delhi.html" title="Q Switch ND Yag Laser In Delhi">Q-switch NdYAG</a> (Neodymium Doped Yttrium Aluminium Garnet). Typically, black and darker-colored inks can be removed more completely.</p>
+        body: [`  <p>Laser tattoo removal usually refers to those non-invasive removal of tattoo pigments using  <a href="q-switch-tag-laser-tattoo-removal" title="Q Switch ND Yag Laser In Delhi">Q-switch NdYAG</a> (Neodymium Doped Yttrium Aluminium Garnet). Typically, black and darker-colored inks can be removed more completely.</p>
       <div class="clearfix"></div>
-      <div class="left48"><img src="https://www.drsandeshgupta.com/images/tatoo3.jpg" alt="Tattoo Removal In Delhi, Laser Tattoo Removal In Delhi" title="Tattoo Removal In Delhi, Laser Tattoo Removal In Delhi" style="border:0; margin-right:0;"/><br/></div>
-      <div class="right48"><img src="https://www.drsandeshgupta.com/images/tatoo4.jpg" alt="Laser Tattoo Removal In Delhi, Permanent Tattoo Removal in Delhi" title="Laser Tattoo Removal In Delhi, Permanent Tattoo Removal in Delhi" style="border:0; margin-right:0;"/><br/></div>
+      <div class="left48"><img src="https://assets.dermatologistin100rs.com/images/tatoo3.jpg" alt="Tattoo Removal In Delhi, Laser Tattoo Removal In Delhi" title="Tattoo Removal In Delhi, Laser Tattoo Removal In Delhi" style="border:0; margin-right:0;"/><br/></div>
+      <div class="right48"><img src="https://assets.dermatologistin100rs.com/images/tatoo4.jpg" alt="Laser Tattoo Removal In Delhi, Permanent Tattoo Removal in Delhi" title="Laser Tattoo Removal In Delhi, Permanent Tattoo Removal in Delhi" style="border:0; margin-right:0;"/><br/></div>
       <div class="clearfix">&nbsp;</div>
       <h3>Why tattoo removal?</h3>
       <p>In various surveys conducted worldwide, people give different reasons to remove tattoo i.e.</p>
@@ -606,11 +606,11 @@ export const TreatmentList = [
         title: "Glutathione Fairness Injections",
         url: "glutathione-fairness-injections",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/glutathione.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/glutathione.jpg",
         imgTitle: "",
         videos: [],
         body: [` <h3>Glutathione the Wonder Injection</h3>
-     <p><strong>“A sure & proven gateway to Healthy, Fair & Youthful Skin”</strong></p><img src="https://www.drsandeshgupta.com/images/glutathione.jpg" alt="Glutathione" title="Glutathione" class="imgright" style="border:0;"><br/>
+     <p><strong>“A sure & proven gateway to Healthy, Fair & Youthful Skin”</strong></p><img src="https://assets.dermatologistin100rs.com/images/glutathione.jpg" alt="Glutathione" title="Glutathione" class="imgright" style="border:0;"><br/>
     <p> <strong>Glutathione</strong> is the most wonderful Skin Whitening Injection which gives quick results as compared to other skin whitening products such as over the counter pills, home remediesand skin whitening creams, which may irritate or damage your skin. This Skin Whitening Injection is quickly absorbed by the skin andis now highly recommended by experts and well-qualified dermatologists. Glutathione is administered in combination with Vitamin C which further boosts the action of Glutathione and makes the resultlong-lasting. You can see the change in your skin right from the first week of using this injection. Skin starts looking fair and bright. It has no harmful side effects when administered in proper dosages by an expert. </p>
      <p><strong>Detailed benefits of Glutathione Injection-</strong></p>
      <ul>
@@ -629,10 +629,10 @@ export const TreatmentList = [
         title: "Hydra Facial",
         url: "hydra-facial",
         alt: "",
-        image: "https://www.drsandeshgupta.com/images/hydra-facial1.jpg",
+        image: "https://assets.dermatologistin100rs.com/images/hydra-facial1.jpg",
         imgTitle: "",
         videos: [],
-        body: [` <h3>Hydra Facial- A Step towards Radiant, Healthy & Youthful skin</h3><img src="https://www.drsandeshgupta.com/images/hydra-facial1.jpg" alt="Hydra Facial" title="Hydra Facial" class="imgright" style="border:0;"><br/>
+        body: [` <h3>Hydra Facial- A Step towards Radiant, Healthy & Youthful skin</h3><img src="https://assets.dermatologistin100rs.com/images/hydra-facial1.jpg" alt="Hydra Facial" title="Hydra Facial" class="imgright" style="border:0;"><br/>
      <p>Your skin is most radiant when it is healthy. Every day our skin is exposed to pollution, sun, stress & impurities, making our skin dull & damaged. Hydra Facial is an advanced therapy for repairing damage and replenishing the skin. By combining the water based formula with fusion technology this facial is an ultimate solution to get rid of hyper pigmentation, signs of ageing, brown spots & dullness of the skin. The results are immediate with no downtime or discomfort.</p>
      <h3>Does It Hurt?</h3>
     <p> Not at all! In fact, it is very relaxing. The specially designed automated suction system pampers the skin making it painless yet effective cleansing. You get wonderful results with no downtime.</p>
@@ -644,7 +644,7 @@ export const TreatmentList = [
 
 <h3>Results</h3>
 <p>From 1st session itself there are visible results. You will get a fresh, smooth & radiant skin.</p>
-<p><img src="https://www.drsandeshgupta.com/images/hydra-facial2.jpg" alt="" title=""  style="border:0;"></p>
+<p><img src="https://assets.dermatologistin100rs.com/images/hydra-facial2.jpg" alt="" title=""  style="border:0;"></p>
 `]
     },
 

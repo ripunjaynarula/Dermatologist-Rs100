@@ -124,6 +124,8 @@ function App() {
               <Route path="/video" component={Video} />
               <Route path="/404" component={page404} />
               <Route path="/about" component={about} />
+                            <Route path="/dermatologist+in+delhi+best+dermatologist+in+delhi+skin+specialist+in+delhi.html" component={Home} />
+
                             <Route path="/profile" component={publicProfile} />
 
 publicProfile

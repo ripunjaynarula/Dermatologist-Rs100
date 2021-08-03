@@ -45,8 +45,8 @@ export const conditions = [{
       <div class="clearfix"></div>
       <p><strong>Treatment modalities available:</strong></p>
       <p><strong>Medicine</strong>- to control new eruptions by curing the infection</p>
-      <p><a href="chemical-skin-peel-treatment-consultation" title="Chemical peels">Chemical peels</a> and <a href="/microdermabrasion-treatment" title="microdermaabration">microdermaabration</a>- to exfoliate the dead layer of the skin and superficial acne to reduce the post inflammatory hyperpigmentation</p>
-      <p><strong>Laser</strong> - <a href="/acupulse-fractional-co2-laser-treatment" title="fractional C02 laser">fractional C02 laser</a>- This is the most advanced laser for acne scars. This helps in formation of collagen therefore effects can be seen from the first sitting onwards.</p>
+      <p><a href="chemical-skin-peel-treatment-consultation" title="Chemical peels">Chemical peels</a> and <a href="microdermabrasion-treatment" title="microdermaabration">microdermaabration</a>- to exfoliate the dead layer of the skin and superficial acne to reduce the post inflammatory hyperpigmentation</p>
+      <p><strong>Laser</strong> - <a href="acupulse-fractional-co2-laser-treatment" title="fractional C02 laser">fractional C02 laser</a>- This is the most advanced laser for acne scars. This helps in formation of collagen therefore effects can be seen from the first sitting onwards.</p>
 `,
 
         alt: " Pimples Acne  treatment in delhi,  Pimples Acne  Symptoms, Pimples Acne ",
@@ -190,8 +190,8 @@ export const conditions = [{
       <p>We, at <strong>skin n laser centre</strong>, have all the advance therapies for treating melasma.</p>
       <p><strong>Various treatments available are:</strong></p>
       <p><strong>Medical</strong> - To stop the process of pigmentation (melanisation) and reducing the darkening</p>
-      <p><a href="chemical+skin+peel+treatment+in+delhi+dermatologist+in+delhi.html" title="Chemical peels">Chemical peels</a> and <a href="microdermabrasion+treatment+in+delhi+dermatologist+in+delhi.html" title="microdermabrasion">microdermabrasion</a> - In this the superficial layer of the dead skin is removed along with the pigment and skin rejuvenation is done.</p>
-      <p><strong>Lasers</strong> - In this a laser beam is given to the dark area, which penetrates the skin and destroys the pigment in a painless manner. In laser treatment superficial (epidermal) as well as deep (dermal) pigment is targeted. We are equipped with  <a href="tattoo+removal+in+delhi+birthmark+removal+in+delhi+dermatologist+in+delhi.html" title="Q-Switched Nd-yag laser">Q-Switched Nd-yag laser</a>, which is the best laser for melasma, freckles and hyper pigmentation</p>
+      <p><a href="chemical-skin-peel-treatment-consultation" title="Chemical peels">Chemical peels</a> and <a href="microdermabrasion-treatment" title="microdermabrasion">microdermabrasion</a> - In this the superficial layer of the dead skin is removed along with the pigment and skin rejuvenation is done.</p>
+      <p><strong>Lasers</strong> - In this a laser beam is given to the dark area, which penetrates the skin and destroys the pigment in a painless manner. In laser treatment superficial (epidermal) as well as deep (dermal) pigment is targeted. We are equipped with  <a href="tattoo-removal-consultation" title="Q-Switched Nd-yag laser">Q-Switched Nd-yag laser</a>, which is the best laser for melasma, freckles and hyper pigmentation</p>
 `
 
     }, {
@@ -213,7 +213,7 @@ export const conditions = [{
       <h3>Moles or Nevi or skin tags Treatment at skin n laser centre in Delhi</h3>
       <p>Most of the moles on the body are harmless and require no treatment. However, they can be surgically removed in case of cosmetic concern.</p>
       <p>Skin n laser has excellent laser techniques for removal of benign and malignant moles by experienced dermatologist to ensure minimal discomfort and rapid recovery for patients.</p>
-      <p><a href="conventional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="Co2 laser">Co2 laser</a> is the most advanced laser which we use for mole or skin tag removal.</p>
+      <p><a href="conventional-co2-laser-treatment-consultation" title="Co2 laser">Co2 laser</a> is the most advanced laser which we use for mole or skin tag removal.</p>
       <h3>How does CO2 (Carbon dioxide) Laser work?</h3>
       <p>It is a painless procedure in which a numbing cream is applied 20 mins prior to the procedure and then laser beam is given to the mole which penetrates the skin painlessly and disrupts the pigment cells and causes skin resurfacing and removes mole with very less scarring.</p>
   `
@@ -248,7 +248,7 @@ export const conditions = [{
       <h3>How it can be prevented?</h3>
       <p>There are some measures you can take to prevent fungal skin infection. Always keep clothes dry and clean, and wear loose-fitting clothes as much as possible. Avoid sharing hairbrushes, combs, and towels, as they may contain skin fragments with fungal colonies. Use alternative shoes every few days and wear cotton socks to avoid fungal infection to the feet. Avoid excessive oil application and never do self-medication. </p>
       <h3>Fungal Infection Treatment at skin n laser centre in Delhi</h3>
-      <p>At <strong>skin n laser centre</strong> the detailed history and proper examination of the patients are done by expert team of dermatologist and a proper diagnosis is made. Various treatments are given according to the type and location of infection. For more information, <a href="dermatologist+in+delhi+skin+specialist+in+delhi+east+delhi+shahdara+laxmi+nagar+seelampur+krishna+nagar+preet+vihar.html" title="contact">contact</a> <strong>skin n laser centre</strong>.</p>
+      <p>At <strong>skin n laser centre</strong> the detailed history and proper examination of the patients are done by expert team of dermatologist and a proper diagnosis is made. Various treatments are given according to the type and location of infection. For more information, <a href="consult" title="contact">contact</a> <strong>skin n laser centre</strong>.</p>
   `
     }, {
         title: "Keloid And Hypertrophic Scar",
@@ -275,7 +275,7 @@ export const conditions = [{
       <h3>Fractional Co2 laser </h3>
       <p>Fractional carbon dioxide (CO2) lasers are one of the latest advances in non-surgical skin  resurfacing  treatments. </p>
       <h3>How does fractional Co2 laser works?</h3>
-      <p>The <a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="fractional CO2 laser">fractional CO2 laser</a> takes the CO2 laser beam and fractionates, or pixellates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen. - See more at: <a href="/acupulse-fractional-co2-laser-treatment">Click here</a></p>`
+      <p>The <a href="acupulse-fractional-co2-laser-treatment" title="fractional CO2 laser">fractional CO2 laser</a> takes the CO2 laser beam and fractionates, or pixellates that beam into thousands of tiny little shafts of light. These tiny shafts of light penetrate into the deeper layers of the skin. The skin then repairs those tiny shafts by pushing out the old sun damaged skin and replacing it with new skin. The "collateral" heat damage also helps to shrink existing collagen. - See more at: <a href="acupulse-fractional-co2-laser-treatment">Click here</a></p>`
     }, {
         title: "Hair Loss",
         url: "hair-loss-treatment",
@@ -318,7 +318,7 @@ export const conditions = [{
       <h3>Conventional Medicines</h3>
       <p>By a thorough examination underlying cause of the hair fall is diagnosed and accordingly conventional medicines are given which has to be taken for a particular period. This will help in arresting the hair fall along with some growth of new hair.</p>
       <h3>PRP or Platelet Rich Plasma</h3>
-      <p>PRP is a new approach in <a href="hair+treatment+in+delhi+dermatologist+in+delhi+alopecia+areata+treatment.html" title="hair treatment">hair treatment</a>, in which various growth factors which are essential for hair growth are supplied to the scalp with the help of Platelet Rich Plasma (PRP). As it is derived from the patient’s own blood, therefore has no potential for causing an immune reaction. Increased platelets at the hair fall site promotes growth factors & helps recover, repair and augment the hair health and growth.</p>
+      <p>PRP is a new approach in <a href="hair-treatment-consultation" title="hair treatment">hair treatment</a>, in which various growth factors which are essential for hair growth are supplied to the scalp with the help of Platelet Rich Plasma (PRP). As it is derived from the patient’s own blood, therefore has no potential for causing an immune reaction. Increased platelets at the hair fall site promotes growth factors & helps recover, repair and augment the hair health and growth.</p>
       <h3>How PRP is prepared?</h3>
       <p>In order to prepare PRP, blood is withdrawn and centrifuged by specialized machines/techniques so that concentrated platelets rich plasma is obtained which contains 5-8 times more platelets per cc as compared to normal plasma. This PRP can be injected directly on the scalp with very thin needle or can be applied with the help of derma roller.</p>
       <h3>Lavatron RF therapy</h3>
@@ -365,8 +365,8 @@ export const conditions = [{
       <h3>Lichen Planus Treatment at skin n laser centre in Delhi</h3>
       <p>Various oral & topical medicines along with intralesional injection can also be given.</p>
       <ul>
-        <li><a href="conventional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="Co2 laser">Co2 laser</a></li>
-        <li><a href="acupulse+fractional+co2+laser+treatment+in+delhi+dermatologist+in+delhi.html" title="Fractional co2 laser">Fractional co2 laser</a></li>
+        <li><a href="conventional-co2-laser-treatment-consultation" title="Co2 laser">Co2 laser</a></li>
+        <li><a href="acupulse-fractional-co2-laser-treatment" title="Fractional co2 laser">Fractional co2 laser</a></li>
       </ul>`
     }, {
         title: "Warts And Molluscumcontagiosum",
@@ -419,7 +419,7 @@ export const conditions = [{
       <p>Although Plucking, tweezing, threading, waxing or bleaching are commonly used to get rid of these unwanted hair but these ways are not very promising to remove them permanently. They have their own side effects and need to be repeated on a regular basis as hair grows back within 15-20 days. Furthermore, they may be effective for women with minor hair growth, the ones with severe form of this problem would need the treatment from expert for long term benefit. </p>
       <p>At <em>Skin n laser centre</em> we have the most advanced Light Sheer Diode Laser from <strong>Lumenis U.S.A., a Gold standard laser for hair removal</strong>.</p>
       <h3>How does diode laser work?</h3>
-      <p>A laser produces a beam of highly concentrated light. The light emitted is well absorbed by the pigment located in hair follicles. The laser pulses for a fraction of a second, just long enough to vaporize the pigment, disabling numerous follicles at a time to eliminate or significantly impede the hair growth. Treatment from this laser gives very effective results from the first sitting itself.  <strong>For more information from the experts, <a href="dermatologist+in+delhi+skin+specialist+in+delhi+east+delhi+shahdara+laxmi+nagar+seelampur+krishna+nagar+preet+vihar.html" title="book an appointment">book an appointment</a> at Skin N Laser centre East Delhi</strong>.</p>
+      <p>A laser produces a beam of highly concentrated light. The light emitted is well absorbed by the pigment located in hair follicles. The laser pulses for a fraction of a second, just long enough to vaporize the pigment, disabling numerous follicles at a time to eliminate or significantly impede the hair growth. Treatment from this laser gives very effective results from the first sitting itself.  <strong>For more information from the experts, <a href="consult" title="book an appointment">book an appointment</a> at Skin N Laser centre East Delhi</strong>.</p>
    `
     }
 ]

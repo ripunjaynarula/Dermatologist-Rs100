@@ -7,6 +7,7 @@ import DOMPurify from 'dompurify';
 import SideBar from "../sidebar"
 import {TreatmentList} from "./treatmentList"
       import Footer from "../../footer"
+import SEO from '../../utility/seo'
 
 export default function Home() {
   const history = useHistory();
@@ -19,6 +20,7 @@ const [alt, setAlt] = useState("")
 const [imgTitle, setImgTitle] = useState("")
 const [videos, setVideos] = useState([])
      const ref = useRef(null);
+const [metaDesc, setMetaDesc] = useState("")
 
    const [width, setWidth] = useState(false)
 
@@ -63,7 +65,9 @@ const [videos, setVideos] = useState([])
             setTitle(TreatmentList[i].title)
             setAlt(TreatmentList[i].alt)
             setImgTitle(TreatmentList[i].imageTitle)
-            setVideos(TreatmentList[i].videos)
+            setVideos(TreatmentList[i].videos)   
+             setMetaDesc(TreatmentList[i].body.length > 60 ? TreatmentList[i].body.split(60) : TreatmentList[i].body)
+
         }
     }   
 }
@@ -97,6 +101,8 @@ const [videos, setVideos] = useState([])
  
     return (
     <>
+              <SEO twitter_summary = {metaDesc}  title = {title} description = {metaDesc} image = {process.env.REACT_APP_CDN_URL +imageLink}></SEO>  
+
          <div className="Navb" ><Navbar  /></div>
 
      <section class="breadcrumbs">

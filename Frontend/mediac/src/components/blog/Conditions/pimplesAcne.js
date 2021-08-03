@@ -25,6 +25,7 @@ const [link, setLink] = useState("")
 const [alt, setAlt] = useState("")
 const [imgTitle, setImgTitle] = useState("")
 
+const [metaDesc, setMetaDesc] = useState("")
 
   const queryString = window.location.pathname;
  
@@ -57,6 +58,7 @@ for(var i =0; i< conditions.length; i++)
    setTitle(conditions[i].title)
     setAlt(conditions[i].alt)
     setImgTitle(conditions[i].imageTitle)
+    setMetaDesc(conditions[i].body.length > 60 ? conditions[i].body.split(60) : conditions[i].body)
     }
 }   
 
@@ -93,13 +95,7 @@ for(var i =0; i< conditions.length; i++)
       
     <>
 
-            <Helmet>
-                <title>App Title</title>
-                <link rel="canonical" href="https://malikgabroun.com" />
-                            <meta name="description" content="Nested component" />
- 
-            </Helmet>
- 
+          <SEO twitter_summary = {metaDesc}  title = {title} description = {metaDesc} image = {process.env.REACT_APP_CDN_URL +imageLink}></SEO>  
 
    <main>
 

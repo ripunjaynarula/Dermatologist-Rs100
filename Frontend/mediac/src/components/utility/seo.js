@@ -1,20 +1,20 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-const icon192 = "https://www.drsandeshgupta.com/images/logo.png";
-const icon16 = "https://www.drsandeshgupta.com/images/logo.png";
-const icon32 = "https://www.drsandeshgupta.com/images/logo.png";
-const icon512 = "https://www.drsandeshgupta.com/images/logo.png";
+const icon192 = "https://dermatologistin100rs.com/logo.png";
+const icon16 = "https://dermatologistin100rs.com/logo.png";
+const icon32 = "https://dermatologistin100rs.com/logo.png";
+const icon512 = "https://dermatologistin100rs.com/logo512.png";
+const _image = "https://dermatologistin100rs.com/logoc512.png"
+const Seo = ({ meta, image, title, description, pathSlug, keywords, twitter_summary }) => {
+    const metaDescription = description || "Dr. Sandesh Gupta is a Dermatologist in Delhi, Consult in Rs.100, Book appointments and online consultation, Get skin care";
 
-const Seo = ({ meta, image, title, description, pathSlug, keywords }) => {
-    const metaDescription = description || "useSiteMetadata().description";
-
-    const defaultTitle = title || ""
+    const defaultTitle = title || "Dr. Sandesh Gupta - Dermatologist consultation in Rs.100 - Book Appointment Online - Skin Care"
     const url = pathSlug ?
         process.env.REACT_APP_API_URL + pathSlug :
         process.env.REACT_APP_API_URL;
-    const metaImage = image ? image : null;
-
+    const metaImage = image ? image : _image;
+    const summary = twitter_summary || metaDescription
     const metadata = meta || {};
 
     return ( <
@@ -51,7 +51,7 @@ const Seo = ({ meta, image, title, description, pathSlug, keywords }) => {
                 },
                 {
                     name: 'twitter:card',
-                    content: 'summary',
+                    content: summary,
                 },
                 {
                     name: 'twitter:creator',
@@ -83,30 +83,30 @@ const Seo = ({ meta, image, title, description, pathSlug, keywords }) => {
 
 
 
-                // {
-                //     rel: 'icon',
-                //     type: 'image/png',
-                //     href: icon16,
-                //     sizes: '16x16',
-                // },
-                // {
-                //     rel: 'icon',
-                //     type: 'image/png',
-                //     href: icon32,
-                //     sizes: '32x32',
-                // },
-                // {
-                //     rel: 'apple-touch-icon',
-                //     type: 'image/png',
-                //     href: icon192,
-                //     sizes: '192x192',
-                // },
-                // {
-                //     rel: 'apple-touch-startup-image',
-                //     type: 'image/png',
-                //     href: icon512,
-                //     sizes: '512x512',
-                // },
+                {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: icon16,
+                    sizes: '16x16',
+                },
+                {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: icon32,
+                    sizes: '32x32',
+                },
+                {
+                    rel: 'apple-touch-icon',
+                    type: 'image/png',
+                    href: icon192,
+                    sizes: '192x192',
+                },
+                {
+                    rel: 'apple-touch-startup-image',
+                    type: 'image/png',
+                    href: icon512,
+                    sizes: '512x512',
+                },
             ]
         }
         />

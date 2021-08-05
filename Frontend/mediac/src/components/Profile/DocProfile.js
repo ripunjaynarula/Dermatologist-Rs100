@@ -83,8 +83,7 @@ else
   async function getData(){
 
     var username = queryString.split("/")[queryString.split("/").length - 1]
-
-       const requestOptions = {
+        const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json',  },
           body: JSON.stringify({
@@ -243,14 +242,14 @@ else
                     </a>       }                    
                     
                     {
-                        linkedinc &&  <a href={linkedinc} target="_blank" rel = "noreferrer">
+                        linkedinc &&  <a href={linkedinc} target="_blank" rel = "noreferrer noopener">
                     <img src = {linkedin} className = "icon-mbigger" alt=""></img>
                     </a> 
                     }
                     
                     {
                         twitterc &&
-                        <a href={twitterc} target="_blank" rel = "noreferrer">
+                        <a href={twitterc} target="_blank" rel = "noreferrer noopener">
                     <img src = {twitter} className = "icon-mbigger" alt=""></img>
                     </a>
                     }

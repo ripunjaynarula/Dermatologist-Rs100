@@ -128,8 +128,7 @@ function App() {
 
                             <Route path="/profile" component={publicProfile} />
 
-publicProfile
-              <Route path="/forgot-password" component={ForgotPassword} />
+               <Route path="/forgot-password" component={ForgotPassword} />
               <Route exact path="/home#faqhead" component={Home} />
 
               <Route path="/conditions" component={ConditionsMainPage} />

@@ -396,6 +396,7 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 
          try {
+             console.log("LOOL")
 console.log(process.getuid(), "UID")
             await nodeHtmlToImage({
                 output: filePath,

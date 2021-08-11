@@ -73,7 +73,7 @@ for (var key in req.body.medicines) {
    var id = Math.round(new Date().getTime()/1000)
 
   
-          var awsPath = "blog/" + id + ".png"  
+          var awsPath = "images/" + id + ".png"  
 
  
 
@@ -118,8 +118,6 @@ for (var key in req.body.medicines) {
         })
         await addP.save()
     }else{
-
- 
 
                   console.log(req.body,"---------------------")    
         var updateP = await Unreistered.updateOne({_id : new  ObjectID(req.body.puid)}, {$set: {name : req.body.patientName, age : req.body.age, gender : req.body.gender, email : req.body.email, phone : req.body.phone, }})

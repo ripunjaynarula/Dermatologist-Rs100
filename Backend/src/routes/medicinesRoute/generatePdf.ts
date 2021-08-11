@@ -376,11 +376,9 @@ import nodeHtmlToImage from 'node-html-to-image'
 
         <div style="text-align: center; margin-top: 35px;">
 
-            <img style="width: auto;height: 50px;" src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"></img>
+            <img style="width: auto;height: 50px;" src="https://assets.dermatologistin100rs.com/images/logo.png"></img>
 
-
-            <h1>LOGO</h1>
-
+ 
         </div>
     </div>
 

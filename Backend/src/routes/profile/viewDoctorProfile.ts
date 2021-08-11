@@ -9,8 +9,6 @@ router.post('/', async (req, res) => {
 
 
 
- 
-
         try {
 
 
@@ -18,6 +16,7 @@ var d : any;
 
 var username = req.body.username;
    d = await doctors.findOne({username: username});
+   console.log(d, req.body)
    if(!d)
    {
         return res.send({status:"404", isError: true})

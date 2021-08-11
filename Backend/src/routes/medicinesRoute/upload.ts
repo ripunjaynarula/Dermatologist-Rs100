@@ -10,9 +10,7 @@ const s3 = new AWS.S3({
 const uploadFile = async (fileName : string, awsPath : string) => {
     // Read content from the file
    try{
-var s = await fs.access(fileName, fs.W_OK)
-console.log(s, "line 14")
-    const fileContent = fs.readFileSync(fileName);
+     const fileContent = fs.readFileSync(fileName);
      // Setting up S3 upload parameters
     const params = {
         Bucket: process.env.bucket_name,

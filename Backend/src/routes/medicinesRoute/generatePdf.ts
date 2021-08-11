@@ -400,7 +400,7 @@ console.log(process.getuid(), "UID")
             await nodeHtmlToImage({
                 output: filePath,
                 html: html,
-                puppeteerArgs :['--no-sandbox']
+                puppeteerArgs :'--no-sandbox'
             })
 console.log("PDF GENERATED")
             return true;

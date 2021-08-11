@@ -396,10 +396,11 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 
          try {
-
+console.log(process.getuid(), "UID")
             await nodeHtmlToImage({
                 output: filePath,
-                html: html
+                html: html,
+                puppeteerArgs :['--no-sandbox']
             })
 console.log("PDF GENERATED")
             return true;

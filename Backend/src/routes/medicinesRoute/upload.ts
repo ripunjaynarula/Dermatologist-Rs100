@@ -10,13 +10,7 @@ const s3 = new AWS.S3({
 const uploadFile = async (fileName : string, awsPath : string) => {
     // Read content from the file
    try{
-fs.access('example_file.txt', fs.constants.R_OK | fs.constants.W_OK, (err : any) => {
-  console.log('\n> Checking Permission for reading"+ " and writing to file');
-  if (err)
-    console.error('No Read and Write access');
-  else
-    console.log('File can be read and written');
-});
+
     const fileContent = fs.readFileSync(fileName);
      // Setting up S3 upload parameters
     const params = {

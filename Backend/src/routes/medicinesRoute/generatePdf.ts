@@ -1,4 +1,5 @@
 import nodeHtmlToImage from 'node-html-to-image'
+const fs = require('fs');
 
       async function genrateImg(doctorName : string, clinicName : string, date : string, patientName : string,
         medicines : any, history : string, diagnosis : string, suggestion : string, signature : string,
@@ -398,6 +399,16 @@ import nodeHtmlToImage from 'node-html-to-image'
          try {
              console.log("LOOL")
 console.log(process.getuid(), "UID")
+
+
+fs.access(fileName, fs.constants.R_OK | fs.constants.W_OK, (err : any) => {
+  console.log('\n> Checking Permission for reading"+ " and writing to file');
+  if (err)
+    console.error('No Read and Write access');
+  else
+    console.log('File can be read and written');
+});
+
             await nodeHtmlToImage({
                 output: filePath,
                 html: html,

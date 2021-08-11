@@ -16,9 +16,7 @@ import Navbar from '../Navbar'
 
  import DOMPurify from 'dompurify';
 
-import firebase from 'firebase'
-import { auth } from '../../firebase'
-import { useAuth } from "../../contexts/AuthContext"
+ import { useAuth } from "../../contexts/AuthContext"
    import SideBar from "./sidebar"
  require('fetch-everywhere');
 var firs = false

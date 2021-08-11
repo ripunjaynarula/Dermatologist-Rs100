@@ -302,9 +302,10 @@ if(i/6 >=100) i=0
             <Col lg="12">
               <div className="text-center mb-5">
                 <h1 style = {{color : "#494f57", fontStyle: "work sans"}}>
-                  We are connecting you
+{showPaymentButton === "on" ? "Your request is accepted" : showPaymentButton === "cancel" ? "Sorry, we cannot connect with you at the moment":"Payment will be enabled after we accept your request"}                  
                 </h1>
-                <h4 style = {{color : "#494f57", fontStyle: "work sans"}} >Sit back and relax</h4>
+                <p style = {{color : "#494f57", fontStyle: "open sans", fontSize
+                : "24px"}} >If it is taking too much time, <a  href="tel:+917827556162">call us (782 755 6162)</a> </p>
                 <div className="mt-5 text-center">
                   
 

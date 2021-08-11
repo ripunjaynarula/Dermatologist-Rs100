@@ -3,7 +3,7 @@ import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from '../firebase'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
 import {CardMain} from "../css/Card";
 import Navbar from "./Navbar"
 import {Texts} from "../css/Texts";

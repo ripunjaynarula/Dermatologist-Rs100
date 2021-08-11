@@ -6,7 +6,7 @@ import {CardMain} from "../../css/Card";
  import {Texts} from "../../css/Texts";
 import useWindowDimensions from "../../functions/windowDimensions"
 import Navbar from "../Navbar"
- import firebase from 'firebase'
+import firebase from 'firebase/app';
 
 export default function ChangePassword() {
   const newPasswordRef = useRef()

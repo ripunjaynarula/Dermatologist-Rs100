@@ -3,8 +3,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
  import ellipse from "./img/ellipse2.png";
 import "./styles.css";
-import firebase from "firebase";
-import { auth } from "../firebase";
+ import { auth } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import Modal from "react-bootstrap/Modal";
 import LoginPopup from "./LoginPopup";
@@ -13,6 +12,7 @@ import Navbar from "./Navbar";
 import bg1 from "./img/b1.jpg";
 import bg2 from "./img/b2.jpg";
 import telephone from './img/telephone.png'
+import firebase from 'firebase/app';
 
 import bg3 from "./img/b3.jpg";
 import HomeBottom from './AboutPage/HomeBottom'

@@ -10,14 +10,12 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 
  import "../../css/buttons.css";
 import app from '../../firebase'
-import firebase from 'firebase'
 import Navbar from '../Header'
 import React, { useRef, useState, useEffect } from "react"
 import {   Form, Button,   Row, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
-import { auth } from '../../firebase'
-// Form Editor
+import {  useHistory } from "react-router-dom"
+ // Form Editor
 import { EditorState } from 'draft-js';
 import {Styles} from "../../css/Styles"
 import { Editor } from "react-draft-wysiwyg"

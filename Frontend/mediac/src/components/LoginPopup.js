@@ -4,8 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import bgimg from "./img/image1.png";
 import ellipse from "./img/ellipse.png";
 import "./styles.css";
-import firebase from "firebase";
-import { auth } from "../firebase";
+ import { auth } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import Modal from "react-bootstrap/Modal";
 import { CardMain } from "../css/Card";
@@ -13,7 +12,8 @@ import { Texts } from "../css/Texts";
 import { DataContext } from "./App";
 import close from './img/close.svg'
 import {reactLocalStorage} from 'reactjs-localstorage';
-
+import firebase from 'firebase/app';
+ 
 export default function LoginPopup(prop) {
   const history = useHistory();
   const emailRef = useRef();

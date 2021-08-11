@@ -8,8 +8,6 @@ import { useHistory } from 'react-router-dom'
    import heartSvg from '../img/heart.svg'
  
  
-import firebase from 'firebase'
-import { auth } from '../../firebase'
 import { useAuth } from "../../contexts/AuthContext"
    import DOMPurify from 'dompurify';
 

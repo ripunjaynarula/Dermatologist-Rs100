@@ -6,7 +6,6 @@ import { Form, Button } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
-import firebase from "firebase";
  import { CardBody, Col, Card, Container } from "reactstrap";
 import app from "../../firebase";
 import Help from "./help"

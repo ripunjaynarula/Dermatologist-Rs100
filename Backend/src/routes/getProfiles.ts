@@ -42,12 +42,11 @@ try{
 //if(consultation[i].active && !consultation[i].accepted)
            
            //for not paid
-           if(consultation[i].active && consultation[i].accepted && (consultation[i].byDoctorStatus === 'on' || consultation[i].byDoctorStatus === 'no'))
+           if(consultation[i].active  && (consultation[i].byDoctorStatus === 'on' || consultation[i].byDoctorStatus === 'no'))
             {
                            console.log(consultation[i].byDoctorStatus === 'on' || consultation[i].byDoctorStatus === 'no')
 
-                console.log("LASSUN")
-                              console.log(consultation[i])
+                               console.log(consultation[i])
 
                 consultationId = consultation[i].uid
 

@@ -12,9 +12,7 @@ import SideBar from "./sidebar"
 import DOMPurify from 'dompurify';
 
 import Navbar from '../Navbar'
-import firebase from 'firebase'
-import { auth } from '../../firebase'
-import { useAuth } from "../../contexts/AuthContext"
+ import { useAuth } from "../../contexts/AuthContext"
 import Modal from 'react-bootstrap/Modal'
 import LoginPopup from "../LoginPopup"
 import useWindowDimensions from "../../functions/windowDimensions"

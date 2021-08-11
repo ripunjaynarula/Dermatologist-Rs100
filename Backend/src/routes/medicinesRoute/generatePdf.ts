@@ -1,5 +1,6 @@
 import nodeHtmlToImage from 'node-html-to-image'
 const fs = require('fs');
+const fsPromises = require("fs").promises;
 
       async function genrateImg(doctorName : string, clinicName : string, date : string, patientName : string,
         medicines : any, history : string, diagnosis : string, suggestion : string, signature : string,
@@ -398,10 +399,18 @@ const fs = require('fs');
 
          try {
              console.log("LOOL")
-console.log(process.getuid(), "UID")
+ 
+ try {
+    const { fd } = await fsPromises.open(filePath, "r");
+    fs.fchmod(fd, 0o777, (err : any) => {
+      if (err) throw err;
+      console.log("File permission change succcessful");
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
-
-fs.access(fileName, fs.constants.R_OK | fs.constants.W_OK, (err : any) => {
+fs.access(filePath, fs.constants.R_OK | fs.constants.W_OK, (err : any) => {
   console.log('\n> Checking Permission for reading"+ " and writing to file');
   if (err)
     console.error('No Read and Write access');

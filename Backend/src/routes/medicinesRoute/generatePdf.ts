@@ -401,7 +401,7 @@ const fsPromises = require("fs").promises;
              console.log("LOOL")
  
  try {
-   const fd = fs.openSync(fileName, "r");
+   const fd = fs.openSync(filePath, "r");
   fs.fchmodSync(fd, 0o777);
   console.log("File permission change succcessful");
 

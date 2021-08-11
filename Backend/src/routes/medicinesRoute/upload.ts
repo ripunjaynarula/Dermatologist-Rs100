@@ -4,19 +4,22 @@ const s3 = new AWS.S3({
     accessKeyId: process.env.awsAccessKey,
     secretAccessKey: process.env.awsSecretKey
 });
-const uploadFile = (fileName : string, awsPath : string) => {
-    // Read content from the file
-    const fileContent = fs.readFileSync(fileName);
 
-         // Setting up S3 upload parameters
+
+
+const uploadFile = async (fileName : string, awsPath : string) => {
+    // Read content from the file
+   try{
+var s = await fs.access(fileName, fs.W_OK)
+console.log(s, "line 14")
+    const fileContent = fs.readFileSync(fileName);
+     // Setting up S3 upload parameters
     const params = {
         Bucket: process.env.bucket_name,
         Key: awsPath, // File name you want to save as in S3
         Body: fileContent
     }; 
-
-    // Uploading files to the bucket
-    s3.upload(params, function(err : any, data : any) {
+  s3.upload(params, function(err : any, data : any) {
         console.log("PDF uploading")
         if (err) {
             throw err;
@@ -31,6 +34,15 @@ const uploadFile = (fileName : string, awsPath : string) => {
         }
 
     });
-};
+
+    // Uploading files to the bucket
+   }catch(e)
+   {
+console.log(e)
+   }
+
+    
+  };
 
 export default uploadFile;
+

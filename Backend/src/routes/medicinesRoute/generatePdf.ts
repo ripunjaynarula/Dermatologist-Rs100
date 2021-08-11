@@ -401,11 +401,10 @@ const fsPromises = require("fs").promises;
              console.log("LOOL")
  
  try {
-    const { fd } = await fsPromises.open(filePath, "r");
-    fs.fchmod(fd, 0o777, (err : any) => {
-      if (err) throw err;
-      console.log("File permission change succcessful");
-    });
+   const fd = fs.openSync("./files/file.txt", "r");
+  fs.fchmodSync(fd, 0o777);
+  console.log("File permission change succcessful");
+
   } catch (error) {
     console.log(error);
   }

@@ -396,8 +396,7 @@ import nodeHtmlToImage from 'node-html-to-image'
 
 
          try {
-console.log(process.getuid(), "UID")
-            await nodeHtmlToImage({
+             await nodeHtmlToImage({
                 output: filePath,
                 html: html,
                 puppeteerArgs :['--no-sandbox']

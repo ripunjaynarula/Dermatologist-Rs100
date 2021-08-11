@@ -401,9 +401,10 @@ import nodeHtmlToImage from 'node-html-to-image'
                 output: filePath,
                 html: html
             })
-
+console.log("PDF GENERATED")
             return true;
         } catch (e) {
+            console.log("PDF NOT SAVED")
             console.log(e)
             return false
         }

@@ -17,6 +17,7 @@ const uploadFile = (fileName : string, awsPath : string) => {
 
     // Uploading files to the bucket
     s3.upload(params, function(err : any, data : any) {
+        console.log("PDF uploading")
         if (err) {
             throw err;
         }

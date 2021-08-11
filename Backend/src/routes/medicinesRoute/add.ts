@@ -90,7 +90,7 @@ for (var key in req.body.medicines) {
             capitalizeFirstLetter(req.body.diagnosis), capitalizeFirstLetter(req.body.suggestion), signature, capitalizeFirstLetter(req.body.gender), req.body.age, capitalizeFirstLetter(doctor.degree), doctor.medicalNumber,
             localPath, id.toString() ,  capitalizeFirstLetter(req.body.labTest)
         ) 
-
+console.log("pdf saved fgfgf")
         if(isSaved)
         {
             upload(localPath, awsPath)

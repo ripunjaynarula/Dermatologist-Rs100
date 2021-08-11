@@ -14,6 +14,7 @@ import consultations from '../../models/consultation'
 import sendWhatsapp from '../../actions/whatsappMessage'
 import sendSMS from '../../actions/sms';
  const signature = "https://d3pxd5vsj7zayf.cloudfront.net/images/sign.png"
+ 
 router.post('/', async (req, res) => {
     try {
     

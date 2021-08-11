@@ -1,6 +1,6 @@
 import nodeHtmlToImage from 'node-html-to-image'
 const fs = require('fs');
-const fsPromises = require("fs").promises;
+ const logo = "https://d3pxd5vsj7zayf.cloudfront.net/images/logo.png"
 
       async function genrateImg(doctorName : string, clinicName : string, date : string, patientName : string,
         medicines : any, history : string, diagnosis : string, suggestion : string, signature : string,
@@ -378,7 +378,7 @@ const fsPromises = require("fs").promises;
 
         <div style="text-align: center; margin-top: 35px;">
 
-            <img style="width: auto;height: 50px;" src="https://assets.dermatologistin100rs.com/images/logo.png"></img>
+            <img style="width: auto;height: 50px;" src="`+logo+`"></img>
 
  
         </div>
@@ -400,22 +400,7 @@ const fsPromises = require("fs").promises;
          try {
              console.log("LOOL")
  
- try {
-   const fd = fs.openSync(filePath, "r");
-  fs.fchmodSync(fd, 0o777);
-  console.log("File permission change succcessful");
-
-  } catch (error) {
-    console.log(error);
-  }
-
-fs.access(filePath, fs.constants.R_OK | fs.constants.W_OK, (err : any) => {
-  console.log('\n> Checking Permission for reading"+ " and writing to file');
-  if (err)
-    console.error('No Read and Write access');
-  else
-    console.log('File can be read and written');
-});
+  
 
             await nodeHtmlToImage({
                 output: filePath,
